@@ -32,7 +32,9 @@
     "defaults"
   ],
   "devDependencies": {
+    "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
