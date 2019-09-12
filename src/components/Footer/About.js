@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import A from '../A';
+import { A } from '@codeforafrica/hurumap-ui';
 
 const styles = theme => ({
   root: {
@@ -49,9 +49,9 @@ function About({ classes }) {
   return (
     <div>
       <Typography variant="subtitle1" className={classes.title}>
-        HURUmap gives infomediaries like journalists and Civic activists an easy
-        &apos;plug & play&apos; toolkit for finding and embedding interactive
-        data visualizations into their storytelling
+      PesaYetu is a tool the gives Kenyan Citizens access to information on 
+      how money collected from taxpayers is allocated. With this information, 
+      they can ask what their elected officials are doing with it, and from there the discussion can proceed towards how money is spent in the future to better their lives.
       </Typography>
       <Typography variant="subtitle1" className={classes.body}>
         This project is built on software originally created by the Knight Lab

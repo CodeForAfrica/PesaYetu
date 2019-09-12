@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import A from './A';
+import { A } from '@codeforafrica/hurumap-ui';
 
 import cfa from '../assets/images/logos/codeforafrica.png';
 import pulitzercenter from '../assets/images/logos/pulitzer.png';
 import ancir from '../assets/images/logos/ancir.png';
 import africadrone from '../assets/images/logos/africa-drone.png';
-import oxpeckers from '../assets/images/logos/oxpeckers.png';
+import pesacheck from '../assets/images/logos/pesacheckwhite.png';
 
 const styles = theme => ({
   root: {
@@ -76,8 +76,8 @@ function Partners({ classes }) {
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
-          <A href="https://oxpeckers.org/">
-            <img src={oxpeckers} alt="Oxpeckers" className={classes.img} />
+          <A href="https://pesacheck.org/">
+            <img src={pesacheck} alt="PesaCheck" className={classes.img} />
           </A>
         </Grid>
       </Grid>

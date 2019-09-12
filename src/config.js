@@ -1,7 +1,8 @@
 const config = {
     MAPIT: {
       url: 'https://mapit.hurumap.org',
-      codeType: 'KEN'
+      codeType: 'KEN',
+      zoom: 5
     },
    
     about: {

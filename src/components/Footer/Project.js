@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import A from '../A';
+import { A } from '@codeforafrica/hurumap-ui';
 import SocialMedia from '../SocialMedia';
 
 const styles = theme => ({
