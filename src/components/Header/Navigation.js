@@ -5,7 +5,7 @@ import { Grid, Link, MenuList, MenuItem, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
-import logo from '../../assets/images/logos/pesayetu-header-logo.png';
+import logo from '../../assets/images/logos/pesayetu.png';
 import Dropdown from './PortalDropdown';
 
 import Search from '../Search';
@@ -45,7 +45,6 @@ const styles = theme => ({
     }
   },
   topMenuIcon: {
-    color: 'white',
     display: 'none',
     [theme.breakpoints.down('sm')]: {
       display: 'inline-block'
@@ -79,26 +78,7 @@ const styles = theme => ({
     marginRight: '5.6rem'
   },
   link: {
-    color: '#fff',
-    textDecoration: 'none',
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: '600',
-    fontSize: '0.7143rem',
-    '&:hover': {
-      color: '#e7e452',
-      textDecoration: 'none'
-    }
-  },
-  logoCountryName: {
-    position: 'absolute',
-    color: 'white',
-    top: '1.75rem',
-    left: '3.625rem',
-    margin: 0,
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: 500,
-    fontSize: 'x-small',
-    textTransform: 'uppercase'
+
   }
 });
 

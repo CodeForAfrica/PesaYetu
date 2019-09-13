@@ -28,12 +28,8 @@ const styles = theme => ({
     }
   },
   p: {
-    color: '#fff',
     textDecoration: 'none',
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: '600',
     letterSpacing: '0.195rem',
-    fontSize: '0.7143rem',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       textAlign: 'left',
@@ -56,22 +52,8 @@ const styles = theme => ({
     minHeight: '2rem'
   },
   link: {
-    color: '#fff',
-    textDecoration: 'none',
-    fontFamily: theme.typography.fontHeading,
-    fontSize: '1.7143rem',
-    fontWeight: 400,
-    lineHeight: '1.17px',
-    '&:hover': {
-      color: '#e7e452',
-      textDecoration: 'none'
-    }
   },
   selected: {
-    '&>*': {
-      color: '#e7e452',
-      textDecoration: 'none'
-    }
   }
 });
 

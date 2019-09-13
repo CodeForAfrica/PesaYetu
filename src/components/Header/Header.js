@@ -9,16 +9,11 @@ import { withRouter } from 'react-router-dom';
 import withWidth from '@material-ui/core/withWidth';
 
 import Navigation from './Navigation';
-
-import background from '../../assets/images/bg/background.png';
 import useCloseModalOnPopstate from '../../useCloseModalOnPopstate';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
   },
   wrapper: {
     [theme.breakpoints.up('md')]: {
