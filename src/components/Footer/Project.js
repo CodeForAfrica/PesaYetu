@@ -17,11 +17,8 @@ const styles = theme => ({
     }
   },
   listText: {
-    color: theme.palette.primary.light,
-    opacity: '0.6'
   },
   links: {
-    color: theme.palette.primary.light
   },
   list: {
     listStyleType: 'none',

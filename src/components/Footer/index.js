@@ -8,14 +8,10 @@ import About from './About';
 import Community from './Community';
 import Project from './Project';
 
-import background from '../../assets/images/bg/background.png';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
     paddingTop: '3.64rem',
     paddingLeft: '2.143rem',
     paddingBottom: '3.286rem',

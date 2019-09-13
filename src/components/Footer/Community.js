@@ -20,12 +20,9 @@ const styles = theme => ({
     width: '7.125rem',
     [theme.breakpoints.up('md')]: {
       width: '12.5625rem' // 201px
-    },
-    color: theme.palette.primary.light,
-    opacity: '0.6'
+    }
   },
   links: {
-    color: theme.palette.primary.light
   },
   list: {
     listStyleType: 'none',

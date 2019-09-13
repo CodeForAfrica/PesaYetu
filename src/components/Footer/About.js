@@ -17,21 +17,13 @@ const styles = theme => ({
     }
   },
   title: {
-    color: theme.palette.primary.light,
-    fontWeight: 'bold',
-    opacity: '0.6'
   },
   body: {
-    color: theme.palette.primary.light,
-    opacity: '0.6',
     paddingTop: theme.spacing(3)
   },
   listText: {
-    color: theme.palette.primary.light,
-    opacity: '0.6'
   },
   links: {
-    color: theme.palette.primary.light
   },
   list: {
     listStyleType: 'none',
@@ -39,9 +31,7 @@ const styles = theme => ({
     marginTop: '0'
   },
   joinText: {
-    paddingTop: theme.spacing(3),
-    color: theme.palette.primary.light,
-    opacity: '0.6'
+    paddingTop: theme.spacing(3)
   }
 });
 
