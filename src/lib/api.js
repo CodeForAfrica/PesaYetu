@@ -50,3 +50,9 @@ export async function getOpenAfricaDominionGroupData() {
     `https://africaopendata.org/api/3/action/group_package_show?id=${group}`
   );
 }
+
+export async function getMediumPost(){
+  return axios.get(
+    'https://https://medium.com/feed/@pesacheck'
+  );
+}
