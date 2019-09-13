@@ -15,7 +15,6 @@ const styles = theme => ({
   },
   title: {
     padding: '1.143rem 0',
-    textTransform: 'none'
   },
   steps: {
     paddingTop: '0.6423rem' // 9px / 14

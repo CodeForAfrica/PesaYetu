@@ -68,8 +68,7 @@ const Theme = createTheme({
     MuiButton: {
       root: {
         border: '0.125rem solid #ffff',
-        borderRadius: 0,
-        color: '#fff'
+        borderRadius: 0
       }
     },
     MuiCard: {
