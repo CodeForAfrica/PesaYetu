@@ -6,9 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { A } from '@codeforafrica/hurumap-ui';
 
 import cfa from '../assets/images/logos/codeforafrica.png';
-import pulitzercenter from '../assets/images/logos/pulitzer.png';
-import ancir from '../assets/images/logos/ancir.png';
-import africadrone from '../assets/images/logos/africa-drone.png';
+import icfj from '../assets/images/logos/icfj.png';
+import bmgf from '../assets/images/logos/bmgf.png';
 import pesacheck from '../assets/images/logos/pesacheckwhite.png';
 
 const styles = theme => ({
@@ -57,22 +56,13 @@ function Partners({ classes }) {
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
-          <A href="https://pulitzercenter.org/">
-            <img
-              src={pulitzercenter}
-              alt="Pulitzer Center"
-              className={classes.img}
-            />
+          <A href="https://icfj.org/">
+            <img src={icfj} alt="ICFJ" className={classes.img} />
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
-          <A href="https://investigativecenters.org/">
-            <img src={ancir} alt="ANCIR" className={classes.img} />
-          </A>
-        </Grid>
-        <Grid item className={classes.imageGrid}>
-          <A href="https://africandrone.org/">
-            <img src={africadrone} alt="Africa Drone" className={classes.img} />
+          <A href="https://gatesfoundation.org/">
+            <img src={bmgf} alt="Bill Melinda Gates Foundation" className={classes.img} />
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
