@@ -18,7 +18,6 @@ const styles = theme => ({
   titleTextGrid: {
     pointerEvents: 'all',
     zIndex: '100',
-    color: 'white',
     [theme.breakpoints.down('sm')]: {
       margin: '2rem',
       marginTop: 0
@@ -32,7 +31,6 @@ const styles = theme => ({
     marginTop: '2rem !important'
   },
   title: {
-    color: 'white',
     pointerEvents: 'all',
     [theme.breakpoints.down('sm')]: {
       fontSize: '3rem',
@@ -40,8 +38,7 @@ const styles = theme => ({
     }
   },
   titleFontSmall: {
-    pointerEvents: 'all',
-    fontSize: theme.typography.h2.fontSize
+    pointerEvents: 'all'
   },
   titleWordBreak: {
     pointerEvents: 'all',
@@ -49,32 +46,17 @@ const styles = theme => ({
   },
   detail: {
     pointerEvents: 'all',
-    color: 'white',
-    fontFamily: 'Lora',
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-    fontStretch: 'normal',
-    lineHeight: 'normal',
-    letterSpacing: '0.056em'
   },
   detailFontSmall: {
-    fontSize: theme.typography.h5.fontSize
   },
   detailLabel: {
     pointerEvents: 'all',
-    color: '#8d8d8c',
-    fontWeight: 500,
-    lineHeight: 2.09
   },
   body2: {
     pointerEvents: 'all',
-    color: 'white',
     textAlign: 'left',
     width: '80%',
     paddingTop: '2rem',
-    opacity: '0.8',
-    fontSize: '0.786rem',
-    lineHeight: 2.09,
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }

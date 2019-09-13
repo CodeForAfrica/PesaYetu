@@ -12,9 +12,10 @@ import Search from '../Search';
 import PortalChooser from '../Modal/PortalChooser';
 import ContactUs from '../Modal/ContactUs';
 
-import menuIcon from '../../assets/images/icons/menu.svg';
-import backIcon from '../../assets/images/icons/back.svg';
-import searchIcon from '../../assets/images/icons/location.svg';
+
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import SearchIcon  from '@material-ui/icons/Search';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import Modal from '../Modal';
 import useToggleModal from '../../useToggleModal';
@@ -123,7 +124,7 @@ function Navigation({ classes, width }) {
       style={{ position: 'relative', marginRight: '50px' }}
     >
       <img
-        alt="Dominion Logo"
+        alt="Pesa Yetu"
         src={logo}
         className={classes.img}
       />
@@ -147,7 +148,13 @@ function Navigation({ classes, width }) {
           aria-label="Menu"
           onClick={openContact ? toggleContact : toggleMenu}
         >
-          <img alt="Menu" src={openMenu || openContact ? backIcon : menuIcon} />
+        {
+          openMenu || openContact ? (
+            <ArrowBackIcon />
+          ): (
+            <MenuIcon />
+          )
+        }
         </IconButton>
       </Grid>
     );
@@ -195,7 +202,7 @@ function Navigation({ classes, width }) {
             marginLeft: 60
           }}
         >
-          <img alt="Search" src={searchIcon} />
+          <SearchIcon />
         </IconButton>
         {renderMenuList()}
       </Grid>

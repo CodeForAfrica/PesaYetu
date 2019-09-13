@@ -43,13 +43,11 @@ const styles = theme => ({
     }
   },
   alink: {
-    color: '#e7e452',
     pointerEvents: 'all'
   },
   map: {
     zIndex: 0,
     position: 'relative !important',
-    backgroundColor: 'grey',
     height: '15.625rem !important',
     left: 'unset !important',
     top: 'unset !important',

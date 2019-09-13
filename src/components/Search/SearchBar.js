@@ -18,11 +18,7 @@ const styles = theme => ({
   searchField: {
     marginLeft: theme.spacing(),
     marginRight: theme.spacing(),
-    color: 'white',
     width: '100%',
-    fontFamily: theme.typography.fontFamily,
-    fontSize: theme.typography.subtitle2.fontSize,
-    fontWeight: 'bold',
     [theme.breakpoints.up('md')]: {
       padding: '1rem 0 0.5rem 1rem',
       borderBottom: '2px solid white'
@@ -30,9 +26,6 @@ const styles = theme => ({
   },
   searchFieldInput: {
     '&::placeholder': {
-      fontFamily: theme.typography.fontFamily,
-      color: 'white',
-      opacity: 1
     }
   },
   rootBorderBottom: {

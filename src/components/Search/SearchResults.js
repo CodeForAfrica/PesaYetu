@@ -8,17 +8,11 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    fontSize: '14px',
-    fontWeight: '500',
-    color: 'white',
-    fontFamily: theme.typography.fontFamily,
     [theme.breakpoints.up('sm')]: {
       padding: '47px 0'
     }
   },
   rootDropdown: {
-    color: 'black',
-    backgroundColor: 'white',
     paddingTop: theme.spacing(),
     paddingBottom: theme.spacing(),
     marginTop: theme.spacing(9),
@@ -37,19 +31,11 @@ const styles = theme => ({
     }
   },
   listItem: {
-    color: 'white',
-    '&:hover': {
-      color: '#e7e452'
-    }
   },
   listItemDropdown: {
-    color: 'black',
-    '&:hover': {
-      fontWeight: '600'
-    }
+
   },
   selected: {
-    color: '#e7e452'
   },
   level: {
     margin: 0,
@@ -57,10 +43,7 @@ const styles = theme => ({
     fontWeight: '600',
     opacity: '0.5',
     marginRight: '20px',
-    width: '80px',
-    textTransform: 'capitalize',
-    textAlign: 'right',
-    color: 'inherit'
+    width: '80px'
   },
   levelDropdown: {
     fontSize: '10px',
@@ -68,18 +51,9 @@ const styles = theme => ({
     width: '30%'
   },
   name: {
-    margin: 0,
-    fontWeight: '600',
-    fontSize: '30px',
-    textTransform: 'capitalize',
-    color: 'inherit',
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '35px'
-    }
+    margin: 0
   },
   nameDropdown: {
-    fontSize: '16px',
-    fontWeight: '400'
   }
 });
 
