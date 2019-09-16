@@ -7,12 +7,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import Theme from './Theme';
+import AppContextProvider from './AppContext';
 
 ReactDOM.render(
-      <MuiThemeProvider theme={Theme}>
-          <CssBaseline />
-          <App />
-      </MuiThemeProvider>,
+  <MuiThemeProvider theme={Theme}>
+    <AppContextProvider>
+      <CssBaseline />
+      <App />
+    </AppContextProvider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
 

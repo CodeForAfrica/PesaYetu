@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import A from '../A';
+import { A } from '@codeforafrica/hurumap-ui';
 
 const styles = theme => ({
   root: {
@@ -20,13 +20,9 @@ const styles = theme => ({
     width: '7.125rem',
     [theme.breakpoints.up('md')]: {
       width: '12.5625rem' // 201px
-    },
-    color: theme.palette.primary.light,
-    opacity: '0.6'
+    }
   },
-  links: {
-    color: theme.palette.primary.light
-  },
+  links: {},
   list: {
     listStyleType: 'none',
     padding: 0,

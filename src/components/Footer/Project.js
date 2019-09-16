@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import A from '../A';
+import { A } from '@codeforafrica/hurumap-ui';
 import SocialMedia from '../SocialMedia';
 
 const styles = theme => ({
@@ -16,13 +16,8 @@ const styles = theme => ({
       width: '12.5625rem' // 201px / 16
     }
   },
-  listText: {
-    color: theme.palette.primary.light,
-    opacity: '0.6'
-  },
-  links: {
-    color: theme.palette.primary.light
-  },
+  listText: {},
+  links: {},
   list: {
     listStyleType: 'none',
     padding: 0,

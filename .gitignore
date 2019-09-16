@@ -191,4 +191,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#ignore build folder
+build/
+
 # End of https://www.gitignore.io/api/vim,node,linux,macos,windows,visualstudiocode
