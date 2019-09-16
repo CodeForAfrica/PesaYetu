@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function About({ heading, intro, body, ...props }) {
+function About({ about: { heading, intro, body} , ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
@@ -86,9 +86,11 @@ function About({ heading, intro, body, ...props }) {
 }
 
 About.propTypes = {
-  heading: PropTypes.string.isRequired,
-  intro: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired
+  about: PropTypes.shape({
+    heading: PropTypes.string.isRequired,
+    intro: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default About;

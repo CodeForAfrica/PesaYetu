@@ -53,7 +53,7 @@ function StoryList({ classes, storyData, width }) {
       alignItems="center"
       className={classes.root}
     >
-      <GridList cellHeight={320} className={classes.gridList} cols={cards}>
+      <GridList cellHeight={360} className={classes.gridList} cols={cards}>
         {storyData.map(story => (
           <GridListTile key={story.index}>
             <StoryCard story={story} />

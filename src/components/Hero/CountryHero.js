@@ -65,7 +65,7 @@ function CountryHero({ classes, width, history }) {
   const { toggleModal } = useToggleModal('search');
   const onClickGeoLayer = useCallback(
     area => {
-      history.push(`/profile/${area.codes[config.MAPIT.codeType]}`);
+      history.push(`/profiles/${area.codes[config.MAPIT.codeType]}`);
     },
     [history]
   );

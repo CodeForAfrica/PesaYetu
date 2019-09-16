@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { parseString } from 'xml2js';
+import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/styles';
 
 import StoryList from './StoryList';
-import {
-  getMediumPost
-} from '../../lib/api';
 
 const useStyles = makeStyles((theme) => ({
   showCaseContainer: {
@@ -43,20 +40,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Showcase() {
+function Showcase({ stories }) {
   const classes = useStyles();
-  const [stories, setStories] = useState([]);
-
-  useEffect(() => {
-    getMediumPost().then(({ data}) => {
-      console.log(data)
-      parseString(data, (err,result) => {
-        setStories(JSON.stringify(result.rss.channel))
-      })
-    })
-  }, []);
-
-  console.log(stories);
 
   return (
     <div className={classes.showCaseContainer} id="showcase">
@@ -95,6 +80,10 @@ function Showcase() {
     </div>
   );
 }
+
+Showcase.propTypes = {
+  stories: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};
 
 
 export default Showcase;

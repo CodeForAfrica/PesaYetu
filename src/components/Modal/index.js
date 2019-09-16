@@ -5,15 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { Modal as MaterialModal } from '@material-ui/core';
 
-import background from '../../assets/images/bg/background.png';
-
 const styles = {
   root: {
     flexGrow: 1,
     padding: 0,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundColor: 'white'
   },
   modal: {
     outline: 'none',

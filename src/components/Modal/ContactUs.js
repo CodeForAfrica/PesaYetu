@@ -14,7 +14,6 @@ import cross from '../../assets/images/icons/close.svg';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    color: 'white',
     height: '31.25rem',
     [theme.breakpoints.up('md')]: {
       marginRight: '6.5625rem', // align with countries dropdown button
@@ -29,7 +28,6 @@ const styles = theme => ({
     }
   },
   title: {
-    fontFamily: theme.typography.fontHeading,
     fontSize: '2.5rem',
     [theme.breakpoints.up('md')]: {
       fontSize: '4.375rem'
@@ -37,15 +35,9 @@ const styles = theme => ({
   },
   listItem: {
     paddingLeft: 0,
-    paddingRight: 0,
-    '&:hover': {
-      '& > *': {
-        color: '#e7e452'
-      }
-    }
+    paddingRight: 0
   },
   listIndex: {
-    color: 'white',
     marginRight: '1.875rem',
     width: 'fit-content',
     fontSize: '0.6875rem',
@@ -59,7 +51,6 @@ const styles = theme => ({
     }
   },
   listItemLink: {
-    color: 'white',
     fontFamily: theme.typography.fontHeading,
     fontWeight: 'normal',
     textDecoration: 'none',

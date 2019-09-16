@@ -5,14 +5,15 @@ import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import { Grid, IconButton } from '@material-ui/core';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
-import back from '../../assets/images/icons/back.svg';
-import search from '../../assets/images/icons/location.svg';
+
+import SearchIcon  from '@material-ui/icons/Search';
+import CloseIcon from '@material-ui/icons/Close';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     [theme.breakpoints.down('sm')]: {
-      borderBottom: '2px solid white'
+      borderBottom: '2px solid'
     }
   },
   searchField: {
@@ -21,15 +22,13 @@ const styles = theme => ({
     width: '100%',
     [theme.breakpoints.up('md')]: {
       padding: '1rem 0 0.5rem 1rem',
-      borderBottom: '2px solid white'
+      borderBottom: '2px solid'
     }
   },
   searchFieldInput: {
-    '&::placeholder': {
-    }
   },
   rootBorderBottom: {
-    borderBottom: '2px solid white !important'
+    borderBottom: '2px solid !important'
   },
   searchFieldNoBorderBottom: {
     borderBottom: 'none !important'
@@ -63,10 +62,6 @@ function SearchBar({
   isComparisonSearch,
   autoFocus
 }) {
-  let searchBarIcon = icon;
-  if (!searchBarIcon) {
-    searchBarIcon = isWidthUp('md', width) ? back : search;
-  }
   return (
     <Grid
       container
@@ -103,7 +98,8 @@ function SearchBar({
         aria-label="Search"
         onClick={handleIconClick}
       >
-        <img alt="Search" src={searchBarIcon} className={classes.searchIcon} />
+        {isWidthUp('md', width) ? <CloseIcon /> : <SearchIcon />}
+    
       </IconButton>
     </Grid>
   );

@@ -62,8 +62,6 @@ const styles = theme => ({
     margin: '1rem 0'
   },
   componentStyle: {
-    webkitFilter: 'brightness(40%)' /* Safari 6.0 - 9.0 */,
-    filter: 'brightness(40%)'
   }
 });
 
