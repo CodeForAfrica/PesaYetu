@@ -15,8 +15,7 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       paddingLeft: 0 // 30px / 16
     },
-    [theme.breakpoints.up('xl')]: {
-    }
+    [theme.breakpoints.up('xl')]: {}
   },
   wrapper: {
     margin: '0 auto',

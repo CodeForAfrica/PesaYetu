@@ -8,7 +8,6 @@ import About from './About';
 import Community from './Community';
 import Project from './Project';
 
-
 const styles = theme => ({
   root: {
     flexGrow: 1,

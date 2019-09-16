@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import StoryList from './StoryList';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   showCaseContainer: {
     backgroundColor: 'white',
     display: 'inline-block',
@@ -84,6 +84,5 @@ function Showcase({ stories }) {
 Showcase.propTypes = {
   stories: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
-
 
 export default Showcase;

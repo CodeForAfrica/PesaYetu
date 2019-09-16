@@ -6,17 +6,17 @@ import Player from './Player';
 import Modal from '../Modal';
 import Navigation from '../Header/Navigation';
 
-function PlayerModal({ dominion, open, ...props }) {
+function PlayerModal({ open, ...props }) {
   return (
+    /* eslint-disable-next-line react/jsx-props-no-spreading */
     <Modal isOpen={open} {...props}>
-      <Navigation dominion={dominion} />
+      <Navigation />
       <Player />
     </Modal>
   );
 }
 
 PlayerModal.propTypes = {
-  dominion: PropTypes.shape({}).isRequired,
   open: PropTypes.bool.isRequired
 };
 

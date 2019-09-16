@@ -5,17 +5,15 @@ import { Grid, Link, MenuList, MenuItem, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import SearchIcon from '@material-ui/icons/Search';
+import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../assets/images/logos/pesayetu.png';
 import Dropdown from './PortalDropdown';
 
 import Search from '../Search';
 import PortalChooser from '../Modal/PortalChooser';
 import ContactUs from '../Modal/ContactUs';
-
-
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import SearchIcon  from '@material-ui/icons/Search';
-import MenuIcon from '@material-ui/icons/Menu';
 
 import Modal from '../Modal';
 import useToggleModal from '../../useToggleModal';
@@ -78,9 +76,7 @@ const styles = theme => ({
     position: 'relative',
     marginRight: '5.6rem'
   },
-  link: {
-
-  }
+  link: {}
 });
 
 function Navigation({ classes, width }) {
@@ -123,12 +119,7 @@ function Navigation({ classes, width }) {
       href="/"
       style={{ position: 'relative', marginRight: '50px' }}
     >
-      <img
-        alt="Pesa Yetu"
-        src={logo}
-        className={classes.img}
-      />
-
+      <img alt="Pesa Yetu" src={logo} className={classes.img} />
     </Link>
   );
 
@@ -148,19 +139,13 @@ function Navigation({ classes, width }) {
           aria-label="Menu"
           onClick={openContact ? toggleContact : toggleMenu}
         >
-        {
-          openMenu || openContact ? (
-            <ArrowBackIcon />
-          ): (
-            <MenuIcon />
-          )
-        }
+          {openMenu || openContact ? <ArrowBackIcon /> : <MenuIcon />}
         </IconButton>
       </Grid>
     );
 
     return (
-      <React.Fragment>
+      <>
         <Topbar />
 
         <Modal isOpen={openMenu} onEscapeKeyDown={toggleMenu}>
@@ -172,7 +157,7 @@ function Navigation({ classes, width }) {
             </Search>
           </Grid>
         </Modal>
-      </React.Fragment>
+      </>
     );
   };
 
@@ -214,7 +199,7 @@ function Navigation({ classes, width }) {
     : renderDesktopMenu();
 
   return (
-    <React.Fragment>
+    <>
       <Grid container className={classes.wrapper}>
         {nav}
       </Grid>
@@ -236,7 +221,7 @@ function Navigation({ classes, width }) {
           <ContactUs handleClose={toggleContact} />
         </Grid>
       </Modal>
-    </React.Fragment>
+    </>
   );
 }
 

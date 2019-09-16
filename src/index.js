@@ -10,12 +10,12 @@ import Theme from './Theme';
 import AppContextProvider from './AppContext';
 
 ReactDOM.render(
-      <MuiThemeProvider theme={Theme}>
-        <AppContextProvider>
-          <CssBaseline />
-          <App />
-        </AppContextProvider>
-      </MuiThemeProvider>,
+  <MuiThemeProvider theme={Theme}>
+    <AppContextProvider>
+      <CssBaseline />
+      <App />
+    </AppContextProvider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
 

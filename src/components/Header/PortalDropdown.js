@@ -51,10 +51,8 @@ const styles = theme => ({
     padding: 0,
     minHeight: '2rem'
   },
-  link: {
-  },
-  selected: {
-  }
+  link: {},
+  selected: {}
 });
 
 function CountriesButtonComponent({ classes, onClick, isOpen }) {

@@ -58,12 +58,8 @@ const Theme = createTheme({
       }
     }
   },
-  palette: {
-
-  },
-  typography: {
-  
-  },
+  palette: {},
+  typography: {},
   overrides: {
     MuiButton: {
       root: {

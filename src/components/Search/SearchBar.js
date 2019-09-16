@@ -6,7 +6,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { Grid, IconButton } from '@material-ui/core';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
-import SearchIcon  from '@material-ui/icons/Search';
+import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
 const styles = theme => ({
@@ -25,8 +25,7 @@ const styles = theme => ({
       borderBottom: '2px solid'
     }
   },
-  searchFieldInput: {
-  },
+  searchFieldInput: {},
   rootBorderBottom: {
     borderBottom: '2px solid !important'
   },
@@ -56,7 +55,6 @@ function SearchBar({
   placeholder,
   value,
   width,
-  icon,
   handleIconClick,
   handleValueChange,
   isComparisonSearch,
@@ -99,7 +97,6 @@ function SearchBar({
         onClick={handleIconClick}
       >
         {isWidthUp('md', width) ? <CloseIcon /> : <SearchIcon />}
-    
       </IconButton>
     </Grid>
   );
@@ -108,7 +105,6 @@ function SearchBar({
 SearchBar.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   handleValueChange: PropTypes.func.isRequired,
-  icon: PropTypes.string,
   handleIconClick: PropTypes.func,
   width: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
@@ -123,8 +119,7 @@ SearchBar.defaultProps = {
   handleIconClick: null,
   placeholder: '',
   isComparisonSearch: false,
-  primary: true,
-  icon: null
+  primary: true
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));

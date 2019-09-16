@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   heading: {
     width: 'auto',
@@ -57,23 +57,31 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function About({ about: { heading, intro, body} , ...props }) {
+function About({ about: { heading, intro, body }, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
       <Grid container direction="row" className={classes.layout} spacing={4}>
         <Grid item md={4}>
-            <div className={classes.heading}>
-                <Typography variant="h2">{heading}</Typography>
-            </div>
+          <div className={classes.heading}>
+            <Typography variant="h2">{heading}</Typography>
+          </div>
         </Grid>
         <Grid item md={4}>
           <Grid className={classes.info}>
-            <Typography component="div" variant="body2" className={classes.infoTitle}>
-                {intro}
+            <Typography
+              component="div"
+              variant="body2"
+              className={classes.infoTitle}
+            >
+              {intro}
             </Typography>
-            <Typography component="span" variant="body2" className={classes.infoBody}>
-                {body}
+            <Typography
+              component="span"
+              variant="body2"
+              className={classes.infoBody}
+            >
+              {body}
             </Typography>
           </Grid>
         </Grid>

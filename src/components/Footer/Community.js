@@ -22,8 +22,7 @@ const styles = theme => ({
       width: '12.5625rem' // 201px
     }
   },
-  links: {
-  },
+  links: {},
   list: {
     listStyleType: 'none',
     padding: 0,

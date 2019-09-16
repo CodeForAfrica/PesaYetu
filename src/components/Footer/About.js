@@ -16,15 +16,12 @@ const styles = theme => ({
       width: '40.35rem' // 644px / 16
     }
   },
-  title: {
-  },
+  title: {},
   body: {
     paddingTop: theme.spacing(3)
   },
-  listText: {
-  },
-  links: {
-  },
+  listText: {},
+  links: {},
   list: {
     listStyleType: 'none',
     padding: 0,
@@ -39,9 +36,11 @@ function About({ classes }) {
   return (
     <div>
       <Typography variant="subtitle1" className={classes.title}>
-      PesaYetu is a tool the gives Kenyan Citizens access to information on 
-      how money collected from taxpayers is allocated. With this information, 
-      they can ask what their elected officials are doing with it, and from there the discussion can proceed towards how money is spent in the future to better their lives.
+        PesaYetu is a tool the gives Kenyan Citizens access to information on
+        how money collected from taxpayers is allocated. With this information,
+        they can ask what their elected officials are doing with it, and from
+        there the discussion can proceed towards how money is spent in the
+        future to better their lives.
       </Typography>
       <Typography variant="subtitle1" className={classes.body}>
         This project is built on software originally created by the Knight Lab

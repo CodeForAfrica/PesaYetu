@@ -62,7 +62,11 @@ function Partners({ classes }) {
         </Grid>
         <Grid item className={classes.imageGrid}>
           <A href="https://gatesfoundation.org/">
-            <img src={bmgf} alt="Bill Melinda Gates Foundation" className={classes.img} />
+            <img
+              src={bmgf}
+              alt="Bill Melinda Gates Foundation"
+              className={classes.img}
+            />
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>

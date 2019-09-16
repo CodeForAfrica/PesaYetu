@@ -30,13 +30,9 @@ const styles = theme => ({
       width: '500px'
     }
   },
-  listItem: {
-  },
-  listItemDropdown: {
-
-  },
-  selected: {
-  },
+  listItem: {},
+  listItemDropdown: {},
+  selected: {},
   level: {
     margin: 0,
     fontSize: '14px',
@@ -53,8 +49,7 @@ const styles = theme => ({
   name: {
     margin: 0
   },
-  nameDropdown: {
-  }
+  nameDropdown: {}
 });
 
 const maxResults = 6;

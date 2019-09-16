@@ -54,7 +54,7 @@ class Search extends React.Component {
     let results = [];
 
     if (searchTerm !== '') {
-        results = await api.getGeography('KE', searchTerm);
+      results = await api.getGeography('KE', searchTerm);
     }
     this.setState({ codeType, results });
   }

@@ -14,7 +14,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   title: {
-    padding: '1.143rem 0',
+    padding: '1.143rem 0'
   },
   steps: {
     paddingTop: '0.6423rem' // 9px / 14

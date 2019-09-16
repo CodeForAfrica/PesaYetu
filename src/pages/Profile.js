@@ -5,7 +5,6 @@ import { ProfilePageHeader } from '../components/Header';
 
 import Page from '../components/Page';
 
-
 function Profile({
   match: {
     params: { geoId, comparisonGeoId }

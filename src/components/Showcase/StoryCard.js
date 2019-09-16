@@ -61,8 +61,7 @@ const styles = theme => ({
     color: '#fff',
     margin: '1rem 0'
   },
-  componentStyle: {
-  }
+  componentStyle: {}
 });
 
 function StoryCard({ story, classes }) {

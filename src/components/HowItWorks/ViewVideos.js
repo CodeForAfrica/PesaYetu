@@ -16,8 +16,7 @@ const styles = theme => ({
       width: '41.375rem' // (188 + 36 + 192 + 37 + 209)px / 16
     }
   },
-  viewLine: {
-  },
+  viewLine: {},
   button: {
     padding: 0
   },

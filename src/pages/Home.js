@@ -6,14 +6,13 @@ import HowItWorks from '../components/HowItWorks';
 import ShowCase from '../components/Showcase';
 import config from '../config';
 
-
 function Home() {
   return (
     <Page>
       <CountryPageHeader />
-      <About about={config.about}/>
+      <About about={config.about} />
       <HowItWorks />
-      <ShowCase stories={config.showCaseStories}/>
+      <ShowCase stories={config.showCaseStories} />
     </Page>
   );
 }

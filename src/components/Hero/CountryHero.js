@@ -72,9 +72,7 @@ function CountryHero({ classes, width, history }) {
   return (
     <Hero classes={{ root: classes.root }}>
       <HeroTitleGrid classes={{ titleTextGrid: classes.titleGrid }}>
-        <HeroTitle classes={{ title: classes.countryName }}>
-          PesaYetu
-        </HeroTitle>
+        <HeroTitle classes={{ title: classes.countryName }}>PesaYetu</HeroTitle>
         <HeroDescription classes={{ body2: classes.description }}>
           Helps storytellers and campaigners use data to add context{' '}
           {isWidthUp('md', width) && <br />}
@@ -85,10 +83,7 @@ function CountryHero({ classes, width, history }) {
 
         <Typography variant="subtitle2" style={{ marginTop: '2.5rem' }}>
           or view{' '}
-          <a
-            className={classes.alink}
-            href={`/profile/country-KE`}
-          >
+          <a className={classes.alink} href="/profile/country-KE">
             Kenya
           </a>
         </Typography>
@@ -110,7 +105,10 @@ function CountryHero({ classes, width, history }) {
 
 CountryHero.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default withRouter(withWidth()(withStyles(styles)(CountryHero)));

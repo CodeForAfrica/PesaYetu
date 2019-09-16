@@ -1,21 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Button, Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 
 import PlayerModal from './PlayerModal';
 
-import background from '../../assets/images/hero-image-1.png';
 import useToggleModal from '../../useToggleModal';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundColor: 'black',
     height: '30rem' // 480px / 16
   },
   layout: {
@@ -52,9 +48,10 @@ const styles = theme => ({
   modal: {
     backgroundColor: 'rgba(0, 0, 0, 0.8)'
   }
-});
+}));
 
-function Video({ classes, dominion }) {
+function Video() {
+  const classes = useStyles();
   const { open, toggleModal } = useToggleModal('video');
   return (
     <Grid
@@ -93,18 +90,9 @@ function Video({ classes, dominion }) {
           </Grid>
         </Grid>
       </Grid>
-      <PlayerModal
-        dominion={dominion}
-        open={open}
-        onEscapeKeyDown={toggleModal}
-      />
+      <PlayerModal open={open} onEscapeKeyDown={toggleModal} />
     </Grid>
   );
 }
 
-Video.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  dominion: PropTypes.shape({}).isRequired
-};
-
-export default withStyles(styles)(Video);
+export default Video;

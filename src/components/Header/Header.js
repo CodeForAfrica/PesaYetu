@@ -13,7 +13,7 @@ import useCloseModalOnPopstate from '../../useCloseModalOnPopstate';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   wrapper: {
     [theme.breakpoints.up('md')]: {
@@ -34,16 +34,16 @@ const styles = theme => ({
   }
 });
 
-function Header({ classes, history, children, dominion, ...props }) {
+function Header({ classes, children, ...props }) {
   useCloseModalOnPopstate();
   return (
     <div className={classes.root}>
       <Grid container className={classes.wrapper}>
-        <Navigation dominion={dominion} />
+        <Navigation />
 
         {React.cloneElement(children, {
-          ...props,
-          dominion
+          /* eslint-disable-next-line react/jsx-props-no-spreading */
+          ...props
         })}
       </Grid>
     </div>
@@ -55,7 +55,7 @@ Header.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
+  ]).isRequired
 };
 
 export default withRouter(withWidth()(withStyles(styles)(Header)));

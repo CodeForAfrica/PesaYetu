@@ -45,12 +45,11 @@ const styles = theme => ({
     width: 'min-content'
   },
   detail: {
-    pointerEvents: 'all',
+    pointerEvents: 'all'
   },
-  detailFontSmall: {
-  },
+  detailFontSmall: {},
   detailLabel: {
-    pointerEvents: 'all',
+    pointerEvents: 'all'
   },
   body2: {
     pointerEvents: 'all',
@@ -280,6 +279,7 @@ const HeroButton = withStyles(styles)(HeroButtonComponent);
 
 function HeroComponent({ classes, children, ...props }) {
   return (
+    /* eslint-disable-next-line react/jsx-props-no-spreading */
     <Grid container className={classes.root} {...props}>
       {children}
     </Grid>
