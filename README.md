@@ -7,10 +7,12 @@ This project uses yarn as a dependancy. See the documentation to set it up on yo
 
 Run the following command to get started
 
-- [x] git clone git@github.com:CodeForAfrica/PesaYetu.git
-- [x] cd PesaYetu
-- [x] yarn
-- [x] yarn start
+```
+- git clone git@github.com:CodeForAfrica/PesaYetu.git
+- cd PesaYetu
+- yarn
+- yarn start
+```
 
 ## Chart Definitions
 
