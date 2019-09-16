@@ -2,6 +2,7 @@
   "name": "pesayetu",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dev.pesayetu.pesacheck.org",
   "dependencies": {
     "@codeforafrica/hurumap-ui": "^0.1.10",
     "@fortawesome/fontawesome-free": "^5.10.2",
