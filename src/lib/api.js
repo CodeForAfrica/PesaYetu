@@ -27,32 +27,3 @@ export default function createAPI() {
       )
   };
 }
-
-export async function getProfile(geoId) {
-  return axios.get(`https://api.hurumap.org/profiles/${geoId}.json/`);
-}
-export async function getComparisonProfile(geoId, anotherGeoId) {
-  return axios.get(
-    `https://api.hurumap.org/api/compare/${geoId}/vs/${anotherGeoId}/`
-  );
-}
-
-export async function getSourceAfricaDominionData() {
-  const projectId = '462-Dominion-AFRICA';
-  return axios.get(
-    `https://dc.sourceafrica.net/api/search.json?q=projectid:${projectId}`
-  );
-}
-
-export async function getOpenAfricaDominionGroupData() {
-  const group = 'dominion';
-  return axios.get(
-    `https://africaopendata.org/api/3/action/group_package_show?id=${group}`
-  );
-}
-
-export async function getMediumPost(){
-  return axios.get(
-    'https://https://medium.com/feed/@pesacheck'
-  );
-}
