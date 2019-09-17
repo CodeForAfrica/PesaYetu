@@ -19,10 +19,7 @@ import config from '../../../config';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    [theme.breakpoints.up('md')]: {
-      marginBottom: '80px'
-    }
+    flexGrow: 1
   },
   titleGrid: {
     [theme.breakpoints.up('md')]: {
@@ -82,8 +79,16 @@ const useStyles = makeStyles(theme => ({
   },
   alink: {}
 }));
-function Profile({ geoId, history, head2head, isLoading, profile, parent }) {
-  const classes = useStyles();
+function Profile({
+  geoId,
+  history,
+  head2head,
+  isLoading,
+  profile,
+  parent,
+  ...props
+}) {
+  const classes = useStyles(props);
   const onClickGeoLayer = useCallback(
     area => {
       history.push(`/profiles/${area.codes[config.MAPIT.codeType]}`);

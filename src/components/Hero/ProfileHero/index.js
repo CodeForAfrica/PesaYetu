@@ -19,9 +19,10 @@ function ProfileHero({
   profiles: { isLoading, profile, comparison, parent },
   head2head,
   geoId,
-  comparisonGeoId
+  comparisonGeoId,
+  ...props
 }) {
-  const classes = useStyles();
+  const classes = useStyles(props);
   return !head2head ? (
     <Profile
       classes={{ root: classes.root }}
@@ -32,27 +33,25 @@ function ProfileHero({
       head2head={head2head}
     />
   ) : (
-    <Grid className={classes.root} container direction="row" spacing={1}>
-      <Profile
-        item
-        md={6}
-        alignItems="flex-start"
-        isLoading={isLoading}
-        profile={profile}
-        parent={parent}
-        head2head={head2head}
-        geoId={geoId}
-      />
-      <Profile
-        item
-        md={6}
-        alignItems="flex-start"
-        isLoading={isLoading}
-        profile={comparison}
-        parent={parent}
-        head2head={head2head}
-        geoId={comparisonGeoId}
-      />
+    <Grid className={classes.root} container direction="row" spacing={4}>
+      <Grid item md={6} alignItems="flex-start">
+        <Profile
+          isLoading={isLoading}
+          profile={profile}
+          parent={parent}
+          head2head={head2head}
+          geoId={geoId}
+        />
+      </Grid>
+      <Grid item md={6} alignItems="flex-start">
+        <Profile
+          isLoading={isLoading}
+          profile={comparison}
+          parent={parent}
+          head2head={head2head}
+          geoId={comparisonGeoId}
+        />
+      </Grid>
     </Grid>
   );
 }
