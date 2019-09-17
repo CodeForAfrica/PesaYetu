@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { ProfilePageHeader } from '../components/Header';
 
 import Page from '../components/Page';
+import ProfileRelease from '../components/ProfileReleases';
 import useProfileLoader from '../data/useProfileLoader';
 
 function Profile({
@@ -22,6 +23,7 @@ function Profile({
         geoId={geoId}
         comparisonGeoId={comparisonGeoId}
       />
+      <ProfileRelease />
     </Page>
   );
 }

@@ -29,8 +29,7 @@ const styles = theme => ({
     }
   },
   buttonSecondary: {
-    color: 'white',
-    border: '2px solid white'
+    border: '2px solid'
   },
   arrow: {
     pointerEvents: 'all',
