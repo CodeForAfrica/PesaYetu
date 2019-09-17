@@ -16,7 +16,10 @@ export default (geoId, comparisonGeoId) => {
       });
 
       const {
-        data: { geo, population }
+        data: {
+          geo: { nodes: profileGeo },
+          population
+        }
       } = await client.query({
         query: GET_PROFILE,
         variables: {
@@ -24,7 +27,7 @@ export default (geoId, comparisonGeoId) => {
           geoLevel: geoId.split('-')[0]
         }
       });
-      const profile = geo.nodes[0];
+      const [profile] = profileGeo;
 
       // Kenya population data is in pupolation by residence
       profile.totalPopulation = population.nodes.reduce(
@@ -32,7 +35,9 @@ export default (geoId, comparisonGeoId) => {
         0
       );
       const {
-        data: { geo: parentGeo }
+        data: {
+          geo: { nodes: parentGeo }
+        }
       } = await client.query({
         query: GET_PROFILE,
         variables: {
@@ -40,7 +45,7 @@ export default (geoId, comparisonGeoId) => {
           geoLevel: profile.parentLevel
         }
       });
-      const parent = parentGeo.nodes[0];
+      const [parent] = parentGeo;
 
       let comparison;
       if (comparisonGeoId) {
