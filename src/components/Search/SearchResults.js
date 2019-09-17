@@ -17,6 +17,7 @@ const styles = theme => ({
     paddingBottom: theme.spacing(),
     marginTop: theme.spacing(9),
     marginBottom: theme.spacing(),
+    backgroundColor: 'rgb(25, 118, 210)',
     position: 'absolute',
     width: '84%',
     zIndex: '400',
