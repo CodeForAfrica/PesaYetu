@@ -58,7 +58,8 @@ function SearchBar({
   handleIconClick,
   handleValueChange,
   isComparisonSearch,
-  autoFocus
+  autoFocus,
+  icon
 }) {
   return (
     <Grid
@@ -96,7 +97,7 @@ function SearchBar({
         aria-label="Search"
         onClick={handleIconClick}
       >
-        {isWidthUp('md', width) ? <CloseIcon /> : <SearchIcon />}
+        {!icon && isWidthUp('md', width) ? <CloseIcon /> : <SearchIcon />}
       </IconButton>
     </Grid>
   );
@@ -111,7 +112,8 @@ SearchBar.propTypes = {
   primary: PropTypes.bool,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
-  isComparisonSearch: PropTypes.bool
+  isComparisonSearch: PropTypes.bool,
+  icon: PropTypes.string
 };
 
 SearchBar.defaultProps = {
@@ -119,7 +121,8 @@ SearchBar.defaultProps = {
   handleIconClick: null,
   placeholder: '',
   isComparisonSearch: false,
-  primary: true
+  primary: true,
+  icon: null
 };
 
 export default withWidth()(withStyles(styles)(SearchBar));

@@ -3,20 +3,20 @@ import gql from 'graphql-tag';
 
 export const GET_PROFILE = gql`
   query profile($geoCode: String!, $geoLevel: String!) {
-    geo: wazimapGeographyByGeoLevelAndGeoCodeAndVersion(
-      geoLevel: $geoLevel
-      geoCode: $geoCode
-      version: "2009"
+    geo: allPesayetuWazimapGeographies(
+      condition: { geoCode: $geoCode, geoLevel: $geoLevel }
     ) {
-      geoLevel
-      geoCode
-      squareKms
-      parentLevel
-      parentCode
-      longName
-      name
+      nodes {
+        geoLevel
+        geoCode
+        squareKms
+        parentLevel
+        parentCode
+        longName
+        name
+      }
     }
-    population: allPopulationSex2009S(
+    population: allPesayetuPopulationResidence2009S(
       condition: { geoCode: $geoCode, geoLevel: $geoLevel }
     ) {
       nodes {
