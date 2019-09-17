@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -9,13 +11,19 @@ import * as serviceWorker from './serviceWorker';
 import Theme from './Theme';
 import AppContextProvider from './AppContext';
 
+const client = new ApolloClient({
+  uri: 'https://graphql.hurumap.org/graphql'
+});
+
 ReactDOM.render(
-  <MuiThemeProvider theme={Theme}>
-    <AppContextProvider>
-      <CssBaseline />
-      <App />
-    </AppContextProvider>
-  </MuiThemeProvider>,
+  <ApolloProvider client={client}>
+    <MuiThemeProvider theme={Theme}>
+      <AppContextProvider>
+        <CssBaseline />
+        <App />
+      </AppContextProvider>
+    </MuiThemeProvider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 

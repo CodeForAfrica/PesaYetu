@@ -3,6 +3,7 @@ import React from 'react';
 
 import Header from './Header';
 import CountryHero from '../Hero/CountryHero';
+import ProfileHero from '../Hero/ProfileHero';
 
 export function CountryPageHeader(props) {
   return (
@@ -15,9 +16,7 @@ export function CountryPageHeader(props) {
 export function ProfilePageHeader(props) {
   return (
     <Header {...props}>
-      <div>
-        <h1> Profile Page - awaiting postgraphile integration to database</h1>
-      </div>
+      <ProfileHero {...props} />
     </Header>
   );
 }

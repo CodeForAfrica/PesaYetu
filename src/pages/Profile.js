@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { ProfilePageHeader } from '../components/Header';
 
 import Page from '../components/Page';
+import ProfileRelease from '../components/ProfileReleases';
+import useProfileLoader from '../data/useProfileLoader';
 
 function Profile({
   match: {
@@ -11,13 +13,17 @@ function Profile({
   }
 }) {
   const head2head = Boolean(geoId && comparisonGeoId);
+  const { profiles } = useProfileLoader(geoId, comparisonGeoId);
 
   return (
     <Page>
       <ProfilePageHeader
-        profile={comparisonGeoId ? [geoId, comparisonGeoId] : [geoId]}
+        profiles={profiles}
         head2head={head2head}
+        geoId={geoId}
+        comparisonGeoId={comparisonGeoId}
       />
+      <ProfileRelease />
     </Page>
   );
 }
