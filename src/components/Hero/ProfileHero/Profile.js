@@ -19,7 +19,10 @@ import config from '../../../config';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    [theme.breakpoints.up('md')]: {
+      marginBottom: '80px'
+    }
   },
   titleGrid: {
     [theme.breakpoints.up('md')]: {
