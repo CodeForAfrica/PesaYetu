@@ -1,4 +1,8 @@
 const config = {
+  url:
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://takwimu.africa',
   MAPIT: {
     url: 'https://mapit.hurumap.org',
     codeType: 'KEN',

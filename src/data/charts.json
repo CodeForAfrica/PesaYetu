@@ -1,0 +1,25 @@
+[
+    {
+      "sectionTitle": "Budget",
+      "sectionDescription": "",
+      "charts": [
+        {
+          "title": "Budget Allocations Distribution",
+          "subtitle": "People living there",
+          "sourceLink": "https://s3-eu-west-1.amazonaws.com/s3.sourceafrica.net/documents/21195/Census-2009.pdf",
+          "sourceTitle": "Census, 2009",
+          "layout": "1",
+          "visuals": [
+            {
+              "type": "column",
+              "table": "allFinancialYears",
+              "x": "financialYear",
+              "y": "total",
+              "id": "visual-VOlHv47k"
+            }
+          ],
+          "id": "chart-5WNZtQiG"
+        }
+     ]
+    }
+]
