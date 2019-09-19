@@ -24,6 +24,27 @@ export default function createAPI() {
     getLocation: async ({ coords: { latitude, longitude } }) =>
       axios.get(
         `${GOOGLE_GEOCODE_URL}&latlng=${latitude},${longitude}&key=${key}`
-      )
+      ),
+    getLatestMedium: () => {
+      return fetch(
+        `https://cors-anywhere.herokuapp.com/https://medium.com/@PesaCheck/latest?format=json`
+      ).then(res => {
+        if (!res.ok) {
+          return Promise.reject();
+        }
+        return res.json().then(data => {
+          const posts =
+            (data.payload && data.payload.posts) ||
+            (data.payload &&
+              data.payload.references &&
+              data.payload.references.Post &&
+              Object.keys(data.payload.references.Post).map(
+                k => data.payload.references.Post[k]
+              ));
+
+          return posts;
+        });
+      });
+    }
   };
 }
