@@ -26,26 +26,26 @@ export default function createAPI() {
         `${GOOGLE_GEOCODE_URL}&latlng=${latitude},${longitude}&key=${key}`
       ),
     getLatestMedium: () => {
-      return fetch(`https://medium.com/@PesaCheck/latest`, {
-        headers: {
-          Accept: 'application/json'
-        }
-      }).then(res => {
+      return fetch(`http://stories.hurumap.org/@PesaCheck/latest`).then(res => {
         if (!res.ok) {
           return Promise.reject();
         }
-        return res.text().then(data => {
-          const json = JSON.parse(data.replace('])}while(1);</x>', ''));
-          const posts =
-            (json.payload && json.payload.posts) ||
-            (json.payload &&
-              json.payload.references &&
-              json.payload.references.Post &&
-              Object.keys(json.payload.references.Post).map(
-                k => json.payload.references.Post[k]
-              ));
-
-          return posts;
+        return res.json().then(posts => {
+          return posts.map((post, index) => ({
+            index,
+            title: post.title,
+            author: 'Arthur Kakande',
+            brief: post.content.subtitle,
+            link: `https://pesacheck.org/${post.uniqueSlug}`,
+            date: new Date(post.latestPublishedAt).toLocaleString('en-GB', {
+              year: 'numeric',
+              day: '2-digit',
+              month: 'short'
+            }),
+            mediaSrc: `https://miro.medium.com/${post.virtuals.previewImage.imageId}`,
+            media: 'img',
+            country: 'KE'
+          }));
         });
       });
     }

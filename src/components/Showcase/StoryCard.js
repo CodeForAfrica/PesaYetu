@@ -39,7 +39,8 @@ const styles = theme => ({
     paddingTop: 0,
     paddingBottom: theme.spacing(2),
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(3)
+    paddingRight: theme.spacing(3),
+    background: 'linear-gradient(to top, black, transparent)'
   },
   media: {
     minHeight: '20rem',
