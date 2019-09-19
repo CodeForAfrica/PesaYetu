@@ -30,36 +30,35 @@ const useStyles = makeStyles(theme => ({
     zIndex: 0,
     position: 'relative !important',
     backgroundColor: 'grey',
-    height: '15.625rem !important',
+    height: '250px !important',
     width: '100%',
     left: 'unset !important',
     top: 'unset !important',
     [theme.breakpoints.up('md')]: {
       width: '65% !important',
-      height: '28.75rem !important',
-      maxHeight: '28.75rem !important',
-      maxWidth: '46.25rem !important'
+      height: '460px !important',
+      maxHeight: '460px !important',
+      maxWidth: '740px !important'
     }
   },
   h2hMap: {
     position: 'relative',
-    height: '11.875rem !important',
+    height: '190px !important',
     width: '100% !important',
     right: 'unset',
     [theme.breakpoints.up('md')]: {
-      height: '16.875rem !important'
+      height: '270px !important'
     }
   },
   caption: {
     display: 'inline-flex',
+    alignItems: 'center',
+    color: '#8d8d8c',
     width: '100%',
     textTransform: 'capitalize',
     paddingTop: theme.spacing(),
-    paddingBottom: theme.spacing()
-  },
-  captionItem: {
-    display: 'inline-block',
-    paddingLeft: 4
+    paddingBottom: theme.spacing(),
+    marginTop: '10px'
   },
   release: {
     display: 'none',
@@ -71,13 +70,15 @@ const useStyles = makeStyles(theme => ({
       right: '4%'
     },
     [theme.breakpoints.up('lg')]: {
-      right: '9.375rem'
+      right: '150px'
     }
   },
   h2hRelease: {
     display: 'inline-block'
   },
-  alink: {}
+  alink: {
+    paddingLeft: 4
+  }
 }));
 function Profile({
   geoId,
@@ -148,22 +149,26 @@ function Profile({
         <HeroTitle small breakWord loading={isLoading} loaderWidth={150}>
           {shortName}
         </HeroTitle>
-        <TypographyLoader variant="subtitle1" className={classes.caption}>
-          {geoLevel}{' '}
-          <Typography variant="subtitle1" className={classes.captionItem}>
-            in{' '}
-            <span>
-              <a
-                href={
-                  parentLevel !== 'continent'
-                    ? `/profile/${parentCode}-${parentCode}`
-                    : '#'
-                }
-                className={classes.alink}
-              >
-                {parentLevel ? parentName : 'Africa'}
-              </a>
-            </span>
+        <TypographyLoader
+          loading={isLoading}
+          variant="subtitle1"
+          className={classes.caption}
+          loader={{
+            width: 150
+          }}
+        >
+          {geoLevel} in{' '}
+          <Typography
+            component="a"
+            variant="caption"
+            className={classes.alink}
+            href={
+              parentLevel !== 'continent'
+                ? `/profile/${parentLevel}-${parentCode}`
+                : '#'
+            }
+          >
+            {parentLevel !== 'continent' ? parentName : 'Africa'}
           </Typography>
         </TypographyLoader>
         <HeroDetail
@@ -194,7 +199,7 @@ function Profile({
           loading={isLoading}
           loader={{
             detailWidth: 51,
-            detailLabelWidth: '123px'
+            detailLabelWidth: 123
           }}
           label="People per square kilometer"
           hidden={!populationDensity && !isLoading}
@@ -203,7 +208,7 @@ function Profile({
         </HeroDetail>
         {/* Start search skeleton loader */}
         {!head2head && isLoading && (
-          <ContentLoader style={{ width: '304px', height: '49px' }}>
+          <ContentLoader style={{ width: '19rem', height: '3.0625rem' }}>
             <rect x="0" y="0" width="100%" height="100%" />
           </ContentLoader>
         )}
@@ -255,11 +260,16 @@ Profile.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  profile: PropTypes.shape({}).isRequired,
-  parent: PropTypes.shape({}).isRequired,
+  profile: PropTypes.shape({}),
+  parent: PropTypes.shape({}),
   isLoading: PropTypes.bool.isRequired,
   head2head: PropTypes.bool.isRequired,
   geoId: PropTypes.string.isRequired
+};
+
+Profile.defaultProps = {
+  profile: undefined,
+  parent: undefined
 };
 
 export default withRouter(Profile);

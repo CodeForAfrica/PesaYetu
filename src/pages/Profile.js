@@ -30,14 +30,6 @@ const useStyles = makeStyles(theme => ({
   chartsSection: {
     display: 'none'
   },
-  shareDropDownExploreButton: {
-    color: 'black'
-  },
-  embedDropDownModal: {
-    [theme.breakpoints.up('sm')]: {
-      width: '30rem'
-    }
-  },
   sourceLink: {
     fontSize: theme.typography.caption.fontSize
   }
@@ -151,14 +143,6 @@ function Profile({
                   classes={{
                     title: classes.title,
                     subtitle: classes.subtitle,
-                    shareDropDown: {
-                      explore: classes.shareDropDownExploreButton
-                    },
-                    embedDropDown: {
-                      modal: {
-                        root: classes.embedDropDownModal
-                      }
-                    },
                     sourceLink: classes.sourceLink
                   }}
                   embed={{
@@ -189,8 +173,6 @@ function Profile({
       chartData.isLoading,
       chartData.profileVisualsData,
       classes.chartsSection,
-      classes.embedDropDownModal,
-      classes.shareDropDownExploreButton,
       classes.sourceLink,
       classes.subtitle,
       classes.title,

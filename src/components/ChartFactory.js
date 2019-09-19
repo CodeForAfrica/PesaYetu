@@ -104,7 +104,7 @@ export default class ChartFactory {
             ? summedReferenceData
             : summedData;
         return (
-          <div style={{ width: !isComparison ? 200 : 650 }}>
+          <div key={key} style={{ width: !isComparison ? 200 : 650 }}>
             <NestedProportionalAreaChart
               key={key}
               formatNumberForLabel={x => numberFormatter.format(x)}
@@ -146,7 +146,7 @@ export default class ChartFactory {
       }
       case 'pie': {
         return (
-          <div>
+          <div key={key}>
             <PieChart
               key={key}
               data={primaryData}
@@ -167,7 +167,7 @@ export default class ChartFactory {
       case 'number': {
         const dataStat = data[0].y;
         return (
-          <div>
+          <div key={key}>
             <NumberVisuals
               key={key}
               subtitle={subtitle}
@@ -195,7 +195,10 @@ export default class ChartFactory {
           : height || theme.chart.bar.height;
 
         return (
-          <div style={{ width: computedWidth, height: computedHeight }}>
+          <div
+            key={key}
+            style={{ width: computedWidth, height: computedHeight }}
+          >
             <BarChart
               data={primaryData}
               domainPadding={domainPadding}
@@ -249,6 +252,7 @@ export default class ChartFactory {
 
           return (
             <div
+              key={key}
               style={{
                 width: '400px',
                 height: '300px'
@@ -292,6 +296,7 @@ export default class ChartFactory {
 
         return (
           <div
+            key={key}
             style={{
               width:
                 width ||
