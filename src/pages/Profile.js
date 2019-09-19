@@ -19,17 +19,15 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: theme.typography.fontFamily,
     fontWeight: 'bold',
-    fontSize: '24px',
-    letterSpacing: '0.86px'
+    fontSize: '1.5rem',
+    letterSpacing: '0.0537rem'
   },
   subtitle: {
     fontFamily: theme.typography.fontFamily,
     opacity: 0.4,
-    fontSize: '12px'
+    fontSize: '0.75rem'
   },
-  chartsSection: {
-    display: 'none'
-  },
+  chartsSection: {},
   sourceLink: {
     fontSize: theme.typography.caption.fontSize
   }
@@ -44,7 +42,7 @@ function Profile({
   const classes = useStyles();
   const [activeTab] = useState(
     window.location.hash.slice(1) ? window.location.hash.slice(1) : 'all'
-  )[0];
+  );
   const sectionedCharts = useChartDefinitions();
   // Flatten all charts
   const charts = sectionedCharts
