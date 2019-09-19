@@ -26,20 +26,23 @@ export default function createAPI() {
         `${GOOGLE_GEOCODE_URL}&latlng=${latitude},${longitude}&key=${key}`
       ),
     getLatestMedium: () => {
-      return fetch(
-        `https://cors-anywhere.herokuapp.com/https://medium.com/@PesaCheck/latest?format=json`
-      ).then(res => {
+      return fetch(`https://medium.com/@PesaCheck/latest`, {
+        headers: {
+          Accept: 'application/json'
+        }
+      }).then(res => {
         if (!res.ok) {
           return Promise.reject();
         }
-        return res.json().then(data => {
+        return res.text().then(data => {
+          const json = JSON.parse(data.replace('])}while(1);</x>', ''));
           const posts =
-            (data.payload && data.payload.posts) ||
-            (data.payload &&
-              data.payload.references &&
-              data.payload.references.Post &&
-              Object.keys(data.payload.references.Post).map(
-                k => data.payload.references.Post[k]
+            (json.payload && json.payload.posts) ||
+            (json.payload &&
+              json.payload.references &&
+              json.payload.references.Post &&
+              Object.keys(json.payload.references.Post).map(
+                k => json.payload.references.Post[k]
               ));
 
           return posts;
