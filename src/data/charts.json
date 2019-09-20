@@ -4,9 +4,46 @@
       "sectionDescription": "",
       "charts": [
         {
-          "title": "Budget Allocations Distribution",
-          "subtitle": "People living there",
-          "sourceLink": "https://s3-eu-west-1.amazonaws.com/s3.sourceafrica.net/documents/21195/Census-2009.pdf",
+          "title": "Government Revenue in Ksh Million",
+          "subtitle": "Local vs Total Generated Revenue",
+          "sourceLink": "https://www.knbs.or.ke/download/economic-survey-2019/",
+          "sourceTitle": "Kenya National Bureau of Statistics, Economic Surveys ",
+          "layout": "1",
+          "visuals": [
+            {
+              "type": "grouped_column",
+              "table": "allAnnualRevenues",
+              "x": "revenue",
+              "groupBy": "year",
+              "aggregate": "sum",
+              "y": "total",
+              "id": "visual-VOlHv47k"
+            }
+          ],
+          "id": "chart-5WNZtQiG"
+        },
+        {
+          "title": "Allocation of Equitable Share of Revenue Raised per the Financial Years",
+          "subtitle": "The County Allocation of Revenue Bill",
+          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+          "sourceTitle": "Census, 2009",
+          "layout": "1",
+          "visuals": [
+            {
+              "type": "column",
+              "table": "allFinancialYears",
+              "x": "financialYear",
+              "offset": 60,
+              "y": "total",
+              "id": "visual-SDER47k"
+            }
+          ],
+          "id": "chart-AQW45it6"
+        },
+        {
+          "title": "Allocation of Equitable Share of Revenue Raised per the Financial Years",
+          "subtitle": "The County Allocation of Revenue Bill",
+          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
           "sourceTitle": "Census, 2009",
           "layout": "1",
           "visuals": [
@@ -15,10 +52,10 @@
               "table": "allFinancialYears",
               "x": "financialYear",
               "y": "total",
-              "id": "visual-VOlHv47k"
+              "id": "visual-7k8UIht"
             }
           ],
-          "id": "chart-5WNZtQiG"
+          "id": "chart-GMKHTy2"
         }
      ]
     }

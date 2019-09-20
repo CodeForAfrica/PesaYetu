@@ -5,54 +5,54 @@ const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 /**
  * http://colorbrewer2.org/#type=diverging&scheme=RdYlGn&n=11
  */
-// const KHAKI_GREEN = '#7f9442';
-// const DULL_ORANGE = '#de9f3a';
-const COLOR_BREWER_DIVERGING = [
-  '#a50026',
-  '#d73027',
-  '#f46d43',
-  '#fdae61',
-  '#fee08b',
-  '#ffffbf',
-  '#d9ef8b',
-  '#a6d96a',
-  '#66bd63',
-  '#1a9850',
-  '#006837'
-].reverse();
 
 const Theme = createTheme({
   chart: {
     pie: {
-      legendWidth: 50,
-      colorScale: COLOR_BREWER_DIVERGING
-    },
-    area: {
-      colorScale: COLOR_BREWER_DIVERGING
-    },
-    group: {
-      colorScale: COLOR_BREWER_DIVERGING
-    },
-    bar: {
+      height: 250,
+      legendWidth: 150,
+      origin: { x: 150, y: 125 },
+      padding: 0,
       style: {
         data: {
-          fill: COLOR_BREWER_DIVERGING[0]
+          fontFamily: FONT_FAMILY_TEXT,
+          fontSize: 10
         },
         labels: {
           fontFamily: FONT_FAMILY_TEXT,
+          fontSize: 16,
           fill: 'rgb(0,0,0)'
+        }
+      },
+      width: 450
+    },
+    bar: {
+      barWidth: 25,
+      domainPadding: { x: [25, 25] },
+      height: 300,
+      offset: 50,
+      style: {
+        data: {
+          fontFamily: FONT_FAMILY_TEXT,
+          fontSize: 10
+        },
+        labels: {
+          fill: 'rgb(0,0,0)',
+          fontFamily: FONT_FAMILY_TEXT,
+          fontSize: 10
         }
       }
     },
     axis: {
-      labelWidth: 50,
       style: {
         tickLabels: {
+          fill: 'rgb(0,0,0)',
           fontFamily: FONT_FAMILY_TEXT,
-          fill: 'rgb(0,0,0)'
+          fontSize: 10
         },
         axisLabels: {
           fontFamily: FONT_FAMILY_TEXT,
+          fontSize: 10,
           fill: 'rgb(0,0,0)'
         }
       }

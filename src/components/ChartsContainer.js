@@ -8,7 +8,6 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     paddingBottom: '2rem',
-    backgroundColor: theme.palette.primary.light,
     [theme.breakpoints.up('md')]: {
       paddingBottom: '3.125rem'
     }

@@ -21,8 +21,7 @@ export default class ChartFactory {
       aggregate,
       height,
       offset,
-      width,
-      barWidth,
+      unit = '',
       subtitle,
       description,
       horizontal
@@ -84,6 +83,16 @@ export default class ChartFactory {
     }
 
     const numberFormatter = new Intl.NumberFormat('en-GB');
+
+    const formatLabelValue = value => {
+      if (aggregate) {
+        const [, format] = aggregate.split(':');
+        return (
+          numberFormatter.format(value) + (format === 'percent' ? '%' : unit)
+        );
+      }
+      return numberFormatter.format(value) + unit;
+    };
 
     switch (visualType) {
       case 'square_nested_proportional_area':
@@ -235,37 +244,32 @@ export default class ChartFactory {
         );
       }
       case 'column': {
-        // const barCount = isComparison ? 2 : 1;
-        // const offset = offset || theme.chart.bar.offset;
-        // const { domainPadding } = theme.chart.bar;
-        // const computedSize =
-        //   primaryData.length * barCount * offset +
-        //   domainPadding.x[0] +
-        //   domainPadding.x[1];
-        // const height = height || theme.chart.height;
-        // const computedWidth = horizontal ? height : computedSize;
-        // const computedHeight = horizontal ? computedSize : height;
+        const barCount = isComparison ? 2 : 1;
+        const { domainPadding } = theme.chart.bar;
+        const computedSize =
+          primaryData.length * barCount * (offset || theme.chart.bar.offset) +
+          domainPadding.x[0] +
+          domainPadding.x[1];
+        const computedWidth = horizontal
+          ? height || theme.chart.height
+          : computedSize;
+        const computedHeight = horizontal
+          ? computedSize
+          : height || theme.chart.height;
         if (isComparison) {
           const processedComparisonData = aggregate
             ? aggregateData(aggregate, comparisonData)
             : comparisonData;
 
           return (
-            <div
-              key={key}
-              style={{
-                width: '400px',
-                height: '300px'
-              }}
-            >
+            <div style={{ width: computedWidth, height: computedHeight }}>
               <BarChart
                 data={[primaryData, processedComparisonData]}
+                domainPadding={domainPadding}
                 key={key}
-                offset={45}
-                barWidth={40}
-                height={300}
+                height={computedHeight}
                 horizontal={horizontal}
-                labels={datum => numberFormatter.format(datum.y)}
+                labels={datum => formatLabelValue(datum.y)}
                 parts={{
                   axis: {
                     independent: {
@@ -288,40 +292,21 @@ export default class ChartFactory {
                   }
                 }}
                 theme={theme.chart}
-                width={400}
+                width={computedWidth}
               />
             </div>
           );
         }
 
         return (
-          <div
-            key={key}
-            style={{
-              width:
-                width ||
-                (horizontal ? 400 : primaryData.length * (barWidth || 40) * 2),
-              height:
-                height ||
-                (horizontal ? primaryData.length * (barWidth || 45) : 400)
-            }}
-          >
+          <div style={{ width: computedWidth, height: computedHeight }}>
             <BarChart
-              key={key}
-              responsive
-              horizontal={horizontal}
-              offset={offset || 40}
-              barWidth={barWidth || 30}
-              width={
-                width ||
-                (horizontal ? 400 : primaryData.length * (barWidth || 40) * 2)
-              }
-              height={
-                height ||
-                (horizontal ? primaryData.length * (barWidth || 45) : 400)
-              }
-              labels={datum => numberFormatter.format(datum.y)}
               data={primaryData}
+              domainPadding={domainPadding}
+              key={key}
+              height={computedHeight}
+              horizontal={horizontal}
+              labels={datum => formatLabelValue(datum.y)}
               parts={{
                 axis: {
                   independent: {
@@ -329,16 +314,22 @@ export default class ChartFactory {
                       axis: {
                         display: 'block'
                       },
-                      ticks: {
-                        display: 'block'
-                      },
                       tickLabels: {
+                        display: 'block'
+                      }
+                    }
+                  },
+                  dependent: {
+                    style: {
+                      grid: {
                         display: 'block'
                       }
                     }
                   }
                 }
               }}
+              theme={theme.chart}
+              width={computedWidth}
             />
           </div>
         );
