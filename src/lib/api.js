@@ -26,7 +26,7 @@ export default function createAPI() {
         `${GOOGLE_GEOCODE_URL}&latlng=${latitude},${longitude}&key=${key}`
       ),
     getLatestMedium: () => {
-      return fetch(`http://stories.hurumap.org/@PesaCheck/latest`).then(res => {
+      return fetch(`https://stories.hurumap.org/@PesaCheck/latest`).then(res => {
         if (!res.ok) {
           return Promise.reject();
         }
