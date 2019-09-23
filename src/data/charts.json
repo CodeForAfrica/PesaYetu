@@ -41,18 +41,20 @@
           "id": "chart-AQW45it6"
         },
         {
-          "title": "Allocation of Equitable Share of Revenue Raised per the Financial Years",
+          "title": "Total Conditional Additional Allocations to County Governments 2013/2014 to 2019/2020",
           "subtitle": "The County Allocation of Revenue Bill",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
           "sourceTitle": "Census, 2009",
           "layout": "1",
           "visuals": [
             {
-              "type": "column",
-              "table": "allFinancialYears",
-              "x": "financialYear",
+              "type": "grouped_column",
+              "table": "allConditionalFundAllocations",
+              "x": "allocationType",
+              "groupBy":"year",
+              "aggregate": "sum",
               "y": "total",
-              "id": "visual-7k8UIht"
+              "id": "visual-6ytrERRt"
             }
           ],
           "id": "chart-GMKHTy2"
