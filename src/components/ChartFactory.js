@@ -19,12 +19,13 @@ export default class ChartFactory {
       label,
       reference: { label: referenceLabel } = {},
       aggregate,
+      width,
       height,
+      horizontal: setHorizontal,
       offset,
       unit = '',
       subtitle,
-      description,
-      horizontal
+      description
     },
     datas,
     comparisonDatas,
@@ -71,8 +72,11 @@ export default class ChartFactory {
                 data.filter(d => d.groupBy === group)
               ).map(d => ({ ...d, x: group }))
         );
-
-        groupedData = groupedData[0].map((_c, i) => groupedData.map(r => r[i]));
+        console.log(groupedData);
+        groupedData = groupedData[0].map((_c, i) =>
+          groupedData.map(r => (r[i] ? r[i] : null))
+        );
+        console.log(groupedData);
         return groupedData;
       }
       return [];
@@ -83,6 +87,7 @@ export default class ChartFactory {
     }
 
     const numberFormatter = new Intl.NumberFormat('en-GB');
+    let horizontal = true;
 
     const formatLabelValue = value => {
       if (aggregate) {
@@ -189,6 +194,9 @@ export default class ChartFactory {
         );
       }
       case 'grouped_column': {
+        if (primaryData.length * primaryData[0].length < 7) {
+          horizontal = false || setHorizontal;
+        }
         const barCount = primaryData[0].length;
         const { domainPadding } = theme.chart.bar;
         const computedSize =
@@ -214,8 +222,9 @@ export default class ChartFactory {
               key={key}
               height={computedHeight}
               horizontal={horizontal}
+              labelWidth={horizontal ? 300 : theme.chart.legendWidth}
               labels={datum => numberFormatter.format(datum.y)}
-              offset={offset || theme.chart.bar.offset}
+              offset={30}
               parts={{
                 axis: {
                   independent: {
@@ -246,12 +255,26 @@ export default class ChartFactory {
       case 'column': {
         const barCount = isComparison ? 2 : 1;
         const { domainPadding } = theme.chart.bar;
-        const computedSize =
+
+        let computedSize =
           primaryData.length * barCount * (offset || theme.chart.bar.offset) +
           domainPadding.x[0] +
           domainPadding.x[1];
+
+        if (primaryData.length < 7) {
+          // for small charts relevant computed size is small, leaving bar graphs with no space
+          horizontal = false;
+          computedSize =
+            primaryData.length *
+              barCount *
+              (offset || theme.chart.bar.offset) *
+              2 +
+            domainPadding.x[0] +
+            domainPadding.x[1];
+        }
+
         const computedWidth = horizontal
-          ? height || theme.chart.height
+          ? width || theme.chart.width
           : computedSize;
         const computedHeight = horizontal
           ? computedSize
@@ -268,7 +291,7 @@ export default class ChartFactory {
                 domainPadding={domainPadding}
                 key={key}
                 height={computedHeight}
-                horizontal={horizontal}
+                horizontal={horizontal || setHorizontal}
                 labels={datum => formatLabelValue(datum.y)}
                 parts={{
                   axis: {
@@ -305,7 +328,12 @@ export default class ChartFactory {
               domainPadding={domainPadding}
               key={key}
               height={computedHeight}
-              horizontal={horizontal}
+              horizontal={horizontal || setHorizontal}
+              labelWidth={
+                horizontal || setHorizontal ? 300 : theme.chart.legendWidth
+              }
+              offset={60}
+              barWidth={30}
               labels={datum => formatLabelValue(datum.y)}
               parts={{
                 axis: {

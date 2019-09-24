@@ -23,10 +23,29 @@
           "id": "chart-5WNZtQiG"
         },
         {
-          "title": "Allocation of Equitable Share of Revenue Raised per the Financial Years",
+          "title": "Budget Ceilings on Recurrent Expenditure 2017/18, 2018/19 and 2019/2020  (Kshs. Millions)",
+          "subtitle": "",
+          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+          "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
+          "layout": "1",
+          "visuals": [
+            {
+              "type": "grouped_column",
+              "table": "allExpenditureYears",
+              "x": "expenditure",
+              "groupBy": "year",
+              "aggregate": "sum",
+              "y": "total",
+              "id": "visual-VASwr3"
+            }
+          ],
+          "id": "chart-KUi78iG"
+        },
+        {
+          "title": "Allocation of Equitable Share of Revenue Raised per Financial Years",
           "subtitle": "The County Allocation of Revenue Bill",
           "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "Census, 2009",
+          "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
           "layout": "1",
           "visuals": [
             {
@@ -41,8 +60,8 @@
           "id": "chart-AQW45it6"
         },
         {
-          "title": "Total Conditional Additional Allocations to County Governments 2013/2014 to 2019/2020",
-          "subtitle": "The County Allocation of Revenue Bill",
+          "title": "Conditional Additional Allocations to County Governments 2015/2016 to 2019/2020",
+          "subtitle": "Development Partner vs National Government Allocation",
           "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
           "sourceTitle": "Census, 2009",
           "layout": "1",
@@ -58,7 +77,78 @@
             }
           ],
           "id": "chart-GMKHTy2"
-        }
+        },
+        {
+          "title": "Breakdown of Conditional Additional Development Partners Allocations 2014/2015 to 2018/2019",
+          "subtitle": "Development Partner Project type ",
+          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+          "sourceTitle": "The County Allocation of Revenue Bill, 2014, 2015, 2016, 2017, 2018 and 2019",
+          "layout": "1",
+          "visuals": [
+            {
+              "type": "column",
+              "table": "allBreakdownConditionFundDps",
+              "x": "projectType",
+              "aggregate": "sum",
+              "y": "total",
+              "id": "visual-rt56cfg5"
+            }
+          ],
+          "id": "chart-4tyUre2"
+        },
+        {
+          "title": "Breakdown of Conditional Additional Combined Allocations in 2013/2014 and 2014/2015",
+          "subtitle": "Project type",
+          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
+          "sourceTitle": "The County Allocation of Revenue Bill, 2014, 2015, 2016, 2017, 2018 and 2019",
+          "layout": "1",
+          "visuals": [
+            {
+              "type": "column",
+              "table": "allBreakdownConditionFundCs",
+              "x": "projectType",
+              "aggregate": "sum",
+              "horizontal": true,
+              "y": "total",
+              "id": "visual-r568jfg5"
+            }
+          ],
+          "id": "chart-lkii0re2"
+      },
+      {
+        "title": "Additional Conditional Allocation from the Road Maintenance Fuel Levy Fund 2018/2019 and 2019/2020",
+        "subtitle": "The County Allocation of Revenue Bill, 2018 and 2019",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2014, 2015, 2016, 2017, 2018 and 2019",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allRoadMaintenances",
+            "x": "financialYear",
+            "y": "total",
+            "id": "visual-7ytu885"
+          }
+        ],
+        "id": "chart-e2lkj12"
+      },
+      {
+        "title": "Allocation to support abolishment of user fees in health centers and dispensaries 2018/2019 and 2019/2020",
+        "subtitle": "",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2018/CountyAllocationofRevenueBill_2018.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2018 and 2019",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allHealthCentresSupports",
+            "x": "financialYear",
+            "y": "total",
+            "id": "visual-2sxd85"
+          }
+        ],
+        "id": "chart-2dfj12"
+      }
      ]
     }
 ]

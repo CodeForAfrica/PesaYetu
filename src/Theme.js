@@ -27,9 +27,10 @@ const Theme = createTheme({
       width: 450
     },
     bar: {
-      barWidth: 25,
+      barWidth: 30,
       domainPadding: { x: [25, 25] },
       height: 300,
+      width: 400,
       offset: 50,
       style: {
         data: {
