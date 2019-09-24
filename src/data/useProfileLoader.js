@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useApolloClient } from '@apollo/react-hooks';
-import { GET_PROFILE } from './queries';
+import { GET_PROFILE, buildVisualsQuery } from './queries';
 
-export default (geoId, comparisonGeoId) => {
+export default (geoId, comparisonGeoId, visuals) => {
   const client = useApolloClient();
+
+  const [chartData, setChartsData] = useState({
+    isLoading: true
+  });
 
   const [profiles, setProfiles] = useState({
     isLoading: true
@@ -34,18 +38,22 @@ export default (geoId, comparisonGeoId) => {
         (a, b) => a + b.total,
         0
       );
-      const {
-        data: {
-          geo: { nodes: parentGeo }
-        }
-      } = await client.query({
-        query: GET_PROFILE,
-        variables: {
-          geoCode: profile.parentCode,
-          geoLevel: profile.parentLevel
-        }
-      });
-      const [parent] = parentGeo;
+      let parent;
+      if (profile.parentCode) {
+        const {
+          data: {
+            geo: { nodes: parentGeo }
+          }
+        } = await client.query({
+          query: GET_PROFILE,
+          variables: {
+            geoCode: profile.parentCode,
+            geoLevel: profile.parentLevel
+          }
+        });
+
+        [parent] = parentGeo;
+      }
 
       let comparison;
       if (comparisonGeoId) {
@@ -79,5 +87,46 @@ export default (geoId, comparisonGeoId) => {
     })();
   }, [client, geoId, comparisonGeoId]);
 
-  return { profiles };
+  useEffect(() => {
+    if (!profiles.isLoading && visuals && visuals.length) {
+      (async () => {
+        setChartsData({
+          isLoading: true
+        });
+
+        const parent = profiles.parent
+          ? {
+              geoLevel: profiles.parent.parentLevel,
+              geoCode: profiles.parent.parentCode
+            }
+          : {};
+        const { data: profileVisualsData } = await client.query({
+          query: buildVisualsQuery(visuals, parent),
+          variables: {
+            geoCode: profiles.profile.geoCode,
+            geoLevel: profiles.profile.geoLevel
+          }
+        });
+
+        let comparisonVisualsData;
+        if (profiles.comparison) {
+          const { data } = await client.query({
+            query: buildVisualsQuery(visuals, parent),
+            variables: {
+              geoCode: profiles.comparison.geoCode,
+              geoLevel: profiles.comparison.geoLevel
+            }
+          });
+          comparisonVisualsData = data;
+        }
+        setChartsData({
+          isLoading: false,
+          profileVisualsData,
+          comparisonVisualsData
+        });
+      })();
+    }
+  }, [profiles, client, visuals]);
+
+  return { profiles, chartData };
 };

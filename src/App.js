@@ -10,6 +10,11 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/profiles/:geoId" component={Profile} />
+        <Route
+          exact
+          path="/compare/:geoId/vs/:comparisonGeoId"
+          component={Profile}
+        />
       </Switch>
     </BrowserRouter>
   );
