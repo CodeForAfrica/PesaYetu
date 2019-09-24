@@ -38,18 +38,22 @@ export default (geoId, comparisonGeoId, visuals) => {
         (a, b) => a + b.total,
         0
       );
-      const {
-        data: {
-          geo: { nodes: parentGeo }
-        }
-      } = await client.query({
-        query: GET_PROFILE,
-        variables: {
-          geoCode: profile.parentCode,
-          geoLevel: profile.parentLevel
-        }
-      });
-      const [parent] = parentGeo;
+      let parent;
+      if (profile.parentCode) {
+        const {
+          data: {
+            geo: { nodes: parentGeo }
+          }
+        } = await client.query({
+          query: GET_PROFILE,
+          variables: {
+            geoCode: profile.parentCode,
+            geoLevel: profile.parentLevel
+          }
+        });
+
+        [parent] = parentGeo;
+      }
 
       let comparison;
       if (comparisonGeoId) {
@@ -90,10 +94,12 @@ export default (geoId, comparisonGeoId, visuals) => {
           isLoading: true
         });
 
-        const parent = {
-          geoLevel: profiles.parent.parentLevel,
-          geoCode: profiles.parent.parentCode
-        };
+        const parent = profiles.parent
+          ? {
+              geoLevel: profiles.parent.parentLevel,
+              geoCode: profiles.parent.parentCode
+            }
+          : {};
         const { data: profileVisualsData } = await client.query({
           query: buildVisualsQuery(visuals, parent),
           variables: {

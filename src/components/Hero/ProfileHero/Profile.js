@@ -105,7 +105,7 @@ function Profile({
     totalPopulation
   } = isLoading ? {} : profile;
 
-  const { name: parentName } = isLoading ? {} : parent;
+  const { name: parentName } = !isLoading && parent ? parent : {};
 
   let { squareKms } = isLoading ? {} : profile;
   const squareKmsFloat = parseFloat(squareKms);
@@ -160,15 +160,11 @@ function Profile({
           {geoLevel} in{' '}
           <Typography
             component="a"
-            variant="caption"
+            variant="subtitle1"
             className={classes.alink}
-            href={
-              parentLevel !== 'continent'
-                ? `/profile/${parentLevel}-${parentCode}`
-                : '#'
-            }
+            href={parentLevel ? `/profiles/${parentLevel}-${parentCode}` : '#'}
           >
-            {parentLevel !== 'continent' ? parentName : 'Africa'}
+            {parentName || 'Africa'}
           </Typography>
         </TypographyLoader>
         <HeroDetail
