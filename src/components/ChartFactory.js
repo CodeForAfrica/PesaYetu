@@ -82,6 +82,44 @@ export default class ChartFactory {
       return [];
     })();
 
+    const primaryCompareData =
+      isComparison &&
+      (() => {
+        const numberFormatter = new Intl.NumberFormat('en-GB');
+        if (visualType === 'column') {
+          return aggregate ? aggregateData(aggregate, comparisonData) : data;
+        }
+
+        if (visualType === 'pie') {
+          return (!aggregate
+            ? comparisonData
+            : aggregateData(aggregate, comparisonData)
+          ).map(d => ({
+            ...d,
+            name: d.x,
+            label: `${d.x} ${numberFormatter.format(d.y)}`
+          }));
+        }
+
+        if (visualType === 'grouped_column') {
+          let groupedData = [
+            ...new Set(comparisonData.map(d => d.groupBy))
+          ].map(group =>
+            !aggregate
+              ? comparisonData.filter(d => d.groupBy === group)
+              : aggregateData(
+                  aggregate,
+                  comparisonData.filter(d => d.groupBy === group)
+                ).map(d => ({ ...d, x: group }))
+          );
+          groupedData = groupedData[0].map((_c, i) =>
+            groupedData.map(r => (r[i] ? r[i] : null))
+          );
+          return groupedData;
+        }
+        return [];
+      })();
+
     if (!datas) {
       return null;
     }
@@ -211,19 +249,25 @@ export default class ChartFactory {
           ? computedSize
           : height || theme.chart.bar.height;
 
+        let processedPrimaryData = primaryData;
+        if (isComparison) {
+          processedPrimaryData = primaryData.concat(primaryCompareData);
+        }
+
         return (
           <div
             key={key}
             style={{ width: computedWidth, height: computedHeight }}
           >
             <BarChart
-              data={primaryData}
+              data={processedPrimaryData}
               domainPadding={domainPadding}
               key={key}
               height={computedHeight}
               horizontal={horizontal}
               labelWidth={horizontal ? 300 : theme.chart.legendWidth}
               labels={datum => numberFormatter.format(datum.y)}
+              barWidth={isComparison ? 15 : theme.chart.barWidth}
               offset={30}
               parts={{
                 axis: {
@@ -292,6 +336,9 @@ export default class ChartFactory {
                 key={key}
                 height={computedHeight}
                 horizontal={horizontal || setHorizontal}
+                labelWidth={
+                  horizontal || setHorizontal ? 300 : theme.chart.legendWidth
+                }
                 labels={datum => formatLabelValue(datum.y)}
                 parts={{
                   axis: {
