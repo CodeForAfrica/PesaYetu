@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import PlayerModal from '../Video/PlayerModal';
 import Steps from './Steps';
 import ViewVideos from './ViewVideos';
 import useToggleModal from '../../useToggleModal';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
@@ -26,9 +25,10 @@ const styles = theme => ({
       marginTop: '6.7143rem'
     }
   }
-});
+}));
 
-function Description({ classes, dominion }) {
+function Description({ ...props }) {
+  const classes = useStyles(props);
   const { open, toggleModal } = useToggleModal('video');
   return (
     <div>
@@ -41,19 +41,10 @@ function Description({ classes, dominion }) {
       <div className={classes.viewVideos}>
         <ViewVideos onClick={toggleModal} />
 
-        <PlayerModal
-          dominion={dominion}
-          open={open}
-          toggleModal={toggleModal}
-        />
+        <PlayerModal open={open} toggleModal={toggleModal} />
       </div>
     </div>
   );
 }
 
-Description.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  dominion: PropTypes.shape({}).isRequired
-};
-
-export default withStyles(styles)(Description);
+export default Description;

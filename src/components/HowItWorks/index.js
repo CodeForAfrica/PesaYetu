@@ -1,13 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Grid, Hidden } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import Map from './Map';
 import Description from './Description';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     padding: '2.286rem 0',
@@ -37,9 +36,10 @@ const styles = theme => ({
       marginLeft: '-9.07143rem'
     }
   }
-});
+}));
 
-function HowItWorks({ classes, dominion }) {
+function HowItWorks({ ...props }) {
+  const classes = useStyles(props);
   return (
     <div className={classes.root}>
       <Grid container className={classes.wrapper}>
@@ -50,16 +50,11 @@ function HowItWorks({ classes, dominion }) {
         </Hidden>
 
         <Grid item className={classes.description}>
-          <Description dominion={dominion} />
+          <Description />
         </Grid>
       </Grid>
     </div>
   );
 }
 
-HowItWorks.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  dominion: PropTypes.shape({}).isRequired
-};
-
-export default withStyles(styles)(HowItWorks);
+export default HowItWorks;
