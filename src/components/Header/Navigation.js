@@ -9,10 +9,8 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../assets/images/logos/pesayetu.png';
-import Dropdown from './PortalDropdown';
 
 import Search from '../Search';
-import PortalChooser from '../Modal/PortalChooser';
 import ContactUs from '../Modal/ContactUs';
 
 import Modal from '../Modal';
@@ -80,9 +78,6 @@ const styles = theme => ({
 });
 
 function Navigation({ classes, width }) {
-  const { open: openPortal, toggleModal: togglePortal } = useToggleModal(
-    'portal'
-  );
   const { open: openSearch, toggleModal: toggleSearch } = useToggleModal(
     'search'
   );
@@ -151,10 +146,7 @@ function Navigation({ classes, width }) {
         <Modal isOpen={openMenu} onEscapeKeyDown={toggleMenu}>
           <Grid container className={classes.wrapper}>
             <Topbar />
-            <Search placeholder="Search">
-              <Dropdown />
-              {renderMenuList()}
-            </Search>
+            <Search placeholder="Search">{renderMenuList()}</Search>
           </Grid>
         </Modal>
       </>
@@ -207,12 +199,6 @@ function Navigation({ classes, width }) {
         <Grid container className={classes.wrapper}>
           {nav}
           <Search handleIconClick={toggleSearch} />
-        </Grid>
-      </Modal>
-      <Modal isOpen={openPortal} onEscapeKeyDown={togglePortal}>
-        <Grid container className={classes.wrapper}>
-          {nav}
-          <PortalChooser handleClose={togglePortal} />
         </Grid>
       </Modal>
       <Modal isOpen={openContact} onEscapeKeyDown={toggleContact}>

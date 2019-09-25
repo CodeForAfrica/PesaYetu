@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import { withRouter } from 'react-router-dom';
 
 import withWidth from '@material-ui/core/withWidth';
-
-import Navigation from './Navigation';
 import useCloseModalOnPopstate from '../../useCloseModalOnPopstate';
 
-const styles = theme => ({
+import Navigation from './Navigation';
+
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
@@ -32,9 +32,10 @@ const styles = theme => ({
     position: 'relative',
     width: '100%'
   }
-});
+}));
 
-function Header({ classes, children, ...props }) {
+function Header({ children, ...props }) {
+  const classes = useStyles(props);
   useCloseModalOnPopstate();
   return (
     <div className={classes.root}>
@@ -51,11 +52,10 @@ function Header({ classes, children, ...props }) {
 }
 
 Header.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired
 };
 
-export default withRouter(withWidth()(withStyles(styles)(Header)));
+export default withRouter(withWidth()(Header));

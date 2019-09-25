@@ -21,33 +21,31 @@ export default function createAPI() {
       const response = await axios.get(`${mapitUrl}/code/${codeType}/${geoId}`);
       return response.data.type.toLowerCase();
     },
-    getLocation: async ({ coords: { latitude, longitude } }) =>
-      axios.get(
-        `${GOOGLE_GEOCODE_URL}&latlng=${latitude},${longitude}&key=${key}`
-      ),
     getLatestMedium: () => {
-      return fetch(`https://stories.hurumap.org/@PesaCheck/latest`).then(res => {
-        if (!res.ok) {
-          return Promise.reject();
+      return fetch(`https://stories.hurumap.org/@PesaCheck/latest`).then(
+        res => {
+          if (!res.ok) {
+            return Promise.reject();
+          }
+          return res.json().then(posts => {
+            return posts.map((post, index) => ({
+              index,
+              title: post.title,
+              author: 'Arthur Kakande',
+              brief: post.content.subtitle,
+              link: `https://pesacheck.org/${post.uniqueSlug}`,
+              date: new Date(post.latestPublishedAt).toLocaleString('en-GB', {
+                year: 'numeric',
+                day: '2-digit',
+                month: 'short'
+              }),
+              mediaSrc: `https://miro.medium.com/${post.virtuals.previewImage.imageId}`,
+              media: 'img',
+              country: 'KE'
+            }));
+          });
         }
-        return res.json().then(posts => {
-          return posts.map((post, index) => ({
-            index,
-            title: post.title,
-            author: 'Arthur Kakande',
-            brief: post.content.subtitle,
-            link: `https://pesacheck.org/${post.uniqueSlug}`,
-            date: new Date(post.latestPublishedAt).toLocaleString('en-GB', {
-              year: 'numeric',
-              day: '2-digit',
-              month: 'short'
-            }),
-            mediaSrc: `https://miro.medium.com/${post.virtuals.previewImage.imageId}`,
-            media: 'img',
-            country: 'KE'
-          }));
-        });
-      });
+      );
     }
   };
 }

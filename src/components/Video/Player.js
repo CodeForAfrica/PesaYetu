@@ -81,7 +81,7 @@ function Player({ classes }) {
         <Grid item>
           <div className={classes.videoPlayer}>
             <IFrame
-              title="Dominion"
+              title="PesaYetu"
               src={`https://www.youtube-nocookie.com/embed/${videoId}`}
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             />

@@ -20,6 +20,7 @@ export default class ChartFactory {
       reference: { label: referenceLabel } = {},
       aggregate,
       width,
+      labelWidth,
       height,
       horizontal: setHorizontal,
       offset,
@@ -265,7 +266,9 @@ export default class ChartFactory {
               key={key}
               height={computedHeight}
               horizontal={horizontal}
-              labelWidth={horizontal ? 300 : theme.chart.legendWidth}
+              labelWidth={
+                labelWidth || (horizontal ? 300 : theme.chart.labelWidth)
+              }
               labels={datum => numberFormatter.format(datum.y)}
               barWidth={isComparison ? 15 : theme.chart.barWidth}
               offset={30}
@@ -337,7 +340,8 @@ export default class ChartFactory {
                 height={computedHeight}
                 horizontal={horizontal || setHorizontal}
                 labelWidth={
-                  horizontal || setHorizontal ? 300 : theme.chart.legendWidth
+                  labelWidth ||
+                  (horizontal || setHorizontal ? 300 : theme.chart.legendWidth)
                 }
                 labels={datum => formatLabelValue(datum.y)}
                 parts={{
@@ -377,7 +381,8 @@ export default class ChartFactory {
               height={computedHeight}
               horizontal={horizontal || setHorizontal}
               labelWidth={
-                horizontal || setHorizontal ? 300 : theme.chart.legendWidth
+                labelWidth ||
+                (horizontal || setHorizontal ? 300 : theme.chart.legendWidth)
               }
               offset={60}
               barWidth={30}

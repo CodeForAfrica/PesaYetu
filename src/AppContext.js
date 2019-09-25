@@ -10,8 +10,6 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'selectedCountry':
-      return { ...state, selectedCountry: action.selectedCountry };
     case 'modal':
       return { ...state, openModal: action.openModal };
     default:

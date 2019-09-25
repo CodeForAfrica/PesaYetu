@@ -93,7 +93,7 @@ function ContactUs({ classes, handleClose }) {
         <Grid item xs={12} md={6}>
           <MenuList>
             {[
-              { name: 'CodeForAfrica', href: 'mailto:hello@dominion.africa' },
+              { name: 'CodeForAfrica', href: 'mailto:hello@codeforafrica.org' },
               { name: 'Twitter', href: 'https://twitter.com/Code4Africa' },
               {
                 name: 'Facebook',

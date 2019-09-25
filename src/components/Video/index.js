@@ -70,11 +70,11 @@ function Video() {
         className={classes.layout}
       >
         <Typography variant="h3" className={classes.subheading}>
-          Using Dominion
+          Using PesaYetu
         </Typography>
         <Grid item xs={8} sm={4} style={{ paddingTop: '1rem' }}>
           <Typography variant="caption" className={classes.caption}>
-            Watch how you can get the most out of Dominion.
+            Watch how you can get the most out of PesaYetu.
           </Typography>
 
           <Grid item className={classes.buttonGrid}>
