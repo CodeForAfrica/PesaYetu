@@ -1,6 +1,6 @@
 [
     {
-      "sectionTitle": "Budget",
+      "sectionTitle": "Revenue",
       "sectionDescription": "",
       "charts": [
         {
@@ -21,26 +21,14 @@
             }
           ],
           "id": "chart-5WNZtQiG"
-        },
-        {
-          "title": "Budget Ceilings on Recurrent Expenditure 2017/18, 2018/19 and 2019/2020  (Kshs. Millions)",
-          "subtitle": "",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "grouped_column",
-              "table": "allExpenditureYears",
-              "x": "expenditure",
-              "groupBy": "year",
-              "aggregate": "sum",
-              "y": "total",
-              "id": "visual-VASwr3"
-            }
-          ],
-          "id": "chart-KUi78iG"
-        },
+        }
+     ],
+     "id": "section-0M2eSmy"
+    },
+    {
+      "sectionTitle": "Budget Data",
+      "sectionDescription": "",
+      "charts": [
         {
           "title": "Allocation of Equitable Share of Revenue Raised per Financial Years",
           "subtitle": "The County Allocation of Revenue Bill",
@@ -58,7 +46,40 @@
             }
           ],
           "id": "chart-AQW45it6"
-        },
+        }
+     ],
+     "id": "section-345fgty"
+    },
+    {
+      "sectionTitle": "Ceilings on Recurrent Expenditures",
+      "sectionDescription": "",
+      "charts": [
+        {
+          "title": "Budget Ceilings on Recurrent Expenditure 2017/18, 2018/19 and 2019/2020  (Kshs. Millions)",
+          "subtitle": "County Assembly vs County Executive",
+          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+          "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
+          "layout": "1",
+          "visuals": [
+            {
+              "type": "grouped_column",
+              "table": "allExpenditureYears",
+              "x": "expenditure",
+              "groupBy": "year",
+              "aggregate": "sum",
+              "y": "total",
+              "id": "visual-VASwr3"
+            }
+          ],
+          "id": "chart-KUi78iG"
+        }
+     ],
+     "id": "section-3wedq9"
+    },
+    {
+      "sectionTitle": "Conditional Funds",
+      "sectionDescription": "",
+      "charts": [
         {
           "title": "Conditional Additional Allocations to County Governments 2015/2016 to 2019/2020",
           "subtitle": "Development Partner vs National Government Allocation",
@@ -149,6 +170,7 @@
         ],
         "id": "chart-2dfj12"
       }
-     ]
+     ],
+     "id": "section-Ty6uif2"
     }
 ]

@@ -13,6 +13,8 @@ import useChartDefinitions from '../data/useChartDefinitions';
 import slugify from '../utils/slugify';
 import ChartFactory from '../components/ChartFactory';
 import ChartsContainer from '../components/ChartsContainer';
+import ProfileSectionTitle from '../components/ProfileSectionTitle';
+import ProfileTabs from '../components/ProfileTabs';
 import config from '../config';
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +42,7 @@ function Profile({
 }) {
   const head2head = Boolean(geoId && comparisonGeoId);
   const classes = useStyles();
-  const [activeTab] = useState(
+  const [activeTab, setActiveTab] = useState(
     window.location.hash.slice(1) ? window.location.hash.slice(1) : 'all'
   );
   const sectionedCharts = useChartDefinitions();
@@ -108,7 +110,7 @@ function Profile({
           key={tab.slug}
           className={classes.chartsSection}
         >
-          {/* <ProfileSectionTitle loading={chartData.isLoading} tab={tab} /> */}
+          <ProfileSectionTitle loading={chartData.isLoading} tab={tab} />
           {sectionedCharts[tab.sectionIndex].charts
             .filter(
               ({ visuals: v }) =>
@@ -205,6 +207,12 @@ function Profile({
         head2head={head2head}
         geoId={geoId}
         comparisonGeoId={comparisonGeoId}
+      />
+      <ProfileTabs
+        loading={chartData.isLoading}
+        activeTab={activeTab}
+        switchToTab={setActiveTab}
+        tabs={profileTabs}
       />
       <ChartsContainer>{chartComponents}</ChartsContainer>
       <ProfileRelease />
