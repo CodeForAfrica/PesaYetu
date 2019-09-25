@@ -26,18 +26,12 @@ const styles = theme => ({
   overlay: {
     width: '100%',
     height: '100%',
-    position: 'absolute',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)'
+    position: 'absolute'
   },
-  overlaySelected: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)'
-  },
+  overlaySelected: {},
   button: {
     width: '100vw',
     textTransform: 'none',
-    fontWeight: 800,
-    fontSize: theme.typography.subtitle1.fontSize,
-    color: '#fff',
     border: 'none',
     margin: 0,
     padding: 0,
@@ -47,7 +41,6 @@ const styles = theme => ({
     }
   },
   caption: {
-    color: '#fff',
     textAlign: 'left',
     fontFamily: 'Lora',
     fontSize: '14px',

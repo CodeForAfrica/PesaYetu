@@ -11,7 +11,6 @@ import useToggleModal from '../../useToggleModal';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'black',
     height: '30rem' // 480px / 16
   },
   layout: {
@@ -45,9 +44,7 @@ const useStyles = makeStyles(theme => ({
   buttonLink: {
     textDecoration: 'none'
   },
-  modal: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)'
-  }
+  modal: {}
 }));
 
 function Video() {

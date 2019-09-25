@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 
 import { Grid, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import CloseIcon from '@material-ui/icons/Close';
 
 import IFrame from '../IFrame';
 import Sources from './Sources';
 import Thumbnail from './Thumbnail';
 
-import back from '../../assets/images/icons/back.svg';
 import useToggleModal from '../../useToggleModal';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'black',
     padding: '-1.875rem 0',
     [theme.breakpoints.up('md')]: {
       height: 'calc(100vh - 6.25em)'
@@ -116,7 +115,7 @@ function Player({ classes }) {
             aria-label="Close"
             onClick={toggleModal}
           >
-            <img alt="Close" src={back} />
+            <CloseIcon />
           </IconButton>
         </Grid>
       </Grid>
