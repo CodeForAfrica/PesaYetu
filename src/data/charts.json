@@ -147,7 +147,7 @@
             "type": "column",
             "table": "allBreakdownConditionFundDp2015S",
             "horizontal": true,
-            "labelWidth": 200,
+            "labelWidth": 120,
             "x": "projectType",
             "y": "total",
             "id": "visual-rt56cfg5"
@@ -167,7 +167,7 @@
             "table": "allBreakdownConditionFundDp2016S",
             "x": "projectType",
             "horizontal": true,
-            "labelWidth": 200,
+            "labelWidth": 120,
             "y": "total",
             "id": "visual-p09cfg5"
           }
@@ -204,6 +204,7 @@
             "table": "allBreakdownConditionFundDp2018S",
             "x": "projectType",
             "horizontal": true,
+            "labelWidth": 250,
             "y": "total",
             "id": "visual-p09cfg5"
           }
@@ -239,6 +240,7 @@
             "type": "column",
             "table": "allBreakdownConditionFundNg2015S",
             "horizontal": true,
+            "labelWidth": 250,
             "x": "projectType",
             "y": "total",
             "id": "visual-1123cfg5"
@@ -258,6 +260,7 @@
             "table": "allBreakdownConditionFundNg2016S",
             "x": "projectType",
             "horizontal": true,
+            "labelWidth": 250,
             "y": "total",
             "id": "visual-00pcfg5"
           }
@@ -294,7 +297,7 @@
             "type": "column",
             "table": "allBreakdownConditionFundNg2018S",
             "x": "projectType",
-            "labelWidth": 200,
+            "labelWidth": 150,
             "horizontal": true,
             "y": "total",
             "id": "visual-flkjfg5"
