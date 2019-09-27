@@ -1,325 +1,325 @@
 [
-    {
-      "sectionTitle": "Revenue",
-      "sectionDescription": "",
-      "charts": [
-        {
-          "title": "Government Revenue in Ksh Million",
-          "subtitle": "Local vs Total Generated Revenue",
-          "sourceLink": "https://www.knbs.or.ke/download/economic-survey-2019/",
-          "sourceTitle": "Kenya National Bureau of Statistics, Economic Surveys ",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "grouped_column",
-              "table": "allAnnualRevenues",
-              "x": "revenue",
-              "groupBy": "year",
-              "aggregate": "sum",
-              "y": "total",
-              "id": "visual-VOlHv47k"
-            }
-          ],
-          "id": "chart-5WNZtQiG"
-        }
-     ],
-     "id": "section-0M2eSmy"
-    },
-    {
-      "sectionTitle": "Budget Data",
-      "sectionDescription": "",
-      "charts": [
-        {
-          "title": "Allocation of Equitable Share of Revenue Raised per Financial Years",
-          "subtitle": "The County Allocation of Revenue Bill",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allFinancialYears",
-              "x": "financialYear",
-              "offset": 60,
-              "y": "total",
-              "id": "visual-SDER47k"
-            }
-          ],
-          "id": "chart-AQW45it6"
-        }
-     ],
-     "id": "section-345fgty"
-    },
-    {
-      "sectionTitle": "Ceilings on Recurrent Expenditures",
-      "sectionDescription": "",
-      "charts": [
-        {
-          "title": "Budget Ceilings on Recurrent Expenditure 2017/18, 2018/19 and 2019/2020  (Kshs. Millions)",
-          "subtitle": "County Assembly vs County Executive",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "grouped_column",
-              "table": "allExpenditureYears",
-              "x": "expenditure",
-              "groupBy": "year",
-              "aggregate": "sum",
-              "y": "total",
-              "id": "visual-VASwr3"
-            }
-          ],
-          "id": "chart-KUi78iG"
-        }
-     ],
-     "id": "section-3wedq9"
-    },
-    {
-      "sectionTitle": "Conditional Funds",
-      "sectionDescription": "",
-      "charts": [
-        {
-          "title": "Total Conditional Additional Allocations for 2013/2014 and 2014/2015",
-          "subtitle": "Combined Allocation",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2014",
-          "layout": "1/2",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allConditionalFundAllocationsCombineds",
-              "x": "year",
-              "y": "total",
-              "id": "visual-34rtgERRt"
-            }
-          ],
-          "id": "chart-SDEHTy2"
-        },
-        {
-          "title": "Breakdown of Conditional Additional Combined Allocations in 2014/2015",
-          "subtitle": "Project type",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2014",
-          "layout": "1/2",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownCombined2014S",
-              "x": "projectType",
-              "aggregate": "sum",
-              "horizontal": true,
-              "labelWidth": 200,
-              "y": "total",
-              "id": "visual-r568jfg5"
-            }
-          ],
-          "id": "chart-lkii0re2"
+  {
+    "sectionTitle": "Revenue",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Government Revenue in Ksh Million",
+        "subtitle": "Local vs Total Generated Revenue",
+        "sourceLink": "https://www.knbs.or.ke/download/economic-survey-2019/",
+        "sourceTitle": "Kenya National Bureau of Statistics, Economic Surveys ",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allAnnualRevenues",
+            "x": "revenue",
+            "groupBy": "year",
+            "aggregate": "sum",
+            "y": "total",
+            "id": "visual-VOlHv47k"
+          }
+        ],
+        "id": "chart-5WNZtQiG"
+      }
+    ],
+    "id": "section-0M2eSmy"
+  },
+  {
+    "sectionTitle": "Budget Data",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Allocation of Equitable Share of Revenue Raised per Financial Years",
+        "subtitle": "The County Allocation of Revenue Bill",
+        "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+        "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allFinancialYears",
+            "x": "financialYear",
+            "offset": 60,
+            "y": "total",
+            "id": "visual-SDER47k"
+          }
+        ],
+        "id": "chart-AQW45it6"
+      }
+    ],
+    "id": "section-345fgty"
+  },
+  {
+    "sectionTitle": "Ceilings on Recurrent Expenditures",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Budget Ceilings on Recurrent Expenditure 2017/18, 2018/19 and 2019/2020  (Kshs. Millions)",
+        "subtitle": "County Assembly vs County Executive",
+        "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+        "sourceTitle": "Kenya Gazzette Supplement, 2019 ",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allExpenditureYears",
+            "x": "expenditure",
+            "groupBy": "year",
+            "aggregate": "sum",
+            "y": "total",
+            "id": "visual-VASwr3"
+          }
+        ],
+        "id": "chart-KUi78iG"
+      }
+    ],
+    "id": "section-3wedq9"
+  },
+  {
+    "sectionTitle": "Conditional Funds",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Total Conditional Additional Allocations for 2013/2014 and 2014/2015",
+        "subtitle": "Combined Allocation",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2014",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allConditionalFundAllocationsCombineds",
+            "x": "year",
+            "y": "total",
+            "id": "visual-34rtgERRt"
+          }
+        ],
+        "id": "chart-SDEHTy2"
       },
-        {
-          "title": "Conditional Additional Allocations to County Governments 2015/2016 to 2019/2020",
-          "subtitle": "Development Partner vs National Government Allocation",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
-          "sourceTitle": "Census, 2009",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "grouped_column",
-              "table": "allConditionalFundAllocations",
-              "x": "allocationType",
-              "groupBy":"year",
-              "aggregate": "sum",
-              "y": "total",
-              "id": "visual-6ytrERRt"
-            }
-          ],
-          "id": "chart-GMKHTy2"
-        },
-        {
-          "title": "Development Partners' Conditional Additional Allocations 2015/2016",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2015.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2015",
-          "layout": "1/2",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundDp2015S",
-              "horizontal":true,
-              "labelWidth": 200,
-              "x": "projectType",
-              "y": "total",
-              "id": "visual-rt56cfg5"
-            }
-          ],
-          "id": "chart-4tyUre2"
-        },
-        {
-          "title": "Development Partners' Conditional Additional Allocations 2016/2017",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2016.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2016",
-          "layout": "1/2",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundDp2016S",
-              "x": "projectType",
-              "horizontal":true,
-              "labelWidth": 200,
-              "y": "total",
-              "id": "visual-p09cfg5"
-            }
-          ],
-          "id": "chart-56ygvw2"
-        },
-        {
-          "title": "Development Partners' Conditional Additional Allocations 2017/2018",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2017.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2015",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundDp2017S",
-              "horizontal":true,
-              "x": "projectType",
-              "y": "total",
-              "id": "visual-rt56cfg5"
-            }
-          ],
-          "id": "chart-4tyUre2"
-        },
-        {
-          "title": "Development Partners' Conditional Additional Allocations 2018/2019",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2018",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundDp2018S",
-              "x": "projectType",
-              "horizontal":true,
-              "y": "total",
-              "id": "visual-p09cfg5"
-            }
-          ],
-          "id": "chart-56ygvw2"
-        },
-        {
-          "title": "Development Partners' Conditional Additional Allocations 2019/2020",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2019",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundDp2019S",
-              "x": "projectType",
-              "horizontal":true,
-              "y": "total",
-              "id": "visual-fg5455"
-            }
-          ],
-          "id": "chart-w2eeer4"
-        },
-        {
-          "title": "National Government's Conditional Additional Allocations 2015/2016",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2015.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2015",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundNg2015S",
-              "horizontal":true,
-              "x": "projectType",
-              "y": "total",
-              "id": "visual-1123cfg5"
-            }
-          ],
-          "id": "chart-ddrtyre2"
-        },
-        {
-          "title": "National Government's Conditional Additional Allocations 2016/2017",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2016.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2016",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundNg2016S",
-              "x": "projectType",
-              "horizontal":true,
-              "y": "total",
-              "id": "visual-00pcfg5"
-            }
-          ],
-          "id": "chart-2wwsdw2"
-        },
-        {
-          "title": "National Government's Conditional Additional Allocations 2017/2018",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2017.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2015",
-          "layout": "1/2",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundNg2017S",
-              "horizontal":true,
-              "labelWidth": 100,
-              "x": "projectType",
-              "y": "total",
-              "id": "visual-cdfgcfg5"
-            }
-          ],
-          "id": "chart-re44902"
-        },
-        {
-          "title": "National Government's Conditional Additional Allocations 2018/2019",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2018",
-          "layout": "1/2",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundNg2018S",
-              "x": "projectType",
-              "labelWidth": 200,
-              "horizontal":true,
-              "y": "total",
-              "id": "visual-flkjfg5"
-            }
-          ],
-          "id": "chart-wxcr42"
-        },
-        {
-          "title": "National Government's Conditional Additional Allocations 2019/2020",
-          "subtitle": "Allocation per Project ",
-          "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
-          "sourceTitle": "The County Allocation of Revenue Bill, 2019",
-          "layout": "1",
-          "visuals": [
-            {
-              "type": "column",
-              "table": "allBreakdownConditionFundNg2019S",
-              "x": "projectType",
-              "horizontal":true,
-              "y": "total",
-              "id": "visual-fg5455"
-            }
-          ],
-          "id": "chart-w2eeer4"
-        },
+      {
+        "title": "Breakdown of Conditional Additional Combined Allocations in 2014/2015",
+        "subtitle": "Project type",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2014",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownCombined2014S",
+            "x": "projectType",
+            "aggregate": "sum",
+            "horizontal": true,
+            "labelWidth": 200,
+            "y": "total",
+            "id": "visual-r568jfg5"
+          }
+        ],
+        "id": "chart-lkii0re2"
+      },
+      {
+        "title": "Conditional Additional Allocations to County Governments 2015/2016 to 2019/2020",
+        "subtitle": "Development Partner vs National Government Allocation",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/bills/2014/TheCountyAllocationofRevenueBill,2014.pdf",
+        "sourceTitle": "Census, 2009",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allConditionalFundAllocations",
+            "x": "allocationType",
+            "groupBy": "year",
+            "aggregate": "sum",
+            "y": "total",
+            "id": "visual-6ytrERRt"
+          }
+        ],
+        "id": "chart-GMKHTy2"
+      },
+      {
+        "title": "Development Partners' Conditional Additional Allocations 2015/2016",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2015.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2015",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundDp2015S",
+            "horizontal": true,
+            "labelWidth": 200,
+            "x": "projectType",
+            "y": "total",
+            "id": "visual-rt56cfg5"
+          }
+        ],
+        "id": "chart-4tyUre2"
+      },
+      {
+        "title": "Development Partners' Conditional Additional Allocations 2016/2017",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2016.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2016",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundDp2016S",
+            "x": "projectType",
+            "horizontal": true,
+            "labelWidth": 200,
+            "y": "total",
+            "id": "visual-p09cfg5"
+          }
+        ],
+        "id": "chart-56ygvw2"
+      },
+      {
+        "title": "Development Partners' Conditional Additional Allocations 2017/2018",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2017.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2015",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundDp2017S",
+            "horizontal": true,
+            "x": "projectType",
+            "y": "total",
+            "id": "visual-rt56cfg5"
+          }
+        ],
+        "id": "chart-4tyUre2"
+      },
+      {
+        "title": "Development Partners' Conditional Additional Allocations 2018/2019",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2018",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundDp2018S",
+            "x": "projectType",
+            "horizontal": true,
+            "y": "total",
+            "id": "visual-p09cfg5"
+          }
+        ],
+        "id": "chart-56ygvw2"
+      },
+      {
+        "title": "Development Partners' Conditional Additional Allocations 2019/2020",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2019",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundDp2019S",
+            "x": "projectType",
+            "horizontal": true,
+            "y": "total",
+            "id": "visual-fg5455"
+          }
+        ],
+        "id": "chart-w2eeer4"
+      },
+      {
+        "title": "National Government's Conditional Additional Allocations 2015/2016",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2015.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2015",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundNg2015S",
+            "horizontal": true,
+            "x": "projectType",
+            "y": "total",
+            "id": "visual-1123cfg5"
+          }
+        ],
+        "id": "chart-ddrtyre2"
+      },
+      {
+        "title": "National Government's Conditional Additional Allocations 2016/2017",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2016.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2016",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundNg2016S",
+            "x": "projectType",
+            "horizontal": true,
+            "y": "total",
+            "id": "visual-00pcfg5"
+          }
+        ],
+        "id": "chart-2wwsdw2"
+      },
+      {
+        "title": "National Government's Conditional Additional Allocations 2017/2018",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2017.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2015",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundNg2017S",
+            "horizontal": true,
+            "labelWidth": 100,
+            "x": "projectType",
+            "y": "total",
+            "id": "visual-cdfgcfg5"
+          }
+        ],
+        "id": "chart-re44902"
+      },
+      {
+        "title": "National Government's Conditional Additional Allocations 2018/2019",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2018",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundNg2018S",
+            "x": "projectType",
+            "labelWidth": 200,
+            "horizontal": true,
+            "y": "total",
+            "id": "visual-flkjfg5"
+          }
+        ],
+        "id": "chart-wxcr42"
+      },
+      {
+        "title": "National Government's Conditional Additional Allocations 2019/2020",
+        "subtitle": "Allocation per Project ",
+        "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
+        "sourceTitle": "The County Allocation of Revenue Bill, 2019",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "column",
+            "table": "allBreakdownConditionFundNg2019S",
+            "x": "projectType",
+            "horizontal": true,
+            "y": "total",
+            "id": "visual-fg5455"
+          }
+        ],
+        "id": "chart-w2eeer4"
+      },
       {
         "title": "Additional Conditional Allocation for Road Maintenance Fuel Levy Fund in 2018/2019 and 2019/2020",
         "subtitle": "The County Allocation of Revenue Bill, 2018 and 2019",
@@ -354,7 +354,7 @@
         ],
         "id": "chart-2dfj12"
       }
-     ],
-     "id": "section-Ty6uif2"
-    }
+    ],
+    "id": "section-Ty6uif2"
+  }
 ]
