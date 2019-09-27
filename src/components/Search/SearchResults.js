@@ -102,7 +102,7 @@ function SearchResults({
                   variant="body2"
                   component="p"
                 >
-                  {result.type.toLowerCase()}
+                  {result.type}
                 </Typography>
                 <Typography
                   className={classNames(classes.name, {
@@ -111,7 +111,7 @@ function SearchResults({
                   variant="body2"
                   component="p"
                 >
-                  {result.name.toLowerCase()}
+                  {result.name}
                 </Typography>
               </Grid>
             </ListItem>

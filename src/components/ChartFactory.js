@@ -73,11 +73,9 @@ export default class ChartFactory {
                 data.filter(d => d.groupBy === group)
               ).map(d => ({ ...d, x: group }))
         );
-        console.log(groupedData);
         groupedData = groupedData[0].map((_c, i) =>
           groupedData.map(r => (r[i] ? r[i] : null))
         );
-        console.log(groupedData);
         return groupedData;
       }
       return [];

@@ -1,8 +1,11 @@
 {
-  "name": "pesayetu",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@codeforafrica/pesayetu",
+  "version": "0.1.0-rc",
+  "repository": "https://github.com/CodeForAfrica/PesaYetu.git",
+  "author": "Code for Africa <hello@codeforafrica.org> (https://codeforafrica.org)",
+  "license": "GPL-3.0-or-later",
   "homepage": "https://dev.pesayetu.pesacheck.org",
+  "private": false,
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
     "@codeforafrica/hurumap-ui": "^0.1.12",
@@ -34,15 +37,20 @@
     "xml2js": "^0.4.22"
   },
   "scripts": {
+    "commitChartDefinitions": "git add src/data/charts.json && (git diff-index --quiet HEAD || (git commit -m \"Update chart ids'\" && git push))",
+    "applyIdsToChartDefinitions": "node scripts/chartsDefinitionsApplyUniqueId.js",
+    "prestart": "yarn applyIdsToChartDefinitions",
     "start": "react-scripts start",
-    "prebuild": "yarn lint",
+    "prebuild": "yarn install --frozen-lockfile && yarn lint",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "yarn eslint --fix --ignore-path './.gitignore' --ext '.js,.json,.md' './'",
     "lint-staged": "yarn eslint --fix",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "yarn build && yarn commitChartDefinitions",
+    "deploy": "gh-pages -d build",
+    "preversion": "yarn deploy",
+    "postversion": "git push --follow-tags && echo \"Successfully released version $npm_package_version!\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,7 +59,7 @@
     "defaults"
   ],
   "devDependencies": {
-    "eslint": "^6.3.0",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
@@ -74,6 +82,13 @@
     "src/**/*.{js,json,scss,md}": [
       "yarn lint-staged",
       "git add"
+    ],
+    "scripts/**/*.{js,json,scss,md}": [
+      "yarn lint-staged",
+      "git add"
     ]
+  },
+  "engines": {
+    "node": ">=10.16.0 <=12.x"
   }
 }

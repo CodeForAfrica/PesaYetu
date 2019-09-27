@@ -90,7 +90,7 @@ function Navigation({ classes, width }) {
     <MenuList className={classes.menuList}>
       {[
         { title: 'About', link: '#' },
-        { title: 'Showcase', link: `#` },
+        { title: 'Showcase', link: `/#showcase` },
         { title: 'Resources', link: '#' },
         { title: 'Contact', onClick: toggleContact }
       ].map(menu => (

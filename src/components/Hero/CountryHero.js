@@ -83,7 +83,7 @@ function CountryHero({ classes, width, history }) {
 
         <Typography variant="subtitle2" style={{ marginTop: '2.5rem' }}>
           or view{' '}
-          <a className={classes.alink} href="/profile/country-KE">
+          <a className={classes.alink} href="/profiles/country-KE">
             Kenya
           </a>
         </Typography>
