@@ -19,10 +19,10 @@
               "offset": 40
             },
             "y": "total",
-            "id": "visual-VOlHv47k"
+            "id": "visual-7omojY"
           }
         ],
-        "id": "chart-5WNZtQiG"
+        "id": "chart-oqhAr0"
       }
     ],
     "id": "section-XTPz7b"
@@ -43,10 +43,10 @@
             "table": "allFinancialYears",
             "x": "financialYear",
             "y": "total",
-            "id": "visual-SDER47k"
+            "id": "visual-VdGyU0"
           }
         ],
-        "id": "chart-AQW45it6"
+        "id": "chart-79eWJB"
       }
     ],
     "id": "section-Fax0Wy"
@@ -71,10 +71,10 @@
               "offset": 50
             },
             "y": "total",
-            "id": "visual-VASwr3"
+            "id": "visual-fXkY7v"
           }
         ],
-        "id": "chart-KUi78iG"
+        "id": "chart-KnGbdK"
       }
     ],
     "id": "section-768KuR"
@@ -98,10 +98,10 @@
             },
             "x": "year",
             "y": "total",
-            "id": "visual-34rtgERRt"
+            "id": "visual-wbG4HA"
           }
         ],
-        "id": "chart-SDEHTy2"
+        "id": "chart-jODBzH"
       },
       {
         "title": "Breakdown of Conditional Additional Combined Allocations in 2014/2015",
@@ -119,10 +119,10 @@
             },
             "x": "projectType",
             "y": "total",
-            "id": "visual-r568jfg5"
+            "id": "visual-bYURxo"
           }
         ],
-        "id": "chart-lkii0re2"
+        "id": "chart-odAWiY"
       },
       {
         "title": "Conditional Additional Allocations to County Governments 2015/2016 to 2019/2020",
@@ -140,10 +140,10 @@
               "offset": 50
             },
             "y": "total",
-            "id": "visual-6ytrERRt"
+            "id": "visual-ZjKnAj"
           }
         ],
-        "id": "chart-GMKHTy2"
+        "id": "chart-swKvJp"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2015/2016",
@@ -161,10 +161,10 @@
             "table": "allBreakdownConditionFundDp2015S",
             "x": "projectType",
             "y": "total",
-            "id": "visual-rt56cfg5"
+            "id": "visual-ypH2eJ"
           }
         ],
-        "id": "chart-4tyUre2"
+        "id": "chart-FLJCft"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2016/2017",
@@ -182,10 +182,10 @@
               "labelWidth": 100
             },
             "y": "total",
-            "id": "visual-p09cfg5"
+            "id": "visual-l3tJ8m"
           }
         ],
-        "id": "chart-56ygvw2"
+        "id": "chart-FBh5Cj"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2017/2018",
@@ -203,10 +203,10 @@
             },
             "x": "projectType",
             "y": "total",
-            "id": "visual-rt56cfg5"
+            "id": "visual-i085sT"
           }
         ],
-        "id": "chart-4tyUre2"
+        "id": "chart-xy40wp"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2018/2019",
@@ -224,10 +224,10 @@
               "labelWidth": 250
             },
             "y": "total",
-            "id": "visual-p09cfg5"
+            "id": "visual-H2iRV2"
           }
         ],
-        "id": "chart-56ygvw2"
+        "id": "chart-9qQ8Xo"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2019/2020",
@@ -245,10 +245,10 @@
             "table": "allBreakdownConditionFundDp2019S",
             "x": "projectType",
             "y": "total",
-            "id": "visual-fg5455"
+            "id": "visual-vHlJvd"
           }
         ],
-        "id": "chart-w2eeer4"
+        "id": "chart-u1ZrZF"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2015/2016",
@@ -266,10 +266,10 @@
             },
             "x": "projectType",
             "y": "total",
-            "id": "visual-1123cfg5"
+            "id": "visual-Sykzi3"
           }
         ],
-        "id": "chart-ddrtyre2"
+        "id": "chart-e9vx5K"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2016/2017",
@@ -287,10 +287,10 @@
               "labelWidth": 250
             },
             "y": "total",
-            "id": "visual-00pcfg5"
+            "id": "visual-ljx5aS"
           }
         ],
-        "id": "chart-2wwsdw2"
+        "id": "chart-9IJBj4"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2017/2018",
@@ -307,10 +307,10 @@
             },
             "x": "projectType",
             "y": "total",
-            "id": "visual-cdfgcfg5"
+            "id": "visual-2fR8HP"
           }
         ],
-        "id": "chart-re44902"
+        "id": "chart-26XfAz"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2018/2019",
@@ -327,7 +327,7 @@
               "labelWidth": 150
             },
             "y": "total",
-            "id": "visual-flkjfg5"
+            "id": "visual-flkfg5"
           }
         ],
         "id": "chart-wxcr42"
@@ -351,7 +351,7 @@
             "id": "visual-fg5455"
           }
         ],
-        "id": "chart-w2eeer4"
+        "id": "chart-w2eee4"
       },
       {
         "title": "Additional Conditional Allocation for Road Maintenance Fuel Levy Fund in 2018/2019 and 2019/2020",
@@ -365,7 +365,7 @@
             "table": "allRoadMaintenances",
             "x": "financialYear",
             "y": "total",
-            "id": "visual-7ytu885"
+            "id": "visual-7yu885"
           }
         ],
         "id": "chart-e2lkj12"
