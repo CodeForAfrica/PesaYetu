@@ -1,14 +1,10 @@
 import React from 'react';
 
-import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-import PlayerModal from '../Video/PlayerModal';
+import Typography from '@material-ui/core/Typography';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import Steps from './Steps';
-import ViewVideos from './ViewVideos';
-import useToggleModal from '../../useToggleModal';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1
   },
@@ -17,19 +13,11 @@ const useStyles = makeStyles(theme => ({
   },
   steps: {
     paddingTop: '0.6423rem' // 9px / 14
-  },
-  viewVideos: {
-    marginTop: '2.143rem',
-    marginBottom: '4.4286rem', // 62px / 14
-    [theme.breakpoints.up('md')]: {
-      marginTop: '6.7143rem'
-    }
   }
-}));
+});
 
 function Description({ ...props }) {
   const classes = useStyles(props);
-  const { open, toggleModal } = useToggleModal('video');
   return (
     <div>
       <Typography variant="h2" className={classes.title}>
@@ -38,11 +26,6 @@ function Description({ ...props }) {
       </Typography>
 
       <Steps />
-      <div className={classes.viewVideos}>
-        <ViewVideos onClick={toggleModal} />
-
-        <PlayerModal open={open} toggleModal={toggleModal} />
-      </div>
     </div>
   );
 }
