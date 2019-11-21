@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import { A } from '@codeforafrica/hurumap-ui';
+import A from '@codeforafrica/hurumap-ui/core/A';
 
 const styles = theme => ({
   root: {
@@ -73,7 +73,7 @@ function About({ classes }) {
         <A href="https://zimbabwe.hurumap.org/" className={classes.links}>
           Zimbabwe
         </A>
-        , {' and '}
+        , and
         <A href="https://zambia.hurumap.org/" className={classes.links}>
           Zambia
         </A>

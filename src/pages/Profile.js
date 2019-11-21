@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-import { ChartContainer } from '@codeforafrica/hurumap-ui';
+import ChartContainer from '@codeforafrica/hurumap-ui/core/ChartContainer';
 import { Grid } from '@material-ui/core';
+import ChartFactory from '@codeforafrica/hurumap-ui/factory/ChartFactory';
 import { ProfilePageHeader } from '../components/Header';
 
 import Page from '../components/Page';
@@ -11,7 +12,6 @@ import ProfileRelease from '../components/ProfileReleases';
 import useProfileLoader from '../data/useProfileLoader';
 import useChartDefinitions from '../data/useChartDefinitions';
 import slugify from '../utils/slugify';
-import ChartFactory from '../components/ChartFactory';
 import ChartsContainer from '../components/ChartsContainer';
 import ProfileSectionTitle from '../components/ProfileSectionTitle';
 import ProfileTabs from '../components/ProfileTabs';
@@ -155,12 +155,24 @@ function Profile({
                   {!chartData.isLoading &&
                     chart.visuals.map(
                       visual =>
-                        !profiles.isLoading &&
-                        ChartFactory.build(
-                          visual,
-                          chartData.profileVisualsData,
-                          chartData.comparisonVisualsData,
-                          profiles
+                        !profiles.isLoading && (
+                          <ChartFactory
+                            key={visual.id}
+                            definition={visual}
+                            profiles={profiles}
+                            data={
+                              chartData.profileVisualsData[visual.queryAlias]
+                                .nodes
+                            }
+                            referenceData={(() => {
+                              const temp =
+                                chartData.profileVisualsData[
+                                  `${visual.queryAlias}Reference`
+                                ];
+                              return temp ? temp.nodes : [];
+                            })()}
+                            comparisonData={chartData.comparisonVisualsData}
+                          />
                         )
                     )}
                 </ChartContainer>

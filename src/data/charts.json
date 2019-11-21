@@ -15,7 +15,9 @@
             "table": "allAnnualRevenues",
             "x": "revenue",
             "groupBy": "year",
-            "aggregate": "sum",
+            "typeProps": {
+              "offset": 40
+            },
             "y": "total",
             "id": "visual-VOlHv47k"
           }
@@ -23,7 +25,7 @@
         "id": "chart-5WNZtQiG"
       }
     ],
-    "id": "section-0M2eSmy"
+    "id": "section-XTPz7b"
   },
   {
     "sectionTitle": "Budget Data",
@@ -40,7 +42,6 @@
             "type": "column",
             "table": "allFinancialYears",
             "x": "financialYear",
-            "offset": 60,
             "y": "total",
             "id": "visual-SDER47k"
           }
@@ -48,7 +49,7 @@
         "id": "chart-AQW45it6"
       }
     ],
-    "id": "section-345fgty"
+    "id": "section-Fax0Wy"
   },
   {
     "sectionTitle": "Ceilings on Recurrent Expenditures",
@@ -66,7 +67,9 @@
             "table": "allExpenditureYears",
             "x": "expenditure",
             "groupBy": "year",
-            "aggregate": "sum",
+            "typeProps": {
+              "offset": 50
+            },
             "y": "total",
             "id": "visual-VASwr3"
           }
@@ -74,7 +77,7 @@
         "id": "chart-KUi78iG"
       }
     ],
-    "id": "section-3wedq9"
+    "id": "section-768KuR"
   },
   {
     "sectionTitle": "Conditional Funds",
@@ -90,6 +93,9 @@
           {
             "type": "column",
             "table": "allConditionalFundAllocationsCombineds",
+            "typeProps": {
+              "horizontal": true
+            },
             "x": "year",
             "y": "total",
             "id": "visual-34rtgERRt"
@@ -107,10 +113,11 @@
           {
             "type": "column",
             "table": "allBreakdownCombined2014S",
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 100
+            },
             "x": "projectType",
-            "aggregate": "sum",
-            "horizontal": true,
-            "labelWidth": 200,
             "y": "total",
             "id": "visual-r568jfg5"
           }
@@ -129,7 +136,9 @@
             "table": "allConditionalFundAllocations",
             "x": "allocationType",
             "groupBy": "year",
-            "aggregate": "sum",
+            "typeProps": {
+              "offset": 50
+            },
             "y": "total",
             "id": "visual-6ytrERRt"
           }
@@ -145,9 +154,11 @@
         "visuals": [
           {
             "type": "column",
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 100
+            },
             "table": "allBreakdownConditionFundDp2015S",
-            "horizontal": true,
-            "labelWidth": 120,
             "x": "projectType",
             "y": "total",
             "id": "visual-rt56cfg5"
@@ -166,8 +177,10 @@
             "type": "column",
             "table": "allBreakdownConditionFundDp2016S",
             "x": "projectType",
-            "horizontal": true,
-            "labelWidth": 120,
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 100
+            },
             "y": "total",
             "id": "visual-p09cfg5"
           }
@@ -184,7 +197,10 @@
           {
             "type": "column",
             "table": "allBreakdownConditionFundDp2017S",
-            "horizontal": true,
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 200
+            },
             "x": "projectType",
             "y": "total",
             "id": "visual-rt56cfg5"
@@ -203,8 +219,10 @@
             "type": "column",
             "table": "allBreakdownConditionFundDp2018S",
             "x": "projectType",
-            "horizontal": true,
-            "labelWidth": 250,
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 250
+            },
             "y": "total",
             "id": "visual-p09cfg5"
           }
@@ -220,9 +238,12 @@
         "visuals": [
           {
             "type": "column",
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 300
+            },
             "table": "allBreakdownConditionFundDp2019S",
             "x": "projectType",
-            "horizontal": true,
             "y": "total",
             "id": "visual-fg5455"
           }
@@ -239,8 +260,10 @@
           {
             "type": "column",
             "table": "allBreakdownConditionFundNg2015S",
-            "horizontal": true,
-            "labelWidth": 250,
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 250
+            },
             "x": "projectType",
             "y": "total",
             "id": "visual-1123cfg5"
@@ -259,8 +282,10 @@
             "type": "column",
             "table": "allBreakdownConditionFundNg2016S",
             "x": "projectType",
-            "horizontal": true,
-            "labelWidth": 250,
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 250
+            },
             "y": "total",
             "id": "visual-00pcfg5"
           }
@@ -277,8 +302,9 @@
           {
             "type": "column",
             "table": "allBreakdownConditionFundNg2017S",
-            "horizontal": true,
-            "labelWidth": 100,
+            "typeProps": {
+              "labelWidth": 100
+            },
             "x": "projectType",
             "y": "total",
             "id": "visual-cdfgcfg5"
@@ -297,8 +323,9 @@
             "type": "column",
             "table": "allBreakdownConditionFundNg2018S",
             "x": "projectType",
-            "labelWidth": 150,
-            "horizontal": true,
+            "typeProps": {
+              "labelWidth": 150
+            },
             "y": "total",
             "id": "visual-flkjfg5"
           }
@@ -316,7 +343,10 @@
             "type": "column",
             "table": "allBreakdownConditionFundNg2019S",
             "x": "projectType",
-            "horizontal": true,
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 250
+            },
             "y": "total",
             "id": "visual-fg5455"
           }
@@ -358,6 +388,6 @@
         "id": "chart-2dfj12"
       }
     ],
-    "id": "section-Ty6uif2"
+    "id": "section-N9dGTq"
   }
 ]

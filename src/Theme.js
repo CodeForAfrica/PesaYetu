@@ -1,4 +1,4 @@
-import { createTheme } from '@codeforafrica/hurumap-ui';
+import createTheme from '@codeforafrica/hurumap-ui/core/styles/createTheme';
 
 const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 
@@ -31,7 +31,7 @@ const Theme = createTheme({
       domainPadding: { x: [25, 25] },
       height: 300,
       width: 400,
-      offset: 50,
+      offset: 60,
       style: {
         data: {
           fontFamily: FONT_FAMILY_TEXT,
