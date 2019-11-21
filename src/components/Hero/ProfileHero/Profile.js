@@ -1,16 +1,14 @@
 import React, { useCallback } from 'react';
 
 import { PropTypes } from 'prop-types';
-import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 
 import classNames from 'classnames';
-import {
-  MapIt,
-  ContentLoader,
-  TypographyLoader
-} from '@codeforafrica/hurumap-ui';
+import TypographyLoader from '@codeforafrica/hurumap-ui/core/TypographyLoader';
+import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
+import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from '../Hero';
 
 import Search from '../../Search';

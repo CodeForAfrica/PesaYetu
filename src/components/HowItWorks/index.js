@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Grid, Hidden } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Map from './Map';
 import Description from './Description';

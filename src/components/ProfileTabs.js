@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { AppBar, Tabs, Tab } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import { ContentLoader } from '@codeforafrica/hurumap-ui';
+import { makeStyles } from '@material-ui/core/styles';
+import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
 
 import classNames from 'classnames';
 

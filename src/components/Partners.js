@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import { A } from '@codeforafrica/hurumap-ui';
+import A from '@codeforafrica/hurumap-ui/core/A';
 
 import cfa from '../assets/images/logos/codeforafrica.png';
 import icfj from '../assets/images/logos/icfj.png';

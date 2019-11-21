@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 
 import { PropTypes } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { MapIt } from '@codeforafrica/hurumap-ui';
-import { Typography } from '@material-ui/core';
+import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
+import Typography from '@material-ui/core/Typography';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 import { withRouter } from 'react-router-dom';
 
