@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import Resources from './pages/Resources';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           path="/compare/:geoId/vs/:comparisonGeoId"
           component={Profile}
         />
+        <Route exact path="/resources" component={Resources} />
       </Switch>
     </BrowserRouter>
   );
