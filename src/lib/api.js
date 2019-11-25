@@ -52,7 +52,7 @@ export default function createAPI() {
 
 export async function getSourceAfricaDominionData() {
   return axios.get(
-    'https://cors-anywhere.herokuapp.com/https://dc.sourceafrica.net/search/documents.json?q=project:PesaYetu'
+    'https://dc.sourceafrica.net/api/search.json?q=project:PesaYetu'
   );
 }
 

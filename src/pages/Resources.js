@@ -91,7 +91,7 @@ function Resources(props) {
                 title={document.title}
                 description={document.description}
                 preview={
-                  <img alt="" src={document.thumbnail_url} width="100%" />
+                  <img alt="" src={document.resources.thumbnail} width="100%" />
                 }
               />
             </Grid>
