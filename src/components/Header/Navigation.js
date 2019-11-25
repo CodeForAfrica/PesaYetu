@@ -91,7 +91,7 @@ function Navigation({ classes, width }) {
       {[
         { title: 'About', link: '#' },
         { title: 'Showcase', link: `/#showcase` },
-        { title: 'Resources', link: '#' },
+        { title: 'Resources', link: '/resources' },
         { title: 'Contact', onClick: toggleContact }
       ].map(menu => (
         <MenuItem key={menu.title} className={classes.menuListItem}>

@@ -49,3 +49,15 @@ export default function createAPI() {
     }
   };
 }
+
+export async function getSourceAfricaDominionData() {
+  return axios.get(
+    'https://dc.sourceafrica.net/api/search.json?q=project:PesaYetu'
+  );
+}
+
+export async function getOpenAfricaDominionGroupData() {
+  return axios.get(
+    'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu'
+  );
+}
