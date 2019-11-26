@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
   },
   documentData: {
     [theme.breakpoints.up('md')]: {
-      paddingTop: '3.5625rem',
+      paddingTop: '3.82rem',
       paddingLeft: '5rem'
     }
   },
