@@ -50,9 +50,9 @@ export default function createAPI() {
   };
 }
 
-export async function getSourceAfricaData() {
+export async function getSourceAfricaData(query) {
   return axios.get(
-    `https://dc.sourceafrica.net/api/search.json?q=project:PesaYetu`
+    `https://dc.sourceafrica.net/api/search.json?q=projectid:483-PesaYetu&${query}`
   );
 }
 
