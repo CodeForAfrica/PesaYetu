@@ -50,13 +50,13 @@ export default function createAPI() {
   };
 }
 
-export async function getSourceAfricaDominionData() {
+export async function getSourceAfricaData() {
   return axios.get(
-    'https://dc.sourceafrica.net/api/search.json?q=project:PesaYetu'
+    `https://dc.sourceafrica.net/api/search.json?q=project:PesaYetu`
   );
 }
 
-export async function getOpenAfricaDominionGroupData() {
+export async function getOpenAfricaData() {
   return axios.get(
     'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu'
   );
