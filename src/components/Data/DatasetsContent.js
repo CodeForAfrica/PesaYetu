@@ -21,7 +21,7 @@ function DataSetsContent(props) {
   const [datasetsCount, setDatasetsCount] = useState('-');
 
   useEffect(() => {
-    getOpenAfricaData().then(({ data: { result } }) => {
+    getOpenAfricaData('limit=1000').then(({ data: { result } }) => {
       setDatasetsCount(result.length);
     });
   }, []);

@@ -56,8 +56,8 @@ export async function getSourceAfricaData(query) {
   );
 }
 
-export async function getOpenAfricaData() {
+export async function getOpenAfricaData(query) {
   return axios.get(
-    'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu'
+    `https://africaopendata.org/api/3/action/group_package_show?id=pesayetu&${query}`
   );
 }
