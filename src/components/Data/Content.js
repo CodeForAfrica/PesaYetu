@@ -16,7 +16,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   title: {
-    color: theme.palette.primary.dark,
     opacity: '0.6',
     [theme.breakpoints.up('md')]: {
       paddingTop: '1rem'
@@ -73,12 +72,10 @@ function Content({
         {children}
       </Grid>
 
-      <Grid item xs={12}>
-        <div className={classes.subtitleGrid}>
-          <Typography variant="body2" className={classes.title}>
-            {title}
-          </Typography>
-        </div>
+      <Grid item xs={12} className={classes.subtitleGrid}>
+        <Typography variant="body2" className={classes.title}>
+          {title}
+        </Typography>
       </Grid>
 
       <Grid item xs={12}>
