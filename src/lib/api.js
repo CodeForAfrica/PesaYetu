@@ -63,8 +63,7 @@ export async function getOpenAfricaData() {
 }
 
 export async function getOpenAfricaCount() {
-  const response = await axios.get(
+  return axios.get(
     'https://africaopendata.org/api/3/action/group_show?id=pesayetu'
   );
-  return response.result.package_count;
 }

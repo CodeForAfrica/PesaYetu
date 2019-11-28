@@ -8,7 +8,7 @@ import Content from './Content';
 function DocumentsContent() {
   const [documentsCount, setDocumentsCount] = useState('-');
   useEffect(() => {
-    getSourceAfricaData().then(({ total }) => {
+    getSourceAfricaData().then(({ data: { total } }) => {
       setDocumentsCount(total);
     });
   }, []);

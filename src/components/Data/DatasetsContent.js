@@ -21,9 +21,15 @@ function DataSetsContent(props) {
   const [datasetsCount, setDatasetsCount] = useState('-');
 
   useEffect(() => {
-    getOpenAfricaCount().then(res => {
-      setDatasetsCount(res);
-    });
+    getOpenAfricaCount().then(
+      ({
+        data: {
+          result: { package_count: count }
+        }
+      }) => {
+        setDatasetsCount(count);
+      }
+    );
   }, []);
   return (
     <div className={classes.root}>
