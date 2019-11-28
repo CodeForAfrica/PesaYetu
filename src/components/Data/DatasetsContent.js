@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { getOpenAfricaData } from '../../lib/api';
+import { getOpenAfricaCount } from '../../lib/api';
 import plugIcon from '../../assets/images/icons/group-6.png';
 
 import Content from './Content';
@@ -21,8 +21,8 @@ function DataSetsContent(props) {
   const [datasetsCount, setDatasetsCount] = useState('-');
 
   useEffect(() => {
-    getOpenAfricaData('limit=1000').then(({ data: { result } }) => {
-      setDatasetsCount(result.length);
+    getOpenAfricaCount().then(res => {
+      setDatasetsCount(res);
     });
   }, []);
   return (

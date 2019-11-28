@@ -50,14 +50,21 @@ export default function createAPI() {
   };
 }
 
-export async function getSourceAfricaData(query) {
+export async function getSourceAfricaData() {
   return axios.get(
-    `https://dc.sourceafrica.net/api/search.json?q=projectid:483-PesaYetu&${query}`
+    'https://dc.sourceafrica.net/api/search.json?q=projectid:483-PesaYetu'
   );
 }
 
-export async function getOpenAfricaData(query) {
+export async function getOpenAfricaData() {
   return axios.get(
-    `https://africaopendata.org/api/3/action/group_package_show?id=pesayetu&${query}`
+    'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu'
   );
+}
+
+export async function getOpenAfricaCount() {
+  const response = await axios.get(
+    'https://africaopendata.org/api/3/action/group_show?id=pesayetu'
+  );
+  return response.result.package_count;
 }
