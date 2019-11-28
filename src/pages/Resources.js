@@ -7,10 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import config from '../config';
-import {
-  getOpenAfricaDominionGroupData,
-  getSourceAfricaDominionData
-} from '../lib/api';
+import { getOpenAfricaData, getSourceAfricaData } from '../lib/api';
 
 import About from '../components/About';
 import ArrowButton from '../components/ArrowButton';
@@ -49,12 +46,12 @@ function Resources(props) {
         document.getElementById(window.location.hash.slice(1)).scrollIntoView();
       }
     }
-    getOpenAfricaDominionGroupData().then(({ data: { result } }) => {
+    getOpenAfricaData().then(({ data: { result } }) => {
       setPackages(result);
       scrollSectionIntoView();
     });
 
-    getSourceAfricaDominionData().then(({ data }) => {
+    getSourceAfricaData().then(({ data }) => {
       setDocuments(data.documents);
       scrollSectionIntoView();
     });

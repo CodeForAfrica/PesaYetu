@@ -4,6 +4,7 @@ import About from '../components/About';
 import Page from '../components/Page';
 import HowItWorks from '../components/HowItWorks';
 import ShowCase from '../components/Showcase';
+import Data from '../components/Data';
 import config from '../config';
 import createAPI from '../lib/api';
 
@@ -19,6 +20,7 @@ function Home() {
       <About about={config.about} />
       <HowItWorks />
       <ShowCase stories={posts} />
+      <Data />
     </Page>
   );
 }
