@@ -40,9 +40,7 @@ const theme = createTheme({
     bar: {
       barWidth: 30,
       domainPadding: { x: [25, 25] },
-      height: 300,
-      width: 400,
-      padding: { left: 0, right: 0 },
+      padding: { top: 0, right: 0, bottom: 50, left: 0 },
       style: {
         data: {
           fontFamily: FONT_FAMILY_TEXT,
