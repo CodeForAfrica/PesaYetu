@@ -8,7 +8,7 @@ import A from '@codeforafrica/hurumap-ui/core/A';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#DADBDD',
     padding: '3.125em',
     [theme.breakpoints.up('md')]: {
       padding: '3.125em 0'

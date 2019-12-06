@@ -5,15 +5,15 @@ import { withStyles } from '@material-ui/core/styles';
 
 import A from '@codeforafrica/hurumap-ui/core/A';
 
-import cfa from '../assets/images/logos/codeforafrica.png';
-import icfj from '../assets/images/logos/icfj.png';
-import bmgf from '../assets/images/logos/bmgf.png';
-import pesacheck from '../assets/images/logos/pesacheckwhite.png';
+import cfa from '../assets/images/logos/cfafrica-white.png';
+import icfj from '../assets/images/logos/icfj-white.png';
+import bmgf from '../assets/images/logos/bmgf-white.png';
+import pesacheck from '../assets/images/logos/pesacheck-white.png';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.secondary.light
+    backgroundColor: theme.palette.primary.light
   },
   layout: {
     height: '14rem',

@@ -10,6 +10,8 @@ import Project from './Project';
 
 const styles = theme => ({
   root: {
+    backgroundColor: theme.palette.primary.dark,
+    color: 'white',
     flexGrow: 1,
     paddingTop: '3.64rem',
     paddingLeft: '2.143rem',
@@ -18,6 +20,9 @@ const styles = theme => ({
       paddingTop: '6rem',
       paddingLeft: 0,
       paddingBottom: '3.857rem'
+    },
+    '& a': {
+      color: 'inherit'
     }
   },
   layout: {

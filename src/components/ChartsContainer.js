@@ -6,6 +6,7 @@ import { Grid } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
+    backgroundColor: '#EDEDEE',
     flexGrow: 1,
     paddingBottom: '2rem',
     [theme.breakpoints.up('md')]: {

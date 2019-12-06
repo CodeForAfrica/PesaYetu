@@ -8,7 +8,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import Theme from './Theme';
+import theme from './theme';
 import AppContextProvider from './AppContext';
 
 const client = new ApolloClient({
@@ -17,7 +17,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <MuiThemeProvider theme={Theme}>
+    <MuiThemeProvider theme={theme}>
       <AppContextProvider>
         <CssBaseline />
         <App />
