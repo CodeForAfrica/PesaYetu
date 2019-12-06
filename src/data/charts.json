@@ -14,7 +14,7 @@
             "type": "grouped_column",
             "typeProps": {
               "offset": 32,
-              "width": 800
+              "width": 600
             },
             "table": "allAnnualRevenues",
             "x": "revenue",
@@ -41,6 +41,15 @@
         "visuals": [
           {
             "type": "column",
+            "typeProps": {
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
             "table": "allFinancialYears",
             "x": "financialYear",
             "y": "total",
@@ -68,7 +77,11 @@
             "typeProps": {
               "offset": 32,
               "parts": {
-                "group": {}
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
               }
             },
             "table": "allExpenditureYears",
@@ -158,7 +171,11 @@
             "typeProps": {
               "offset": 32,
               "parts": {
-                "group": {}
+                "axis": {
+                  "dependent": {
+                    "tickCount": 2
+                  }
+                }
               }
             },
             "y": "total",
@@ -172,12 +189,12 @@
         "subtitle": "Allocation per Project ",
         "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2015.pdf",
         "sourceTitle": "The County Allocation of Revenue Bill, 2015",
-        "layout": "1/2",
+        "layout": "1",
         "visuals": [
           {
             "type": "column",
             "typeProps": {
-              "offset": 60,
+              "horizontal": true,
               "labelWidth": 200,
               "parts": {
                 "axis": {
@@ -200,14 +217,14 @@
         "subtitle": "Allocation per Project ",
         "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2016.pdf",
         "sourceTitle": "The County Allocation of Revenue Bill, 2016",
-        "layout": "1/2",
+        "layout": "1",
         "visuals": [
           {
             "type": "column",
             "table": "allBreakdownConditionFundDp2016S",
             "x": "projectType",
             "typeProps": {
-              "offset": 60,
+              "horizontal": true,
               "labelWidth": 200,
               "parts": {
                 "axis": {
@@ -235,7 +252,14 @@
             "table": "allBreakdownConditionFundDp2017S",
             "typeProps": {
               "horizontal": true,
-              "labelWidth": 200
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "tickCount": 2
+                  }
+                }
+              }
             },
             "x": "projectType",
             "y": "total",
@@ -257,7 +281,14 @@
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
-              "labelWidth": 250
+              "labelWidth": 250,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "y": "total",
             "id": "visual-H2iRV2"
@@ -276,7 +307,14 @@
             "type": "column",
             "typeProps": {
               "horizontal": true,
-              "labelWidth": 300
+              "labelWidth": 300,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "table": "allBreakdownConditionFundDp2019S",
             "x": "projectType",
@@ -298,7 +336,14 @@
             "table": "allBreakdownConditionFundNg2015S",
             "typeProps": {
               "horizontal": true,
-              "labelWidth": 250
+              "labelWidth": 250,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "x": "projectType",
             "y": "total",
@@ -320,7 +365,14 @@
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
-              "labelWidth": 250
+              "labelWidth": 250,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "y": "total",
             "id": "visual-ljx5aS"
@@ -333,14 +385,14 @@
         "subtitle": "Allocation per Project ",
         "sourceLink": "http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/CountyAllocationofRevenueActNo22of2017.pdf",
         "sourceTitle": "The County Allocation of Revenue Bill, 2015",
-        "layout": "1/2",
+        "layout": "1",
         "visuals": [
           {
             "type": "column",
             "table": "allBreakdownConditionFundNg2017S",
             "typeProps": {
-              "offset": 60,
-              "labelWidth": 200,
+              "horizontal": true,
+              "labelWidth": 250,
               "parts": {
                 "axis": {
                   "dependent": {
@@ -361,15 +413,15 @@
         "subtitle": "Allocation per Project ",
         "sourceLink": "http://www.parliament.go.ke/sites/default/files/2019-04/THE%20COUNTY%20ALLOCATION%20OF%20REVENUE%20BILL%202019%20Combined%20%281%29.pdf",
         "sourceTitle": "The County Allocation of Revenue Bill, 2018",
-        "layout": "1/2",
+        "layout": "1",
         "visuals": [
           {
             "type": "column",
             "table": "allBreakdownConditionFundNg2018S",
             "x": "projectType",
             "typeProps": {
-              "offset": 60,
-              "labelWidth": 120,
+              "horizontal": true,
+              "labelWidth": 250,
               "parts": {
                 "axis": {
                   "dependent": {
