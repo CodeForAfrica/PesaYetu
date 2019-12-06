@@ -12,12 +12,13 @@
         "visuals": [
           {
             "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "width": 800
+            },
             "table": "allAnnualRevenues",
             "x": "revenue",
             "groupBy": "year",
-            "typeProps": {
-              "offset": 40
-            },
             "y": "total",
             "id": "visual-7omojY"
           }
@@ -64,12 +65,15 @@
         "visuals": [
           {
             "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "parts": {
+                "group": {}
+              }
+            },
             "table": "allExpenditureYears",
             "x": "expenditure",
             "groupBy": "year",
-            "typeProps": {
-              "offset": 50
-            },
             "y": "total",
             "id": "visual-fXkY7v"
           }
@@ -92,10 +96,18 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allConditionalFundAllocationsCombineds",
             "typeProps": {
-              "horizontal": true
+              "offset": 60,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
+            "table": "allConditionalFundAllocationsCombineds",
             "x": "year",
             "y": "total",
             "id": "visual-wbG4HA"
@@ -112,11 +124,18 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownCombined2014S",
             "typeProps": {
-              "horizontal": true,
-              "labelWidth": 100
+              "offset": 60,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
+            "table": "allBreakdownCombined2014S",
             "x": "projectType",
             "y": "total",
             "id": "visual-bYURxo"
@@ -137,7 +156,10 @@
             "x": "allocationType",
             "groupBy": "year",
             "typeProps": {
-              "offset": 50
+              "offset": 32,
+              "parts": {
+                "group": {}
+              }
             },
             "y": "total",
             "id": "visual-ZjKnAj"
@@ -155,8 +177,15 @@
           {
             "type": "column",
             "typeProps": {
-              "horizontal": true,
-              "labelWidth": 100
+              "offset": 60,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "table": "allBreakdownConditionFundDp2015S",
             "x": "projectType",
@@ -178,8 +207,15 @@
             "table": "allBreakdownConditionFundDp2016S",
             "x": "projectType",
             "typeProps": {
-              "horizontal": true,
-              "labelWidth": 100
+              "offset": 60,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "y": "total",
             "id": "visual-l3tJ8m"
@@ -303,7 +339,15 @@
             "type": "column",
             "table": "allBreakdownConditionFundNg2017S",
             "typeProps": {
-              "labelWidth": 100
+              "offset": 60,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "x": "projectType",
             "y": "total",
@@ -324,7 +368,15 @@
             "table": "allBreakdownConditionFundNg2018S",
             "x": "projectType",
             "typeProps": {
-              "labelWidth": 150
+              "offset": 60,
+              "labelWidth": 120,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "y": "total",
             "id": "visual-flkfg5"
@@ -345,7 +397,14 @@
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
-              "labelWidth": 250
+              "labelWidth": 250,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "y": "total",
             "id": "visual-fg5455"
