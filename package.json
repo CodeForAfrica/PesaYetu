@@ -29,7 +29,7 @@
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
+    "react-scripts": "3.2.0",
     "shortid": "^2.2.15",
     "typescript": "*",
     "xml2js": "^0.4.22"
@@ -57,11 +57,11 @@
     "defaults"
   ],
   "devDependencies": {
-    "eslint": "^6.1.0",
+    "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-json": "^2.0.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.0",
