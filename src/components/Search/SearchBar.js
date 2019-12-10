@@ -13,7 +13,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     [theme.breakpoints.down('sm')]: {
-      borderBottom: '2px solid'
+      borderBottom: '2px solid white'
     }
   },
   searchField: {
@@ -25,9 +25,11 @@ const styles = theme => ({
       borderBottom: '2px solid'
     }
   },
-  searchFieldInput: {},
+  searchFieldInput: {
+    color: 'white'
+  },
   rootBorderBottom: {
-    borderBottom: '2px solid !important'
+    // borderBottom: '2px solid !important'
   },
   searchFieldNoBorderBottom: {
     borderBottom: 'none !important'
@@ -37,6 +39,7 @@ const styles = theme => ({
     marginRight: 0
   },
   iconButton: {
+    color: 'white',
     padding: 0
   },
   iconButtonDropdown: {
