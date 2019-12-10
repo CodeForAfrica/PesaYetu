@@ -24,6 +24,7 @@ const useStyles = makeStyles(() => ({
   content: {
     padding: '0.625rem 0'
   },
+  title: {},
   description: {
     marginTop: '0.625rem',
     opacity: 0.6
@@ -43,7 +44,9 @@ function Document({ link, title, description, preview, ...props }) {
             </Grid>
 
             <Grid item xs={8} container direction="column" justify="center">
-              <Typography variant="h5">{title}</Typography>
+              <Typography variant="h5" className={classes.title}>
+                {title}
+              </Typography>
               <Typography variant="body2" className={classes.description}>
                 {description}
               </Typography>

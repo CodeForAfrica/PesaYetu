@@ -47,14 +47,22 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Data({ orgLink, dataLink, title, description, preview, ...props }) {
+function Data({
+  organization,
+  dataLink,
+  title,
+  description,
+  preview,
+  ...props
+}) {
   const classes = useStyles(props);
+  const orgLink = `https://openafrica.net/organization/${organization.name}`;
 
   return (
     <Card className={classes.root}>
       <CardContent>
         <A className={classes.orgLink} href={orgLink} underline="hover">
-          {orgLink}
+          {organization.title}
         </A>
         <CardActionArea target="_blank" href={dataLink}>
           <Typography className={classes.xsTitle} variant="h4">
@@ -84,7 +92,10 @@ function Data({ orgLink, dataLink, title, description, preview, ...props }) {
 Data.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  orgLink: PropTypes.string.isRequired,
+  organization: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired,
   dataLink: PropTypes.string.isRequired,
   preview: PropTypes.element
 };
