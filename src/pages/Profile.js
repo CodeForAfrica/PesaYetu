@@ -174,6 +174,7 @@ function Profile({
                               return temp ? temp.nodes : [];
                             })()}
                             comparisonData={chartData.comparisonVisualsData}
+                            toggleSize={false}
                           />
                         )
                     )}
