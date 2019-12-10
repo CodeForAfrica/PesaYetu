@@ -10,15 +10,13 @@ const styles = {
     flexGrow: 1,
     margin: '4rem 0'
   },
-  titlegrid: {
-    alignItems: 'center'
-  }
+  titleGrid: {}
 };
 
 function TitleHero({ classes, children }) {
   return (
     <Hero classes={{ root: classes.root }}>
-      <HeroTitleGrid classes={{ titleTextGrid: classes.titlegrid }}>
+      <HeroTitleGrid classes={{ titleTextGrid: classes.titleGrid }}>
         <HeroTitle>{children}</HeroTitle>
       </HeroTitleGrid>
     </Hero>

@@ -1,11 +1,16 @@
 import React, { useCallback } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  useMediaQuery,
+  useTheme,
+  withStyles,
+  Link,
+  Typography
+} from '@material-ui/core';
 import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
-import Typography from '@material-ui/core/Typography';
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
-import { withRouter } from 'react-router-dom';
+import { TileLayer } from 'leaflet';
 
 import Hero, {
   HeroTitle,
@@ -27,11 +32,14 @@ const styles = theme => ({
   titleGrid: {
     pointerEvents: 'none',
     [theme.breakpoints.up('md')]: {
-      maxWidth: '28%',
-      marginTop: '2rem'
-    }
+      maxWidth: '27.25%'
+    },
+    marginTop: '2rem'
   },
   countryName: {
+    letterSpacing: '2px',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
     [theme.breakpoints.up('md')]: {
       whiteSpace: 'nowrap'
     }
@@ -43,25 +51,28 @@ const styles = theme => ({
     }
   },
   alink: {
+    color: 'red',
+    fontWeight: 'bold',
     pointerEvents: 'all'
   },
   map: {
     zIndex: 0,
     position: 'relative !important',
-    height: '15.625rem !important',
+    height: '17.857142857rem !important',
     left: 'unset !important',
     top: 'unset !important',
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '72% !important',
-      height: '28.75rem !important',
-      maxHeight: '28.75rem !important',
-      maxWidth: '51.8125rem !important'
+      width: '72.75% !important',
+      height: '32.857142857rem !important',
+      maxHeight: '32.857142857rem !important',
+      maxWidth: '59.239285714rem !important' // 1rem = 14px
     }
   }
 });
 
-function CountryHero({ classes, width, history }) {
+function CountryHero({ classes, history }) {
+  const theme = useTheme();
   const { toggleModal } = useToggleModal('search');
   const onClickGeoLayer = useCallback(
     area => {
@@ -72,10 +83,10 @@ function CountryHero({ classes, width, history }) {
   return (
     <Hero classes={{ root: classes.root }}>
       <HeroTitleGrid classes={{ titleTextGrid: classes.titleGrid }}>
-        <HeroTitle classes={{ title: classes.countryName }}>PesaYetu</HeroTitle>
+        <HeroTitle classes={{ title: classes.countryName }}>Kenya</HeroTitle>
         <HeroDescription classes={{ body2: classes.description }}>
           Helps storytellers and campaigners use data to add context{' '}
-          {isWidthUp('md', width) && <br />}
+          {useMediaQuery(theme.breakpoints.up('md')) && <br />}
           and depth to stories.
         </HeroDescription>
 
@@ -83,20 +94,46 @@ function CountryHero({ classes, width, history }) {
 
         <Typography variant="subtitle2" style={{ marginTop: '2.5rem' }}>
           or view{' '}
-          <a className={classes.alink} href="/profiles/country-KE">
+          <Link className={classes.alink} href="/profiles/country-KE">
             Kenya
-          </a>
+          </Link>
         </Typography>
       </HeroTitleGrid>
       <div className={classes.map}>
         <MapIt
-          url={config.MAPIT.url}
-          zoom={config.MAPIT.zoom}
           center={config.MAPIT.centre}
           codeType={config.MAPIT.codeType}
-          geoLevel="country"
+          drawChildren
+          drawProfile
           geoCode="KE"
+          geoLayerBlurStyle={{
+            color: '#00d',
+            fillColor: '#000',
+            weight: 1.0,
+            opacity: 0.3,
+            fillOpacity: 0.2
+          }}
+          geoLayerFocusStyle={{
+            color: '#777',
+            fillColor: '#000',
+            weight: 2,
+            opacity: 0.3,
+            fillOpacity: 0.3
+          }}
+          geoLayerHoverStyle={{
+            fillColor: '#fff',
+            fillOpacity: 0.3
+          }}
+          geoLevel="country"
+          id="KE"
           onClickGeoLayer={onClickGeoLayer}
+          tileLayer={
+            new TileLayer(
+              'https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png'
+            )
+          }
+          url={config.MAPIT.url}
+          zoom={config.MAPIT.zoom}
         />
       </div>
     </Hero>
@@ -105,10 +142,9 @@ function CountryHero({ classes, width, history }) {
 
 CountryHero.propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  width: PropTypes.string.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired
 };
 
-export default withRouter(withWidth()(withStyles(styles)(CountryHero)));
+export default withRouter(withStyles(styles)(CountryHero));

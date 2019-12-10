@@ -35,6 +35,10 @@ const styles = theme => ({
   },
   imageGrid: {
     padding: '1.143remrem',
+    opacity: 0.8,
+    '&:hover': {
+      opacity: 1.0
+    },
     [theme.breakpoints.up('md')]: {
       padding: '2.286rem 1.143rem'
     }

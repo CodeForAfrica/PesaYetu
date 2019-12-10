@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Grid, Typography } from '@material-ui/core';
+
+import config from '../config';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,14 +36,14 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: '20px 30px',
     [theme.breakpoints.up('md')]: {
-      maxWidth: '21.875rem',
+      // maxWidth: '21.875rem',
       paddingTop: 0,
       paddingLeft: '1rem',
       paddingRight: '2rem',
       marginLeft: '-2.3rem'
     },
     [theme.breakpoints.up('lg')]: {
-      maxWidth: '30rem',
+      // maxWidth: '30rem',
       padding: 0
     }
   },
@@ -57,17 +58,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function About({ about: { heading, intro, body }, ...props }) {
+function About({ ...props }) {
   const classes = useStyles(props);
+  const {
+    about: { heading, intro, body }
+  } = config;
+
   return (
     <div className={classes.root}>
-      <Grid container direction="row" className={classes.layout} spacing={4}>
+      <Grid container direction="row" className={classes.layout}>
         <Grid item md={4}>
           <div className={classes.heading}>
             <Typography variant="h2">{heading}</Typography>
           </div>
         </Grid>
-        <Grid item md={4}>
+        <Grid item md={8}>
           <Grid className={classes.info}>
             <Typography
               component="div"
@@ -85,9 +90,9 @@ function About({ about: { heading, intro, body }, ...props }) {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container item md={4} className={classes.imgGrid}>
+        {/* <Grid container item md={4} className={classes.imgGrid}>
           {null}
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );
