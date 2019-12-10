@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../assets/images/logos/pesayetu.png';
 
@@ -74,7 +74,12 @@ const styles = theme => ({
     position: 'relative',
     marginRight: '5.6rem'
   },
-  link: {}
+  link: {
+    color: 'white'
+  },
+  icon: {
+    color: 'white'
+  }
 });
 
 function Navigation({ classes, width }) {
@@ -89,7 +94,7 @@ function Navigation({ classes, width }) {
   const renderMenuList = () => (
     <MenuList className={classes.menuList}>
       {[
-        { title: 'About', link: '#' },
+        { title: 'About', link: '/about' },
         { title: 'Showcase', link: `/#showcase` },
         { title: 'Resources', link: '/resources' },
         { title: 'Contact', onClick: toggleContact }
@@ -99,6 +104,7 @@ function Navigation({ classes, width }) {
             variant="body1"
             className={classes.link}
             href={menu.link}
+            underline="none"
             onClick={menu.onClick}
           >
             {menu.title}
@@ -134,7 +140,11 @@ function Navigation({ classes, width }) {
           aria-label="Menu"
           onClick={openContact ? toggleContact : toggleMenu}
         >
-          {openMenu || openContact ? <ArrowBackIcon /> : <MenuIcon />}
+          {openMenu || openContact ? (
+            <ArrowBackIcon className={classes.icon} />
+          ) : (
+            <MenuIcon className={classes.icon} />
+          )}
         </IconButton>
       </Grid>
     );
@@ -146,7 +156,7 @@ function Navigation({ classes, width }) {
         <Modal isOpen={openMenu} onEscapeKeyDown={toggleMenu}>
           <Grid container className={classes.wrapper}>
             <Topbar />
-            <Search placeholder="Search">{renderMenuList()}</Search>
+            {renderMenuList()}
           </Grid>
         </Modal>
       </>
@@ -171,7 +181,7 @@ function Navigation({ classes, width }) {
         alignItems="center"
         className={classes.topMenuNav}
       >
-        <IconButton
+        {/* <IconButton
           disableRipple
           aria-label="Search"
           onClick={toggleSearch}
@@ -180,7 +190,7 @@ function Navigation({ classes, width }) {
           }}
         >
           <SearchIcon />
-        </IconButton>
+        </IconButton> */}
         {renderMenuList()}
       </Grid>
     </Grid>

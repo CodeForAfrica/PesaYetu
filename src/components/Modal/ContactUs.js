@@ -13,6 +13,7 @@ import cross from '../../assets/images/icons/close.svg';
 
 const styles = theme => ({
   root: {
+    color: 'white',
     flexGrow: 1,
     height: '31.25rem',
     [theme.breakpoints.up('md')]: {
@@ -51,6 +52,7 @@ const styles = theme => ({
     }
   },
   listItemLink: {
+    color: 'inherit',
     fontFamily: theme.typography.fontHeading,
     fontWeight: 'normal',
     textDecoration: 'none',

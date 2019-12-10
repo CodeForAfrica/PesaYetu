@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles, Modal as MaterialModal } from '@material-ui/core';
 
-import { Modal as MaterialModal } from '@material-ui/core';
-
-const styles = {
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     padding: 0,
-    backgroundColor: 'white'
+    backgroundColor: theme.palette.primary.dark
   },
   modal: {
     outline: 'none',
     height: 'auto',
     width: '100vw'
   }
-};
+}));
 
-function Modal({ classes, children, isOpen, onEscapeKeyDown }) {
+function Modal({ children, isOpen, onEscapeKeyDown, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <MaterialModal
       hideBackdrop
@@ -45,4 +45,4 @@ Modal.defaultProps = {
   onEscapeKeyDown: () => {}
 };
 
-export default withStyles(styles)(Modal);
+export default Modal;

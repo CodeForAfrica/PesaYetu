@@ -1,24 +1,24 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Container, Grid, Typography } from '@material-ui/core';
 
 import StoryList from './StoryList';
 
 const useStyles = makeStyles(theme => ({
   showCaseContainer: {
-    backgroundColor: 'white',
-    display: 'inline-block',
-    width: '100%'
+    // backgroundColor: 'white',
+    // display: 'inline-block',
+    // width: '100%'
+    maxWidth: '81.3571429rem',
+    padding: 0
   },
   root: {
     flexGrow: 1,
     padding: '3.1875rem 1.875rem',
     [theme.breakpoints.up('md')]: {
-      padding: '3.1875rem 0',
-      width: '80%',
-      float: 'right'
+      padding: '3.1875rem 0'
+      // float: 'right'
     }
   },
   headline: {
@@ -44,7 +44,7 @@ function Showcase({ stories }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.showCaseContainer} id="showcase">
+    <Container className={classes.showCaseContainer} id="showcase">
       <Grid
         container
         direction="column"
@@ -74,10 +74,10 @@ function Showcase({ stories }) {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <StoryList storyData={stories} />
+          <StoryList stories={stories} />
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 }
 

@@ -1,73 +1,87 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 
-import { Grid, GridList, GridListTile } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  makeStyles,
+  useMediaQuery,
+  useTheme,
+  GridList,
+  GridListTile
+} from '@material-ui/core';
+
+import SimpleBarReact from 'simplebar-react';
 
 import StoryCard from './StoryCard';
 
-const styles = () => ({
+import 'simplebar/dist/simplebar.min.css';
+
+const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
     /**
      * The mixture of rem and px set by GridList is
      * causing height issues resulting in overflow.
      * Stick to px for this component to function correctly.
      */
+    height: '370px' // 23.125rem
+  },
+  simpleBar: {
+    width: '100%',
     height: '370px', // 23.125rem
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden'
+    '& .simplebar-track': {
+      backgroundColor: '#f1f1ed', // off-white
+      height: '4px'
+    },
+    '& .simplebar-track.simplebar-horizontal .simplebar-scrollbar': {
+      backgroundColor: theme.palette.primary.light,
+      height: '4px',
+      top: 0
+    }
   },
   gridList: {
     flexWrap: 'nowrap',
-    // TODO(nyokabi): Material-ui documentation for Grid list componenet
+    // TODO(nyokabi): Material-ui documentation for Grid list component
     //                Promote the list into its own layer on Chrome. This cost
     //                memory but helps keeping high FPS.
     transform: 'translateZ(0)',
     height: '100%',
-    margin: '0 !important'
+    margin: '0 !important',
+    overflow: 'initial',
+    width: '100%'
   }
-});
+}));
 
-function StoryList({ classes, storyData, width }) {
-  // TODO(kilemensi): GridListTile computes the size of item and sets it using
-  //                  style. This means we can't use classes since element
-  //                  style has higher preference. Hence the use of style here.
-  //                  We need to match exact size of StoryCard so we don't end
-  //                  up with a lot of spaces around StoryCard.
-  let cards = 4;
-  if (isWidthDown('md', width)) {
-    cards = 3;
+function StoryList({ stories, ...props }) {
+  const classes = useStyles(props);
+  const theme = useTheme();
+  let cols = 4;
+  if (useMediaQuery(theme.breakpoints.down('md'))) {
+    cols = 2;
   }
-  if (isWidthDown('sm', width)) {
-    cards = 1;
+  if (useMediaQuery(theme.breakpoints.down('sm'))) {
+    cols = 1;
   }
 
   return (
-    <Grid
-      container
-      justify="center"
-      alignItems="center"
-      className={classes.root}
-    >
-      <GridList cellHeight={360} className={classes.gridList} cols={cards}>
-        {storyData.map(story => (
-          <GridListTile key={story.index}>
-            <StoryCard story={story} />
-          </GridListTile>
-        ))}
-      </GridList>
-    </Grid>
+    <div className={classes.root}>
+      <SimpleBarReact autoHide={false} className={classes.simpleBar}>
+        <GridList cellHeight={320} className={classes.gridList} cols={cols}>
+          {stories.map(story => (
+            <GridListTile key={story.index}>
+              <StoryCard story={story} />
+            </GridListTile>
+          ))}
+        </GridList>
+      </SimpleBarReact>
+    </div>
   );
 }
 
 StoryList.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  storyData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  width: PropTypes.string.isRequired
+  stories: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
-export default withWidth()(withStyles(styles)(StoryList));
+export default StoryList;
