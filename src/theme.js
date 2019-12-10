@@ -84,7 +84,24 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: FONT_FAMILY_TEXT,
-    fontHeading: FONT_FAMILY_HEADING
+    h1: {
+      fontFamily: FONT_FAMILY_HEADING
+    },
+    h2: {
+      fontFamily: FONT_FAMILY_HEADING
+    },
+    h3: {
+      fontFamily: FONT_FAMILY_HEADING
+    },
+    h4: {
+      fontFamily: FONT_FAMILY_HEADING
+    },
+    h5: {
+      fontFamily: FONT_FAMILY_HEADING
+    },
+    h6: {
+      fontFamily: FONT_FAMILY_HEADING
+    }
   },
   overrides: {
     MuiButton: {
