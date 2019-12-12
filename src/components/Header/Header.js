@@ -13,7 +13,9 @@ import Navigation from './Navigation';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: theme.palette.primary.dark,
+    color: 'white'
   },
   wrapper: {
     [theme.breakpoints.up('md')]: {

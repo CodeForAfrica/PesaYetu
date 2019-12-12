@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import About from './pages/About';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Resources from './pages/Resources';
@@ -10,6 +11,7 @@ function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
         <Route exact path="/profiles/:geoId" component={Profile} />
         <Route
           exact

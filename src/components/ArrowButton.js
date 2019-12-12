@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Button } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-
-import classNames from 'classnames';
+import { makeStyles, Grid, Button } from '@material-ui/core';
 
 import arrowBlack from '../assets/images/icons/black-combined-shape.svg';
 import arrow from '../assets/images/icons/combined-shape.svg';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: '2rem'
   },
@@ -18,18 +15,15 @@ const styles = theme => ({
     textTransform: 'none',
     fontWeight: 800,
     fontSize: theme.typography.subtitle2.fontSize,
-    color: 'black',
     height: '4rem',
+    color: props => (props.secondary ? 'white' : 'black'),
     width: '100%',
-    border: '2px solid black',
+    border: props => (props.secondary ? '2px solid white' : '2px solid black'),
     paddingLeft: '4rem',
     paddingRight: '4rem',
     [theme.breakpoints.up('sm')]: {
       width: 'unset'
     }
-  },
-  buttonSecondary: {
-    border: '2px solid'
   },
   arrow: {
     pointerEvents: 'all',
@@ -38,17 +32,18 @@ const styles = theme => ({
       display: 'none'
     }
   }
-});
+}));
 
-function ArrowButton({ secondary, classes, children, onClick }) {
+function ArrowButton({ children, secondary, ...props }) {
+  const classes = useStyles({ secondary, ...props });
+
   return (
     <Grid item sm={12} container alignItems="center" className={classes.root}>
       <Button
         variant="outlined"
-        onClick={onClick}
-        className={classNames(classes.button, {
-          [classes.buttonSecondary]: secondary
-        })}
+        className={classes.button}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
       >
         {children}
       </Button>
@@ -67,7 +62,6 @@ ArrowButton.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  onClick: PropTypes.func.isRequired,
   secondary: PropTypes.bool
 };
 
@@ -75,4 +69,4 @@ ArrowButton.defaultProps = {
   secondary: false
 };
 
-export default withStyles(styles)(ArrowButton);
+export default ArrowButton;

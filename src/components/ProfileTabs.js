@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
     height: '6.25rem' // 100px / 16
   },
   indicator: {
+    backgroundColor: theme.palette.primary.main,
     height: '.25rem' // 4px / 16
   },
   tab: {

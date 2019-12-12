@@ -21,9 +21,6 @@ const styles = theme => ({
     '&:hover': {
       opacity: 1,
       backgroundColor: '#fff'
-    },
-    [theme.breakpoints.up('md')]: {
-      marginRight: '1.25rem'
     }
   },
   contentRoot: {

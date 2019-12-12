@@ -13,9 +13,9 @@ const config = {
   about: {
     heading: 'About Us',
     intro:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+      'PesaYetu is a budget data portal and data visualization tool that shows how much money each county has received from the national government, and how this money is allocated and utilized based on each county’s priorities',
     body:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
+      'PesaYetu aims to create an easy to use visualization on allocations made to the counties annually since 2013, tracking the changes in total allocation, conditional allocations and the equitable share so that the relevant stakeholders (journalists) can use this data to quickly find analyse and compare complex government budget data to help fact-check claims about resource allocations, public procurement and development plans or services.'
   },
   showCaseStories: [
     {

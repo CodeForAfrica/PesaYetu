@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { CountryPageHeader } from '../components/Header';
 import About from '../components/About';
 import Page from '../components/Page';
-import HowItWorks from '../components/HowItWorks';
+// import HowItWorks from '../components/HowItWorks';
 import ShowCase from '../components/Showcase';
-import Data from '../components/Data';
-import config from '../config';
+// import Data from '../components/Data';
 import createAPI from '../lib/api';
 
 function Home() {
@@ -17,10 +16,10 @@ function Home() {
   return (
     <Page>
       <CountryPageHeader />
-      <About about={config.about} />
-      <HowItWorks />
+      <About />
+      {/* <HowItWorks /> */}
       <ShowCase stories={posts} />
-      <Data />
+      {/* <Data /> */}
     </Page>
   );
 }

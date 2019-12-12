@@ -32,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginTop: '5.75rem'
     }
+  },
+  sectionData: {
+    backgroundColor: '#EDEDEE'
   }
 }));
 
@@ -75,10 +78,9 @@ function Resources(props) {
         subtitle="Powered by sourceAFRICA.net"
       >
         <Typography variant="body2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Data for PesaYetu is aggregated from various authoritative sources.
+          Below is a list of documents used for the project, which is hosted on
+          sourceAFRICA.net
         </Typography>
         <Grid container spacing={2} className={classes.content}>
           {documents.map(document => (
@@ -105,15 +107,20 @@ function Resources(props) {
       </Section>
       <Section
         classes={{
+          root: classes.sectionData,
           content: classes.sectionContent,
           subtitle: classes.sectionSubtitle
         }}
         id="data"
-        light
         title="Data"
         titleVariant={titleVariant}
-        subtitle="Powered by openAfrica.net"
+        subtitle="Powered by openAFRICA.net"
       >
+        <Typography variant="body2">
+          Data for PesaYetu is aggregated from various authoritative sources.
+          Below is a list of datasets used for the project, which is hosted on
+          openAFRICA.net
+        </Typography>
         <Grid container justify="space-between" className={classes.content}>
           {packages.map(p => (
             <DataCard
@@ -121,7 +128,7 @@ function Resources(props) {
               dataLink={`https://openafrica.net/dataset/${p.name}`}
               description={p.notes}
               title={p.title}
-              orgLink={`https://openafrica.net/organization/${p.organization.name}`}
+              organization={p.organization}
             />
           ))}
         </Grid>

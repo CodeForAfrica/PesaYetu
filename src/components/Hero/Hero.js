@@ -261,9 +261,10 @@ HeroDetailComponent.defaultProps = {
 
 const HeroDetail = withStyles(styles)(HeroDetailComponent);
 
-function HeroButtonComponent({ children, onClick }) {
+function HeroButtonComponent({ children, classes, ...props }) {
   return (
-    <ArrowButton secondary onClick={onClick}>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <ArrowButton secondary {...props}>
       {children}
     </ArrowButton>
   );
@@ -274,8 +275,7 @@ HeroButtonComponent.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
-  onClick: PropTypes.func.isRequired
+  ]).isRequired
 };
 
 const HeroButton = withStyles(styles)(HeroButtonComponent);

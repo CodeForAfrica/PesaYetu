@@ -36,7 +36,7 @@ function About({ classes }) {
   return (
     <div>
       <Typography variant="subtitle1" className={classes.title}>
-        PesaYetu is a tool the gives Kenyan Citizens access to information on
+        PesaYetu is a tool that gives Kenyan Citizens access to information on
         how money collected from taxpayers is allocated. With this information,
         they can ask what their elected officials are doing with it, and from
         there the discussion can proceed towards how money is spent in the

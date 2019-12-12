@@ -16,6 +16,7 @@ import ChartsContainer from '../components/ChartsContainer';
 import ProfileSectionTitle from '../components/ProfileSectionTitle';
 import ProfileTabs from '../components/ProfileTabs';
 import config from '../config';
+import logo from '../assets/images/logos/pesacheck-white.png';
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -151,6 +152,7 @@ function Profile({
                       'Copy the code below, then paste into your own CMS or HTML. Embedded charts are responsive to your page width, and have been tested in Firefox, Safari, Chrome, and Edge.',
                     code: `<iframe src="${config.url}/embed/${geoId}/${tab.sectionId}/${chart.id}" />`
                   }}
+                  logo={logo}
                 >
                   {!chartData.isLoading &&
                     chart.visuals.map(
@@ -172,6 +174,7 @@ function Profile({
                               return temp ? temp.nodes : [];
                             })()}
                             comparisonData={chartData.comparisonVisualsData}
+                            toggleSize={false}
                           />
                         )
                     )}

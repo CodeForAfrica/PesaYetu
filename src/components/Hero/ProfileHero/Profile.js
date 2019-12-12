@@ -1,18 +1,19 @@
 import React, { useCallback } from 'react';
-
 import { PropTypes } from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 
 import classNames from 'classnames';
+
+import { makeStyles, Link } from '@material-ui/core';
+
+import { TileLayer } from 'leaflet';
 import TypographyLoader from '@codeforafrica/hurumap-ui/core/TypographyLoader';
-import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
+// import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
 import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from '../Hero';
 
-import Search from '../../Search';
-import searchIcon from '../../../assets/images/icons/location.svg';
+// import Search from '../../Search';
+// import searchIcon from '../../../assets/images/icons/location.svg';
 import config from '../../../config';
 
 const useStyles = makeStyles(theme => ({
@@ -51,7 +52,6 @@ const useStyles = makeStyles(theme => ({
   caption: {
     display: 'inline-flex',
     alignItems: 'center',
-    color: '#8d8d8c',
     width: '100%',
     textTransform: 'capitalize',
     paddingTop: theme.spacing(),
@@ -75,6 +75,8 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-block'
   },
   alink: {
+    fontWeight: 'bold',
+    color: 'red',
     paddingLeft: 4
   }
 }));
@@ -156,14 +158,15 @@ function Profile({
           }}
         >
           {geoLevel} in{' '}
-          <Typography
-            component="a"
+          <Link
+            component={parentLevel ? 'a' : 'span'}
             variant="subtitle1"
             className={classes.alink}
             href={parentLevel ? `/profiles/${parentLevel}-${parentCode}` : '#'}
+            underline={parentLevel ? 'hover' : 'none'}
           >
             {parentName || 'Africa'}
-          </Typography>
+          </Link>
         </TypographyLoader>
         <HeroDetail
           loading={isLoading}
@@ -201,20 +204,20 @@ function Profile({
           {populationDensity}
         </HeroDetail>
         {/* Start search skeleton loader */}
-        {!head2head && isLoading && (
+        {/* {!head2head && isLoading && (
           <ContentLoader style={{ width: '19rem', height: '3.0625rem' }}>
             <rect x="0" y="0" width="100%" height="100%" />
           </ContentLoader>
-        )}
+        )} */}
         {/* End search skeleton loader */}
-        {!head2head && !isLoading && (
+        {/* {!head2head && !isLoading && (
           <Search
             isComparisonSearch
             placeholder="Compare this with"
             thisGeoId={geoId}
             icon={searchIcon}
           />
-        )}
+        )} */}
       </HeroTitleGrid>
       <div
         className={classNames(classes.map, {
@@ -222,16 +225,37 @@ function Profile({
         })}
       >
         <MapIt
-          zoom={config.MAPIT.zoom}
           center={config.MAPIT.centre}
-          id={geoId}
-          drawProfile
-          drawChildren
-          url={config.MAPIT.url}
           codeType={config.MAPIT.codeType}
-          geoLevel={geoId.split('-')[0]}
+          drawChildren
+          drawProfile
           geoCode={geoId.split('-')[1]}
+          geoLayerBlurStyle={{
+            color: '#d6acd0',
+            fillColor: '#958058',
+            weight: 1.0,
+            opacity: 0.3,
+            fillOpacity: 0.2
+          }}
+          geoLayerFocusStyle={{
+            color: '#d6acd0',
+            fillColor: '#fff',
+            weight: 2,
+            opacity: 0.3,
+            fillOpacity: 0.2
+          }}
+          geoLayerHoverStyle={{
+            fillColor: '#fff',
+            fillOpacity: 0.3
+          }}
+          geoLevel={geoId.split('-')[0]}
+          id={geoId}
           onClickGeoLayer={onClickGeoLayer}
+          tileLayer={
+            new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+          }
+          url={config.MAPIT.url}
+          zoom={config.MAPIT.zoom}
         />
       </div>
       {/* {activeRelease && (
