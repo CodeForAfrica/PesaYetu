@@ -38,7 +38,10 @@ const useStyles = makeStyles(theme => ({
     '& .simplebar-track.simplebar-horizontal .simplebar-scrollbar': {
       backgroundColor: theme.palette.primary.light,
       height: '4px',
-      top: 0
+      top: 0,
+      '&::before': {
+        backgroundColor: theme.palette.primary.light
+      }
     }
   },
   gridList: {

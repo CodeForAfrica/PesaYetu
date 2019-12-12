@@ -7,9 +7,6 @@ import StoryList from './StoryList';
 
 const useStyles = makeStyles(theme => ({
   showCaseContainer: {
-    // backgroundColor: 'white',
-    // display: 'inline-block',
-    // width: '100%'
     maxWidth: '81.3571429rem',
     padding: 0
   },
@@ -18,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     padding: '3.1875rem 1.875rem',
     [theme.breakpoints.up('md')]: {
       padding: '3.1875rem 0'
-      // float: 'right'
     }
   },
   headline: {
