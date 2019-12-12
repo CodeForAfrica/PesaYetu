@@ -231,18 +231,18 @@ function Profile({
           drawProfile
           geoCode={geoId.split('-')[1]}
           geoLayerBlurStyle={{
-            color: '#00d',
-            fillColor: '#000',
+            color: '#d6acd0',
+            fillColor: '#958058',
             weight: 1.0,
             opacity: 0.3,
             fillOpacity: 0.2
           }}
           geoLayerFocusStyle={{
-            color: '#777',
-            fillColor: '#000',
+            color: '#d6acd0',
+            fillColor: '#fff',
             weight: 2,
             opacity: 0.3,
-            fillOpacity: 0.3
+            fillOpacity: 0.2
           }}
           geoLayerHoverStyle={{
             fillColor: '#fff',
@@ -252,9 +252,7 @@ function Profile({
           id={geoId}
           onClickGeoLayer={onClickGeoLayer}
           tileLayer={
-            new TileLayer(
-              'https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png'
-            )
+            new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
           }
           url={config.MAPIT.url}
           zoom={config.MAPIT.zoom}
