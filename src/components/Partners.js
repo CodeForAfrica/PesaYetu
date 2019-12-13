@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import A from '@codeforafrica/hurumap-ui/core/A';
 
 import cfa from '../assets/images/logos/cfafrica-white.png';
+import dw from '../assets/images/logos/dwakademie-white.png';
 import icfj from '../assets/images/logos/icfj-white.png';
 import bmgf from '../assets/images/logos/bmgf-white.png';
 import pesacheck from '../assets/images/logos/pesacheck-white.png';
@@ -16,7 +17,10 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.light
   },
   layout: {
-    height: '14rem',
+    height: '18rem',
+    [theme.breakpoints.up('sm')]: {
+      height: '14rem'
+    },
     [theme.breakpoints.up('md')]: {
       maxWidth: '81.3571429rem',
       margin: '0 auto',
@@ -34,7 +38,7 @@ const styles = theme => ({
     }
   },
   imageGrid: {
-    padding: '1.143remrem',
+    padding: '1.143rem',
     opacity: 0.8,
     '&:hover': {
       opacity: 1.0
@@ -55,17 +59,22 @@ function Partners({ classes }) {
         alignItems="center"
       >
         <Grid item className={classes.imageGrid}>
-          <A href="https://codeforafrica.org/">
+          <A href="//codeforafrica.org/">
             <img src={cfa} alt="Code for Africa" className={classes.img} />
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
-          <A href="https://icfj.org/">
+          <A href="//dw.com/">
+            <img src={dw} alt="Deutsche Welle" className={classes.img} />
+          </A>
+        </Grid>
+        <Grid item className={classes.imageGrid}>
+          <A href="//icfj.org/">
             <img src={icfj} alt="ICFJ" className={classes.img} />
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
-          <A href="https://gatesfoundation.org/">
+          <A href="//gatesfoundation.org/">
             <img
               src={bmgf}
               alt="Bill Melinda Gates Foundation"
@@ -74,7 +83,7 @@ function Partners({ classes }) {
           </A>
         </Grid>
         <Grid item className={classes.imageGrid}>
-          <A href="https://pesacheck.org/">
+          <A href="//pesacheck.org/">
             <img src={pesacheck} alt="PesaCheck" className={classes.img} />
           </A>
         </Grid>
