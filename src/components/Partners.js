@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import A from '@codeforafrica/hurumap-ui/core/A';
 
 import cfa from '../assets/images/logos/cfafrica-white.png';
-import dw from '../assets/images/logos/dw-white.png';
+import dw from '../assets/images/logos/dwakademie-white.png';
 import icfj from '../assets/images/logos/icfj-white.png';
 import bmgf from '../assets/images/logos/bmgf-white.png';
 import pesacheck from '../assets/images/logos/pesacheck-white.png';
