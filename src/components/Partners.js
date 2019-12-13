@@ -17,7 +17,10 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.light
   },
   layout: {
-    height: '14rem',
+    height: '18rem',
+    [theme.breakpoints.up('sm')]: {
+      height: '14rem'
+    },
     [theme.breakpoints.up('md')]: {
       maxWidth: '81.3571429rem',
       margin: '0 auto',
