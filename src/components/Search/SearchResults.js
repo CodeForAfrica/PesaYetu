@@ -31,8 +31,12 @@ const styles = theme => ({
       width: '500px'
     }
   },
-  listItem: {},
-  listItemDropdown: {},
+  listItem: {
+    color: 'white'
+  },
+  listItemDropdown: {
+    color: 'white'
+  },
   selected: {},
   level: {
     margin: 0,
@@ -62,7 +66,7 @@ function renderHref(codeType, result, thisGeoId, isComparisonSearch) {
   } else if (result.type.toLowerCase() === 'country') {
     href = `/${result.slug}`;
   } else {
-    href = `/profile/${result.codes[codeType]}`;
+    href = `/profiles/${result.codes[codeType]}`;
   }
   return href;
 }

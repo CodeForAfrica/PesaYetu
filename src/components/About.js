@@ -76,14 +76,14 @@ function About({ ...props }) {
           <Grid className={classes.info}>
             <Typography
               component="div"
-              variant="body2"
+              variant="body1"
               className={classes.infoTitle}
             >
               {intro}
             </Typography>
             <Typography
               component="span"
-              variant="body2"
+              variant="body1"
               className={classes.infoBody}
             >
               {body}
