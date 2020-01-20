@@ -2,8 +2,11 @@ import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import OpenInNew from '@material-ui/icons/OpenInNew';
 
 import A from '@codeforafrica/hurumap-ui/core/A';
+
+import charts from '../data/charts.json';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,17 +17,27 @@ const useStyles = makeStyles(theme => ({
       padding: '3.125em 0'
     }
   },
-  wrapper: {
+  content: {
     margin: '0 auto',
     [theme.breakpoints.up('md')]: {
       maxWidth: '81.3571429rem'
     }
   },
-  description: {
+  citations: {
     order: 2,
     [theme.breakpoints.up('md')]: {
       order: 1
     }
+  },
+  citationsTitle: {
+    lineHeight: 1.43,
+    padding: '8px 0'
+  },
+  citationSourceTitle: {
+    lineHeight: 2.22
+  },
+  citationSourceLink: {
+    lineHeight: 2.22
   },
   releaseSelector: {
     order: 1,
@@ -32,14 +45,6 @@ const useStyles = makeStyles(theme => ({
       order: 2
     }
   },
-  descriptionTitle: {
-    lineHeight: 1.43,
-    padding: '8px 0'
-  },
-  descriptionText: {
-    lineHeight: 2.22
-  },
-  link: {},
   changeReleaseButton: {
     lineHeight: 2.09,
     letterSpacing: 'normal',
@@ -63,28 +68,47 @@ const useStyles = makeStyles(theme => ({
 
 function ProfileRelease() {
   const classes = useStyles();
-  const citationLink = link => (
-    <A className={classes.link} href={link}>
-      {link}
-    </A>
-  );
+  const sectionCitations = charts.map(section => {
+    return section.charts
+      .map(({ sourceLink: link, sourceTitle: title }) => ({ link, title }))
+      .reduce((acc, { link, title }) => {
+        acc.link = link;
+        acc.title = title;
+        return acc;
+      }, {});
+  });
+  const citations = sectionCitations.reduce((acc, { link, title }) => {
+    acc[link] = title;
+    return acc;
+  }, {});
 
   return (
     <div className={classes.root}>
-      <Grid container className={classes.wrapper}>
-        <Grid item className={classes.description}>
-          <Typography className={classes.descriptionTitle}>
-            Citations
-          </Typography>
-          <Typography className={classes.descriptionText}>
-            Community Survey 2016: Statistics South Africa (2016) South African
-            Community Survey 2016. Indicators derived from the full population
-            Community Survey.{' '}
-            {citationLink(
-              'https://wazimap.co.za/profiles/province-EC-eastern-cape'
-            )}
-            <br />
-          </Typography>
+      <Grid container className={classes.content}>
+        <Grid item className={classes.citations}>
+          <Typography className={classes.citationsTitle}>Citations</Typography>
+          {Object.keys(citations).map(link => (
+            <>
+              <Typography
+                variant="caption"
+                className={classes.citationSourceTitle}
+              >
+                {citations[link]}
+              </Typography>{' '}
+              <A
+                variant="caption"
+                href={link}
+                className={classes.citationSourceLink}
+              >
+                {link}{' '}
+                <OpenInNew
+                  fontSize="inherit"
+                  className={classes.citationSourceLink}
+                />
+              </A>
+              <br />
+            </>
+          ))}
         </Grid>
       </Grid>
     </div>
