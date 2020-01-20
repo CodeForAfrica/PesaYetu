@@ -101,102 +101,102 @@ function Profile({
    * causing a few seconds UI block which is bad UX.
    * This caches the components so they do not have to render again.
    */
-  const chartComponents = useMemo(
-    () =>
-      profileTabs.slice(1).map(tab => (
-        <Grid
-          container
-          spacing={2}
-          id={tab.slug}
-          key={tab.slug}
-          className={classes.chartsSection}
-        >
-          <ProfileSectionTitle loading={chartData.isLoading} tab={tab} />
-          {sectionedCharts[tab.sectionIndex].charts
-            .filter(
-              ({ visuals: v }) =>
-                chartData.isLoading ||
-                (chartData.profileVisualsData &&
-                  /* data is not missing */
-                  !v.find(
-                    ({ queryAlias }) =>
-                      chartData.profileVisualsData[queryAlias].nodes.length ===
-                      0
-                  ))
-            )
-            .map(chart => (
-              <Grid
-                key={chart.id}
-                item
-                xs={12}
-                md={
-                  parseFloat(chart.layout.split('/').reduce((a, b) => a / b)) *
-                  12
-                }
-              >
-                <ChartContainer
-                  key={chart.id}
-                  loading={chartData.isLoading}
-                  title={chart.title}
-                  subtitle={chart.subtitle}
-                  sourceLink={chart.sourceLink}
-                  sourceTitle={chart.sourceTitle}
-                  classes={{
-                    title: classes.title,
-                    subtitle: classes.subtitle,
-                    sourceLink: classes.sourceLink
-                  }}
-                  embed={{
-                    title: 'Embed code for this chart',
-                    subtitle:
-                      'Copy the code below, then paste into your own CMS or HTML. Embedded charts are responsive to your page width, and have been tested in Firefox, Safari, Chrome, and Edge.',
-                    code: `<iframe src="${config.url}/embed/${geoId}/${tab.sectionId}/${chart.id}" />`
-                  }}
-                  logo={logo}
-                >
-                  {!chartData.isLoading &&
-                    chart.visuals.map(
-                      visual =>
-                        !profiles.isLoading && (
-                          <ChartFactory
-                            key={visual.id}
-                            definition={visual}
-                            profiles={profiles}
-                            data={
-                              chartData.profileVisualsData[visual.queryAlias]
-                                .nodes
-                            }
-                            referenceData={(() => {
-                              const temp =
-                                chartData.profileVisualsData[
-                                  `${visual.queryAlias}Reference`
-                                ];
-                              return temp ? temp.nodes : [];
-                            })()}
-                            comparisonData={chartData.comparisonVisualsData}
-                            toggleSize={false}
-                          />
-                        )
-                    )}
-                </ChartContainer>
-              </Grid>
-            ))}
-        </Grid>
-      )),
-    [
-      chartData.comparisonVisualsData,
-      chartData.isLoading,
-      chartData.profileVisualsData,
-      classes.chartsSection,
-      classes.sourceLink,
-      classes.subtitle,
-      classes.title,
-      geoId,
-      profileTabs,
-      profiles,
-      sectionedCharts
-    ]
-  );
+  const {
+    existing: existingSectionedCharts,
+    components: chartComponents
+  } = useMemo(() => {
+    const existing = sectionedCharts.map(section =>
+      section.charts.filter(
+        ({ visuals: v }) =>
+          chartData.isLoading ||
+          (chartData.profileVisualsData &&
+            /* data is not missing */
+            !v.find(
+              ({ queryAlias }) =>
+                chartData.profileVisualsData[queryAlias].nodes.length === 0
+            ))
+      )
+    );
+    const components = profileTabs.slice(1).map(tab => (
+      <Grid
+        container
+        spacing={2}
+        id={tab.slug}
+        key={tab.slug}
+        className={classes.chartsSection}
+      >
+        <ProfileSectionTitle loading={chartData.isLoading} tab={tab} />
+        {existing[tab.sectionIndex].map(chart => (
+          <Grid
+            key={chart.id}
+            item
+            xs={12}
+            md={
+              parseFloat(chart.layout.split('/').reduce((a, b) => a / b)) * 12
+            }
+          >
+            <ChartContainer
+              key={chart.id}
+              loading={chartData.isLoading}
+              title={chart.title}
+              subtitle={chart.subtitle}
+              sourceLink={chart.sourceLink}
+              sourceTitle={chart.sourceTitle}
+              classes={{
+                title: classes.title,
+                subtitle: classes.subtitle,
+                sourceLink: classes.sourceLink
+              }}
+              embed={{
+                title: 'Embed code for this chart',
+                subtitle:
+                  'Copy the code below, then paste into your own CMS or HTML. Embedded charts are responsive to your page width, and have been tested in Firefox, Safari, Chrome, and Edge.',
+                code: `<iframe src="${config.url}/embed/${geoId}/${tab.sectionId}/${chart.id}" />`
+              }}
+              logo={logo}
+            >
+              {!chartData.isLoading &&
+                chart.visuals.map(
+                  visual =>
+                    !profiles.isLoading && (
+                      <ChartFactory
+                        key={visual.id}
+                        definition={visual}
+                        profiles={profiles}
+                        data={
+                          chartData.profileVisualsData[visual.queryAlias].nodes
+                        }
+                        referenceData={(() => {
+                          const temp =
+                            chartData.profileVisualsData[
+                              `${visual.queryAlias}Reference`
+                            ];
+                          return temp ? temp.nodes : [];
+                        })()}
+                        comparisonData={chartData.comparisonVisualsData}
+                        toggleSize={false}
+                      />
+                    )
+                )}
+            </ChartContainer>
+          </Grid>
+        ))}
+      </Grid>
+    ));
+    return { existing, components };
+  }, [
+    chartData.comparisonVisualsData,
+    chartData.isLoading,
+    chartData.profileVisualsData,
+    classes.chartsSection,
+    classes.sourceLink,
+    classes.subtitle,
+    classes.title,
+    geoId,
+    profileTabs,
+    profiles,
+    sectionedCharts
+  ]);
 
   // Show and hide sections
   useEffect(() => {
@@ -230,7 +230,7 @@ function Profile({
         tabs={profileTabs}
       />
       <ChartsContainer>{chartComponents}</ChartsContainer>
-      <ProfileRelease />
+      <ProfileRelease sectionedCharts={existingSectionedCharts} />
     </Page>
   );
 }
