@@ -1,12 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Grid, Typography } from '@material-ui/core';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 
 import A from '@codeforafrica/hurumap-ui/core/A';
-
-import charts from '../data/charts.json';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -66,17 +64,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function ProfileRelease() {
-  const classes = useStyles();
-  const sectionCitations = charts.map(section => {
-    return section.charts
-      .map(({ sourceLink: link, sourceTitle: title }) => ({ link, title }))
-      .reduce((acc, { link, title }) => {
-        acc.link = link;
-        acc.title = title;
-        return acc;
-      }, {});
-  });
+function ProfileRelease({ sectionCharts, ...props }) {
+  const classes = useStyles(props);
+  const sectionCitations = sectionCharts
+    .filter(s => s.length > 0)
+    .map(charts => {
+      return charts
+
+        .map(({ sourceLink: link, sourceTitle: title }) => ({ link, title }))
+        .reduce((acc, { link, title }) => {
+          acc.link = link;
+          acc.title = title;
+          return acc;
+        }, {});
+    });
   const citations = sectionCitations.reduce((acc, { link, title }) => {
     acc[link] = title;
     return acc;
@@ -115,4 +116,10 @@ function ProfileRelease() {
   );
 }
 
+ProfileRelease.propTypes = {
+  sectionCharts: PropTypes.arrayOf(PropTypes.shape({}))
+};
+ProfileRelease.defaultProps = {
+  sectionCharts: []
+};
 export default ProfileRelease;
