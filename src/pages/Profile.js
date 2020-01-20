@@ -230,7 +230,7 @@ function Profile({
         tabs={profileTabs}
       />
       <ChartsContainer>{chartComponents}</ChartsContainer>
-      <ProfileRelease sectionCharts={existingSectionedCharts} />
+      <ProfileRelease sectionedCharts={existingSectionedCharts} />
     </Page>
   );
 }

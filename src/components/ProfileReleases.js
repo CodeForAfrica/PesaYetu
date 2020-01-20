@@ -64,9 +64,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function ProfileRelease({ sectionCharts, ...props }) {
+function ProfileRelease({ sectionedCharts, ...props }) {
   const classes = useStyles(props);
-  const sectionCitations = sectionCharts
+  const sectionCitations = sectionedCharts
     .filter(s => s.length > 0)
     .map(charts => {
       return charts
@@ -117,9 +117,9 @@ function ProfileRelease({ sectionCharts, ...props }) {
 }
 
 ProfileRelease.propTypes = {
-  sectionCharts: PropTypes.arrayOf(PropTypes.shape({}))
+  sectionedCharts: PropTypes.arrayOf(PropTypes.shape({}))
 };
 ProfileRelease.defaultProps = {
-  sectionCharts: []
+  sectionedCharts: []
 };
 export default ProfileRelease;
