@@ -51,19 +51,18 @@ export default function createAPI() {
 }
 
 export async function getSourceAfricaData() {
-  return axios.get(
-    'https://dc.sourceafrica.net/api/search.json?q=projectid:483-PesaYetu'
-  );
+  const url =
+    'https://dc.sourceafrica.net/api/search.json?q=projectid:483-PesaYetu';
+  return axios.get(`https://corsanywhere.devops.codeforafrica.org/${url}`);
 }
 
 export async function getOpenAfricaData() {
-  return axios.get(
-    'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu'
-  );
+  const url =
+    'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu';
+  return axios.get(`https://corsanywhere.devops.codeforafrica.org/${url}`);
 }
 
 export async function getOpenAfricaCount() {
-  return axios.get(
-    'https://africaopendata.org/api/3/action/group_show?id=pesayetu'
-  );
+  const url = 'https://africaopendata.org/api/3/action/group_show?id=pesayetu';
+  return axios.get(`https://corsanywhere.devops.codeforafrica.org/${url}`);
 }

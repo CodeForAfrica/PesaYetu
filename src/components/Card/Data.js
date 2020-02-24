@@ -31,12 +31,14 @@ const useStyles = makeStyles(theme => ({
   },
   xsTitle: {
     marginTop: '1rem',
+    textTransform: 'capitalize',
     [theme.breakpoints.up('md')]: {
       display: 'none'
     }
   },
   mdTitle: {
     display: 'none',
+    textTransform: 'capitalize',
     [theme.breakpoints.up('md')]: {
       marginTop: '1rem',
       display: 'block'
@@ -65,7 +67,7 @@ function Data({
           {organization.title}
         </A>
         <CardActionArea target="_blank" href={dataLink}>
-          <Typography className={classes.xsTitle} variant="h4">
+          <Typography variant="h5" className={classes.xsTitle}>
             {title}
           </Typography>
           <Grid container direction="row">
@@ -75,10 +77,10 @@ function Data({
               </Grid>
             )}
             <Grid item xs={12} md={10}>
-              <Typography className={classes.mdTitle} variant="h4">
+              <Typography variant="h5" className={classes.mdTitle}>
                 {title}
               </Typography>
-              <Typography className={classes.description}>
+              <Typography variant="body2" className={classes.description}>
                 {description}
               </Typography>
             </Grid>
