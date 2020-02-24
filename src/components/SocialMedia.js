@@ -32,7 +32,7 @@ function SocialMedia({ classes }) {
     <Grid container direction="row" justify="flex-start" alignItems="center">
       <Grid item>
         <a
-          href="https://www.facebook.com/AfricanCIR/"
+          href="https://www.facebook.com/PesaCheck"
           target="_blank"
           rel="noopener noreferrer"
         >
