@@ -3,7 +3,7 @@ import createTheme from '@codeforafrica/hurumap-ui/core/styles/createTheme';
 const FONT_FAMILY_HEADING = '"Lora", "serif"';
 const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 
-const COLOR_SCALE = ['#2078ac', '#559cc1', '#3286b4', '#9ac2dd'];
+const COLOR_SCALE = ['#0067A3', '#559cc1', '#EE4538', '#9ac2dd'];
 /**
  * http://colorbrewer2.org/#type=sequential&scheme=Blues&n=8
  */
@@ -79,7 +79,7 @@ const theme = createTheme({
   },
   palette: {
     background: { default: '#ffff' },
-    primary: { main: '#3385B5' },
+    primary: { main: '#0067A3' },
     secondary: { main: '#353745' }
   },
   typography: {
