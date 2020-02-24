@@ -10,7 +10,6 @@ import {
   Typography
 } from '@material-ui/core';
 import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
-import { TileLayer } from 'leaflet';
 
 import Hero, {
   HeroTitle,
@@ -46,12 +45,11 @@ const styles = theme => ({
   },
   description: {
     [theme.breakpoints.up('md')]: {
-      whiteSpace: 'nowrap',
       width: '100%'
     }
   },
   alink: {
-    color: 'red',
+    color: '#EE4538',
     fontWeight: 'bold',
     pointerEvents: 'all'
   },
@@ -107,29 +105,26 @@ function CountryHero({ classes, history }) {
           drawProfile
           geoCode="KE"
           geoLayerBlurStyle={{
-            color: '#d6acd0',
-            fillColor: '#958058',
+            color: 'white',
+            fillColor: '#0067A3',
             weight: 1.0,
-            opacity: 0.3,
+            opacity: 1.0,
             fillOpacity: 0.2
           }}
           geoLayerFocusStyle={{
-            color: '#d6acd0',
-            fillColor: '#fff',
-            weight: 2,
-            opacity: 0.3,
-            fillOpacity: 0.2
+            color: 'white',
+            fillColor: '#0067A3',
+            weight: 2.0,
+            opacity: 1.0,
+            fillOpacity: 0.5
           }}
           geoLayerHoverStyle={{
-            fillColor: '#fff',
-            fillOpacity: 0.3
+            fillColor: '#0067A3',
+            fillOpacity: 0.4
           }}
           geoLevel="country"
           id="KE"
           onClickGeoLayer={onClickGeoLayer}
-          tileLayer={
-            new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
-          }
           url={config.MAPIT.url}
           zoom={config.MAPIT.zoom}
         />
