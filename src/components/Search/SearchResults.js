@@ -32,7 +32,11 @@ const styles = theme => ({
     }
   },
   listItem: {
-    color: 'white'
+    color: 'white',
+    '&:hover': {
+      color: 'red',
+      background: 'inherit'
+    }
   },
   listItemDropdown: {
     color: 'white'
@@ -42,7 +46,7 @@ const styles = theme => ({
     margin: 0,
     fontSize: '14px',
     fontWeight: '600',
-    opacity: '0.5',
+    opacity: '0.3',
     marginRight: '20px',
     width: '80px'
   },
@@ -63,8 +67,6 @@ function renderHref(codeType, result, thisGeoId, isComparisonSearch) {
   let href;
   if (isComparisonSearch) {
     href = `/compare/${thisGeoId}/vs/${result.codes[codeType]}/`;
-  } else if (result.type.toLowerCase() === 'country') {
-    href = `/${result.slug}`;
   } else {
     href = `/profiles/${result.codes[codeType]}`;
   }
@@ -103,7 +105,7 @@ function SearchResults({
                   className={classNames(classes.level, {
                     [classes.levelDropdown]: isComparisonSearch
                   })}
-                  variant="body2"
+                  variant="caption"
                   component="p"
                 >
                   {result.type}
@@ -112,7 +114,7 @@ function SearchResults({
                   className={classNames(classes.name, {
                     [classes.nameDropdown]: isComparisonSearch
                   })}
-                  variant="body2"
+                  variant="h3"
                   component="p"
                 >
                   {result.name}
