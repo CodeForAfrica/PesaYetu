@@ -8,13 +8,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppContextProvider from 'AppContext';
 
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
-
-const client = new ApolloClient({
-  uri: 'https://graphql.takwimu.africa/graphql'
-});
-
 class PesaYetuApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
@@ -36,14 +29,12 @@ class PesaYetuApp extends App {
           />
           <meta charSet="utf-8" />
         </Head>
-        <ApolloProvider client={client}>
-          <ThemeProvider theme={theme}>
-            <AppContextProvider>
-              <CssBaseline />
-              <Component {...pageProps} />
-            </AppContextProvider>
-          </ThemeProvider>
-        </ApolloProvider>
+        <ThemeProvider theme={theme}>
+          <AppContextProvider>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </AppContextProvider>
+        </ThemeProvider>
       </>
     );
   }
