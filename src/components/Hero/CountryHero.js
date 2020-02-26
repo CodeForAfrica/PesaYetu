@@ -11,7 +11,7 @@ import {
 
 import Link from 'components/Link';
 
-// const { TileLayer }  =  dynamic(() => import('react-leaflet'), {
+// const { TileLayer }  =  dynamic(() => import('leaflet'), {
 //   ssr: false
 // });
 
@@ -24,8 +24,14 @@ import Hero, {
   HeroButton
 } from './Hero';
 
-const MapIt = dynamic(() => import('@codeforafrica/hurumap-ui/core/MapIt'), {
-  ssr: false
+const MapIt = dynamic({
+  ssr: false,
+  loader: () => {
+    return (
+      typeof window !== 'undefined' &&
+      import('@codeforafrica/hurumap-ui/core/MapIt')
+    );
+  }
 });
 
 const useStyles = makeStyles(theme => ({

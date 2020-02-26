@@ -1,20 +1,32 @@
 import React, { useCallback } from 'react';
 import { PropTypes } from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 import classNames from 'classnames';
 
 import { makeStyles, Link } from '@material-ui/core';
 
-import { TileLayer } from 'leaflet';
 import TypographyLoader from '@codeforafrica/hurumap-ui/core/TypographyLoader';
-// import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
-import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
-import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from '../Hero';
+import Hero, {
+  HeroTitle,
+  HeroTitleGrid,
+  HeroDetail
+} from 'components/Hero/Hero';
 
 // import Search from '../../Search';
 // import searchIcon from '../../../assets/images/icons/location.svg';
 import config from '../../../config';
+// import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
+const MapIt = dynamic({
+  ssr: false,
+  loader: () => {
+    return (
+      typeof window !== 'undefined' &&
+      import('@codeforafrica/hurumap-ui/core/MapIt')
+    );
+  }
+});
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -80,21 +92,14 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 4
   }
 }));
-function Profile({
-  geoId,
-  history,
-  head2head,
-  isLoading,
-  profile,
-  parent,
-  ...props
-}) {
+function Profile({ geoId, head2head, isLoading, profile, parent, ...props }) {
+  const router = useRouter();
   const classes = useStyles(props);
   const onClickGeoLayer = useCallback(
     area => {
-      history.push(`/profiles/${area.codes[config.MAPIT.codeType]}`);
+      router.push(`/profiles/${area.codes[config.MAPIT.codeType]}`);
     },
-    [history]
+    [router]
   );
 
   const {
@@ -251,9 +256,9 @@ function Profile({
           geoLevel={geoId.split('-')[0]}
           id={geoId}
           onClickGeoLayer={onClickGeoLayer}
-          tileLayer={
-            new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
-          }
+          // tileLayer={
+          //   new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+          // }
           url={config.MAPIT.url}
           zoom={config.MAPIT.zoom}
         />
@@ -290,4 +295,4 @@ Profile.defaultProps = {
   parent: undefined
 };
 
-export default withRouter(Profile);
+export default Profile;
