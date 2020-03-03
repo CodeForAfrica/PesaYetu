@@ -1,12 +1,10 @@
 import React, { useCallback } from 'react';
 import { PropTypes } from 'prop-types';
-import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 
 import classNames from 'classnames';
-
 import { makeStyles, Link } from '@material-ui/core';
-
 import TypographyLoader from '@codeforafrica/hurumap-ui/core/TypographyLoader';
 import Hero, {
   HeroTitle,
@@ -14,10 +12,8 @@ import Hero, {
   HeroDetail
 } from 'components/Hero/Hero';
 
-// import Search from '../../Search';
-// import searchIcon from '../../../assets/images/icons/location.svg';
 import config from '../../../config';
-// import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
+
 const MapIt = dynamic({
   ssr: false,
   loader: () => {
