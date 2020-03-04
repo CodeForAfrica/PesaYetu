@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
 import { Grid } from '@material-ui/core';
 import { ProfilePageHeader } from 'components/Header';
@@ -69,11 +70,12 @@ function Profile(props) {
     charts.map(x => x.visuals).reduce((a, b) => a.concat(b))
   );
 
-  const { profiles, chartData } = useProfileLoader(
+  const { profiles, chartData } = useProfileLoader({
     geoId,
     comparisonGeoId,
-    visuals
-  );
+    visuals,
+    populationTables: ['allPopulationResidence2009S']
+  });
 
   // get profiletabs
   const profileTabs = useMemo(
@@ -229,23 +231,46 @@ function Profile(props) {
     }
   }, [activeTab, profileTabs]);
 
+  const pageTitle = () => {
+    const profileName = profiles && profiles.profile && profiles.profile.name;
+    const profileTitle = profileName ? ` - ${profileName} - ` : ' - ';
+    return `Data${profileTitle}Dominion`;
+  };
+
+  console.log(profiles);
+
   return (
-    <Page>
-      <ProfilePageHeader
-        profiles={profiles}
-        head2head={head2head}
-        geoId={geoId}
-        comparisonGeoId={comparisonGeoId}
-      />
-      <ProfileTabs
-        loading={chartData.isLoading}
-        activeTab={activeTab}
-        switchToTab={setActiveTab}
-        tabs={profileTabs}
-      />
-      <ChartsContainer>{chartComponents}</ChartsContainer>
-      <ProfileRelease sectionedCharts={existingSectionedCharts} />
-    </Page>
+    <>
+      <Head>
+        <title>{pageTitle()}</title>
+        <link
+          rel="preconnect"
+          href="https://mapit.hurumap.org/graphql"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://graphql.hurumap.org/graphql"
+          crossOrigin="anonymous"
+        />
+      </Head>
+      <Page>
+        <ProfilePageHeader
+          profiles={profiles}
+          head2head={head2head}
+          geoId={geoId}
+          comparisonGeoId={comparisonGeoId}
+        />
+        <ProfileTabs
+          loading={chartData.isLoading}
+          activeTab={activeTab}
+          switchToTab={setActiveTab}
+          tabs={profileTabs}
+        />
+        <ChartsContainer>{chartComponents}</ChartsContainer>
+        <ProfileRelease sectionedCharts={existingSectionedCharts} />
+      </Page>
+    </>
   );
 }
 
