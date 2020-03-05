@@ -45,7 +45,7 @@ function SocialMedia({ classes }) {
       </Grid>
       <Grid item>
         <a
-          href="https://www.instagram.com/explore/tags/onsgrond/"
+          href="https://www.instagram.com/PesaCheck/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -58,7 +58,7 @@ function SocialMedia({ classes }) {
       </Grid>
       <Grid item>
         <a
-          href="https://twitter.com/africancir"
+          href="https://twitter.com/PesaCheck"
           target="_blank"
           rel="noopener noreferrer"
         >
