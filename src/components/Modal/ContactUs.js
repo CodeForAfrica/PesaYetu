@@ -95,11 +95,11 @@ function ContactUs({ classes, handleClose }) {
         <Grid item xs={12} md={6}>
           <MenuList>
             {[
-              { name: 'CodeForAfrica', href: 'mailto:hello@codeforafrica.org' },
-              { name: 'Twitter', href: 'https://twitter.com/Code4Africa' },
+              { name: 'PesaCheck', href: 'mailto:info@pesacheck.org' },
+              { name: 'Twitter', href: 'https://twitter.com/PesaCheck' },
               {
                 name: 'Facebook',
-                href: 'https://web.facebook.com/CodeForAfrica'
+                href: 'https://web.facebook.com/PesaCheck'
               }
             ].map((contact, index) => (
               <MenuItem button key={contact.name} className={classes.listItem}>
