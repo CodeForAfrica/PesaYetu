@@ -6,10 +6,8 @@ import useTheme from '@material-ui/core/styles/useTheme';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import config from '../config';
 import { getOpenAfricaData, getSourceAfricaData } from '../lib/api';
 
-import About from '../components/About';
 import ArrowButton from '../components/ArrowButton';
 import DataCard from '../components/Card/Data';
 import DocumentCard from '../components/Card/Document';
@@ -140,7 +138,6 @@ function Resources(props) {
           View all
         </ArrowButton>
       </Section>
-      <About about={config.about} />
     </Page>
   );
 }
