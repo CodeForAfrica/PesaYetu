@@ -17,9 +17,7 @@ const styles = theme => ({
     height: '100%',
     backgroundColor: '#fafafa',
     border: '1px solid #eeeeee',
-    opacity: 0.9,
     '&:hover': {
-      opacity: 1,
       backgroundColor: '#fff'
     }
   },
@@ -39,7 +37,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(3),
     background: 'linear-gradient(to top, black, transparent)'
   },
-  media: {
+  cardMedia: {
     minHeight: '20rem',
     height: '100%',
     width: '100%'
@@ -59,16 +57,27 @@ const styles = theme => ({
     color: '#fff',
     margin: '1rem 0'
   },
-  componentStyle: {}
+  media: {
+    filter: 'sepia(100%) hue-rotate(159deg) brightness(40%) saturate(350%)'
+  }
 });
 
 function StoryCard({ story, classes }) {
-  const { mediaSrc, date, title, brief, link, media } = story;
+  const {
+    virtuals: {
+      previewImage: { imageId: mediaSrc }
+    },
+    createdAt: timestamp,
+    title,
+    content: { subtitle: brief },
+    uniqueSlug: link,
+    media = 'img'
+  } = story;
 
   return (
     <Card className={classes.root}>
       <a
-        href={link}
+        href={`https://pesacheck.org/${link}`}
         target="_blank"
         rel="noopener noreferrer"
         className={classes.cardLink}
@@ -83,9 +92,9 @@ function StoryCard({ story, classes }) {
         >
           <CardMedia
             component={media}
-            className={classes.media}
-            image={mediaSrc}
-            classes={{ media: classes.componentStyle }}
+            className={classes.cardMedia}
+            image={`https://cdn-images-1.medium.com/max/480/${mediaSrc}`}
+            classes={{ media: classes.media }}
             title="Story"
           />
           <CardContent className={classes.cardContent}>
@@ -98,7 +107,11 @@ function StoryCard({ story, classes }) {
               style={{ height: '100%' }}
             >
               <Typography variant="subtitle2" className={classes.overline}>
-                {date}
+                {new Date(timestamp).toLocaleString('en-GB', {
+                  year: 'numeric',
+                  day: '2-digit',
+                  month: 'short'
+                })}
               </Typography>
               <Typography variant="h5" className={classes.bodyTitle}>
                 {title}

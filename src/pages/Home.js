@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { CountryPageHeader } from '../components/Header';
 import About from '../components/About';
 import Page from '../components/Page';
 // import HowItWorks from '../components/HowItWorks';
 import ShowCase from '../components/Showcase';
 // import Data from '../components/Data';
-import createAPI from '../lib/api';
+import useStories from '../lib/useStories';
 
 function Home() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const api = createAPI();
-    api.getLatestMedium().then(setPosts);
-  }, []);
+  const [posts] = useStories('https://pesacheck.org/tagged/public-finance');
+
   return (
     <Page>
       <CountryPageHeader />
