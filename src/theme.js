@@ -1,6 +1,6 @@
 import createTheme from '@codeforafrica/hurumap-ui/core/styles/createTheme';
 
-const FONT_FAMILY_HEADING = '"Lora", "serif"';
+const FONT_FAMILY_HEADING = '"Lato", "sans-serif"';
 const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
 
 const COLOR_SCALE = ['#0067A3', '#559cc1', '#EE4538', '#9ac2dd'];
