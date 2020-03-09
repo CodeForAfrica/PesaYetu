@@ -16,7 +16,7 @@ export const GET_PROFILE = gql`
         name
       }
     }
-    population: allPesayetuPopulationResidence2009S(
+    population: allPopulationSex2019S(
       condition: { geoCode: $geoCode, geoLevel: $geoLevel }
     ) {
       nodes {
