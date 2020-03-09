@@ -74,7 +74,7 @@ function Profile(props) {
     geoId,
     comparisonGeoId,
     visuals,
-    populationTables: ['allPopulationResidence2009S']
+    populationTables: ['allPopulationSex2019S']
   });
 
   // get profiletabs
