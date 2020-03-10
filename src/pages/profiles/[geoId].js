@@ -9,7 +9,7 @@ import { ProfilePageHeader } from 'components/Header';
 
 import Page from 'components/Page';
 import ProfileRelease from 'components/ProfileReleases';
-import useProfileLoader from '@codeforafrica/hurumap-ui/factory/useProfileLoader';
+import useProfileLoader from 'data/useProfileLoader';
 import ChartFactory from '@codeforafrica/hurumap-ui/factory/ChartFactory';
 
 import useChartDefinitions from 'data/useChartDefinitions';
@@ -70,12 +70,11 @@ function Profile(props) {
     charts.map(x => x.visuals).reduce((a, b) => a.concat(b))
   );
 
-  const { profiles, chartData } = useProfileLoader({
+  const { profiles, chartData } = useProfileLoader(
     geoId,
     comparisonGeoId,
-    visuals,
-    populationTables: ['allPopulationSex2019S']
-  });
+    visuals
+  );
 
   // get profiletabs
   const profileTabs = useMemo(
@@ -236,8 +235,6 @@ function Profile(props) {
     const profileTitle = profileName ? ` - ${profileName} - ` : ' - ';
     return `Data${profileTitle}Dominion`;
   };
-
-  console.log(profiles);
 
   return (
     <>
