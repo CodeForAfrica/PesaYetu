@@ -7,7 +7,15 @@ const config = {
     url: 'https://mapit.hurumap.org',
     codeType: 'KEN',
     zoom: 5,
-    centre: [0.3051933453207569, 37.908818734483155]
+    centre: [0.3051933453207569, 37.908818734483155],
+    geoLevels: {
+      country: {
+        name: 'Country'
+      },
+      level1: {
+        name: 'County'
+      }
+    }
   },
 
   about: {
