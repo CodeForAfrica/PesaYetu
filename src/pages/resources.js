@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -39,27 +39,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Resources(props) {
-  const classes = useStyles(props);
+function Resources({ documents, packages }) {
+  const classes = useStyles();
   const theme = useTheme();
-  const [packages, setPackages] = useState([]);
-  const [documents, setDocuments] = useState([]);
+
   useEffect(() => {
     function scrollSectionIntoView() {
       if (window.location.hash.slice(1)) {
         document.getElementById(window.location.hash.slice(1)).scrollIntoView();
       }
     }
-    getOpenAfricaData().then(({ data: { result } }) => {
-      setPackages(result);
-      scrollSectionIntoView();
-    });
-
-    getSourceAfricaData().then(({ data }) => {
-      setDocuments(data.documents);
-      scrollSectionIntoView();
-    });
+    scrollSectionIntoView();
   }, []);
+
   const titleVariant = useMediaQuery(theme.breakpoints.up('md')) ? 'h2' : 'h3';
 
   return (
@@ -88,22 +80,24 @@ function Resources(props) {
             on sourceAFRICA.net
           </Typography>
           <Grid container spacing={2} className={classes.content}>
-            {documents.map(document => (
-              <Grid item xs={12} md={6} key={document.title}>
-                <DocumentCard
-                  link={document.canonical_url}
-                  title={document.title}
-                  description={document.description}
-                  preview={
-                    <img
-                      alt=""
-                      src={document.resources.thumbnail}
-                      width="100%"
-                    />
-                  }
-                />
-              </Grid>
-            ))}
+            {documents &&
+              documents.length &&
+              documents.map(document => (
+                <Grid item xs={12} md={6} key={document.title}>
+                  <DocumentCard
+                    link={document.canonical_url}
+                    title={document.title}
+                    description={document.description}
+                    preview={
+                      <img
+                        alt=""
+                        src={document.resources.thumbnail}
+                        width="100%"
+                      />
+                    }
+                  />
+                </Grid>
+              ))}
           </Grid>
           <ArrowButton
             href="https://dc.sourceafrica.net/public/search/Project:%20PesaYetu"
@@ -131,15 +125,17 @@ function Resources(props) {
             openAFRICA.net
           </Typography>
           <Grid container justify="space-between" className={classes.content}>
-            {packages.map(p => (
-              <DataCard
-                key={p.title}
-                dataLink={`https://openafrica.net/dataset/${p.name}`}
-                description={p.notes}
-                title={p.title}
-                organization={p.organization}
-              />
-            ))}
+            {packages &&
+              packages.length &&
+              packages.map(p => (
+                <DataCard
+                  key={p.title}
+                  dataLink={`https://openafrica.net/dataset/${p.name}`}
+                  description={p.notes}
+                  title={p.title}
+                  organization={p.organization}
+                />
+              ))}
           </Grid>
           <ArrowButton
             target="_blank"
@@ -154,5 +150,16 @@ function Resources(props) {
     </>
   );
 }
+
+Resources.getInitialProps = async () => {
+  const {
+    data: { result: packages }
+  } = await getOpenAfricaData();
+  const {
+    data: { documents }
+  } = await getSourceAfricaData();
+
+  return { packages, documents };
+};
 
 export default Resources;
