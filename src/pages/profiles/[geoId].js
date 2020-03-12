@@ -9,7 +9,7 @@ import { ProfilePageHeader } from 'components/Header';
 
 import Page from 'components/Page';
 import ProfileRelease from 'components/ProfileReleases';
-import useProfileLoader from 'data/useProfileLoader';
+import useProfileLoader from '@codeforafrica/hurumap-ui/factory/useProfileLoader';
 import ChartFactory from '@codeforafrica/hurumap-ui/factory/ChartFactory';
 
 import useChartDefinitions from 'data/useChartDefinitions';
