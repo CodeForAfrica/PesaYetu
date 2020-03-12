@@ -29,7 +29,7 @@ const styles = theme => ({
     color: 'white'
   },
   rootBorderBottom: {
-    // borderBottom: '2px solid !important'
+    borderBottom: '2px solid white'
   },
   searchFieldNoBorderBottom: {
     borderBottom: 'none !important'

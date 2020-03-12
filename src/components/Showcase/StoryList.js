@@ -73,7 +73,7 @@ function StoryList({ stories, ...props }) {
       <SimpleBarReact autoHide={false} className={classes.simpleBar}>
         <GridList cellHeight={320} className={classes.gridList} cols={cols}>
           {stories.map(story => (
-            <GridListTile key={story.index}>
+            <GridListTile key={story.id}>
               <StoryCard story={story} />
             </GridListTile>
           ))}

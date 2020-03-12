@@ -32,7 +32,7 @@ function SocialMedia({ classes }) {
     <Grid container direction="row" justify="flex-start" alignItems="center">
       <Grid item>
         <a
-          href="https://www.facebook.com/AfricanCIR/"
+          href="https://www.facebook.com/PesaCheck"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -45,7 +45,7 @@ function SocialMedia({ classes }) {
       </Grid>
       <Grid item>
         <a
-          href="https://www.instagram.com/explore/tags/onsgrond/"
+          href="https://www.instagram.com/PesaCheck/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -58,7 +58,7 @@ function SocialMedia({ classes }) {
       </Grid>
       <Grid item>
         <a
-          href="https://twitter.com/africancir"
+          href="https://twitter.com/PesaCheck"
           target="_blank"
           rel="noopener noreferrer"
         >

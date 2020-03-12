@@ -20,50 +20,23 @@ export default function createAPI() {
     getGeoLevel: async geoId => {
       const response = await axios.get(`${mapitUrl}/code/${codeType}/${geoId}`);
       return response.data.type.toLowerCase();
-    },
-    getLatestMedium: () => {
-      return fetch(`https://stories.hurumap.org/@PesaCheck/latest`).then(
-        res => {
-          if (!res.ok) {
-            return Promise.reject();
-          }
-          return res.json().then(posts => {
-            return posts.map((post, index) => ({
-              index,
-              title: post.title,
-              author: 'Arthur Kakande',
-              brief: post.content.subtitle,
-              link: `https://pesacheck.org/${post.uniqueSlug}`,
-              date: new Date(post.latestPublishedAt).toLocaleString('en-GB', {
-                year: 'numeric',
-                day: '2-digit',
-                month: 'short'
-              }),
-              mediaSrc: `https://miro.medium.com/${post.virtuals.previewImage.imageId}`,
-              media: 'img',
-              country: 'KE'
-            }));
-          });
-        }
-      );
     }
   };
 }
 
 export async function getSourceAfricaData() {
-  return axios.get(
-    'https://dc.sourceafrica.net/api/search.json?q=projectid:483-PesaYetu'
-  );
+  const url =
+    'https://dc.sourceafrica.net/api/search.json?q=projectid:483-PesaYetu';
+  return axios.get(`https://corsanywhere.devops.codeforafrica.org/${url}`);
 }
 
 export async function getOpenAfricaData() {
-  return axios.get(
-    'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu'
-  );
+  const url =
+    'https://africaopendata.org/api/3/action/group_package_show?id=pesayetu';
+  return axios.get(`https://corsanywhere.devops.codeforafrica.org/${url}`);
 }
 
 export async function getOpenAfricaCount() {
-  return axios.get(
-    'https://africaopendata.org/api/3/action/group_show?id=pesayetu'
-  );
+  const url = 'https://africaopendata.org/api/3/action/group_show?id=pesayetu';
+  return axios.get(`https://corsanywhere.devops.codeforafrica.org/${url}`);
 }

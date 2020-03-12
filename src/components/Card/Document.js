@@ -24,7 +24,9 @@ const useStyles = makeStyles(() => ({
   content: {
     padding: '0.625rem 0'
   },
-  title: {},
+  title: {
+    textTransform: 'capitalize'
+  },
   description: {
     marginTop: '0.625rem',
     opacity: 0.6
