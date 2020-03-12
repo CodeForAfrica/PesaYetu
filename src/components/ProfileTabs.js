@@ -9,6 +9,7 @@ import classNames from 'classnames';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    background: theme.palette.background.default,
     flexGrow: 1,
     scrollBehavior: 'smooth',
     paddingLeft: '1.875rem',
