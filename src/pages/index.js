@@ -3,21 +3,17 @@ import { CountryPageHeader } from 'components/Header';
 import About from 'components/About';
 import Page from 'components/Page';
 import ShowCase from 'components/Showcase';
-import { getLatestMedium } from 'lib/api';
+import useStories from 'lib/useStories';
 
-function Home({ showcaseStories }) {
+function Home() {
+  const [posts] = useStories('https://pesacheck.org/tagged/public-finance');
   return (
     <Page>
       <CountryPageHeader />
       <About />
-      <ShowCase stories={showcaseStories} />
+      <ShowCase stories={posts} />
     </Page>
   );
 }
-
-Home.getInitialProps = async () => {
-  const showcaseStories = await getLatestMedium();
-  return { showcaseStories };
-};
 
 export default Home;

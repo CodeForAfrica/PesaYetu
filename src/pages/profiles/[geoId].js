@@ -71,10 +71,16 @@ function Profile(props) {
   );
 
   const { profiles, chartData } = useProfileLoader(
-    geoId,
-    comparisonGeoId,
-    visuals
+    {
+      geoId,
+      comparisonGeoId,
+      visuals,
+      populationTables: ['allPopulationSex2019S']
+    },
+    []
   );
+
+  console.log(profiles);
 
   // get profiletabs
   const profileTabs = useMemo(
@@ -233,7 +239,7 @@ function Profile(props) {
   const pageTitle = () => {
     const profileName = profiles && profiles.profile && profiles.profile.name;
     const profileTitle = profileName ? ` - ${profileName} - ` : ' - ';
-    return `Data${profileTitle}Dominion`;
+    return `Data${profileTitle}Pesayetu`;
   };
 
   return (

@@ -6,15 +6,15 @@ import { withStyles } from '@material-ui/core/styles';
 
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
-import logo from '../../assets/images/logos/pesayetu.png';
+import logo from 'assets/images/logos/pesayetu.png';
 
-import Search from '../Search';
-import ContactUs from '../Modal/ContactUs';
+import Search from 'components/Search';
+import ContactUs from 'components/Modal/ContactUs';
 
-import Modal from '../Modal';
-import useToggleModal from '../../useToggleModal';
+import Modal from 'components/Modal';
+import useToggleModal from 'useToggleModal';
 
 const styles = theme => ({
   root: {
@@ -181,16 +181,9 @@ function Navigation({ classes, width }) {
         alignItems="center"
         className={classes.topMenuNav}
       >
-        {/* <IconButton
-          disableRipple
-          aria-label="Search"
-          onClick={toggleSearch}
-          style={{
-            marginLeft: 60
-          }}
-        >
-          <SearchIcon />
-        </IconButton> */}
+        <IconButton disableRipple aria-label="Search" onClick={toggleSearch}>
+          <SearchIcon className={classes.icon} />
+        </IconButton>
         {renderMenuList()}
       </Grid>
     </Grid>

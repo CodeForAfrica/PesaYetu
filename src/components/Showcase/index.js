@@ -64,8 +64,10 @@ function Showcase({ stories }) {
 
           <Grid item xs={12}>
             <Typography variant="body2" className={classes.headlineDescription}>
-              Explore how land and how it is controlled shapes everything from
-              our food security and geopolitics to national identity.
+              View and explore how we visualise Kenya’s budget data to show how
+              much money each county has received from the national government,
+              and how the money is allocated and utilized based on each county’s
+              priorities.
             </Typography>
           </Grid>
         </Grid>

@@ -61,7 +61,7 @@ function About({ ...props }) {
             financial performance and allows comparisons between municipalities.
           </Typography>
         </Section>
-        <Section title="Re-use Manifesto" subtitle="">
+        <Section title="Re-use manifesto" subtitle="">
           <Typography className={classes.p}>
             Code for Africa and its partners hate seeing civil society or anyone
             else being duped into wasting money unnecessarily on inappropriate

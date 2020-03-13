@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import classNames from 'classnames';
 import { makeStyles, Link } from '@material-ui/core';
+
 import TypographyLoader from '@codeforafrica/hurumap-ui/core/TypographyLoader';
 import Hero, {
   HeroTitle,
@@ -84,7 +85,7 @@ const useStyles = makeStyles(theme => ({
   },
   alink: {
     fontWeight: 'bold',
-    color: 'red',
+    color: '#EE4538',
     paddingLeft: 4
   }
 }));
@@ -232,29 +233,26 @@ function Profile({ geoId, head2head, isLoading, profile, parent, ...props }) {
           drawProfile
           geoCode={geoId.split('-')[1]}
           geoLayerBlurStyle={{
-            color: '#d6acd0',
-            fillColor: '#958058',
+            color: 'white',
+            fillColor: '#0067A3',
             weight: 1.0,
-            opacity: 0.3,
+            opacity: 1.0,
             fillOpacity: 0.2
           }}
           geoLayerFocusStyle={{
-            color: '#d6acd0',
-            fillColor: '#fff',
-            weight: 2,
-            opacity: 0.3,
-            fillOpacity: 0.2
+            color: 'white',
+            fillColor: '#0067A3',
+            weight: 2.0,
+            opacity: 1.0,
+            fillOpacity: 0.5
           }}
           geoLayerHoverStyle={{
-            fillColor: '#fff',
-            fillOpacity: 0.3
+            fillColor: '#0067A3',
+            fillOpacity: 0.4
           }}
           geoLevel={geoId.split('-')[0]}
           id={geoId}
           onClickGeoLayer={onClickGeoLayer}
-          // tileLayer={
-          //   new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
-          // }
           url={config.MAPIT.url}
           zoom={config.MAPIT.zoom}
         />
