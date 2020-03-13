@@ -9,7 +9,7 @@ import {
   Link,
   Typography
 } from '@material-ui/core';
-import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
+import MapIt from '@hurumap-ui/core/MapIt';
 
 import Hero, {
   HeroTitle,

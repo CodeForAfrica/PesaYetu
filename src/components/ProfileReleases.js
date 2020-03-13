@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 
-import A from '@codeforafrica/hurumap-ui/core/A';
+import A from '@hurumap-ui/core/A';
 
 const useStyles = makeStyles(theme => ({
   root: {

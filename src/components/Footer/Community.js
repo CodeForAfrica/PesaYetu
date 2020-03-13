@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import A from '@codeforafrica/hurumap-ui/core/A';
+import A from '@hurumap-ui/core/A';
 
 const styles = theme => ({
   root: {

@@ -2,14 +2,14 @@ import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
-import ChartContainer from '@codeforafrica/hurumap-ui/core/ChartContainer';
+import ChartContainer from '@hurumap-ui/core/ChartContainer';
 import { Grid } from '@material-ui/core';
-import ChartFactory from '@codeforafrica/hurumap-ui/factory/ChartFactory';
+import ChartFactory from '@hurumap-ui/charts/ChartFactory';
+import useProfileLoader from '@hurumap-ui/core/useProfileLoader';
 import { ProfilePageHeader } from '../components/Header';
 
 import Page from '../components/Page';
 import ProfileRelease from '../components/ProfileReleases';
-import useProfileLoader from '../data/useProfileLoader';
 import useChartDefinitions from '../data/useChartDefinitions';
 import slugify from '../utils/slugify';
 import ChartsContainer from '../components/ChartsContainer';
@@ -55,11 +55,12 @@ function Profile({
     charts.map(x => x.visuals).reduce((a, b) => a.concat(b))
   );
 
-  const { profiles, chartData } = useProfileLoader(
+  const { profiles, chartData } = useProfileLoader({
     geoId,
     comparisonGeoId,
-    visuals
-  );
+    visuals,
+    populationTable: [' allPopulationSex2019S']
+  });
 
   // get profiletabs
   const profileTabs = useMemo(

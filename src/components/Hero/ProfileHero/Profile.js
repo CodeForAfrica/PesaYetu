@@ -6,9 +6,9 @@ import classNames from 'classnames';
 
 import { makeStyles, Link } from '@material-ui/core';
 
-import TypographyLoader from '@codeforafrica/hurumap-ui/core/TypographyLoader';
-// import ContentLoader from '@codeforafrica/hurumap-ui/core/ContentLoader';
-import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
+import TypographyLoader from '@hurumap-ui/core/TypographyLoader';
+// import ContentLoader from '@hurumap-ui/core/ContentLoader';
+import MapIt from '@hurumap-ui/core/MapIt';
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from '../Hero';
 
 // import Search from '../../Search';
