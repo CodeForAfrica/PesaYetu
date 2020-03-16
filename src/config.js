@@ -71,7 +71,8 @@ const config = {
       media: 'img',
       country: 'KE'
     }
-  ]
+  ],
+  populationTables: ['allPopulationSex2019S']
 };
 
 export default config;

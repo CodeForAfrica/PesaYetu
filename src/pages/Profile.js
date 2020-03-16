@@ -59,7 +59,7 @@ function Profile({
     geoId,
     comparisonGeoId,
     visuals,
-    populationTable: [' allPopulationSex2019S']
+    populationTable: config.populationTables
   });
 
   // get profiletabs
