@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import { makeStyles, Typography } from '@material-ui/core';
 
-import A from '@codeforafrica/hurumap-ui/core/A';
+import A from '@hurumap-ui/core/A';
 
 import Page from 'components/Page';
 import Section from 'components/Section';

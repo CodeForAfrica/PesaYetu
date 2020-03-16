@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { makeStyles, Link } from '@material-ui/core';
 
-import TypographyLoader from '@codeforafrica/hurumap-ui/core/TypographyLoader';
+import TypographyLoader from '@hurumap-ui/core/TypographyLoader';
 import Hero, {
   HeroTitle,
   HeroTitleGrid,
@@ -18,10 +18,7 @@ import config from '../../../config';
 const MapIt = dynamic({
   ssr: false,
   loader: () => {
-    return (
-      typeof window !== 'undefined' &&
-      import('@codeforafrica/hurumap-ui/core/MapIt')
-    );
+    return typeof window !== 'undefined' && import('@hurumap-ui/core/MapIt');
   }
 });
 

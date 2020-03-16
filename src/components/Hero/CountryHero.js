@@ -23,10 +23,7 @@ import Hero, {
 const MapIt = dynamic({
   ssr: false,
   loader: () => {
-    return (
-      typeof window !== 'undefined' &&
-      import('@codeforafrica/hurumap-ui/core/MapIt')
-    );
+    return typeof window !== 'undefined' && import('@hurumap-ui/core/MapIt');
   }
 });
 

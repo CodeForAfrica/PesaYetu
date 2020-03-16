@@ -9,8 +9,8 @@ import { ProfilePageHeader } from 'components/Header';
 
 import Page from 'components/Page';
 import ProfileRelease from 'components/ProfileReleases';
-import useProfileLoader from '@codeforafrica/hurumap-ui/factory/useProfileLoader';
-import ChartFactory from '@codeforafrica/hurumap-ui/factory/ChartFactory';
+import useProfileLoader from '@hurumap-ui/core/useProfileLoader';
+import ChartFactory from '@hurumap-ui/charts/ChartFactory';
 
 import useChartDefinitions from 'data/useChartDefinitions';
 import slugify from 'utils/slugify';
@@ -23,7 +23,7 @@ import config from 'config';
 import logo from 'assets/images/logos/pesacheck-white.png';
 
 const ChartContainer = dynamic(
-  () => import('@codeforafrica/hurumap-ui/core/ChartContainer'),
+  () => import('@hurumap-ui/core/ChartContainer'),
   {
     ssr: false
   }

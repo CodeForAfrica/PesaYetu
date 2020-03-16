@@ -1,4 +1,4 @@
-import createTheme from '@codeforafrica/hurumap-ui/core/styles/createTheme';
+import createTheme from '@hurumap-ui/charts/styles/createTheme';
 
 const FONT_FAMILY_HEADING = '"Lato", "sans-serif"';
 const FONT_FAMILY_TEXT = '"Montserrat", "sans-serif"';
