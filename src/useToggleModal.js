@@ -6,17 +6,9 @@ export default modalName => {
     state: { openModal },
     dispatch
   } = useContext(AppContext);
-  // const { history } = useContext(RouterContext);
   return {
     open: modalName === openModal,
     toggleModal: () => {
-      // if (openModal && openModal === modalName) {
-      //   history.goBack();
-      // } else if (!openModal) {
-      //   history.push(`#`);
-      // } else {
-      //   //
-      // }
       dispatch({
         type: 'modal',
         openModal: openModal === modalName ? null : modalName

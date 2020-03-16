@@ -11,10 +11,6 @@ import {
 
 import Link from 'components/Link';
 
-// const { TileLayer }  =  dynamic(() => import('leaflet'), {
-//   ssr: false
-// });
-
 import config from 'config';
 import useToggleModal from 'useToggleModal';
 import Hero, {
