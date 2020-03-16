@@ -63,26 +63,20 @@ function Profile(props) {
 
   const sectionedCharts = useChartDefinitions();
   // Flatten all charts
-  const charts = useMemo(
-    () => sectionedCharts.map(x => x.charts).reduce((a, b) => a.concat(b)),
-    [sectionedCharts]
-  );
+  const charts = sectionedCharts
+    .map(x => x.charts)
+    .reduce((a, b) => a.concat(b));
 
-  const [visuals] = useMemo(
-    () => charts.map(x => x.visuals).reduce((a, b) => a.concat(b)),
-    [charts]
+  const [visuals] = useState(
+    charts.map(x => x.visuals).reduce((a, b) => a.concat(b))
   );
-
-  console.log(visuals);
 
   const { profiles, chartData } = useProfileLoader({
     geoId,
     comparisonGeoId,
     visuals,
-    populationTables: ['allPopulationSex2019S']
+    populationTables: config.populationTables
   });
-
-  console.log(profiles);
 
   // get profiletabs
   const profileTabs = useMemo(

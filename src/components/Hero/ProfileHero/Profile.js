@@ -159,7 +159,7 @@ function Profile({ geoId, head2head, isLoading, profile, parent, ...props }) {
             width: 150
           }}
         >
-          {geoLevel} in{' '}
+          {geoLevel && config.geoLevels[geoLevel].name} in{' '}
           <Link
             component={parentLevel ? 'a' : 'span'}
             variant="subtitle1"
