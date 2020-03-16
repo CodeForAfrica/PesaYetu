@@ -102,7 +102,11 @@ function CountryHero({ ...props }) {
 
         <Typography variant="subtitle2" style={{ marginTop: '2.5rem' }}>
           or view{' '}
-          <Link className={classes.alink} href="/profiles/country-KE">
+          <Link
+            className={classes.alink}
+            href="/profiles/[geoId]"
+            as="/profiles/country-KE"
+          >
             Kenya
           </Link>
         </Typography>

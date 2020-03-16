@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Link, MenuList, MenuItem, IconButton } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  Grid,
+  Link as MuiLink,
+  MenuList,
+  MenuItem,
+  IconButton,
+  makeStyles
+} from '@material-ui/core';
 
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -12,11 +18,12 @@ import logo from 'assets/images/logos/pesayetu.png';
 
 import Search from 'components/Search';
 import ContactUs from 'components/Modal/ContactUs';
+import Link from 'components/Link';
 
 import Modal from 'components/Modal';
 import useToggleModal from 'useToggleModal';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
@@ -75,14 +82,16 @@ const styles = theme => ({
     marginRight: '5.6rem'
   },
   link: {
-    color: 'white'
+    color: '#fff',
+    textDecoration: 'none'
   },
   icon: {
-    color: 'white'
+    color: '#fff'
   }
-});
+}));
 
-function Navigation({ classes, width }) {
+function Navigation({ width }) {
+  const classes = useStyles();
   const { open: openSearch, toggleModal: toggleSearch } = useToggleModal(
     'search'
   );
@@ -100,15 +109,19 @@ function Navigation({ classes, width }) {
         { title: 'Contact', onClick: toggleContact }
       ].map(menu => (
         <MenuItem key={menu.title} className={classes.menuListItem}>
-          <Link
-            variant="body1"
-            className={classes.link}
-            href={menu.link}
-            underline="none"
-            onClick={menu.onClick}
-          >
-            {menu.title}
-          </Link>
+          {menu.link ? (
+            <Link variant="body1" className={classes.link} href={menu.link}>
+              {menu.title}
+            </Link>
+          ) : (
+            <MuiLink
+              variant="body1"
+              className={classes.link}
+              onClick={menu.onClick}
+            >
+              {menu.title}
+            </MuiLink>
+          )}
         </MenuItem>
       ))}
     </MenuList>
@@ -215,8 +228,7 @@ function Navigation({ classes, width }) {
 }
 
 Navigation.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
 };
 
-export default withWidth()(withStyles(styles)(Navigation));
+export default withWidth()(Navigation);
