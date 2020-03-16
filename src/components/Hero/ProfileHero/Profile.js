@@ -7,12 +7,9 @@ import classNames from 'classnames';
 import { makeStyles, Link } from '@material-ui/core';
 
 import TypographyLoader from '@hurumap-ui/core/TypographyLoader';
-// import ContentLoader from '@hurumap-ui/core/ContentLoader';
 import MapIt from '@hurumap-ui/core/MapIt';
 import Hero, { HeroTitle, HeroTitleGrid, HeroDetail } from '../Hero';
 
-// import Search from '../../Search';
-// import searchIcon from '../../../assets/images/icons/location.svg';
 import config from '../../../config';
 
 const useStyles = makeStyles(theme => ({
@@ -198,21 +195,6 @@ function Profile({
         >
           {populationDensity}
         </HeroDetail>
-        {/* Start search skeleton loader */}
-        {/* {!head2head && isLoading && (
-          <ContentLoader style={{ width: '19rem', height: '3.0625rem' }}>
-            <rect x="0" y="0" width="100%" height="100%" />
-          </ContentLoader>
-        )} */}
-        {/* End search skeleton loader */}
-        {/* {!head2head && !isLoading && (
-          <Search
-            isComparisonSearch
-            placeholder="Compare this with"
-            thisGeoId={geoId}
-            icon={searchIcon}
-          />
-        )} */}
       </HeroTitleGrid>
       <div
         className={classNames(classes.map, {
@@ -250,18 +232,6 @@ function Profile({
           zoom={config.MAPIT.zoom}
         />
       </div>
-      {/* {activeRelease && (
-          <Typography
-            variant="body2"
-            className={classNames(classes.release, {
-              [classes.h2hRelease]: head2head
-            })}
-            component="div"
-          >
-            {activeRelease.citation}
-            <ReleaseDropdown primaryReleases={primaryReleases} fromHero />
-          </Typography>
-        )} */}
     </Hero>
   );
 }
