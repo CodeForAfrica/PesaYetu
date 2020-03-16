@@ -96,13 +96,9 @@ function Profile({
     [history]
   );
 
-  const {
-    geoLevel,
-    name: shortName,
-    parentCode,
-    parentLevel,
-    totalPopulation
-  } = isLoading ? {} : profile;
+  const { geoLevel, name: shortName, parentCode, parentLevel } = isLoading
+    ? {}
+    : profile;
 
   const { name: parentName } = !isLoading && parent ? parent : {};
 
@@ -126,15 +122,15 @@ function Profile({
 
   let population;
   let populationDensity;
-  if (!isLoading && totalPopulation) {
+  if (!isLoading && profile.totalPopulation) {
     let numberFormatter = new Intl.NumberFormat('en-GB');
-    population = numberFormatter.format(totalPopulation.toFixed(0));
+    population = numberFormatter.format(profile.totalPopulation.toFixed(0));
     numberFormatter = new Intl.NumberFormat('en-GB', {
       minimumFractionDigits: 1,
       maximumFractionDigits: 1
     });
     populationDensity = numberFormatter.format(
-      totalPopulation / squareKmsFloat
+      profile.totalPopulation / squareKmsFloat
     );
   }
 
@@ -156,7 +152,7 @@ function Profile({
             width: 150
           }}
         >
-          {geoLevel} in{' '}
+          {geoLevel && config.geoLevels[geoLevel].name} in{' '}
           <Link
             component={parentLevel ? 'a' : 'span'}
             variant="subtitle1"
@@ -274,7 +270,9 @@ Profile.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  profile: PropTypes.shape({}),
+  profile: PropTypes.shape({
+    totalPopulation: PropTypes.number
+  }),
   parent: PropTypes.shape({}),
   isLoading: PropTypes.bool.isRequired,
   head2head: PropTypes.bool.isRequired,
