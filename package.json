@@ -57,7 +57,7 @@
     "lint": "yarn eslint --fix --ignore-path './.gitignore' --ext '.js,.json,.md' './'",
     "lint-staged": "yarn eslint --fix",
     "predeploy": "yarn build && yarn commitChartDefinitions",
-    "deploy": "gh-pages -d build",
+    "deploy": "yarn now --prod",
     "preversion": "yarn deploy",
     "postversion": "git push --follow-tags && echo \"Successfully released version $npm_package_version!\""
   },
@@ -84,9 +84,9 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "gh-pages": "^2.1.1",
     "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
+    "now": "^17.0.4",
     "prettier": "^1.18.2"
   },
   "husky": {
