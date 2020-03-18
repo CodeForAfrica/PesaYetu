@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import { makeStyles, Grid } from '@material-ui/core';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: '#EDEDEE',
     flexGrow: 1,
@@ -20,9 +19,10 @@ const styles = theme => ({
       margin: '0 auto'
     }
   }
-});
+}));
 
-function ChartsContainer({ classes, children }) {
+function ChartsContainer({ children, ...props }) {
+  const classes = useStyles(props);
   return (
     <div className={classes.root}>
       <Grid container className={classes.layout}>
@@ -33,7 +33,6 @@ function ChartsContainer({ classes, children }) {
 }
 
 ChartsContainer.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -44,4 +43,4 @@ ChartsContainer.defaultProps = {
   children: null
 };
 
-export default withStyles(styles)(ChartsContainer);
+export default ChartsContainer;
