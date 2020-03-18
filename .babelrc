@@ -1,7 +1,16 @@
 {
     "presets": ["next/babel"],
     "plugins": [
-      ["syntax-dynamic-import"],
+      ["transform-imports", {
+        "material-ui/core": {
+          "transform": "material-ui/core/${member}",
+          "preventFullImport": true
+        },
+        "hurumap-ui/core": {
+          "transform": "hurumap-ui/core/${member}",
+          "preventFullImport": true
+        }
+      }],
       [
         "module-resolver",
         {
