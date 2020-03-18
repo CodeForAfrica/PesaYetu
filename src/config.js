@@ -5,9 +5,17 @@ const config = {
       : 'https://takwimu.africa',
   MAPIT: {
     url: 'https://mapit.hurumap.org',
-    codeType: 'KEN',
+    codeType: 'AFR',
     zoom: 5,
     centre: [0.3051933453207569, 37.908818734483155]
+  },
+  geoLevels: {
+    country: {
+      name: 'Country'
+    },
+    level1: {
+      name: 'County'
+    }
   },
 
   about: {
@@ -71,7 +79,8 @@ const config = {
       media: 'img',
       country: 'KE'
     }
-  ]
+  ],
+  populationTables: ['allPopulationSex2019S']
 };
 
 export default config;

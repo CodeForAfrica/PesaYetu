@@ -1,26 +1,33 @@
 import React, { useCallback } from 'react';
-import { withRouter } from 'react-router-dom';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 
-import { PropTypes } from 'prop-types';
 import {
+  makeStyles,
   useMediaQuery,
   useTheme,
-  withStyles,
-  Link,
   Typography
 } from '@material-ui/core';
-import MapIt from '@codeforafrica/hurumap-ui/core/MapIt';
 
+import Link from 'components/Link';
+
+import config from 'config';
+import useToggleModal from 'useToggleModal';
 import Hero, {
   HeroTitle,
   HeroDescription,
   HeroTitleGrid,
   HeroButton
 } from './Hero';
-import config from '../../config';
-import useToggleModal from '../../useToggleModal';
 
-const styles = theme => ({
+const MapIt = dynamic({
+  ssr: false,
+  loader: () => {
+    return typeof window !== 'undefined' && import('@hurumap-ui/core/MapIt');
+  }
+});
+
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     marginTop: '32px',
@@ -67,16 +74,19 @@ const styles = theme => ({
       maxWidth: '59.239285714rem !important' // 1rem = 14px
     }
   }
-});
+}));
 
-function CountryHero({ classes, history }) {
+function CountryHero({ ...props }) {
   const theme = useTheme();
+  const router = useRouter();
+  const classes = useStyles(props);
+
   const { toggleModal } = useToggleModal('search');
   const onClickGeoLayer = useCallback(
     area => {
-      history.push(`/profiles/${area.codes[config.MAPIT.codeType]}`);
+      router.push(`/profiles/${area.codes[config.MAPIT.codeType]}`);
     },
-    [history]
+    [router]
   );
   return (
     <Hero classes={{ root: classes.root }}>
@@ -92,7 +102,11 @@ function CountryHero({ classes, history }) {
 
         <Typography variant="subtitle2" style={{ marginTop: '2.5rem' }}>
           or view{' '}
-          <Link className={classes.alink} href="/profiles/country-KE">
+          <Link
+            className={classes.alink}
+            href="/profiles/[geoId]"
+            as="/profiles/country-KE"
+          >
             Kenya
           </Link>
         </Typography>
@@ -133,11 +147,4 @@ function CountryHero({ classes, history }) {
   );
 }
 
-CountryHero.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired
-};
-
-export default withRouter(withStyles(styles)(CountryHero));
+export default CountryHero;

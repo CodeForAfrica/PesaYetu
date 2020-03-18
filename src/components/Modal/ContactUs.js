@@ -9,7 +9,9 @@ import {
   ButtonBase
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import cross from '../../assets/images/icons/close.svg';
+import A from '@hurumap-ui/core/A';
+
+import cross from 'assets/images/icons/close.svg';
 
 const styles = theme => ({
   root: {
@@ -110,9 +112,9 @@ function ContactUs({ classes, handleClose }) {
                 <span className={classes.listIndex}>
                   {`${index + 1}`.padStart(2, '0')}
                 </span>
-                <a className={classes.listItemLink} href={`${contact.href}`}>
+                <A className={classes.listItemLink} href={`${contact.href}`}>
                   {contact.name}
-                </a>
+                </A>
               </MenuItem>
             ))}
           </MenuList>

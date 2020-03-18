@@ -1,22 +1,33 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
-import ChartContainer from '@codeforafrica/hurumap-ui/core/ChartContainer';
 import { Grid } from '@material-ui/core';
-import ChartFactory from '@codeforafrica/hurumap-ui/factory/ChartFactory';
-import { ProfilePageHeader } from '../components/Header';
+import { ProfilePageHeader } from 'components/Header';
 
-import Page from '../components/Page';
-import ProfileRelease from '../components/ProfileReleases';
-import useProfileLoader from '../data/useProfileLoader';
-import useChartDefinitions from '../data/useChartDefinitions';
-import slugify from '../utils/slugify';
-import ChartsContainer from '../components/ChartsContainer';
-import ProfileSectionTitle from '../components/ProfileSectionTitle';
-import ProfileTabs from '../components/ProfileTabs';
-import config from '../config';
-import logo from '../assets/images/logos/pesacheck-white.png';
+import Page from 'components/Page';
+import ProfileRelease from 'components/ProfileReleases';
+import useProfileLoader from '@hurumap-ui/core/useProfileLoader';
+import ChartFactory from '@hurumap-ui/charts/ChartFactory';
+
+import useChartDefinitions from 'data/useChartDefinitions';
+import slugify from 'utils/slugify';
+import ChartsContainer from 'components/ChartsContainer';
+import ProfileSectionTitle from 'components/ProfileSectionTitle';
+import ProfileTabs from 'components/ProfileTabs';
+
+import withApollo from 'lib/withApollo';
+import config from 'config';
+import logo from 'assets/images/logos/pesacheck-white.png';
+
+const ChartContainer = dynamic(
+  () => import('@hurumap-ui/core/ChartContainer'),
+  {
+    ssr: false
+  }
+);
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -36,30 +47,36 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Profile({
-  match: {
-    params: { geoId, comparisonGeoId }
-  }
-}) {
+function Profile(props) {
+  const router = useRouter();
+  const { geoId, comparisonGeoId } = router.query;
   const head2head = Boolean(geoId && comparisonGeoId);
-  const classes = useStyles();
-  const [activeTab, setActiveTab] = useState(
-    window.location.hash.slice(1) ? window.location.hash.slice(1) : 'all'
-  );
+  const classes = useStyles(props);
+
+  const [activeTab, setActiveTab] = useState('all');
+  useEffect(() => {
+    const tab = window.location.hash.slice(1)
+      ? window.location.hash.slice(1)
+      : 'all';
+    setActiveTab(tab);
+  }, []);
+
   const sectionedCharts = useChartDefinitions();
   // Flatten all charts
   const charts = sectionedCharts
     .map(x => x.charts)
     .reduce((a, b) => a.concat(b));
+
   const [visuals] = useState(
     charts.map(x => x.visuals).reduce((a, b) => a.concat(b))
   );
 
-  const { profiles, chartData } = useProfileLoader(
+  const { profiles, chartData } = useProfileLoader({
     geoId,
     comparisonGeoId,
-    visuals
-  );
+    visuals,
+    populationTables: config.populationTables
+  });
 
   // get profiletabs
   const profileTabs = useMemo(
@@ -215,33 +232,45 @@ function Profile({
     }
   }, [activeTab, profileTabs]);
 
+  const pageTitle = () => {
+    const profileName = profiles && profiles.profile && profiles.profile.name;
+    const profileTitle = profileName ? ` - ${profileName} - ` : ' - ';
+    return `Data${profileTitle}Pesayetu`;
+  };
+
   return (
-    <Page>
-      <ProfilePageHeader
-        profiles={profiles}
-        head2head={head2head}
-        geoId={geoId}
-        comparisonGeoId={comparisonGeoId}
-      />
-      <ProfileTabs
-        loading={chartData.isLoading}
-        activeTab={activeTab}
-        switchToTab={setActiveTab}
-        tabs={profileTabs}
-      />
-      <ChartsContainer>{chartComponents}</ChartsContainer>
-      <ProfileRelease sectionedCharts={existingSectionedCharts} />
-    </Page>
+    <>
+      <Head>
+        <title>{pageTitle()}</title>
+        <link
+          rel="preconnect"
+          href="https://mapit.hurumap.org/graphql"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://graphql.hurumap.org/graphql"
+          crossOrigin="anonymous"
+        />
+      </Head>
+      <Page>
+        <ProfilePageHeader
+          profiles={profiles}
+          head2head={head2head}
+          geoId={geoId}
+          comparisonGeoId={comparisonGeoId}
+        />
+        <ProfileTabs
+          loading={chartData.isLoading}
+          activeTab={activeTab}
+          switchToTab={setActiveTab}
+          tabs={profileTabs}
+        />
+        <ChartsContainer>{chartComponents}</ChartsContainer>
+        <ProfileRelease sectionedCharts={existingSectionedCharts} />
+      </Page>
+    </>
   );
 }
 
-Profile.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      geoId: PropTypes.string.isRequired,
-      comparisonGeoId: PropTypes.string
-    }).isRequired
-  }).isRequired
-};
-
-export default Profile;
+export default withApollo(Profile);

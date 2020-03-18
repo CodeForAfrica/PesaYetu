@@ -1,3 +1,31 @@
 {
-    "plugins": ["syntax-dynamic-import"]
-}
+    "presets": ["next/babel"],
+    "plugins": [
+      ["transform-imports", {
+        "material-ui/core": {
+          "transform": "material-ui/core/${member}",
+          "preventFullImport": true
+        },
+        "hurumap-ui/core": {
+          "transform": "hurumap-ui/core/${member}",
+          "preventFullImport": true
+        },
+        "hurumap-ui/charts": {
+          "transform": "hurumap-ui/charts/${member}",
+          "preventFullImport": true
+        }
+      }],
+      [
+        "module-resolver",
+        {
+          "root": ["./src"],
+          "alias": {
+            "assets": "./src/assets",
+            "components": "./src/components",
+            "data": "./src/data",
+            "lib": "./src/lib"
+          }
+        }
+      ]
+    ]
+  }

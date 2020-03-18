@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { getOpenAfricaCount } from '../../lib/api';
-import plugIcon from '../../assets/images/icons/group-6.png';
+import plugIcon from 'assets/images/icons/group-6.png';
+import { getOpenAfricaCount } from 'lib/api';
 
 import Content from './Content';
 
