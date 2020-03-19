@@ -1,6 +1,6 @@
 const fs = require('fs');
 const shortid = require('shortid');
-const sectionedCharts = require('data/charts.json');
+const sectionedCharts = require('../src/data/charts.json');
 
 // Use `~` instead of `-` since we use `-` as `type-id` separator.
 shortid.characters(
