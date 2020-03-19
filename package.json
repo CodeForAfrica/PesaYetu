@@ -55,7 +55,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "yarn eslint --fix --ignore-path './.gitignore' --ext '.js,.json,.md' './'",
-    "lint-staged": "yarn eslint --fix",
+    "lint-staged": "yarn eslint --fix --ignore-path './.gitignore' --ext '.js,.json,.md' './'",
     "predeploy": "yarn build && yarn commitChartDefinitions",
     "deploy": "yarn now --prod",
     "preversion": "yarn deploy",
