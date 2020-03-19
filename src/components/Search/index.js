@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import createAPI from 'lib/api';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
-
-import createAPI from '../../lib/api';
 
 const styles = theme => ({
   root: {

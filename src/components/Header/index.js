@@ -2,10 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import CountryHero from 'components/Hero/CountryHero';
+import ProfileHero from 'components/Hero/ProfileHero';
+import TitleHero from 'components/Hero/TitleHero';
 import Header from './Header';
-import CountryHero from '../Hero/CountryHero';
-import ProfileHero from '../Hero/ProfileHero';
-import TitleHero from '../Hero/TitleHero';
 
 export function CountryPageHeader(props) {
   return (

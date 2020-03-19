@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { makeStyles, Grid, Button } from '@material-ui/core';
 
-import arrowBlack from '../assets/images/icons/black-combined-shape.svg';
-import arrow from '../assets/images/icons/combined-shape.svg';
+import arrowBlack from 'assets/images/icons/black-combined-shape.svg';
+import arrow from 'assets/images/icons/combined-shape.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {

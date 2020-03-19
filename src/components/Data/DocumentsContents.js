@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { getSourceAfricaData } from '../../lib/api';
-import menuIcon from '../../assets/images/icons/group-7.png';
+import { getSourceAfricaData } from 'lib/api';
+import menuIcon from 'assets/images/icons/group-7.png';
 
 import Content from './Content';
 

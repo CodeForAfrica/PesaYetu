@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import background from '../../assets/images/hero-image-3_2.png';
+import background from 'assets/images/hero-image-3_2.png';
 
 const styles = theme => ({
   root: {

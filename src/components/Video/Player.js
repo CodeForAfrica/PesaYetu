@@ -5,7 +5,7 @@ import { Grid, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 
-import IFrame from '../IFrame';
+import IFrame from 'components/IFrame';
 import Sources from './Sources';
 import Thumbnail from './Thumbnail';
 
