@@ -80,7 +80,7 @@ const config = {
       country: 'KE'
     }
   ],
-  populationTables: ['allPopulationSex2019S']
+  populationTables: ['allPopulationKe2019S']
 };
 
 export default config;

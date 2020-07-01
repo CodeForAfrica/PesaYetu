@@ -128,7 +128,7 @@ function Profile({ geoId, head2head, isLoading, profile, parent, ...props }) {
   let populationDensity;
   if (!isLoading && totalPopulation) {
     let numberFormatter = new Intl.NumberFormat('en-GB');
-    population = numberFormatter.format(totalPopulation.toFixed(0));
+    population = numberFormatter.format(Number(totalPopulation).toFixed(0));
     numberFormatter = new Intl.NumberFormat('en-GB', {
       minimumFractionDigits: 1,
       maximumFractionDigits: 1
@@ -226,7 +226,7 @@ function Profile({ geoId, head2head, isLoading, profile, parent, ...props }) {
         <MapIt
           center={config.MAPIT.centre}
           codeType={config.MAPIT.codeType}
-          drawChildren
+          drawChildren={geoLevel === 'country'}
           drawProfile
           geoCode={geoId.split('-')[1]}
           geoLayerBlurStyle={{
