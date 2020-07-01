@@ -16,7 +16,7 @@
               "offset": 32,
               "width": 600
             },
-            "table": "allAnnualRevenues",
+            "table": "allPesayetuAnnualRevenues",
             "x": "revenue",
             "groupBy": "year",
             "y": "total",
@@ -50,7 +50,7 @@
                 }
               }
             },
-            "table": "allFinancialYears",
+            "table": "allPesayetuFinancialYears",
             "x": "financialYear",
             "y": "total",
             "id": "visual-VdGyU0"
@@ -84,7 +84,7 @@
                 }
               }
             },
-            "table": "allExpenditureYears",
+            "table": "allPesayetuExpenditureYears",
             "x": "expenditure",
             "groupBy": "year",
             "y": "total",
@@ -120,7 +120,7 @@
                 }
               }
             },
-            "table": "allConditionalFundAllocationsCombineds",
+            "table": "allPesayetuConditionalFundAllocationsCombineds",
             "x": "year",
             "y": "total",
             "id": "visual-wbG4HA"
@@ -148,7 +148,7 @@
                 }
               }
             },
-            "table": "allBreakdownCombined2014S",
+            "table": "allPesayetuBreakdownCombined2014S",
             "x": "projectType",
             "y": "total",
             "id": "visual-bYURxo"
@@ -165,7 +165,7 @@
         "visuals": [
           {
             "type": "grouped_column",
-            "table": "allConditionalFundAllocations",
+            "table": "allPesayetuConditionalFundAllocations",
             "x": "allocationType",
             "groupBy": "year",
             "typeProps": {
@@ -204,7 +204,7 @@
                 }
               }
             },
-            "table": "allBreakdownConditionFundDp2015S",
+            "table": "allPesayetuBreakdownConditionFundDp2015S",
             "x": "projectType",
             "y": "total",
             "id": "visual-ypH2eJ"
@@ -221,7 +221,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundDp2016S",
+            "table": "allPesayetuBreakdownConditionFundDp2016S",
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
@@ -249,7 +249,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundDp2017S",
+            "table": "allPesayetuBreakdownConditionFundDp2017S",
             "typeProps": {
               "horizontal": true,
               "labelWidth": 200,
@@ -277,7 +277,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundDp2018S",
+            "table": "allPesayetuBreakdownConditionFundDp2018S",
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
@@ -316,7 +316,7 @@
                 }
               }
             },
-            "table": "allBreakdownConditionFundDp2019S",
+            "table": "allPesayetuBreakdownConditionFundDp2019S",
             "x": "projectType",
             "y": "total",
             "id": "visual-vHlJvd"
@@ -333,7 +333,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundNg2015S",
+            "table": "allPesayetuBreakdownConditionFundNg2015S",
             "typeProps": {
               "horizontal": true,
               "labelWidth": 250,
@@ -361,7 +361,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundNg2016S",
+            "table": "allPesayetuBreakdownConditionFundNg2016S",
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
@@ -389,7 +389,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundNg2017S",
+            "table": "allPesayetuBreakdownConditionFundNg2017S",
             "typeProps": {
               "horizontal": true,
               "labelWidth": 250,
@@ -417,7 +417,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundNg2018S",
+            "table": "allPesayetuBreakdownConditionFundNg2018S",
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
@@ -445,7 +445,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allBreakdownConditionFundNg2019S",
+            "table": "allPesayetuBreakdownConditionFundNg2019S",
             "x": "projectType",
             "typeProps": {
               "horizontal": true,
@@ -473,7 +473,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allRoadMaintenances",
+            "table": "allPesayetuRoadMaintenances",
             "x": "financialYear",
             "y": "total",
             "id": "visual-7yu885"
@@ -490,7 +490,7 @@
         "visuals": [
           {
             "type": "column",
-            "table": "allHealthCentresSupports",
+            "table": "allPesayetuHealthCentresSupports",
             "x": "financialYear",
             "y": "total",
             "id": "visual-2sxd85"
