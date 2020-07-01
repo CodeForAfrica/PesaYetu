@@ -4,6 +4,116 @@
     "sectionDescription": "",
     "charts": [
       {
+        "title": "Revenue HY",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "width": 600
+            },
+            "table": "allRevenueHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-90888y"
+          }
+        ],
+        "id": "chart-90888y"
+      },
+      {
+        "title": "Revenue Raised Nationally",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "width": 600
+            },
+            "table": "allRevenueRaisedNationallyHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-itj89"
+          }
+        ],
+        "id": "chart-itj89"
+      },
+      {
+        "title": "Loan Grants Development Partner",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "width": 600
+            },
+            "table": "allLoansGrantsDevelopmentPartnersHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-Y4450"
+          }
+        ],
+        "id": "chart-Y4450"
+      },
+      {
+        "title": "Conditional Grants National Government",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "width": 600
+            },
+            "table": "allConditionalGrantsNationalGovtHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-7678f"
+          }
+        ],
+        "id": "chart-7678f"
+      },
+      {
+        "title": "Other Revenue Sources",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "width": 600
+            },
+            "table": "allOtherRevenueSourcesHy201920S",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-3445Y"
+          }
+        ],
+        "id": "chart-3445Y"
+      },
+      {
         "title": "Government Revenue in Ksh Million",
         "subtitle": "Local vs Total Generated Revenue",
         "sourceLink": "https://www.knbs.or.ke/download/economic-survey-2019/",
