@@ -14,9 +14,15 @@
             "type": "grouped_column",
             "typeProps": {
               "offset": 32,
-              "width": 600
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
-            "table": "allRevenueHy201920S",
+            "table": "allPesayetuRevenueHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
@@ -38,7 +44,7 @@
               "offset": 32,
               "width": 600
             },
-            "table": "allRevenueRaisedNationallyHy201920S",
+            "table": "allPesayetuRevenueRaisedNationallyHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
@@ -60,7 +66,7 @@
               "offset": 32,
               "width": 600
             },
-            "table": "allLoansGrantsDevelopmentPartnersHy201920S",
+            "table": "allPesayetuLoansGrantsDevelopmentPartnersHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
@@ -82,7 +88,7 @@
               "offset": 32,
               "width": 600
             },
-            "table": "allConditionalGrantsNationalGovtHy201920S",
+            "table": "allPesayetuConditionalGrantsNationalGovtHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
@@ -104,7 +110,7 @@
               "offset": 32,
               "width": 600
             },
-            "table": "allOtherRevenueSourcesHy201920S",
+            "table": "allPesayetuOtherRevenueSourcesHy201920S",
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
@@ -137,6 +143,67 @@
       }
     ],
     "id": "section-XTPz7b"
+  },
+  {
+    "sectionTitle": "Expenditure",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Expenditure Economic HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuExpenditureEconomicHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-00888y"
+          }
+        ],
+        "id": "chart-00888y"
+      },
+      {
+        "title": "Development Expenditure HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuDevelopmentExpenditureHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-01888y"
+          }
+        ],
+        "id": "chart-01888y"
+      },
+      {
+        "title": "Recurrent Expenditure HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuRecurrentExpenditureHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-02988y"
+          }
+        ],
+        "id": "chart-02988y"
+      }
+    ],
+    "id": "section-po097b"
   },
   {
     "sectionTitle": "Budget Data",

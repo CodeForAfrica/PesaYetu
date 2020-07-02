@@ -177,6 +177,7 @@ function Profile(props) {
                   visual =>
                     !profiles.isLoading && (
                       <ChartFactory
+                        disableShowMore
                         key={visual.id}
                         definition={visual}
                         profiles={profiles}

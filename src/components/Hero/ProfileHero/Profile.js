@@ -15,11 +15,8 @@ import Hero, {
 
 import config from '../../../config';
 
-const MapIt = dynamic({
-  ssr: false,
-  loader: () => {
-    return typeof window !== 'undefined' && import('@hurumap-ui/core/MapIt');
-  }
+const MapIt = dynamic(() => import('@hurumap-ui/core/MapIt'), {
+  ssr: false
 });
 
 const useStyles = makeStyles(theme => ({
@@ -227,7 +224,7 @@ function Profile({ geoId, head2head, isLoading, profile, parent, ...props }) {
           center={config.MAPIT.centre}
           codeType={config.MAPIT.codeType}
           drawChildren={geoLevel === 'country'}
-          drawProfile
+          drawProfile={geoLevel !== 'country'}
           geoCode={geoId.split('-')[1]}
           geoLayerBlurStyle={{
             color: 'white',

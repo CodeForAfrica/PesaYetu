@@ -20,11 +20,8 @@ import Hero, {
   HeroButton
 } from './Hero';
 
-const MapIt = dynamic({
-  ssr: false,
-  loader: () => {
-    return typeof window !== 'undefined' && import('@hurumap-ui/core/MapIt');
-  }
+const MapIt = dynamic(() => import('@hurumap-ui/core/MapIt'), {
+  ssr: false
 });
 
 const useStyles = makeStyles(theme => ({
