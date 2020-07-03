@@ -13,7 +13,10 @@
           {
             "type": "grouped_column",
             "typeProps": {
-              "offset": 32,
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
               "parts": {
                 "axis": {
                   "dependent": {
@@ -23,8 +26,8 @@
               }
             },
             "table": "allPesayetuRevenueHy201920S",
-            "x": "variable1",
-            "groupBy": "variable2",
+            "x": "variable2",
+            "groupBy": "variable1",
             "y": "value",
             "id": "visual-90888y"
           }
@@ -41,7 +44,6 @@
           {
             "type": "grouped_column",
             "typeProps": {
-              "offset": 32,
               "width": 600
             },
             "table": "allPesayetuRevenueRaisedNationallyHy201920S",
@@ -63,12 +65,13 @@
           {
             "type": "grouped_column",
             "typeProps": {
-              "offset": 32,
+              "labelWidth": 200,
+              "offset": 40,
               "width": 600
             },
             "table": "allPesayetuLoansGrantsDevelopmentPartnersHy201920S",
-            "x": "variable1",
-            "groupBy": "variable2",
+            "x": "variable2",
+            "groupBy": "variable1",
             "y": "value",
             "id": "visual-Y4450"
           }
@@ -85,12 +88,13 @@
           {
             "type": "grouped_column",
             "typeProps": {
-              "offset": 32,
+              "labelWidth": 200,
+              "offset": 38,
               "width": 600
             },
             "table": "allPesayetuConditionalGrantsNationalGovtHy201920S",
-            "x": "variable1",
-            "groupBy": "variable2",
+            "x": "variable2",
+            "groupBy": "variable1",
             "y": "value",
             "id": "visual-7678f"
           }
@@ -107,12 +111,18 @@
           {
             "type": "grouped_column",
             "typeProps": {
-              "offset": 32,
-              "width": 600
+              "offset": 50,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
             },
             "table": "allPesayetuOtherRevenueSourcesHy201920S",
-            "x": "variable2",
-            "groupBy": "variable1",
+            "x": "variable1",
+            "groupBy": "variable2",
             "y": "value",
             "id": "visual-3445Y"
           }
@@ -129,7 +139,7 @@
           {
             "type": "grouped_column",
             "typeProps": {
-              "offset": 32,
+              "offset": 50,
               "width": 600
             },
             "table": "allPesayetuAnnualRevenues",
@@ -201,6 +211,60 @@
           }
         ],
         "id": "chart-02988y"
+      },
+      {
+        "title": "Expenditure Economic Percentage 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuExpenditureEconomicPercentageHy201920S ",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-xx988y"
+          }
+        ],
+        "id": "chart-xx988y"
+      },
+      {
+        "title": "Development Expenditure Percentage 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuDevelopmentExpenditurePercentageHy201920S ",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-mx008y"
+          }
+        ],
+        "id": "chart-mx008y"
+      },
+      {
+        "title": "Recurrent Expenditure Percentage 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuRecurrentExpenditurePercentageHy201920S ",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-yy988y"
+          }
+        ],
+        "id": "chart-yy988y"
       }
     ],
     "id": "section-po097b"
@@ -237,6 +301,121 @@
       }
     ],
     "id": "section-Fax0Wy"
+  },
+  {
+    "sectionTitle": "Budget by Department",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Agriculture Livestock & Fisheries HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuAgriLivestockFisheriesHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-00888y"
+          }
+        ],
+        "id": "chart-00888y"
+      },
+      {
+        "title": "Development Expenditure HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuDevelopmentExpenditureHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-01888y"
+          }
+        ],
+        "id": "chart-01888y"
+      },
+      {
+        "title": "Recurrent Expenditure HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuRecurrentExpenditureHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-02988y"
+          }
+        ],
+        "id": "chart-02988y"
+      },
+      {
+        "title": "Expenditure Economic Percentage 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuExpenditureEconomicPercentageHy201920S ",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-xx988y"
+          }
+        ],
+        "id": "chart-xx988y"
+      },
+      {
+        "title": "Development Expenditure Percentage 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuDevelopmentExpenditurePercentageHy201920S ",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-mx008y"
+          }
+        ],
+        "id": "chart-mx008y"
+      },
+      {
+        "title": "Recurrent Expenditure Percentage 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuRecurrentExpenditurePercentageHy201920S ",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-yy988y"
+          }
+        ],
+        "id": "chart-yy988y"
+      }
+    ],
+    "id": "section-defgtX"
   },
   {
     "sectionTitle": "Ceilings on Recurrent Expenditures",

@@ -224,7 +224,7 @@ function Profile({ geoId, head2head, isLoading, profile, parent, ...props }) {
           center={config.MAPIT.centre}
           codeType={config.MAPIT.codeType}
           drawChildren={geoLevel === 'country'}
-          drawProfile={geoLevel !== 'country'}
+          drawProfile
           geoCode={geoId.split('-')[1]}
           geoLayerBlurStyle={{
             color: 'white',
