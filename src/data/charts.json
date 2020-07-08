@@ -325,7 +325,7 @@
         "id": "chart-00888y"
       },
       {
-        "title": "Development Expenditure HY 2019/20",
+        "title": "Percent Agriculture Livestock & Fisheries HY 2019/20",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
         "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
@@ -333,17 +333,17 @@
         "visuals": [
           {
             "type": "grouped_column",
-            "table": "allPesayetuDevelopmentExpenditureHy201920S",
+            "table": "allPesayetuPercentAgriLivestockFisheriesHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
-            "id": "visual-01888y"
+            "id": "visual-00889y"
           }
         ],
-        "id": "chart-01888y"
+        "id": "chart-00889y"
       },
       {
-        "title": "Recurrent Expenditure HY 2019/20",
+        "title": "Business Cooperatives Markets HY 2019/20",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
         "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
@@ -351,17 +351,17 @@
         "visuals": [
           {
             "type": "grouped_column",
-            "table": "allPesayetuRecurrentExpenditureHy201920S",
+            "table": "allPesayetuBusinessCooperativesMarketsHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
-            "id": "visual-02988y"
+            "id": "visual-0x459y"
           }
         ],
-        "id": "chart-02988y"
+        "id": "chart-0x459y"
       },
       {
-        "title": "Expenditure Economic Percentage 2019/20",
+        "title": "Percent Business Cooperatives Markets HY 2019/20",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
         "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
@@ -369,17 +369,17 @@
         "visuals": [
           {
             "type": "grouped_column",
-            "table": "allPesayetuExpenditureEconomicPercentageHy201920S ",
+            "table": "allPesayetuPercentBusinessCooperativesMarketsHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
-            "id": "visual-xx988y"
+            "id": "visual-0x458y"
           }
         ],
-        "id": "chart-xx988y"
+        "id": "chart-0x458y"
       },
       {
-        "title": "Development Expenditure Percentage 2019/20",
+        "title": "City of Kisumu HY 2019/20",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
         "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
@@ -387,17 +387,17 @@
         "visuals": [
           {
             "type": "grouped_column",
-            "table": "allPesayetuDevelopmentExpenditurePercentageHy201920S ",
+            "table": "allPesayetuCityOfKisumuHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
-            "id": "visual-mx008y"
+            "id": "visual-03400y"
           }
         ],
-        "id": "chart-mx008y"
+        "id": "chart-03400y"
       },
       {
-        "title": "Recurrent Expenditure Percentage 2019/20",
+        "title": "Percent City of Kisumu HY 2019/20",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
         "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
@@ -405,14 +405,50 @@
         "visuals": [
           {
             "type": "grouped_column",
-            "table": "allPesayetuRecurrentExpenditurePercentageHy201920S ",
+            "table": "allPesayetuPercentCityOfKisumuHy201920S",
             "x": "variable1",
             "groupBy": "variable2",
             "y": "value",
-            "id": "visual-yy988y"
+            "id": "visual-03401y"
           }
         ],
-        "id": "chart-yy988y"
+        "id": "chart-03401y"
+      },
+      {
+        "title": "County Assembly HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuCountyAssemblyHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-yu800y"
+          }
+        ],
+        "id": "chart-yu800y"
+      },
+      {
+        "title": "Percent County Assembly HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentCountyAssemblyHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-yu801y"
+          }
+        ],
+        "id": "chart-yu801y"
       }
     ],
     "id": "section-defgtX"
