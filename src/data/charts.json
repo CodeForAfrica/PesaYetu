@@ -325,24 +325,6 @@
         "id": "chart-00888y"
       },
       {
-        "title": "Percent Agriculture Livestock & Fisheries HY 2019/20",
-        "subtitle": "",
-        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
-        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "table": "allPesayetuPercentAgriLivestockFisheriesHy201920S",
-            "x": "variable1",
-            "groupBy": "variable2",
-            "y": "value",
-            "id": "visual-00889y"
-          }
-        ],
-        "id": "chart-00889y"
-      },
-      {
         "title": "Business Cooperatives Markets HY 2019/20",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
@@ -359,24 +341,6 @@
           }
         ],
         "id": "chart-0x459y"
-      },
-      {
-        "title": "Percent Business Cooperatives Markets HY 2019/20",
-        "subtitle": "",
-        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
-        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "table": "allPesayetuPercentBusinessCooperativesMarketsHy201920S",
-            "x": "variable1",
-            "groupBy": "variable2",
-            "y": "value",
-            "id": "visual-0x458y"
-          }
-        ],
-        "id": "chart-0x458y"
       },
       {
         "title": "City of Kisumu HY 2019/20",
@@ -397,24 +361,6 @@
         "id": "chart-03400y"
       },
       {
-        "title": "Percent City of Kisumu HY 2019/20",
-        "subtitle": "",
-        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
-        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "table": "allPesayetuPercentCityOfKisumuHy201920S",
-            "x": "variable1",
-            "groupBy": "variable2",
-            "y": "value",
-            "id": "visual-03401y"
-          }
-        ],
-        "id": "chart-03401y"
-      },
-      {
         "title": "County Assembly HY 2019/20",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
@@ -431,6 +377,67 @@
           }
         ],
         "id": "chart-yu800y"
+      }
+    ],
+    "id": "section-defgtX"
+  },
+  {
+    "sectionTitle": "Budget by Program",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Percent Agriculture Livestock & Fisheries HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentAgriLivestockFisheriesHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-00889y"
+          }
+        ],
+        "id": "chart-00889y"
+      },
+      {
+        "title": "Percent Business Cooperatives Markets HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentBusinessCooperativesMarketsHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-0x458y"
+          }
+        ],
+        "id": "chart-0x458y"
+      },
+      {
+        "title": "Percent City of Kisumu HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentCityOfKisumuHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-03401y"
+          }
+        ],
+        "id": "chart-03401y"
       },
       {
         "title": "Percent County Assembly HY 2019/20",
@@ -451,7 +458,7 @@
         "id": "chart-yu801y"
       }
     ],
-    "id": "section-defgtX"
+    "id": "section-897ujkkl"
   },
   {
     "sectionTitle": "Ceilings on Recurrent Expenditures",
