@@ -377,6 +377,60 @@
           }
         ],
         "id": "chart-yu800y"
+      },
+      {
+        "title": "Education Human Resource Development ICT HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuEducationHumanResourceDevelopmentIctHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-00ymmm"
+          }
+        ],
+        "id": "chart-00ymmm"
+      },
+      {
+        "title": "Finance Economic Planning HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuFinanceEconomicPlanningHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-209xnm"
+          }
+        ],
+        "id": "chart-209xnm"
+      },
+      {
+        "title": "Health Services HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuHealthServicesHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-y55m0x"
+          }
+        ],
+        "id": "chart-y55m0x"
       }
     ],
     "id": "section-defgtX"
@@ -456,6 +510,78 @@
           }
         ],
         "id": "chart-yu801y"
+      },
+      {
+        "title": "Percent Education Human Resource Development ICT HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentEducationHumanResourceDevelopmentIctHy20S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-0xymmm"
+          }
+        ],
+        "id": "chart-0xymmm"
+      },
+      {
+        "title": "Percent Energy Industry HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentEnergyIndustryHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-0011nm"
+          }
+        ],
+        "id": "chart-0011nm"
+      },
+      {
+        "title": "Percent Finance Economic Planning HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentFinanceEconomicPlanningHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-tnmy0x"
+          }
+        ],
+        "id": "chart-tnmy0x"
+      },
+      {
+        "title": "Percent Health Services HY 2019/20",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "table": "allPesayetuPercentHealthServicesHy201920S",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "id": "visual-y67m0x"
+          }
+        ],
+        "id": "chart-y67m0x"
       }
     ],
     "id": "section-897ujkkl"
