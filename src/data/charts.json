@@ -4,6 +4,38 @@
     "sectionDescription": "",
     "charts": [
       {
+        "title": "Equitable Share of Revenue Raised nationally",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRevenues",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "customUnit": "Kshs Million",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
         "title": "Revenue HY",
         "subtitle": "",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
@@ -303,9 +335,199 @@
     "id": "section-Fax0Wy"
   },
   {
-    "sectionTitle": "Budget by Department",
+    "sectionTitle": "Budget Performance by Department ",
     "sectionDescription": "",
     "charts": [
+      {
+        "title": "County Assembly",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAssemblyDepts",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-py78st"
+          }
+        ],
+        "id": "chart-py78st"
+      },
+      {
+        "title": "County Secretary Office",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountySecretaryOfficeDepts",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-py87ui"
+          }
+        ],
+        "id": "chart-py87ui"
+      },
+      {
+        "title": "Office of the Deputy Governor",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1/2",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDeputyGovernorOfficeDepts",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-py87ui"
+          }
+        ],
+        "id": "chart-py87ui"
+      },
+      {
+        "title": "Department of Devolution, Administration, Participatory Development, Youth & Public Service",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevolutionAdminAndOthersDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyty65"
+          }
+        ],
+        "id": "chart-pyty65"
+      },
+      {
+        "title": "Department of Devolution, Administration, Participatory Development, Youth & Public Service",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevolutionAdminAndOthersDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs, Million",
+            "id": "visual-pyty67"
+          }
+        ],
+        "id": "chart-pyty67"
+      },
+      {
+        "title": "Agriculture, Irrigation, Livestock & Fisheries Development",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgriIrrigationLivestockFisheriesDepts",
+            "x": "variable1",
+            "groupBy": "variable2",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-90zzst"
+          }
+        ],
+        "id": "chart-90zzst"
+      },
       {
         "title": "Agriculture Livestock & Fisheries HY 2019/20",
         "subtitle": "",
@@ -544,9 +766,40 @@
     "id": "section-defgtX"
   },
   {
-    "sectionTitle": "Budget by Program",
+    "sectionTitle": "Budget Execution by Programmes and Sub-Programmes",
     "sectionDescription": "",
     "charts": [
+      {
+        "title": "Department of Devolution, Administration, Participatory Development, Youth & Public Service",
+        "subtitle": "",
+        "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
+        "sourceTitle": "County Governments Budget Implementation Review Report First Half FY, 2019/20",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevolutionAdminAndOthers",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs, Million",
+            "id": "visual-pyty68"
+          }
+        ],
+        "id": "chart-pyty68"
+      },
       {
         "title": "Percent Agriculture Livestock & Fisheries HY 2019/20",
         "subtitle": "",

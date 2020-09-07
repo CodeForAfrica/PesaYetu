@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
   chartsSection: {},
   sourceLink: {
     fontSize: theme.typography.caption.fontSize
+  },
+  background: {
+    backgroundColor: '#fff'
   }
 }));
 
@@ -151,6 +154,7 @@ function Profile(props) {
             md={
               parseFloat(chart.layout.split('/').reduce((a, b) => a / b)) * 12
             }
+            alignItems="stretch"
           >
             <ChartContainer
               key={chart.id}
