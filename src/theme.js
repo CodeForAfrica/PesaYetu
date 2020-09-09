@@ -32,9 +32,8 @@ const theme = createTheme({
       }
     },
     bar: {
+      width: 500,
       barWidth: 30,
-      domainPadding: { x: [25, 25] },
-      padding: { top: 0, right: 0, bottom: 50, left: 0 },
       style: {
         data: {
           fontFamily: FONT_FAMILY_TEXT,

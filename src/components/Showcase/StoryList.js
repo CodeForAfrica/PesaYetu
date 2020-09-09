@@ -13,8 +13,6 @@ import SimpleBarReact from 'simplebar-react';
 
 import StoryCard from './StoryCard';
 
-import 'simplebar/dist/simplebar.min.css';
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',

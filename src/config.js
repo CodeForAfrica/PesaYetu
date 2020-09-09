@@ -6,7 +6,7 @@ const config = {
   MAPIT: {
     url: 'https://mapit.hurumap.org',
     codeType: 'AFR',
-    zoom: 5,
+    zoom: 6,
     centre: [0.3051933453207569, 37.908818734483155]
   },
   geoLevels: {

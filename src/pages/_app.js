@@ -8,6 +8,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppContextProvider from 'AppContext';
 
+import 'leaflet/dist/leaflet.css';
+import 'simplebar/dist/simplebar.min.css';
+
 class PesaYetuApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
