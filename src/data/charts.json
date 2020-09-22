@@ -56,6 +56,29 @@
           }
         ],
         "id": "chart-oqhAr0"
+      },
+      {
+        "title": "Other Sources of Revenue in Ksh Million",
+        "subtitle": "",
+        "sourceLink": "https://dc.sourceafrica.net/documents/120746-COUNTY-GOVERNMENTS-BUDGET-IMPLEMENTATION-REVIEW.html",
+        "sourceTitle": "Republic of Kenya: County Governments Budget Implementation Review Report",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 50,
+              "width": 600,
+              "labelWidth": 250
+            },
+            "table": "allPyOtherSourcesOfRevenues",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-yEqMNZ"
+          }
+        ],
+        "id": "chart-SheqSY"
       }
     ],
     "id": "section-XTPz7b"
@@ -95,6 +118,102 @@
           }
         ],
         "id": "chart-pyrtyd"
+      },
+      {
+        "title": "Development Expenditure",
+        "subtitle": "Kshs. Millions",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevelopmentExpenditures",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs. Millions",
+            "id": "visual-hysarW"
+          }
+        ],
+        "id": "chart-hysarW"
+      },
+      {
+        "title": "Expenditure Classification",
+        "subtitle": "Kshs. Millions",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyExpenditureClassifications",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs. Millions",
+            "id": "visual-cNbz9x"
+          }
+        ],
+        "id": "chart-cNbz9x"
+      },
+      {
+        "title": "Expenditure Classification",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyExpenditureClassificationPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-V8bw31"
+          }
+        ],
+        "id": "chart-V8bw31"
       },
       {
         "title": "Expenditure Economics",
@@ -1121,10 +1240,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer47y"
+            "id": "visual-pyer47"
           }
         ],
-        "id": "chart-pyer47y"
+        "id": "chart-pyer47"
       },
       {
         "title": "The Department of Trade, Industry, Tourism & Cooperatives",
@@ -1415,10 +1534,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pydr6st"
+            "id": "visual-pydr6s"
           }
         ],
-        "id": "chart-pydr6st"
+        "id": "chart-pydr6s"
       },
       {
         "title": "Finance and Socio Economic Planning",
@@ -1710,6 +1829,38 @@
           }
         ],
         "id": "chart-KnGbdK"
+      },
+      {
+        "title": "Recurrent Expenditure (Kshs. Millions)",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRecurrentExpenditures",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs. Million",
+            "id": "visual-zsjQNF"
+          }
+        ],
+        "id": "chart-zsjQNF"
       }
     ],
     "id": "section-768KuR"
@@ -1801,6 +1952,35 @@
           }
         ],
         "id": "chart-swKvJp"
+      },
+      {
+        "title": "Conditional Grants From National Government",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyConditionalGrantsFromNationalGovernments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-8nsA8j"
+          }
+        ],
+        "id": "chart-8nsA8j"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2015/2016",
@@ -2118,5 +2298,41 @@
       }
     ],
     "id": "section-N9dGTq"
+  },
+  {
+    "sectionTitle": "Loans and Grants",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Loan and Grants from Development Partners (Kshs. Millions)",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "labelWidth": 250,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLoansAndGrantsFromDevelopmentPartners",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-VTCllO"
+          }
+        ],
+        "id": "chart-VTCllO"
+      }
+    ],
+    "id": "section-VTCllO"
   }
 ]
