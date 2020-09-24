@@ -2790,7 +2790,7 @@
       },
       {
         "title": "Lands Housing Physical Planning Department",
-        "subtitle": "Kshs. Million",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -2814,7 +2814,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Million",
             "id": "visual-71zzst"
           }
         ],
@@ -2980,7 +2979,7 @@
       },
       {
         "title": "Environment Waste Management and Energy Department",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3004,7 +3003,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3044,7 +3042,7 @@
       },
       {
         "title": "Education Information Technology Department",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3068,7 +3066,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3108,7 +3105,7 @@
       },
       {
         "title": "Devolution Public Service Administration Department",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3132,7 +3129,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3172,7 +3168,7 @@
       },
       {
         "title": "County Executive Department",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3196,7 +3192,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3236,7 +3231,7 @@
       },
       {
         "title": "County Assembly Department",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3260,7 +3255,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3268,7 +3262,7 @@
       },
       {
         "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Department",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3292,7 +3286,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3306,7 +3299,7 @@
     "sectionDescription": "",
     "charts": [
       {
-        "title": "Water Sanitation and Natural Resources Programme Absortion",
+        "title": "Water Sanitation and Natural Resources Programme Absorption",
         "subtitle": "By Percentage",
         "sourceLink": "",
         "sourceTitle": "",
@@ -3316,7 +3309,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3380,7 +3373,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3433,7 +3426,7 @@
         "id": "chart-pyer45"
       },
       {
-        "title": "Transport Infrastructure and Public Works Programme Absortion",
+        "title": "Transport Infrastructure and Public Works Programme Absorption",
         "subtitle": "By Percentage",
         "sourceLink": "",
         "sourceTitle": "",
@@ -3443,7 +3436,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3507,7 +3500,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3570,7 +3563,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3633,7 +3626,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3696,7 +3689,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3759,7 +3752,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3791,7 +3784,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3814,7 +3807,7 @@
       },
       {
         "title": "Environment Waste Management and Energy Programme",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3838,7 +3831,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3855,7 +3847,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3878,7 +3870,7 @@
       },
       {
         "title": "Education Information Technology and MV2035 Programme",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3902,7 +3894,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -3919,7 +3910,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -3942,7 +3933,7 @@
       },
       {
         "title": "Devolution Public Service Admin Programme",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -3966,7 +3957,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -4006,7 +3996,7 @@
       },
       {
         "title": "County Public Service Board Programme",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "K",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -4030,7 +4020,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -4070,7 +4059,7 @@
       },
       {
         "title": "County Assembly Programme",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -4094,7 +4083,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
@@ -4111,7 +4099,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -4134,7 +4122,7 @@
       },
       {
         "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Programme",
-        "subtitle": "Ksks. Millions",
+        "subtitle": "",
         "sourceLink": "",
         "sourceTitle": "",
         "layout": "1",
@@ -4143,7 +4131,7 @@
             "type": "grouped_column",
             "typeProps": {
               "labelWidth": 300,
-              "horizontal": false,
+              "horizontal": true,
               "offset": 40,
               "barWidth": 30,
               "parts": {
@@ -4158,7 +4146,6 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "customUnit": "Kshs. Millions",
             "id": "visual-pyer45"
           }
         ],
