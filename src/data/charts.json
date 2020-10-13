@@ -9483,6 +9483,100 @@
           }
         ],
         "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Training and Legislation Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthTrainingAndLegislationProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Training and Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthTrainingAndDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Training and Development Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthTrainingAndDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
       }
     ],
     "id": "section-VTCllO"
