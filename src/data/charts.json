@@ -4669,7 +4669,11 @@
                 }
               }
             },
+<<<<<<< HEAD
             "table": "allPyCountyCommunicationAndIctProgs",
+=======
+            "table": "allPyJaramogiOgingaOdinGaTeachingAndReferralHospitalProgs",
+>>>>>>> kisumu
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
