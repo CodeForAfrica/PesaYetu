@@ -97,6 +97,102 @@
         "id": "chart-pyrtyd"
       },
       {
+        "title": "Development Expenditure",
+        "subtitle": "Kshs. Millions",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevelopmentExpenditures",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs. Millions",
+            "id": "visual-hysarW"
+          }
+        ],
+        "id": "chart-hysarW"
+      },
+      {
+        "title": "Expenditure Classification",
+        "subtitle": "Kshs. Millions",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyExpenditureClassifications",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs. Millions",
+            "id": "visual-cNbz9x"
+          }
+        ],
+        "id": "chart-cNbz9x"
+      },
+      {
+        "title": "Expenditure Classification",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyExpenditureClassificationPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-V8bw31"
+          }
+        ],
+        "id": "chart-V8bw31"
+      },
+      {
         "title": "Expenditure Economics",
         "subtitle": "By Percentage",
         "sourceLink": "https://open.africa/dataset/nairobi-county-revenue-performance-in-the-first-half-of-fy-2019-20/resource/47b31098-01c7-47c4-9ed0-f86baac97e50",
@@ -1710,6 +1806,38 @@
           }
         ],
         "id": "chart-KnGbdK"
+      },
+      {
+        "title": "Recurrent Expenditure (Kshs. Millions)",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRecurrentExpenditures",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "Kshs. Million",
+            "id": "visual-zsjQNF"
+          }
+        ],
+        "id": "chart-zsjQNF"
       }
     ],
     "id": "section-768KuR"
@@ -1801,6 +1929,64 @@
           }
         ],
         "id": "chart-swKvJp"
+      },
+      {
+        "title": "Conditional Grants From National Government",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyConditionalGrantsFromNationalGovernments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-8nsA8j"
+          }
+        ],
+        "id": "chart-8nsA8j"
+      },
+      {
+        "title": "Conditional Grants From National Government",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "horizontal": true,
+              "labelWidth": 200,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyConditionalGrantsFromTheNationalGovernments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-8nsA8j"
+          }
+        ],
+        "id": "chart-8nsA8j"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2015/2016",
@@ -2118,5 +2304,5345 @@
       }
     ],
     "id": "section-N9dGTq"
+  },
+  {
+    "sectionTitle": "Loans and Grants",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Loan and Grants from Development Partners (Kshs. Millions)",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 32,
+              "labelWidth": 250,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLoansAndGrantsFromDevelopmentPartners",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-VTCllO"
+          }
+        ],
+        "id": "chart-VTCllO"
+      }
+    ],
+    "id": "section-VTCllO"
+  },
+  {
+    "sectionTitle": "Health",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Change Health Sector Management Systems",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyChangeHealthSectorMgntSies",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Change Health Sector Management Systems",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyChangeHealthSectorMgntSysPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Initiate Fresh Immunization Campaigns",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyInitiateFreshImmunizationCampaigns",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Provide Essential Medicines",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyProvideEssentialMedicines",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Provide Essential Medicines",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 50,
+              "barWidth": 30,
+              "width": 600
+            },
+            "table": "allPyProvideEssentialMedicinesPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      }
+    ],
+    "id": "section-XTPz7b"
+  },
+  {
+    "sectionTitle": "Departments",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Youth Gender Sports Cultural Affairs Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthGenderSportsCulturalAffairsDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Gender Sports Cultural Affairs Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthGenderSportsCulturalAffairsDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Water Sanitation Natural Resources Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyWaterSanitationNaturalResourcesDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Water Sanitation Natural Resources Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyWaterSanitationNaturalResourcesDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Transport Infrastructure Public Works Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTransportInfrastructurePublicWorksDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Transport Infrastructure Public Works Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTransportInfrastructurePublicWorksDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Transport Infrastructure Public Works Department",
+        "subtitle": "In Kshs. Millions",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTransportInfrastructurePublicWorksDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Trade Tourism Investment Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTradeTourismInvestmentDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Trade Tourism Investment Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTradeTourismInvestmentDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Lands Housing Physical Planning Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLandsHousingPhysicalPlanningDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-71zzst"
+          }
+        ],
+        "id": "chart-71zzst"
+      },
+      {
+        "title": "Lands Housing Physical Planning Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 200,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLandsHousingPhysicalPlanningDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-71zzst"
+          }
+        ],
+        "id": "chart-71zzst"
+      },
+      {
+        "title": "Health Services Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthServicesDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Health Services Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthServicesDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Finance Economic Planning Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyFinanceEconomicPlanningDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Finance Economic Planning Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyFinanceEconomicPlanningDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Environment Waste Management and Energy Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnvironmentWasteManagementAndEnergyDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Environment Waste Management and Energy Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnvironmentWasteManagementAndEnergyDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Education Information Technology Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEducationInformationTechnologyDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Education Information Technology Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEducationInformationTechnologyDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Devolution Public Service Administration Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevolutionPublicServiceAdministrationDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Devolution Public Service Administration Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevolutionPublicServiceAdministrationDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Executive Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyExecutiveDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Executive Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyExecutiveDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Assembly Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAssemblyDepartmentPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Assembly Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAssemblyDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricultureFisheriesLivestockAndCoOperativesDepartments",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Water, Environment and Natural Resources Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyWaterEnvironmentAndNaturalResourcesDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Water, Environment and Natural Resources Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyWaterEnvironmentAndNaturalResourcesDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Tourism Culture Arts and Sports Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTourismCultureArtsAndSportsDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Tourism Culture Arts and Sports Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTourismCultureArtsAndSportsDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Public Works Roads and Transport Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPublicWorksRoadsAndTransportDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Public Works Roads and Transport Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPublicWorksRoadsAndTransportDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Physical Planning Lands, Housing, Urban Development Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPhysicalPlanningLandsHousingUrbanDevelDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Office of the Governor and County Administration Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyOfficeOfTheGovernorAndCountyAdministrationDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Office of the Governor and County Administration Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyOfficeOfTheGovernorAndCountyAdministrationDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Finance and Economic Planning Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyFinanceAndEconomicPlanningDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Finance and Economic Planning Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyFinanceAndEconomicPlanningDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Energy and Industry Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyAndIndustryDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Energy and Industry Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyAndIndustryDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Education Human Resource ReDevelopment and ICT Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEducationHumanResourceRevelopmentAndIctDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Education Human Resource ReDevelopment and ICT Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEducationHumanResourceRevelopmentAndIctDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Public Service Board Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyPublicServiceBoardDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "City of Kisumu Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCityOfKisumuDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "City of Kisumu Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCityOfKisumuDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Business Cooperatives and Markets Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyBusinessCoOperativesAndMarketsDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Business Cooperatives and Markets Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyBusinessCoOperativesAndMarketsDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture Livestock and Fisheries Department",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricultureLivestockAndFisheriesDepts",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture Livestock and Fisheries Department",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricultureLivestockAndFisheriesDeptPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      }
+    ],
+    "id": "section-XTPz7b"
+  },
+  {
+    "sectionTitle": "Programmes",
+    "sectionDescription": "",
+    "charts": [
+      {
+        "title": "Administration and Development of Human Resources in Kisumu County Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAdministrationAndDevelopmentOfHumanResourcesInKisumuS",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Administration Planning and Support Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAdministrationPlanningAndSupportProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Administration Planning and Support Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAdministrationPlanningAndSupportProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Administration Planning and Support Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAdministrationPlanningAndSupportServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Administration Planning and Support Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAdministrationPlanningAndSupportServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture Producitivity and Output Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricultureProductivityAndOutputManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture Productivity and Output Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricultureProductivityAndOutputManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture Producitivity Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricultureProductivityManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture Productivity Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricultureProductivityManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Alcoholic Drinks Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAlcoholicDrinksProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Alcoholic Drinks Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAlcoholicDrinksProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Cooperative Development Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCoOperativeDevelopmentManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Cooperative Development Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCoOperativeDevelopmentManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Communication Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCommunicationServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Communication Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCommunicationServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Conservation and Management of Ecosystems Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyConservationAndManagementOfEcosystemsProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County and Sub County Hospital Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAndSubCountyHospitalServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County and Sub County Hospital Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAndSubCountyHospitalServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Assembly Service Board Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAssemblyServiceBoardProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Assembly Service Board Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAssemblyServiceBoardProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Communication and ICT Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyCommunicationAndIctProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Communication and ICT Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyCommunicationAndIctProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Planning, Development and Coordination Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyPlanningDevelopmentCoordinationServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Planning, Development and Coordination Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyPlanningDevelopmentCoordinationServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Roads and Public Works Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyRoadsAndPublicWorksManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Roads and Public Works Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyRoadsAndPublicWorksManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Culture and Arts Development Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCultureAndArtsDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Culture and Arts Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCultureAndArtsDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Early Childhood Development Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEarlyChildhoodDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Early Childhood Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEarlyChildhoodDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Early Childhood Education Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEarlyChildhoodEducationManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Early Childhood Education Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEarlyChildhoodEducationManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Energy and Mining Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyAndMiningProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Energy and Mining Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyAndMiningPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Energy Production Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyProductionProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Energy Production Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyProductionProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Environment Planning and Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnvironmentPlanningAndManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Environment Planning and Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnvironmentPlanningAndManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Gender and Social Development Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyGenderAndSocialDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Gender and Social Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyGenderAndSocialDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "General Administration and Policy Making Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyGeneralAdministrationAndPolicyMakingProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "General Administration and Policy Making Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyGeneralAdministrationAndPolicyMakingProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "General Administration Operational Research and Planning Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyGeneralAdministrationOperationalResearchAndPlanningSers",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Health Curative Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthCurativeServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Health Curative Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthCurativeServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Health Sector Support Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthSectorSupportProgramProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Health Sector Support Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthSectorSupportProgramProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "ICT Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyIctServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "ICT Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyIctServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Industrial Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyIndustrialDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Industrial Development  Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyIndustrialDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "InterGovernmental Relations Communication and Coordination Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyInterGovernmentalRelationsCommunicationAndCoordinationS",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Jaramogi Oginga Odinga Teaching and Referral Hospital Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyJaramogiOgingaOdinGaTeachingAndReferralHospitalProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Kisumu County Referral Hospital Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyKisumuCountyReferralHospitalProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Kisumu County Referral Hospital Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyKisumuCountyReferralHospitalProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Legislation and Oversight Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLegislationAndOversightServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Legislation and Oversight Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLegislationAndOversightServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Management of County Affairs and Special Affairs Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyManagementOfCountyAffairsAndSpecialAffairsProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Management of County Affairs and Special Affairs Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyManagementOfCountyAffairsAndSpecialAffairsProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Physical Planning and Housing Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPhysicalPlanningAndHousingProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Physical Planning and Housing Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPhysicalPlanningAndHousingProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Pre-Primary Policy and Legislation  Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPrePrimaryPolicyAndLegislationProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Pre-Primary Policy and Legislation Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPrePrimaryPolicyAndLegislationProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Preventive and Promotive Health Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPreventiveAndPromotiveHealthServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Preventive and Promotive Health Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPreventiveAndPromotiveHealthServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Promotion of Market Access and Product Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPromotionOfMarketAccessAndProductDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Promotion of Market Access and Product Development Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPromotionOfMarketAccessAndProductDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Promotion of Sustainable Land Use Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPromotionOfSustainableLandUseProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Promotion of Sustainable Land Use Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPromotionOfSustainableLandUseProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Public Finance Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPublicFinanceManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Public Finance Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyPublicFinanceManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Regulation and Verification of Weights Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRegulationAndVerificationOfWeightsProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Regulation and Verification of Weights Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRegulationAndVerificationOfWeightsProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Revenue Generation Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRevenueGenerationManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Revenue Generation Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRevenueGenerationManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Roads General Administration and Planning Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRoadsGeneralAdministrationAndPlanningProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Roads General Administration and Planning Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyRoadsGeneralAdministrationAndPlanningProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Sports and Cultural Services Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPySportsAndCulturalServicesProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Sports and Cultural Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPySportsAndCulturalServicesProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Sports Management and Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPySportsManagementAndDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Sports Management and Development Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPySportsManagementAndDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Tourism Development and Management Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTourismDevelopmentAndManagementProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Tourism Development and Management Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTourismDevelopmentAndManagementProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Urban Planning and Development Control Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyUrbanPlanningAndDevelopmentControlProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Urban Planning and Development Control Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyUrbanPlanningAndDevelopmentControlProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Water Sanitation and Natural Resources Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyWaterSanitationAndNaturalResourcesProgrammeAbsorptionS",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Water Sanitation and Natural Resources Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyWaterSanitationAndNaturalResourcesProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Gender Sports and Cultural Affairs Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthGenderSportsAndCulturalAffairsProgrammeAbsorptios",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Gender Sports And Cultural Affairs Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthGenderSportsAndCulturalAffairsProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Transport Infrastructure and Public Works Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTransportInfrastructureAndPublicWorksProgrammeAbsorptis",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Transport Infrastructure and Public Works Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTransportInfrastructureAndPublicWorksProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Trade Tourism and Investment Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTradeTourismAndInvestmentProgrammeAbsorptionPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Trade Tourism and Investment Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyTradeTourismAndInvestmentProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Lands Housing and Physical Planning Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLandsHousingAndPhysicalPlanningProgrammeAbsorptionPers",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Lands Housing and Physical Planning Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyLandsHousingAndPhysicalPlanningProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Health Services Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthServicesProgrammeAbsorptionPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Health Services Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyHealthServicesProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Finance Economic Planning Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyFinanceAndEconomicPlanningProgrammeAbsorptionPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Finance Economic Planning Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyFinanceAndEconomicPlanningProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Executive Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyExecutiveProgrammeAbsorptionPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Environment Waste Management and Energy Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyEnvironmentAndWasteManagementProgrammeAbsorptions",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Environment Waste Management and Energy Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEnergyEnvironmentAndWasteManagementProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Education Information Technology and MV2035 Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEducationInformationTechnologyAndMv2035ProgrammeAbsors",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Education Information Technology and MV2035 Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyEducationInformationTechnologyAndMv2035Programmes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Devolution Public Service Admin Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevolutionAndPublicServiceAdminProgrammeAbsorptionPers",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Devolution Public Service Admin Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyDevolutionAndPublicServiceAdminProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Public Service Board Programme Absoprtion",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyPublicServiceBoardProgrammeAbsorptionPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Public Service Board Programme",
+        "subtitle": "K",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyPublicServiceBoardProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Assembly Programme Absorption",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAssemblyProgrammeAbsorptionPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "County Assembly Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyCountyAssemblyProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricFisheriesLivestockAndCoOperativesProgrammeAbsorps",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyAgricFisheriesLivestockAndCoOperativesProgrammes",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Training and Legislation Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthTrainingAndLegislationProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Training and Development Programme",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthTrainingAndDevelopmentProgPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      },
+      {
+        "title": "Youth Training and Development Programme",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": true,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyYouthTrainingAndDevelopmentProgs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-pyer45"
+          }
+        ],
+        "id": "chart-pyer45"
+      }
+    ],
+    "id": "section-VTCllO"
   }
 ]
