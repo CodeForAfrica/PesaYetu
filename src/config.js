@@ -2,7 +2,7 @@ const config = {
   url:
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000'
-      : 'https://takwimu.africa',
+      : 'https://dev.pesayetu.pesacheck.org',
   MAPIT: {
     url: 'https://mapit.hurumap.org',
     codeType: 'AFR',
