@@ -30,10 +30,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs Million",
-            "id": "visual-pyer45"
+            "id": "visual-37srh8SHeS"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-nq_m95hkFs"
       },
       {
         "title": "Government Revenue in Ksh Million",
@@ -52,13 +52,13 @@
             "x": "revenue",
             "groupBy": "year",
             "y": "total",
-            "id": "visual-7omojY"
+            "id": "visual-MbuRzgRpMi"
           }
         ],
-        "id": "chart-oqhAr0"
+        "id": "chart-f9ANCfZ21i"
       }
     ],
-    "id": "section-XTPz7b"
+    "id": "section-BFNd281ek"
   },
   {
     "sectionTitle": "Expenditure",
@@ -91,10 +91,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyrtyd"
+            "id": "visual-oHvIUnFnuD"
           }
         ],
-        "id": "chart-pyrtyd"
+        "id": "chart-CuAPF2hYMX"
       },
       {
         "title": "Development Expenditure",
@@ -123,10 +123,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Millions",
-            "id": "visual-hysarW"
+            "id": "visual-lTbEIPoGFA"
           }
         ],
-        "id": "chart-hysarW"
+        "id": "chart-nF6YEOSJXS"
       },
       {
         "title": "Expenditure Classification",
@@ -155,10 +155,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Millions",
-            "id": "visual-cNbz9x"
+            "id": "visual-k6uQSDTLPL"
           }
         ],
-        "id": "chart-cNbz9x"
+        "id": "chart-H1CM2HBIZ2"
       },
       {
         "title": "Expenditure Classification",
@@ -187,10 +187,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-V8bw31"
+            "id": "visual-9bD5uHpI~S"
           }
         ],
-        "id": "chart-V8bw31"
+        "id": "chart-lPqnLx0pfO"
       },
       {
         "title": "Expenditure Economics",
@@ -219,13 +219,13 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyrte4"
+            "id": "visual-baCWjkuPMD"
           }
         ],
-        "id": "chart-pyrte4"
+        "id": "chart-0TrF4~RlLt"
       }
     ],
-    "id": "section-po097b"
+    "id": "section-ZOjLW0jnBK"
   },
   {
     "sectionTitle": "Budget Data",
@@ -252,13 +252,13 @@
             "table": "allPesayetuFinancialYears",
             "x": "financialYear",
             "y": "total",
-            "id": "visual-VdGyU0"
+            "id": "visual-czcUNzIObQi"
           }
         ],
-        "id": "chart-79eWJB"
+        "id": "chart-Jesqn40RqFd"
       }
     ],
-    "id": "section-Fax0Wy"
+    "id": "section-ThfNc5S8beX"
   },
   {
     "sectionTitle": "Budget Performance by Department ",
@@ -291,10 +291,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-py78st"
+            "id": "visual-ttM_wAWgX~O"
           }
         ],
-        "id": "chart-py78st"
+        "id": "chart-3j_pc_Nw~hs"
       },
       {
         "title": "County Assembly",
@@ -323,10 +323,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-py79st"
+            "id": "visual-vru59iGEoSu"
           }
         ],
-        "id": "chart-py79st"
+        "id": "chart-hClvdJvHO9N"
       },
       {
         "title": "County Secretary Office",
@@ -355,10 +355,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-py87ui"
+            "id": "visual-b8dQBDO4ets"
           }
         ],
-        "id": "chart-py87ui"
+        "id": "chart-XvcsSyqlitU"
       },
       {
         "title": "County Secretary Office",
@@ -387,10 +387,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pydr7st"
+            "id": "visual-v1Iz1rZm1pB"
           }
         ],
-        "id": "chart-pydr7st"
+        "id": "chart-GqSfIP0UNcN"
       },
       {
         "title": "County Attorney's Office",
@@ -419,10 +419,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-py8opi"
+            "id": "visual-Z8zHjqWHsVg"
           }
         ],
-        "id": "chart-py8opi"
+        "id": "chart-RYg9aaZRy2Z"
       },
       {
         "title": "County Attorney's Office",
@@ -451,10 +451,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-py7opi"
+            "id": "visual-g155H_lJjLW"
           }
         ],
-        "id": "chart-py7opi"
+        "id": "chart-lDgOlZ8zSdy"
       },
       {
         "title": "Office of the Governor",
@@ -483,10 +483,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyop80"
+            "id": "visual-Pk6RK3uZQSM"
           }
         ],
-        "id": "chart-pyop80"
+        "id": "chart-IFkD3j1Aspx"
       },
       {
         "title": "Office of the Governor",
@@ -515,10 +515,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyop81"
+            "id": "visual-FPvNWvZHk4d"
           }
         ],
-        "id": "chart-pyop81"
+        "id": "chart-a1cQ6A8FT6W"
       },
       {
         "title": "Office of the Deputy Governor",
@@ -547,10 +547,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyop90"
+            "id": "visual-5f~~EDVngzA"
           }
         ],
-        "id": "chart-pyop90"
+        "id": "chart-ztuwyfLaiAs"
       },
       {
         "title": "Office of the Deputy Governor",
@@ -579,10 +579,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-py89ui"
+            "id": "visual-BUZn57BhjZf"
           }
         ],
-        "id": "chart-py89ui"
+        "id": "chart-m6Xks9goMGS"
       },
       {
         "title": "County Public Service Board",
@@ -611,10 +611,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyrtyui"
+            "id": "visual-~QJUQzj460j"
           }
         ],
-        "id": "chart-pyrtyui"
+        "id": "chart-5rh5OtSn4p6"
       },
       {
         "title": "County Public Service Board",
@@ -643,10 +643,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyr0yui"
+            "id": "visual-0YCzMNyoMmG"
           }
         ],
-        "id": "chart-pyr0yui"
+        "id": "chart-~4KCkhO3qcf"
       },
       {
         "title": "Department of Devolution, Administration, Participatory Development, Youth & Public Service",
@@ -674,10 +674,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyty65"
+            "id": "visual-cEvUTi_Lt_S"
           }
         ],
-        "id": "chart-pyty65"
+        "id": "chart-Q4kgvzsbTzx"
       },
       {
         "title": "Department of Devolution, Administration, Participatory Development, Youth & Public Service",
@@ -705,10 +705,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyty67"
+            "id": "visual-oeZOUZGDUfv"
           }
         ],
-        "id": "chart-pyty67"
+        "id": "chart-oLTjKfUo2no"
       },
       {
         "title": "The Department of Agriculture, Irrigation, Livestock & Fisheries",
@@ -737,10 +737,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-90zzst"
+            "id": "visual-R8Wm810Rvgj"
           }
         ],
-        "id": "chart-90zzst"
+        "id": "chart-c7fft2Uay_6"
       },
       {
         "title": "The Department of Finance and Socio Economic Planning",
@@ -769,10 +769,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-81zzst"
+            "id": "visual-c1xHuAlO1QR"
           }
         ],
-        "id": "chart-81zzst"
+        "id": "chart-FIftMidN6d3"
       },
       {
         "title": "The Department of Finance and Socio Economic Planning",
@@ -801,10 +801,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-82zzst"
+            "id": "visual-zF~jdjX2egh"
           }
         ],
-        "id": "chart-82zzst"
+        "id": "chart-eL1prD98FhM"
       },
       {
         "title": "The Department of Gender and Social Services",
@@ -833,10 +833,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-51zzst"
+            "id": "visual-PethP0iPfVQ"
           }
         ],
-        "id": "chart-51zzst"
+        "id": "chart-S9r8ToQ0Dra"
       },
       {
         "title": "The Department of Gender and Social Services",
@@ -865,10 +865,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-52zzst"
+            "id": "visual-Kefz52oXWe_"
           }
         ],
-        "id": "chart-52zzst"
+        "id": "chart-_2nFTagh~Hf"
       },
       {
         "title": "The Department of Health Services",
@@ -897,10 +897,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-21zzst"
+            "id": "visual-VVz1ijG443Q"
           }
         ],
-        "id": "chart-21zzst"
+        "id": "chart-M8t5LfTGxcA"
       },
       {
         "title": "The Department of Health Services",
@@ -929,10 +929,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-22zzst"
+            "id": "visual-zr9uxn1L9Lw"
           }
         ],
-        "id": "chart-22zzst"
+        "id": "chart-td8J1gCjkg4"
       },
       {
         "title": "The Department of Lands, Mining and Urban Development",
@@ -961,10 +961,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-71zzst"
+            "id": "visual-PThKzKtnSL0"
           }
         ],
-        "id": "chart-71zzst"
+        "id": "chart-NhPkJ_m8WTC"
       },
       {
         "title": "The Department of Lands, Mining and Urban Development",
@@ -993,10 +993,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-72zzst"
+            "id": "visual-EET4H5zQ1b_"
           }
         ],
-        "id": "chart-72zzst"
+        "id": "chart-sdoQeJtkpmB"
       },
       {
         "title": "The Department of Agriculture, Irrigation, Livestock & Fisheries",
@@ -1025,10 +1025,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-91zzst"
+            "id": "visual-6XGeKYv6wec"
           }
         ],
-        "id": "chart-91zzst"
+        "id": "chart-EhdOHkcxfq4"
       },
       {
         "title": "The Department of Education & ICT",
@@ -1057,10 +1057,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyrty3"
+            "id": "visual-Tz3DtfOWPaI"
           }
         ],
-        "id": "chart-pyrty3"
+        "id": "chart-AWEumghLxrs"
       },
       {
         "title": "The Department of Education & ICT",
@@ -1089,10 +1089,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyrtye"
+            "id": "visual-U9j5O69OtHY"
           }
         ],
-        "id": "chart-pyrtye"
+        "id": "chart-kGj709VrcSF"
       },
       {
         "title": "The Department of Water, Environment & Climate Change",
@@ -1121,10 +1121,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyer45y"
+            "id": "visual-~EyyTnICjyF"
           }
         ],
-        "id": "chart-pyer45y"
+        "id": "chart-dfbrLKeStq1"
       },
       {
         "title": "The Department of Water, Environment & Climate Change",
@@ -1153,10 +1153,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer46y"
+            "id": "visual-GDZluJSdwoN"
           }
         ],
-        "id": "chart-pyer46y"
+        "id": "chart-vhQ2w_nH78r"
       },
       {
         "title": "The Department of Transport and Infrastructure",
@@ -1185,10 +1185,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyer47y"
+            "id": "visual-o~c7voWbWbC"
           }
         ],
-        "id": "chart-pyer47y"
+        "id": "chart-5ZkpJxyLsRO"
       },
       {
         "title": "The Department of Transport and Infrastructure",
@@ -1217,10 +1217,10 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer47y"
+            "id": "visual-DhP7V6JaJtd"
           }
         ],
-        "id": "chart-pyer47y"
+        "id": "chart-vj5dtXSkqy8"
       },
       {
         "title": "The Department of Trade, Industry, Tourism & Cooperatives",
@@ -1249,10 +1249,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyer48y"
+            "id": "visual-Kl3FvTD~W4L"
           }
         ],
-        "id": "chart-pyer48y"
+        "id": "chart-3~dNcS_1lxn"
       },
       {
         "title": "The Department of Trade, Industry, Tourism & Cooperatives",
@@ -1281,13 +1281,13 @@
             "groupBy": "variable2",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer49y"
+            "id": "visual-jBk4zDavYw8"
           }
         ],
-        "id": "chart-pyer49y"
+        "id": "chart-jqhYlz6z370"
       }
     ],
-    "id": "section-defgtX"
+    "id": "section-sOadvam2CSb"
   },
   {
     "sectionTitle": "Budget Execution by Programmes and Sub-Programmes",
@@ -1320,10 +1320,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-92zzst"
+            "id": "visual-PZVszEm4onF"
           }
         ],
-        "id": "chart-92zzst"
+        "id": "chart-FOM~sHDiod8"
       },
       {
         "title": "Department of Devolution, Administration, Participatory Development, Youth & Public Service",
@@ -1351,10 +1351,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs, Million",
-            "id": "visual-pyty68"
+            "id": "visual-2Rdjy~Mh~Ri"
           }
         ],
-        "id": "chart-pyty68"
+        "id": "chart-6aMFp58eogn"
       },
       {
         "title": "County Assembly",
@@ -1383,10 +1383,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs Million",
-            "id": "visual-py80st"
+            "id": "visual-tkMdr0RwZbu"
           }
         ],
-        "id": "chart-py80st"
+        "id": "chart-R56YCF6KsUu"
       },
       {
         "title": "County Attorney Office",
@@ -1415,10 +1415,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pydq23"
+            "id": "visual-O2dDfGnfHMf"
           }
         ],
-        "id": "chart-pydq23"
+        "id": "chart-uxFT1aUZa7i"
       },
       {
         "title": "County Secretary Office",
@@ -1447,10 +1447,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pydr6st"
+            "id": "visual-0siTZiQKVaX"
           }
         ],
-        "id": "chart-pydr6st"
+        "id": "chart-rX0WI8Q~8Jk"
       },
       {
         "title": "Office of the Governor",
@@ -1479,10 +1479,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyop82"
+            "id": "visual-8dTwJntdeRh"
           }
         ],
-        "id": "chart-pyop82"
+        "id": "chart-zYtY~05bdlo"
       },
       {
         "title": "County Public Service Board",
@@ -1511,10 +1511,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pydr6st"
+            "id": "visual-h1iCjI4nCOh"
           }
         ],
-        "id": "chart-pydr6st"
+        "id": "chart-20CGFXIG_C6"
       },
       {
         "title": "Finance and Socio Economic Planning",
@@ -1543,10 +1543,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-83zzst"
+            "id": "visual-JzIKXqgAT_V"
           }
         ],
-        "id": "chart-83zzst"
+        "id": "chart-~m_jjWiD59h"
       },
       {
         "title": "Gender and Social Services",
@@ -1575,10 +1575,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-53zzst"
+            "id": "visual-YCtxS2dS2is"
           }
         ],
-        "id": "chart-53zzst"
+        "id": "chart-bk7T3ll2geU"
       },
       {
         "title": "Health Services",
@@ -1607,10 +1607,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-23zzst"
+            "id": "visual-qokre_4nYRl"
           }
         ],
-        "id": "chart-23zzst"
+        "id": "chart-0kJ4IErDtSg"
       },
       {
         "title": "Education & ICT",
@@ -1639,10 +1639,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyrtyy"
+            "id": "visual-TDjBtdPH93p"
           }
         ],
-        "id": "chart-pyrtyy"
+        "id": "chart-5MB0LVg~~0b"
       },
       {
         "title": "Trade, Industry Tourism & Cooperatives",
@@ -1671,10 +1671,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyer50y"
+            "id": "visual-fSz6YHDxJjJ"
           }
         ],
-        "id": "chart-pyer50y"
+        "id": "chart-53WGMN2PDN0"
       },
       {
         "title": "Transport & Infrastructure",
@@ -1703,10 +1703,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyer51y"
+            "id": "visual-GT8Kakkbj4L"
           }
         ],
-        "id": "chart-pyer51y"
+        "id": "chart-U2kCLvAMTeP"
       },
       {
         "title": "Water Environment & Climate Change",
@@ -1735,10 +1735,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-pyer52y"
+            "id": "visual-nhHEsWBxwtL"
           }
         ],
-        "id": "chart-pyer52y"
+        "id": "chart-gMaBuij4imH"
       },
       {
         "title": "Lands, Mining and Urban Development",
@@ -1766,13 +1766,13 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-71zzst"
+            "id": "visual-4UIqHVrV_wj"
           }
         ],
-        "id": "chart-71zzst"
+        "id": "chart-wHy4MmNAco8"
       }
     ],
-    "id": "section-hwX6aOr7"
+    "id": "section-WimhGjpyPO9"
   },
   {
     "sectionTitle": "Ceilings on Recurrent Expenditures",
@@ -1801,10 +1801,10 @@
             "x": "expenditure",
             "groupBy": "year",
             "y": "total",
-            "id": "visual-fXkY7v"
+            "id": "visual-2magYoZCL_V"
           }
         ],
-        "id": "chart-KnGbdK"
+        "id": "chart-JGTzlBmGlM0"
       },
       {
         "title": "Recurrent Expenditure (Kshs. Millions)",
@@ -1833,13 +1833,13 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "Kshs. Million",
-            "id": "visual-zsjQNF"
+            "id": "visual-TNPNfyRE5_b"
           }
         ],
-        "id": "chart-zsjQNF"
+        "id": "chart-ezLO6V0tzzo"
       }
     ],
-    "id": "section-768KuR"
+    "id": "section-FIoxHbC7jnw"
   },
   {
     "sectionTitle": "Conditional Funds",
@@ -1868,10 +1868,10 @@
             "table": "allPesayetuConditionalFundAllocationsCombineds",
             "x": "year",
             "y": "total",
-            "id": "visual-wbG4HA"
+            "id": "visual-pjdNgkVV95r"
           }
         ],
-        "id": "chart-jODBzH"
+        "id": "chart-phehBlZucNu"
       },
       {
         "title": "Breakdown of Conditional Additional Combined Allocations in 2014/2015",
@@ -1896,10 +1896,10 @@
             "table": "allPesayetuBreakdownCombined2014S",
             "x": "projectType",
             "y": "total",
-            "id": "visual-bYURxo"
+            "id": "visual-sS5NYLYYaho"
           }
         ],
-        "id": "chart-odAWiY"
+        "id": "chart-1IKHmLYzZiA"
       },
       {
         "title": "Conditional Additional Allocations to County Governments 2015/2016 to 2019/2020",
@@ -1924,10 +1924,10 @@
               }
             },
             "y": "total",
-            "id": "visual-ZjKnAj"
+            "id": "visual-Lt6b0_g2CwF"
           }
         ],
-        "id": "chart-swKvJp"
+        "id": "chart-Qp41d8F25St"
       },
       {
         "title": "Conditional Grants From National Government",
@@ -1953,10 +1953,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-8nsA8j"
+            "id": "visual-DyIAZoQ2czB"
           }
         ],
-        "id": "chart-8nsA8j"
+        "id": "chart-CGt~aS7NeZS"
       },
       {
         "title": "Conditional Grants From National Government",
@@ -1982,10 +1982,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-8nsA8j"
+            "id": "visual-POapay1EQWp"
           }
         ],
-        "id": "chart-8nsA8j"
+        "id": "chart-P_8yxwyQVTy"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2015/2016",
@@ -2010,10 +2010,10 @@
             "table": "allPesayetuBreakdownConditionFundDp2015S",
             "x": "projectType",
             "y": "total",
-            "id": "visual-ypH2eJ"
+            "id": "visual-~2xwHl~hquS"
           }
         ],
-        "id": "chart-FLJCft"
+        "id": "chart-~NWMzDCQV7S"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2016/2017",
@@ -2038,10 +2038,10 @@
               }
             },
             "y": "total",
-            "id": "visual-l3tJ8m"
+            "id": "visual-6PuDV8Nd3FL"
           }
         ],
-        "id": "chart-FBh5Cj"
+        "id": "chart-0qtdsLPdwT0"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2017/2018",
@@ -2066,10 +2066,10 @@
             },
             "x": "projectType",
             "y": "total",
-            "id": "visual-i085sT"
+            "id": "visual-Hok6Nv~LlpS"
           }
         ],
-        "id": "chart-xy40wp"
+        "id": "chart-PdtHkkEMzBa"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2018/2019",
@@ -2094,10 +2094,10 @@
               }
             },
             "y": "total",
-            "id": "visual-H2iRV2"
+            "id": "visual-tdaJEIyf8Kr"
           }
         ],
-        "id": "chart-9qQ8Xo"
+        "id": "chart-TYlkjTKF~nY"
       },
       {
         "title": "Development Partners' Conditional Additional Allocations 2019/2020",
@@ -2122,10 +2122,10 @@
             "table": "allPesayetuBreakdownConditionFundDp2019S",
             "x": "projectType",
             "y": "total",
-            "id": "visual-vHlJvd"
+            "id": "visual-dPO3FXkRFHB"
           }
         ],
-        "id": "chart-u1ZrZF"
+        "id": "chart-mUX255fs3gW"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2015/2016",
@@ -2150,10 +2150,10 @@
             },
             "x": "projectType",
             "y": "total",
-            "id": "visual-Sykzi3"
+            "id": "visual-sx9huBnkeOz"
           }
         ],
-        "id": "chart-e9vx5K"
+        "id": "chart-y3y~~Gartb0"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2016/2017",
@@ -2178,10 +2178,10 @@
               }
             },
             "y": "total",
-            "id": "visual-ljx5aS"
+            "id": "visual-4LoLjv~uiqm"
           }
         ],
-        "id": "chart-9IJBj4"
+        "id": "chart-4Q7Y5o5_cxI"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2017/2018",
@@ -2206,10 +2206,10 @@
             },
             "x": "projectType",
             "y": "total",
-            "id": "visual-2fR8HP"
+            "id": "visual-Mtd5HakhGFF"
           }
         ],
-        "id": "chart-26XfAz"
+        "id": "chart-03oRRdp0S48"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2018/2019",
@@ -2234,10 +2234,10 @@
               }
             },
             "y": "total",
-            "id": "visual-flkfg5"
+            "id": "visual-7XqpNeS0ciW"
           }
         ],
-        "id": "chart-wxcr42"
+        "id": "chart-eeoJ4y5ZcEG"
       },
       {
         "title": "National Government's Conditional Additional Allocations 2019/2020",
@@ -2262,10 +2262,10 @@
               }
             },
             "y": "total",
-            "id": "visual-fg5455"
+            "id": "visual-aiE2KPWmiLq"
           }
         ],
-        "id": "chart-w2eee4"
+        "id": "chart-9CUaSmd9Xc1"
       },
       {
         "title": "Additional Conditional Allocation for Road Maintenance Fuel Levy Fund in 2018/2019 and 2019/2020",
@@ -2279,10 +2279,10 @@
             "table": "allPesayetuRoadMaintenances",
             "x": "financialYear",
             "y": "total",
-            "id": "visual-7yu885"
+            "id": "visual-f85jW8GZDI6"
           }
         ],
-        "id": "chart-e2lkj12"
+        "id": "chart-bTySDuW~d7L"
       },
       {
         "title": "Allocation to support abolishment of user fees in health centers and dispensaries 2018/2019 and 2019/2020",
@@ -2296,13 +2296,13 @@
             "table": "allPesayetuHealthCentresSupports",
             "x": "financialYear",
             "y": "total",
-            "id": "visual-2sxd85"
+            "id": "visual-8UDkADOoPa1"
           }
         ],
-        "id": "chart-2dfj12"
+        "id": "chart-O~_M9L75lTe"
       }
     ],
-    "id": "section-N9dGTq"
+    "id": "section-AzvmvQMq9jK"
   },
   {
     "sectionTitle": "Loans and Grants",
@@ -2332,13 +2332,13 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-VTCllO"
+            "id": "visual-MdPMMU7Ease"
           }
         ],
-        "id": "chart-VTCllO"
+        "id": "chart-fik3ERXFdSr"
       }
     ],
-    "id": "section-VTCllO"
+    "id": "section-mpEXSkcfp5I"
   },
   {
     "sectionTitle": "Health",
@@ -2370,10 +2370,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-NLN5LwwfaWV"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-EjNiIp~2Tsm"
       },
       {
         "title": "Change Health Sector Management Systems",
@@ -2402,10 +2402,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-Zy1d01oMSj6"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-PhVHB6FQprd"
       },
       {
         "title": "Initiate Fresh Immunization Campaigns",
@@ -2433,10 +2433,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-vRlfnheg41e"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-uRWCyr7w09y"
       },
       {
         "title": "Provide Essential Medicines",
@@ -2464,10 +2464,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-qKt_Z6ZrxA0"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-8LnKmv2Crye"
       },
       {
         "title": "Provide Essential Medicines",
@@ -2488,13 +2488,162 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-IVunkF7FCLB"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-e7Rz6r5lEEi"
+      },
+      {
+        "title": "Change Health Sector Management Systems",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyChangeHealthSectorMgntSies",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-i5edJRK8l~a"
+          }
+        ],
+        "id": "chart-1dol1dZy4Cz"
+      },
+      {
+        "title": "Change Health Sector Management Systems",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyChangeHealthSectorMgntSysPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-V~u9YJ4tdYL"
+          }
+        ],
+        "id": "chart-W6lD~VtVQXQ"
+      },
+      {
+        "title": "Initiate Fresh Immunization Campaigns",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyInitiateFreshImmunizationCampaigns",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-EZk_lNv1B84"
+          }
+        ],
+        "id": "chart-wjBbiep~ylH"
+      },
+      {
+        "title": "Provide Essential Medicines",
+        "subtitle": "",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "labelWidth": 300,
+              "horizontal": false,
+              "offset": 40,
+              "barWidth": 30,
+              "parts": {
+                "axis": {
+                  "dependent": {
+                    "fixLabelOverlap": true
+                  }
+                }
+              }
+            },
+            "table": "allPyProvideEssentialMedicines",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "id": "visual-qX~xTwVvbk1"
+          }
+        ],
+        "id": "chart-d~~Yx836fV2"
+      },
+      {
+        "title": "Provide Essential Medicines",
+        "subtitle": "By Percentage",
+        "sourceLink": "",
+        "sourceTitle": "",
+        "layout": "1",
+        "visuals": [
+          {
+            "type": "grouped_column",
+            "typeProps": {
+              "offset": 50,
+              "barWidth": 30,
+              "width": 600
+            },
+            "table": "allPyProvideEssentialMedicinesPercs",
+            "x": "variable2",
+            "groupBy": "variable1",
+            "y": "value",
+            "customUnit": "%",
+            "id": "visual-JPhiLIB6ApQ"
+          }
+        ],
+        "id": "chart-cXhFAzDgnNu"
       }
     ],
-    "id": "section-XTPz7b"
+    "id": "section-ImiruVzq4Ru"
   },
   {
     "sectionTitle": "Departments",
@@ -2526,10 +2675,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-B53ul0Ug4yN"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-DaeZJdf99d3"
       },
       {
         "title": "Youth Gender Sports Cultural Affairs Department",
@@ -2558,10 +2707,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-gDbPiAVoRjy"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-QX1JcSjBj_T"
       },
       {
         "title": "Water Sanitation Natural Resources Department",
@@ -2590,10 +2739,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-qPauz98H5WX"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-ywGbb7CYGIj"
       },
       {
         "title": "Water Sanitation Natural Resources Department",
@@ -2621,10 +2770,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-PusW5hcOPEC"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-EE~4MMEGLbj"
       },
       {
         "title": "Transport Infrastructure Public Works Department",
@@ -2653,10 +2802,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-T0Wt7q7fAxh"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-upyz_vjTVdi"
       },
       {
         "title": "Transport Infrastructure Public Works Department",
@@ -2685,10 +2834,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-JmWYN38vh3O"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-a7mb1FTy3CV"
       },
       {
         "title": "Transport Infrastructure Public Works Department",
@@ -2716,10 +2865,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-TTYg2xCWWGN"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-T2NvfyE7Zf0"
       },
       {
         "title": "Trade Tourism Investment Department",
@@ -2748,10 +2897,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-vk2DSrcnY~u"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-PuDD8GjH6uI"
       },
       {
         "title": "Trade Tourism Investment Department",
@@ -2779,10 +2928,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-yH81BLIEcwY"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-R4AOR5CaHm0"
       },
       {
         "title": "Lands Housing Physical Planning Department",
@@ -2811,10 +2960,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-71zzst"
+            "id": "visual-MqVqBZOzrM0"
           }
         ],
-        "id": "chart-71zzst"
+        "id": "chart-j~3bg8PLdmA"
       },
       {
         "title": "Lands Housing Physical Planning Department",
@@ -2842,10 +2991,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-71zzst"
+            "id": "visual-Hb8NXfHnzJo"
           }
         ],
-        "id": "chart-71zzst"
+        "id": "chart-1XphByFZlo8"
       },
       {
         "title": "Health Services Department",
@@ -2874,10 +3023,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-eqNJ_mkPyUx"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-CK2NHzt3WGT"
       },
       {
         "title": "Health Services Department",
@@ -2905,10 +3054,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-z_H2ZUuaDdd"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-EsseV~ywzM7"
       },
       {
         "title": "Finance Economic Planning Department",
@@ -2937,10 +3086,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-PJ9l4VV7I1o"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-8pbHcA_dd0O"
       },
       {
         "title": "Finance Economic Planning Department",
@@ -2968,10 +3117,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-CPk~TJQM309"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-aRUkabfYcH7"
       },
       {
         "title": "Environment Waste Management and Energy Department",
@@ -3000,10 +3149,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-rm~q7Ve6t8z"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-_4mIlz~t1x8"
       },
       {
         "title": "Environment Waste Management and Energy Department",
@@ -3031,10 +3180,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-YkGj6Y0rvbZ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-RLeQmuZXJsj"
       },
       {
         "title": "Education Information Technology Department",
@@ -3063,10 +3212,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-VUQtVgaU2HB"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-lMdfQC6sHYx"
       },
       {
         "title": "Education Information Technology Department",
@@ -3094,10 +3243,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-uZGZakr62Tj"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-6x_eTPuC8LG"
       },
       {
         "title": "Devolution Public Service Administration Department",
@@ -3126,10 +3275,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-FI1W7PQUOHn"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-KdgEzbPd_IO"
       },
       {
         "title": "Devolution Public Service Administration Department",
@@ -3157,10 +3306,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-2MIubTzkzLa"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-sKDLyNiN6VG"
       },
       {
         "title": "County Executive Department",
@@ -3189,10 +3338,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-whhe7p3vcWD"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-1Wd9AeQ6TB4"
       },
       {
         "title": "County Executive Department",
@@ -3220,10 +3369,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-OAYSYFkn309"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-w3Q9Hyfaaiz"
       },
       {
         "title": "County Assembly Department",
@@ -3252,10 +3401,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-ljMKMeeZ9Mr"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-0x0uweok6fO"
       },
       {
         "title": "County Assembly Department",
@@ -3283,10 +3432,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-Ql76Epv~irM"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-TT10wXvA~4U"
       },
       {
         "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Department",
@@ -3314,10 +3463,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-mRlQiA3MbVt"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-~BgCx79gHIM"
       },
       {
         "title": "Water, Environment and Natural Resources Department",
@@ -3346,10 +3495,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-W_CzRlApeQW"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-1~w6YKe2qsY"
       },
       {
         "title": "Water, Environment and Natural Resources Department",
@@ -3377,10 +3526,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-dnPFEz0~cUr"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-v98GsCXsmwJ"
       },
       {
         "title": "Tourism Culture Arts and Sports Department",
@@ -3408,10 +3557,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-J3Rm5sCPKMp"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-dooVk8VQaXe"
       },
       {
         "title": "Tourism Culture Arts and Sports Department",
@@ -3440,10 +3589,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-31zlK5vRXXy"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-ob8lmhI~spI"
       },
       {
         "title": "Public Works Roads and Transport Department",
@@ -3471,10 +3620,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-mUDal4~glbK"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-H_6d8jTWq1y"
       },
       {
         "title": "Public Works Roads and Transport Department",
@@ -3503,10 +3652,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-QzYcBg5WH1I"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-HHnBKLBKpPt"
       },
       {
         "title": "Physical Planning Lands, Housing, Urban Development Department",
@@ -3534,10 +3683,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-7Z1utqd3WA1"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-AuPoduxz2hQ"
       },
       {
         "title": "Office of the Governor and County Administration Department",
@@ -3565,10 +3714,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-cSXYjwuxnsP"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-XpfCyf_CdY3"
       },
       {
         "title": "Office of the Governor and County Administration Department",
@@ -3597,10 +3746,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-ljMB8W6E6Z3"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-hRhi9xeuZAV"
       },
       {
         "title": "Finance and Economic Planning Department",
@@ -3628,10 +3777,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-PpEY4dsJSV_"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-50oIXsfA0KO"
       },
       {
         "title": "Finance and Economic Planning Department",
@@ -3660,10 +3809,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-50QUJWUOTVd"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-uItDCPlwSyz"
       },
       {
         "title": "Energy and Industry Department",
@@ -3691,10 +3840,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-3UBD1W~9WQ3"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-LMeJpvXrSZS"
       },
       {
         "title": "Energy and Industry Department",
@@ -3723,10 +3872,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-OaWAAilwdFRv"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-B1JbbCZNW~2P"
       },
       {
         "title": "Education Human Resource ReDevelopment and ICT Department",
@@ -3754,10 +3903,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-FH5NgcvRVPTZ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-9NuWYfiERolk"
       },
       {
         "title": "Education Human Resource ReDevelopment and ICT Department",
@@ -3786,10 +3935,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-ao8p6QSdmGMF"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-rqhXJENw9dTN"
       },
       {
         "title": "County Public Service Board Department",
@@ -3817,10 +3966,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-Th~HxsXaos6A"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-d7d1CzVvWk48"
       },
       {
         "title": "City of Kisumu Department",
@@ -3849,10 +3998,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-cYRMRzrW7csU"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-7aqeOBFrpMUl"
       },
       {
         "title": "City of Kisumu Department",
@@ -3880,10 +4029,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-VlbYiW0wUU6n"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-DX~INHp_NdhW"
       },
       {
         "title": "Business Cooperatives and Markets Department",
@@ -3912,10 +4061,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-KPCBmhcY_uwi"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-HhxzykDpYXW8"
       },
       {
         "title": "Business Cooperatives and Markets Department",
@@ -3943,10 +4092,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-q_1ZvZyP9bpE"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-ARYpJffY7CXO"
       },
       {
         "title": "Agriculture Livestock and Fisheries Department",
@@ -3974,10 +4123,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45."
+            "id": "visual-_4tKnrInDWSV"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-e5q3C3g9iyXD"
       },
       {
         "title": "Agriculture Livestock and Fisheries Department",
@@ -4006,10 +4155,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-YkHP1CUvsb61"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-jz2JKkgZyV6L"
       },
       {
         "title": "Ward Development Programmes Department",
@@ -4037,10 +4186,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer450"
+            "id": "visual-MspNwIseKd2P"
           }
         ],
-        "id": "chart-pyer45k"
+        "id": "chart-bWFpQvkQ~La8"
       },
       {
         "title": "Ward Development Programmes Department",
@@ -4069,10 +4218,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45j"
+            "id": "visual-OPUz1OOJNoQ5"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-txV2oOwTcjqV"
       },
       {
         "title": "Urban Renewal and Housing Department",
@@ -4100,10 +4249,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer450h"
+            "id": "visual-iTendO4mInhp"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-qBu7Whlg073L"
       },
       {
         "title": "Urban Renewal and Housing Department",
@@ -4132,10 +4281,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-YPQus6dW~y9y"
           }
         ],
-        "id": "chart-pyer459"
+        "id": "chart-xwTVUq~T~z1h"
       },
       {
         "title": "Urban Planning and Lands Department",
@@ -4163,10 +4312,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer450"
+            "id": "visual-4Zp~_8SMenRh"
           }
         ],
-        "id": "chart-pyer45g"
+        "id": "chart-iGRybZ667nqF"
       },
       {
         "title": "Urban Planning and Lands Department",
@@ -4195,10 +4344,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45f"
+            "id": "visual-j8zOMiRPF2ad"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-59N5dhSHs~ZM"
       },
       {
         "title": "Trade, Commerce, Tourism and Cooperatives Department",
@@ -4226,10 +4375,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer450d"
+            "id": "visual-jW1gDR26n_YV"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-ikDJ4TAo1Cky"
       },
       {
         "title": "Trade, Commerce, Tourism and Cooperatives Department",
@@ -4258,10 +4407,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45s"
+            "id": "visual-bTbl4b1Gzesi"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-h1D_DM2O7nyW"
       },
       {
         "title": "Public Works, Transport and Infrastructure Department",
@@ -4289,10 +4438,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer450a"
+            "id": "visual-pisW4XI~TvmZ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-oD8E~d7xGvKl"
       },
       {
         "title": "Public Works, Transport and Infrastructure Department",
@@ -4321,10 +4470,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer458"
+            "id": "visual-AYohaQgMtPfz"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-Kjbu5a~bj4Xu"
       },
       {
         "title": "Public Service Management Department",
@@ -4352,10 +4501,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer4507"
+            "id": "visual-Kcg9c_l1RNbi"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-i~HxpBm2IJfM"
       },
       {
         "title": "Public Service Management Department",
@@ -4384,10 +4533,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer456"
+            "id": "visual-IQw6eHsJBYc4"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-sEFOTYvk8EnG"
       },
       {
         "title": "ICT E-Govt and Public Communications Department",
@@ -4415,10 +4564,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer4505"
+            "id": "visual-hMXFxvdYNgTC"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-cuGkSoZezWsH"
       },
       {
         "title": "ICT E-Govt and Public Communications Department",
@@ -4447,10 +4596,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer454"
+            "id": "visual-B3DbUs_e55S0"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-gGNMYhaMRBFn"
       },
       {
         "title": "Health Department",
@@ -4478,10 +4627,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer4503"
+            "id": "visual-1Uwtv~TNUSL2"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-A4MRA_~iUA4l"
       },
       {
         "title": "Health Department",
@@ -4510,10 +4659,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer452"
+            "id": "visual-ceNEEXfvT1mY"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-a7t7z1SZDT0S"
       },
       {
         "title": "Environment Water, Energy and Natural Resources Department",
@@ -4541,10 +4690,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer4502"
+            "id": "visual-sgS51j9zYW~n"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-zcItz1VdGDJH"
       },
       {
         "title": "Environment Water, Energy and Natural Resources Department",
@@ -4573,10 +4722,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer451"
+            "id": "visual-vX3IBtdev7oT"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-04s9s_~sRBlK"
       },
       {
         "title": "Emergency Fund Department",
@@ -4604,10 +4753,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer4502"
+            "id": "visual-GuK0OmAVu42V"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-SHeRwLPaCi4_"
       },
       {
         "title": "Emergency Fund Department",
@@ -4636,10 +4785,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer451"
+            "id": "visual-sM2qVX_4ef2f"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-XLXzxyQD09gZ"
       },
       {
         "title": "Edu Youth Affairs, Sports Culture and Social Services Department",
@@ -4667,10 +4816,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer4502"
+            "id": "visual-DYewuJQTQMT3"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-dYwcXg1TW0eX"
       },
       {
         "title": "Edu Youth Affairs, Sports Culture and Social Services Department",
@@ -4699,10 +4848,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer451"
+            "id": "visual-eI2xDsa1Le5z"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-E9xhBCfyOz5_"
       },
       {
         "title": "Agri-Livestock Development, Fisheries and Forestry Department",
@@ -4730,10 +4879,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer4502"
+            "id": "visual-vErKWQV9MgLp"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-5RNSPhZLrJIe"
       },
       {
         "title": "Agri-Livestock Development, Fisheries and Forestry Department",
@@ -4762,13 +4911,13 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer451"
+            "id": "visual-zOobT5NillMt"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-5b5nex1XRjSL"
       }
     ],
-    "id": "section-XTPz7b"
+    "id": "section-0CbokDH386o"
   },
   {
     "sectionTitle": "Programmes",
@@ -4800,10 +4949,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-CFzru~6LHhPl"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-1JqkXNsfF5d6"
       },
       {
         "title": "Finance and Economic Planning Programme",
@@ -4832,10 +4981,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-4oqAlS9P6aom"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-C5LvxD9MNH8S"
       },
       {
         "title": "General Admin Planning and Support Services Programme",
@@ -4863,10 +5012,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-AmuxwUTfltrT"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-wyr_01ndHdNh"
       },
       {
         "title": "General Admin Planning and Support Services Programme",
@@ -4895,10 +5044,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-CfNceAvGol9H"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-rDp1Rq~K5V6t"
       },
       {
         "title": "Health Programme",
@@ -4926,10 +5075,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-~lvZE7M784sc"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-McIGDSMAK4iG"
       },
       {
         "title": "Health Programme",
@@ -4958,10 +5107,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-Vcw5raRUZex0"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-_DFbaP~Lx3Jv"
       },
       {
         "title": "ICT E-Govt and Public Communications Programme",
@@ -4989,10 +5138,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-pf3Ux9oWqADm"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-ORHwJWcBR_p5"
       },
       {
         "title": "ICT E-Govt nd Public Communications Programme",
@@ -5021,10 +5170,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-i0C4~UYMoMzN"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-gEvbBZjwEm1~"
       },
       {
         "title": "Liquor Licensing Board Programme",
@@ -5052,10 +5201,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-GYebfeMXdXlT"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-sldk0EDVV3qx"
       },
       {
         "title": "Liquor Licensing Board Programme",
@@ -5084,10 +5233,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-npnE7_Jmncb8"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-HDfnhTuKsqfJ"
       },
       {
         "title": "Office of Governor and Deputy Governor Programme",
@@ -5116,10 +5265,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-vwdtrAmKKJYJ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-6PG12dJuFKId"
       },
       {
         "title": "Public Service Management Programme",
@@ -5147,10 +5296,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-iGJjcBa2y3aS"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-wWIKluTBad3v"
       },
       {
         "title": "Public Service Management Programme",
@@ -5179,10 +5328,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-MM48UjqgddeE"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-fYzmkvykEMp7"
       },
       {
         "title": "Trade, Commerce, Tourism and Cooperatives Programme",
@@ -5210,10 +5359,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-J39dXaNHPtNg"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-K5zkAPB~jmHb"
       },
       {
         "title": "Trade, Commerce, Tourism and Cooperatives Programme",
@@ -5242,10 +5391,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-s_mHYHe5lYoC"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-n9FV9~0FwTde"
       },
       {
         "title": "Urban Renewal and Housing Programme",
@@ -5273,10 +5422,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-gtxgtRhSeF~x"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-zLGpiV2Kc087"
       },
       {
         "title": "Urban Renewal and Housing Programme",
@@ -5305,10 +5454,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-mrZMi5jqovxV"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-7JFeyyHdYgvt"
       },
       {
         "title": "Ward Development Fund Programme",
@@ -5336,10 +5485,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-Q~5cZbyZ08KZ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-hdSGCDeeExiO"
       },
       {
         "title": "Ward Development Fund Programme",
@@ -5368,10 +5517,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-jXYqMY0Yqb1S"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-rZ5s_I~Otpsz"
       },
       {
         "title": "Administration and Development of Human Resources in Kisumu County Programme",
@@ -5399,10 +5548,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-N3GRcii37GnB"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-Wg5iLb~r8o0q"
       },
       {
         "title": "Administration Planning and Support Programme",
@@ -5430,10 +5579,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-6cydDKn1YeHb"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-t7Tgn_PKppZ~"
       },
       {
         "title": "Administration Planning and Support Programme",
@@ -5462,10 +5611,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-wFz5YeZorDgi"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-0IxMbAhBd0u1"
       },
       {
         "title": "Administration Planning and Support Services Programme",
@@ -5493,10 +5642,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-ppQ69tnv5pgD"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-cHceAaOd9pqQ"
       },
       {
         "title": "Administration Planning and Support Services Programme",
@@ -5525,10 +5674,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-lbgDiO~NhPiS"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-IlTxkMDJlaQk"
       },
       {
         "title": "Agriculture Producitivity and Output Management Programme",
@@ -5556,10 +5705,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-RIoq72qNaaS8"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-SklyzRbgguXd"
       },
       {
         "title": "Agriculture Productivity and Output Management Programme",
@@ -5588,10 +5737,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-BTSBVMs58Xs2"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-kxfZFRzOiRdi"
       },
       {
         "title": "Agriculture Producitivity Management Programme",
@@ -5619,10 +5768,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-MD5gSiQciBPx"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-9GtVrX7eLVYs"
       },
       {
         "title": "Agriculture Productivity Management Programme",
@@ -5651,10 +5800,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-roBTjsnH1aRh"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-shxmOyya99uy"
       },
       {
         "title": "Alcoholic Drinks Programme",
@@ -5682,10 +5831,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-_8EvhwnQeAqU"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-KqVao_jTwl_x"
       },
       {
         "title": "Alcoholic Drinks Programme",
@@ -5714,10 +5863,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-OXTyNkWsJzWN"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-V2BgbAcTvMaA"
       },
       {
         "title": "Cooperative Development Management Programme",
@@ -5745,10 +5894,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-HrbAtiKQU9gr"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-XxSpFOF52vcs"
       },
       {
         "title": "Cooperative Development Management Programme",
@@ -5777,10 +5926,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-nJwJlET0YKBC"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-X_V2EPeREW5F"
       },
       {
         "title": "Communication Services Programme",
@@ -5808,10 +5957,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-XvuJr31Ojyk1"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-ag1PnjJshdMY"
       },
       {
         "title": "Communication Services Programme",
@@ -5840,10 +5989,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-nrItAUd_Qh2t"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-pO50XH6PA8V~"
       },
       {
         "title": "Conservation and Management of Ecosystems Programme",
@@ -5871,10 +6020,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-dX8vbKle8usD"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-fmhKMNHPvko5"
       },
       {
         "title": "County and Sub County Hospital Services Programme",
@@ -5902,10 +6051,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-v9CrC2QvwKV4"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-W48xvKJs5RYU"
       },
       {
         "title": "County and Sub County Hospital Services Programme",
@@ -5934,10 +6083,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-UoET8ILiXPIA"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-8yr25NO5GgC4"
       },
       {
         "title": "County Assembly Service Board Programme",
@@ -5965,10 +6114,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-ZmYj7heP1zye"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-7jsa4rKWhVE9"
       },
       {
         "title": "County Assembly Service Board Programme",
@@ -5997,10 +6146,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-uWTTBMpuC8G1"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-EbXWW6O8C_lN"
       },
       {
         "title": "County Communication and ICT Programme",
@@ -6028,10 +6177,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-v4aHtrlDhn_p"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-jvwQ2JTSdtKm"
       },
       {
         "title": "County Communication and ICT Programme",
@@ -6060,10 +6209,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-_nzyq5V9_t6w"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-jsQwTJ~n~0sB"
       },
       {
         "title": "County Planning, Development and Coordination Services Programme",
@@ -6091,10 +6240,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-YbeNKAEf593j"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-6lbfmMSu95dh"
       },
       {
         "title": "County Planning, Development and Coordination Services Programme",
@@ -6123,10 +6272,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-3~_Qzp4GyWbb"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-Q1tcGE0jWat9"
       },
       {
         "title": "County Roads and Public Works Management Programme",
@@ -6154,10 +6303,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-v8C0CMPeZlJB"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-cu0I2W5om0mM"
       },
       {
         "title": "County Roads and Public Works Management Programme",
@@ -6186,10 +6335,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-as25nNV6XCCw"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-G6QEj9Qjf7EY"
       },
       {
         "title": "Culture and Arts Development Programme",
@@ -6217,10 +6366,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-ECxckYMeSP~u"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-18NhlfktHngg"
       },
       {
         "title": "Culture and Arts Development Programme",
@@ -6249,10 +6398,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-zWu1vAbHzSoB"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-YHPKz532FFdp"
       },
       {
         "title": "Early Childhood Development Programme",
@@ -6280,10 +6429,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-p1BDkRxIFdnz"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-BXQfWfy9sXt3"
       },
       {
         "title": "Early Childhood Development Programme",
@@ -6312,10 +6461,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-buwwsJNQvLTH"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-ImBsUGT4hDKX"
       },
       {
         "title": "Early Childhood Education Management Programme",
@@ -6343,10 +6492,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-4qougQCLRtlk"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-0Av7fmbC6HoS"
       },
       {
         "title": "Early Childhood Education Management Programme",
@@ -6375,10 +6524,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-jrw1kJq32Kyx"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-DASO4BKiEInK"
       },
       {
         "title": "Energy and Mining Programme",
@@ -6406,10 +6555,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-5iCxMuWQD1yk"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-fAyuO_vdJEoY"
       },
       {
         "title": "Energy and Mining Programme",
@@ -6438,10 +6587,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-eUGSY3UtQWlZ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-QsZ4~xtiJAC9"
       },
       {
         "title": "Energy Production Programme",
@@ -6469,10 +6618,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-CgAX09GpbM~6"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-6FXtVdCS2CSM"
       },
       {
         "title": "Energy Production Programme",
@@ -6501,10 +6650,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-VTm0jVQDCMgR"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-Vp1ZurXyh_uI"
       },
       {
         "title": "Environment Planning and Management Programme",
@@ -6532,10 +6681,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-vWwlQtiWD7xR"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-q99PLPkVwDJk"
       },
       {
         "title": "Environment Planning and Management Programme",
@@ -6564,10 +6713,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-9rHp_smhn0dg"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-8fNjtW5l4gWz"
       },
       {
         "title": "Gender and Social Development Programme",
@@ -6595,10 +6744,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-FtRMy~Rv5Nq9"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-7jR0FX~3eDnt"
       },
       {
         "title": "Gender and Social Development Programme",
@@ -6627,10 +6776,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-n3xK8rNxWlvb"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-AYfafGi~KzuR"
       },
       {
         "title": "General Administration and Policy Making Programme",
@@ -6658,10 +6807,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-lK40UCnBICIZ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-BjOtTYyBw5rt"
       },
       {
         "title": "General Administration and Policy Making Programme",
@@ -6690,10 +6839,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-PH~gPkChKdBS"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-QshxLnPNnmgP"
       },
       {
         "title": "General Administration Operational Research and Planning Services Programme",
@@ -6721,10 +6870,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-HPTsnJv4CyNG"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-RiaYnQVkTRL7"
       },
       {
         "title": "Health Curative Services Programme",
@@ -6753,10 +6902,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-ajsMz1~DF46p"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-htLhYrxWLXyG"
       },
       {
         "title": "Health Curative Services Programme",
@@ -6784,10 +6933,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-F6RwZ5ub4J7y"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-BYSsvl4puEnG"
       },
       {
         "title": "Health Sector Support Programme",
@@ -6816,10 +6965,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-9MOjiHwf1w3u"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-XQfqDqLps93a"
       },
       {
         "title": "Health Sector Support Programme",
@@ -6847,10 +6996,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-G33qtqRcyONm"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-I3uw5duJT7nY"
       },
       {
         "title": "ICT Services Programme",
@@ -6879,10 +7028,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-Q4FOLSnJBINX"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-CK9lvicwVtCQ"
       },
       {
         "title": "ICT Services Programme",
@@ -6910,10 +7059,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-ln~Kz~~AdRgt"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-oC7Rxii9CeYr"
       },
       {
         "title": "Industrial Development Programme",
@@ -6942,10 +7091,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-ePkFDDWj9dg8"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-MFpuxI6o79al"
       },
       {
         "title": "Industrial Development  Programme",
@@ -6973,10 +7122,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-IxOXIfM0Qrfp"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-UdZOP48UfSpi"
       },
       {
         "title": "InterGovernmental Relations Communication and Coordination Programme",
@@ -7004,10 +7153,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-vYPhhv8s8xMS"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-oIxdkKrUe4sE"
       },
       {
         "title": "Jaramogi Oginga Odinga Teaching and Referral Hospital Programme",
@@ -7036,10 +7185,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-ucfszNfBfZ_G"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-aC5Ht~QhY5TH"
       },
       {
         "title": "Kisumu County Referral Hospital Programme",
@@ -7068,10 +7217,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-wPXfmHqpAi3A"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-0dg3p_Vxs1b4"
       },
       {
         "title": "Kisumu County Referral Hospital Programme",
@@ -7099,10 +7248,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-k1jLXcQ37I8g"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-W3j4MTUsQgHe"
       },
       {
         "title": "Legislation and Oversight Services Programme",
@@ -7131,10 +7280,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-Dz4w6G4yYWQG"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-vWn26HXUMic1"
       },
       {
         "title": "Legislation and Oversight Services Programme",
@@ -7162,10 +7311,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-B1UXIvRxTHZu"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-bCntHwMKJbKE"
       },
       {
         "title": "Management of County Affairs and Special Affairs Programme",
@@ -7194,10 +7343,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-Q8HaT4ss2Ukd"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-oEatWdtl8zim"
       },
       {
         "title": "Management of County Affairs and Special Affairs Programme",
@@ -7225,10 +7374,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-d~1XHskBvfiP"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-9W5h4hX3OjbB"
       },
       {
         "title": "Physical Planning and Housing Programme",
@@ -7257,10 +7406,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-krlD3~WnKQK5"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-9Ji8XHN6se8D"
       },
       {
         "title": "Physical Planning and Housing Programme",
@@ -7288,10 +7437,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-t6WCMeNJpiaW"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-xEht_AiI6COL"
       },
       {
         "title": "Pre-Primary Policy and Legislation  Programme",
@@ -7320,10 +7469,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-dTnJzxgOJ15~"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-OeZcqKsAWzau"
       },
       {
         "title": "Pre-Primary Policy and Legislation Programme",
@@ -7351,10 +7500,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-u25zG87I1eij"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-u7S9rZlOBll4"
       },
       {
         "title": "Preventive and Promotive Health Services Programme",
@@ -7383,10 +7532,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-HDMlwHbvF9D3"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-~ZYNTbiERt5R"
       },
       {
         "title": "Preventive and Promotive Health Services Programme",
@@ -7414,10 +7563,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-Sjy2BQPcw0ht"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-IhsVO2bMf2gJ"
       },
       {
         "title": "Promotion of Market Access and Product Development Programme",
@@ -7446,10 +7595,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-yZ5ceYB9xjMC"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-F~4BPcDCLMvl"
       },
       {
         "title": "Promotion of Market Access and Product Development Programme",
@@ -7477,10 +7626,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-EAa6YtcEHGlv"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-uBiDGIJZCewK"
       },
       {
         "title": "Promotion of Sustainable Land Use Programme",
@@ -7509,10 +7658,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-FhmCPVtC8qXx"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-KY967Yr5Gzro"
       },
       {
         "title": "Promotion of Sustainable Land Use Programme",
@@ -7540,10 +7689,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-6mjCMvg1ou1C"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-uvA1lfwxYlVR"
       },
       {
         "title": "Public Finance Management Programme",
@@ -7572,10 +7721,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-3PaoV1COTFLB"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-fRsiM3uUjDH5"
       },
       {
         "title": "Public Finance Management Programme",
@@ -7603,10 +7752,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-livleQkCO~9u"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-UeiCxRc_JDu4"
       },
       {
         "title": "Regulation and Verification of Weights Programme",
@@ -7635,10 +7784,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-9pnyZdv1I4go"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-84Know9hPFdG"
       },
       {
         "title": "Regulation and Verification of Weights Programme",
@@ -7666,10 +7815,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-3PFuXTlYdjXD"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-O9_Q3Tg1J4le"
       },
       {
         "title": "Revenue Generation Management Programme",
@@ -7698,10 +7847,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-bsQgREviO4dV"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-~rfLnP2EqneL"
       },
       {
         "title": "Revenue Generation Management Programme",
@@ -7729,10 +7878,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-2k_q9Z7MrU~O"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-9S8i_AhLEDOM"
       },
       {
         "title": "Roads General Administration and Planning Programme",
@@ -7761,10 +7910,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-aSvMbtNUI95B"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-DHMEg7kt~pkU"
       },
       {
         "title": "Roads General Administration and Planning Programme",
@@ -7792,10 +7941,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-vOEPm2QyuVs1"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-46s6oSCImxv_"
       },
       {
         "title": "Sports and Cultural Services Programme",
@@ -7824,10 +7973,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-XLu5aDY8PzzD"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-vyA6vJ3sVOl2"
       },
       {
         "title": "Sports and Cultural Services Programme",
@@ -7855,10 +8004,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-dDr5L4MiyOAf"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-Kitjw7~tAkb7"
       },
       {
         "title": "Sports Management and Development Programme",
@@ -7887,10 +8036,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-FSPaYOqTfLG1"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-amfKcxxe39HE"
       },
       {
         "title": "Sports Management and Development Programme",
@@ -7918,10 +8067,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-_iFrq~nDPunR"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-zpyY5HXu09p7"
       },
       {
         "title": "Tourism Development and Management Programme",
@@ -7950,10 +8099,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-X6vFgWCNkMzT"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-IWyYMx6f60RK"
       },
       {
         "title": "Tourism Development and Management Programme",
@@ -7981,10 +8130,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-F2eO6rPkgv3p"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-WcFeQYHYFct~"
       },
       {
         "title": "Urban Planning and Development Control Programme",
@@ -8012,10 +8161,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-gbeY8iBoKKqX"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-y3uy2u7et7xu"
       },
       {
         "title": "Urban Planning and Development Control Programme",
@@ -8044,10 +8193,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-_e7zoZBM5a2I"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-HDma7e6pbWq5"
       },
       {
         "title": "Water Sanitation and Natural Resources Programme Absorption",
@@ -8076,10 +8225,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-O6ILRFmiIGrq"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-8VycGpuuuBDl"
       },
       {
         "title": "Water Sanitation and Natural Resources Programme",
@@ -8108,10 +8257,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-rHc4Y7TJbVbg"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-NR6eGjQPR9M6"
       },
       {
         "title": "Youth Gender Sports and Cultural Affairs Programme Absorption",
@@ -8140,10 +8289,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-2fB12YISrYQ2"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-VG_PJeeO7VJz"
       },
       {
         "title": "Youth Gender Sports And Cultural Affairs Programme",
@@ -8171,10 +8320,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-1MNL_hYFZZ9I"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-_RjvPZIaYMpX"
       },
       {
         "title": "Transport Infrastructure and Public Works Programme Absorption",
@@ -8203,10 +8352,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-M5WTYcV4HFYE"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-W_HkkM44JiDn"
       },
       {
         "title": "Transport Infrastructure and Public Works Programme",
@@ -8235,10 +8384,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-~KwQF8zAJlwR"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-TqtXdBLOW7nr"
       },
       {
         "title": "Trade Tourism and Investment Programme Absorption",
@@ -8267,10 +8416,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-RZnNyc23g2wl"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-bWnDBvvZ8iEF"
       },
       {
         "title": "Trade Tourism and Investment Programme",
@@ -8298,10 +8447,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-uM2UcYA1DR_d"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-yLMCoyVzf20r"
       },
       {
         "title": "Lands Housing and Physical Planning Programme Absorption",
@@ -8330,10 +8479,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-ZOiy_PitoRD0"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-obv7_k03hn0l"
       },
       {
         "title": "Lands Housing and Physical Planning Programme",
@@ -8361,10 +8510,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-ouxkNGfWpqmm"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-FeJQNjAFR6lK"
       },
       {
         "title": "Health Services Programme Absorption",
@@ -8393,10 +8542,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-G8EkZgG4D_M4"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-w0BCeW8583CB"
       },
       {
         "title": "Health Services Programme",
@@ -8424,10 +8573,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-_99ABO2E5~WJ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-4ngpfO1tnCa0"
       },
       {
         "title": "Finance Economic Planning Programme Absorption",
@@ -8456,10 +8605,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-uBQW9anGkvZ7"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-iO9WiO0J4RjN"
       },
       {
         "title": "Finance Economic Planning Programme",
@@ -8487,10 +8636,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-qChBg8MekMZJ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-6zjcHjgzU3Lw"
       },
       {
         "title": "Executive Programme Absorption",
@@ -8519,10 +8668,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-bD2JAe7sIYAa"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-BJ1ueXXSTAac"
       },
       {
         "title": "Environment Waste Management and Energy Programme Absorption",
@@ -8551,10 +8700,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-DAUNxm49C3Ch"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-Ga2y6GTZFb84"
       },
       {
         "title": "Environment Waste Management and Energy Programme",
@@ -8582,10 +8731,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-2psx3pLjcP5O"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-xuMZD1cHPoxf"
       },
       {
         "title": "Education Information Technology and MV2035 Programme Absorption",
@@ -8614,10 +8763,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-oejrrDQj8g0Z"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-iIfiGsSGaLpr"
       },
       {
         "title": "Education Information Technology and MV2035 Programme",
@@ -8645,10 +8794,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-84jayEDSsTcM"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-XDy0gIrA4sWF"
       },
       {
         "title": "Devolution Public Service Admin Programme",
@@ -8677,10 +8826,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-kfPsiu0duhSv"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-82ckH04QT5xf"
       },
       {
         "title": "Devolution Public Service Admin Programme",
@@ -8708,10 +8857,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-kYYTx3nFHAbM"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-CcyKqsXnZoRJ"
       },
       {
         "title": "County Public Service Board Programme Absoprtion",
@@ -8740,10 +8889,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-2Oj1cM59pKVI"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-3awjUdWZT8mT"
       },
       {
         "title": "County Public Service Board Programme",
@@ -8771,10 +8920,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-1GQrBECqozaZ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-~DqTsckTy0oR"
       },
       {
         "title": "County Assembly Programme Absorption",
@@ -8803,10 +8952,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-3aIU9zhOvUTp"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-tpqF2CJJIT7b"
       },
       {
         "title": "County Assembly Programme",
@@ -8834,10 +8983,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-Uag7MjwX8dxQ"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-D4IWJz9RuAd3"
       },
       {
         "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Programme",
@@ -8866,10 +9015,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-eGSSy763ooq5"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-0cFLGbln0Y1e"
       },
       {
         "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Programme",
@@ -8897,10 +9046,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-azcVM0vd1RAY"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-HpFK~uUO2Xg9"
       },
       {
         "title": "Youth Training and Legislation Programme",
@@ -8928,10 +9077,10 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-uDr6vPgrwrLs"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-wVpKb94FlYhk"
       },
       {
         "title": "Youth Training and Development Programme",
@@ -8960,10 +9109,10 @@
             "groupBy": "variable1",
             "y": "value",
             "customUnit": "%",
-            "id": "visual-pyer45"
+            "id": "visual-MiCrDxZH2bo1"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-BG6f_~rJ_G3r"
       },
       {
         "title": "Youth Training and Development Programme",
@@ -8991,1949 +9140,12 @@
             "x": "variable2",
             "groupBy": "variable1",
             "y": "value",
-            "id": "visual-pyer45"
+            "id": "visual-7NQFV5bvp253"
           }
         ],
-        "id": "chart-pyer45"
+        "id": "chart-Mmg4kWOdKrG1"
       }
     ],
-    "id": "section-VTCllO"
-  },
-  {
-    "sectionTitle": "Health",
-    "sectionDescription": "",
-    "charts": [
-      {
-        "title": "Change Health Sector Management Systems",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyChangeHealthSectorMgntSies",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Change Health Sector Management Systems",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyChangeHealthSectorMgntSysPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Initiate Fresh Immunization Campaigns",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyInitiateFreshImmunizationCampaigns",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Provide Essential Medicines",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyProvideEssentialMedicines",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Provide Essential Medicines",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "offset": 50,
-              "barWidth": 30,
-              "width": 600
-            },
-            "table": "allPyProvideEssentialMedicinesPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      }
-    ],
-    "id": "section-XTPz7b"
-  },
-  {
-    "sectionTitle": "Departments",
-    "sectionDescription": "",
-    "charts": [
-      {
-        "title": "Youth Gender Sports Cultural Affairs Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyYouthGenderSportsCulturalAffairsDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Youth Gender Sports Cultural Affairs Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyYouthGenderSportsCulturalAffairsDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Water Sanitation Natural Resources Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyWaterSanitationNaturalResourcesDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Water Sanitation Natural Resources Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyWaterSanitationNaturalResourcesDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Transport Infrastructure Public Works Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTransportInfrastructurePublicWorksDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Transport Infrastructure Public Works Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTransportInfrastructurePublicWorksDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Transport Infrastructure Public Works Department",
-        "subtitle": "In Kshs. Millions",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTransportInfrastructurePublicWorksDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Trade Tourism Investment Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTradeTourismInvestmentDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Trade Tourism Investment Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTradeTourismInvestmentDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Lands Housing Physical Planning Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 200,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyLandsHousingPhysicalPlanningDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-71zzst"
-          }
-        ],
-        "id": "chart-71zzst"
-      },
-      {
-        "title": "Lands Housing Physical Planning Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 200,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyLandsHousingPhysicalPlanningDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "Kshs. Million",
-            "id": "visual-71zzst"
-          }
-        ],
-        "id": "chart-71zzst"
-      },
-      {
-        "title": "Health Services Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyHealthServicesDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Health Services Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyHealthServicesDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Finance Economic Planning Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyFinanceEconomicPlanningDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Finance Economic Planning Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyFinanceEconomicPlanningDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Environment Waste Management and Energy Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEnvironmentWasteManagementAndEnergyDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Environment Waste Management and Energy Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEnvironmentWasteManagementAndEnergyDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Education Information Technology Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEducationInformationTechnologyDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Education Information Technology Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEducationInformationTechnologyDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Devolution Public Service Administration Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyDevolutionPublicServiceAdministrationDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Devolution Public Service Administration Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyDevolutionPublicServiceAdministrationDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Executive Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyExecutiveDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Executive Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyExecutiveDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Assembly Department",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyAssemblyDepartmentPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Assembly Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyAssemblyDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Department",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyAgricultureFisheriesLivestockAndCoOperativesDepartments",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      }
-    ],
-    "id": "section-XTPz7b"
-  },
-  {
-    "sectionTitle": "Programmes",
-    "sectionDescription": "",
-    "charts": [
-      {
-        "title": "Water Sanitation and Natural Resources Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyWaterSanitationAndNaturalResourcesProgrammeAbsorptionS",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Water Sanitation and Natural Resources Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyWaterSanitationAndNaturalResourcesProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Youth Gender Sports and Cultural Affairs Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyYouthGenderSportsAndCulturalAffairsProgrammeAbsorptios",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Youth Gender Sports And Cultural Affairs Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyYouthGenderSportsAndCulturalAffairsProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Transport Infrastructure and Public Works Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTransportInfrastructureAndPublicWorksProgrammeAbsorptis",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Transport Infrastructure and Public Works Programme",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTransportInfrastructureAndPublicWorksProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Trade Tourism and Investment Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTradeTourismAndInvestmentProgrammeAbsorptionPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Trade Tourism and Investment Programme",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyTradeTourismAndInvestmentProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Lands Housing and Physical Planning Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyLandsHousingAndPhysicalPlanningProgrammeAbsorptionPers",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Lands Housing and Physical Planning Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyLandsHousingAndPhysicalPlanningProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Health Services Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyHealthServicesProgrammeAbsorptionPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Health Services Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyHealthServicesProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Finance Economic Planning Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyFinanceAndEconomicPlanningProgrammeAbsorptionPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Finance Economic Planning Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyFinanceAndEconomicPlanningProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Executive Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyExecutiveProgrammeAbsorptionPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Environment Waste Management and Energy Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEnergyEnvironmentAndWasteManagementProgrammeAbsorptions",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Environment Waste Management and Energy Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEnergyEnvironmentAndWasteManagementProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Education Information Technology and MV2035 Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEducationInformationTechnologyAndMv2035ProgrammeAbsors",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Education Information Technology and MV2035 Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyEducationInformationTechnologyAndMv2035Programmes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Devolution Public Service Admin Programme",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyDevolutionAndPublicServiceAdminProgrammeAbsorptionPers",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Devolution Public Service Admin Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyDevolutionAndPublicServiceAdminProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Public Service Board Programme Absoprtion",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyPublicServiceBoardProgrammeAbsorptionPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Public Service Board Programme",
-        "subtitle": "K",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyPublicServiceBoardProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Assembly Programme Absorption",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyAssemblyProgrammeAbsorptionPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "County Assembly Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyCountyAssemblyProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Programme",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyAgricFisheriesLivestockAndCoOperativesProgrammeAbsorps",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Agriculture, Fisheries, LiveStock and Co-Operatives Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": false,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyAgricFisheriesLivestockAndCoOperativesProgrammes",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Youth Training and Legislation Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": true,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyYouthTrainingAndLegislationProgs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Youth Training and Development Programme",
-        "subtitle": "By Percentage",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": true,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyYouthTrainingAndDevelopmentProgPercs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "customUnit": "%",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      },
-      {
-        "title": "Youth Training and Development Programme",
-        "subtitle": "",
-        "sourceLink": "",
-        "sourceTitle": "",
-        "layout": "1",
-        "visuals": [
-          {
-            "type": "grouped_column",
-            "typeProps": {
-              "labelWidth": 300,
-              "horizontal": true,
-              "offset": 40,
-              "barWidth": 30,
-              "parts": {
-                "axis": {
-                  "dependent": {
-                    "fixLabelOverlap": true
-                  }
-                }
-              }
-            },
-            "table": "allPyYouthTrainingAndDevelopmentProgs",
-            "x": "variable2",
-            "groupBy": "variable1",
-            "y": "value",
-            "id": "visual-pyer45"
-          }
-        ],
-        "id": "chart-pyer45"
-      }
-    ],
-    "id": "section-VTCllO"
+    "id": "section-Hlkhrkc7ZIYi"
   }
 ]
