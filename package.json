@@ -20,7 +20,7 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "pre-commit": "lint-staged"
+    "pre-commit": "yarn lint && lint-staged"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.1",
