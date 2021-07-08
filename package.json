@@ -19,7 +19,8 @@
     "start": "next start",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.1",
