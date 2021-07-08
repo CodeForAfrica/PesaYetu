@@ -2,7 +2,7 @@
  "compilerOptions": {
    "baseUrl": ".",
    "paths": {
-     "@/pesayetu/*": ["./src/*"]
+     "@/promisetracker/*": ["./src/*"]
    }
  },
  "exclude": ["node_modules"]
