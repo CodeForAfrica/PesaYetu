@@ -8,9 +8,15 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
+    "format": "yarn prettier --write --ignore-path './.gitignore' '**/*.+(json|md|yml)' '.'",
+    "format-staged": "yarn prettier --write '**/*.+(json|md|yml)'",
+    "codemod": "yarn codemod-staged-optimal-imports './src' && yarn codemod-staged-top-level-imports './src'",
+    "codemod-staged-optimal-imports": "yarn jscodeshift --transform=node_modules/@material-ui/codemod/lib/v4.0.0/optimal-imports.js",
+    "codemod-staged-top-level-imports": "yarn jscodeshift --transform=node_modules/@material-ui/codemod/lib/v4.0.0/top-level-imports.js",
+    "lint": "yarn eslint --fix --ignore-path './.gitignore' './'",
+    "lint-staged": "yarn eslint --fix --ext '.js,.json,.md'",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -51,5 +57,26 @@
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.2",
     "storybook-addon-material-ui": "^0.9.0-alpha.24"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "lint-staged": {
+    "*.js": [
+      "yarn codemod-staged-optimal-imports",
+      "yarn codemod-staged-top-level-imports",
+      "yarn lint-staged"
+    ],
+    "*.{json,md}": [
+      "yarn lint-staged",
+      "yarn format-staged"
+    ],
+    "*.yml": [
+      "yarn format-staged"
+    ]
+  },
+  "engines": {
+    "node": ">=12.18.0 <15.x",
+    "yarn": ">=1.19.2 <2.x"
   }
 }
