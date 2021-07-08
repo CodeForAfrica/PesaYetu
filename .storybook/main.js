@@ -1,10 +1,10 @@
-const path = require("path");
-
 module.exports = {
-  addons: [
+  "stories": [
+    "../src/**/*.stories.js",
+  ],
+  "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "storybook-addon-material-ui",
-  ],
-  stories: ["../src/**/*.stories.js"],
-};
+    "storybook-addon-material-ui"
+  ]
+}
