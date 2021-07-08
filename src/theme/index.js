@@ -13,9 +13,9 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#0E68A1', // blue
+      dark: '#0E68A1', // blue
       light: '#7DB2D3',
-      dark: '#0067A3',
+      main: '#0067A3',
     },
     secondary: {
       main: '#EE4538', // red
@@ -45,7 +45,8 @@ const theme = createTheme({
   },
 });
 
-const { typography, overrides } = theme;
+const { palette, typography, overrides } = theme;
+const { pxToRem } = typography;
 // Typography
 deepmerge(
   typography,
@@ -67,7 +68,30 @@ deepmerge(
 // Overrides
 deepmerge(
   overrides,
-  {}, // overides settings goes here
+  {
+    MuiButton: {
+      root: {},
+      contained: {},
+      containedPrimary: {
+        color: palette.primary.main,
+        backgroundColor: palette.background.main,
+        boxShadow: 'none',
+        borderRadius: pxToRem(50),
+        letterspacing: '1.6px',
+        textAlign: 'center',
+        border: '2px solid #0067A3',
+        textTransform: 'uppercase',
+        transition: 'none !important',
+        '&:hover': {
+          color: palette.background.main,
+          boxShadow: 'none',
+          backgroundColor: palette.primary.main,
+          border: '2px solid transparent',
+          borderRadius: pxToRem(50),
+        },
+      },
+    },
+  }, // overides settings goes here
   { clone: false }
 );
 export default theme;

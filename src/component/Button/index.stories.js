@@ -33,7 +33,7 @@ export default {
       control: {
         type: 'select',
       },
-      options: ['text', 'outlined'],
+      options: ['text', 'contained'],
     },
   },
 };
