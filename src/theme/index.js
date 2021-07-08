@@ -13,7 +13,25 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#0E68A1',
+      main: '#0E68A1', // blue
+      light: '#7DB2D3',
+      dark: '#0067A3',
+    },
+    secondary: {
+      main: '#EE4538', // red
+      light: '#F8A199',
+    },
+    background: {
+      main: '#FFFFFF',
+      light: '#F8F8F8', // white
+      dark: '#2A2A2C',
+      mediumgrey: '#DFDFDF',
+      lightgrey: '#F0F0F0',
+    },
+    text: {
+      main: '#333333',
+      dark: '#212529',
+      headings: '#1C2031',
     },
   },
   typography: {
