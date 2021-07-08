@@ -17,7 +17,9 @@
     "lint-staged": "yarn eslint --fix --ext '.js,.json,.md'",
     "build": "next build",
     "start": "next start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.1",
@@ -36,6 +38,11 @@
     "@babel/eslint-parser": "^7.14.7",
     "@babel/preset-env": "^7.1.6",
     "@material-ui/codemod": "^4.5.0",
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/react": "^6.3.4",
+    "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "eslint": "^7.30.0",
