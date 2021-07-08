@@ -1,0 +1,5 @@
+/* Global styles for Storybook iframe that renders every Component Story */
+
+* {
+ box-sizing: border-box;
+}
