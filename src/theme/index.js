@@ -1,5 +1,5 @@
-import { createTheme } from "@material-ui/core/styles";
-import { deepmerge } from "@material-ui/utils";
+import { createTheme } from '@material-ui/core/styles';
+import { deepmerge } from '@material-ui/utils';
 
 const FONT_FAMILY_TEXT = '"Poppins", "sans-serif"';
 
@@ -13,7 +13,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#0E68A1",
+      main: '#0E68A1',
     },
   },
   typography: {
@@ -49,7 +49,7 @@ deepmerge(
 // Overrides
 deepmerge(
   overrides,
-  {}, //overides settings goes here
+  {}, // overides settings goes here
   { clone: false }
 );
 export default theme;
