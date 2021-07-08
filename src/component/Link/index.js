@@ -97,7 +97,6 @@ Link.defaultProps = {
   prefetch: undefined,
 };
 
-// eslint-disable-next-line react/display-name
 export default React.forwardRef((props, ref) => (
   <Link {...props} innerRef={ref} />
 ));

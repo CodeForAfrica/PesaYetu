@@ -3,7 +3,6 @@ import { withNextRouter } from 'storybook-addon-next-router';
 
 import Link from '.';
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Components/Link',
   decorators: [withNextRouter],
