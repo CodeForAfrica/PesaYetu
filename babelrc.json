@@ -1,0 +1,23 @@
+{
+ "presets": ["next/babel"],
+ "plugins": [
+   [
+     "transform-imports",
+     {
+       "material-ui/core": {
+         "transform": "material-ui/core/esm/${member}",
+         "preventFullImport": true
+       }
+     }
+   ],
+   [
+     "module-resolver",
+     {
+       "root": ["./"],
+       "alias": {
+         "@/pesayetu": "./src"
+       }
+     }
+   ]
+ ]
+}
