@@ -8,13 +8,6 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "format": "yarn prettier --write --ignore-path './.gitignore' '**/*.+(json|md|yml)' '.'",
-    "format-staged": "yarn prettier --write '**/*.+(json|md|yml)'",
-    "codemod": "yarn codemod-staged-optimal-imports './src' && yarn codemod-staged-top-level-imports './src'",
-    "codemod-staged-optimal-imports": "yarn jscodeshift --transform=node_modules/@material-ui/codemod/lib/v4.0.0/optimal-imports.js",
-    "codemod-staged-top-level-imports": "yarn jscodeshift --transform=node_modules/@material-ui/codemod/lib/v4.0.0/top-level-imports.js",
-    "lint": "yarn eslint --fix --ignore-path './.gitignore' './'",
-    "lint-staged": "yarn eslint --fix --ext '.js,.json,.md'",
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
@@ -29,22 +22,15 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/eslint-parser": "^7.14.7",
-    "@babel/preset-env": "^7.14.7",
     "@storybook/addon-actions": "^6.3.3",
     "@storybook/addon-essentials": "^6.3.3",
     "@storybook/addon-links": "^6.3.3",
     "@storybook/addons": "^6.3.3",
     "@storybook/react": "^6.3.3",
-    "babel-loader": "^8.2.2",
-    "babel-plugin-module-resolver": "^4.1.0",
-    "babel-plugin-transform-imports": "^2.0.0",
     "eslint": "7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-babel-module": "^5.3.1",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-json": "^3.0.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -60,23 +46,5 @@
   },
   "browserslist": [
     "defaults"
-  ],
-  "lint-staged": {
-    "*.js": [
-      "yarn codemod-staged-optimal-imports",
-      "yarn codemod-staged-top-level-imports",
-      "yarn lint-staged"
-    ],
-    "*.{json,md}": [
-      "yarn lint-staged",
-      "yarn format-staged"
-    ],
-    "*.yml": [
-      "yarn format-staged"
-    ]
-  },
-  "engines": {
-    "node": ">=12.18.0 <15.x",
-    "yarn": ">=1.19.2 <2.x"
-  }
+  ]
 }
