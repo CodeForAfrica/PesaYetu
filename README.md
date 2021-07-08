@@ -1,51 +1,34 @@
-# Pesa Yetu
-PesaYetu is a tool that gives information on how money collected from Kenyan taxpayers is allocated. Accessible at https://dev.pesayetu.pesacheck.org
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# Development
+## Getting Started
 
-This project uses yarn as a dependancy. See the documentation to set it up on your machine.
+First, run the development server:
 
-Run the following command to get started
-
-```
-- git clone git@github.com:CodeForAfrica/PesaYetu.git
-- cd PesaYetu
-- yarn
-- yarn start
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-## Chart Definitions
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Style Guidelines
+## Learn More
 
-This project will be primarily using [airbnb react](https://github.com/airbnb/javascript/tree/master/react) and [material-ui](https://material-ui.com/) as our main style guides when implementing components.This is to create code consistency and readability.
+To learn more about Next.js, take a look at the following resources:
 
-## Tests
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-[TODO](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deployment
+## Deploy on Vercel
 
-Following [Facebook's guide on deploying React App on GitHub Pages](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages), site deployment can be done by simple doing:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-```shell
-yarn deploy
-```
-
-## Contributing
-
-If you'd like to contribute to PesaYetu, check out the [CONTRIBUTING.md](./CONTRIBUTING.md) file on how to get started; or jump right into our [GitHub issues](issues).
-
-
-### ✨ Contributors ✨
-
-[TODO](https://www.npmjs.com/package/all-contributors-cli)
-
----
-
-## License
-
-GNU General Public License v3.0
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

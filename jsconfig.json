@@ -2,11 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["*"],
-      "assets/*": ["src/assets/*"],
-      "components/*": ["src/components/*"],
-      "data/*": ["src/data/*"],
-      "lib/*": ["src/lib/*"]
+      "@/pesayetu/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }
