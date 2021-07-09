@@ -9,9 +9,7 @@
     "airbnb",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "plugin:@next/next/recommended",
-    "next",
-    "next/core-web-vitals"
+    "plugin:@next/next/recommended"
   ],
   "env": {
     "browser": true

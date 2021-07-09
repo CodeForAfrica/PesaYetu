@@ -6,7 +6,7 @@ export default {
   openGraph: {
     type: 'website',
     url: 'https://dev.pesayetu.pesacheck.org',
-    locale: 'en_TZ',
+    locale: 'en',
     site_name: 'PesaYetu',
     images: [
       {
