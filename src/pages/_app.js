@@ -1,46 +1,36 @@
-import React from 'react';
-import App from 'next/app';
-import Head from 'next/head';
-
-import theme from 'theme';
-
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
-import AppContextProvider from 'AppContext';
+import { DefaultSeo } from 'next-seo';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import 'leaflet/dist/leaflet.css';
-import 'simplebar/dist/simplebar.min.css';
+import theme from '@/pesayetu/theme';
+import SEO from 'next-seo.config';
 
-class PesaYetuApp extends App {
-  componentDidMount() {
+export default function MyApp(props) {
+  const { Component, pageProps } = props;
+
+  React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-  }
+  }, []);
 
-  render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <>
-        <Head>
-          <title>PesaYetu: Making Budget Data Easy to Use</title>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <meta charSet="utf-8" />
-        </Head>
-        <ThemeProvider theme={theme}>
-          <AppContextProvider>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </AppContextProvider>
-        </ThemeProvider>
-      </>
-    );
-  }
+  return (
+    <>
+      <DefaultSeo {...SEO} />
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  );
 }
 
-export default PesaYetuApp;
+MyApp.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.shape({}).isRequired,
+};
