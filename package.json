@@ -15,12 +15,11 @@
     "codemod-staged-top-level-imports": "yarn jscodeshift --transform=node_modules/@material-ui/codemod/lib/v4.0.0/top-level-imports.js",
     "lint": "yarn eslint --fix --ignore-path './.gitignore' './'",
     "lint-staged": "yarn eslint --fix --ext '.js,.json,.md'",
-    "build": "next build",
-    "start": "next start",
-    "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "pre-commit": "yarn lint && lint-staged"
+    "build": "next build",
+    "start": "next start",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.1",
