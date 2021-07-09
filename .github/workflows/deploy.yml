@@ -1,25 +1,23 @@
-name: Dokku CD
+---
+name: 'deploy'
+
+# yamllint disable-line rule:truthy
 on:
   push:
-    branches: [ v1 ]
-env:
-  DOKKU_APP_NAME: 'pesayetu-dev'
-  DOKKU_HOST: 'dokku-1.hurumap.org'
-  DOKKU_REMOTE_BRANCH: 'master'
-  GIT_PUSH_FLAGS: '--force'
+    branches:
+      - v1
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Cloning repo
+        uses: actions/checkout@v2
         with:
-            fetch-depth: 0
-      - id: deploy
-        name: Deploy to dokku
-        uses: idoberko2/dokku-deploy-github-action@v1
+          fetch-depth: 0
+
+      - name: Push to dokku
+        uses: dokku/github-action@master
         with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-            dokku-host: ${{ env.DOKKU_HOST }}
-            app-name: ${{ env.DOKKU_APP_NAME }}
-            remote-branch: ${{ env.DOKKU_REMOTE_BRANCH }}
-            git-push-flags: ${{ env.GIT_PUSH_FLAGS }}
+          git_remote_url: 'ssh://dokku@dokku-1.hurumap.org/pesayetu-dev'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
