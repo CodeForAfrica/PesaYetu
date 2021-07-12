@@ -29,7 +29,7 @@ export default {
       control: {
         type: 'select',
       },
-      options: ['caption', 'body1'],
+      options: ['subtitle1', 'body1'],
     },
     year: {
       control: {
@@ -47,6 +47,6 @@ Default.args = {
   copyright: 'Copyright',
   icon: cc,
   copyrightUrl: 'https://dev.pesayetu.pesacheck.org',
-  copyrightVariant: 'caption',
+  copyrightVariant: 'subtitle1',
   year: '2021',
 };

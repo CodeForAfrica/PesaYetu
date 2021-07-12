@@ -6,18 +6,17 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ typography }) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
   },
   copyrightIcon: {
-    padding: '0.2rem',
+    padding: typography.pxToRem(3.2),
   },
   text: {
-    color: 'white',
-    margin: '0.2rem',
-    letterSpacing: '0.56px',
+    margin: typography.pxToRem(3.2),
+    letterSpacing: typography.pxToRem(0.56),
     textAlign: 'left',
   },
 }));
@@ -79,7 +78,7 @@ Copyright.defaultProps = {
   copyright: 'Copyright',
   icon: undefined,
   year: undefined,
-  copyrightVariant: 'body1',
+  copyrightVariant: 'subtitle1',
   copyrightUrl: '',
 };
 export default Copyright;

@@ -112,7 +112,7 @@ export default {
       control: {
         type: 'select',
       },
-      options: ['caption', 'body1'],
+      options: ['subtitle1', 'body1'],
     },
     icon: {
       control: {
@@ -149,8 +149,8 @@ Default.args = {
   description: ABOUT.about,
   image: INITIATIVE_LOGO.image,
   logoUrl: INITIATIVE_LOGO.logoUrl,
-  aboutVariant: 'body1',
-  copyrightVariant: 'caption',
+  aboutVariant: 'subtitle1',
+  copyrightVariant: 'subtitle1',
   copyright: 'Copyright',
   icon: cc,
   copyrightUrl: 'https://dev.pesayetu.pesacheck.org',

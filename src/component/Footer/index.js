@@ -14,11 +14,11 @@ import React from 'react';
 import Copyright from '@/pesayetu/component/Copyright';
 import Section from '@/pesayetu/component/Section';
 
-const useStyles = makeStyles(({ breakpoints }) => ({
+const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
-    background: '#2A2A2C',
+    background: palette.background.dark,
     height: 'auto',
-    padding: '5rem',
+    padding: typography.pxToRem(80),
   },
   footer: {
     [breakpoints.up('md')]: {
@@ -35,43 +35,42 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   allLinks: {
     margin: '0 auto',
     [breakpoints.up('md')]: {
-      marginTop: '10rem',
+      marginTop: typography.pxToRem(160),
     },
   },
   stayInTouch: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    letterspacing: '0.7px',
+    letterspacing: typography.pxToRem(0.7),
   },
   stayInTouchText: {
-    color: 'white',
+    color: palette.background.main,
     fontSize: 14,
     fontWeight: 'bold',
-    padding: '0rem 0.5rem',
+    padding: `0 ${typography.pxToRem(8)}`,
   },
   stayInTouchLinks: {
-    margin: '1.5rem 0rem',
+    margin: `${typography.pxToRem(24)} 0 `,
     '& > a': {
       borderRight: 'none',
     },
   },
   quickLinkRoot: {
     textAlign: 'center',
-    padding: '2rem 0rem',
+    padding: `${typography.pxToRem(32)} 0 `,
     [breakpoints.up('md')]: {
       textAlign: 'inherit',
-      padding: '0rem',
+      padding: 0,
     },
   },
   quickList: {
     listStyle: 'none',
-    color: 'white',
+    color: palette.background.main,
     padding: 0,
-    letterSpacing: '0.7px',
-    paddingTop: '0rem',
+    letterspacing: typography.pxToRem(0.7),
     '& > li': {
-      marginTop: '1rem',
+      marginTop: typography.pxToRem(16),
     },
   },
   quickLink: {
@@ -80,12 +79,12 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     },
   },
   quickLinksTitle: {
-    color: 'white',
+    color: palette.background.main,
     fontWeight: 'bold',
   },
   description: {
-    color: 'white',
-    padding: '2rem 0rem',
+    color: palette.background.main,
+    padding: `${typography.pxToRem(32)} 0 `,
     fontSize: 14,
     textAlign: 'left',
   },
@@ -96,10 +95,10 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     },
   },
   copyrightText: {
-    color: 'white',
+    color: palette.background.main,
   },
   img: {
-    padding: '2rem ',
+    padding: typography.pxToRem(32),
   },
 }));
 
@@ -139,7 +138,7 @@ function Footer({
               {...props}
               classes={{
                 root: classes.copyright,
-                copyrightText: classes.copyrightText,
+                text: classes.copyrightText,
               }}
             />
           </Grid>
