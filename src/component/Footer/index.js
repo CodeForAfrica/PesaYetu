@@ -12,18 +12,24 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Section from '@/pesayetu/component/Section';
+
 const useStyles = makeStyles(({ breakpoints }) => ({
-  section: {
-    margin: '0 auto',
-  },
   root: {
     background: '#2A2A2C',
     height: 'auto',
-    display: 'flex',
     padding: '5rem',
+  },
+  footer: {
     [breakpoints.up('md')]: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+    },
+  },
+  section: {
+    margin: '0 auto',
+    [breakpoints.up('md')]: {
+      width: '85%',
     },
   },
   allLinks: {
@@ -104,69 +110,80 @@ function Footer({
 }) {
   const classes = useStyles(props);
   return (
-    <Grid
-      container
-      direction="column"
-      justify="space-between"
-      className={classes.root}
-    >
-      <Grid item xs={12} md={6}>
-        <Logo image={image} src={logoUrl} className={classes.img} />
-        <RichTypography variant={aboutVariant} className={classes.description}>
-          {description}
-        </RichTypography>
-        <Copyright
-          {...props}
-          classes={{
-            root: classes.copyright,
-            copyrightText: classes.copyrightText,
-          }}
-        />
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        md={6}
-        container
-        direction="row"
-        justify="flex-end"
+    <div className={classes.root}>
+      <Section
         classes={{
-          root: classes.allLinks,
+          section: classes.section,
         }}
       >
-        <Grid item xs={12} md={4}>
-          <QuickLinks
-            linkComponent={Typography}
-            options={{
-              link: {
-                variant: 'body2',
-              },
-              title: {
-                color: 'white',
-                variant: 'body2',
-              },
-            }}
-            {...quickLinksProp}
+        <Grid
+          container
+          direction="column"
+          justify="space-between"
+          className={classes.footer}
+        >
+          <Grid item xs={12} md={6}>
+            <Logo image={image} src={logoUrl} className={classes.img} />
+            <RichTypography
+              variant={aboutVariant}
+              className={classes.description}
+            >
+              {description}
+            </RichTypography>
+            <Copyright
+              {...props}
+              classes={{
+                root: classes.copyright,
+                copyrightText: classes.copyrightText,
+              }}
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            container
+            direction="row"
+            justify="flex-end"
             classes={{
-              root: classes.quickLink,
-              list: classes.quickList,
-              title: classes.quickLinksTitle,
+              root: classes.allLinks,
             }}
-          />
+          >
+            <Grid item xs={12} md={4}>
+              <QuickLinks
+                linkComponent={Typography}
+                options={{
+                  link: {
+                    variant: 'body2',
+                  },
+                  title: {
+                    color: 'white',
+                    variant: 'body2',
+                  },
+                }}
+                {...quickLinksProp}
+                classes={{
+                  root: classes.quickLink,
+                  list: classes.quickList,
+                  title: classes.quickLinksTitle,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <StayInTouch
+                title={title}
+                socialMedia={socialMedia}
+                classes={{
+                  root: classes.stayInTouch,
+                  links: classes.stayInTouchLinks,
+                  text: classes.stayInTouchText,
+                }}
+              />
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={4}>
-          <StayInTouch
-            title={title}
-            socialMedia={socialMedia}
-            classes={{
-              root: classes.stayInTouch,
-              links: classes.stayInTouchLinks,
-              text: classes.stayInTouchText,
-            }}
-          />
-        </Grid>
-      </Grid>
-    </Grid>
+      </Section>
+    </div>
   );
 }
 
