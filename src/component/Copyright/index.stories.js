@@ -47,6 +47,6 @@ Default.args = {
   copyright: 'Copyright',
   icon: cc,
   copyrightUrl: 'https://dev.pesayetu.pesacheck.org',
-  copyrightVariant: 'body1',
+  copyrightVariant: 'caption',
   year: '2021',
 };

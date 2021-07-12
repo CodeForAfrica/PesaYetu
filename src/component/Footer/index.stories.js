@@ -150,7 +150,7 @@ Default.args = {
   image: INITIATIVE_LOGO.image,
   logoUrl: INITIATIVE_LOGO.logoUrl,
   aboutVariant: 'body1',
-  copyrightVariant: 'body1',
+  copyrightVariant: 'caption',
   copyright: 'Copyright',
   icon: cc,
   copyrightUrl: 'https://dev.pesayetu.pesacheck.org',

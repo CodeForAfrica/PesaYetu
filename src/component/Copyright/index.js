@@ -11,11 +11,14 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
   },
-  copyright: {},
-  copyrightLogo: {},
+  copyrightIcon: {
+    padding: '0.2rem',
+  },
   text: {
     color: 'white',
     margin: '0.2rem',
+    letterSpacing: '0.56px',
+    textAlign: 'left',
   },
 }));
 
