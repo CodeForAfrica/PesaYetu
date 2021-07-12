@@ -12,34 +12,37 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
+  section: {
+    margin: '0 auto',
+  },
   root: {
     background: '#2A2A2C',
     height: 'auto',
     display: 'flex',
     padding: '5rem',
-    // margin: '4rem',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    [breakpoints.up('md')]: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
   },
-  section: {
+  allLinks: {
     margin: '0 auto',
+    [breakpoints.up('md')]: {
+      marginTop: '10rem',
+    },
   },
-  allLinks: {},
   stayInTouch: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
+    letterspacing: '0.7px',
   },
   stayInTouchText: {
     color: 'white',
-  },
-  stayInTouchTitle: {
-    padding: '0rem',
-    border: 'none',
-    fontSize: '14px',
-    textAlign: 'left',
+    fontSize: 14,
     fontWeight: 'bold',
+    padding: '0rem 0.5rem',
   },
   stayInTouchLinks: {
     margin: '1.5rem 0rem',
@@ -47,7 +50,14 @@ const useStyles = makeStyles(() => ({
       borderRight: 'none',
     },
   },
-  quickLink: {},
+  quickLink: {
+    textAlign: 'center',
+    padding: '2rem 0rem',
+    [breakpoints.up('md')]: {
+      textAlign: 'inherit',
+      padding: '0rem',
+    },
+  },
   quickList: {
     listStyle: 'none',
     color: 'white',
@@ -65,9 +75,14 @@ const useStyles = makeStyles(() => ({
   description: {
     color: 'white',
     padding: '2rem 0rem',
+    fontSize: 14,
+    textAlign: 'left',
   },
   copyright: {
-    textAlign: 'left',
+    textAlign: 'center',
+    [breakpoints.up('md')]: {
+      textAlign: 'left',
+    },
   },
   copyrightText: {
     color: 'white',
@@ -89,36 +104,37 @@ function Footer({
 }) {
   const classes = useStyles(props);
   return (
-    <Grid className={classes.root}>
-      <Grid item>
-        <Grid item className={classes.about}>
-          <Logo image={image} src={logoUrl} className={classes.img} />
-          <RichTypography
-            variant={aboutVariant}
-            className={classes.description}
-          >
-            {description}
-          </RichTypography>
-          <Copyright
-            {...props}
-            classes={{
-              root: classes.copyright,
-              copyrightText: classes.copyrightText,
-            }}
-          />
-        </Grid>
+    <Grid
+      container
+      direction="column"
+      justify="space-between"
+      className={classes.root}
+    >
+      <Grid item xs={12} md={6}>
+        <Logo image={image} src={logoUrl} className={classes.img} />
+        <RichTypography variant={aboutVariant} className={classes.description}>
+          {description}
+        </RichTypography>
+        <Copyright
+          {...props}
+          classes={{
+            root: classes.copyright,
+            copyrightText: classes.copyrightText,
+          }}
+        />
       </Grid>
       <Grid
         item
+        xs={12}
+        md={6}
         container
         direction="row"
-        justify="center"
-        alignItems="flex-end"
+        justify="flex-end"
         classes={{
           root: classes.allLinks,
         }}
       >
-        <Grid item md={3}>
+        <Grid item xs={12} md={4}>
           <QuickLinks
             linkComponent={Typography}
             options={{
@@ -138,7 +154,7 @@ function Footer({
             }}
           />
         </Grid>
-        <Grid item md={3}>
+        <Grid item xs={12} md={4}>
           <StayInTouch
             title={title}
             socialMedia={socialMedia}
@@ -146,7 +162,6 @@ function Footer({
               root: classes.stayInTouch,
               links: classes.stayInTouchLinks,
               text: classes.stayInTouchText,
-              title: classes.stayInTouchTitle,
             }}
           />
         </Grid>
