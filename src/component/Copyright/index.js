@@ -6,10 +6,14 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'center',
+    [breakpoints.up('md')]: {
+      justifyContent: 'left',
+    },
   },
   copyrightIcon: {
     padding: typography.pxToRem(3.2),

@@ -35,21 +35,11 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: FONT_FAMILY_TEXT,
-    h1: {
-      fontWeight: 'black',
-    },
-    h2: {
-      fontWeight: 'light',
-    },
-    h3: {
-      fontWeight: 'semi-bold',
-    },
-    h4: {
-      fontWeight: 'medium',
-    },
-    h5: {
-      fontWeight: 'bold',
-    },
+    h1: {},
+    h2: {},
+    h3: {},
+    h4: {},
+    h5: {},
     body1: {},
     body2: {},
     subtitle1: {},

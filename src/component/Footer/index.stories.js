@@ -14,7 +14,7 @@ import twitter from '@/pesayetu/assets/footer-social-tw.svg';
 const ABOUT = {
   about:
     'This site is an openAFRICA project of Code for Africa.\n' +
-    '        All content is released under a Creative Commons 4 Attribution Licence.\n' +
+    '        All content is released under a Creative Commons 4 Attribution Licence. \n' +
     '        Reuse it to help empower your own community.\n' +
     '        The code is available on GitHub and data is available on openAFRICA.\n',
 };
@@ -114,25 +114,9 @@ export default {
       },
       options: ['subtitle1', 'body1'],
     },
-    icon: {
+    copyrightProps: {
       control: {
-        type: 'text',
-      },
-    },
-    copyrightUrl: {
-      control: {
-        type: 'text',
-      },
-    },
-    copyrightVariant: {
-      control: {
-        type: 'select',
-      },
-      options: ['caption', 'body1'],
-    },
-    year: {
-      control: {
-        type: 'text',
+        type: 'object',
       },
     },
   },
@@ -147,12 +131,15 @@ Default.args = {
   socialMedia,
   quickLinks: QUICK_LINKS[0],
   description: ABOUT.about,
-  image: INITIATIVE_LOGO.image,
-  logoUrl: INITIATIVE_LOGO.logoUrl,
+  image: INITIATIVE_LOGO?.image,
+  logoUrl: INITIATIVE_LOGO?.logoUrl,
   aboutVariant: 'subtitle1',
   copyrightVariant: 'subtitle1',
-  copyright: 'Copyright',
-  icon: cc,
-  copyrightUrl: 'https://dev.pesayetu.pesacheck.org',
-  year: '2021',
+  copyrightProps: {
+    icon: cc,
+    year: '2021',
+    copyright: 'PesaYetu',
+    copyrightUrl: 'https://dev.pesayetu.pesacheck.org',
+    copyrightVariant: 'subtitle1',
+  },
 };

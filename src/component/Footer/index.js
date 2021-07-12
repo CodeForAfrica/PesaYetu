@@ -21,37 +21,36 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     padding: typography.pxToRem(80),
   },
   footer: {
+    justifyContent: 'center',
     [breakpoints.up('md')]: {
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
   },
-  section: {
-    margin: '0 auto',
-    [breakpoints.up('md')]: {
-      width: '85%',
-    },
-  },
+  section: {},
   allLinks: {
     margin: '0 auto',
     [breakpoints.up('md')]: {
-      marginTop: typography.pxToRem(160),
+      marginTop: typography.pxToRem(176),
     },
   },
   stayInTouch: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
     letterspacing: typography.pxToRem(0.7),
+    [breakpoints.up('md')]: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
   },
   stayInTouchText: {
     color: palette.background.main,
-    fontSize: 14,
+    fontSize: typography.subtitle1.fontSize,
     fontWeight: 'bold',
     padding: `0 ${typography.pxToRem(8)}`,
   },
   stayInTouchLinks: {
     margin: `${typography.pxToRem(24)} 0 `,
+    justifyContent: 'center',
     '& > a': {
       borderRight: 'none',
     },
@@ -74,19 +73,26 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   quickLink: {
+    fontSize: typography.subtitle1.fontSize,
+    color: palette.background.main,
+    fontWeight: 'normal',
     '&:hover': {
-      color: '#7DB2D3',
+      color: palette.primary.light,
     },
   },
   quickLinksTitle: {
     color: palette.background.main,
+    fontSize: typography.subtitle1.fontSize,
     fontWeight: 'bold',
   },
   description: {
     color: palette.background.main,
     padding: `${typography.pxToRem(32)} 0 `,
-    fontSize: 14,
-    textAlign: 'left',
+    fontSize: typography.subtitle1.fontSize,
+    textAlign: 'center',
+    [breakpoints.up('md')]: {
+      textAlign: 'left',
+    },
   },
   copyright: {
     textAlign: 'center',
@@ -100,6 +106,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   img: {
     padding: typography.pxToRem(32),
   },
+  logoText: {
+    textAlign: 'center',
+    [breakpoints.up('md')]: {
+      textAlign: 'left',
+    },
+  },
 }));
 
 function Footer({
@@ -108,6 +120,7 @@ function Footer({
   logoUrl,
   aboutVariant,
   description,
+  copyrightProps,
   quickLinks: quickLinksProp,
   socialMedia,
   ...props
@@ -117,7 +130,7 @@ function Footer({
     <div className={classes.root}>
       <Section
         classes={{
-          section: classes.section,
+          root: classes.section,
         }}
       >
         <Grid
@@ -127,7 +140,14 @@ function Footer({
           className={classes.footer}
         >
           <Grid item xs={12} md={6}>
-            <Logo image={image} src={logoUrl} className={classes.img} />
+            <Logo
+              image={image}
+              src={logoUrl}
+              classes={{
+                img: classes.img,
+                text: classes.logoText,
+              }}
+            />
             <RichTypography
               variant={aboutVariant}
               className={classes.description}
@@ -135,7 +155,7 @@ function Footer({
               {description}
             </RichTypography>
             <Copyright
-              {...props}
+              {...copyrightProps}
               classes={{
                 root: classes.copyright,
                 text: classes.copyrightText,
@@ -156,15 +176,6 @@ function Footer({
             <Grid item xs={12} md={4}>
               <QuickLinks
                 linkComponent={Typography}
-                options={{
-                  link: {
-                    variant: 'body2',
-                  },
-                  title: {
-                    color: 'white',
-                    variant: 'body2',
-                  },
-                }}
                 {...quickLinksProp}
                 classes={{
                   root: classes.quickLinkRoot,
@@ -203,6 +214,7 @@ Footer.propTypes = {
   quickLinks: PropTypes.arrayOf(PropTypes.shape({})),
   logoUrl: PropTypes.string.isRequired,
   aboutVariant: PropTypes.string,
+  copyrightProps: PropTypes.shape({}),
 };
 
 Footer.defaultProps = {
@@ -210,7 +222,8 @@ Footer.defaultProps = {
   description: undefined,
   socialMedia: undefined,
   quickLinks: undefined,
-  aboutVariant: 'body2',
+  copyrightProps: undefined,
+  aboutVariant: 'subtitle1',
 };
 
 export default Footer;
