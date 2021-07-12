@@ -4,6 +4,7 @@ import { withNextRouter } from 'storybook-addon-next-router';
 
 import Footer from '.';
 
+import cc from '@/pesayetu/assets/cc.svg';
 import footerLogo from '@/pesayetu/assets/footer-logo.svg';
 import facebook from '@/pesayetu/assets/footer-social-fb.svg';
 import instagram from '@/pesayetu/assets/footer-social-ig.svg';
@@ -24,7 +25,7 @@ const INITIATIVE_LOGO = {
     src: footerLogo,
     alt: 'Pulitzer Center',
   },
-  logourl: 'https://pulitzercenter.org/',
+  logoUrl: 'https://pulitzercenter.org/',
 };
 
 const QUICK_LINKS = [
@@ -93,27 +94,22 @@ export default {
         type: 'text',
       },
     },
-    image: {
-      control: {
-        type: 'object',
-      },
-    },
-    logourl: {
-      control: {
-        type: 'text',
-      },
-    },
     copyright: {
       control: {
         type: 'text',
       },
     },
-    year: {
+    image: {
+      control: {
+        type: 'object',
+      },
+    },
+    logoUrl: {
       control: {
         type: 'text',
       },
     },
-    variant: {
+    aboutVariant: {
       control: {
         type: 'select',
       },
@@ -132,8 +128,10 @@ Default.args = {
   quickLinks: QUICK_LINKS[0],
   description: ABOUT.about,
   image: INITIATIVE_LOGO.image,
-  logourl: INITIATIVE_LOGO.url,
-  copyright: 'Copyright',
-  year: '2021',
-  variant: 'body1',
+  logoUrl: INITIATIVE_LOGO.logoUrl,
+  aboutVariant: 'body1',
+  copyright: '2021 Copyright ',
+  icon: cc,
+  url: '#',
+  variant: 'caption',
 };

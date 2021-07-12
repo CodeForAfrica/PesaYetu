@@ -18,6 +18,7 @@ const useStyles = makeStyles(() => ({
     height: '400px',
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   section: {},
   stayInTouch: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(() => ({
     color: 'white',
   },
   stayInTouchTitle: {
-    padding: '2rem 0rem',
+    padding: '0rem',
     border: 'none',
     textAlign: 'left',
   },
@@ -42,9 +43,9 @@ const useStyles = makeStyles(() => ({
     listStyle: 'none',
     color: 'white',
     padding: 0,
-    paddingTop: '0.5rem',
+    paddingTop: '0rem',
     '& > li': {
-      marginTop: '0.8rem',
+      marginTop: '0rem',
     },
   },
   quickLinksTitle: {
@@ -56,6 +57,7 @@ const useStyles = makeStyles(() => ({
   copyright: {
     paddingTop: '3rem',
     textAlign: 'left',
+    marginTop: '1.618125rem',
   },
   copyrightText: {
     color: 'white',
@@ -65,8 +67,8 @@ const useStyles = makeStyles(() => ({
 function Footer({
   title,
   image,
-  url,
-  variant,
+  logoUrl,
+  aboutVariant,
   description,
   quickLinks: quickLinksProp,
   socialMedia,
@@ -76,11 +78,12 @@ function Footer({
   return (
     <Grid className={classes.root}>
       <Grid item className={classes.about}>
-        <Logo image={image} src={url} className={classes.img} />
-        <RichTypography variant={variant} className={classes.description}>
+        <Logo image={image} src={logoUrl} className={classes.img} />
+        <RichTypography variant={aboutVariant} className={classes.description}>
           {description}
         </RichTypography>
         <Copyright
+          {...props}
           classes={{
             root: classes.copyright,
             copyrightText: classes.copyrightText,
@@ -127,8 +130,8 @@ Footer.propTypes = {
   }).isRequired,
   socialMedia: PropTypes.arrayOf(PropTypes.shape({})),
   quickLinks: PropTypes.arrayOf(PropTypes.shape({})),
-  url: PropTypes.string.isRequired,
-  variant: PropTypes.string,
+  logoUrl: PropTypes.string.isRequired,
+  aboutVariant: PropTypes.string,
 };
 
 Footer.defaultProps = {
@@ -136,7 +139,7 @@ Footer.defaultProps = {
   description: undefined,
   socialMedia: undefined,
   quickLinks: undefined,
-  variant: 'body2',
+  aboutVariant: 'body2',
 };
 
 export default Footer;
