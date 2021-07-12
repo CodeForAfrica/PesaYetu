@@ -5,13 +5,13 @@ import {
   StayInTouch,
   QuickLinks,
   RichTypography,
-  Copyright,
 } from '@commons-ui/core';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Copyright from '@/pesayetu/component/Copyright';
 import Section from '@/pesayetu/component/Section';
 
 const useStyles = makeStyles(({ breakpoints }) => ({
@@ -56,7 +56,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       borderRight: 'none',
     },
   },
-  quickLink: {
+  quickLinkRoot: {
     textAlign: 'center',
     padding: '2rem 0rem',
     [breakpoints.up('md')]: {
@@ -72,6 +72,11 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     paddingTop: '0rem',
     '& > li': {
       marginTop: '1rem',
+    },
+  },
+  quickLink: {
+    '&:hover': {
+      color: '#7DB2D3',
     },
   },
   quickLinksTitle: {
@@ -163,8 +168,9 @@ function Footer({
                 }}
                 {...quickLinksProp}
                 classes={{
-                  root: classes.quickLink,
+                  root: classes.quickLinkRoot,
                   list: classes.quickList,
+                  link: classes.quickLink,
                   title: classes.quickLinksTitle,
                 }}
               />

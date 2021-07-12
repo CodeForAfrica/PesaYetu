@@ -114,6 +114,27 @@ export default {
       },
       options: ['caption', 'body1'],
     },
+    icon: {
+      control: {
+        type: 'text',
+      },
+    },
+    copyrightUrl: {
+      control: {
+        type: 'text',
+      },
+    },
+    copyrightVariant: {
+      control: {
+        type: 'select',
+      },
+      options: ['caption', 'body1'],
+    },
+    year: {
+      control: {
+        type: 'text',
+      },
+    },
   },
 };
 
@@ -129,8 +150,9 @@ Default.args = {
   image: INITIATIVE_LOGO.image,
   logoUrl: INITIATIVE_LOGO.logoUrl,
   aboutVariant: 'body1',
-  copyright: '2021 Copyright ',
+  copyrightVariant: 'body1',
+  copyright: 'Copyright',
   icon: cc,
-  url: '#',
-  variant: 'caption',
+  copyrightUrl: 'https://dev.pesayetu.pesacheck.org',
+  year: '2021',
 };
