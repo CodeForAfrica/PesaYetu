@@ -15,15 +15,21 @@ import React from 'react';
 const useStyles = makeStyles(() => ({
   root: {
     background: '#2A2A2C',
-    height: '400px',
+    height: 'auto',
     display: 'flex',
+    padding: '5rem',
+    // margin: '4rem',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  section: {},
+  section: {
+    margin: '0 auto',
+  },
+  allLinks: {},
   stayInTouch: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   stayInTouchText: {
     color: 'white',
@@ -31,36 +37,43 @@ const useStyles = makeStyles(() => ({
   stayInTouchTitle: {
     padding: '0rem',
     border: 'none',
+    fontSize: '14px',
     textAlign: 'left',
+    fontWeight: 'bold',
   },
   stayInTouchLinks: {
-    order: 2,
+    margin: '1.5rem 0rem',
     '& > a': {
       borderRight: 'none',
     },
   },
+  quickLink: {},
   quickList: {
     listStyle: 'none',
     color: 'white',
     padding: 0,
+    letterSpacing: '0.7px',
     paddingTop: '0rem',
     '& > li': {
-      marginTop: '0rem',
+      marginTop: '1rem',
     },
   },
   quickLinksTitle: {
     color: 'white',
+    fontWeight: 'bold',
   },
   description: {
     color: 'white',
+    padding: '2rem 0rem',
   },
   copyright: {
-    paddingTop: '3rem',
     textAlign: 'left',
-    marginTop: '1.618125rem',
   },
   copyrightText: {
     color: 'white',
+  },
+  img: {
+    padding: '2rem ',
   },
 }));
 
@@ -77,46 +90,67 @@ function Footer({
   const classes = useStyles(props);
   return (
     <Grid className={classes.root}>
-      <Grid item className={classes.about}>
-        <Logo image={image} src={logoUrl} className={classes.img} />
-        <RichTypography variant={aboutVariant} className={classes.description}>
-          {description}
-        </RichTypography>
-        <Copyright
-          {...props}
-          classes={{
-            root: classes.copyright,
-            copyrightText: classes.copyrightText,
-          }}
-        />
+      <Grid item>
+        <Grid item className={classes.about}>
+          <Logo image={image} src={logoUrl} className={classes.img} />
+          <RichTypography
+            variant={aboutVariant}
+            className={classes.description}
+          >
+            {description}
+          </RichTypography>
+          <Copyright
+            {...props}
+            classes={{
+              root: classes.copyright,
+              copyrightText: classes.copyrightText,
+            }}
+          />
+        </Grid>
       </Grid>
-      <QuickLinks
-        linkComponent={Typography}
-        options={{
-          link: {
-            variant: 'caption',
-          },
-          title: {
-            color: 'white',
-            variant: 'h6',
-          },
-        }}
-        {...quickLinksProp}
+      <Grid
+        item
+        container
+        direction="row"
+        justify="center"
+        alignItems="flex-end"
         classes={{
-          list: classes.quickList,
-          title: classes.quickLinksTitle,
+          root: classes.allLinks,
         }}
-      />
-      <StayInTouch
-        title={title}
-        socialMedia={socialMedia}
-        classes={{
-          root: classes.stayInTouch,
-          links: classes.stayInTouchLinks,
-          text: classes.stayInTouchText,
-          title: classes.stayInTouchTitle,
-        }}
-      />
+      >
+        <Grid item md={3}>
+          <QuickLinks
+            linkComponent={Typography}
+            options={{
+              link: {
+                variant: 'body2',
+              },
+              title: {
+                color: 'white',
+                variant: 'body2',
+              },
+            }}
+            {...quickLinksProp}
+            classes={{
+              root: classes.quickLink,
+              list: classes.quickList,
+              title: classes.quickLinksTitle,
+            }}
+          />
+        </Grid>
+        <Grid item md={3}>
+          <StayInTouch
+            title={title}
+            socialMedia={socialMedia}
+            classes={{
+              root: classes.stayInTouch,
+              links: classes.stayInTouchLinks,
+              text: classes.stayInTouchText,
+              title: classes.stayInTouchTitle,
+            }}
+          />
+        </Grid>
+      </Grid>
     </Grid>
   );
 }

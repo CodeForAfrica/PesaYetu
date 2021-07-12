@@ -13,11 +13,10 @@ import twitter from '@/pesayetu/assets/footer-social-tw.svg';
 
 const ABOUT = {
   about:
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n' +
-    '        sed diam nonumy eirmod tempor invidunt ut labore et dolore\n' +
-    '        magna aliquyam erat, sed diam voluptua. At vero eos et\n' +
-    '        accusam et justo duo dolores et ea rebum. Stet clita kasd\n' +
-    '        gubergren, no sea takimata sanctus est',
+    'This site is an openAFRICA project of Code for Africa.\n' +
+    '        All content is released under a Creative Commons 4 Attribution Licence.\n' +
+    '        Reuse it to help empower your own community.\n' +
+    '        The code is available on GitHub and data is available on openAFRICA.\n',
 };
 
 const INITIATIVE_LOGO = {
