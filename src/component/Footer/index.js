@@ -1,7 +1,13 @@
 /* eslint-disable react/default-props-match-prop-types */
 
-import { StayInTouch, QuickLinks } from '@commons-ui/core';
-import { Grid } from '@material-ui/core';
+import {
+  Logo,
+  StayInTouch,
+  QuickLinks,
+  RichTypography,
+  Copyright,
+} from '@commons-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -10,7 +16,10 @@ const useStyles = makeStyles(() => ({
   root: {
     background: '#2A2A2C',
     height: '400px',
+    display: 'flex',
+    flexDirection: 'row',
   },
+  section: {},
   stayInTouch: {
     display: 'flex',
     flexDirection: 'column',
@@ -18,23 +27,46 @@ const useStyles = makeStyles(() => ({
   stayInTouchText: {
     color: 'white',
   },
-  section: {},
   stayInTouchTitle: {
     padding: '2rem 0rem',
     border: 'none',
     textAlign: 'left',
   },
   stayInTouchLinks: {
+    order: 2,
     '& > a': {
       borderRight: 'none',
     },
   },
-  quickLinks: {},
-  quickLink: {},
+  quickList: {
+    listStyle: 'none',
+    color: 'white',
+    padding: 0,
+    paddingTop: '0.5rem',
+    '& > li': {
+      marginTop: '0.8rem',
+    },
+  },
+  quickLinksTitle: {
+    color: 'white',
+  },
+  description: {
+    color: 'white',
+  },
+  copyright: {
+    paddingTop: '3rem',
+    textAlign: 'left',
+  },
+  copyrightText: {
+    color: 'white',
+  },
 }));
 
 function Footer({
   title,
+  image,
+  url,
+  variant,
   description,
   quickLinks: quickLinksProp,
   socialMedia,
@@ -43,18 +75,34 @@ function Footer({
   const classes = useStyles(props);
   return (
     <Grid className={classes.root}>
+      <Grid item className={classes.about}>
+        <Logo image={image} src={url} className={classes.img} />
+        <RichTypography variant={variant} className={classes.description}>
+          {description}
+        </RichTypography>
+        <Copyright
+          classes={{
+            root: classes.copyright,
+            copyrightText: classes.copyrightText,
+          }}
+        />
+      </Grid>
       <QuickLinks
+        linkComponent={Typography}
         options={{
           link: {
-            variant: 'h6',
+            variant: 'caption',
           },
           title: {
-            color: 'black',
-            variant: 'h3',
+            color: 'white',
+            variant: 'h6',
           },
         }}
         {...quickLinksProp}
-        classes={{ root: classes.quickLinks, link: classes.quickLink }}
+        classes={{
+          list: classes.quickList,
+          title: classes.quickLinksTitle,
+        }}
       />
       <StayInTouch
         title={title}
@@ -73,15 +121,22 @@ function Footer({
 Footer.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
+  image: PropTypes.shape({
+    alt: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+  }).isRequired,
   socialMedia: PropTypes.arrayOf(PropTypes.shape({})),
   quickLinks: PropTypes.arrayOf(PropTypes.shape({})),
+  url: PropTypes.string.isRequired,
+  variant: PropTypes.string,
 };
 
 Footer.defaultProps = {
   title: undefined,
-  socialMedia: undefined,
   description: undefined,
+  socialMedia: undefined,
   quickLinks: undefined,
+  variant: 'body2',
 };
 
 export default Footer;
