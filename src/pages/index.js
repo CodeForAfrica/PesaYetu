@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function Home() {
-  return <div>Pesa yetu homepage template</div>;
+import Page from '@/pesayetu/component/Footer';
+
+export default function Index({ ...props }) {
+  return <Page {...props} />;
 }

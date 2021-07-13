@@ -1,17 +1,13 @@
 /* eslint-disable react/default-props-match-prop-types */
 
-import {
-  Logo,
-  StayInTouch,
-  QuickLinks,
-  RichTypography,
-} from '@commons-ui/core';
+import { StayInTouch, QuickLinks, RichTypography } from '@commons-ui/core';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import Copyright from '@/pesayetu/component/Copyright';
+import Logo from '@/pesayetu/component/Logo';
 import Section from '@/pesayetu/component/Section';
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
@@ -47,6 +43,14 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     fontSize: typography.subtitle1.fontSize,
     fontWeight: 'bold',
     padding: `0 ${typography.pxToRem(8)}`,
+  },
+  stayInTouchLink: {
+    [breakpoints.up('md')]: {
+      padding: `0 ${typography.pxToRem(5.52)}`,
+    },
+    [breakpoints.up('lg')]: {
+      padding: `0 ${typography.pxToRem(10)}`,
+    },
   },
   stayInTouchLinks: {
     margin: `${typography.pxToRem(24)} 0 `,
@@ -116,8 +120,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
 
 function Footer({
   title,
-  image,
-  logoUrl,
+  logoProps,
   aboutVariant,
   description,
   copyrightProps,
@@ -126,11 +129,13 @@ function Footer({
   ...props
 }) {
   const classes = useStyles(props);
+  // eslint-disable-next-line no-console
+  console.log(quickLinksProp);
   return (
     <div className={classes.root}>
       <Section
         classes={{
-          root: classes.section,
+          root: classes.footer,
         }}
       >
         <Grid
@@ -140,14 +145,7 @@ function Footer({
           className={classes.footer}
         >
           <Grid item xs={12} md={6}>
-            <Logo
-              image={image}
-              src={logoUrl}
-              classes={{
-                img: classes.img,
-                text: classes.logoText,
-              }}
-            />
+            <Logo {...logoProps} classes={{ image: classes.image }} />
             <RichTypography
               variant={aboutVariant}
               className={classes.description}
@@ -173,7 +171,7 @@ function Footer({
               root: classes.allLinks,
             }}
           >
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={6} lg={4}>
               <QuickLinks
                 linkComponent={Typography}
                 {...quickLinksProp}
@@ -185,7 +183,7 @@ function Footer({
                 }}
               />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={5} lg={4}>
               <StayInTouch
                 title={title}
                 socialMedia={socialMedia}
@@ -193,6 +191,7 @@ function Footer({
                   root: classes.stayInTouch,
                   links: classes.stayInTouchLinks,
                   text: classes.stayInTouchText,
+                  link: classes.stayInTouchLink,
                 }}
               />
             </Grid>
@@ -209,10 +208,10 @@ Footer.propTypes = {
   image: PropTypes.shape({
     alt: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   socialMedia: PropTypes.arrayOf(PropTypes.shape({})),
   quickLinks: PropTypes.arrayOf(PropTypes.shape({})),
-  logoUrl: PropTypes.string.isRequired,
+  logoProps: PropTypes.shape({}),
   aboutVariant: PropTypes.string,
   copyrightProps: PropTypes.shape({}),
 };
@@ -220,9 +219,11 @@ Footer.propTypes = {
 Footer.defaultProps = {
   title: undefined,
   description: undefined,
+  image: undefined,
   socialMedia: undefined,
   quickLinks: undefined,
   copyrightProps: undefined,
+  logoProps: undefined,
   aboutVariant: 'subtitle1',
 };
 
