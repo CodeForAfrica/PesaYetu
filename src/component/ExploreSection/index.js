@@ -1,4 +1,7 @@
+import { Typography, Grid } from '@material-ui/core';
 import React from 'react';
+
+import useStyles from './useStyles';
 
 import Group3964 from '@/pesayetu/assets/Group 3964.png';
 import Group3973 from '@/pesayetu/assets/Group 3973.png';
@@ -32,8 +35,19 @@ const exploreItems = [
   },
 ];
 
-const ExploreSection = () => (
-  <>{exploreItems && exploreItems.map((item) => <ExploreCard item={item} />)}</>
-);
+const ExploreSection = (props) => {
+  const classes = useStyles(props);
+  return (
+    <div className={classes.root}>
+      <Typography variant="h3" className={classes.title}>
+        EXPLORE OUR OTHER TOOLS
+      </Typography>
+      <Grid container>
+        {exploreItems &&
+          exploreItems.map((item) => <ExploreCard item={item} />)}
+      </Grid>
+    </div>
+  );
+};
 
 export default ExploreSection;

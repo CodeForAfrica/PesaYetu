@@ -53,7 +53,9 @@ deepmerge(
   {
     h1: {},
     h2: {},
-    h3: {},
+    h3: {
+      fontSize: typography.pxToRem(20),
+    },
     h4: {
       fontSize: typography.pxToRem(20),
     },
