@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { A } from '@commons-ui/core';
+import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -11,9 +12,11 @@ const useStyles = makeStyles(() => ({
 function Logo({ alt, href, src, ...props }) {
   const classes = useStyles(props);
   return (
-    <A href={href}>
-      <img src={src} alt={alt} className={classes.image} />
-    </A>
+    <Typography className={classes.text}>
+      <A href={href}>
+        <img src={src} alt={alt} className={classes.image} />
+      </A>
+    </Typography>
   );
 }
 

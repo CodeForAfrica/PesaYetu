@@ -107,8 +107,11 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   copyrightText: {
     color: palette.background.main,
   },
-  img: {
-    padding: typography.pxToRem(32),
+  text: {
+    textAlign: 'center',
+    [breakpoints.up('md')]: {
+      textAlign: 'left',
+    },
   },
   logoText: {
     textAlign: 'center',
@@ -143,7 +146,10 @@ function Footer({
           className={classes.footer}
         >
           <Grid item xs={12} md={6}>
-            <Logo {...logoProps} classes={{ image: classes.image }} />
+            <Logo
+              {...logoProps}
+              classes={{ image: classes.image, text: classes.text }}
+            />
             <RichTypography
               variant={aboutVariant}
               className={classes.description}
