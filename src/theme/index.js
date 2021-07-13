@@ -45,6 +45,34 @@ const theme = createTheme({
     subtitle1: {},
     subtitle2: {},
   },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          maxWidth: '100%',
+          overflowX: 'hidden',
+          height: '100%',
+          width: '100%',
+        },
+        body: {
+          maxWidth: '100%',
+          overflowX: 'hidden',
+          height: '100%',
+          width: '100%',
+        },
+        // Next.js root div
+        '#root': {
+          height: '100%',
+          width: '100%',
+        },
+        // Next.js root div
+        '#__next': {
+          height: '100%',
+          width: '100%',
+        },
+      },
+    },
+  },
   widths: {
     values: {
       md: 656,
