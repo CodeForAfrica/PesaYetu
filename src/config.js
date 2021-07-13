@@ -66,7 +66,6 @@ export const footerArgs = {
     href: 'https://nigeria.hurumap.org/',
   },
   aboutVariant: 'subtitle1',
-  copyrightVariant: 'subtitle1',
   copyrightProps: {
     icon: cc,
     year: '2021',

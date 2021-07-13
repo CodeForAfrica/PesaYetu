@@ -208,7 +208,7 @@ Footer.propTypes = {
     src: PropTypes.string.isRequired,
   }),
   socialMedia: PropTypes.arrayOf(PropTypes.shape({})),
-  quickLinks: PropTypes.arrayOf(PropTypes.shape({})),
+  quickLinks: PropTypes.PropTypes.shape({}),
   logoProps: PropTypes.shape({}),
   aboutVariant: PropTypes.string,
   copyrightProps: PropTypes.shape({}),

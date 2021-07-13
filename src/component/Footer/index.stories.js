@@ -30,11 +30,6 @@ export default {
         type: 'text',
       },
     },
-    copyright: {
-      control: {
-        type: 'text',
-      },
-    },
     aboutVariant: {
       control: {
         type: 'select',
