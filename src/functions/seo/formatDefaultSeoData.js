@@ -1,7 +1,6 @@
 /**
  * Format default SEO data for use in `DefaultSeo` component.
  *
- * @author WebDevStudios
  * @param  {object} seoData Fallback SEO data.
  * @return {object}         Formatted SEO data.
  */

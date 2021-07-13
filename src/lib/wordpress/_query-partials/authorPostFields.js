@@ -4,6 +4,8 @@ const authorPostFields = `
     node {
       slug
       nickname
+      firstName
+      lastName
     }
   }
 `;

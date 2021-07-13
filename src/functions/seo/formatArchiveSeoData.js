@@ -3,7 +3,6 @@ import { postTypes } from '@/pesayetu/lib/wordpress/_config/postTypes';
 /**
  * Format archive SEO data.
  *
- * @author WebDevStudios
  * @param  {string} postType     WP post type.
  * @param  {object} postsPageSeo WP posts page SEO data.
  * @param  {object} defaultSeo   Formatted default SEO data.
