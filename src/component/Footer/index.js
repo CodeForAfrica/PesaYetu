@@ -129,8 +129,6 @@ function Footer({
   ...props
 }) {
   const classes = useStyles(props);
-  // eslint-disable-next-line no-console
-  console.log(quickLinksProp);
   return (
     <div className={classes.root}>
       <Section

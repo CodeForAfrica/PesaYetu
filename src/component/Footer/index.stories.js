@@ -35,11 +35,6 @@ export default {
         type: 'text',
       },
     },
-    image: {
-      control: {
-        type: 'object',
-      },
-    },
     aboutVariant: {
       control: {
         type: 'select',

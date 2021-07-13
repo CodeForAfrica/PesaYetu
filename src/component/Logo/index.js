@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
   root: {},
 }));
 
-function LogoButton({ alt, href, src, ...props }) {
+function Logo({ alt, href, src, ...props }) {
   const classes = useStyles(props);
   return (
     <A href={href}>
@@ -17,16 +17,16 @@ function LogoButton({ alt, href, src, ...props }) {
   );
 }
 
-LogoButton.propTypes = {
+Logo.propTypes = {
   alt: PropTypes.string,
   href: PropTypes.string,
   src: PropTypes.string,
 };
 
-LogoButton.defaultProps = {
+Logo.defaultProps = {
   alt: undefined,
   href: undefined,
   src: undefined,
 };
 
-export default LogoButton;
+export default Logo;

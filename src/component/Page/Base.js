@@ -7,17 +7,13 @@ import { footerArgs } from '@/pesayetu/config';
 /**
  * Base page that can be used to build all other pages.
  */
+
 function BasePage({ children, ...props }) {
-  const footerProps = {
-    ...footerArgs,
-  };
-  // eslint-disable-next-line no-console
-  console.log('footerProps', footerProps);
   return (
     <>
       <NextSeo {...props} />
       {children}
-      <Footer {...footerProps} />
+      <Footer {...footerArgs} />
     </>
   );
 }
