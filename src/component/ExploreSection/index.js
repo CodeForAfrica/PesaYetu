@@ -1,4 +1,4 @@
-import { Typography, Grid } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -44,10 +44,14 @@ const responsive = {
       max: 3000,
       min: 1280,
     },
-    items: 1,
+    items: 3,
   },
   tablet: {
-    breakpoint: { max: 1280, min: 720 },
+    breakpoint: { max: 1280, min: 768 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 768, min: 0 },
     items: 1,
   },
 };
@@ -57,21 +61,23 @@ const ExploreSection = (props) => {
   return (
     <div className={classes.root}>
       <Section>
-        <Carousel
-          responsive={responsive}
-          arrows={false}
-          renderDotsOutside
-          showDots
-          dotListClass={classes.dots}
-        >
-          <Typography variant="h3" className={classes.title}>
-            EXPLORE OUR OTHER TOOLS
-          </Typography>
-          <Grid container>
-            {exploreItems &&
-              exploreItems.map((item) => <ExploreCard item={item} />)}
-          </Grid>
-        </Carousel>
+        <Typography variant="h3" className={classes.title}>
+          EXPLORE OUR OTHER TOOLS
+        </Typography>
+
+        <div>
+          <Carousel
+            responsive={responsive}
+            arrows={false}
+            renderDotsOutside
+            showDots
+            dotListClass={classes.dots}
+          >
+            {exploreItems.map((item) => (
+              <ExploreCard item={item} />
+            ))}
+          </Carousel>
+        </div>
       </Section>
     </div>
   );

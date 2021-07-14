@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     margin: `0 ${typography.pxToRem(30)}`,
     padding: `${typography.pxToRem(22)} 0`,
     '& button': {
-      background: palette.divider,
+      background: '#000',
       borderColor: palette.divider,
       height: typography.pxToRem(16),
       marginRight: typography.pxToRem(12),
