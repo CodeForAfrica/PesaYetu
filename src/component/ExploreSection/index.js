@@ -65,19 +65,17 @@ const ExploreSection = (props) => {
           EXPLORE OUR OTHER TOOLS
         </Typography>
 
-        <div>
-          <Carousel
-            responsive={responsive}
-            arrows={false}
-            renderDotsOutside
-            showDots
-            dotListClass={classes.dots}
-          >
-            {exploreItems.map((item) => (
-              <ExploreCard item={item} />
-            ))}
-          </Carousel>
-        </div>
+        <Carousel
+          responsive={responsive}
+          arrows={false}
+          renderDotsOutside
+          showDots
+          dotListClass={classes.dots}
+        >
+          {exploreItems.map((item) => (
+            <ExploreCard item={item} />
+          ))}
+        </Carousel>
       </Section>
     </div>
   );

@@ -3,16 +3,19 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     backgroundColor: '#F8F8F8',
+    paddingBottom: typography.pxToRem(56),
+    paddingTop: typography.pxToRem(80),
   },
+  section: {},
   title: {
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: typography.pxToRem(40),
   },
   dots: {
-    justifyContent: 'flex-start',
     margin: `0 ${typography.pxToRem(30)}`,
-    padding: `${typography.pxToRem(22)} 0`,
+    paddingTop: `${typography.pxToRem(40)}`,
+    position: 'unset',
     '& button': {
       background: '#000',
       borderColor: palette.divider,
