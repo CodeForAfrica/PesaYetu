@@ -18,11 +18,10 @@ const useStyles = makeStyles(
       padding: typography.pxToRem(80),
     },
     footer: {
-      justifyContent: 'center',
-      width: '100%',
       padding: 0,
       minWidth: 0,
       boxSizing: 'border-box',
+      justifyContent: 'center',
       [breakpoints.up('lg')]: {
         padding: 0,
         margin: '0 auto',
@@ -34,15 +33,18 @@ const useStyles = makeStyles(
     section: {},
     allLinks: {
       margin: '0 auto',
-      [breakpoints.up('md')]: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      [breakpoints.up('lg')]: {
         marginTop: typography.pxToRem(176),
       },
     },
     stayInTouch: {
       display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
       letterspacing: typography.pxToRem(0.7),
-      [breakpoints.up('md')]: {
-        flexDirection: 'column',
+      [breakpoints.up('lg')]: {
         alignItems: 'flex-start',
       },
     },
@@ -53,9 +55,6 @@ const useStyles = makeStyles(
       padding: `0 ${typography.pxToRem(8)}`,
     },
     stayInTouchLink: {
-      [breakpoints.up('md')]: {
-        padding: `0 ${typography.pxToRem(5.52)}`,
-      },
       [breakpoints.up('lg')]: {
         padding: `0 ${typography.pxToRem(10)}`,
       },
@@ -70,7 +69,7 @@ const useStyles = makeStyles(
     quickLinkRoot: {
       textAlign: 'center',
       padding: `${typography.pxToRem(32)} 0 `,
-      [breakpoints.up('md')]: {
+      [breakpoints.up('lg')]: {
         textAlign: 'inherit',
         padding: 0,
       },
@@ -102,13 +101,13 @@ const useStyles = makeStyles(
       padding: `${typography.pxToRem(32)} 0 `,
       fontSize: typography.subtitle1.fontSize,
       textAlign: 'center',
-      [breakpoints.up('md')]: {
+      [breakpoints.up('lg')]: {
         textAlign: 'left',
       },
     },
     copyright: {
       textAlign: 'center',
-      [breakpoints.up('md')]: {
+      [breakpoints.up('lg')]: {
         textAlign: 'left',
       },
     },
@@ -117,13 +116,7 @@ const useStyles = makeStyles(
     },
     text: {
       textAlign: 'center',
-      [breakpoints.up('md')]: {
-        textAlign: 'left',
-      },
-    },
-    logoText: {
-      textAlign: 'center',
-      [breakpoints.up('md')]: {
+      [breakpoints.up('lg')]: {
         textAlign: 'left',
       },
     },
@@ -154,7 +147,7 @@ function Footer({
           justify="space-between"
           className={classes.footer}
         >
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} lg={6}>
             <Logo
               {...logoProps}
               classes={{ image: classes.image, text: classes.text }}
@@ -176,15 +169,15 @@ function Footer({
           <Grid
             item
             xs={12}
-            md={6}
+            lg={6}
             container
-            direction="row"
+            direction="column"
             justify="flex-end"
             classes={{
               root: classes.allLinks,
             }}
           >
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} lg={4}>
               <QuickLinks
                 linkComponent={Typography}
                 {...quickLinksProp}
@@ -196,7 +189,7 @@ function Footer({
                 }}
               />
             </Grid>
-            <Grid item xs={12} md={5} lg={4}>
+            <Grid item xs={12} lg={4}>
               <StayInTouch
                 title={title}
                 socialMedia={socialMedia}

@@ -11,7 +11,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    [breakpoints.up('md')]: {
+    [breakpoints.up('lg')]: {
       justifyContent: 'left',
     },
   },
