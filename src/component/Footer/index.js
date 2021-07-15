@@ -10,116 +10,125 @@ import Copyright from '@/pesayetu/component/Copyright';
 import Logo from '@/pesayetu/component/Logo';
 import Section from '@/pesayetu/component/Section';
 
-const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
-  root: {
-    background: palette.background.dark,
-    height: 'auto',
-    padding: typography.pxToRem(80),
-  },
-  footer: {
-    justifyContent: 'center',
-    [breakpoints.up('md')]: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+const useStyles = makeStyles(
+  ({ breakpoints, widths, palette, typography }) => ({
+    root: {
+      background: palette.background.dark,
+      height: 'auto',
+      padding: typography.pxToRem(80),
     },
-  },
-  section: {},
-  allLinks: {
-    margin: '0 auto',
-    [breakpoints.up('md')]: {
-      marginTop: typography.pxToRem(176),
-    },
-  },
-  stayInTouch: {
-    display: 'flex',
-    letterspacing: typography.pxToRem(0.7),
-    [breakpoints.up('md')]: {
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-    },
-  },
-  stayInTouchText: {
-    color: palette.background.main,
-    fontSize: typography.subtitle1.fontSize,
-    fontWeight: 'bold',
-    padding: `0 ${typography.pxToRem(8)}`,
-  },
-  stayInTouchLink: {
-    [breakpoints.up('md')]: {
-      padding: `0 ${typography.pxToRem(5.52)}`,
-    },
-    [breakpoints.up('lg')]: {
-      padding: `0 ${typography.pxToRem(10)}`,
-    },
-  },
-  stayInTouchLinks: {
-    margin: `${typography.pxToRem(24)} 0 `,
-    justifyContent: 'center',
-    '& > a': {
-      borderRight: 'none',
-    },
-  },
-  quickLinkRoot: {
-    textAlign: 'center',
-    padding: `${typography.pxToRem(32)} 0 `,
-    [breakpoints.up('md')]: {
-      textAlign: 'inherit',
+    footer: {
+      justifyContent: 'center',
+      width: '100%',
       padding: 0,
+      minWidth: 0,
+      boxSizing: 'border-box',
+      [breakpoints.up('lg')]: {
+        padding: 0,
+        margin: '0 auto',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: typography.pxToRem(widths.values.lg),
+      },
     },
-  },
-  quickList: {
-    listStyle: 'none',
-    color: palette.background.main,
-    padding: 0,
-    letterspacing: typography.pxToRem(0.7),
-    '& > li': {
-      marginTop: typography.pxToRem(16),
+    section: {},
+    allLinks: {
+      margin: '0 auto',
+      [breakpoints.up('md')]: {
+        marginTop: typography.pxToRem(176),
+      },
     },
-  },
-  quickLink: {
-    fontSize: typography.subtitle1.fontSize,
-    color: palette.background.main,
-    fontWeight: 'normal',
-    '&:hover': {
-      color: palette.primary.light,
+    stayInTouch: {
+      display: 'flex',
+      letterspacing: typography.pxToRem(0.7),
+      [breakpoints.up('md')]: {
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
     },
-  },
-  quickLinksTitle: {
-    color: palette.background.main,
-    fontSize: typography.subtitle1.fontSize,
-    fontWeight: 'bold',
-  },
-  description: {
-    color: palette.background.main,
-    padding: `${typography.pxToRem(32)} 0 `,
-    fontSize: typography.subtitle1.fontSize,
-    textAlign: 'center',
-    [breakpoints.up('md')]: {
-      textAlign: 'left',
+    stayInTouchText: {
+      color: palette.background.main,
+      fontSize: typography.subtitle1.fontSize,
+      fontWeight: 'bold',
+      padding: `0 ${typography.pxToRem(8)}`,
     },
-  },
-  copyright: {
-    textAlign: 'center',
-    [breakpoints.up('md')]: {
-      textAlign: 'left',
+    stayInTouchLink: {
+      [breakpoints.up('md')]: {
+        padding: `0 ${typography.pxToRem(5.52)}`,
+      },
+      [breakpoints.up('lg')]: {
+        padding: `0 ${typography.pxToRem(10)}`,
+      },
     },
-  },
-  copyrightText: {
-    color: palette.background.main,
-  },
-  text: {
-    textAlign: 'center',
-    [breakpoints.up('md')]: {
-      textAlign: 'left',
+    stayInTouchLinks: {
+      margin: `${typography.pxToRem(24)} 0 `,
+      justifyContent: 'center',
+      '& > a': {
+        borderRight: 'none',
+      },
     },
-  },
-  logoText: {
-    textAlign: 'center',
-    [breakpoints.up('md')]: {
-      textAlign: 'left',
+    quickLinkRoot: {
+      textAlign: 'center',
+      padding: `${typography.pxToRem(32)} 0 `,
+      [breakpoints.up('md')]: {
+        textAlign: 'inherit',
+        padding: 0,
+      },
     },
-  },
-}));
+    quickList: {
+      listStyle: 'none',
+      color: palette.background.main,
+      padding: 0,
+      letterspacing: typography.pxToRem(0.7),
+      '& > li': {
+        marginTop: typography.pxToRem(16),
+      },
+    },
+    quickLink: {
+      fontSize: typography.subtitle1.fontSize,
+      color: palette.background.main,
+      fontWeight: 'normal',
+      '&:hover': {
+        color: palette.primary.light,
+      },
+    },
+    quickLinksTitle: {
+      color: palette.background.main,
+      fontSize: typography.subtitle1.fontSize,
+      fontWeight: 'bold',
+    },
+    description: {
+      color: palette.background.main,
+      padding: `${typography.pxToRem(32)} 0 `,
+      fontSize: typography.subtitle1.fontSize,
+      textAlign: 'center',
+      [breakpoints.up('md')]: {
+        textAlign: 'left',
+      },
+    },
+    copyright: {
+      textAlign: 'center',
+      [breakpoints.up('md')]: {
+        textAlign: 'left',
+      },
+    },
+    copyrightText: {
+      color: palette.background.main,
+    },
+    text: {
+      textAlign: 'center',
+      [breakpoints.up('md')]: {
+        textAlign: 'left',
+      },
+    },
+    logoText: {
+      textAlign: 'center',
+      [breakpoints.up('md')]: {
+        textAlign: 'left',
+      },
+    },
+  })
+);
 
 function Footer({
   title,
