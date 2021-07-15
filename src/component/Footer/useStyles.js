@@ -51,9 +51,12 @@ const useStyles = makeStyles(
     },
     stayInTouchText: {
       color: palette.background.main,
-      fontSize: typography.subtitle1.fontSize,
+      fontSize: typography.subtitle2.fontSize,
       fontWeight: 'bold',
       padding: `${typography.pxToRem(10)} ${typography.pxToRem(8)}`,
+      [breakpoints.up('lg')]: {
+        padding: 0,
+      },
     },
     stayInTouchLink: {
       padding: `0 ${typography.pxToRem(12)}`,
@@ -70,7 +73,7 @@ const useStyles = makeStyles(
       padding: `${typography.pxToRem(32)} 0 `,
       [breakpoints.up('lg')]: {
         textAlign: 'inherit',
-        padding: 0,
+        padding: `${typography.pxToRem(4)} 0 `,
       },
     },
     quickList: {
@@ -92,7 +95,7 @@ const useStyles = makeStyles(
     },
     quickLinksTitle: {
       color: palette.background.main,
-      fontSize: typography.subtitle1.fontSize,
+      fontSize: typography.subtitle2.fontSize,
       fontWeight: 'bold',
     },
     description: {
