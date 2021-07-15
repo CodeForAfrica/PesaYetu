@@ -34,10 +34,18 @@ const useStyles = makeStyles(
         width: typography.pxToRem(widths.values.lg),
       },
     },
+    footer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
     allLinks: {
       margin: '0 auto',
       flexDirection: 'row',
       justifyContent: 'center',
+      marginTop: typography.pxToRem(44.19),
+      [breakpoints.up('md')]: {
+        marginTop: typography.pxToRem(88.39),
+      },
       [breakpoints.up('lg')]: {
         marginTop: typography.pxToRem(176),
       },
@@ -55,15 +63,13 @@ const useStyles = makeStyles(
       color: palette.background.main,
       fontSize: typography.subtitle1.fontSize,
       fontWeight: 'bold',
-      padding: `0 ${typography.pxToRem(8)}`,
+      padding: `${typography.pxToRem(10)} ${typography.pxToRem(8)}`,
     },
     stayInTouchLink: {
-      [breakpoints.up('lg')]: {
-        padding: `0 ${typography.pxToRem(10)}`,
-      },
+      padding: `0 ${typography.pxToRem(12)}`,
     },
     stayInTouchLinks: {
-      margin: `${typography.pxToRem(24)} 0 `,
+      marginTop: `${typography.pxToRem(24)}`,
       justifyContent: 'center',
       '& > a': {
         borderRight: 'none',
