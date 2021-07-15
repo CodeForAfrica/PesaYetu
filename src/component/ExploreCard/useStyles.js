@@ -9,6 +9,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     [breakpoints.up('lg')]: {
       width: typography.pxToRem(356),
     },
+    '& .MuiCardContent-root:last-child': {
+      padding: 0,
+    },
   },
   card: {
     boxShadow: 'none',
