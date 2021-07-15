@@ -10,7 +10,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       width: typography.pxToRem(356),
     },
   },
-  card: {},
+  card: {
+    boxShadow: 'none',
+  },
   image: {
     height: typography.pxToRem(220),
     backgroundSize: 'auto',

@@ -3,7 +3,7 @@ import Group3973 from '@/pesayetu/assets/Group 3973.png';
 import Group4619 from '@/pesayetu/assets/Group 4619.png';
 
 export const exploreTools = {
-  title: 'EXPLORE OUR TOOLS',
+  title: 'EXPLORE OUR OTHER TOOLS',
   items: [
     {
       title: 'Promise Tracker',
