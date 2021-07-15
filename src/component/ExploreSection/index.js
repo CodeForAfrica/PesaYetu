@@ -14,16 +14,16 @@ const responsive = {
   desktop: {
     breakpoint: {
       max: 3000,
-      min: 1280,
+      min: 1160,
     },
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1280, min: 768 },
+    breakpoint: { max: 1160, min: 608 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 768, min: 0 },
+    breakpoint: { max: 608, min: 0 },
     items: 1,
   },
 };
