@@ -15,13 +15,17 @@ const useStyles = makeStyles(
     root: {
       background: palette.background.dark,
       height: 'auto',
-      padding: typography.pxToRem(80),
+      padding: `${typography.pxToRem(40)}`,
+      [breakpoints.up('md')]: {
+        padding: `${typography.pxToRem(79.81)} ${typography.pxToRem(139)}`,
+      },
     },
-    footer: {
+    section: {
       padding: 0,
       minWidth: 0,
       boxSizing: 'border-box',
       justifyContent: 'center',
+      width: typography.pxToRem(widths.values.sm),
       [breakpoints.up('lg')]: {
         padding: 0,
         margin: '0 auto',
@@ -30,7 +34,6 @@ const useStyles = makeStyles(
         width: typography.pxToRem(widths.values.lg),
       },
     },
-    section: {},
     allLinks: {
       margin: '0 auto',
       flexDirection: 'row',
@@ -138,7 +141,7 @@ function Footer({
     <div className={classes.root}>
       <Section
         classes={{
-          root: classes.footer,
+          root: classes.section,
         }}
       >
         <Grid

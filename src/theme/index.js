@@ -9,7 +9,7 @@ const theme = createTheme({
       xs: 0,
       sm: 390, // mobile
       md: 768, // tablet
-      lg: 1440, // desktop
+      lg: 1280, // desktop
     },
   },
   palette: {
@@ -79,7 +79,7 @@ const theme = createTheme({
       xs: 0,
       sm: 350, // 0, 20, 0, 20 margin
       md: 608, // 0, 80, 0, 80 margin
-      lg: 1160, // 0, 141, 0, 141 margin
+      lg: 1160, // 0, 140, 0, 140 margin
     },
   },
 });
