@@ -29,7 +29,6 @@ function Copyright({
   copyright,
   icon,
   copyrightVariant,
-  year,
   copyrightUrl,
   ...props
 }) {
@@ -37,7 +36,7 @@ function Copyright({
 
   return (
     <>
-      {(copyright || icon || year) && (
+      {(copyright || icon) && (
         <div className={clsx(classes.copyright, classes.root)}>
           {icon && (
             <A href={copyrightUrl} className="copyrightLogo">
@@ -47,14 +46,6 @@ function Copyright({
                 className={classes.copyrightIcon}
               />
             </A>
-          )}
-          {year && (
-            <Typography
-              variant={copyrightVariant}
-              className={clsx(classes.text, classes.copyrightYear)}
-            >
-              {year}
-            </Typography>
           )}
           {copyright && (
             <Typography
@@ -75,13 +66,11 @@ Copyright.propTypes = {
   icon: PropTypes.string,
   copyrightVariant: PropTypes.string,
   copyrightUrl: PropTypes.string,
-  year: PropTypes.string,
 };
 
 Copyright.defaultProps = {
   copyright: 'Copyright',
   icon: undefined,
-  year: undefined,
   copyrightVariant: 'subtitle1',
   copyrightUrl: '',
 };

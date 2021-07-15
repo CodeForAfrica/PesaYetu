@@ -68,8 +68,7 @@ export const footerArgs = {
   aboutVariant: 'subtitle1',
   copyrightProps: {
     icon: cc,
-    year: '2021',
-    copyright: 'PesaYetu',
+    copyright: '2021 PesaYetu',
     copyrightUrl: 'https://dev.pesayetu.pesacheck.org',
     copyrightVariant: 'subtitle1',
   },

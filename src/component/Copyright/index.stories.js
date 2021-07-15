@@ -31,11 +31,6 @@ export default {
       },
       options: ['subtitle1', 'body1'],
     },
-    year: {
-      control: {
-        type: 'text',
-      },
-    },
   },
 };
 
@@ -44,9 +39,8 @@ const Template = ({ ...args }) => <Copyright {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  copyright: 'Copyright',
+  copyright: '2021 Copyright',
   icon: cc,
   copyrightUrl: 'https://dev.pesayetu.pesacheck.org',
   copyrightVariant: 'subtitle1',
-  year: '2021',
 };
