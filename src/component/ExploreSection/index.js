@@ -45,7 +45,7 @@ const ExploreSection = ({ title, items, ...props }) => {
           dotListClass={classes.dots}
         >
           {items?.map((item) => (
-            <ExploreCard item={item} />
+            <ExploreCard key={item.title} item={item} />
           ))}
         </Carousel>
       </Section>

@@ -10,7 +10,7 @@ const ExploreCard = ({ item, ...props }) => {
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        <CardMedia className={classes.image} image={image} />
+        <CardMedia className={classes.image} image={image?.src} />
       </Card>
       <CardContent className={classes.content}>
         <Typography className={classes.title} variant="h4">
