@@ -22,6 +22,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@commons-ui/core": "^0.1.0-alpha.3",
     "@material-ui/core": "^4.12.1",
     "@material-ui/utils": "^4.11.2",
     "clsx": "^1.1.1",
