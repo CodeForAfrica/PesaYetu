@@ -1,6 +1,12 @@
 /* Global styles for Storybook iframe that renders every Component Story */
+/* TODO (NYOKABI),fix for storybook layout */
 
 * {
  box-sizing: border-box;
- max-width: 100%;
+ min-width: fit-content
+}
+@media only screen and (min-width: 768px) {
+ * {
+  min-width: 0
+ }
 }
