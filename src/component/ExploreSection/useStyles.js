@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     backgroundColor: '#F8F8F8',
-    paddingBottom: typography.pxToRem(56),
-    paddingTop: typography.pxToRem(80),
+    padding: `${typography.pxToRem(80)} 0`,
   },
   section: {},
   title: {
