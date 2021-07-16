@@ -128,7 +128,10 @@ const useStyles = makeStyles(
     copyrightText: {
       color: palette.background.main,
       order: 5,
-      padding: `0 ${typography.pxToRem(16)}`,
+      padding: `0 ${typography.pxToRem(5)}`,
+      [breakpoints.up('lg')]: {
+        padding: `0 ${typography.pxToRem(10)}`,
+      },
     },
   })
 );
