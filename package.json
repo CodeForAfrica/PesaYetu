@@ -22,8 +22,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@commons-ui/core": "^0.1.0-alpha.3",
     "@material-ui/core": "^4.12.1",
     "@material-ui/utils": "^4.11.2",
+    "@next/bundle-analyzer": "^11.0.1",
     "clsx": "^1.1.1",
     "next": "11.0.1",
     "next-images": "^1.8.1",
@@ -31,8 +33,7 @@
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "webpack": "^5.0.0",
-    "@next/bundle-analyzer": "^11.0.1"
+    "webpack": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
