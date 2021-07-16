@@ -15,7 +15,6 @@ const useStyles = makeStyles(
       minWidth: 0,
       boxSizing: 'border-box',
       justifyContent: 'center',
-      width: typography.pxToRem(widths.values.sm),
       [breakpoints.up('lg')]: {
         padding: 0,
         margin: '0 auto',
@@ -27,6 +26,12 @@ const useStyles = makeStyles(
     footer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+    },
+    text: {
+      textAlign: 'center',
+      [breakpoints.up('lg')]: {
+        textAlign: 'left',
+      },
     },
     allLinks: {
       margin: '0 auto',
@@ -108,19 +113,22 @@ const useStyles = makeStyles(
       },
     },
     copyright: {
-      textAlign: 'center',
+      margin: 0,
+      display: 'flex',
+      flexWrap: 'wrap',
+      flexDirection: 'row',
+      justifyContent: 'center',
       [breakpoints.up('lg')]: {
-        textAlign: 'left',
+        justifyContent: 'flex-start',
+      },
+      '& > a': {
+        marginTop: typography.pxToRem(3),
       },
     },
     copyrightText: {
       color: palette.background.main,
-    },
-    text: {
-      textAlign: 'center',
-      [breakpoints.up('lg')]: {
-        textAlign: 'left',
-      },
+      order: 5,
+      padding: `0 ${typography.pxToRem(16)}`,
     },
   })
 );

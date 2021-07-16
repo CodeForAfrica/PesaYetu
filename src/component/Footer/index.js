@@ -1,14 +1,18 @@
 /* eslint-disable react/default-props-match-prop-types */
 
-import { StayInTouch, QuickLinks, RichTypography } from '@commons-ui/core';
+import {
+  StayInTouch,
+  QuickLinks,
+  RichTypography,
+  Logo,
+  Copyright,
+} from '@commons-ui/core';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import useStyles from './useStyles';
 
-import Copyright from '@/pesayetu/component/Copyright';
-import Logo from '@/pesayetu/component/Logo';
 import Section from '@/pesayetu/component/Section';
 
 function Footer({
@@ -38,7 +42,9 @@ function Footer({
           <Grid item xs={12} lg={6}>
             <Logo
               {...logoProps}
-              classes={{ image: classes.image, text: classes.text }}
+              classes={{
+                text: classes.text,
+              }}
             />
             <RichTypography
               variant={aboutVariant}

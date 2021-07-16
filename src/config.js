@@ -5,6 +5,14 @@ import instagram from '@/pesayetu/assets/footer-social-ig.svg';
 import linkedin from '@/pesayetu/assets/footer-social-in.svg';
 import twitter from '@/pesayetu/assets/footer-social-tw.svg';
 
+const CFA = {
+  image: {
+    src: footerLogo,
+    alt: 'Code for Africa',
+  },
+  url: 'https://codeforafrica.org',
+};
+
 const ABOUT = {
   about:
     'This site is an openAFRICA project of Code for Africa.\n' +
@@ -61,9 +69,8 @@ export const footerArgs = {
   quickLinks: QUICK_LINKS[0],
   description: ABOUT.about,
   logoProps: {
-    src: footerLogo,
-    alt: 'Code for africa',
-    href: 'https://nigeria.hurumap.org/',
+    image: CFA.image,
+    url: CFA.url,
   },
   aboutVariant: 'subtitle1',
   copyrightProps: {
