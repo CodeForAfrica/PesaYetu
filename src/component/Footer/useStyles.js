@@ -15,6 +15,7 @@ const useStyles = makeStyles(
       minWidth: 0,
       boxSizing: 'border-box',
       justifyContent: 'center',
+      width: 'fit-content',
       [breakpoints.up('lg')]: {
         padding: 0,
         margin: '0 auto',
@@ -49,7 +50,7 @@ const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      letterspacing: typography.pxToRem(0.7),
+      // letterspacing: typography.pxToRem(0.7),
       [breakpoints.up('lg')]: {
         alignItems: 'flex-start',
       },
