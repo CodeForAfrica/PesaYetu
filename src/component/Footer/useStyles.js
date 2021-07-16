@@ -15,7 +15,6 @@ const useStyles = makeStyles(
       minWidth: 0,
       boxSizing: 'border-box',
       justifyContent: 'center',
-      width: 'fit-content',
       [breakpoints.up('lg')]: {
         padding: 0,
         margin: '0 auto',
