@@ -71,7 +71,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   quickList: {
     listStyle: 'none',
-    color: palette.background.default,
+    color: palette.text.primary,
     padding: 0,
     letterspacing: typography.pxToRem(0.7),
     '& > li': {
@@ -80,19 +80,19 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   quickLink: {
     fontSize: typography.subtitle1.fontSize,
-    color: palette.background.default,
+    color: palette.text.primary,
     fontWeight: 'normal',
     '&:hover': {
       color: palette.primary.light,
     },
   },
   quickLinksTitle: {
-    color: palette.background.default,
+    color: palette.text.primary,
     fontSize: typography.subtitle2.fontSize,
     fontWeight: 'bold',
   },
   description: {
-    color: palette.background.default,
+    color: palette.text.primary,
     padding: `${typography.pxToRem(32)} 0 `,
     fontSize: typography.subtitle1.fontSize,
     textAlign: 'center',
@@ -114,7 +114,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   copyrightText: {
-    color: palette.background.default,
+    color: palette.text.primary,
     order: 5,
     padding: `0 ${typography.pxToRem(5)}`,
     [breakpoints.up('lg')]: {

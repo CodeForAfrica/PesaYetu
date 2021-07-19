@@ -21,7 +21,7 @@ const theme = createTheme({
       light: '#F8A199', // highlight red
     },
     background: {
-      default: '#FFF', // white
+      default: '#F0F0F0', // white
       paper: '#F8F8F8', // light white
     },
     grey: {
@@ -30,8 +30,9 @@ const theme = createTheme({
       light: '#F0F0F0', // lightgrey
     },
     text: {
-      primary: '#333333',
-      secondary: '#212529',
+      primary: '#FFF',
+      secondary: '##333333',
+      default: '#212529',
       hint: '#1C2031',
     },
   },
