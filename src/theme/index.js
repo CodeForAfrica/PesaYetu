@@ -6,8 +6,7 @@ const FONT_FAMILY_TEXT = '"Poppins", "sans-serif"';
 const theme = createTheme({
   breakpoints: {
     values: {
-      xs: 0,
-      sm: 390, // mobile
+      xs: 0, // mobile
       md: 768, // tablet
       lg: 1280, // desktop
     },
@@ -49,8 +48,6 @@ const theme = createTheme({
   },
   widths: {
     values: {
-      xs: 0,
-      sm: 350, // 0, 20, 0, 20 margin
       md: 608, // 0, 80, 0, 80 margin
       lg: 1160, // 0, 140, 0, 140 margin
     },
