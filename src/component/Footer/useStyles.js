@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
-    background: palette.background.dark,
+    background: palette.grey.dark,
     height: 'auto',
     padding: `${typography.pxToRem(80)} 0`,
     [breakpoints.up('md')]: {
@@ -37,13 +37,13 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    // letterspacing: typography.pxToRem(0.7),
+    letterspacing: typography.pxToRem(0.7),
     [breakpoints.up('lg')]: {
       alignItems: 'flex-start',
     },
   },
   stayInTouchText: {
-    color: palette.background.main,
+    color: palette.background.default,
     fontSize: typography.subtitle2.fontSize,
     fontWeight: 'bold',
     padding: `${typography.pxToRem(10)} ${typography.pxToRem(8)}`,
@@ -71,7 +71,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   quickList: {
     listStyle: 'none',
-    color: palette.background.main,
+    color: palette.background.default,
     padding: 0,
     letterspacing: typography.pxToRem(0.7),
     '& > li': {
@@ -80,19 +80,19 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   quickLink: {
     fontSize: typography.subtitle1.fontSize,
-    color: palette.background.main,
+    color: palette.background.default,
     fontWeight: 'normal',
     '&:hover': {
       color: palette.primary.light,
     },
   },
   quickLinksTitle: {
-    color: palette.background.main,
+    color: palette.background.default,
     fontSize: typography.subtitle2.fontSize,
     fontWeight: 'bold',
   },
   description: {
-    color: palette.background.main,
+    color: palette.background.default,
     padding: `${typography.pxToRem(32)} 0 `,
     fontSize: typography.subtitle1.fontSize,
     textAlign: 'center',
@@ -114,7 +114,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   copyrightText: {
-    color: palette.background.main,
+    color: palette.background.default,
     order: 5,
     padding: `0 ${typography.pxToRem(5)}`,
     [breakpoints.up('lg')]: {
