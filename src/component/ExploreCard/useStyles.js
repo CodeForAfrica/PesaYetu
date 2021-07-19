@@ -1,7 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
-  root: {
+  root: {},
+  card: {
     width: typography.pxToRem(350),
     maxHeight: typography.pxToRem(400),
     [breakpoints.up('md')]: {
@@ -13,8 +14,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     '& .MuiCardContent-root:last-child': {
       padding: 0,
     },
-  },
-  card: {
     boxShadow: 'none',
     backgroundColor: 'unset',
   },

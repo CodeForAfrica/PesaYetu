@@ -38,6 +38,7 @@ const ExploreSection = ({ title, items, ...props }) => {
         </Typography>
 
         <Carousel
+          swipeable
           responsive={responsive}
           arrows={false}
           renderDotsOutside

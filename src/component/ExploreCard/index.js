@@ -9,22 +9,20 @@ const ExploreCard = ({ item, ...props }) => {
   const classes = useStyles(props);
   const { title, description, image } = item;
   return (
-    <div className={classes.root}>
-      <Card className={classes.card}>
-        {image && <Image src={image} className={classes.image} />}
+    <Card className={classes.card}>
+      {image && <Image src={image} className={classes.image} />}
 
+      <Typography className={classes.title} variant="h4">
+        {title}
+      </Typography>
+      <Typography className={classes.description}>{description}</Typography>
+      <CardContent className={classes.content}>
         <Typography className={classes.title} variant="h4">
           {title}
         </Typography>
         <Typography className={classes.description}>{description}</Typography>
-        <CardContent className={classes.content}>
-          <Typography className={classes.title} variant="h4">
-            {title}
-          </Typography>
-          <Typography className={classes.description}>{description}</Typography>
-        </CardContent>
-      </Card>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
