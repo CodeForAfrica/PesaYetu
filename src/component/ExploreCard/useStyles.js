@@ -21,6 +21,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   image: {
     height: typography.pxToRem(220),
     backgroundSize: 'auto',
+    marginLeft: '-10px !important',
   },
   title: {
     marginTop: typography.pxToRem(20),

@@ -1,4 +1,4 @@
-import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
+import { Card, CardContent, Typography } from '@material-ui/core';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -11,11 +11,12 @@ const ExploreCard = ({ item, ...props }) => {
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        {image && (
-          <CardMedia>
-            <Image src={image} className={classes.image} />
-          </CardMedia>
-        )}
+        {image && <Image src={image} className={classes.image} />}
+
+        <Typography className={classes.title} variant="h4">
+          {title}
+        </Typography>
+        <Typography className={classes.description}>{description}</Typography>
         <CardContent className={classes.content}>
           <Typography className={classes.title} variant="h4">
             {title}
