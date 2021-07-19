@@ -6,15 +6,14 @@ const FONT_FAMILY_TEXT = '"Poppins", "sans-serif"';
 const theme = createTheme({
   breakpoints: {
     values: {
-      xs: 0,
-      sm: 390, // mobile
+      xs: 0, // mobile
       md: 768, // tablet
       lg: 1280, // desktop
     },
   },
   palette: {
     primary: {
-      main: '#0067A3', // main
+      main: '#0067A3', // main blue
       light: '#7DB2D3', // hightlight blue
     },
     secondary: {
@@ -22,16 +21,16 @@ const theme = createTheme({
       light: '#F8A199', // highlight red
     },
     background: {
-      main: '#FFF', // white
-      light: '#F8F8F8',
-      dark: '#2A2A2C ', // dark black
-      darkgrey: '#DFDFDF',
-      lightgrey: '#F0F0F0',
+      default: '#FFF', // white
+      paper: '#F8F8F8', // light white
+      dark: '#2A2A2C ', // dark
+      main: '#DFDFDF', // darkgrey
+      light: '#F0F0F0', // lightgrey
     },
     text: {
-      main: '#333333',
-      subtitle: '#212529',
-      headings: '#1C2031',
+      primary: '#333333',
+      secondary: '#212529',
+      hint: '#1C2031',
     },
   },
   typography: {
@@ -41,6 +40,7 @@ const theme = createTheme({
     h3: {},
     h4: {},
     h5: {},
+    hd: {},
     body1: {},
     body2: {},
     subtitle1: {},
@@ -48,8 +48,6 @@ const theme = createTheme({
   },
   widths: {
     values: {
-      xs: 0,
-      sm: 350, // 0, 20, 0, 20 margin
       md: 608, // 0, 80, 0, 80 margin
       lg: 1160, // 0, 140, 0, 140 margin
     },
@@ -102,12 +100,20 @@ deepmerge(
         lineHeight: 27 / 18, // font 18 H5
       },
     },
-    body1: {
+    h6: {
       fontSize: pxToRem(16),
       lineHeight: 30 / 16,
       [breakpoints.up('lg')]: {
         fontSize: pxToRem(16),
         lineHeight: 30 / 16, // font 18 body1
+      },
+    },
+    body1: {
+      fontSize: pxToRem(16),
+      lineHeight: 25 / 16,
+      [breakpoints.up('lg')]: {
+        fontSize: pxToRem(16),
+        lineHeight: 25 / 16, // font 18 body1
       },
     },
     body2: {
