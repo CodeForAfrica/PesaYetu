@@ -1,7 +1,10 @@
 import { Section } from '@commons-ui/core';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import React from 'react';
+
+import NavigationLogo from '@/pesayetu/component/NavigationLogo';
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {
@@ -26,18 +29,19 @@ const useStyles = makeStyles(({ typography }) => ({
     width: typography.pxToRem(200),
   },
 }));
-function DesktopNavigation({ ...props }) {
+function DesktopNavigation({ logoProps, ...props }) {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
-          <Grid item className={classes.logo}>
-            <Typography>area one</Typography>
+          <Grid item xs={4}>
+            <NavigationLogo {...logoProps} />
           </Grid>
           <Grid
             item
+            xs={8}
             container
             justify="flex-end"
             alignItems="center"
@@ -55,8 +59,12 @@ function DesktopNavigation({ ...props }) {
   );
 }
 
-DesktopNavigation.propTypes = {};
+DesktopNavigation.propTypes = {
+  logoProps: PropTypes.shape({}),
+};
 
-DesktopNavigation.defaultProps = {};
+DesktopNavigation.defaultProps = {
+  logoProps: undefined,
+};
 
 export default DesktopNavigation;

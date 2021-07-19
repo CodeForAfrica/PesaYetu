@@ -6,8 +6,7 @@ import DesktopNavigation from './DesktopNavigation';
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
-    backgroundColor: palette.background.default,
-    boxShadow: '0px 2px 6px #0000001A',
+    backgroundColor: palette.background.main,
   },
   section: {
     padding: `0 ${typography.pxToRem(21)} 0 ${typography.pxToRem(17)}`,

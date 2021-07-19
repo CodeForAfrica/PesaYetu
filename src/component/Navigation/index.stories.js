@@ -6,11 +6,23 @@ import Navigation from '.';
 export default {
   title: 'Sections/Navigation',
   decorators: [withNextRouter],
-  argTypes: {},
+  argTypes: {
+    logoProps: {
+      control: {
+        type: 'object',
+      },
+    },
+  },
 };
 
 const Template = ({ ...args }) => <Navigation {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  logoProps: {
+    firstTitle: 'Pesa',
+    secondTitle: 'Yetu',
+    subtitle: 'Our County Our Responsibility',
+  },
+};
