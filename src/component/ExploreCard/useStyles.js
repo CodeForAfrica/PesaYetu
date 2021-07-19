@@ -16,6 +16,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
   card: {
     boxShadow: 'none',
+    backgroundColor: 'unset',
   },
   image: {
     height: typography.pxToRem(220),
