@@ -22,15 +22,15 @@ const theme = createTheme({
     },
     background: {
       default: '#FFF', // white
-      paper: '#F8F8F8',
+      paper: '#F8F8F8', // light white
       dark: '#2A2A2C ', // dark
-      main: '#DFDFDF',
-      light: '#F0F0F0',
+      main: '#DFDFDF', // darkgrey
+      light: '#F0F0F0', // lightgrey
     },
     text: {
       primary: '#333333',
       secondary: '#212529',
-      headings: '#1C2031',
+      hint: '#1C2031',
     },
   },
   typography: {
