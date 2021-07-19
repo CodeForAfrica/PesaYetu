@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Page from '@/pesayetu/component/Page';
+import Page from '@/pesayetu/components/Page';
 import getPostTypeStaticProps from '@/pesayetu/functions/postTypes/getPostTypeStaticProps';
 
 export default function Home({ ...props }) {
