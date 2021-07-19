@@ -19,16 +19,16 @@ const responsive = {
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1160, min: 608 },
+    breakpoint: { max: 1280, min: 768 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 608, min: 0 },
+    breakpoint: { max: 768, min: 0 },
     items: 1,
   },
 };
 
-const ExploreSection = ({ title, items, ...props }) => {
+const ExploreTools = ({ title, items, ...props }) => {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
@@ -54,7 +54,7 @@ const ExploreSection = ({ title, items, ...props }) => {
   );
 };
 
-ExploreSection.propTypes = {
+ExploreTools.propTypes = {
   title: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -65,9 +65,9 @@ ExploreSection.propTypes = {
   ),
 };
 
-ExploreSection.defaultProps = {
+ExploreTools.defaultProps = {
   title: undefined,
   items: undefined,
 };
 
-export default ExploreSection;
+export default ExploreTools;
