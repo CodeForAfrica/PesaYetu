@@ -5,7 +5,7 @@ const useStyles = makeStyles(
     root: {
       background: palette.background.dark,
       height: 'auto',
-      padding: `${typography.pxToRem(80)}`,
+      padding: `${typography.pxToRem(80)} 0`,
       [breakpoints.up('md')]: {
         padding: `${typography.pxToRem(79.81)} ${typography.pxToRem(139)}`,
       },
