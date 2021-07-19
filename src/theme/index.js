@@ -41,6 +41,7 @@ const theme = createTheme({
     h3: {},
     h4: {},
     h5: {},
+    hd: {},
     body1: {},
     body2: {},
     subtitle1: {},
