@@ -14,7 +14,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#0067A3', // main
+      main: '#0067A3', // main blue
       light: '#7DB2D3', // hightlight blue
     },
     secondary: {
@@ -24,7 +24,7 @@ const theme = createTheme({
     background: {
       main: '#FFF', // white
       light: '#F8F8F8',
-      dark: '#2A2A2C ', // dark black
+      dark: '#2A2A2C ', // dark
       darkgrey: '#DFDFDF',
       lightgrey: '#F0F0F0',
     },
@@ -102,12 +102,20 @@ deepmerge(
         lineHeight: 27 / 18, // font 18 H5
       },
     },
-    body1: {
+    h6: {
       fontSize: pxToRem(16),
       lineHeight: 30 / 16,
       [breakpoints.up('lg')]: {
         fontSize: pxToRem(16),
         lineHeight: 30 / 16, // font 18 body1
+      },
+    },
+    body1: {
+      fontSize: pxToRem(16),
+      lineHeight: 25 / 16,
+      [breakpoints.up('lg')]: {
+        fontSize: pxToRem(16),
+        lineHeight: 25 / 16, // font 18 body1
       },
     },
     body2: {
