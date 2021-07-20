@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */ // To be Removed
-import Group3964 from '@/pesayetu/assets/images/Group 3964.png';
-import Group3973 from '@/pesayetu/assets/images/Group 3973.png';
-import Group4619 from '@/pesayetu/assets/images/Group 4619.png';
+import Group3964 from '@/pesayetu/assets/images/Group 3964@2x.png';
+import Group3973 from '@/pesayetu/assets/images/Group 3973@2x.png';
+import Group4619 from '@/pesayetu/assets/images/Group 4619@2x.png';
 
 export const exploreTools = {
   title: 'EXPLORE OUR OTHER TOOLS',

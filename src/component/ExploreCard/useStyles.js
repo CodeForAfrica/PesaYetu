@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
   card: {
-    width: typography.pxToRem(350),
+    minWidth: typography.pxToRem(350),
     maxHeight: typography.pxToRem(400),
     [breakpoints.up('md')]: {
       width: typography.pxToRem(296),
