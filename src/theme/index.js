@@ -61,11 +61,11 @@ deepmerge(
   typography,
   {
     h1: {
-      fontSize: pxToRem(50),
-      lineHeight: 66 / 50,
+      fontSize: pxToRem(30),
+      lineHeight: 40 / 30, // font 30 H0m
       [breakpoints.up('lg')]: {
-        fontSize: pxToRem(50),
-        lineHeight: 66 / 50, // font 50 H0
+        fontSize: pxToRem(48),
+        lineHeight: 58 / 48, // font 48 H0
       },
     },
     h2: {

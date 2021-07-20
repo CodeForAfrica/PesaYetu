@@ -11,10 +11,15 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
   backgroundWrap: {
     position: 'fixed',
-    height: '100vh',
+    zIndex: -1,
+    height: typography.pxToRem(468),
     width: '100vw',
-    overflow: 'hidden',
-    zIndex: '-1',
+    [breakpoints.up('md')]: {
+      height: typography.pxToRem(456),
+    },
+    [breakpoints.up('lg')]: {
+      height: typography.pxToRem(600),
+    },
   },
   section: {
     padding: `${typography.pxToRem(40)} 0`,
@@ -31,6 +36,15 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       margin: `${typography.pxToRem(40)} 0`,
     },
   },
+  title: {
+    padding: `${typography.pxToRem(40)} 0`,
+    [breakpoints.up('md')]: {
+      padding: `${typography.pxToRem(46)} 0 ${typography.pxToRem(22)}`,
+    },
+    [breakpoints.up('lg')]: {
+      maxWidth: typography.pxToRem(503),
+    },
+  },
 }));
 
 function Hero({ title, tagline, ...props }) {
@@ -39,13 +53,19 @@ function Hero({ title, tagline, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.backgroundWrap}>
-        <Image src={heroBg} layout="fill" objectFit="cover" quality={100} />
+        <Image src={heroBg} layout="fill" />
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
           <Grid item xs={12} md={7}>
-            <Typography variant="h1">{title}</Typography>
-            {tagline && <Typography variant="subtitle1">{tagline}</Typography>}
+            <Typography variant="h1" className={classes.title}>
+              {title}
+            </Typography>
+            {tagline && (
+              <Typography variant="subtitle1" className={classes.tagline}>
+                {tagline}
+              </Typography>
+            )}
           </Grid>
           <Hidden mdDown implementation="css">
             <Grid item md={5} />
