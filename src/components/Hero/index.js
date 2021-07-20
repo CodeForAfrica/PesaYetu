@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import heroBg from '@/pesayetu/assets/images/hero.png';
+import Search from '@/pesayetu/components/Search';
 import Section from '@/pesayetu/components/Section';
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
@@ -21,6 +22,14 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       height: typography.pxToRem(600),
     },
   },
+  comment: {
+    fontSize: typography.pxToRem(11),
+    color: '#707070',
+    marginTop: typography.pxToRem(20),
+    [breakpoints.up('lg')]: {
+      marginTop: typography.pxToRem(40),
+    },
+  },
   section: {
     padding: `${typography.pxToRem(40)} 0`,
     [breakpoints.up('md')]: {
@@ -29,6 +38,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     [breakpoints.up('lg')]: {
       padding: `${typography.pxToRem(40)} 0`,
     },
+  },
+  slabel: {
+    marginBottom: typography.pxToRem(10),
   },
   tagline: {
     margin: `${typography.pxToRem(20)} 0`,
@@ -42,12 +54,12 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       padding: `${typography.pxToRem(46)} 0 ${typography.pxToRem(22)}`,
     },
     [breakpoints.up('lg')]: {
-      maxWidth: typography.pxToRem(503),
+      maxWidth: typography.pxToRem(480),
     },
   },
 }));
 
-function Hero({ title, tagline, ...props }) {
+function Hero({ comment, searchLabel, title, tagline, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -66,8 +78,21 @@ function Hero({ title, tagline, ...props }) {
                 {tagline}
               </Typography>
             )}
+            {searchLabel && (
+              <Typography variant="subtitle1" className={classes.slabel}>
+                {searchLabel}
+              </Typography>
+            )}
+            <Search href="/explore/" />
+            <Hidden smDown implementation="css">
+              {comment && (
+                <Typography variant="subtitle1" className={classes.comment}>
+                  {comment}
+                </Typography>
+              )}
+            </Hidden>
           </Grid>
-          <Hidden mdDown implementation="css">
+          <Hidden smDown implementation="css">
             <Grid item md={5} />
           </Hidden>
         </Grid>
@@ -77,13 +102,17 @@ function Hero({ title, tagline, ...props }) {
 }
 
 Hero.propTypes = {
-  title: PropTypes.string,
+  comment: PropTypes.string,
+  searchLabel: PropTypes.string,
   tagline: PropTypes.string,
+  title: PropTypes.string,
 };
 
 Hero.defaultProps = {
-  title: undefined,
+  comment: undefined,
+  searchLabel: undefined,
   tagline: undefined,
+  title: undefined,
 };
 
 export default Hero;

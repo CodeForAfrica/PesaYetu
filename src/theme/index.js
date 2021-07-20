@@ -35,7 +35,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: FONT_FAMILY_TEXT,
-    h1: {},
+    h1: {
+      fontWeight: 900,
+    },
     h2: {},
     h3: {},
     h4: {},

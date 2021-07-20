@@ -26,6 +26,7 @@
     "@commons-ui/core": "^0.1.0-alpha.3",
     "@material-ui/core": "^4.12.1",
     "@material-ui/utils": "^4.11.2",
+    "@next/bundle-analyzer": "^11.0.1",
     "@svgr/webpack": "^5.5.0",
     "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",
