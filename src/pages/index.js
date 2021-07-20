@@ -1,25 +1,48 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Page from '@/pesayetu/component/Page';
+import Hero from '@/pesayetu/components/Hero';
+import Page from '@/pesayetu/components/Page';
+import formatBlocksForSections from '@/pesayetu/functions/formatBlocksForSections';
 import getPostTypeStaticProps from '@/pesayetu/functions/postTypes/getPostTypeStaticProps';
 
-export default function Home({ ...props }) {
-  if (props?.errorMessage) {
-    return <div> {props.errorMessage}</div>;
-  }
-  return <Page>Pesa yetu homepage template</Page>;
+export default function Home({ blocks, ...props }) {
+  return (
+    <Page {...props}>
+      <Hero {...blocks?.hero} />
+    </Page>
+  );
 }
 
 Home.propTypes = {
-  errorMessage: PropTypes.string,
+  blocks: PropTypes.shape({
+    hero: PropTypes.shape({}),
+  }),
 };
 
 Home.defaultProps = {
-  errorMessage: undefined,
+  blocks: undefined,
 };
 
 export async function getStaticProps() {
   const postType = 'page';
-  return getPostTypeStaticProps({ slug: '/' }, postType);
+  const { props, revalidate, notFound } = await getPostTypeStaticProps(
+    { slug: '/' },
+    postType
+  );
+
+  if (notFound) {
+    return {
+      notFound,
+    };
+  }
+
+  const blocks = formatBlocksForSections(props?.post?.blocks);
+  return {
+    props: {
+      ...props,
+      blocks,
+    },
+    revalidate,
+  };
 }
