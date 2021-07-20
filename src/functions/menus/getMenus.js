@@ -1,5 +1,5 @@
-import filterMenusByLocation from '@/pesayetu/functions/menus/filterMenusByLocation';
-import menuLocations from '@/pesayetu/lib/wordpress/_config/menuLocations';
+import filterMenusByLocation from "@/pesayetu/functions/menus/filterMenusByLocation";
+import menuLocations from "@/pesayetu/lib/wordpress/_config/menuLocations";
 
 /**
  * Get menu data from WPGraphQL.

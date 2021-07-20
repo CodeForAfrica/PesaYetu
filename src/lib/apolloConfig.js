@@ -1,8 +1,8 @@
-import merge from 'deepmerge';
-import isEqual from 'lodash/isEqual';
+import merge from "deepmerge";
+import isEqual from "lodash/isEqual";
 
 // Set global state name.
-export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
+export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 
 /**
  * Init Apollo and merge with initial state.

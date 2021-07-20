@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import Page from '@/pesayetu/component/Page';
-import getPostTypeStaticProps from '@/pesayetu/functions/postTypes/getPostTypeStaticProps';
+import Page from "@/pesayetu/component/Page";
+import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ ...props }) {
   if (props?.errorMessage) {
@@ -20,6 +20,6 @@ Home.defaultProps = {
 };
 
 export async function getStaticProps() {
-  const postType = 'page';
-  return getPostTypeStaticProps({ slug: '/' }, postType);
+  const postType = "page";
+  return getPostTypeStaticProps({ slug: "/" }, postType);
 }
