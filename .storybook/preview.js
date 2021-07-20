@@ -1,4 +1,5 @@
 import { muiTheme } from "storybook-addon-material-ui";
+import { RouterContext } from "next/dist/next-server/lib/router-context";
 import * as nextImage from "next/image";
 
 import theme from "../src/theme";
@@ -46,6 +47,9 @@ export const parameters = {
     },
   },
   layout: "padded",
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
   viewport: {
     viewports: VIEWPORTS,
     defaultViewport: "desktop",
