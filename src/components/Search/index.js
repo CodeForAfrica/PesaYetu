@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     borderRadius: typography.pxToRem(10),
     color: palette.primary.main,
     border: '2px solid #1c2030',
-    width: typography.pxToRem(215),
+    width: typography.pxToRem(278),
   },
   button: {
     padding: 0,

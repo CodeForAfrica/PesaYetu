@@ -35,7 +35,8 @@ const Template = ({ ...args }) => <Hero {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  title: 'Data to hold your government accountable',
+  title:
+    'Data to hold <br /> your government <span class="highlight">accountable</span>',
   tagline:
     'PesaYetu helps journalists, researchers and activists transform their work with in-depth county-specific information. Get started now with datasets from Kenya.',
   searchLabel: 'Search for a location',

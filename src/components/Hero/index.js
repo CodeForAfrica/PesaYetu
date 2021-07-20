@@ -1,3 +1,4 @@
+import { RichTypography } from '@commons-ui/core';
 import { Grid, Hidden, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Image from 'next/image';
@@ -30,31 +31,37 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       marginTop: typography.pxToRem(40),
     },
   },
-  section: {
-    padding: `${typography.pxToRem(40)} 0`,
-    [breakpoints.up('md')]: {
-      padding: `${typography.pxToRem(46)} 0 ${typography.pxToRem(22)}`,
-    },
+  content: {
     [breakpoints.up('lg')]: {
-      padding: `${typography.pxToRem(40)} 0`,
+      paddingLeft: typography.pxToRem(98),
     },
   },
+  section: {},
   slabel: {
     marginBottom: typography.pxToRem(10),
   },
   tagline: {
     margin: `${typography.pxToRem(20)} 0`,
+    [breakpoints.up('md')]: {
+      maxWidth: typography.pxToRem(335),
+    },
     [breakpoints.up('lg')]: {
       margin: `${typography.pxToRem(40)} 0`,
+      maxWidth: typography.pxToRem(474),
     },
   },
   title: {
-    padding: `${typography.pxToRem(40)} 0`,
+    marginTop: typography.pxToRem(40),
+    '& .highlight': {
+      display: 'inline-block',
+      background:
+        'linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )',
+    },
     [breakpoints.up('md')]: {
-      padding: `${typography.pxToRem(46)} 0 ${typography.pxToRem(22)}`,
+      marginTop: typography.pxToRem(46),
     },
     [breakpoints.up('lg')]: {
-      maxWidth: typography.pxToRem(480),
+      marginTop: typography.pxToRem(65),
     },
   },
 }));
@@ -69,10 +76,10 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Grid item xs={12} md={7}>
-            <Typography variant="h1" className={classes.title}>
+          <Grid item xs={12} md={7} className={classes.content}>
+            <RichTypography variant="h1" className={classes.title}>
               {title}
-            </Typography>
+            </RichTypography>
             {tagline && (
               <Typography variant="subtitle1" className={classes.tagline}>
                 {tagline}
@@ -84,13 +91,11 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
               </Typography>
             )}
             <Search href="/explore/" />
-            <Hidden smDown implementation="css">
-              {comment && (
-                <Typography variant="subtitle1" className={classes.comment}>
-                  {comment}
-                </Typography>
-              )}
-            </Hidden>
+            {comment && (
+              <Typography variant="subtitle1" className={classes.comment}>
+                {comment}
+              </Typography>
+            )}
           </Grid>
           <Hidden smDown implementation="css">
             <Grid item md={5} />
