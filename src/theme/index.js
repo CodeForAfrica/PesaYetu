@@ -61,11 +61,11 @@ deepmerge(
   typography,
   {
     h1: {
-      fontSize: pxToRem(50),
-      lineHeight: 66 / 50,
+      fontSize: pxToRem(30),
+      lineHeight: 40 / 30, // font 30 H0m
       [breakpoints.up('lg')]: {
-        fontSize: pxToRem(50),
-        lineHeight: 66 / 50, // font 50 H0
+        fontSize: pxToRem(48),
+        lineHeight: 58 / 48, // font 48 H0
       },
     },
     h2: {
@@ -77,12 +77,8 @@ deepmerge(
       },
     },
     h3: {
-      fontSize: pxToRem(24),
-      lineHeight: 40 / 24,
-      [breakpoints.up('lg')]: {
-        fontSize: pxToRem(30),
-        lineHeight: 48 / 30, // font 30 H2
-      },
+      fontSize: pxToRem(20),
+      lineHeight: 30 / 20, // font 20 H3
     },
     h4: {
       fontSize: pxToRem(20),
@@ -117,12 +113,8 @@ deepmerge(
       },
     },
     body2: {
-      fontSize: pxToRem(16),
-      lineHeight: 24 / 16,
-      [breakpoints.up('lg')]: {
-        fontSize: pxToRem(16),
-        lineHeight: 24 / 16, // font body2
-      },
+      fontSize: pxToRem(14),
+      lineHeight: 24 / 14, // font body2 P2
     },
     subtitle1: {
       fontSize: pxToRem(14),

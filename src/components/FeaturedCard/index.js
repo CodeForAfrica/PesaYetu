@@ -17,7 +17,7 @@ function FeaturedCard({ ctaText, description, href, image, title, ...props }) {
         <Image
           src={image}
           alt={title}
-          layout="responsive"
+          layout="fill"
           className={classes.image}
         />
       </Grid>
@@ -32,7 +32,11 @@ function FeaturedCard({ ctaText, description, href, image, title, ...props }) {
             {description}
           </RichTypography>
         )}
-        {href && <Link href={href}>{ctaText}</Link>}
+        {href && (
+          <Link href={href} underline="always" variant="subtitle2">
+            {ctaText}
+          </Link>
+        )}
       </Grid>
     </Grid>
   );

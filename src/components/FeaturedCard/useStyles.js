@@ -2,54 +2,46 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
   root: {
-    marginBottom: 37.5,
     [breakpoints.up('md')]: {
-      marginBottom: typography.pxToRem(
-        (widths.values.md * 59) / widths.values.xl
-      ),
+      marginTop: typography.pxToRem((widths.values.md * 40) / widths.values.lg),
     },
     [breakpoints.up('lg')]: {
-      marginBottom: typography.pxToRem(
-        (widths.values.lg * 59) / widths.values.xl
-      ),
-    },
-    [breakpoints.up('xl')]: {
-      marginBottom: 59,
+      marginTop: typography.pxToRem(40),
     },
   },
   content: {
+    marginTop: typography.pxToRem(20),
     [breakpoints.up('md')]: {
-      paddingLeft: typography.pxToRem(62),
+      marginTop: 0,
+      paddingLeft: typography.pxToRem(58),
+      maxHeight: typography.pxToRem(315),
     },
     [breakpoints.up('lg')]: {
-      marginBottom: typography.pxToRem(82),
+      paddingLeft: typography.pxToRem(112),
+      maxHeight: typography.pxToRem(415),
     },
   },
   description: {
-    display: 'none',
+    margin: `${typography.pxToRem(20)} 0`,
+    overflow: 'hidden',
+    boxOrient: 'vertical',
+    display: '-webkit-box',
+    lineClamp: 4,
     [breakpoints.up('md')]: {
-      display: 'flex',
-      marginTop: typography.pxToRem((widths.values.md * 49) / widths.values.xl),
-      '& p': {
-        margin: 0,
-      },
+      margin: `${typography.pxToRem(10.5)} 0`,
     },
     [breakpoints.up('lg')]: {
-      marginTop: typography.pxToRem((widths.values.lg * 49) / widths.values.xl),
-    },
-    [breakpoints.up('xl')]: {
-      marginTop: typography.pxToRem(49),
+      margin: `${typography.pxToRem(20)} 0`,
     },
   },
   image: {
-    minHeight: typography.pxToRem(160),
+    height: typography.pxToRem(217),
+    width: '100%',
     [breakpoints.up('md')]: {
-      maxHeight: typography.pxToRem(
-        (widths.values.md * 547) / widths.values.lg
-      ),
+      height: typography.pxToRem(315),
     },
     [breakpoints.up('lg')]: {
-      maxHeight: typography.pxToRem(415),
+      height: typography.pxToRem(415),
     },
   },
   title: {
