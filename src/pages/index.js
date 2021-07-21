@@ -6,21 +6,23 @@ import Page from '@/pesayetu/components/Page';
 import formatBlocksForSections from '@/pesayetu/functions/formatBlocksForSections';
 import getPostTypeStaticProps from '@/pesayetu/functions/postTypes/getPostTypeStaticProps';
 
-export default function Home({ blocks, ...props }) {
+export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
-      <Hero {...blocks?.hero} />
+      <Hero {...blocks?.hero} boundary={boundary} />
     </Page>
   );
 }
 
 Home.propTypes = {
+  boundary: PropTypes.shape({}),
   blocks: PropTypes.shape({
     hero: PropTypes.shape({}),
   }),
 };
 
 Home.defaultProps = {
+  boundary: undefined,
   blocks: undefined,
 };
 
@@ -37,11 +39,17 @@ export async function getStaticProps() {
     };
   }
 
+  const res = await fetch(
+    `https://v2.hurumap.org/api/v1/all_details/profile/3/geography/KE/?format=json`
+  );
+  const { children } = await res.json();
+
   const blocks = formatBlocksForSections(props?.post?.blocks);
   return {
     props: {
       ...props,
       blocks,
+      boundary: children?.county,
     },
     revalidate,
   };

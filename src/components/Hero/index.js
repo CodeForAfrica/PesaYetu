@@ -1,6 +1,7 @@
 import { RichTypography } from '@commons-ui/core';
 import { Grid, Hidden, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -8,6 +9,8 @@ import React from 'react';
 import heroBg from '@/pesayetu/assets/images/hero.png';
 import Search from '@/pesayetu/components/Search';
 import Section from '@/pesayetu/components/Section';
+
+const Map = dynamic(() => import('./Map'), { ssr: false });
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
@@ -98,7 +101,16 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
             )}
           </Grid>
           <Hidden smDown implementation="css">
-            <Grid item md={5} />
+            <Grid item md={5}>
+              <Map
+                center={[0.3051933453207569, 37.908818734483155]}
+                zoom={5.5}
+                tileLayer={{
+                  url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+                }}
+                {...props}
+              />
+            </Grid>
           </Hidden>
         </Grid>
       </Section>

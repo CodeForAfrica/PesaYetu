@@ -1,7 +1,8 @@
 import React from 'react';
 import { withNextRouter } from 'storybook-addon-next-router';
 
-import HeroMap from '.';
+import Map from '.';
+import 'leaflet/dist/leaflet.css';
 
 export default {
   title: 'Components/HeroMap',
@@ -36,7 +37,7 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => <HeroMap {...args} />;
+const Template = ({ label, ...args }) => <Map {...args} />;
 
 export const Default = Template.bind({});
 
