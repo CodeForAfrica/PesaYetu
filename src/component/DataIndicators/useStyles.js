@@ -14,6 +14,9 @@ const useStyles = makeStyles(({ typography }) => ({
     paddingTop: typography.pxToRem(102),
     paddingBottom: typography.pxToRem(163),
   },
+  image: {
+    width: 'max-content',
+  },
 }));
 
 export default useStyles;
