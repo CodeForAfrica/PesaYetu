@@ -18,26 +18,26 @@ const DataIndicators = (props) => {
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <Typography className={classes.title}>Data Indicators</Typography>
-        <Grid container direction="column">
-          <Grid item>
+        <Grid container className={classes.container}>
+          <Grid item className={classes.item}>
             <Image className={classes.image} src={Group4657} />
-            <Typography>Overview</Typography>
+            <Typography className={classes.text}>Overview</Typography>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.item}>
             <Image className={classes.image} src={Group4656} />
-            <Typography>Revenue</Typography>
+            <Typography className={classes.text}>Revenue</Typography>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.item}>
             <Image className={classes.image} src={Group4646} />
-            <Typography>Development</Typography>
+            <Typography className={classes.text}>Development</Typography>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.item}>
             <Image className={classes.image} src={Group4659} />
-            <Typography>Implementation</Typography>
+            <Typography className={classes.text}>Implementation</Typography>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.item}>
             <Image className={classes.image} src={Group4658} />
-            <Typography>Summary</Typography>
+            <Typography className={classes.text}>Summary</Typography>
           </Grid>
         </Grid>
       </Section>
