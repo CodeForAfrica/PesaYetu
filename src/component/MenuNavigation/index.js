@@ -7,6 +7,12 @@ const useStyles = makeStyles(({ typography }) => ({
   root: {
     padding: `${typography.pxToRem(9.25)} 0`,
   },
+  links: {
+    padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
+  },
+  menuLinks: {
+    padding: `${typography.pxToRem(18)}`,
+  },
 }));
 
 function MenuNavigation({ links, ...props }) {
@@ -22,14 +28,26 @@ function MenuNavigation({ links, ...props }) {
     >
       {links?.map(({ href, label }) => (
         <Grid item key={label}>
-          <Button color="primary" variant="contained" size="large" href={href}>
+          <Button
+            color="primary"
+            variant="contained"
+            size="large"
+            href={href}
+            className={classes.links}
+          >
             {label}
           </Button>
         </Grid>
       ))}
       {allMenulinks[0]?.map(({ href, label }) => (
         <Grid item key={label}>
-          <Button color="default" variant="text" size="large" href={href}>
+          <Button
+            color="default"
+            variant="text"
+            size="large"
+            href={href}
+            className={classes.menuLinks}
+          >
             {label}
           </Button>
         </Grid>
