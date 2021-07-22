@@ -47,16 +47,11 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     backgroundColor: 'transparent',
   },
   dialogActions: {
-    padding: `${typography.pxToRem(32)}`,
     transform: 'matrix(-1, 0, 0, -1, 0, 0, )',
     background: palette.primary.main,
   },
   dialogContent: {
-    padding: `${typography.pxToRem(36)} ${typography.pxToRem(
-      21
-    )} 0 ${typography.pxToRem(27)}`,
     background: palette.primary.main,
-    color: palette.background.default,
   },
   dialogMenu: {
     padding: `${typography.pxToRem(10.35)} 0`,

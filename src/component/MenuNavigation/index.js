@@ -5,9 +5,17 @@ import React from 'react';
 
 import SocialMediaIcons from '@/pesayetu/component/SocialMediaIcons';
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
     margin: `${typography.pxToRem(20)} 0`,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    [breakpoints.up('lg')]: {
+      padding: 0,
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+    },
   },
   links: {
     padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
@@ -24,13 +32,7 @@ function MenuNavigation({ links, children, ...props }) {
   const classes = useStyles(props);
   const allMenulinks = links.map(({ menuLinks }) => menuLinks);
   return (
-    <Grid
-      container
-      direction="row"
-      justifyContent="flex-end"
-      alignItem="center"
-      className={classes.root}
-    >
+    <div className={classes.root}>
       {links?.map(({ href, label }) => (
         <Grid item key={label}>
           <Button
@@ -59,7 +61,7 @@ function MenuNavigation({ links, children, ...props }) {
         </Grid>
       ))}
       <SocialMediaIcons />
-    </Grid>
+    </div>
   );
 }
 
