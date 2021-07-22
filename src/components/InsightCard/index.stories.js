@@ -2,7 +2,7 @@
 import React from "react";
 import { withNextRouter } from "storybook-addon-next-router";
 
-import InsightCard from "@/pesayetu/component/InsightCard";
+import InsightCard from "@/pesayetu/components/InsightCard";
 
 export default {
   title: "Components/InsightCard",

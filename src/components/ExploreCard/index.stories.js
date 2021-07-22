@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
 
-import ExploreCard from "@/pesayetu/component/ExploreCard";
+import ExploreCard from "@/pesayetu/components/ExploreCard";
 import { exploreTools } from "@/pesayetu/config";
 
 export default {

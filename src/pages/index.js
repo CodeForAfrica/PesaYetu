@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import ExploreOtherTools from "@/pesayetu/component/ExploreOtherTools";
-import InsightCard from "@/pesayetu/component/InsightCard";
-import Page from "@/pesayetu/component/Page";
+import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
+import InsightCard from "@/pesayetu/components/InsightCard";
+import Page from "@/pesayetu/components/Page";
 import { exploreTools } from "@/pesayetu/config";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
