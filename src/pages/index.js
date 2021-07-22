@@ -1,14 +1,20 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import ExploreOtherTools from "@/pesayetu/component/ExploreOtherTools";
 import Page from "@/pesayetu/component/Page";
+import { exploreTools } from "@/pesayetu/config";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ ...props }) {
   if (props?.errorMessage) {
     return <div> {props.errorMessage}</div>;
   }
-  return <Page>Pesa yetu homepage template</Page>;
+  return (
+    <Page>
+      <ExploreOtherTools {...exploreTools} />
+    </Page>
+  );
 }
 
 Home.propTypes = {

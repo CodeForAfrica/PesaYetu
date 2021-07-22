@@ -21,15 +21,17 @@ const theme = createTheme({
       light: "#F8A199", // highlight red
     },
     background: {
-      default: "#FFF", // white
+      default: "#FFFFFF", // white
       paper: "#F8F8F8", // light white
+    },
+    grey: {
       dark: "#2A2A2C ", // dark
       main: "#DFDFDF", // darkgrey
       light: "#F0F0F0", // lightgrey
     },
     text: {
       primary: "#333333",
-      secondary: "#212529",
+      secondary: "#FFF",
       hint: "#1C2031",
     },
   },

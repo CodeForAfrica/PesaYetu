@@ -4,6 +4,7 @@ import { DefaultSeo } from "next-seo";
 import PropTypes from "prop-types";
 import React from "react";
 
+import "@/pesayetu/theme/fonts.css";
 import theme from "@/pesayetu/theme";
 import SEO from "next-seo.config";
 
