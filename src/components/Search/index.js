@@ -65,7 +65,7 @@ function Search({ href: hrefProp, onClick: onClickProp, ...props }) {
         size="small"
         className={classes.button}
       >
-        <Image src={searchIcon} />
+        <Image src={searchIcon} layout="fill" />
       </IconButton>
     </>
   );
