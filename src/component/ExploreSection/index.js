@@ -13,7 +13,7 @@ const responsive = {
   desktop: {
     breakpoint: {
       max: 3000,
-      min: 1160,
+      min: 1280,
     },
     items: 3,
   },
@@ -59,7 +59,7 @@ ExploreTools.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
-      image: PropTypes.string,
+      image: PropTypes.objectOf(PropTypes.any),
     })
   ),
 };

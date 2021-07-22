@@ -7,8 +7,8 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0, // mobile
-      md: 608, // tablet
-      lg: 1160, // desktop
+      md: 768, // tablet
+      lg: 1280, // desktop
     },
   },
   palette: {

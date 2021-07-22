@@ -11,11 +11,6 @@ const ExploreCard = ({ item, ...props }) => {
   return (
     <Card className={classes.card}>
       {image && <Image src={image} className={classes.image} />}
-
-      <Typography className={classes.title} variant="h4">
-        {title}
-      </Typography>
-      <Typography className={classes.description}>{description}</Typography>
       <CardContent className={classes.content}>
         <Typography className={classes.title} variant="h4">
           {title}
@@ -30,7 +25,7 @@ ExploreCard.propTypes = {
   item: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.objectOf(PropTypes.any),
   }),
 };
 

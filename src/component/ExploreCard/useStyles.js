@@ -4,12 +4,12 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
   card: {
     minWidth: typography.pxToRem(350),
-    maxHeight: typography.pxToRem(400),
     [breakpoints.up('md')]: {
-      width: typography.pxToRem(296),
+      minWidth: typography.pxToRem(296),
     },
     [breakpoints.up('lg')]: {
       width: typography.pxToRem(356),
+      maxHeight: typography.pxToRem(400),
     },
     '& .MuiCardContent-root:last-child': {
       padding: 0,
@@ -25,10 +25,11 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   title: {
     marginTop: typography.pxToRem(20),
     marginBottom: typography.pxToRem(20),
-    color: 'black',
+    color: '#000',
   },
+
   description: {
-    color: 'black',
+    color: '#000',
   },
 }));
 
