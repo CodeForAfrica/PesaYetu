@@ -18,11 +18,11 @@ const responsive = {
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1280, min: 768 },
+    breakpoint: { max: 1279, min: 768 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 768, min: 0 },
+    breakpoint: { max: 767, min: 0 },
     items: 1,
   },
 };
