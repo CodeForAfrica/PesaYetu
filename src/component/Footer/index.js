@@ -64,41 +64,38 @@ function Footer({
               }}
             />
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            container
-            direction="column"
-            justifyContent="flex-end"
-            classes={{
-              root: classes.allLinks,
-            }}
-          >
-            <Grid item xs={12} lg={4}>
-              <QuickLinks
-                linkComponent={Link}
-                {...quickLinksProp}
-                classes={{
-                  root: classes.quickLinkRoot,
-                  list: classes.quickList,
-                  link: classes.quickLink,
-                  title: classes.quickLinksTitle,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} lg={4}>
-              <StayInTouch
-                title={title}
-                socialMedia={socialMedia}
-                classes={{
-                  root: classes.stayInTouch,
-                  icon: classes.stayInTouchIcon,
-                  links: classes.stayInTouchLinks,
-                  text: classes.stayInTouchText,
-                  link: classes.stayInTouchLink,
-                }}
-              />
+          <Grid item xs={12} lg={4}>
+            <Grid
+              container
+              classes={{
+                root: classes.allLinks,
+              }}
+            >
+              <Grid item xs={12} lg={6}>
+                <QuickLinks
+                  linkComponent={Link}
+                  {...quickLinksProp}
+                  classes={{
+                    root: classes.quickLinkRoot,
+                    list: classes.quickList,
+                    link: classes.quickLink,
+                    title: classes.quickLinksTitle,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} lg={6}>
+                <StayInTouch
+                  title={title}
+                  socialMedia={socialMedia}
+                  classes={{
+                    root: classes.stayInTouch,
+                    icon: classes.stayInTouchIcon,
+                    links: classes.stayInTouchLinks,
+                    text: classes.stayInTouchText,
+                    link: classes.stayInTouchLink,
+                  }}
+                />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

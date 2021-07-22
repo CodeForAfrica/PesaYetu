@@ -74,7 +74,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     padding: `${typography.pxToRem(32)} 0 `,
     [breakpoints.up("lg")]: {
       textAlign: "inherit",
-      padding: `${typography.pxToRem(4)} 0 `,
+      padding: 0,
     },
   },
   quickList: {
