@@ -14,8 +14,8 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import Link from "@/pesayetu/component/Link";
-import Section from "@/pesayetu/component/Section";
+import Link from "@/pesayetu/components/Link";
+import Section from "@/pesayetu/components/Section";
 
 function Footer({
   title,
