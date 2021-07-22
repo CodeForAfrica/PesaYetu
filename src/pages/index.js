@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import ExploreSection from '@/pesayetu/components/ExploreSection';
 import Hero from '@/pesayetu/components/Hero';
 import Page from '@/pesayetu/components/Page';
 import formatBlocksForSections from '@/pesayetu/functions/formatBlocksForSections';
@@ -10,6 +11,7 @@ export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
+      <ExploreSection {...blocks?.exploreTools} />
     </Page>
   );
 }
@@ -18,6 +20,7 @@ Home.propTypes = {
   boundary: PropTypes.shape({}),
   blocks: PropTypes.shape({
     hero: PropTypes.shape({}),
+    exploreTools: PropTypes.shape({}),
   }),
 };
 
@@ -40,7 +43,7 @@ export async function getStaticProps() {
   }
 
   const res = await fetch(
-    `https://v2.hurumap.org/api/v1/all_details/profile/3/geography/KE/?format=json`
+    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
   );
   const { children } = await res.json();
 

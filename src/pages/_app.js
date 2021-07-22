@@ -7,6 +7,8 @@ import React from 'react';
 import theme from '@/pesayetu/theme';
 import SEO from 'next-seo.config';
 
+import '@/pesayetu/theme/fonts.css';
+
 export default function MyApp(props) {
   const { Component, pageProps } = props;
 

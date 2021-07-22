@@ -1,6 +1,9 @@
 import { NextSeo } from 'next-seo';
 import PropTypes from 'prop-types';
 import React from 'react';
+
+import Footer from '@/pesayetu/components/Footer';
+import { footerArgs } from '@/pesayetu/config';
 /**
  * Base page that can be used to build all other pages.
  */
@@ -10,6 +13,7 @@ function BasePage({ children, ...props }) {
     <>
       <NextSeo {...props} />
       {children}
+      <Footer {...footerArgs} />
     </>
   );
 }
