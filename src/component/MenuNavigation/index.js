@@ -11,10 +11,17 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    '& > div:nth-of-type(4)': {
+      // marginTop: '2rem',
+    },
     [breakpoints.up('lg')]: {
       padding: 0,
       flexDirection: 'row',
       justifyContent: 'flex-end',
+      '& > div:nth-of-type(4)': {
+        // marginTop: '2rem',
+        order: 0,
+      },
     },
   },
   links: {

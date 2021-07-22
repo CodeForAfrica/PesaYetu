@@ -6,7 +6,6 @@ import {
   DialogActions,
   IconButton,
   SvgIcon,
-  Typography,
   DialogContent,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -193,9 +192,7 @@ function MobileNavigation({ logoProps, menuProps, ...props }) {
             </Grid>
           </DialogActions>
           <DialogContent className={classes.dialogContent}>
-            <MenuNavigation links={menuProps}>
-              <Typography color="secondary">Search goes here</Typography>
-            </MenuNavigation>
+            <MenuNavigation links={menuProps}>example is here</MenuNavigation>
           </DialogContent>
         </Dialog>
       </div>
