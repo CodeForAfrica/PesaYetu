@@ -1,10 +1,10 @@
-import formatBlockData from '@/pesayetu/functions/formatBlockData';
-import getMenus from '@/pesayetu/functions/menus/getMenus';
-import formatDefaultSeoData from '@/pesayetu/functions/seo/formatDefaultSeoData';
+import formatBlockData from "@/pesayetu/functions/formatBlockData";
+import getMenus from "@/pesayetu/functions/menus/getMenus";
+import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import {
   createWpApolloClient,
   initializeWpApollo,
-} from '@/pesayetu/lib/wordpress/connector';
+} from "@/pesayetu/lib/wordpress/connector";
 
 /**
  * Retrieve single post.
@@ -78,7 +78,7 @@ export default async function processPostTypeQuery(
         slug: id,
       };
 
-      if (preview === 'basic' || !post || !post?.blocksJSON) {
+      if (preview === "basic" || !post || !post?.blocksJSON) {
         return post;
       }
 

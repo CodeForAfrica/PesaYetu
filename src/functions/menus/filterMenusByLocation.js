@@ -1,4 +1,4 @@
-import formatHeirarchialMenu from './formatHeirarchialMenu';
+import formatHeirarchialMenu from "./formatHeirarchialMenu";
 
 /**
  * Filter menus array by menu location.
@@ -13,7 +13,7 @@ export default function filterMenusByLocation(menus, locations) {
   // Loop each menu location.
   locations.forEach((location) => {
     // Convert dashes to underscores.
-    const locationName = location.replace(/-/g, '_');
+    const locationName = location.replace(/-/g, "_");
 
     // Filter menus array by location and assign to new object.
     const wpmenu = menus.filter((menu) => {

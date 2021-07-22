@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import ExploreSection from '@/pesayetu/component/ExploreSection';
-import Page from '@/pesayetu/component/Page';
-import { exploreTools } from '@/pesayetu/config';
-import getPostTypeStaticProps from '@/pesayetu/functions/postTypes/getPostTypeStaticProps';
+import ExploreOtherTools from "@/pesayetu/component/ExploreOtherTools";
+import Page from "@/pesayetu/component/Page";
+import { exploreTools } from "@/pesayetu/config";
+import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ ...props }) {
   if (props?.errorMessage) {
@@ -12,7 +12,7 @@ export default function Home({ ...props }) {
   }
   return (
     <Page>
-      <ExploreSection {...exploreTools} />
+      <ExploreOtherTools {...exploreTools} />
     </Page>
   );
 }
@@ -26,6 +26,6 @@ Home.defaultProps = {
 };
 
 export async function getStaticProps() {
-  const postType = 'page';
-  return getPostTypeStaticProps({ slug: '/' }, postType);
+  const postType = "page";
+  return getPostTypeStaticProps({ slug: "/" }, postType);
 }

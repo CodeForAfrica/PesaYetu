@@ -1,7 +1,7 @@
-import isHierarchicalPostType from '@/pesayetu/functions/postTypes/isHierarchicalPostType';
-import processPostTypeQuery from '@/pesayetu/functions/postTypes/processPostTypeQuery';
-import queryPageById from '@/pesayetu/lib/wordpress/pages/queryPageById';
-import queryPostById from '@/pesayetu/lib/wordpress/posts/queryPostById';
+import isHierarchicalPostType from "@/pesayetu/functions/postTypes/isHierarchicalPostType";
+import processPostTypeQuery from "@/pesayetu/functions/postTypes/processPostTypeQuery";
+import queryPageById from "@/pesayetu/lib/wordpress/pages/queryPageById";
+import queryPostById from "@/pesayetu/lib/wordpress/posts/queryPostById";
 
 /**
  * Retrieve single post by specified identifier.
@@ -15,7 +15,7 @@ import queryPostById from '@/pesayetu/lib/wordpress/posts/queryPostById';
 export default async function getPostTypeById(
   postType,
   id,
-  idType = 'SLUG',
+  idType = "SLUG",
   preview = null
 ) {
   // Define single post query based on post type.
@@ -28,7 +28,7 @@ export default async function getPostTypeById(
   const isHierarchical = isHierarchicalPostType(postType);
 
   // Fix default ID type for hierarchical posts.
-  const cleanedIdType = !isHierarchical || idType !== 'SLUG' ? idType : 'URI';
+  const cleanedIdType = !isHierarchical || idType !== "SLUG" ? idType : "URI";
 
   // Retrieve post type query.
   const query = postTypeQuery?.[postType] ?? null;

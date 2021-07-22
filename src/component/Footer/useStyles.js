@@ -1,123 +1,125 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
     background: palette.grey.dark,
-    height: 'auto',
+    height: "auto",
     padding: `${typography.pxToRem(80)} 0`,
-    [breakpoints.up('md')]: {
+    [breakpoints.up("md")]: {
       paddingTop: `${typography.pxToRem(58)}`,
       paddingBottom: `${typography.pxToRem(82)}`,
     },
   },
   section: {},
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  text: {
-    textAlign: 'center',
-    [breakpoints.up('lg')]: {
-      textAlign: 'left',
+  logoButton: {
+    margin: "0 auto",
+    padding: 0,
+    [breakpoints.up("lg")]: {
+      margin: 0,
     },
   },
   allLinks: {
-    margin: '0 auto',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    margin: "0 auto",
+    flexDirection: "row",
+    justifyContent: "center",
     marginTop: typography.pxToRem(44.19),
-    [breakpoints.up('md')]: {
-      marginTop: typography.pxToRem(88.39),
-    },
-    [breakpoints.up('lg')]: {
-      marginTop: typography.pxToRem(176),
-    },
   },
   stayInTouch: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     letterspacing: typography.pxToRem(0.7),
-    [breakpoints.up('lg')]: {
-      alignItems: 'flex-start',
+    [breakpoints.up("lg")]: {
+      alignItems: "flex-start",
     },
   },
+  stayInTouchIcon: {
+    height: "auto",
+    objectFit: "none",
+    display: "flex",
+    width: "auto",
+  },
   stayInTouchText: {
-    color: palette.background.default,
+    color: palette.text.secondary,
     fontSize: typography.subtitle2.fontSize,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     padding: `${typography.pxToRem(10)} ${typography.pxToRem(8)}`,
-    [breakpoints.up('lg')]: {
+    [breakpoints.up("lg")]: {
       padding: 0,
     },
   },
   stayInTouchLink: {
-    padding: `0 ${typography.pxToRem(12)}`,
+    padding: 0,
   },
   stayInTouchLinks: {
-    marginTop: `${typography.pxToRem(24)}`,
-    justifyContent: 'center',
-    '& > a': {
-      borderRight: 'none',
+    justifyContent: "center",
+    marginLeft: typography.pxToRem(-14), // (48 - 20) / 2
+    marginTop: typography.pxToRem(24),
+    "& > a": {
+      height: typography.pxToRem(48),
+      width: typography.pxToRem(48),
+      borderRight: "none",
+      display: "flex",
+      justifyContent: "center",
     },
   },
   quickLinkRoot: {
-    textAlign: 'center',
+    textAlign: "center",
     padding: `${typography.pxToRem(32)} 0 `,
-    [breakpoints.up('lg')]: {
-      textAlign: 'inherit',
-      padding: `${typography.pxToRem(4)} 0 `,
+    [breakpoints.up("lg")]: {
+      textAlign: "inherit",
+      padding: 0,
     },
   },
   quickList: {
-    listStyle: 'none',
-    color: palette.text.primary,
+    listStyle: "none",
+    color: palette.text.secondary,
     padding: 0,
     letterspacing: typography.pxToRem(0.7),
-    '& > li': {
+    "& > li": {
       marginTop: typography.pxToRem(16),
     },
   },
   quickLink: {
     fontSize: typography.subtitle1.fontSize,
-    color: palette.text.primary,
-    fontWeight: 'normal',
-    '&:hover': {
+    color: palette.text.secondary,
+    fontWeight: "normal",
+    "&:hover": {
       color: palette.primary.light,
     },
   },
   quickLinksTitle: {
-    color: palette.text.primary,
+    color: palette.text.secondary,
     fontSize: typography.subtitle2.fontSize,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   description: {
-    color: palette.text.primary,
-    padding: `${typography.pxToRem(32)} 0 `,
+    color: palette.text.secondary,
+    padding: `${typography.pxToRem(32)} 0`,
     fontSize: typography.subtitle1.fontSize,
-    textAlign: 'center',
-    [breakpoints.up('lg')]: {
-      textAlign: 'left',
+    textAlign: "center",
+    [breakpoints.up("lg")]: {
+      textAlign: "left",
     },
   },
   copyright: {
     margin: 0,
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    [breakpoints.up('lg')]: {
-      justifyContent: 'flex-start',
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "center",
+    [breakpoints.up("lg")]: {
+      justifyContent: "flex-start",
     },
-    '& > a': {
+    "& > a": {
       marginTop: typography.pxToRem(3),
     },
   },
   copyrightText: {
-    color: palette.text.primary,
+    color: palette.text.secondary,
     order: 5,
     padding: `0 ${typography.pxToRem(5)}`,
-    [breakpoints.up('lg')]: {
+    [breakpoints.up("lg")]: {
       padding: `0 ${typography.pxToRem(10)}`,
     },
   },

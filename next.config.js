@@ -1,11 +1,12 @@
 module.exports = {
+  reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
       use: [
-        '@svgr/webpack',
+        "@svgr/webpack",
         {
-          loader: 'svg-url-loader',
+          loader: "svg-url-loader",
           options: {},
         },
       ],

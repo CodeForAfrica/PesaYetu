@@ -1,5 +1,5 @@
-import { initializeWpApollo } from '@/pesayetu/lib/wordpress/connector';
-import queryMediaAttributes from '@/pesayetu/lib/wordpress/media/queryMediaAttributes';
+import { initializeWpApollo } from "@/pesayetu/lib/wordpress/connector";
+import queryMediaAttributes from "@/pesayetu/lib/wordpress/media/queryMediaAttributes";
 
 /**
  * Retrieve media details by ID.
