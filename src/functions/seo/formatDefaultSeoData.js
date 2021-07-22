@@ -9,32 +9,32 @@ export default function formatDefaultSeoData(seoData) {
   const siteSeo = seoData?.siteSeo;
 
   return {
-    title: homepage?.title ?? '',
-    description: homepage?.metaDesc ?? '',
-    noIndex: homepage?.metaRobotsNoindex !== 'index',
-    noFollow: homepage?.metaRobotsNofollow !== 'follow',
+    title: homepage?.title ?? "",
+    description: homepage?.metaDesc ?? "",
+    noIndex: homepage?.metaRobotsNoindex !== "index",
+    noFollow: homepage?.metaRobotsNofollow !== "follow",
     openGraph: {
-      type: 'website',
-      locale: 'en_US',
-      url: siteSeo?.schema?.siteUrl ?? '',
-      siteName: siteSeo?.schema?.siteName ?? '',
+      type: "website",
+      locale: "en_US",
+      url: siteSeo?.schema?.siteUrl ?? "",
+      siteName: siteSeo?.schema?.siteName ?? "",
       images: [
         {
-          url: siteSeo?.openGraph?.defaultImage?.sourceUrl ?? '',
+          url: siteSeo?.openGraph?.defaultImage?.sourceUrl ?? "",
         },
       ],
     },
     social: {
-      facebook: siteSeo?.social?.facebook?.url ?? '',
-      instagram: siteSeo?.social?.instagram?.url ?? '',
-      linkedIn: siteSeo?.social?.linkedIn?.url ?? '',
-      mySpace: siteSeo?.social?.mySpace?.url ?? '',
-      pinterest: siteSeo?.social?.pinterest?.url ?? '',
+      facebook: siteSeo?.social?.facebook?.url ?? "",
+      instagram: siteSeo?.social?.instagram?.url ?? "",
+      linkedIn: siteSeo?.social?.linkedIn?.url ?? "",
+      mySpace: siteSeo?.social?.mySpace?.url ?? "",
+      pinterest: siteSeo?.social?.pinterest?.url ?? "",
       twitter: siteSeo?.social?.twitter?.username
         ? `https://twitter.com/${siteSeo.social.twitter.username}`
-        : '',
-      wikipedia: siteSeo?.social?.wikipedia?.url ?? '',
-      youTube: siteSeo?.social?.youTube?.url ?? '',
+        : "",
+      wikipedia: siteSeo?.social?.wikipedia?.url ?? "",
+      youTube: siteSeo?.social?.youTube?.url ?? "",
     },
   };
 }

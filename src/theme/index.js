@@ -1,5 +1,5 @@
-import { createTheme } from '@material-ui/core/styles';
-import { deepmerge } from '@material-ui/utils';
+import { createTheme } from "@material-ui/core/styles";
+import { deepmerge } from "@material-ui/utils";
 
 const FONT_FAMILY_TEXT = '"Poppins", "sans-serif"';
 
@@ -13,27 +13,26 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#0067A3', // main blue
-      light: '#7DB2D3', // hightlight blue
+      main: "#0067A3", // main blue
+      light: "#7DB2D3", // hightlight blue
     },
     secondary: {
-      main: '#EE4538', // main red
-      light: '#F8A199', // highlight red
+      main: "#EE4538", // main red
+      light: "#F8A199", // highlight red
     },
     background: {
-      default: '#F0F0F0', // white
-      paper: '#F8F8F8', // light white
+      default: "#FFFFFF", // white
+      paper: "#F8F8F8", // light white
     },
     grey: {
-      dark: '#2A2A2C ', // dark
-      main: '#DFDFDF', // darkgrey
-      light: '#F0F0F0', // lightgrey
+      dark: "#2A2A2C ", // dark
+      main: "#DFDFDF", // darkgrey
+      light: "#F0F0F0", // lightgrey
     },
     text: {
-      primary: '#FFF',
-      secondary: '#333333',
-      default: '#212529',
-      hint: '#1C2031',
+      primary: "#333333",
+      secondary: "#FFF",
+      hint: "#1C2031",
     },
   },
   typography: {
@@ -66,7 +65,7 @@ deepmerge(
     h1: {
       fontSize: pxToRem(50),
       lineHeight: 66 / 50,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(50),
         lineHeight: 66 / 50, // font 50 H0
       },
@@ -74,7 +73,7 @@ deepmerge(
     h2: {
       fontSize: pxToRem(38),
       lineHeight: 48 / 38,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(48),
         lineHeight: 58 / 48, // font 48 H1
       },
@@ -82,7 +81,7 @@ deepmerge(
     h3: {
       fontSize: pxToRem(24),
       lineHeight: 40 / 24,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(30),
         lineHeight: 48 / 30, // font 30 H2
       },
@@ -90,7 +89,7 @@ deepmerge(
     h4: {
       fontSize: pxToRem(20),
       lineHeight: 30 / 20,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(20),
         lineHeight: 30 / 20, // font 20 H4
       },
@@ -98,7 +97,7 @@ deepmerge(
     h5: {
       fontSize: pxToRem(18),
       lineHeight: 27 / 18,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(18),
         lineHeight: 27 / 18, // font 18 H5
       },
@@ -106,7 +105,7 @@ deepmerge(
     h6: {
       fontSize: pxToRem(16),
       lineHeight: 30 / 16,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(16),
         lineHeight: 30 / 16, // font 18 body1
       },
@@ -114,7 +113,7 @@ deepmerge(
     body1: {
       fontSize: pxToRem(16),
       lineHeight: 25 / 16,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(16),
         lineHeight: 25 / 16, // font 18 body1
       },
@@ -122,7 +121,7 @@ deepmerge(
     body2: {
       fontSize: pxToRem(16),
       lineHeight: 24 / 16,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(16),
         lineHeight: 24 / 16, // font body2
       },
@@ -130,7 +129,7 @@ deepmerge(
     subtitle1: {
       fontSize: pxToRem(14),
       lineHeight: 24 / 14,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(14),
         lineHeight: 24 / 14, // font 14 subtitle1
       },
@@ -138,7 +137,7 @@ deepmerge(
     subtitle2: {
       fontSize: pxToRem(14),
       lineHeight: 18 / 14,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(14),
         lineHeight: 18 / 14, // font 14 subtitle2
       },
@@ -146,7 +145,7 @@ deepmerge(
     caption: {
       fontSize: pxToRem(12),
       lineHeight: 18 / 12,
-      [breakpoints.up('lg')]: {
+      [breakpoints.up("lg")]: {
         fontSize: pxToRem(12),
         lineHeight: 18 / 12, // font 12 caption
       },
@@ -165,18 +164,18 @@ deepmerge(
       containedPrimary: {
         color: palette.primary.main,
         backgroundColor: palette.background.main,
-        boxShadow: 'none',
+        boxShadow: "none",
         borderRadius: pxToRem(50),
-        letterspacing: '1.6px',
-        textAlign: 'center',
-        border: '2px solid #0067A3',
-        textTransform: 'uppercase',
-        transition: 'none !important',
-        '&:hover': {
+        letterspacing: "1.6px",
+        textAlign: "center",
+        border: "2px solid #0067A3",
+        textTransform: "uppercase",
+        transition: "none !important",
+        "&:hover": {
           color: palette.background.main,
-          boxShadow: 'none',
+          boxShadow: "none",
           backgroundColor: palette.primary.main,
-          border: '2px solid transparent',
+          border: "2px solid transparent",
           borderRadius: pxToRem(50),
         },
       },

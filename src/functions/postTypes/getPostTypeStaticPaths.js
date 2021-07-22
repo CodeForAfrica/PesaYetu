@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-import isHierarchicalPostType from '@/pesayetu/functions/postTypes/isHierarchicalPostType';
-import isValidPostType from '@/pesayetu/functions/postTypes/isValidPostType';
-import { postTypes } from '@/pesayetu/lib/wordpress/_config/postTypes';
-import { initializeWpApollo } from '@/pesayetu/lib/wordpress/connector';
+import isHierarchicalPostType from "@/pesayetu/functions/postTypes/isHierarchicalPostType";
+import isValidPostType from "@/pesayetu/functions/postTypes/isValidPostType";
+import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
+import { initializeWpApollo } from "@/pesayetu/lib/wordpress/connector";
 
 /**
  * Retrieve static paths by post type.
@@ -23,7 +23,7 @@ export default async function getPostTypeStaticPaths(postType) {
   const isHierarchical = isHierarchicalPostType(postType);
 
   // Determine path field based on hierarchy.
-  const pathField = isHierarchical ? 'uri' : 'slug';
+  const pathField = isHierarchical ? "uri" : "slug";
 
   // Construct query based on post type.
   const query = gql`
@@ -50,7 +50,7 @@ export default async function getPostTypeStaticPaths(postType) {
     : posts.data[pluralName].edges
         .map((post) => {
           // Trim leading and trailing slashes then split into array on inner slashes.
-          const slug = post.node[pathField].replace(/^\/|\/$/g, '').split('/');
+          const slug = post.node[pathField].replace(/^\/|\/$/g, "").split("/");
 
           return {
             params: {
@@ -59,10 +59,10 @@ export default async function getPostTypeStaticPaths(postType) {
           };
         })
         // Filter out certain posts with custom routes (e.g., homepage).
-        .filter((post) => !!post.params.slug.join('/').length);
+        .filter((post) => !!post.params.slug.join("/").length);
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 }

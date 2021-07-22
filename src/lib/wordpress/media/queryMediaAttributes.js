@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 const queryMediaAttributes = gql`
   query GET_MEDIA_ATTS($id: ID!) {

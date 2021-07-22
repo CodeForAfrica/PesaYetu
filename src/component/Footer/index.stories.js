@@ -1,49 +1,47 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React from 'react';
-import { withNextRouter } from 'storybook-addon-next-router';
+import React from "react";
 
-import Footer from '.';
+import Footer from ".";
 
-import { footerArgs } from '@/pesayetu/config';
+import { footerArgs } from "@/pesayetu/config";
 
 export default {
-  title: 'Components/Footer',
-  decorators: [withNextRouter],
+  title: "Sections/Footer",
   argTypes: {
     title: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     socialMedia: {
       control: {
-        type: 'object',
+        type: "object",
       },
     },
     quickLinks: {
       control: {
-        type: 'array',
+        type: "array",
       },
     },
     description: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     aboutVariant: {
       control: {
-        type: 'select',
+        type: "select",
       },
-      options: ['subtitle1', 'body1'],
+      options: ["subtitle1", "body1"],
     },
     copyrightProps: {
       control: {
-        type: 'object',
+        type: "object",
       },
     },
     logoProps: {
       control: {
-        type: 'object',
+        type: "object",
       },
     },
   },
@@ -52,6 +50,12 @@ export default {
 const Template = ({ ...args }) => <Footer {...args} />;
 
 export const Default = Template.bind({});
+
+Default.parameters = {
+  nextRouter: {
+    pathname: "/?path=/story/sections-footer--default",
+  },
+};
 
 Default.args = {
   ...footerArgs,
