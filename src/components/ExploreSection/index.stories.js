@@ -6,7 +6,7 @@ import ExploreSection from '@/pesayetu/components/ExploreSection';
 import { exploreTools } from '@/pesayetu/config';
 
 export default {
-  title: 'Section/ExploreSection',
+  title: 'Sections/ExploreSection',
   decorators: [withNextRouter],
   argTypes: {},
 };
