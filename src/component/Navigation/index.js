@@ -37,7 +37,7 @@ function Navigation({ ...props }) {
           />
         </Hidden>
         <Hidden lgUp implementation="css">
-          <MobileNavigation />
+          <MobileNavigation {...props} />
         </Hidden>
       </Toolbar>
     </AppBar>
