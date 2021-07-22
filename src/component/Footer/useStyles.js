@@ -11,9 +11,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   section: {},
-  footer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  logoButton: {
+    margin: "0 auto",
+    padding: 0,
+    [breakpoints.up("lg")]: {
+      margin: 0,
+    },
   },
   text: {
     textAlign: "center",
@@ -26,12 +29,6 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     flexDirection: "row",
     justifyContent: "center",
     marginTop: typography.pxToRem(44.19),
-    [breakpoints.up("md")]: {
-      marginTop: typography.pxToRem(88.39),
-    },
-    [breakpoints.up("lg")]: {
-      marginTop: typography.pxToRem(176),
-    },
   },
   stayInTouch: {
     display: "flex",
@@ -42,8 +39,14 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       alignItems: "flex-start",
     },
   },
+  stayInTouchIcon: {
+    height: "auto",
+    objectFit: "none",
+    display: "flex",
+    width: "auto",
+  },
   stayInTouchText: {
-    color: palette.background.default,
+    color: palette.text.secondary,
     fontSize: typography.subtitle2.fontSize,
     fontWeight: "bold",
     padding: `${typography.pxToRem(10)} ${typography.pxToRem(8)}`,
@@ -52,13 +55,18 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   stayInTouchLink: {
-    padding: `0 ${typography.pxToRem(12)}`,
+    padding: 0,
   },
   stayInTouchLinks: {
-    marginTop: `${typography.pxToRem(24)}`,
     justifyContent: "center",
+    marginLeft: typography.pxToRem(-14), // (48 - 20) / 2
+    marginTop: typography.pxToRem(24),
     "& > a": {
+      height: typography.pxToRem(48),
+      width: typography.pxToRem(48),
       borderRight: "none",
+      display: "flex",
+      justifyContent: "center",
     },
   },
   quickLinkRoot: {
@@ -71,7 +79,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   quickList: {
     listStyle: "none",
-    color: palette.text.primary,
+    color: palette.text.secondary,
     padding: 0,
     letterspacing: typography.pxToRem(0.7),
     "& > li": {
@@ -80,20 +88,20 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   quickLink: {
     fontSize: typography.subtitle1.fontSize,
-    color: palette.text.primary,
+    color: palette.text.secondary,
     fontWeight: "normal",
     "&:hover": {
       color: palette.primary.light,
     },
   },
   quickLinksTitle: {
-    color: palette.text.primary,
+    color: palette.text.secondary,
     fontSize: typography.subtitle2.fontSize,
     fontWeight: "bold",
   },
   description: {
-    color: palette.text.primary,
-    padding: `${typography.pxToRem(32)} 0 `,
+    color: palette.text.secondary,
+    padding: `${typography.pxToRem(32)} 0`,
     fontSize: typography.subtitle1.fontSize,
     textAlign: "center",
     [breakpoints.up("lg")]: {
@@ -114,7 +122,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   copyrightText: {
-    color: palette.text.primary,
+    color: palette.text.secondary,
     order: 5,
     padding: `0 ${typography.pxToRem(5)}`,
     [breakpoints.up("lg")]: {

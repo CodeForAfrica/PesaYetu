@@ -1,18 +1,20 @@
 /* eslint-disable react/default-props-match-prop-types */
 
 import {
+  A,
   StayInTouch,
   QuickLinks,
   RichTypography,
   LogoButton,
   Copyright,
 } from "@commons-ui/core";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
+import Link from "@/pesayetu/component/Link";
 import Section from "@/pesayetu/component/Section";
 
 function Footer({
@@ -35,20 +37,19 @@ function Footer({
           root: classes.section,
         }}
       >
-        <Grid
-          container
-          direction="column"
-          justifyContent="space-between"
-          className={classes.footer}
-        >
-          <Grid item xs={12} lg={6}>
+        <Grid container direction="row" justifyContent="space-between">
+          <Grid item xs={12} container>
             <LogoButton
+              component={A}
               href={logoHref}
               {...logoImg}
               classes={{
+                root: classes.logoButton,
                 text: classes.text,
               }}
             />
+          </Grid>
+          <Grid item xs={12} lg={6}>
             <RichTypography
               variant={aboutVariant}
               className={classes.description}
@@ -76,7 +77,7 @@ function Footer({
           >
             <Grid item xs={12} lg={4}>
               <QuickLinks
-                linkComponent={Typography}
+                linkComponent={Link}
                 {...quickLinksProp}
                 classes={{
                   root: classes.quickLinkRoot,
