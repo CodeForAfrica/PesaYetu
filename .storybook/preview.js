@@ -16,7 +16,7 @@ const VIEWPORTS = {
     name: "Mobile",
     styles: {
       height: size(760),
-      width: size(360),
+      width: size(390),
     },
     type: "mobile",
   },
