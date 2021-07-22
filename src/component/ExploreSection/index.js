@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 
-import 'react-multi-carousel/lib/styles.css';
-
 import useStyles from './useStyles';
 
 import ExploreCard from '@/pesayetu/component/ExploreCard';
 import Section from '@/pesayetu/component/Section';
+import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
   desktop: {
