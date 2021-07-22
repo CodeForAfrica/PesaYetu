@@ -80,18 +80,31 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
+      href: {
+        link: "www.test.com",
+        text: "Read More",
+      },
     },
     {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
+      href: {
+        link: "www.test.com",
+        text: "Read More",
+      },
     },
+
     {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
+      href: {
+        link: "www.test.com",
+        text: "Read More",
+      },
     },
   ],
 };
@@ -104,40 +117,24 @@ export const exploreTools = {
       description:
         "The Promise Tracker is a platform citizens can use to track promises made by governors, institutions and political parties in their manifestos during campaigns.",
       image: Group3973,
-      href: {
-        link: "www.test.com",
-        text: "Read More",
-      },
     },
     {
       title: "Pesa Check",
       description:
         "PesaCheck is the largest fact-checking organisation in Africa, working in 12 countries and providing up to date fact-checks in four languages.",
       image: Group4619,
-      href: {
-        link: "www.test.com",
-        text: "Read More",
-      },
     },
     {
       title: "Tax Clock",
       description:
         "TaxClock shows how public budget data can be used to help citizens better understand how governments spend their tax.",
       image: Group3964,
-      href: {
-        link: "www.test.com",
-        text: "Read More",
-      },
     },
     {
       title: "DebunkBot",
       description:
         "DebunkBot was created to fight the spread of misinformation on social media by responding to tweets sharing questionable links.",
       image: Group3964,
-      href: {
-        link: "www.test.com",
-        text: "Read More",
-      },
     },
   ],
 };

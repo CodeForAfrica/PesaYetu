@@ -1,14 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
 
-import InsightCard from "@/pesayetu/components/InsightCard";
+import InsightsData from "@/pesayetu/components/InsightsData";
 
 export default {
-  title: "Components/InsightCard",
+  title: "Sections/InsightsData",
   argTypes: {},
 };
 
-const Template = () => <InsightCard />;
+const Template = () => <InsightsData />;
 
 export const Default = Template.bind({});
 

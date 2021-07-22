@@ -13,11 +13,22 @@ const useStyles = makeStyles(({ typography }) => ({
   cardTitle: {
     margin: `${typography.pxToRem(20)} 0`,
   },
+  cardDescription: {
+    marginBottom: typography.pxToRem(20),
+  },
   link: {
-    marginTop: typography.pxToRem(20),
+    textDecoration: "underline",
+  },
+  linkText: {
+    fontWeight: "bold",
   },
   image: {
     objectFit: "contain",
+  },
+  cardMedia: {
+    position: "relative",
+    height: typography.pxToRem(216),
+    width: typography.pxToRem(350),
   },
 }));
 

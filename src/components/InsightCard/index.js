@@ -1,30 +1,53 @@
 import { Card, CardContent, Typography } from "@material-ui/core";
 import Image from "next/image";
+import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-import CardImg from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
+import Link from "@/pesayetu/components/Link";
 
-const InsightCard = (props) => {
+const InsightCard = ({ title, description, image, href, ...props }) => {
+  const { link, text } = href;
   const classes = useStyles(props);
   return (
     <Card className={classes.card}>
-      <div>
-        <Image src={CardImg} layout="fill" className={classes.image} />
+      <div className={classes.cardMedia}>
+        <Image src={image} layout="fill" className={classes.image} />
       </div>
       <CardContent className={classes.content}>
         <Typography variant="h4" className={classes.cardTitle}>
-          Dolor sit amet ipsum dolor sit amet
+          {title}
         </Typography>
-        <Typography>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus
-          etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est
-          penatibus.
+        <Typography className={classes.cardDescription}>
+          {description}
         </Typography>
+        <Link className={classes.link} href={link}>
+          <Typography className={classes.linkText}>{text}</Typography>
+        </Link>
       </CardContent>
     </Card>
   );
+};
+
+InsightCard.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  href: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.objectOf(PropTypes.any),
+    })
+  ),
+};
+
+InsightCard.defaultProps = {
+  title: undefined,
+  description: undefined,
+  image: undefined,
+  href: undefined,
 };
 
 export default InsightCard;
