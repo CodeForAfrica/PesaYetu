@@ -6,9 +6,12 @@ import facebook from '@/pesayetu/assets/footer-social-fb.svg';
 import instagram from '@/pesayetu/assets/footer-social-ig.svg';
 import linkedin from '@/pesayetu/assets/footer-social-in.svg';
 import twitter from '@/pesayetu/assets/footer-social-tw.svg';
+import unsplashOne from '@/pesayetu/assets/images/adomas-aleno-unsplash.png';
 import Group3964 from '@/pesayetu/assets/images/Group 3964@2x.png';
 import Group3973 from '@/pesayetu/assets/images/Group 3973@2x.png';
 import Group4619 from '@/pesayetu/assets/images/Group 4619@2x.png';
+import unsplashTwo from '@/pesayetu/assets/images/josh-sorenson-unsplash.png';
+import unsplashThree from '@/pesayetu/assets/images/marita-kavelashvili-unsplash.png';
 
 const CFA = {
   image: {
@@ -67,6 +70,31 @@ const socialMedia = [
     },
   },
 ];
+
+export const insightData = {
+  title: 'Stories',
+  subTitle: 'Data Driven Insights',
+  items: [
+    {
+      title: 'Dolor sit amet ipsum dolor sit amet',
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.',
+      image: unsplashOne,
+    },
+    {
+      title: 'Dolor sit amet ipsum dolor sit amet',
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.',
+      image: unsplashTwo,
+    },
+    {
+      title: 'Dolor sit amet ipsum dolor sit amet',
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.',
+      image: unsplashThree,
+    },
+  ],
+};
 
 export const exploreTools = {
   title: 'EXPLORE OUR OTHER TOOLS',
