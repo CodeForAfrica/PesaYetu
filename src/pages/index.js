@@ -11,7 +11,7 @@ export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
-      <ExploreSection {...blocks?.exploreTools} />
+      <ExploreSection {...blocks?.exploreOtherTools} />
     </Page>
   );
 }
@@ -20,7 +20,7 @@ Home.propTypes = {
   boundary: PropTypes.shape({}),
   blocks: PropTypes.shape({
     hero: PropTypes.shape({}),
-    exploreTools: PropTypes.shape({}),
+    exploreOtherTools: PropTypes.shape({}),
   }),
 };
 
