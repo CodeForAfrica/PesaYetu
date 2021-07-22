@@ -36,7 +36,7 @@ function Footer({
         <Grid
           container
           direction="column"
-          justify="space-between"
+          justifyContent="space-between"
           className={classes.footer}
         >
           <Grid item xs={12} lg={6}>
@@ -66,7 +66,7 @@ function Footer({
             lg={6}
             container
             direction="column"
-            justify="flex-end"
+            justifyContent="flex-end"
             classes={{
               root: classes.allLinks,
             }}
