@@ -45,7 +45,6 @@ function Footer({
               {...logoImg}
               classes={{
                 root: classes.logoButton,
-                text: classes.text,
               }}
             />
           </Grid>

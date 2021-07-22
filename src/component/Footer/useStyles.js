@@ -18,12 +18,6 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       margin: 0,
     },
   },
-  text: {
-    textAlign: "center",
-    [breakpoints.up("lg")]: {
-      textAlign: "left",
-    },
-  },
   allLinks: {
     margin: "0 auto",
     flexDirection: "row",
