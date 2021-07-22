@@ -34,6 +34,7 @@ module.exports = {
       ],
     });
 
+    // Allows object.foo ?? 'bar'
     config.module.rules.push({
       test: /\.(js|jsx)$/,
       loader: require.resolve("babel-loader"),
