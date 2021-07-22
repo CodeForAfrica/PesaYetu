@@ -13,6 +13,9 @@ const useStyles = makeStyles(({ typography }) => ({
   cardTitle: {
     margin: `${typography.pxToRem(20)} 0`,
   },
+  link: {
+    marginTop: typography.pxToRem(20),
+  },
 }));
 
 export default useStyles;
