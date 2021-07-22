@@ -17,6 +17,14 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       fontSize: typography.pxToRem(48),
     },
   },
+  list: {
+    display: "flex",
+    flexDirection: "column",
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+  },
 }));
 
 export default useStyles;

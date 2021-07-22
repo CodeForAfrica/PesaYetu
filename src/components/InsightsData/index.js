@@ -1,4 +1,5 @@
-import { Typography } from "@material-ui/core";
+import { Typography, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -8,12 +9,19 @@ import InsightCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
 
 const InsightsData = ({ title, subTitle, items, ...props }) => {
+  let itemsData = [];
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.only("md"));
+
+  itemsData = isTablet ? items.slice(0, 2) : items;
   const classes = useStyles(props);
   return (
     <Section classes={{ root: classes.section }}>
       <Typography className={classes.title}>{title}</Typography>
       <Typography className={classes.subtitle}>{subTitle}</Typography>
-      {items && items.map((item) => <InsightCard {...item} />)}
+      <div className={classes.list}>
+        {itemsData && itemsData.map((item) => <InsightCard {...item} />)}
+      </div>
     </Section>
   );
 };

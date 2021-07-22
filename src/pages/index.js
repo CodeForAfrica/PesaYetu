@@ -7,8 +7,6 @@ import Page from "@/pesayetu/components/Page";
 import { exploreTools, insightData } from "@/pesayetu/config";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-console.log("DATAT", insightData);
-
 export default function Home({ ...props }) {
   if (props?.errorMessage) {
     return <div> {props.errorMessage}</div>;

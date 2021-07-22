@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
   card: {
     width: typography.pxToRem(350),
@@ -29,6 +29,14 @@ const useStyles = makeStyles(({ typography }) => ({
     position: "relative",
     height: typography.pxToRem(216),
     width: typography.pxToRem(350),
+    [breakpoints.up("md")]: {
+      width: typography.pxToRem(296),
+      height: typography.pxToRem(183),
+    },
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(376),
+      height: typography.pxToRem(233),
+    },
   },
 }));
 
