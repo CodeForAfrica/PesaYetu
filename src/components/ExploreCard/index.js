@@ -10,7 +10,11 @@ const ExploreCard = ({ item, ...props }) => {
   const { title, description, image } = item;
   return (
     <Card className={classes.card}>
-      {image && <Image src={image} layout="fill" className={classes.image} />}
+      {image && (
+        <div className={classes.image}>
+          <Image src={image} layout="fill" />
+        </div>
+      )}
       <CardContent className={classes.content}>
         <Typography className={classes.title} variant="h4">
           {title}

@@ -21,6 +21,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     height: typography.pxToRem(220),
     backgroundSize: 'auto',
     marginLeft: '-10px !important',
+    position: 'relative',
   },
   title: {
     marginTop: typography.pxToRem(20),
