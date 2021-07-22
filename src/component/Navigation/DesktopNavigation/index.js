@@ -4,9 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import LogoNavigation from '@/pesayetu/component/LogoNavigation';
 import MenuNavigation from '@/pesayetu/component/MenuNavigation';
-import NavigationLogo from '@/pesayetu/component/NavigationLogo';
-import SocialMediaIcons from '@/pesayetu/component/SocialMediaIcons';
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {
@@ -31,48 +30,26 @@ const useStyles = makeStyles(({ typography }) => ({
     width: typography.pxToRem(200),
   },
 }));
-
-const menuButtons = [
-  {
-    href: 'https://dev.pesayetu.pesacheck.org',
-    label: 'EXPLORE',
-    menuLinks: [
-      {
-        href: 'https://dev.pesayetu.pesacheck.org',
-        label: 'DATA',
-      },
-      {
-        href: 'https://dev.pesayetu.pesacheck.org',
-        label: 'STORIES',
-      },
-      {
-        href: 'https://dev.pesayetu.pesacheck.org',
-        label: 'HOW IT WORKS',
-      },
-    ],
-  },
-];
-function DesktopNavigation({ logoProps, ...props }) {
+function DesktopNavigation({ logoProps, menuProps, ...props }) {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
-          <Grid item xs={5}>
-            <NavigationLogo {...logoProps} />
+          <Grid item xs={3}>
+            <LogoNavigation {...logoProps} />
           </Grid>
           <Grid
             item
-            xs={7}
+            xs={9}
             container
             direction="row"
-            justify="flex-end"
+            justifyContent="flex-end"
             alignItems="center"
             className={classes.menu}
           >
-            <MenuNavigation links={menuButtons} />
-            <SocialMediaIcons />
+            <MenuNavigation links={menuProps} />
           </Grid>
           <Grid />
         </Grid>
@@ -83,10 +60,12 @@ function DesktopNavigation({ logoProps, ...props }) {
 
 DesktopNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
+  menuProps: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 DesktopNavigation.defaultProps = {
   logoProps: undefined,
+  menuProps: undefined,
 };
 
 export default DesktopNavigation;

@@ -7,7 +7,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    [breakpoints.up('md')]: {
+    [breakpoints.up('lg')]: {
       flexDirection: 'column',
       justifyContent: 'flex-start',
     },
@@ -25,12 +25,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   subtitle: {
     display: 'flex',
     flexDirection: 'column',
-    padding: `${typography.pxToRem(0)} ${typography.pxToRem(24)}`,
+    padding: `${typography.pxToRem(11)} ${typography.pxToRem(24)}`,
     letterSpacing: `${typography.pxToRem(1.32)}`,
     color: palette.background.dark,
     textTransform: 'uppercase',
     justifyContent: 'center',
-    [breakpoints.up('md')]: {
+    [breakpoints.up('lg')]: {
       padding: 0,
       flexDirection: 'row',
       justifyContent: 'flex-start',

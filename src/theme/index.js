@@ -63,8 +63,8 @@ deepmerge(
   typography,
   {
     h1: {
-      fontSize: pxToRem(50),
-      lineHeight: 66 / 50,
+      fontSize: pxToRem(29),
+      lineHeight: 38 / 29,
       [breakpoints.up('lg')]: {
         fontSize: pxToRem(50),
         lineHeight: 66 / 50, // font 50 H0
@@ -134,7 +134,14 @@ deepmerge(
         lineHeight: 18 / 14, // font 14 subtitle2
       },
     },
-    caption: {},
+    caption: {
+      fontSize: pxToRem(9),
+      lineHeight: 10 / 9,
+      [breakpoints.up('lg')]: {
+        fontSize: pxToRem(12),
+        lineHeight: 18 / 12, // font 14 subtitle2
+      },
+    },
   },
   { clone: false }
 );

@@ -3,7 +3,7 @@ import { withNextRouter } from 'storybook-addon-next-router';
 
 import Navigation from '.';
 
-/* const menuButtons = [
+const menuButtons = [
   {
     href: 'https://dev.pesayetu.pesacheck.org',
     label: 'EXPLORE',
@@ -22,7 +22,7 @@ import Navigation from '.';
       },
     ],
   },
-]; */
+];
 
 export default {
   title: 'Sections/LogoNavigation',
@@ -31,6 +31,11 @@ export default {
     logoProps: {
       control: {
         type: 'object',
+      },
+    },
+    menuProps: {
+      control: {
+        type: 'array',
       },
     },
   },
@@ -47,4 +52,5 @@ Default.args = {
     firstSubtitle: 'Our County',
     secondSubtitle: 'Our Responsibility',
   },
+  menuProps: menuButtons,
 };

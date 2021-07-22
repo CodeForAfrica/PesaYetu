@@ -1,28 +1,33 @@
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import SocialMediaIcons from '@/pesayetu/component/SocialMediaIcons';
+
 const useStyles = makeStyles(({ typography }) => ({
   root: {
-    margin: `${typography.pxToRem(10)} 0`,
+    margin: `${typography.pxToRem(20)} 0`,
   },
   links: {
     padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
   },
   menuLinks: {
     padding: `${typography.pxToRem(18)}`,
+    '&:hover, &:focus, &:focus-within': {
+      backgroundColor: 'transparent',
+    },
   },
 }));
 
-function MenuNavigation({ links, ...props }) {
+function MenuNavigation({ links, children, ...props }) {
   const classes = useStyles(props);
   const allMenulinks = links.map(({ menuLinks }) => menuLinks);
   return (
     <Grid
       container
       direction="row"
-      justifyContent="flex-start"
+      justifyContent="flex-end"
       alignItem="center"
       className={classes.root}
     >
@@ -35,12 +40,13 @@ function MenuNavigation({ links, ...props }) {
             href={href}
             className={classes.links}
           >
-            {label}
+            <Typography variant="h6">{label}</Typography>
           </Button>
         </Grid>
       ))}
+      {children}
       {allMenulinks[0]?.map(({ href, label }) => (
-        <Grid item key={label}>
+        <Grid item key={label} className={classes.menu}>
           <Button
             color="default"
             variant="text"
@@ -48,16 +54,21 @@ function MenuNavigation({ links, ...props }) {
             href={href}
             className={classes.menuLinks}
           >
-            {label}
+            <Typography variant="h6">{label}</Typography>
           </Button>
         </Grid>
       ))}
+      <SocialMediaIcons />
     </Grid>
   );
 }
 
 MenuNavigation.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  children: PropTypes.node,
 };
 
+MenuNavigation.defaultProps = {
+  children: undefined,
+};
 export default MenuNavigation;
