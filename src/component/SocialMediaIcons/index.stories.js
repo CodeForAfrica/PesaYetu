@@ -4,7 +4,7 @@ import { withNextRouter } from 'storybook-addon-next-router';
 import SocialMediaIcons from '.';
 
 export default {
-  title: 'Components/SocialMediaButtons',
+  title: 'Components/SocialMediaIcons',
   decorators: [withNextRouter],
   argTypes: {},
 };

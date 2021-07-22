@@ -5,7 +5,7 @@ import React from 'react';
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {
-    padding: `${typography.pxToRem(9.25)} 0`,
+    margin: `${typography.pxToRem(10)} 0`,
   },
   links: {
     padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
@@ -22,7 +22,7 @@ function MenuNavigation({ links, ...props }) {
     <Grid
       container
       direction="row"
-      justify="flex-start"
+      justifyContent="flex-start"
       alignItem="center"
       className={classes.root}
     >

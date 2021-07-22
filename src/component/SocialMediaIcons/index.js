@@ -21,26 +21,33 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const socialMediaLinks = [
+  {
+    href: '/',
+    component: Twitter,
+    label: 'twitter',
+  },
+  {
+    href: '/',
+    component: Facebook,
+    label: 'facebook',
+  },
+];
+
 function SocialMediaIcons({ ...props }) {
   const classes = useStyles(props);
   return (
     <Grid item>
-      <IconButton
-        size="medium"
-        aria-label="twitter"
-        edge="center"
-        className={classes.button}
-      >
-        <SvgIcon component={Twitter} />
-      </IconButton>
-      <IconButton
-        size="medium"
-        aria-label="facebook"
-        edge="center"
-        className={classes.button}
-      >
-        <SvgIcon component={Facebook} />
-      </IconButton>
+      {socialMediaLinks.map(({ label, component }) => (
+        <IconButton
+          key={label}
+          size="medium"
+          aria-label={label}
+          className={classes.button}
+        >
+          <SvgIcon component={component} />
+        </IconButton>
+      ))}
     </Grid>
   );
 }
