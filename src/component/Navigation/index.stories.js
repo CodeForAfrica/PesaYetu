@@ -25,7 +25,7 @@ import Navigation from '.';
 ]; */
 
 export default {
-  title: 'Sections/Navigation',
+  title: 'Sections/LogoNavigation',
   decorators: [withNextRouter],
   argTypes: {
     logoProps: {
@@ -44,6 +44,7 @@ Default.args = {
   logoProps: {
     firstTitle: 'Pesa',
     secondTitle: 'Yetu',
-    subtitle: 'Our County Our Responsibility',
+    firstSubtitle: 'Our County',
+    secondSubtitle: 'Our Responsibility',
   },
 };

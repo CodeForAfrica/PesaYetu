@@ -16,7 +16,7 @@ import React, { useState } from 'react';
 
 import { ReactComponent as MenuCloseIcon } from '@/pesayetu/assets/menu_close.svg';
 import { ReactComponent as MenuOpenIcon } from '@/pesayetu/assets/menu_open.svg';
-import NavigationLogo from '@/pesayetu/component/NavigationLogo';
+import LogoNavigation from '@/pesayetu/component/LogoNavigation';
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
@@ -111,7 +111,7 @@ function MobileNavigation({ logoProps, ...props }) {
         className={classes.root}
       >
         <Grid item>
-          <NavigationLogo {...logoProps} />
+          <LogoNavigation {...logoProps} />
         </Grid>
         <Grid item>
           <IconButton
@@ -145,7 +145,7 @@ function MobileNavigation({ logoProps, ...props }) {
                 alignItems="center"
                 className={classes.dialogMenu}
               >
-                <NavigationLogo {...logoProps} />
+                <LogoNavigation {...logoProps} />
               </Grid>
 
               <Grid item xs={2} container justify="flex-end">
