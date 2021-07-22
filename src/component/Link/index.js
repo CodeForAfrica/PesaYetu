@@ -151,6 +151,8 @@ Link.defaultProps = {
   prefetch: undefined,
 };
 
-export default React.forwardRef((props, ref) => (
+const LinkComponent = React.forwardRef((props, ref) => (
   <Link {...props} innerRef={ref} />
 ));
+
+export default LinkComponent;

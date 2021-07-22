@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ExploreOtherTools from "@/pesayetu/component/ExploreOtherTools";
+import InsightCard from "@/pesayetu/component/InsightCard";
 import Page from "@/pesayetu/component/Page";
 import { exploreTools } from "@/pesayetu/config";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
@@ -13,6 +14,7 @@ export default function Home({ ...props }) {
   return (
     <Page>
       <ExploreOtherTools {...exploreTools} />
+      <InsightCard />
     </Page>
   );
 }

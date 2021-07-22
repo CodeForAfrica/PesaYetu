@@ -1,16 +1,18 @@
-import { Card, CardContent, Typography } from '@material-ui/core';
-import Image from 'next/image';
-import React from 'react';
+import { Card, CardContent, Typography } from "@material-ui/core";
+import Image from "next/image";
+import React from "react";
 
-import useStyles from './useStyles';
+import useStyles from "./useStyles";
 
-import CardImg from '@/pesayetu/assets/images/josh-sorenson-unsplash.png';
+import CardImg from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
 
 const InsightCard = (props) => {
   const classes = useStyles(props);
   return (
     <Card className={classes.card}>
-      <Image src={CardImg} />
+      <div>
+        <Image src={CardImg} layout="fill" className={classes.image} />
+      </div>
       <CardContent className={classes.content}>
         <Typography variant="h4" className={classes.cardTitle}>
           Dolor sit amet ipsum dolor sit amet

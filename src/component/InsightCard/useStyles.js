@@ -1,11 +1,11 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {},
   card: {
     width: typography.pxToRem(350),
-    boxShadow: 'none',
-    backgroundColor: 'unset',
+    boxShadow: "none",
+    backgroundColor: "unset",
   },
   content: {
     padding: 0,
@@ -15,6 +15,9 @@ const useStyles = makeStyles(({ typography }) => ({
   },
   link: {
     marginTop: typography.pxToRem(20),
+  },
+  image: {
+    objectFit: "contain",
   },
 }));
 
