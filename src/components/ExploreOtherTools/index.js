@@ -5,8 +5,8 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import ExploreCard from "@/pesayetu/component/ExploreCard";
-import Section from "@/pesayetu/component/Section";
+import ExploreCard from "@/pesayetu/components/ExploreCard";
+import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
