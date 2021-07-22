@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 
 import DesktopNavigation from './DesktopNavigation';
+import MobileNavigation from './MobileNavigation';
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
@@ -36,7 +37,7 @@ function Navigation({ ...props }) {
           />
         </Hidden>
         <Hidden lgUp implementation="css">
-          this is mobile
+          <MobileNavigation />
         </Hidden>
       </Toolbar>
     </AppBar>

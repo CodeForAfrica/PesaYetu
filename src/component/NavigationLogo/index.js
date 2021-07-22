@@ -4,8 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(() => ({
-  section: {},
+const useStyles = makeStyles(({ breakpoints }) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    [breakpoints.up('md')]: {
+      flexDirection: 'row',
+    },
+  },
   title: {},
   firstHalf: {
     color: '#EE4538',
@@ -26,11 +32,12 @@ const useStyles = makeStyles(() => ({
 function NavigationLogo({ firstTitle, secondTitle, subtitle, ...props }) {
   const classes = useStyles(props);
   return (
-    <>
+    <Grid container item className={classes.root}>
       <Grid
+        item
         container
         direction="row"
-        justify="flex-start"
+        justifyContent="flex-start"
         className={classes.title}
       >
         <RichTypography variant="h1" className={classes.firstHalf}>
@@ -45,7 +52,7 @@ function NavigationLogo({ firstTitle, secondTitle, subtitle, ...props }) {
           {subtitle}
         </RichTypography>
       </Grid>
-    </>
+    </Grid>
   );
 }
 
