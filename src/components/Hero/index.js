@@ -6,7 +6,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import heroBg from '@/pesayetu/assets/images/hero.png';
+import heroBg from '@/pesayetu/assets/images/map-lines.png';
 import Search from '@/pesayetu/components/Search';
 import Section from '@/pesayetu/components/Section';
 
@@ -39,7 +39,15 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       paddingLeft: typography.pxToRem(98),
     },
   },
-  section: {},
+  section: {
+    paddingBottom: typography.pxToRem(40),
+    [breakpoints.up('md')]: {
+      paddingBottom: typography.pxToRem(22),
+    },
+    [breakpoints.up('lg')]: {
+      paddingBottom: typography.pxToRem(64),
+    },
+  },
   slabel: {
     marginBottom: typography.pxToRem(10),
   },
@@ -104,7 +112,7 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
             <Grid item md={5}>
               <Map
                 center={[0.3051933453207569, 37.908818734483155]}
-                zoom={5.5}
+                zoom={6}
                 tileLayer={{
                   url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
                 }}

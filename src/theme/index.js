@@ -30,7 +30,7 @@ const theme = createTheme({
       light: '#F0F0F0', // lightgrey
     },
     text: {
-      primary: '#FFF',
+      primary: '#2a2a2c',
       secondary: '#333333',
       default: '#212529',
       hint: '#1C2031',
