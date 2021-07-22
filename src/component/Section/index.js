@@ -4,8 +4,10 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(({ breakpoints, widths }) => ({
-  root: {},
+const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
+  root: {
+    padding: `0 ${typography.pxToRem(20)}`,
+  },
   /* Styles applied to the root element if `fixed={true}`. */
   fixed: Object.keys(widths.values).reduce((acc, breakpoint) => {
     const value = widths.values[breakpoint];
