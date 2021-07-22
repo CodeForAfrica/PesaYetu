@@ -1,6 +1,6 @@
 import { muiTheme } from "storybook-addon-material-ui";
 import { RouterContext } from "next/dist/next-server/lib/router-context";
-import * as nextImage from "next/image";
+import * as NextImage from "next/image";
 
 import theme from "../src/theme";
 import "./styles.css";
@@ -56,9 +56,8 @@ export const parameters = {
   },
 };
 
-Object.defineProperty(nextImage, "default", {
+const OriginalNextImage = NextImage.default;
+Object.defineProperty(NextImage, 'default', {
   configurable: true,
-  value: (props) => {
-    return <img {...props} />;
-  },
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
 });
