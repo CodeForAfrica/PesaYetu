@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.5",
     "@commons-ui/core": "^0.1.0-alpha.3",
     "@material-ui/core": "^4.12.1",
     "@material-ui/utils": "^4.11.2",

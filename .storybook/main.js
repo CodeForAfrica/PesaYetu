@@ -5,7 +5,9 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-addon-material-ui",
+    "storybook-addon-next-router",
   ],
+  plugins: ["@babel/plugin-proposal-nullish-coalescing-operator"],
   stories: ["../src/**/*.stories.js"],
   webpackFinal: async (config) => {
     // Need to remove default svg-url-loader first
@@ -31,6 +33,16 @@ module.exports = {
           },
         },
       ],
+    });
+
+    config.module.rules.push({
+      test: /\.(js|jsx)$/,
+      loader: require.resolve("babel-loader"),
+      options: {
+        plugins: [
+          "@babel/plugin-proposal-nullish-coalescing-operator",
+        ],
+      },
     });
 
     return config;
