@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import ExploreSection from '@/pesayetu/components/ExploreSection';
-import Hero from '@/pesayetu/components/Hero';
-import Page from '@/pesayetu/components/Page';
-import formatBlocksForSections from '@/pesayetu/functions/formatBlocksForSections';
-import getPostTypeStaticProps from '@/pesayetu/functions/postTypes/getPostTypeStaticProps';
+import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
+import Hero from "@/pesayetu/components/Hero";
+import Page from "@/pesayetu/components/Page";
+import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
+import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
-      <ExploreSection {...blocks?.exploreOtherTools} />
+      <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
 }
@@ -30,9 +30,9 @@ Home.defaultProps = {
 };
 
 export async function getStaticProps() {
-  const postType = 'page';
+  const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
-    { slug: '/' },
+    { slug: "/" },
     postType
   );
 

@@ -11,7 +11,7 @@
  */
 export default function formatHeirarchialMenu(
   data = [],
-  { idKey = 'id', parentKey = 'parentId', childrenKey = 'children' } = {}
+  { idKey = "id", parentKey = "parentId", childrenKey = "children" } = {}
 ) {
   const tree = [];
   const childrenOf = {};

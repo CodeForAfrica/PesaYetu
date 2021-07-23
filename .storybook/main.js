@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = {
   addons: [
     "@storybook/addon-links",
@@ -33,7 +31,6 @@ module.exports = {
         },
       ],
     });
-
     // Allows object.foo ?? 'bar'
     config.module.rules.push({
       test: /\.(js|jsx)$/,

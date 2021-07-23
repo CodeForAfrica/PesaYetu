@@ -1,4 +1,4 @@
-import getMediaByID from '@/pesayetu/functions/getMediaByID';
+import getMediaByID from "@/pesayetu/functions/getMediaByID";
 
 /**
  * Format and retrieve expanded block data.
@@ -16,14 +16,14 @@ export default async function formatBlockData(blocks) {
       const { name, attributes, innerBlocks } = block;
 
       switch (name) {
-        case 'acf/acf-media-text':
+        case "acf/acf-media-text":
           // Retrieve additional image meta.
           attributes.data.imageMeta = await getMediaByID(
             attributes?.data?.image
           );
           break;
 
-        case 'core/image':
+        case "core/image":
           // Retrieve additional image meta.
           attributes.imageMeta = await getMediaByID(attributes?.id);
           break;

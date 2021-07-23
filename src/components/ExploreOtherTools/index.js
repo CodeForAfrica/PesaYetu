@@ -1,13 +1,13 @@
-import { Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Carousel from 'react-multi-carousel';
+import { Typography } from "@material-ui/core";
+import PropTypes from "prop-types";
+import React from "react";
+import Carousel from "react-multi-carousel";
 
-import useStyles from './useStyles';
+import useStyles from "./useStyles";
 
-import ExploreCard from '@/pesayetu/components/ExploreCard';
-import Section from '@/pesayetu/components/Section';
-import 'react-multi-carousel/lib/styles.css';
+import ExploreCard from "@/pesayetu/components/ExploreCard";
+import Section from "@/pesayetu/components/Section";
+import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   desktop: {
@@ -18,16 +18,16 @@ const responsive = {
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1280, min: 768 },
+    breakpoint: { max: 1279, min: 768 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 768, min: 0 },
+    breakpoint: { max: 767, min: 0 },
     items: 1,
   },
 };
 
-const ExploreTools = ({ title, items, ...props }) => {
+const ExploreOtherTools = ({ title, items, ...props }) => {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
@@ -53,14 +53,20 @@ const ExploreTools = ({ title, items, ...props }) => {
   );
 };
 
-ExploreTools.propTypes = {
+ExploreOtherTools.propTypes = {
   title: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.shape({})),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.objectOf(PropTypes.any),
+    })
+  ),
 };
 
-ExploreTools.defaultProps = {
+ExploreOtherTools.defaultProps = {
   title: undefined,
   items: undefined,
 };
 
-export default ExploreTools;
+export default ExploreOtherTools;

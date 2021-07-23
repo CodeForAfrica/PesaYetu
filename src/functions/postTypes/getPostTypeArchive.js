@@ -1,9 +1,9 @@
-import getMenus from '@/pesayetu/functions/menus/getMenus';
-import formatArchiveSeoData from '@/pesayetu/functions/seo/formatArchiveSeoData';
-import formatDefaultSeoData from '@/pesayetu/functions/seo/formatDefaultSeoData';
-import archiveQuerySeo from '@/pesayetu/lib/wordpress/_config/archiveQuerySeo';
-import { postTypes } from '@/pesayetu/lib/wordpress/_config/postTypes';
-import { initializeWpApollo } from '@/pesayetu/lib/wordpress/connector';
+import getMenus from "@/pesayetu/functions/menus/getMenus";
+import formatArchiveSeoData from "@/pesayetu/functions/seo/formatArchiveSeoData";
+import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
+import archiveQuerySeo from "@/pesayetu/lib/wordpress/_config/archiveQuerySeo";
+import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
+import { initializeWpApollo } from "@/pesayetu/lib/wordpress/connector";
 
 /**
  * Retrieve post archive.
@@ -18,8 +18,8 @@ import { initializeWpApollo } from '@/pesayetu/lib/wordpress/connector';
  */
 export default async function getPostTypeArchive(
   postType,
-  orderBy = 'DATE',
-  order = 'DESC',
+  orderBy = "DATE",
+  order = "DESC",
   cursor = null,
   getNext = true,
   perPage = 10
