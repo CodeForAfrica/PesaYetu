@@ -1,9 +1,9 @@
+import { RichTypography } from '@commons-ui/core';
 import {
   Select,
   Typography,
   InputBase,
   FormControl,
-  InputLabel,
   IconButton,
   SvgIcon,
   Grid,
@@ -17,19 +17,17 @@ import { ReactComponent as SearchOpen } from '@/pesayetu/assets/search-open.svg'
 const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingTop: 0,
+    alignItems: 'flex-start',
     backgroundColor: palette.primary.main,
     padding: '2rem',
   },
   formControl: {
-    paddingTop: typography.pxToRem(40),
-    paddingBottom: typography.pxToRem(16),
-    [breakpoints.up('md')]: {
-      padding: `${typography.pxToRem(40)} 0`,
-    },
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
   form: {
     paddingTop: typography.pxToRem(40),
@@ -37,6 +35,10 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     [breakpoints.up('md')]: {
       padding: `${typography.pxToRem(40)} 0`,
     },
+  },
+  title: {
+    color: 'white',
+    padding: '1rem 0rem',
   },
   label: {
     color: 'white',
@@ -60,11 +62,8 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   },
   buttonRoot: {},
   button: {
-    marginTop: '2rem',
-  },
-  title: {
-    color: 'white',
-    padding: '2rem',
+    height: typography.pxToRem(48),
+    width: typography.pxToRem(48),
   },
   select: {
     paddingTop: 0,
@@ -85,17 +84,13 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     color: 'black',
     backgroundColor: 'white',
     boxShadow: '0px 1px 4px #15223214',
-    height: typography.pxToRem(42),
-    width: typography.pxToRem(243),
-    [breakpoints.up('md')]: {
-      width: typography.pxToRem(186),
-    },
+    height: typography.pxToRem(48),
+    width: typography.pxToRem(278),
   },
   inputBaseInput: {
     textAlign: 'left',
     paddingLeft: typography.pxToRem(16),
-    fontSize: typography.pxToRem(12),
-    width: '100%',
+    fontSize: typography.pxToRem(16),
     'label[data-shrink=false] + .MuiInputBase-formControl &::placeholder': {
       opacity: '0.5!important',
     },
@@ -141,6 +136,8 @@ export default function SelectSearch() {
   const [value, setValue] = React.useState([]);
   const [open, setOpen] = React.useState(false);
 
+  const viewBoxValue = '0 0 48 48';
+
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -182,17 +179,10 @@ export default function SelectSearch() {
 
   return (
     <Grid container direction="row" className={classes.root}>
+      <RichTypography variant="body2" className={classes.title}>
+        Search for location
+      </RichTypography>
       <FormControl className={classes.formControl}>
-        <InputLabel
-          shrink={false}
-          htmlFor="label"
-          classes={{
-            root: classes.label,
-            focused: classes.focused,
-          }}
-        >
-          Search for the location
-        </InputLabel>
         <Select
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
@@ -234,8 +224,7 @@ export default function SelectSearch() {
             </div>
           ))}
         </Select>
-      </FormControl>
-      <div className={classes.buttonRoot}>
+
         {open ? (
           <IconButton
             size="large"
@@ -243,7 +232,11 @@ export default function SelectSearch() {
             aria-label="open"
             className={classes.button}
           >
-            <SvgIcon component={SearchClose} className={classes.searchClose} />
+            <SvgIcon
+              component={SearchClose}
+              viewBox={viewBoxValue}
+              className={classes.searchClose}
+            />
           </IconButton>
         ) : (
           <IconButton
@@ -252,10 +245,14 @@ export default function SelectSearch() {
             aria-label="open"
             className={classes.button}
           >
-            <SvgIcon component={SearchOpen} />
+            <SvgIcon
+              component={SearchOpen}
+              viewBox={viewBoxValue}
+              classes={classes.svg}
+            />
           </IconButton>
         )}
-      </div>
+      </FormControl>
     </Grid>
   );
 }
