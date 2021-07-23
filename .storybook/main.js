@@ -36,9 +36,7 @@ module.exports = {
       test: /\.(js|jsx)$/,
       loader: require.resolve("babel-loader"),
       options: {
-        plugins: [
-          "@babel/plugin-proposal-nullish-coalescing-operator",
-        ],
+        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator"],
       },
     });
 

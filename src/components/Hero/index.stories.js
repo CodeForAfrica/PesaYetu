@@ -1,30 +1,30 @@
-import React from 'react';
-import { withNextRouter } from 'storybook-addon-next-router';
+import React from "react";
+import { withNextRouter } from "storybook-addon-next-router";
 
-import Hero from '.';
+import Hero from ".";
 
 export default {
-  title: 'Sections/Hero',
+  title: "Sections/Hero",
   decorators: [withNextRouter],
   argTypes: {
     title: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     tagline: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     comment: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     searchLabel: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
   },
@@ -38,8 +38,8 @@ Default.args = {
   title:
     'Data to hold <br /> your government <span class="highlight">accountable</span>',
   tagline:
-    'PesaYetu helps journalists, researchers and activists transform their work with in-depth county-specific information. Get started now with datasets from Kenya.',
-  searchLabel: 'Search for a location',
+    "PesaYetu helps journalists, researchers and activists transform their work with in-depth county-specific information. Get started now with datasets from Kenya.",
+  searchLabel: "Search for a location",
   comment:
-    '* Eight counties are currently available. We will soon implement additional ones.',
+    "* Eight counties are currently available. We will soon implement additional ones.",
 };

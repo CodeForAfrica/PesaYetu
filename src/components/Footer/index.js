@@ -6,14 +6,14 @@ import {
   RichTypography,
   Logo,
   Copyright,
-} from '@commons-ui/core';
-import { Grid, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import React from 'react';
+} from "@commons-ui/core";
+import { Grid, Typography } from "@material-ui/core";
+import PropTypes from "prop-types";
+import React from "react";
 
-import useStyles from './useStyles';
+import useStyles from "./useStyles";
 
-import Section from '@/pesayetu/components/Section';
+import Section from "@/pesayetu/components/Section";
 
 function Footer({
   title,
@@ -124,7 +124,7 @@ Footer.defaultProps = {
   quickLinks: undefined,
   copyrightProps: undefined,
   logoProps: undefined,
-  aboutVariant: 'subtitle1',
+  aboutVariant: "subtitle1",
 };
 
 export default Footer;

@@ -1,19 +1,19 @@
-import { Layout } from '@commons-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { Layout } from "@commons-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
   /* Styles applied to the root element. */
   root: {
-    boxSizing: 'border-box',
-    display: 'block', // Fix IE 11 layout when used with main.
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    boxSizing: "border-box",
+    display: "block", // Fix IE 11 layout when used with main.
+    marginLeft: "auto",
+    marginRight: "auto",
     minWidth: typography.pxToRem(360),
     padding: `0 ${typography.pxToRem(15)}`,
-    width: '100%',
+    width: "100%",
   },
   /* Styles applied to the root element if `fixed={true}`. */
   fixed: Object.keys(widths.values).reduce((acc, breakpoint) => {

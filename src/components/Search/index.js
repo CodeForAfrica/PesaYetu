@@ -1,17 +1,17 @@
-import { IconButton, InputBase } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { IconButton, InputBase } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 
-import searchIcon from '@/pesayetu/assets/icons/search.svg';
+import searchIcon from "@/pesayetu/assets/icons/search.svg";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     borderRadius: typography.pxToRem(10),
     color: palette.primary.main,
-    border: '2px solid #1c2030',
+    border: "2px solid #1c2030",
     width: typography.pxToRem(278),
   },
   button: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     marginLeft: typography.pxToRem(15),
   },
   input: {
-    backgroundColor: 'inherit',
+    backgroundColor: "inherit",
     height: typography.pxToRem(48),
     padding: 0,
   },
@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 
 function Search({ href: hrefProp, onClick: onClickProp, ...props }) {
   const classes = useStyles(props);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -50,7 +50,7 @@ function Search({ href: hrefProp, onClick: onClickProp, ...props }) {
   return (
     <>
       <InputBase
-        inputProps={{ 'aria-label': 'search' }}
+        inputProps={{ "aria-label": "search" }}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         {...props}

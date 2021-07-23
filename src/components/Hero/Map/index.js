@@ -1,17 +1,17 @@
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import React from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
-    position: 'relative',
+    position: "relative",
     height: typography.pxToRem(299),
     width: typography.pxToRem(236),
     marginTop: typography.pxToRem(55),
-    [breakpoints.up('lg')]: {
+    [breakpoints.up("lg")]: {
       height: typography.pxToRem(471),
       marginTop: typography.pxToRem(42),
       width: typography.pxToRem(371),
@@ -20,8 +20,8 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   tooltip: {
     fontFamily: typography.body1.fontFamily,
     fontSize: typography.pxToRem(13),
-    color: '#2A2A2C',
-    textTransform: 'capitalize',
+    color: "#2A2A2C",
+    textTransform: "capitalize",
   },
 }));
 
@@ -34,19 +34,19 @@ function Map({ center, tileLayer, zoom, boundary, styles, geoJSONStyles }) {
         className: classes.tooltip,
       })
       .openTooltip();
-    layer.on('mouseover', () => {
+    layer.on("mouseover", () => {
       layer.setStyle({
-        fillColor: '#0067A3',
+        fillColor: "#0067A3",
         fillOpacity: 0.5,
       });
     });
-    layer.on('mouseout', () => {
+    layer.on("mouseout", () => {
       layer.setStyle({
         opacity: 1,
-        fillColor: '#fff',
+        fillColor: "#fff",
       });
     });
-    layer.on('click', () => {
+    layer.on("click", () => {
       // get the the code for each county,
       // and redirect to its explore page
       // window.alert(feature.properties.code);
@@ -100,14 +100,14 @@ Map.defaultProps = {
   tileLayer: undefined,
   zoom: undefined,
   styles: {
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
   },
   geoJSONStyles: {
-    color: '#2A2A2C',
+    color: "#2A2A2C",
     weight: 1,
     opacity: 1,
-    fillColor: '#fff',
+    fillColor: "#fff",
   },
 };
 

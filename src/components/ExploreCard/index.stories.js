@@ -1,12 +1,12 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React from 'react';
-import { withNextRouter } from 'storybook-addon-next-router';
+import React from "react";
+import { withNextRouter } from "storybook-addon-next-router";
 
-import ExploreCard from '@/pesayetu/components/ExploreCard';
-import { exploreTools } from '@/pesayetu/config';
+import ExploreCard from "@/pesayetu/components/ExploreCard";
+import { exploreTools } from "@/pesayetu/config";
 
 export default {
-  title: 'Components/ExploreCard',
+  title: "Components/ExploreCard",
   decorators: [withNextRouter],
   argTypes: {},
 };
