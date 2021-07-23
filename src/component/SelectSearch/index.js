@@ -57,13 +57,17 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   focused: {
     color: 'white',
   },
-  searchClose: {
+  svgIcon: {
+    fontSize: '3rem',
     color: 'white',
   },
-  buttonRoot: {},
   button: {
     height: typography.pxToRem(48),
     width: typography.pxToRem(48),
+    marginLeft: '1rem',
+    '&:hover, &:focus, &:focus-within': {
+      backgroundColor: 'transparent',
+    },
   },
   select: {
     paddingTop: 0,
@@ -224,18 +228,21 @@ export default function SelectSearch() {
             </div>
           ))}
         </Select>
-
         {open ? (
           <IconButton
             size="large"
             onClick={handleOpen}
             aria-label="open"
+            disableRipple
+            disableFocusRipple
             className={classes.button}
           >
             <SvgIcon
               component={SearchClose}
               viewBox={viewBoxValue}
-              className={classes.searchClose}
+              classes={{
+                root: classes.svgIcon,
+              }}
             />
           </IconButton>
         ) : (
@@ -243,12 +250,16 @@ export default function SelectSearch() {
             size="large"
             onClick={handleOpen}
             aria-label="open"
+            disableRipple
+            disableFocusRipple
             className={classes.button}
           >
             <SvgIcon
               component={SearchOpen}
               viewBox={viewBoxValue}
-              classes={classes.svg}
+              classes={{
+                root: classes.svgIcon,
+              }}
             />
           </IconButton>
         )}
