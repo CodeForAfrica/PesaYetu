@@ -14,12 +14,13 @@ import React from 'react';
 import { ReactComponent as SearchClose } from '@/pesayetu/assets/search-close.svg';
 import { ReactComponent as SearchOpen } from '@/pesayetu/assets/search-open.svg';
 
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    padding: '1rem 0rem',
   },
   formControl: {
     display: 'flex',
@@ -82,12 +83,12 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   inputBase: {
     padding: typography.pxToRem(2),
-    borderRadius: typography.pxToRem(4),
-    color: 'black',
+    color: palette.primary.main,
     backgroundColor: 'white',
-    boxShadow: '0px 1px 4px #15223214',
     height: typography.pxToRem(48),
     width: typography.pxToRem(278),
+    border: '2px solid #00000000',
+    borderRadius: '10px',
   },
   inputBaseInput: {
     textAlign: 'left',
@@ -99,11 +100,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   menuPaper: {
     marginTop: '1.5rem',
-    overflow: 'visible',
   },
   menuMenuList: {
     paddingTop: 0,
-    overflow: 'visible',
   },
   icon: {
     color: 'red',
@@ -170,9 +169,10 @@ export default function SelectSearch() {
     PaperProps: {
       style: {
         width: 287,
-        padding: '0 7.5px',
-        boxShadow: '0px 1px 4px #15223214',
-        border: '1px solid #00000000',
+        height: 175,
+        paddingLeft: 16,
+        border: '2px solid #00000000',
+        borderRadius: '10px',
       },
       className: classes.menuPaper,
     },
