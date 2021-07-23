@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import DataVisuals from "@/pesayetu/components/DataVisuals";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Page from "@/pesayetu/components/Page";
-import { exploreTools } from "@/pesayetu/config";
+import { exploreTools, dataVisuals } from "@/pesayetu/config";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ ...props }) {
@@ -13,6 +14,7 @@ export default function Home({ ...props }) {
   return (
     <Page>
       <ExploreOtherTools {...exploreTools} />
+      <DataVisuals {...dataVisuals} />
     </Page>
   );
 }
