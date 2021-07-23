@@ -82,9 +82,7 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Hidden lgDown implementation="css">
-            <Grid item lg={1} />
-          </Hidden>
+          <Grid item lg={1} />
           <Grid item xs={12} md={7} lg={6}>
             <RichTypography variant="h1" className={classes.title}>
               {title}
@@ -107,7 +105,7 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
             )}
           </Grid>
           <Hidden smDown implementation="css">
-            <Grid item md={5}>
+            <Grid item md={5} lg={5}>
               <Map
                 center={[0.3051933453207569, 37.908818734483155]}
                 zoom={6}

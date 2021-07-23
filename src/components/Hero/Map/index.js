@@ -67,6 +67,8 @@ function Map({
         center={center}
         zoom={zoom}
         zoomControl={false}
+        scrollWheelZoom={false}
+        touchZoom={false}
         zoomSnap={0.25}
         style={styles}
       >
