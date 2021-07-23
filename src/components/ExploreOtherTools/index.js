@@ -55,13 +55,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
 
 ExploreOtherTools.propTypes = {
   title: PropTypes.string,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.objectOf(PropTypes.any),
-    })
-  ),
+  items: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ExploreOtherTools.defaultProps = {
