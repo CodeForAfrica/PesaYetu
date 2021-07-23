@@ -1,14 +1,20 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import Page from '@/pesayetu/components/Page';
-import getPostTypeStaticProps from '@/pesayetu/functions/postTypes/getPostTypeStaticProps';
+import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
+import Page from "@/pesayetu/components/Page";
+import { exploreTools } from "@/pesayetu/config";
+import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ ...props }) {
   if (props?.errorMessage) {
     return <div> {props.errorMessage}</div>;
   }
-  return <Page>Pesa yetu homepage template</Page>;
+  return (
+    <Page>
+      <ExploreOtherTools {...exploreTools} />
+    </Page>
+  );
 }
 
 Home.propTypes = {
@@ -20,6 +26,6 @@ Home.defaultProps = {
 };
 
 export async function getStaticProps() {
-  const postType = 'page';
-  return getPostTypeStaticProps({ slug: '/' }, postType);
+  const postType = "page";
+  return getPostTypeStaticProps({ slug: "/" }, postType);
 }

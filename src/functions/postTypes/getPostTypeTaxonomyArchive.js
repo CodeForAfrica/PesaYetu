@@ -1,9 +1,9 @@
-import getMenus from '@/pesayetu/functions/menus/getMenus';
-import formatDefaultSeoData from '@/pesayetu/functions/seo/formatDefaultSeoData';
-import { postTypes } from '@/pesayetu/lib/wordpress/_config/postTypes';
-import queryPostsByCategory from '@/pesayetu/lib/wordpress/categories/queryPostsByCategory';
-import { initializeWpApollo } from '@/pesayetu/lib/wordpress/connector';
-import queryPostsByTag from '@/pesayetu/lib/wordpress/tags/queryPostsByTag';
+import getMenus from "@/pesayetu/functions/menus/getMenus";
+import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
+import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
+import queryPostsByCategory from "@/pesayetu/lib/wordpress/categories/queryPostsByCategory";
+import { initializeWpApollo } from "@/pesayetu/lib/wordpress/connector";
+import queryPostsByTag from "@/pesayetu/lib/wordpress/tags/queryPostsByTag";
 
 /**
  * Retrieve post taxnomy archive.
@@ -21,9 +21,9 @@ import queryPostsByTag from '@/pesayetu/lib/wordpress/tags/queryPostsByTag';
 export default async function getPostTypeTaxonomyArchive(
   taxonomy,
   taxonomyId,
-  postType = 'post',
-  orderBy = 'DATE',
-  order = 'DESC',
+  postType = "post",
+  orderBy = "DATE",
+  order = "DESC",
   cursor = null,
   getNext = true,
   perPage = 10
@@ -110,7 +110,7 @@ export default async function getPostTypeTaxonomyArchive(
         archiveSeo.breadcrumbs.slice(-1)[0]?.url;
 
       // Manually create fallback taxonomy canonical URL.
-      const fallback = `${response.defaultSeo?.openGraph?.url ?? ''}/${
+      const fallback = `${response.defaultSeo?.openGraph?.url ?? ""}/${
         postTypes?.[postType]?.route
       }/${taxonomy}/${taxonomyId}`;
 
@@ -120,11 +120,11 @@ export default async function getPostTypeTaxonomyArchive(
           ...archiveSeo,
           title:
             archiveSeo?.title ??
-            `${taxonomyId} - ${response.defaultSeo?.openGraph?.siteName ?? ''}`,
-          metaDesc: archiveSeo?.metaDesc ?? '',
+            `${taxonomyId} - ${response.defaultSeo?.openGraph?.siteName ?? ""}`,
+          metaDesc: archiveSeo?.metaDesc ?? "",
           canonical: archiveSeo?.canonical ?? breadcrumb ?? fallback,
-          metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? 'follow',
-          metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? 'index',
+          metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
+          metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
         },
       };
 

@@ -1,4 +1,4 @@
-import seoPostFields from './seoPostFields';
+import seoPostFields from "./seoPostFields";
 
 // Query partial: retrieve homepage & site SEO fields.
 const defaultSeoFields = `

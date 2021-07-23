@@ -1,10 +1,10 @@
-import getFrontendPage from '@/pesayetu/functions/postTypes/getFrontendPage';
-import getPostTypeArchive from '@/pesayetu/functions/postTypes/getPostTypeArchive';
-import getPostTypeById from '@/pesayetu/functions/postTypes/getPostTypeById';
-import getPostTypeTaxonomyArchive from '@/pesayetu/functions/postTypes/getPostTypeTaxonomyArchive';
-import { addApolloState } from '@/pesayetu/lib/apolloConfig';
-import archiveQuerySeo from '@/pesayetu/lib/wordpress/_config/archiveQuerySeo';
-import frontendPageSeo from '@/pesayetu/lib/wordpress/_config/frontendPageSeo';
+import getFrontendPage from "@/pesayetu/functions/postTypes/getFrontendPage";
+import getPostTypeArchive from "@/pesayetu/functions/postTypes/getPostTypeArchive";
+import getPostTypeById from "@/pesayetu/functions/postTypes/getPostTypeById";
+import getPostTypeTaxonomyArchive from "@/pesayetu/functions/postTypes/getPostTypeTaxonomyArchive";
+import { addApolloState } from "@/pesayetu/lib/apolloConfig";
+import archiveQuerySeo from "@/pesayetu/lib/wordpress/_config/archiveQuerySeo";
+import frontendPageSeo from "@/pesayetu/lib/wordpress/_config/frontendPageSeo";
 
 /**
  * Retrieve static props by post type.
@@ -38,7 +38,7 @@ export default async function getPostTypeStaticProps(
 
   /* -- Fallback: return error if params missing. -- */
   if (!params) {
-    return postType !== '404'
+    return postType !== "404"
       ? {
           notFound: true,
         }
@@ -87,7 +87,7 @@ export default async function getPostTypeStaticProps(
   /* -- Handle individual posts. -- */
 
   // Handle catch-all routes.
-  const slug = Array.isArray(params.slug) ? params.slug.join('/') : params.slug;
+  const slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
 
   /* -- Handle dynamic posts. -- */
 
@@ -100,18 +100,18 @@ export default async function getPostTypeStaticProps(
     (postId === previewData?.post?.id || postId === previewData?.post?.slug);
 
   // Check if viewing a draft post.
-  const isDraft = isCurrentPostPreview && previewData?.post?.status === 'draft';
+  const isDraft = isCurrentPostPreview && previewData?.post?.status === "draft";
 
   // Set query variables.
   const id = isDraft ? previewData.post.id : slug;
-  const idType = isDraft ? 'DATABASE_ID' : 'SLUG';
+  const idType = isDraft ? "DATABASE_ID" : "SLUG";
 
   // Retrieve post data.
   const { apolloClient, error, ...postData } = await getPostTypeById(
     postType,
     id,
     idType,
-    isCurrentPostPreview ? 'full' : null
+    isCurrentPostPreview ? "full" : null
   );
 
   const props = {
@@ -121,7 +121,7 @@ export default async function getPostTypeStaticProps(
   };
 
   // Fallback to empty props if homepage not set in WP.
-  if (slug === '/' && error) {
+  if (slug === "/" && error) {
     props.post = null;
     props.error = false;
   }

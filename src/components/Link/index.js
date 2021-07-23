@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import { A } from '@commons-ui/core';
-import { Link as MuiLink } from '@material-ui/core';
-import clsx from 'clsx';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { A } from "@commons-ui/core";
+import { Link as MuiLink } from "@material-ui/core";
+import clsx from "clsx";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import React from "react";
+
+import site from "@/pesayetu/utils/site";
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const {
@@ -63,25 +65,38 @@ NextComposed.defaultProps = {
 const Link = React.forwardRef((props, ref) => {
   const {
     href,
-    activeClassName = 'active',
+    activeClassName = "active",
     className: classNameProps,
     naked,
     ...other
   } = props;
 
   const router = useRouter();
-  const pathname = typeof href === 'string' ? href : href?.pathname;
+  const pathname = typeof href === "string" ? href : href?.pathname;
   const className = clsx(classNameProps, {
     [activeClassName]: router.pathname === pathname && activeClassName,
   });
 
+  let formattedHref = href;
+
+  try {
+    const appURL = new URL(site.url);
+    const url = new URL(href);
+    if (appURL.host === url.host) {
+      const { pathname: path, search, hash } = url;
+      formattedHref = `${path}${search}${hash}`;
+    }
+  } catch (error) {
+    // do nothing
+  }
+
   const isRelative =
-    typeof href === 'string' &&
-    href.indexOf('/') === 0 &&
-    href.indexOf('//') !== 0;
+    typeof formattedHref === "string" &&
+    formattedHref.indexOf("/") === 0 &&
+    formattedHref.indexOf("//") !== 0;
 
   if (!isRelative) {
-    const noProtocol = href?.indexOf('www.') === 0;
+    const noProtocol = href?.startsWith("www.");
     return (
       <A
         href={noProtocol ? `https://${href}` : href}
@@ -94,7 +109,12 @@ const Link = React.forwardRef((props, ref) => {
 
   if (naked) {
     return (
-      <NextComposed className={className} ref={ref} href={href} {...other} />
+      <NextComposed
+        className={className}
+        ref={ref}
+        href={formattedHref}
+        {...other}
+      />
     );
   }
   return (
@@ -102,7 +122,7 @@ const Link = React.forwardRef((props, ref) => {
       component={NextComposed}
       className={className}
       ref={ref}
-      href={href}
+      href={formattedHref}
       {...other}
     />
   );

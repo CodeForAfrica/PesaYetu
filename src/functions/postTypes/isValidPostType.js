@@ -1,4 +1,4 @@
-import { postTypes } from '@/pesayetu/lib/wordpress/_config/postTypes';
+import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
 /**
  * Check if post type is valid.
  *

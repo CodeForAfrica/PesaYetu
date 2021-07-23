@@ -1,37 +1,46 @@
-import React from 'react';
-import { withNextRouter } from 'storybook-addon-next-router';
+import React from "react";
 
-import Link from '.';
+import Link from ".";
 
 export default {
-  title: 'Components/Link',
-  decorators: [withNextRouter],
+  title: "Components/Link",
+  component: Link,
   argTypes: {
     color: {
       control: {
-        type: 'select',
+        type: "select",
       },
-      options: ['primary', 'secondary'],
+      options: ["primary", "secondary", "textPrimary", "textSecondary"],
     },
     href: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     label: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
   },
 };
 
-const Template = ({ label, ...args }) => <Link {...args}>{label}</Link>;
+const Template = ({ label, ...args }) => (
+  <Link variant="button" {...args}>
+    {label}
+  </Link>
+);
 
 export const Default = Template.bind({});
 
+Default.parameters = {
+  nextRouter: {
+    pathname: "/?path=/story/components-link--default",
+  },
+};
+
 Default.args = {
-  color: 'primary',
-  href: '#',
-  label: 'Link',
+  color: "primary",
+  href: "/?path=/story/components-link--default",
+  label: "Link",
 };
