@@ -14,14 +14,12 @@ import React from 'react';
 import { ReactComponent as SearchClose } from '@/pesayetu/assets/search-close.svg';
 import { ReactComponent as SearchOpen } from '@/pesayetu/assets/search-open.svg';
 
-const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: palette.primary.main,
-    padding: '2rem',
   },
   formControl: {
     display: 'flex',
@@ -98,6 +96,18 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     'label[data-shrink=false] + .MuiInputBase-formControl &::placeholder': {
       opacity: '0.5!important',
     },
+  },
+  menuPaper: {
+    marginTop: '1.5rem',
+    overflow: 'visible',
+  },
+  menuMenuList: {
+    paddingTop: 0,
+    overflow: 'visible',
+  },
+  icon: {
+    color: 'red',
+    padding: '2rem',
   },
 }));
 
@@ -220,6 +230,7 @@ export default function SelectSearch() {
           MenuProps={MenuProps}
           classes={{
             root: classes.select,
+            icon: classes.icon,
           }}
         >
           {items.map((item) => (

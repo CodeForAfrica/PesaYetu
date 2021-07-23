@@ -16,6 +16,7 @@ import { ReactComponent as MenuCloseIcon } from '@/pesayetu/assets/menu_close.sv
 import { ReactComponent as MenuOpenIcon } from '@/pesayetu/assets/menu_open.svg';
 import LogoNavigation from '@/pesayetu/component/LogoNavigation';
 import MenuNavigation from '@/pesayetu/component/MenuNavigation';
+import SelectSearch from '@/pesayetu/component/SelectSearch';
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
@@ -192,7 +193,9 @@ function MobileNavigation({ logoProps, menuProps, ...props }) {
             </Grid>
           </DialogActions>
           <DialogContent className={classes.dialogContent}>
-            <MenuNavigation links={menuProps}>example is here</MenuNavigation>
+            <MenuNavigation links={menuProps}>
+              <SelectSearch />
+            </MenuNavigation>
           </DialogContent>
         </Dialog>
       </div>
