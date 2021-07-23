@@ -1,25 +1,70 @@
 import {
   Select,
-  MenuItem,
   Typography,
   InputBase,
   FormControl,
-  Button,
+  InputLabel,
+  IconButton,
+  SvgIcon,
   Grid,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 
+import { ReactComponent as SearchClose } from '@/pesayetu/assets/search-close.svg';
+import { ReactComponent as SearchOpen } from '@/pesayetu/assets/search-open.svg';
+
 const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingTop: 0,
     backgroundColor: palette.primary.main,
+    padding: '2rem',
   },
   formControl: {
-    margin: 2,
+    paddingTop: typography.pxToRem(40),
+    paddingBottom: typography.pxToRem(16),
+    [breakpoints.up('md')]: {
+      padding: `${typography.pxToRem(40)} 0`,
+    },
   },
-  chips: {
-    display: 'flex',
-    flexWrap: 'wrap',
+  form: {
+    paddingTop: typography.pxToRem(40),
+    paddingBottom: typography.pxToRem(16),
+    [breakpoints.up('md')]: {
+      padding: `${typography.pxToRem(40)} 0`,
+    },
+  },
+  label: {
+    color: 'white',
+    textAlign: 'left',
+    fontSize: typography.pxToRem(18),
+    position: 'relative',
+    marginBottom: typography.pxToRem(20),
+    fontFamily: typography.fontFamily,
+    fontWeight: 'bold',
+    transform: `translate(0, ${typography.pxToRem(0)}) scale(1)`,
+    '&$focused': {
+      color: 'white',
+    },
+  },
+  // TODO nyokabi Reference => https://github.com/mui-org/material-ui/issues/11244
+  focused: {
+    color: 'white',
+  },
+  searchClose: {
+    color: 'white',
+  },
+  buttonRoot: {},
+  button: {
+    marginTop: '2rem',
+  },
+  title: {
+    color: 'white',
+    padding: '2rem',
   },
   select: {
     paddingTop: 0,
@@ -31,7 +76,9 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   noLabel: {
     marginTop: 3,
   },
-  menu: {},
+  menu: {
+    padding: '0.5rem 0rem',
+  },
   inputBase: {
     padding: typography.pxToRem(2),
     borderRadius: typography.pxToRem(4),
@@ -136,9 +183,16 @@ export default function SelectSearch() {
   return (
     <Grid container direction="row" className={classes.root}>
       <FormControl className={classes.formControl}>
-        <Typography variant="body2" className={classes.title}>
-          select for location
-        </Typography>
+        <InputLabel
+          shrink={false}
+          htmlFor="label"
+          classes={{
+            root: classes.label,
+            focused: classes.focused,
+          }}
+        >
+          Search for the location
+        </InputLabel>
         <Select
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
@@ -175,21 +229,33 @@ export default function SelectSearch() {
           }}
         >
           {items.map((item) => (
-            <MenuItem key={item} value={item} className={classes.menu}>
-              {item}
-            </MenuItem>
+            <div key={item} value={item} className={classes.menu}>
+              <Typography variant="body2">{item}</Typography>
+            </div>
           ))}
         </Select>
       </FormControl>
-      {open ? (
-        <Button className={classes.button} onClick={handleOpen}>
-          Open the select
-        </Button>
-      ) : (
-        <Button className={classes.button} onClick={handleOpen}>
-          Close the select
-        </Button>
-      )}
+      <div className={classes.buttonRoot}>
+        {open ? (
+          <IconButton
+            size="large"
+            onClick={handleOpen}
+            aria-label="open"
+            className={classes.button}
+          >
+            <SvgIcon component={SearchClose} className={classes.searchClose} />
+          </IconButton>
+        ) : (
+          <IconButton
+            size="large"
+            onClick={handleOpen}
+            aria-label="open"
+            className={classes.button}
+          >
+            <SvgIcon component={SearchOpen} />
+          </IconButton>
+        )}
+      </div>
     </Grid>
   );
 }
