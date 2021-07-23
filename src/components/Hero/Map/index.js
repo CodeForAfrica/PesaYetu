@@ -61,7 +61,7 @@ function Map({
       // window.alert(feature.properties.code);
     });
   };
-  console.log(zoom);
+
   return (
     <div className={classes.root}>
       <MapContainer
