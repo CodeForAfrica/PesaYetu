@@ -233,8 +233,8 @@ export default function SelectSearch() {
       </RichTypography>
       <FormControl className={classes.formControl}>
         <Select
-          labelId="demo-mutiple-name-label"
-          id="demo-mutiple-name"
+          labelId="grouped-data-label"
+          id="grouped-data"
           defaultValue=""
           open={open}
           onOpen={handleOpen}
@@ -245,7 +245,7 @@ export default function SelectSearch() {
             if (selected.length === 0) {
               return (
                 <Typography variant="caption" className={classes.placeholder}>
-                  Abc....
+                  {}
                 </Typography>
               );
             }
@@ -279,7 +279,7 @@ export default function SelectSearch() {
               </Typography>
               <ul className={classes.ul}>
                 {item.items.map((menu) => (
-                  <li value={item.name} className={classes.list}>
+                  <li className={classes.list}>
                     <Typography variant="body2" className={classes.name}>
                       {menu.name}
                     </Typography>

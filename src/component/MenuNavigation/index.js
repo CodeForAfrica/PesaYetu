@@ -11,15 +11,32 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    '& > div:nth-of-type(3)': {
+      order: 3,
+    },
     '& > div:nth-of-type(4)': {
-      // marginTop: '2rem',
+      order: 4,
+    },
+    '& > div:nth-of-type(5)': {
+      order: 2,
+    },
+    '& > div:nth-of-type(6)': {
+      order: 5,
     },
     [breakpoints.up('lg')]: {
       padding: 0,
       flexDirection: 'row',
       justifyContent: 'flex-end',
+      '& > div:nth-of-type(3)': {
+        order: 0,
+      },
       '& > div:nth-of-type(4)': {
-        // marginTop: '2rem',
+        order: 0,
+      },
+      '& > div:nth-of-type(5)': {
+        order: 0,
+      },
+      '& > div:nth-of-type(6)': {
         order: 0,
       },
     },
