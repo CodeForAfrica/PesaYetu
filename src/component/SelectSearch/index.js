@@ -52,6 +52,19 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       color: 'white',
     },
   },
+  country: {
+    fontWeight: 'bold',
+  },
+  name: {
+    fontWeight: 'normal',
+  },
+  list: {
+    fontWeight: 'normal',
+    listStyleType: 'none',
+  },
+  ul: {
+    padding: 0,
+  },
   // TODO nyokabi Reference => https://github.com/mui-org/material-ui/issues/11244
   focused: {
     color: 'white',
@@ -77,9 +90,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   noLabel: {
     marginTop: 3,
-  },
-  menu: {
-    padding: '0.5rem 0rem',
   },
   inputBase: {
     padding: typography.pxToRem(2),
@@ -110,7 +120,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
 }));
 
-const items = [
+/* const items = [
   'country 1',
   'country 2',
   'country 3',
@@ -122,14 +132,22 @@ const items = [
   'country 9',
   'country 10',
 ];
-/* 
-const item = [
+ */
+const menuItems = [
   {
     country: 'country 1',
     items: [
       {
         name: 'subcounty-1',
-        href: 'olivia',
+        href: '/',
+      },
+      {
+        name: 'subcounty-2',
+        href: '/',
+      },
+      {
+        name: 'subcounty-3',
+        href: '/',
       },
     ],
   },
@@ -137,12 +155,29 @@ const item = [
     country: 'country 2',
     items: [
       {
-        name: 'subcounty-2',
+        name: 'subcounty-4',
+        href: '/',
+      },
+      {
+        name: 'subcounty-5',
         href: '/',
       },
     ],
   },
-]; */
+  {
+    country: 'country 3',
+    items: [
+      {
+        name: 'subcounty-6',
+        href: '/',
+      },
+      {
+        name: 'subcounty-7',
+        href: '/',
+      },
+    ],
+  },
+];
 
 export default function SelectSearch() {
   const classes = useStyles();
@@ -233,9 +268,24 @@ export default function SelectSearch() {
             icon: classes.icon,
           }}
         >
-          {items.map((item) => (
-            <div key={item} value={item} className={classes.menu}>
-              <Typography variant="body2">{item}</Typography>
+          {menuItems.map((item) => (
+            <div
+              key={item.country}
+              value={item.country}
+              className={classes.menu}
+            >
+              <Typography variant="body2" className={classes.country}>
+                {item.country}
+              </Typography>
+              <ul className={classes.ul}>
+                {item.items.map((menu) => (
+                  <li value={item.name} className={classes.list}>
+                    <Typography variant="body2" className={classes.name}>
+                      {menu.name}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </Select>

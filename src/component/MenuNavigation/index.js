@@ -5,7 +5,7 @@ import React from 'react';
 
 import SocialMediaIcons from '@/pesayetu/component/SocialMediaIcons';
 
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
     margin: `${typography.pxToRem(20)} 0`,
     display: 'flex',
@@ -29,8 +29,12 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   menuLinks: {
     padding: `${typography.pxToRem(18)}`,
+    color: 'white',
     '&:hover, &:focus, &:focus-within': {
       backgroundColor: 'transparent',
+    },
+    [breakpoints.up('lg')]: {
+      color: palette.background.dark,
     },
   },
 }));
