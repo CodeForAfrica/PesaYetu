@@ -36,6 +36,7 @@ const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
   },
   media: {
     height: typography.pxToRem(217),
+    position: "relative",
     width: "100%",
     [breakpoints.up("md")]: {
       height: typography.pxToRem(315),
