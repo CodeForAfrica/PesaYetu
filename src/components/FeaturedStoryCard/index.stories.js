@@ -39,11 +39,17 @@ const Template = (args) => <FeaturedStoryCard {...args} />;
 
 export const Default = Template.bind({});
 
+Default.parameters = {
+  nextRouter: {
+    pathname: "/?path=/story/components-featured-story-card--default",
+  },
+};
+
 Default.args = {
   title: "Our new website is out and it comes with new advanced features.",
   description:
     "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-  href: "#",
+  href: "/?path=/story/components-featured-story-card--default",
   ctaText: "Read More",
   image: cardImage,
 };
