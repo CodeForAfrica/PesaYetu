@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    padding: '1rem 0rem',
+    paddingBottom: '3.5rem',
   },
   formControl: {
     display: 'flex',

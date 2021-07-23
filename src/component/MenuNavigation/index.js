@@ -44,13 +44,15 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   links: {
     padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
   },
+  menu: {},
   menuLinks: {
-    padding: `${typography.pxToRem(18)}`,
     color: 'white',
+    padding: `${typography.pxToRem(20)} 0`,
     '&:hover, &:focus, &:focus-within': {
       backgroundColor: 'transparent',
     },
     [breakpoints.up('lg')]: {
+      padding: `${typography.pxToRem(18)}`,
       color: palette.background.dark,
     },
   },

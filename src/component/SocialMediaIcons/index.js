@@ -5,8 +5,13 @@ import React from 'react';
 import { ReactComponent as Facebook } from '@/pesayetu/assets/footer-social-fb.svg';
 import { ReactComponent as Twitter } from '@/pesayetu/assets/footer-social-tw.svg';
 
-const useStyles = makeStyles(() => ({
-  root: {},
+const useStyles = makeStyles(({ breakpoints }) => ({
+  root: {
+    paddingTop: '2rem',
+    [breakpoints.up('lg')]: {
+      paddingTop: '0.5rem',
+    },
+  },
   button: {
     background: '#EBEBEB 0% 0% no-repeat padding-box',
     borderRadius: '60px',
@@ -18,6 +23,9 @@ const useStyles = makeStyles(() => ({
   },
   toolbar: {
     display: 'block',
+  },
+  svgIcon: {
+    padding: '0.2rem',
   },
 }));
 
@@ -36,16 +44,23 @@ const socialMediaLinks = [
 
 function SocialMediaIcons({ ...props }) {
   const classes = useStyles(props);
+  const viewBoxValue = '0 0 48 48';
   return (
-    <Grid item>
+    <Grid item className={classes.root}>
       {socialMediaLinks.map(({ label, component }) => (
         <IconButton
           key={label}
           size="medium"
           aria-label={label}
+          viewBox={viewBoxValue}
           className={classes.button}
         >
-          <SvgIcon component={component} />
+          <SvgIcon
+            component={component}
+            classes={{
+              root: classes.svgIcon,
+            }}
+          />
         </IconButton>
       ))}
     </Grid>
