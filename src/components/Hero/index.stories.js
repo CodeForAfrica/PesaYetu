@@ -1,11 +1,9 @@
 import React from "react";
-import { withNextRouter } from "storybook-addon-next-router";
 
 import Hero from ".";
 
 export default {
   title: "Sections/Hero",
-  decorators: [withNextRouter],
   argTypes: {
     title: {
       control: {
