@@ -3,9 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
   card: {
-    width: typography.pxToRem(350),
+    maxWidth: typography.pxToRem(350),
     boxShadow: "none",
     backgroundColor: "unset",
+    [breakpoints.up("md")]: {
+      maxWidth: typography.pxToRem(296),
+    },
+    [breakpoints.up("lg")]: {
+      maxWidth: typography.pxToRem(376),
+    },
   },
   content: {
     padding: 0,
