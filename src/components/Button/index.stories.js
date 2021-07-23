@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import React from "react";
 
 export default {
-  title: "Components/Buttons",
+  title: "Components/Button",
   argTypes: {
     color: {
       control: {

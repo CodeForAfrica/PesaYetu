@@ -25,6 +25,31 @@ export default {
         type: "text",
       },
     },
+    boundary: {
+      control: {
+        type: "object",
+      },
+    },
+    styles: {
+      control: {
+        type: "object",
+      },
+    },
+    geoJSONStyles: {
+      control: {
+        type: "object",
+      },
+    },
+    zoom: {
+      control: {
+        type: "number",
+      },
+    },
+    center: {
+      control: {
+        type: "object",
+      },
+    },
   },
 };
 
@@ -40,4 +65,5 @@ Default.args = {
   searchLabel: "Search for a location",
   comment:
     "* Eight counties are currently available. We will soon implement additional ones.",
+  center: [0.3051933453207569, 37.908818734483155],
 };
