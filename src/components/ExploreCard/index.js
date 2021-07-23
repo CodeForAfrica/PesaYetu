@@ -13,7 +13,7 @@ const ExploreCard = ({ item, ...props }) => {
     <Card className={classes.root}>
       {image && (
         <div className={classes.cardMedia}>
-          <Image src={image} layout="fill" className={classes.image} />
+          <Image src={image} layout="fill" />
         </div>
       )}
       <CardContent className={classes.content}>
