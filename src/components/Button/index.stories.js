@@ -1,39 +1,39 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Button } from '@material-ui/core';
-import React from 'react';
-import { withNextRouter } from 'storybook-addon-next-router';
+import { Button } from "@material-ui/core";
+import React from "react";
+import { withNextRouter } from "storybook-addon-next-router";
 
 export default {
-  title: 'Components/Buttons',
+  title: "Components/Buttons",
   decorators: [withNextRouter],
   argTypes: {
     color: {
       control: {
-        type: 'select',
+        type: "select",
       },
-      options: ['default', 'primary'],
+      options: ["default", "primary"],
     },
     size: {
       control: {
-        type: 'select',
+        type: "select",
       },
-      options: ['small', 'medium', 'large'],
+      options: ["small", "medium", "large"],
     },
     href: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     label: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     variant: {
       control: {
-        type: 'select',
+        type: "select",
       },
-      options: ['text', 'contained'],
+      options: ["text", "contained"],
     },
   },
 };
@@ -43,9 +43,9 @@ const Template = ({ label, ...args }) => <Button {...args}>{label}</Button>;
 export const Default = Template.bind({});
 
 Default.args = {
-  variant: 'text',
-  size: 'medium',
-  color: 'default',
-  href: 'https://dev.pesayetu.pesacheck.org',
-  label: 'Button text',
+  variant: "text",
+  size: "medium",
+  color: "default",
+  href: "https://dev.pesayetu.pesacheck.org",
+  label: "Button text",
 };
