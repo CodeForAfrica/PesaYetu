@@ -119,20 +119,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     padding: '2rem',
   },
 }));
-
-/* const items = [
-  'country 1',
-  'country 2',
-  'country 3',
-  'country 4',
-  'country 5',
-  'country 6',
-  'country 7',
-  'country 8',
-  'country 9',
-  'country 10',
-];
- */
 const menuItems = [
   {
     country: 'country 1',
