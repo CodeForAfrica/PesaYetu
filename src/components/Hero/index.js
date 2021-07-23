@@ -34,11 +34,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       marginTop: typography.pxToRem(40),
     },
   },
-  content: {
-    [breakpoints.up("lg")]: {
-      paddingLeft: typography.pxToRem(98),
-    },
-  },
   section: {
     paddingBottom: typography.pxToRem(40),
     [breakpoints.up("md")]: {
@@ -87,7 +82,10 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Grid item xs={12} md={7} className={classes.content}>
+          <Hidden lgDown implementation="css">
+            <Grid item lg={1} />
+          </Hidden>
+          <Grid item xs={12} md={7} lg={6}>
             <RichTypography variant="h1" className={classes.title}>
               {title}
             </RichTypography>

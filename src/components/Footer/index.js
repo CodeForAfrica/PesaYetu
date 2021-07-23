@@ -1,7 +1,6 @@
 /* eslint-disable react/default-props-match-prop-types */
 
 import {
-  A,
   StayInTouch,
   QuickLinks,
   RichTypography,
@@ -40,7 +39,7 @@ function Footer({
         <Grid container direction="row" justifyContent="space-between">
           <Grid item xs={12} container>
             <LogoButton
-              component={A}
+              component={Link}
               href={logoHref}
               {...logoImg}
               classes={{

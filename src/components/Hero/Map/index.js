@@ -25,8 +25,16 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
 }));
 
-function Map({ center, tileLayer, zoom, boundary, styles, geoJSONStyles }) {
-  const classes = useStyles();
+function Map({
+  center,
+  tileLayer,
+  zoom,
+  boundary,
+  styles,
+  geoJSONStyles,
+  ...props
+}) {
+  const classes = useStyles(props);
 
   const onEachFeature = (feature, layer) => {
     layer
