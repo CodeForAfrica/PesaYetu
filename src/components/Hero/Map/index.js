@@ -4,6 +4,7 @@ import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
+import theme from "@/pesayetu/theme";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
@@ -44,14 +45,14 @@ function Map({
       .openTooltip();
     layer.on("mouseover", () => {
       layer.setStyle({
-        fillColor: "#0067A3",
+        fillColor: theme.palette.primary.main,
         fillOpacity: 0.5,
       });
     });
     layer.on("mouseout", () => {
       layer.setStyle({
         opacity: 1,
-        fillColor: "#fff",
+        fillColor: theme.palette.background.default,
       });
     });
     layer.on("click", () => {
@@ -60,7 +61,7 @@ function Map({
       // window.alert(feature.properties.code);
     });
   };
-
+  console.log(zoom);
   return (
     <div className={classes.root}>
       <MapContainer

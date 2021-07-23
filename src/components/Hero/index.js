@@ -1,6 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Hidden, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -74,6 +74,10 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
 
 function Hero({ comment, searchLabel, title, tagline, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
+
+  const zoom = isUpLg ? 6 : 5.25;
 
   return (
     <div className={classes.root}>
@@ -108,7 +112,7 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
             <Grid item md={5} lg={5}>
               <Map
                 center={[0.3051933453207569, 37.908818734483155]}
-                zoom={6}
+                zoom={zoom}
                 tileLayer={{
                   url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
                 }}
