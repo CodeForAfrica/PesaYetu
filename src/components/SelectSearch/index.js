@@ -6,9 +6,11 @@ import {
   FormControl,
   IconButton,
   SvgIcon,
+  Link,
   Grid,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { ReactComponent as SearchClose } from '@/pesayetu/assets/search-close.svg';
@@ -118,57 +120,22 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     padding: typography.pxToRem(32),
   },
 }));
-const menuLists = [
-  {
-    country: 'country 1',
-    items: [
-      {
-        name: 'subcounty-1',
-        href: '/',
-      },
-      {
-        name: 'subcounty-2',
-        href: '/',
-      },
-      {
-        name: 'subcounty-3',
-        href: '/',
-      },
-    ],
-  },
-  {
-    country: 'country 2',
-    items: [
-      {
-        name: 'subcounty-4',
-        href: '/',
-      },
-      {
-        name: 'subcounty-5',
-        href: '/',
-      },
-    ],
-  },
-  {
-    country: 'country 3',
-    items: [
-      {
-        name: 'subcounty-6',
-        href: '/',
-      },
-      {
-        name: 'subcounty-7',
-        href: '/',
-      },
-    ],
-  },
-];
-function SelectSearch({ ...props }) {
+function SelectSearch({
+  title,
+  placeholder,
+  selectId,
+  inputBaseId,
+  selectLabel,
+  inputBaseLabel,
+  menuItems,
+  ...props
+}) {
   const classes = useStyles(props);
   const [value, setValue] = React.useState([]);
   const [open, setOpen] = React.useState(false);
-
   const viewBoxValue = '0 0 48 48';
+  // eslint-disable-next-line no-console
+  console.log(menuItems);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -213,12 +180,12 @@ function SelectSearch({ ...props }) {
   return (
     <Grid container direction="row" className={classes.root}>
       <RichTypography variant="body2" className={classes.title}>
-        Search for location
+        {title}
       </RichTypography>
       <FormControl className={classes.formControl}>
         <Select
-          labelId="grouped-data-label"
-          id="grouped-data"
+          labelId={selectLabel}
+          id={selectId}
           defaultValue=""
           open={open}
           onOpen={handleOpen}
@@ -229,7 +196,7 @@ function SelectSearch({ ...props }) {
             if (selected.length === 0) {
               return (
                 <Typography variant="caption" className={classes.placeholder}>
-                  {}
+                  {placeholder}
                 </Typography>
               );
             }
@@ -237,9 +204,9 @@ function SelectSearch({ ...props }) {
           }}
           input={
             <InputBase
-              id="inputPlace"
-              inputProps={{ 'aria-label': 'inputPlace' }}
-              placeholder="Search...."
+              id={inputBaseId}
+              inputProps={{ 'aria-label': inputBaseLabel }}
+              placeholder={placeholder}
               classes={{
                 root: classes.inputBase,
                 input: classes.inputBaseInput,
@@ -252,22 +219,22 @@ function SelectSearch({ ...props }) {
             icon: classes.icon,
           }}
         >
-          {menuLists?.map((item) => (
-            <div
-              key={item.country}
-              value={item.country}
-              className={classes.menu}
-            >
-              <Typography variant="body2" className={classes.country}>
-                {item.country}
-              </Typography>
+          {menuItems?.map(({ countryName, countryUrl, items }) => (
+            <div key={countryName} value={countryName} className={classes.menu}>
+              <Link href={countryUrl}>
+                <Typography variant="body2" className={classes.country}>
+                  {countryName}
+                </Typography>
+              </Link>
               <ul className={classes.ul}>
-                {item?.items?.map((menu) => (
-                  <li className={classes.list}>
-                    <Typography variant="body2" className={classes.name}>
-                      {menu.name}
-                    </Typography>
-                  </li>
+                {items?.map(({ name, url }) => (
+                  <a href={url} key={name}>
+                    <li className={classes.list}>
+                      <Typography variant="body2" className={classes.name}>
+                        {name}
+                      </Typography>
+                    </li>
+                  </a>
                 ))}
               </ul>
             </div>
@@ -312,5 +279,35 @@ function SelectSearch({ ...props }) {
     </Grid>
   );
 }
+SelectSearch.propTypes = {
+  title: PropTypes.string,
+  placeholder: PropTypes.string,
+  selectId: PropTypes.string,
+  inputBaseId: PropTypes.string,
+  selectLabel: PropTypes.string,
+  inputBaseLabel: PropTypes.string,
+  menuItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      countryName: PropTypes.number,
+      countryUrl: PropTypes.string,
+      items: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.number,
+          url: PropTypes.string,
+        })
+      ),
+    })
+  ),
+};
+
+SelectSearch.defaultProps = {
+  title: undefined,
+  placeholder: undefined,
+  selectId: undefined,
+  inputBaseId: undefined,
+  selectLabel: undefined,
+  inputBaseLabel: undefined,
+  menuItems: undefined,
+};
 
 export default SelectSearch;

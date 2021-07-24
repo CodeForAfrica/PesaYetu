@@ -38,6 +38,11 @@ export default {
         type: 'array',
       },
     },
+    selectProps: {
+      control: {
+        type: 'array',
+      },
+    },
   },
 };
 
@@ -53,4 +58,12 @@ Default.args = {
     secondSubtitle: 'Our Responsibility',
   },
   menuProps: menuButtons,
+  selectProps: {
+    title: 'Search for Location',
+    placeholder: 'Search ...',
+    selectId: 'select-grouped-id',
+    inputBaseId: 'inputbase-grouped-id',
+    selectLabel: 'select-grouped-label',
+    inputBaseLabel: 'inputbase-grouped-label',
+  },
 };
