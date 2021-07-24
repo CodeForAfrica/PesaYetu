@@ -3,6 +3,9 @@ import { withNextRouter } from 'storybook-addon-next-router';
 
 import Menu from '.';
 
+import { ReactComponent as Facebook } from '@/pesayetu/assets/footer-social-fb.svg';
+import { ReactComponent as Twitter } from '@/pesayetu/assets/footer-social-tw.svg';
+
 const menuButtons = [
   {
     href: 'https://dev.pesayetu.pesacheck.org',
@@ -23,12 +26,29 @@ const menuButtons = [
     ],
   },
 ];
+const socialLinks = [
+  {
+    href: '/twitter',
+    component: Twitter,
+    label: 'twitter',
+  },
+  {
+    href: '/facebook',
+    component: Facebook,
+    label: 'facebook',
+  },
+];
 
 export default {
   title: 'Components/Menu',
   decorators: [withNextRouter],
   argTypes: {
     links: {
+      control: {
+        type: 'array',
+      },
+    },
+    socialLinks: {
       control: {
         type: 'array',
       },
@@ -42,4 +62,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   links: menuButtons,
+  socialLinks,
 };
