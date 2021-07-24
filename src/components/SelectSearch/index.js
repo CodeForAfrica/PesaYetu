@@ -118,7 +118,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     padding: typography.pxToRem(32),
   },
 }));
-const menuItems = [
+const menuLists = [
   {
     country: 'country 1',
     items: [
@@ -163,9 +163,8 @@ const menuItems = [
     ],
   },
 ];
-
-export default function SelectSearch() {
-  const classes = useStyles();
+function SelectSearch({ ...props }) {
+  const classes = useStyles(props);
   const [value, setValue] = React.useState([]);
   const [open, setOpen] = React.useState(false);
 
@@ -253,7 +252,7 @@ export default function SelectSearch() {
             icon: classes.icon,
           }}
         >
-          {menuItems?.map((item) => (
+          {menuLists?.map((item) => (
             <div
               key={item.country}
               value={item.country}
@@ -313,3 +312,5 @@ export default function SelectSearch() {
     </Grid>
   );
 }
+
+export default SelectSearch;

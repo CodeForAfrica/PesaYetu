@@ -44,7 +44,12 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   links: {
     padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
   },
-  menu: {},
+  menu: {
+    margin: 0,
+    [breakpoints.up('lg')]: {
+      margin: `0 ${typography.pxToRem(12.8)}`,
+    },
+  },
   menuLinks: {
     color: palette.background.main,
     padding: `${typography.pxToRem(20)} 0`,
@@ -60,13 +65,14 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
 
 function Menu({ links, children, socialLinks, ...props }) {
   const classes = useStyles(props);
-  const allMenulinks = links.map(({ menuLinks }) => menuLinks);
-  // eslint-disable-next-line no-console
-  console.log(socialLinks);
+  if (!links?.length) {
+    return null;
+  }
+  const allMenulinks = links?.map(({ menuLinks }) => menuLinks);
   return (
     <div className={classes.root}>
-      {links?.map(({ href, label }) => (
-        <Grid item key={label}>
+      {links.map(({ href, label }) => (
+        <Grid item key={label} className={classes.menu}>
           <Button
             color="primary"
             variant="contained"
