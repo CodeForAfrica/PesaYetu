@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import LogoNavigation from '@/pesayetu/component/LogoNavigation';
-import MenuNavigation from '@/pesayetu/component/MenuNavigation';
+import LogoNavigation from '@/pesayetu/components/LogoNavigation';
+import MenuNavigation from '@/pesayetu/components/MenuNavigation';
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {

@@ -4,7 +4,7 @@ import { withNextRouter } from 'storybook-addon-next-router';
 import LogoNavigation from '.';
 
 export default {
-  title: 'Components/Navigation',
+  title: 'Components/LogoNavigation',
   decorators: [withNextRouter],
   argTypes: {
     firstTitle: {

@@ -254,7 +254,7 @@ export default function SelectSearch() {
             icon: classes.icon,
           }}
         >
-          {menuItems.map((item) => (
+          {menuItems?.map((item) => (
             <div
               key={item.country}
               value={item.country}
@@ -264,7 +264,7 @@ export default function SelectSearch() {
                 {item.country}
               </Typography>
               <ul className={classes.ul}>
-                {item.items.map((menu) => (
+                {item?.items?.map((menu) => (
                   <li className={classes.list}>
                     <Typography variant="body2" className={classes.name}>
                       {menu.name}

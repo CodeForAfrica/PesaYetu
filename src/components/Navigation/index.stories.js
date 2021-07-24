@@ -25,7 +25,7 @@ const menuButtons = [
 ];
 
 export default {
-  title: 'Sections/LogoNavigation',
+  title: 'Sections/Navigation',
   decorators: [withNextRouter],
   argTypes: {
     logoProps: {

@@ -14,9 +14,9 @@ import React, { useState } from 'react';
 
 import { ReactComponent as MenuCloseIcon } from '@/pesayetu/assets/menu_close.svg';
 import { ReactComponent as MenuOpenIcon } from '@/pesayetu/assets/menu_open.svg';
-import LogoNavigation from '@/pesayetu/component/LogoNavigation';
-import MenuNavigation from '@/pesayetu/component/MenuNavigation';
-import SelectSearch from '@/pesayetu/component/SelectSearch';
+import LogoNavigation from '@/pesayetu/components/LogoNavigation';
+import MenuNavigation from '@/pesayetu/components/MenuNavigation';
+import SelectSearch from '@/pesayetu/components/SelectSearch';
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {

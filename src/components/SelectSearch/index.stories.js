@@ -9,7 +9,11 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <SearchSelect {...args} />;
+const Template = ({ ...args }) => (
+  <div style={{ backgroundColor: '#0067A3', padding: '1rem' }}>
+    <SearchSelect {...args} />
+  </div>
+);
 
 export const Default = Template.bind({});
 
