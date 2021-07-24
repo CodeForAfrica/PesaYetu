@@ -34,9 +34,8 @@ function SocialMediaIcons({ socialLinks, ...props }) {
   return (
     <Grid item className={classes.root}>
       {socialLinks.map(({ url, label, component }) => (
-        <Link href={url}>
+        <Link href={url} key={label}>
           <IconButton
-            key={label}
             size="medium"
             aria-label={label}
             viewBox={viewBoxValue}
@@ -60,7 +59,7 @@ SocialMediaIcons.propTypes = {
     PropTypes.shape({
       url: PropTypes.string,
       label: PropTypes.string,
-      component: PropTypes.string,
+      component: PropTypes.func,
     })
   ),
 };

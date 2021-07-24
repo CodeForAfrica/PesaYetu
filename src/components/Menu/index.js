@@ -58,9 +58,11 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
 }));
 
-function Menu({ links, children, ...props }) {
+function Menu({ links, children, socialLinks, ...props }) {
   const classes = useStyles(props);
   const allMenulinks = links.map(({ menuLinks }) => menuLinks);
+  // eslint-disable-next-line no-console
+  console.log(socialLinks);
   return (
     <div className={classes.root}>
       {links?.map(({ href, label }) => (
@@ -90,17 +92,25 @@ function Menu({ links, children, ...props }) {
           </Button>
         </Grid>
       ))}
-      <SocialMediaIcons />
+      <SocialMediaIcons socialLinks={socialLinks} />
     </div>
   );
 }
 
 Menu.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  socialLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+      label: PropTypes.string,
+      component: PropTypes.func,
+    })
+  ),
   children: PropTypes.node,
 };
 
 Menu.defaultProps = {
   children: undefined,
+  socialLinks: undefined,
 };
 export default Menu;
