@@ -1,10 +1,10 @@
 import React from 'react';
 import { withNextRouter } from 'storybook-addon-next-router';
 
-import LogoNavigation from '.';
+import Logo from '.';
 
 export default {
-  title: 'Components/LogoNavigation',
+  title: 'Components/Logo',
   decorators: [withNextRouter],
   argTypes: {
     firstTitle: {
@@ -30,7 +30,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <LogoNavigation {...args} />;
+const Template = ({ ...args }) => <Logo {...args} />;
 
 export const Default = Template.bind({});
 

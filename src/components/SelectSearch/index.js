@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    paddingBottom: '3.5rem',
+    paddingBottom: typography.pxToRem(56),
   },
   formControl: {
     display: 'flex',
@@ -37,10 +37,10 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   title: {
     color: 'white',
-    padding: '1rem 0rem',
+    padding: `${typography.pxToRem(16)} 0 `,
   },
   label: {
-    color: 'white',
+    color: palette.background.main,
     textAlign: 'left',
     fontSize: typography.pxToRem(18),
     position: 'relative',
@@ -49,7 +49,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     fontWeight: 'bold',
     transform: `translate(0, ${typography.pxToRem(0)}) scale(1)`,
     '&$focused': {
-      color: 'white',
+      color: palette.background.main,
     },
   },
   country: {
@@ -67,11 +67,11 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   // TODO nyokabi Reference => https://github.com/mui-org/material-ui/issues/11244
   focused: {
-    color: 'white',
+    color: palette.background.main,
   },
   svgIcon: {
-    fontSize: '3rem',
-    color: 'white',
+    fontSize: typography.pxToRem(48),
+    color: palette.background.main,
   },
   button: {
     height: typography.pxToRem(48),
@@ -85,7 +85,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     paddingTop: 0,
     paddingBottom: 0,
     '&:hover, &:focus, &:focus-within': {
-      backgroundColor: 'white',
+      backgroundColor: palette.background.main,
     },
   },
   noLabel: {
@@ -94,11 +94,11 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   inputBase: {
     padding: typography.pxToRem(2),
     color: palette.primary.main,
-    backgroundColor: 'white',
+    backgroundColor: palette.background.main,
     height: typography.pxToRem(48),
     width: typography.pxToRem(278),
     border: '2px solid #00000000',
-    borderRadius: '10px',
+    borderRadius: typography.pxToRem(3.75),
   },
   inputBaseInput: {
     textAlign: 'left',
@@ -109,14 +109,13 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     },
   },
   menuPaper: {
-    marginTop: '1.5rem',
+    marginTop: typography.pxToRem(24),
   },
   menuMenuList: {
     paddingTop: 0,
   },
   icon: {
-    color: 'red',
-    padding: '2rem',
+    padding: typography.pxToRem(32),
   },
 }));
 const menuItems = [

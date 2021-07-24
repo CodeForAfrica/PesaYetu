@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import LogoNavigation from '@/pesayetu/components/LogoNavigation';
-import MenuNavigation from '@/pesayetu/components/MenuNavigation';
+import Logo from '@/pesayetu/components/Logo';
+import Menu from '@/pesayetu/components/Menu';
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {
@@ -38,7 +38,7 @@ function DesktopNavigation({ logoProps, menuProps, ...props }) {
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
           <Grid item xs={3}>
-            <LogoNavigation {...logoProps} />
+            <Logo {...logoProps} />
           </Grid>
           <Grid
             item
@@ -49,7 +49,7 @@ function DesktopNavigation({ logoProps, menuProps, ...props }) {
             alignItems="center"
             className={classes.menu}
           >
-            <MenuNavigation links={menuProps} />
+            <Menu links={menuProps} />
           </Grid>
           <Grid />
         </Grid>

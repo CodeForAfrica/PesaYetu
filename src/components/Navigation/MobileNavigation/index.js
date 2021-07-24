@@ -14,8 +14,8 @@ import React, { useState } from 'react';
 
 import { ReactComponent as MenuCloseIcon } from '@/pesayetu/assets/menu_close.svg';
 import { ReactComponent as MenuOpenIcon } from '@/pesayetu/assets/menu_open.svg';
-import LogoNavigation from '@/pesayetu/components/LogoNavigation';
-import MenuNavigation from '@/pesayetu/components/MenuNavigation';
+import Logo from '@/pesayetu/components/Logo';
+import Menu from '@/pesayetu/components/Menu';
 import SelectSearch from '@/pesayetu/components/SelectSearch';
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
@@ -31,13 +31,13 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     padding: 0,
   },
   firstTitle: {
-    color: 'white',
+    color: palette.background.main,
   },
   secondTitle: {
-    color: 'white',
+    color: palette.background.main,
   },
   subtitle: {
-    color: 'white',
+    color: palette.background.main,
   },
   logoSection: {
     borderBottom: '2px solid white',
@@ -58,18 +58,18 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   menuButton: {
     color: palette.background.dark,
-    background: '#F0F0F0',
-    borderRadius: '50px',
-    margin: '0.5rem',
+    background: palette.background.lightgrey,
+    borderRadius: typography.pxToRem(50),
+    margin: typography.pxToRem(8),
     '&:hover': {
-      background: '#F0F0F0 ',
-      borderRadius: '50px',
-      margin: '0.5rem',
+      background: palette.background.lightgrey,
+      borderRadius: typography.pxToRem(50),
+      margin: typography.pxToRem(8),
     },
   },
   closeButton: {
-    color: 'white',
-    padding: '0rem 3rem',
+    color: palette.background.main,
+    padding: `0 ${typography.pxToRem(71)}`,
     paddingLeft: typography.pxToRem(12),
     '&:hover': {
       background: 'none',
@@ -126,7 +126,7 @@ function MobileNavigation({ logoProps, menuProps, ...props }) {
     <Section classes={{ root: classes.section }}>
       <div className={classes.root}>
         <Grid item>
-          <LogoNavigation {...logoProps} />
+          <Logo {...logoProps} />
         </Grid>
         <Grid item>
           <IconButton
@@ -164,7 +164,7 @@ function MobileNavigation({ logoProps, menuProps, ...props }) {
                 alignItems="center"
                 className={classes.dialogMenu}
               >
-                <LogoNavigation
+                <Logo
                   {...logoProps}
                   classes={{
                     firstTitle: classes.firstTitle,
@@ -193,9 +193,9 @@ function MobileNavigation({ logoProps, menuProps, ...props }) {
             </Grid>
           </DialogActions>
           <DialogContent className={classes.dialogContent}>
-            <MenuNavigation links={menuProps}>
+            <Menu links={menuProps}>
               <SelectSearch />
-            </MenuNavigation>
+            </Menu>
           </DialogContent>
         </Dialog>
       </div>

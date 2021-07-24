@@ -1,7 +1,7 @@
 import React from 'react';
 import { withNextRouter } from 'storybook-addon-next-router';
 
-import MenuNavigation from '.';
+import Menu from '.';
 
 const menuButtons = [
   {
@@ -25,7 +25,7 @@ const menuButtons = [
 ];
 
 export default {
-  title: 'Components/MenuNavigation',
+  title: 'Components/Menu',
   decorators: [withNextRouter],
   argTypes: {
     links: {
@@ -36,7 +36,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <MenuNavigation {...args} />;
+const Template = ({ ...args }) => <Menu {...args} />;
 
 export const Default = Template.bind({});
 

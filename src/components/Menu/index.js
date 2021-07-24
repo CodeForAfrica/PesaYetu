@@ -46,7 +46,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   menu: {},
   menuLinks: {
-    color: 'white',
+    color: palette.background.main,
     padding: `${typography.pxToRem(20)} 0`,
     '&:hover, &:focus, &:focus-within': {
       backgroundColor: 'transparent',
@@ -58,7 +58,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
 }));
 
-function MenuNavigation({ links, children, ...props }) {
+function Menu({ links, children, ...props }) {
   const classes = useStyles(props);
   const allMenulinks = links.map(({ menuLinks }) => menuLinks);
   return (
@@ -95,12 +95,12 @@ function MenuNavigation({ links, children, ...props }) {
   );
 }
 
-MenuNavigation.propTypes = {
+Menu.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   children: PropTypes.node,
 };
 
-MenuNavigation.defaultProps = {
+Menu.defaultProps = {
   children: undefined,
 };
-export default MenuNavigation;
+export default Menu;

@@ -38,7 +38,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
 }));
 
-function LogoNavigation({
+function Logo({
   firstTitle,
   secondTitle,
   firstSubtitle,
@@ -60,18 +60,18 @@ function LogoNavigation({
   );
 }
 
-LogoNavigation.propTypes = {
+Logo.propTypes = {
   firstTitle: PropTypes.string,
   secondTitle: PropTypes.string,
   firstSubtitle: PropTypes.string,
   secondSubtitle: PropTypes.string,
 };
 
-LogoNavigation.defaultProps = {
+Logo.defaultProps = {
   firstTitle: undefined,
   secondTitle: undefined,
   firstSubtitle: undefined,
   secondSubtitle: undefined,
 };
 
-export default LogoNavigation;
+export default Logo;

@@ -5,27 +5,27 @@ import React from 'react';
 import { ReactComponent as Facebook } from '@/pesayetu/assets/footer-social-fb.svg';
 import { ReactComponent as Twitter } from '@/pesayetu/assets/footer-social-tw.svg';
 
-const useStyles = makeStyles(({ breakpoints }) => ({
+const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
-    paddingTop: '2rem',
+    paddingTop: typography.pxToRem(32),
     [breakpoints.up('lg')]: {
-      paddingTop: '0.5rem',
+      paddingTop: typography.pxToRem(8),
     },
   },
   button: {
-    background: '#EBEBEB 0% 0% no-repeat padding-box',
-    borderRadius: '60px',
-    margin: '0.2rem',
+    background: '#EBEBEB',
+    borderRadius: typography.pxToRem(3.75),
+    margin: typography.pxToRem(3.2),
     '&:hover': {
-      background: '#EBEBEB 0% 0% no-repeat padding-box',
-      borderRadius: '60px',
+      background: '#EBEBEB',
+      borderRadius: typography.pxToRem(3.75),
     },
   },
   toolbar: {
     display: 'block',
   },
   svgIcon: {
-    padding: '0.2rem',
+    padding: typography.pxToRem(3.2),
   },
 }));
 
