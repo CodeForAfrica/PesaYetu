@@ -18,6 +18,7 @@ const InsightsData = ({ title, subTitle, items, ...props }) => {
   return (
     <Section classes={{ root: classes.section }}>
       <Typography className={classes.title}>{title}</Typography>
+      <div className={classes.underline} />
       <Typography className={classes.subtitle}>{subTitle}</Typography>
       <div className={classes.list}>
         {itemsData && itemsData.map((item) => <InsightCard {...item} />)}

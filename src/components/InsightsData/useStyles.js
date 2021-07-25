@@ -25,6 +25,15 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       justifyContent: "space-between",
     },
   },
+  underline: {
+    backgroundColor: "#0067A31A",
+    position: "relative",
+    width: typography.pxToRem(210),
+    height: typography.pxToRem(40),
+    zIndex: "-1",
+    left: typography.pxToRem(310),
+    top: typography.pxToRem(60),
+  },
 }));
 
 export default useStyles;

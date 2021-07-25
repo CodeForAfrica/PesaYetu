@@ -80,20 +80,16 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      href: {
-        link: "www.test.com",
-        text: "Read More",
-      },
+      linkDescription: "Read More",
+      href: "www.test.com",
     },
     {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      href: {
-        link: "www.test.com",
-        text: "Read More",
-      },
+      linkDescription: "Read More",
+      href: "www.test.com",
     },
 
     {
@@ -101,10 +97,8 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      href: {
-        link: "www.test.com",
-        text: "Read More",
-      },
+      linkDescription: "Read More",
+      href: "www.test.com",
     },
   ],
 };

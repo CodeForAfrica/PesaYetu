@@ -7,8 +7,14 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-const InsightCard = ({ title, description, image, href, ...props }) => {
-  const { link, text } = href;
+const InsightCard = ({
+  title,
+  description,
+  image,
+  href,
+  linkDescription,
+  ...props
+}) => {
   const classes = useStyles(props);
   return (
     <Card className={classes.card}>
@@ -22,8 +28,10 @@ const InsightCard = ({ title, description, image, href, ...props }) => {
         <Typography className={classes.cardDescription}>
           {description}
         </Typography>
-        <Link className={classes.link} href={link}>
-          <Typography className={classes.linkText}>{text}</Typography>
+        <Link className={classes.link} href={href}>
+          <Typography className={classes.linkText}>
+            {linkDescription}
+          </Typography>
         </Link>
       </CardContent>
     </Card>
@@ -34,13 +42,8 @@ InsightCard.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-  href: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.objectOf(PropTypes.any),
-    })
-  ),
+  href: PropTypes.string,
+  linkDescription: PropTypes.string,
 };
 
 InsightCard.defaultProps = {
@@ -48,6 +51,7 @@ InsightCard.defaultProps = {
   description: undefined,
   image: undefined,
   href: undefined,
+  linkDescription: undefined,
 };
 
 export default InsightCard;
