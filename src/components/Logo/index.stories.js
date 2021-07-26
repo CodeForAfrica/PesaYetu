@@ -3,40 +3,19 @@ import { withNextRouter } from "storybook-addon-next-router";
 
 import Logo from ".";
 
+import { config } from "@/pesayetu/config";
+
+const { footerArgs } = config;
+
 export default {
   title: "Components/Logo",
   decorators: [withNextRouter],
-  argTypes: {
-    firstTitle: {
-      control: {
-        type: "text",
-      },
-    },
-    secondTitle: {
-      control: {
-        type: "text",
-      },
-    },
-    firstSubtitle: {
-      control: {
-        type: "text",
-      },
-    },
-    secondSubtitle: {
-      control: {
-        type: "text",
-      },
-    },
-  },
+  argTypes: {},
 };
 
 const Template = ({ ...args }) => <Logo {...args} />;
-
 export const Default = Template.bind({});
 
 Default.args = {
-  firstTitle: "Pesa",
-  secondTitle: "Yetu",
-  firstSubtitle: "Our County",
-  secondSubtitle: "Our Responsibility",
+  ...footerArgs.logoProps,
 };

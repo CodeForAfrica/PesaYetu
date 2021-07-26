@@ -1,5 +1,7 @@
 import React from "react";
 
+import Page from "@/pesayetu/components/Page";
+
 export default function Home() {
-  return <div>Pesa yetu homepage template</div>;
+  return <Page>Pesa yetu homepage template</Page>;
 }

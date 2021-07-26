@@ -2,6 +2,8 @@ import { NextSeo } from "next-seo";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Navigation from "@/pesayetu/components/Navigation";
+
 /**
  * Base page that can be used to build all other pages.
  */
@@ -11,6 +13,7 @@ function BasePage({ children, ...props }) {
     <>
       <NextSeo {...props} />
       {children}
+      <Navigation {...props} />
     </>
   );
 }

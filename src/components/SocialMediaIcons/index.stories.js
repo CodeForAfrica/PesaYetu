@@ -3,21 +3,9 @@ import { withNextRouter } from "storybook-addon-next-router";
 
 import SocialMediaIcons from ".";
 
-import { ReactComponent as Facebook } from "@/pesayetu/assets/footer-social-fb.svg";
-import { ReactComponent as Twitter } from "@/pesayetu/assets/footer-social-tw.svg";
+import { config } from "@/pesayetu/config";
 
-const socialLinks = [
-  {
-    href: "/twitter",
-    component: Twitter,
-    label: "twitter",
-  },
-  {
-    href: "/facebook",
-    component: Facebook,
-    label: "facebook",
-  },
-];
+const { footerArgs } = config;
 
 export default {
   title: "Components/SocialMediaIcons",
@@ -36,5 +24,5 @@ const Template = ({ ...args }) => <SocialMediaIcons {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  socialLinks,
+  socialLinks: footerArgs.socialLinks,
 };
