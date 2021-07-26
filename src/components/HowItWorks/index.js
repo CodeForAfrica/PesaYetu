@@ -10,7 +10,7 @@ import Section from "@/pesayetu/components/Section";
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
   backgroundWrap: {
-    position: "fixed",
+    position: "relative",
     zIndex: -1,
     height: typography.pxToRem(390),
     width: "100vw",
