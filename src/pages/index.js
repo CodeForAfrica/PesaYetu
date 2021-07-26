@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import DataIndicators from "@/pesayetu/components/DataIndicators";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import Page from "@/pesayetu/components/Page";
@@ -12,6 +13,7 @@ export default function Home({ boundary, blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
+      <DataIndicators />
     </Page>
   );
 }

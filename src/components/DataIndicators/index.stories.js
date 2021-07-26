@@ -1,16 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
-import { withNextRouter } from "storybook-addon-next-router";
 
-import DataIndicators from "@/pesayetu/components/DataIndicators";
+import DataIndicators from ".";
 
 export default {
-  title: "Section/ExploreSection",
-  decorators: [withNextRouter],
-  argTypes: {},
+  title: "Sections/DataIndicators",
 };
 
-const Template = () => <DataIndicators />;
+const Template = ({ ...args }) => <DataIndicators {...args} />;
 
 export const Default = Template.bind({});
 

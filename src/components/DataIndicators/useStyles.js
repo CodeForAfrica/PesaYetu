@@ -6,7 +6,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   sectionTitle: {
     textAlign: "center",
-    // paddingBottom: typography.pxToRem(80),
     fontSize: typography.pxToRem(30),
     fontWeight: 900,
     [breakpoints.up("md")]: {
@@ -20,6 +19,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   image: {
     width: "max-content",
+  },
+  imageContainer: {
+    height: typography.pxToRem(140),
+    width: typography.pxToRem(140),
+    position: "relative",
   },
   item: {
     display: "flex",

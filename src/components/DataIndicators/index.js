@@ -23,23 +23,53 @@ const DataIndicators = (props) => {
         <div className={classes.block}>
           <Grid container className={classes.container}>
             <Grid item className={classes.item}>
-              <Image className={classes.image} src={Group4657} />
+              <div className={classes.imageContainer}>
+                <Image
+                  className={classes.image}
+                  src={Group4657}
+                  layout="fill"
+                />
+              </div>
               <Typography className={classes.text}>Overview</Typography>
             </Grid>
             <Grid item className={classes.item}>
-              <Image className={classes.image} src={Group4656} />
+              <div className={classes.imageContainer}>
+                <Image
+                  className={classes.image}
+                  src={Group4656}
+                  layout="fill"
+                />
+              </div>
               <Typography className={classes.text}>Revenue</Typography>
             </Grid>
             <Grid item className={classes.item}>
-              <Image className={classes.image} src={Group4646} />
+              <div className={classes.imageContainer}>
+                <Image
+                  className={classes.image}
+                  src={Group4646}
+                  layout="fill"
+                />
+              </div>
               <Typography className={classes.text}>Development</Typography>
             </Grid>
             <Grid item className={classes.item}>
-              <Image className={classes.image} src={Group4659} />
+              <div className={classes.imageContainer}>
+                <Image
+                  className={classes.image}
+                  src={Group4659}
+                  layout="fill"
+                />
+              </div>
               <Typography className={classes.text}>Implementation</Typography>
             </Grid>
             <Grid item className={classes.item}>
-              <Image className={classes.image} src={Group4658} />
+              <div className={classes.imageContainer}>
+                <Image
+                  className={classes.image}
+                  src={Group4658}
+                  layout="fill"
+                />
+              </div>
               <Typography className={classes.text}>Summary</Typography>
             </Grid>
           </Grid>
