@@ -1,4 +1,4 @@
-import { postTypes } from '@/pesayetu/lib/wordpress/_config/postTypes';
+import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
 
 /**
  * Format archive SEO data.
@@ -18,10 +18,10 @@ export default function formatArchiveSeoData(
   archiveSeo
 ) {
   // Check if viewing post archive and have received posts page SEO data.
-  if (postType === 'post' && postsPageSeo) {
+  if (postType === "post" && postsPageSeo) {
     return {
       ...postsPageSeo,
-      canonical: `${defaultSeo?.openGraph?.url ?? ''}/${
+      canonical: `${defaultSeo?.openGraph?.url ?? ""}/${
         postTypes?.[postType]?.route
       }`,
     };
@@ -31,12 +31,12 @@ export default function formatArchiveSeoData(
   return {
     title:
       archiveSeo?.title ??
-      `${fallbackSeo?.title} - ${defaultSeo?.openGraph?.siteName ?? ''}`,
-    metaDesc: archiveSeo?.metaDesc ?? fallbackSeo?.description ?? '',
-    metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? 'follow',
-    metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? 'index',
+      `${fallbackSeo?.title} - ${defaultSeo?.openGraph?.siteName ?? ""}`,
+    metaDesc: archiveSeo?.metaDesc ?? fallbackSeo?.description ?? "",
+    metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
+    metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
     canonical:
       archiveSeo?.canonical ??
-      `${defaultSeo?.openGraph?.url ?? ''}/${fallbackSeo?.route}`,
+      `${defaultSeo?.openGraph?.url ?? ""}/${fallbackSeo?.route}`,
   };
 }

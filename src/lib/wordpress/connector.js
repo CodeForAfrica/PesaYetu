@@ -1,10 +1,10 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
-import { useMemo } from 'react';
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { useMemo } from "react";
 
 import {
   APOLLO_STATE_PROP_NAME,
   initializeApollo,
-} from '@/pesayetu/lib/apolloConfig';
+} from "@/pesayetu/lib/apolloConfig";
 
 // Define env vars.
 export const wpApiUrlBase = process.env.WORDPRESS_URL;
@@ -14,7 +14,7 @@ const wpAppPass = process.env.WORDPRESS_APPLICATION_PASSWORD;
 
 // Set WP application password auth header.
 const wpAuthorization = Buffer.from(`${wpAppUser}:${wpAppPass}`).toString(
-  'base64'
+  "base64"
 );
 
 let wpApolloClient;
@@ -31,9 +31,9 @@ export function createWpApolloClient(auth = false) {
     ssrMode: false,
     link: new HttpLink({
       uri: `${wpApiUrlBase}graphql`,
-      credentials: '',
+      credentials: "",
       headers: {
-        authorization: auth ? `Basic ${wpAuthorization}` : '',
+        authorization: auth ? `Basic ${wpAuthorization}` : "",
       },
     }),
     cache: new InMemoryCache(),
@@ -53,7 +53,7 @@ export function initializeWpApollo(initialState = null) {
   const newApolloClient = initializeApollo(singletonApolloClient, initialState);
 
   // For SSG and SSR always create a new Apollo Client.
-  if (typeof window === 'undefined') return newApolloClient;
+  if (typeof window === "undefined") return newApolloClient;
 
   // Create the Apollo Client once in the client.
   if (!wpApolloClient) wpApolloClient = newApolloClient;

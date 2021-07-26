@@ -1,10 +1,9 @@
-const path = require("path");
-
 module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-addon-material-ui",
+    "storybook-addon-next-router",
   ],
   stories: ["../src/**/*.stories.js"],
   webpackFinal: async (config) => {
@@ -31,6 +30,14 @@ module.exports = {
           },
         },
       ],
+    });
+    // Allows object.foo ?? 'bar'
+    config.module.rules.push({
+      test: /\.(js|jsx)$/,
+      loader: require.resolve("babel-loader"),
+      options: {
+        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator"],
+      },
     });
 
     return config;

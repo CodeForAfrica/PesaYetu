@@ -1,12 +1,12 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-import authorPostFields from '@/pesayetu/lib/wordpress/_query-partials/authorPostFields';
-import categoriesPostFields from '@/pesayetu/lib/wordpress/_query-partials/categoriesPostFields';
-import defaultPageData from '@/pesayetu/lib/wordpress/_query-partials/defaultPageData';
-import featuredImagePostFields from '@/pesayetu/lib/wordpress/_query-partials/featuredImagePostFields';
-import globalPostFields from '@/pesayetu/lib/wordpress/_query-partials/globalPostFields';
-import seoPostFields from '@/pesayetu/lib/wordpress/_query-partials/seoPostFields';
-import tagsPostFields from '@/pesayetu/lib/wordpress/_query-partials/tagsPostFields';
+import authorPostFields from "@/pesayetu/lib/wordpress/_query-partials/authorPostFields";
+import categoriesPostFields from "@/pesayetu/lib/wordpress/_query-partials/categoriesPostFields";
+import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
+import featuredImagePostFields from "@/pesayetu/lib/wordpress/_query-partials/featuredImagePostFields";
+import globalPostFields from "@/pesayetu/lib/wordpress/_query-partials/globalPostFields";
+import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostFields";
+import tagsPostFields from "@/pesayetu/lib/wordpress/_query-partials/tagsPostFields";
 
 // Fragment: retrieve single post fields.
 const singlePostFragment = gql`
