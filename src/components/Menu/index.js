@@ -59,6 +59,10 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     [breakpoints.up("lg")]: {
       padding: `${typography.pxToRem(18)}`,
       color: palette.background.dark,
+      "&:hover, &:focus, &:focus-within": {
+        color: "#707070",
+        backgroundColor: "transparent",
+      },
     },
   },
 }));

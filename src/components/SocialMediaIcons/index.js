@@ -46,7 +46,7 @@ function SocialMediaIcons({ socialLinks, ...props }) {
         <Link href={url} key={label}>
           <IconButton
             size="medium"
-            edge="center"
+            edge="end"
             aria-label={label}
             viewBox={viewBoxValue}
             className={classes.button}

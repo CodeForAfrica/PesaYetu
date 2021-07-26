@@ -251,7 +251,7 @@ function SelectSearch({
         </Select>
         {open ? (
           <IconButton
-            size="large"
+            size="medium"
             onClick={handleOpen}
             aria-label="open"
             disableRipple
@@ -297,7 +297,7 @@ SelectSearch.propTypes = {
   inputBaseLabel: PropTypes.string,
   menuItems: PropTypes.arrayOf(
     PropTypes.shape({
-      countryName: PropTypes.number,
+      countryName: PropTypes.string,
       countryUrl: PropTypes.string,
       items: PropTypes.arrayOf(
         PropTypes.shape({
