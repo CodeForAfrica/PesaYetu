@@ -1,11 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { Button } from "@material-ui/core";
 import React from "react";
-import { withNextRouter } from "storybook-addon-next-router";
 
 export default {
-  title: "Components/Buttons",
-  decorators: [withNextRouter],
+  title: "Components/Button",
   argTypes: {
     color: {
       control: {
