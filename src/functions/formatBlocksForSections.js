@@ -24,6 +24,7 @@ function format(block) {
     case "lazyblock/explore-other-tools":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/hero":
+    case "lazyblock/how-it-works":
     default:
       return attributes;
   }
