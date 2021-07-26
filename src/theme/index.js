@@ -121,12 +121,8 @@ deepmerge(
       },
     },
     body2: {
-      fontSize: pxToRem(16),
-      lineHeight: 24 / 16,
-      [breakpoints.up("lg")]: {
-        fontSize: pxToRem(16),
-        lineHeight: 24 / 16, // font body2
-      },
+      fontSize: pxToRem(14),
+      lineHeight: 24 / 14, // font body2 P2
     },
     subtitle1: {
       fontSize: pxToRem(16),
