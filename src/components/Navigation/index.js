@@ -7,7 +7,7 @@ import MobileNavigation from "./MobileNavigation";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
-    backgroundColor: palette.background.main,
+    backgroundColor: palette.text.secondary,
   },
   section: {
     padding: `0 ${typography.pxToRem(21)} 0 ${typography.pxToRem(17)}`,

@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     flexDirection: "column",
     padding: `${typography.pxToRem(11)} ${typography.pxToRem(24)}`,
     letterSpacing: `${typography.pxToRem(1.32)}`,
-    color: palette.background.dark,
+    color: palette.grey.dark,
     textTransform: "uppercase",
     justifyContent: "center",
     [breakpoints.up("lg")]: {
@@ -49,12 +49,14 @@ function Logo({
   return (
     <div className={classes.root}>
       <RichTypography variant="h1">
-        <span className={classes.firstTitle}>{firstTitle}</span>
-        <span className={classes.secondTitle}>{secondTitle}</span>
+        {firstTitle && <span className={classes.firstTitle}>{firstTitle}</span>}
+        {secondTitle && (
+          <span className={classes.secondTitle}>{secondTitle}</span>
+        )}
       </RichTypography>
       <RichTypography variant="caption" className={classes.subtitle}>
-        <span>{firstSubtitle}&nbsp;</span>
-        <span>{secondSubtitle}</span>
+        {firstSubtitle && <span>{firstSubtitle}&nbsp;</span>}
+        {secondSubtitle && <span>{secondSubtitle}</span>}
       </RichTypography>
     </div>
   );
