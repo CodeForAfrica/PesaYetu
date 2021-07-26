@@ -18,7 +18,11 @@ const DataVisualCard = ({ image, order, description, ...props }) => {
             {order}
           </Typography>
         )}
-        {description && <Typography display="inline">{description}</Typography>}
+        {description && (
+          <Typography variant="subtitle2" display="inline">
+            {description}
+          </Typography>
+        )}
       </CardContent>
     </Card>
   );
