@@ -9,12 +9,11 @@ import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSection
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ boundary, blocks, ...props }) {
-  console.log("BLOOOCKS", blocks);
   return (
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
-      <ExploreOtherTools {...blocks?.exploreOtherTools} />
       <DataVisuals {...blocks?.dataVisuals} />
+      <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
 }

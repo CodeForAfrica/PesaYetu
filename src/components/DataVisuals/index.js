@@ -36,11 +36,13 @@ const DataVisuals = ({ title, items, ...props }) => {
           showDots
           dotListClass={classes.dots}
         >
-          {items && items.map((item) => <DataVisualCard {...item} />)}
+          {items &&
+            items.map((item) => <DataVisualCard key={item.image} {...item} />)}
         </Carousel>
       ) : (
         <div className={classes.section}>
-          {items && items.map((item) => <DataVisualCard {...item} />)}
+          {items &&
+            items.map((item) => <DataVisualCard key={item.image} {...item} />)}
         </div>
       )}
     </Section>
