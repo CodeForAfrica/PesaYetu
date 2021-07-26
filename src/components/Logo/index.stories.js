@@ -1,30 +1,30 @@
-import React from 'react';
-import { withNextRouter } from 'storybook-addon-next-router';
+import React from "react";
+import { withNextRouter } from "storybook-addon-next-router";
 
-import Logo from '.';
+import Logo from ".";
 
 export default {
-  title: 'Components/Logo',
+  title: "Components/Logo",
   decorators: [withNextRouter],
   argTypes: {
     firstTitle: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     secondTitle: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     firstSubtitle: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
     secondSubtitle: {
       control: {
-        type: 'text',
+        type: "text",
       },
     },
   },
@@ -35,8 +35,8 @@ const Template = ({ ...args }) => <Logo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  firstTitle: 'Pesa',
-  secondTitle: 'Yetu',
-  firstSubtitle: 'Our County',
-  secondSubtitle: 'Our Responsibility',
+  firstTitle: "Pesa",
+  secondTitle: "Yetu",
+  firstSubtitle: "Our County",
+  secondSubtitle: "Our Responsibility",
 };

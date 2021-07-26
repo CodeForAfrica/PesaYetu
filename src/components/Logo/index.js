@@ -1,39 +1,39 @@
-import { RichTypography } from '@commons-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { RichTypography } from "@commons-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'row',
-    [breakpoints.up('lg')]: {
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
+    display: "flex",
+    flexDirection: "row",
+    [breakpoints.up("lg")]: {
+      flexDirection: "column",
+      justifyContent: "flex-start",
     },
   },
   firstTitle: {
     color: palette.secondary.main,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 0,
   },
   secondTitle: {
     color: palette.primary.main,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterspacing: 0,
   },
   subtitle: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     padding: `${typography.pxToRem(11)} ${typography.pxToRem(24)}`,
     letterSpacing: `${typography.pxToRem(1.32)}`,
     color: palette.background.dark,
-    textTransform: 'uppercase',
-    justifyContent: 'center',
-    [breakpoints.up('lg')]: {
+    textTransform: "uppercase",
+    justifyContent: "center",
+    [breakpoints.up("lg")]: {
       padding: 0,
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
+      flexDirection: "row",
+      justifyContent: "flex-start",
     },
   },
 }));

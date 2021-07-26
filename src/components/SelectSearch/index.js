@@ -1,4 +1,4 @@
-import { RichTypography } from '@commons-ui/core';
+import { RichTypography } from "@commons-ui/core";
 import {
   Select,
   Typography,
@@ -8,61 +8,61 @@ import {
   SvgIcon,
   Link,
   Grid,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import React from 'react';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import { ReactComponent as SearchClose } from '@/pesayetu/assets/search-close.svg';
-import { ReactComponent as SearchOpen } from '@/pesayetu/assets/search-open.svg';
+import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
+import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
     paddingBottom: typography.pxToRem(56),
   },
   formControl: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   form: {
     paddingTop: typography.pxToRem(40),
     paddingBottom: typography.pxToRem(16),
-    [breakpoints.up('md')]: {
+    [breakpoints.up("md")]: {
       padding: `${typography.pxToRem(40)} 0`,
     },
   },
   title: {
-    color: 'white',
+    color: "white",
     padding: `${typography.pxToRem(16)} 0 `,
   },
   label: {
     color: palette.background.main,
-    textAlign: 'left',
+    textAlign: "left",
     fontSize: typography.pxToRem(18),
-    position: 'relative',
+    position: "relative",
     marginBottom: typography.pxToRem(20),
     fontFamily: typography.fontFamily,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     transform: `translate(0, ${typography.pxToRem(0)}) scale(1)`,
-    '&$focused': {
+    "&$focused": {
       color: palette.background.main,
     },
   },
   country: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   name: {
-    fontWeight: 'normal',
+    fontWeight: "normal",
   },
   list: {
-    fontWeight: 'normal',
-    listStyleType: 'none',
+    fontWeight: "normal",
+    listStyleType: "none",
   },
   ul: {
     padding: 0,
@@ -78,15 +78,15 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   button: {
     height: typography.pxToRem(48),
     width: typography.pxToRem(48),
-    marginLeft: '1rem',
-    '&:hover, &:focus, &:focus-within': {
-      backgroundColor: 'transparent',
+    marginLeft: "1rem",
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "transparent",
     },
   },
   select: {
     paddingTop: 0,
     paddingBottom: 0,
-    '&:hover, &:focus, &:focus-within': {
+    "&:hover, &:focus, &:focus-within": {
       backgroundColor: palette.background.main,
     },
   },
@@ -99,15 +99,15 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     backgroundColor: palette.background.main,
     height: typography.pxToRem(48),
     width: typography.pxToRem(278),
-    border: '2px solid #00000000',
+    border: "2px solid #00000000",
     borderRadius: typography.pxToRem(3.75),
   },
   inputBaseInput: {
-    textAlign: 'left',
+    textAlign: "left",
     paddingLeft: typography.pxToRem(16),
     fontSize: typography.pxToRem(16),
-    'label[data-shrink=false] + .MuiInputBase-formControl &::placeholder': {
-      opacity: '0.5!important',
+    "label[data-shrink=false] + .MuiInputBase-formControl &::placeholder": {
+      opacity: "0.5!important",
     },
   },
   menuPaper: {
@@ -120,62 +120,13 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     padding: typography.pxToRem(32),
   },
   link: {
-    textDecoration: 'none',
-    color: '#1C2030',
-    '&:hover, &:focus, &:focus-within': {
-      textDecoration: 'none',
+    textDecoration: "none",
+    color: "#1C2030",
+    "&:hover, &:focus, &:focus-within": {
+      textDecoration: "none",
     },
   },
 }));
-
-/* const menuitems = [
-  {
-    countryName: 'country 1',
-    countryUrl: '/country 1',
-    items: [
-      {
-        name: 'subcounty-1',
-        url: '/subcounty-1',
-      },
-      {
-        name: 'subcounty-2',
-        url: '/subcounty-2',
-      },
-      {
-        name: 'subcounty-2',
-        url: '/subcounty-2',
-      },
-    ],
-  },
-  {
-    countryName: 'country 2',
-    countryUrl: '/country 2',
-    items: [
-      {
-        name: 'subcounty-4',
-        url: '/subcounty-4',
-      },
-      {
-        name: 'subcounty-5',
-        url: '/subcounty-5',
-      },
-    ],
-  },
-  {
-    countryName: 'country 3',
-    countryUrl: '/country 3',
-    items: [
-      {
-        name: 'subcounty-6',
-        url: '/subcounty-6',
-      },
-      {
-        name: 'subcounty-7',
-        url: '/subcounty-7',
-      },
-    ],
-  },
-]; */
 function SelectSearch({
   title,
   placeholder,
@@ -189,9 +140,7 @@ function SelectSearch({
   const classes = useStyles(props);
   const [value, setValue] = React.useState([]);
   const [open, setOpen] = React.useState(false);
-  const viewBoxValue = '0 0 48 48';
-  // eslint-disable-next-line no-console
-  console.log(menuItems);
+  const viewBoxValue = "0 0 48 48";
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -213,23 +162,23 @@ function SelectSearch({
         width: 287,
         height: 175,
         paddingLeft: 16,
-        border: '2px solid #00000000',
-        borderRadius: '10px',
+        border: "2px solid #00000000",
+        borderRadius: "10px",
       },
       className: classes.menuPaper,
     },
     // TODO Nyokabi => Prevents menu from  attempting to vertically align/or move to currently selected menu item in the select input box
-    variant: 'menu',
+    variant: "menu",
     getContentAnchorEl: null,
 
     // Popover props
     anchorOrigin: {
-      vertical: 'bottom',
-      horizontal: 'center',
+      vertical: "bottom",
+      horizontal: "center",
     },
     transformOrigin: {
-      vertical: 'top',
-      horizontal: 'center',
+      vertical: "top",
+      horizontal: "center",
     },
   };
 
@@ -261,7 +210,7 @@ function SelectSearch({
           input={
             <InputBase
               id={inputBaseId}
-              inputProps={{ 'aria-label': inputBaseLabel }}
+              inputProps={{ "aria-label": inputBaseLabel }}
               placeholder={placeholder}
               classes={{
                 root: classes.inputBase,

@@ -1,4 +1,4 @@
-import { Section } from '@commons-ui/core';
+import { Section } from "@commons-ui/core";
 import {
   Grid,
   Slide,
@@ -7,24 +7,24 @@ import {
   IconButton,
   SvgIcon,
   DialogContent,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 
-import { ReactComponent as MenuCloseIcon } from '@/pesayetu/assets/menu_close.svg';
-import { ReactComponent as MenuOpenIcon } from '@/pesayetu/assets/menu_open.svg';
-import Logo from '@/pesayetu/components/Logo';
-import Menu from '@/pesayetu/components/Menu';
-import SelectSearch from '@/pesayetu/components/SelectSearch';
+import { ReactComponent as MenuCloseIcon } from "@/pesayetu/assets/menu_close.svg";
+import { ReactComponent as MenuOpenIcon } from "@/pesayetu/assets/menu_open.svg";
+import Logo from "@/pesayetu/components/Logo";
+import Menu from "@/pesayetu/components/Menu";
+import SelectSearch from "@/pesayetu/components/SelectSearch";
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     padding: `${typography.pxToRem(30.35)}`,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   section: {},
   dialog: {
@@ -40,14 +40,14 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     color: palette.background.main,
   },
   logoSection: {
-    borderBottom: '2px solid white',
+    borderBottom: "2px solid white",
   },
   backdrop: {
     maxHeight: typography.pxToRem(608),
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   dialogActions: {
-    transform: 'matrix(-1, 0, 0, -1, 0, 0, )',
+    transform: "matrix(-1, 0, 0, -1, 0, 0, )",
     background: palette.primary.main,
   },
   dialogContent: {
@@ -61,7 +61,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     background: palette.background.lightgrey,
     borderRadius: typography.pxToRem(50),
     margin: typography.pxToRem(8),
-    '&:hover': {
+    "&:hover": {
       background: palette.background.lightgrey,
       borderRadius: typography.pxToRem(50),
       margin: typography.pxToRem(8),
@@ -71,8 +71,8 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     color: palette.background.main,
     padding: `0 ${typography.pxToRem(71)}`,
     paddingLeft: typography.pxToRem(12),
-    '&:hover': {
-      background: 'none',
+    "&:hover": {
+      background: "none",
     },
   },
   menuItems: {
@@ -83,21 +83,21 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   search: {
     // tablet overide
-    [breakpoints.up('md')]: {
+    [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(400),
     },
   },
   searchInput: {
     // tablet overide
-    [breakpoints.up('md')]: {
+    [breakpoints.up("md")]: {
       width: typography.pxToRem(360),
     },
   },
   searchButton: {
     paddingBottom: 0,
     paddingTop: 0,
-    '&:hover': {
-      background: 'inherit',
+    "&:hover": {
+      background: "inherit",
     },
   },
   button: {

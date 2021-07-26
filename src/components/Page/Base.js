@@ -1,6 +1,6 @@
-import { NextSeo } from 'next-seo';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { NextSeo } from "next-seo";
+import PropTypes from "prop-types";
+import React from "react";
 
 /**
  * Base page that can be used to build all other pages.

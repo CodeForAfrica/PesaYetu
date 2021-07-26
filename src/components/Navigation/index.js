@@ -1,9 +1,9 @@
-import { AppBar, Hidden, Toolbar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
+import { AppBar, Hidden, Toolbar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
-import DesktopNavigation from './DesktopNavigation';
-import MobileNavigation from './MobileNavigation';
+import DesktopNavigation from "./DesktopNavigation";
+import MobileNavigation from "./MobileNavigation";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
@@ -12,15 +12,15 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   section: {
     padding: `0 ${typography.pxToRem(21)} 0 ${typography.pxToRem(17)}`,
     margin: 0,
-    width: '100%',
-    [breakpoints.up('lg')]: {
+    width: "100%",
+    [breakpoints.up("lg")]: {
       padding: `0 0 0 ${typography.pxToRem(100)}`,
-      margin: '0 auto',
+      margin: "0 auto",
       maxWidth: typography.pxToRem(1196),
     },
   },
   toolbar: {
-    display: 'block',
+    display: "block",
   },
 }));
 

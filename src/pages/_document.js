@@ -1,8 +1,8 @@
-import { ServerStyleSheets } from '@material-ui/core/styles';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import React from 'react';
+import { ServerStyleSheets } from "@material-ui/core/styles";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import React from "react";
 
-import theme from '@/pesayetu/theme';
+import theme from "@/pesayetu/theme";
 
 export default class MyDocument extends Document {
   render() {

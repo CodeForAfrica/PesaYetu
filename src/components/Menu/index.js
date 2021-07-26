@@ -1,42 +1,42 @@
-import { Grid, Button, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { Grid, Button, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import SocialMediaIcons from '@/pesayetu/components/SocialMediaIcons';
+import SocialMediaIcons from "@/pesayetu/components/SocialMediaIcons";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
     margin: `${typography.pxToRem(20)} 0`,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    '& > div:nth-of-type(3)': {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    "& > div:nth-of-type(3)": {
       order: 3,
     },
-    '& > div:nth-of-type(4)': {
+    "& > div:nth-of-type(4)": {
       order: 4,
     },
-    '& > div:nth-of-type(5)': {
+    "& > div:nth-of-type(5)": {
       order: 2,
     },
-    '& > div:nth-of-type(6)': {
+    "& > div:nth-of-type(6)": {
       order: 5,
     },
-    [breakpoints.up('lg')]: {
+    [breakpoints.up("lg")]: {
       padding: 0,
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
-      '& > div:nth-of-type(3)': {
+      flexDirection: "row",
+      justifyContent: "flex-end",
+      "& > div:nth-of-type(3)": {
         order: 0,
       },
-      '& > div:nth-of-type(4)': {
+      "& > div:nth-of-type(4)": {
         order: 0,
       },
-      '& > div:nth-of-type(5)': {
+      "& > div:nth-of-type(5)": {
         order: 0,
       },
-      '& > div:nth-of-type(6)': {
+      "& > div:nth-of-type(6)": {
         order: 0,
       },
     },
@@ -46,17 +46,17 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   menu: {
     margin: 0,
-    [breakpoints.up('lg')]: {
+    [breakpoints.up("lg")]: {
       margin: `0 ${typography.pxToRem(8)}`,
     },
   },
   menuLinks: {
     color: palette.background.main,
     padding: `${typography.pxToRem(20)} 0`,
-    '&:hover, &:focus, &:focus-within': {
-      backgroundColor: 'transparent',
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "transparent",
     },
-    [breakpoints.up('lg')]: {
+    [breakpoints.up("lg")]: {
       padding: `${typography.pxToRem(18)}`,
       color: palette.background.dark,
     },
