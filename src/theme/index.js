@@ -22,7 +22,7 @@ const theme = createTheme({
       light: "#F8A199", // highlight red
     },
     background: {
-      default: "#F0F0F0", // default
+      default: "#FFF", // some white
       paper: "#F8F8F8", // light white
     },
     grey: {
@@ -31,8 +31,8 @@ const theme = createTheme({
       light: "#F0F0F0", // lightgrey
     },
     text: {
-      primary: "#FFF",
-      secondary: "#333333",
+      primary: "#333333",
+      secondary: "#FFFFFF",
       hint: "#1C2031",
     },
   },
@@ -165,7 +165,7 @@ deepmerge(
       root: {},
       contained: {},
       containedPrimary: {
-        color: palette.background.main,
+        color: palette.background.default,
         backgroundColor: palette.primary.main,
         boxShadow: "none",
         borderRadius: pxToRem(50),
@@ -177,13 +177,13 @@ deepmerge(
         "&:hover": {
           color: palette.primary.main,
           boxShadow: "none",
-          backgroundColor: palette.background.main,
+          backgroundColor: palette.background.default,
           border: "3px solid transparent",
           borderRadius: pxToRem(50),
         },
         [breakpoints.up("lg")]: {
           color: palette.primary.main,
-          backgroundColor: palette.background.main,
+          backgroundColor: palette.background.default,
           boxShadow: "none",
           borderRadius: pxToRem(50),
           letterspacing: "1.6px",
@@ -192,7 +192,7 @@ deepmerge(
           textTransform: "uppercase",
           transition: "none !important",
           "&:hover": {
-            color: palette.background.main,
+            color: palette.background.default,
             boxShadow: "none",
             backgroundColor: palette.primary.main,
             border: "3px solid transparent",

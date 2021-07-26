@@ -31,13 +31,13 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     padding: 0,
   },
   firstTitle: {
-    color: palette.background.main,
+    color: palette.background.default,
   },
   secondTitle: {
-    color: palette.background.main,
+    color: palette.background.default,
   },
   subtitle: {
-    color: palette.background.main,
+    color: palette.background.default,
   },
   logoSection: {
     borderBottom: "2px solid white",
