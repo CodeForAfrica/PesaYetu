@@ -30,7 +30,7 @@ ExploreCard.propTypes = {
   item: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    image: PropTypes.objectOf(PropTypes.any),
+    image: PropTypes.string,
   }),
 };
 

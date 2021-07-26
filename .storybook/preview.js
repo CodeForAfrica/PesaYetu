@@ -57,7 +57,7 @@ export const parameters = {
 };
 
 const OriginalNextImage = NextImage.default;
-Object.defineProperty(NextImage, 'default', {
+Object.defineProperty(NextImage, "default", {
   configurable: true,
   value: (props) => <OriginalNextImage {...props} unoptimized />,
 });

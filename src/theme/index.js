@@ -31,13 +31,15 @@ const theme = createTheme({
     },
     text: {
       primary: "#333333",
-      secondary: "#FFF",
+      secondary: "#fff",
       hint: "#1C2031",
     },
   },
   typography: {
     fontFamily: FONT_FAMILY_TEXT,
-    h1: {},
+    h1: {
+      fontWeight: 900,
+    },
     h2: {},
     h3: {},
     h4: {},
@@ -63,11 +65,11 @@ deepmerge(
   typography,
   {
     h1: {
-      fontSize: pxToRem(50),
-      lineHeight: 66 / 50,
+      fontSize: pxToRem(30),
+      lineHeight: 40 / 30, // font 30 H0m
       [breakpoints.up("lg")]: {
-        fontSize: pxToRem(50),
-        lineHeight: 66 / 50, // font 50 H0
+        fontSize: pxToRem(48),
+        lineHeight: 58 / 48, // font 48 H0
       },
     },
     h2: {
@@ -127,11 +129,11 @@ deepmerge(
       },
     },
     subtitle1: {
-      fontSize: pxToRem(14),
-      lineHeight: 24 / 14,
+      fontSize: pxToRem(16),
+      lineHeight: 24 / 16,
       [breakpoints.up("lg")]: {
-        fontSize: pxToRem(14),
-        lineHeight: 24 / 14, // font 14 subtitle1
+        fontSize: pxToRem(16),
+        lineHeight: 24 / 16, // font 16 subtitle1
       },
     },
     subtitle2: {
