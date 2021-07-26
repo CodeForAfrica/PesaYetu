@@ -18,6 +18,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   cardTitle: {
     margin: `${typography.pxToRem(20)} 0`,
+    [breakpoints.up("lg")]: {
+      marginTop: typography.pxToRem(40),
+    },
   },
   cardDescription: {
     marginBottom: typography.pxToRem(20),

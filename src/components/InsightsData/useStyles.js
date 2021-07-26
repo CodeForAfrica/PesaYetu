@@ -14,19 +14,17 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     fontWeight: "900",
     marginBottom: typography.pxToRem(60),
     [breakpoints.up("md")]: {
+      marginBottom: typography.pxToRem(30),
+    },
+    [breakpoints.up("lg")]: {
+      marginBottom: typography.pxToRem(80),
       fontSize: typography.pxToRem(48),
     },
   },
   subtitleTwo: {
-    fontSize: typography.pxToRem(30),
-    fontWeight: "900",
-    marginBottom: typography.pxToRem(60),
     position: "relative",
     display: "inline-block",
 
-    [breakpoints.up("md")]: {
-      fontSize: typography.pxToRem(48),
-    },
     "&::before": {
       content: "''",
       borderBottom: "30px solid #0067A31A",

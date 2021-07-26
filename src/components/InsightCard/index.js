@@ -28,7 +28,7 @@ const InsightCard = ({
           </Typography>
         )}
         {description && (
-          <Typography className={classes.cardDescription}>
+          <Typography variant="subtitle2" className={classes.cardDescription}>
             {description}
           </Typography>
         )}

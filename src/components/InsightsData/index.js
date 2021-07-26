@@ -1,5 +1,6 @@
 import { Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -28,7 +29,10 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
         display="inline"
         className={classes.subtitle}
       >{`${subTitleFirst} `}</Typography>
-      <Typography display="inline" className={classes.subtitleTwo}>
+      <Typography
+        display="inline"
+        className={clsx(classes.subtitle, classes.subtitleTwo)}
+      >
         {subTitleEnd}
       </Typography>
       <div className={classes.list}>
