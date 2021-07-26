@@ -6,9 +6,9 @@ import facebook from "@/pesayetu/assets/footer-social-fb.svg";
 import instagram from "@/pesayetu/assets/footer-social-ig.svg";
 import linkedin from "@/pesayetu/assets/footer-social-in.svg";
 import twitter from "@/pesayetu/assets/footer-social-tw.svg";
-import Group3964 from "@/pesayetu/assets/images/Group 3964.png";
-import Group3973 from "@/pesayetu/assets/images/Group 3973.png";
-import Group4619 from "@/pesayetu/assets/images/Group 4619.png";
+import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
+import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
+import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
 
 const CFA = {
   image: {
