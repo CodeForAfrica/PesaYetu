@@ -2,32 +2,58 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
-import InsightsData from "@/pesayetu/components/InsightsData";
+import Hero from "@/pesayetu/components/Hero";
 import Page from "@/pesayetu/components/Page";
-import { exploreTools, insightData } from "@/pesayetu/config";
+import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function Home({ ...props }) {
-  if (props?.errorMessage) {
-    return <div> {props.errorMessage}</div>;
-  }
+export default function Home({ boundary, blocks, ...props }) {
   return (
-    <Page>
-      <ExploreOtherTools {...exploreTools} />
-      <InsightsData {...insightData} />
+    <Page {...props}>
+      <Hero {...blocks?.hero} boundary={boundary} />
+      <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
 }
 
 Home.propTypes = {
-  errorMessage: PropTypes.string,
+  boundary: PropTypes.shape({}),
+  blocks: PropTypes.shape({
+    hero: PropTypes.shape({}),
+    exploreOtherTools: PropTypes.shape({}),
+  }),
 };
 
 Home.defaultProps = {
-  errorMessage: undefined,
+  boundary: undefined,
+  blocks: undefined,
 };
 
 export async function getStaticProps() {
   const postType = "page";
-  return getPostTypeStaticProps({ slug: "/" }, postType);
+  const { props, revalidate, notFound } = await getPostTypeStaticProps(
+    { slug: "/" },
+    postType
+  );
+
+  if (notFound) {
+    return {
+      notFound,
+    };
+  }
+
+  const res = await fetch(
+    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
+  );
+  const { children } = await res.json();
+
+  const blocks = formatBlocksForSections(props?.post?.blocks);
+  return {
+    props: {
+      ...props,
+      blocks,
+      boundary: children?.county,
+    },
+    revalidate,
+  };
 }

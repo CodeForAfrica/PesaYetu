@@ -31,6 +31,14 @@ module.exports = {
         },
       ],
     });
+    // Allows object.foo ?? 'bar'
+    config.module.rules.push({
+      test: /\.(js|jsx)$/,
+      loader: require.resolve("babel-loader"),
+      options: {
+        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator"],
+      },
+    });
 
     return config;
   },
