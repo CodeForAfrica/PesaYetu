@@ -3,17 +3,19 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Navigation from "@/pesayetu/components/Navigation";
+import { config } from "@/pesayetu/config";
 
 /**
  * Base page that can be used to build all other pages.
  */
 
 function BasePage({ children, ...props }) {
+  const { footerArgs } = config;
   return (
     <>
       <NextSeo {...props} />
       {children}
-      <Navigation {...props} />
+      <Navigation {...footerArgs} />
     </>
   );
 }
