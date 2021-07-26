@@ -19,7 +19,8 @@
     "build-storybook": "build-storybook",
     "build": "next build",
     "start": "next start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
@@ -56,6 +57,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-imports": "^2.0.0",
+    "chromatic": "^5.10.0-canary.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.0.1",
