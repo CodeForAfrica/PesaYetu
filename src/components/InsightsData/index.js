@@ -9,7 +9,6 @@ import InsightCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
 
 const InsightsData = ({ title, subtitle, items, ...props }) => {
-  console.log("ITEEEMS", items);
   let itemsData = [];
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.only("md"));
