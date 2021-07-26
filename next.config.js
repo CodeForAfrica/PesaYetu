@@ -1,4 +1,6 @@
-module.exports = {
+const withImages = require("next-images");
+
+module.exports = withImages({
   images: {
     domains: process.env.NEXT_PUBLIC_IMAGE_DOMAINS.split(", "),
   },
@@ -16,4 +18,4 @@ module.exports = {
     });
     return config;
   },
-};
+});

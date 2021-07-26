@@ -13,9 +13,9 @@ import { footerArgs, navigationArgs } from "@/pesayetu/config";
 function BasePage({ children, ...props }) {
   return (
     <>
+      <Navigation {...navigationArgs} />
       <NextSeo {...props} />
       {children}
-      <Navigation {...navigationArgs} />
       <Footer {...footerArgs} />
     </>
   );
