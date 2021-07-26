@@ -34,6 +34,7 @@ function Section({ className, fixed, ...props }) {
         },
         className
       )}
+      classes={{}}
     />
   );
 }
