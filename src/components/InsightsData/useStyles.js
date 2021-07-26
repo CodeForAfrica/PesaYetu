@@ -17,6 +17,29 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       fontSize: typography.pxToRem(48),
     },
   },
+  subtitleTwo: {
+    fontSize: typography.pxToRem(30),
+    fontWeight: "900",
+    marginBottom: typography.pxToRem(60),
+    position: "relative",
+    display: "inline-block",
+
+    [breakpoints.up("md")]: {
+      fontSize: typography.pxToRem(48),
+    },
+    "&::before": {
+      content: "''",
+      borderBottom: "30px solid #0067A31A",
+      width: "100%",
+      position: "absolute",
+      right: 0,
+      top: "30%",
+      zIndex: "-1",
+      [breakpoints.up("md")]: {
+        top: "40%",
+      },
+    },
+  },
   list: {
     display: "flex",
     flexDirection: "column",
@@ -24,15 +47,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       flexDirection: "row",
       justifyContent: "space-between",
     },
-  },
-  underline: {
-    backgroundColor: "#0067A31A",
-    position: "relative",
-    width: typography.pxToRem(210),
-    height: typography.pxToRem(40),
-    zIndex: "-1",
-    left: typography.pxToRem(310),
-    top: typography.pxToRem(60),
   },
 }));
 

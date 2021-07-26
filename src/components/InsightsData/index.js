@@ -15,11 +15,22 @@ const InsightsData = ({ title, subTitle, items, ...props }) => {
 
   itemsData = isTablet ? items.slice(0, 2) : items;
   const classes = useStyles(props);
+
+  // get the last part of title to give it background styling
+  const subTitleArr = subTitle.split(" ");
+  const subTitleEnd = subTitleArr.pop();
+  const subTitleFirst = subTitleArr.join(" ");
+
   return (
     <Section classes={{ root: classes.section }}>
       <Typography className={classes.title}>{title}</Typography>
-      <div className={classes.underline} />
-      <Typography className={classes.subtitle}>{subTitle}</Typography>
+      <Typography
+        display="inline"
+        className={classes.subtitle}
+      >{`${subTitleFirst} `}</Typography>
+      <Typography display="inline" className={classes.subtitleTwo}>
+        {subTitleEnd}
+      </Typography>
       <div className={classes.list}>
         {itemsData && itemsData.map((item) => <InsightCard {...item} />)}
       </div>
