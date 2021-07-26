@@ -8,7 +8,8 @@ import useStyles from "./useStyles";
 import InsightCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
 
-const InsightsData = ({ title, subTitle, items, ...props }) => {
+const InsightsData = ({ title, subtitle, items, ...props }) => {
+  console.log("ITEEEMS", items);
   let itemsData = [];
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.only("md"));
@@ -17,7 +18,7 @@ const InsightsData = ({ title, subTitle, items, ...props }) => {
   const classes = useStyles(props);
 
   // get the last part of title to give it background styling
-  const subTitleArr = subTitle.split(" ");
+  const subTitleArr = subtitle.split(" ");
   const subTitleEnd = subTitleArr.pop();
   const subTitleFirst = subTitleArr.join(" ");
 
@@ -40,7 +41,7 @@ const InsightsData = ({ title, subTitle, items, ...props }) => {
 
 InsightsData.propTypes = {
   title: PropTypes.string,
-  subTitle: PropTypes.string,
+  subtitle: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -52,7 +53,7 @@ InsightsData.propTypes = {
 
 InsightsData.defaultProps = {
   title: undefined,
-  subTitle: undefined,
+  subtitle: undefined,
   items: undefined,
 };
 

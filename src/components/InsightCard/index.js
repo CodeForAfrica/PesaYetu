@@ -12,26 +12,32 @@ const InsightCard = ({
   description,
   image,
   href,
-  linkDescription,
+  linkdescription,
   ...props
 }) => {
   const classes = useStyles(props);
   return (
     <Card className={classes.card}>
       <div className={classes.cardMedia}>
-        <Image src={image} layout="fill" className={classes.image} />
+        {image && <Image src={image} layout="fill" className={classes.image} />}
       </div>
       <CardContent className={classes.content}>
-        <Typography variant="h4" className={classes.cardTitle}>
-          {title}
-        </Typography>
-        <Typography className={classes.cardDescription}>
-          {description}
-        </Typography>
-        <Link className={classes.link} href={href}>
-          <Typography className={classes.linkText}>
-            {linkDescription}
+        {title && (
+          <Typography variant="h4" className={classes.cardTitle}>
+            {title}
           </Typography>
+        )}
+        {description && (
+          <Typography className={classes.cardDescription}>
+            {description}
+          </Typography>
+        )}
+        <Link className={classes.link} href={href}>
+          {linkdescription && (
+            <Typography className={classes.linkText}>
+              {linkdescription}
+            </Typography>
+          )}
         </Link>
       </CardContent>
     </Card>
@@ -43,7 +49,7 @@ InsightCard.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   href: PropTypes.string,
-  linkDescription: PropTypes.string,
+  linkdescription: PropTypes.string,
 };
 
 InsightCard.defaultProps = {
@@ -51,7 +57,7 @@ InsightCard.defaultProps = {
   description: undefined,
   image: undefined,
   href: undefined,
-  linkDescription: undefined,
+  linkdescription: undefined,
 };
 
 export default InsightCard;
