@@ -17,11 +17,11 @@ const DataIndicators = (props) => {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Typography className={classes.sectionTitle}>
-          Data Indicators
-        </Typography>
-        <div className={classes.block}>
-          <Grid container className={classes.container}>
+        <Grid container className={classes.container}>
+          <Typography className={classes.sectionTitle}>
+            Data Indicators
+          </Typography>
+          <div className={classes.iconContainer}>
             <Grid item className={classes.item}>
               <div className={classes.imageContainer}>
                 <Image
@@ -72,15 +72,15 @@ const DataIndicators = (props) => {
               </div>
               <Typography className={classes.text}>Summary</Typography>
             </Grid>
-          </Grid>
-          <div className={classes.descriptionSection}>
-            <Typography className={classes.title}>Overview</Typography>
-            <Typography className={classes.description}>
-              This includes general county data. Topics include administrative
-              and political units, population size and composition, land use,
-              tourism and wildlife, industry and trade, finance, and education.
-            </Typography>
           </div>
+        </Grid>
+        <div className={classes.descriptionSection}>
+          <Typography className={classes.title}>Overview</Typography>
+          <Typography className={classes.description}>
+            This includes general county data. Topics include administrative and
+            political units, population size and composition, land use, tourism
+            and wildlife, industry and trade, finance, and education.
+          </Typography>
         </div>
       </Section>
     </div>

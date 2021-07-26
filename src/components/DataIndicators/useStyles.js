@@ -14,8 +14,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   section: {
-    paddingTop: typography.pxToRem(102),
-    paddingBottom: typography.pxToRem(163),
+    // paddingTop: typography.pxToRem(102),
+    // paddingBottom: typography.pxToRem(163),
   },
   image: {
     width: "max-content",
@@ -41,12 +41,19 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       marginTop: typography.pxToRem(20),
     },
   },
+  iconContainer: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    marginTop: typography.pxToRem(80),
+    marginBottom: typography.pxToRem(163),
+  },
   container: {
     flexDirection: "column",
-    marginTop: typography.pxToRem(43),
+    paddingTop: typography.pxToRem(102),
 
     [breakpoints.up("lg")]: {
-      flexDirection: "row",
+      // flexDirection: "row",
+      flexDirection: "column",
     },
   },
   block: {
