@@ -32,7 +32,8 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
         {subTitleEnd}
       </Typography>
       <div className={classes.list}>
-        {itemsData && itemsData.map((item) => <InsightCard {...item} />)}
+        {itemsData &&
+          itemsData.map((item) => <InsightCard key={item.title} {...item} />)}
       </div>
     </Section>
   );

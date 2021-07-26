@@ -73,14 +73,14 @@ const socialMedia = [
 
 export const insightData = {
   title: "Stories",
-  subTitle: "Data Driven Insights",
+  subtitle: "Data Driven Insights",
   items: [
     {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkDescription: "Read More",
+      linkdescription: "Read More",
       href: "www.test.com",
     },
     {
@@ -88,7 +88,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkDescription: "Read More",
+      linkdescription: "Read More",
       href: "www.test.com",
     },
 
@@ -97,7 +97,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkDescription: "Read More",
+      linkdescription: "Read More",
       href: "www.test.com",
     },
   ],
