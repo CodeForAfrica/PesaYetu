@@ -3,7 +3,7 @@ import { withNextRouter } from "storybook-addon-next-router";
 
 import Navigation from ".";
 
-import { config } from "@/pesayetu/config";
+import { navigationArgs } from "@/pesayetu/config";
 
 export default {
   title: "Sections/Navigation",
@@ -12,9 +12,8 @@ export default {
 };
 
 const Template = ({ ...args }) => <Navigation {...args} />;
-const { footerArgs } = config;
 export const Default = Template.bind({});
 
 Default.args = {
-  ...footerArgs,
+  ...navigationArgs,
 };

@@ -1,19 +1,12 @@
-import { Layout } from "@commons-ui/core";
+import { Section as CuiSection } from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
-  /* Styles applied to the root element. */
   root: {
-    boxSizing: "border-box",
-    display: "block", // Fix IE 11 layout when used with main.
-    marginLeft: "auto",
-    marginRight: "auto",
-    minWidth: typography.pxToRem(360),
-    padding: `0 ${typography.pxToRem(15)}`,
-    width: "100%",
+    padding: `0 ${typography.pxToRem(20)}`,
   },
   /* Styles applied to the root element if `fixed={true}`. */
   fixed: Object.keys(widths.values).reduce((acc, breakpoint) => {
@@ -28,47 +21,30 @@ const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
   }, {}),
 }));
 
-const Section = React.forwardRef(function Section(
-  { children, classes: classesProp, className, fixed, ...props },
-  ref
-) {
-  const classes = useStyles({ classes: classesProp });
+function Section({ className, fixed, ...props }) {
+  const classes = useStyles(props);
 
-  if (!children) {
-    return null;
-  }
   return (
-    <Layout
+    <CuiSection
       {...props}
-      classes={{ root: classes.root }}
       className={clsx(
+        classes.root,
         {
           [classes.fixed]: fixed,
         },
         className
       )}
-      ref={ref}
-    >
-      {children}
-    </Layout>
+      classes={{}}
+    />
   );
-});
+}
 
 Section.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  classes: PropTypes.shape({
-    root: PropTypes.string,
-    fixed: PropTypes.string,
-  }),
   className: PropTypes.string,
   fixed: PropTypes.bool,
 };
 
 Section.defaultProps = {
-  classes: undefined,
   className: undefined,
   fixed: true,
 };

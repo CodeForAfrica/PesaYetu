@@ -3,9 +3,7 @@ import { withNextRouter } from "storybook-addon-next-router";
 
 import Logo from ".";
 
-import { config } from "@/pesayetu/config";
-
-const { footerArgs } = config;
+import { navigationArgs } from "@/pesayetu/config";
 
 export default {
   title: "Components/Logo",
@@ -17,5 +15,5 @@ const Template = ({ ...args }) => <Logo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  ...footerArgs.logoProps,
+  ...navigationArgs.logoProps,
 };

@@ -2,8 +2,11 @@
 /* TODO (NYOKABI),fix for storybook layout */
 
 * {
- box-sizing: border-box;
- min-width: fit-content
+  box-sizing: border-box;
+}
+
+.leaflet-container {
+  position: absolute !important;
 }
 @media only screen and (min-width: 768px) {
  * {

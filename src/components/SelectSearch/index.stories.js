@@ -3,9 +3,7 @@ import { withNextRouter } from "storybook-addon-next-router";
 
 import SearchSelect from ".";
 
-import { config } from "@/pesayetu/config";
-
-const { footerArgs } = config;
+import { navigationArgs } from "@/pesayetu/config";
 
 export default {
   title: "Components/SelectSearch",
@@ -21,5 +19,5 @@ const Template = ({ ...args }) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  ...footerArgs.selectProps,
+  ...navigationArgs.selectProps,
 };

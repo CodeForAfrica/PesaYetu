@@ -5,7 +5,7 @@ export default {
   description: "County data to hold your government accountable",
   openGraph: {
     type: "website",
-    url: "https://dev.pesayetu.pesacheck.org",
+    url: "https://pesayetu.dev.codeforafrica.org",
     locale: "en",
     site_name: "PesaYetu",
     images: [

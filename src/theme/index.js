@@ -14,7 +14,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#0067A3", // main
+      main: "#0067A3", // main blue
       light: "#7DB2D3", // hightlight blue
     },
     secondary: {
@@ -22,25 +22,30 @@ const theme = createTheme({
       light: "#F8A199", // highlight red
     },
     background: {
-      main: "#FFF", // white
-      light: "#F8F8F8",
-      dark: "#2A2A2C ", // dark black
-      darkgrey: "#DFDFDF",
-      lightgrey: "#F0F0F0",
+      default: "#FFFFFF", // white
+      paper: "#F8F8F8", // light white
+    },
+    grey: {
+      dark: "#2A2A2C ", // dark
+      main: "#DFDFDF", // darkgrey
+      light: "#F0F0F0", // lightgrey
     },
     text: {
-      main: "#333333",
-      subtitle: "#212529",
-      headings: "#1C2031",
+      primary: "#333333",
+      secondary: "#fff",
+      hint: "#1C2031",
     },
   },
   typography: {
     fontFamily: FONT_FAMILY_TEXT,
-    h1: {},
+    h1: {
+      fontWeight: 900,
+    },
     h2: {},
     h3: {},
     h4: {},
     h5: {},
+    hd: {},
     body1: {},
     body2: {},
     subtitle1: {},
@@ -48,26 +53,24 @@ const theme = createTheme({
   },
   widths: {
     values: {
-      xs: 0,
-      sm: 350, // 0, 20, 0, 20 margin
       md: 608, // 0, 80, 0, 80 margin
       lg: 1160, // 0, 140, 0, 140 margin
     },
   },
 });
 
-const { palette, breakpoints, typography, overrides } = theme;
+const { palette, typography, breakpoints, overrides } = theme;
 const { pxToRem } = typography;
 // Typography
 deepmerge(
   typography,
   {
     h1: {
-      fontSize: pxToRem(29),
-      lineHeight: 38 / 29,
+      fontSize: pxToRem(30),
+      lineHeight: 40 / 30, // font 30 H0m
       [breakpoints.up("lg")]: {
-        fontSize: pxToRem(50),
-        lineHeight: 66 / 50, // font 50 H0
+        fontSize: pxToRem(48),
+        lineHeight: 58 / 48, // font 48 H0
       },
     },
     h2: {
@@ -102,12 +105,20 @@ deepmerge(
         lineHeight: 27 / 18, // font 18 H5
       },
     },
-    body1: {
+    h6: {
       fontSize: pxToRem(16),
       lineHeight: 30 / 16,
       [breakpoints.up("lg")]: {
         fontSize: pxToRem(16),
         lineHeight: 30 / 16, // font 18 body1
+      },
+    },
+    body1: {
+      fontSize: pxToRem(16),
+      lineHeight: 25 / 16,
+      [breakpoints.up("lg")]: {
+        fontSize: pxToRem(16),
+        lineHeight: 25 / 16, // font 18 body1
       },
     },
     body2: {
@@ -119,11 +130,11 @@ deepmerge(
       },
     },
     subtitle1: {
-      fontSize: pxToRem(14),
-      lineHeight: 24 / 14,
+      fontSize: pxToRem(16),
+      lineHeight: 24 / 16,
       [breakpoints.up("lg")]: {
-        fontSize: pxToRem(14),
-        lineHeight: 24 / 14, // font 14 subtitle1
+        fontSize: pxToRem(16),
+        lineHeight: 24 / 16, // font 16 subtitle1
       },
     },
     subtitle2: {
@@ -135,11 +146,11 @@ deepmerge(
       },
     },
     caption: {
-      fontSize: pxToRem(9),
-      lineHeight: 10 / 9,
+      fontSize: pxToRem(12),
+      lineHeight: 18 / 12,
       [breakpoints.up("lg")]: {
         fontSize: pxToRem(12),
-        lineHeight: 18 / 12, // font 14 subtitle2
+        lineHeight: 18 / 12, // font 12 caption
       },
     },
   },
