@@ -30,7 +30,7 @@ const useStyles = makeStyles(({ typography }) => ({
     width: typography.pxToRem(200),
   },
 }));
-function DesktopNavigation({ logoProps, menuProps, ...props }) {
+function DesktopNavigation({ logoProps, menuProps, socialLinks, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -49,7 +49,7 @@ function DesktopNavigation({ logoProps, menuProps, ...props }) {
             alignItems="center"
             className={classes.menu}
           >
-            <Menu links={menuProps} />
+            <Menu links={menuProps} socialLinks={socialLinks} />
           </Grid>
           <Grid />
         </Grid>
@@ -61,11 +61,13 @@ function DesktopNavigation({ logoProps, menuProps, ...props }) {
 DesktopNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 DesktopNavigation.defaultProps = {
   logoProps: undefined,
   menuProps: undefined,
+  socialLinks: undefined,
 };
 
 export default DesktopNavigation;

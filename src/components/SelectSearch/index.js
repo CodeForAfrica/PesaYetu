@@ -119,15 +119,71 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   icon: {
     padding: typography.pxToRem(32),
   },
+  link: {
+    textDecoration: 'none',
+    color: '#1C2030',
+    '&:hover, &:focus, &:focus-within': {
+      textDecoration: 'none',
+    },
+  },
 }));
+
+/* const menuitems = [
+  {
+    countryName: 'country 1',
+    countryUrl: '/country 1',
+    items: [
+      {
+        name: 'subcounty-1',
+        url: '/subcounty-1',
+      },
+      {
+        name: 'subcounty-2',
+        url: '/subcounty-2',
+      },
+      {
+        name: 'subcounty-2',
+        url: '/subcounty-2',
+      },
+    ],
+  },
+  {
+    countryName: 'country 2',
+    countryUrl: '/country 2',
+    items: [
+      {
+        name: 'subcounty-4',
+        url: '/subcounty-4',
+      },
+      {
+        name: 'subcounty-5',
+        url: '/subcounty-5',
+      },
+    ],
+  },
+  {
+    countryName: 'country 3',
+    countryUrl: '/country 3',
+    items: [
+      {
+        name: 'subcounty-6',
+        url: '/subcounty-6',
+      },
+      {
+        name: 'subcounty-7',
+        url: '/subcounty-7',
+      },
+    ],
+  },
+]; */
 function SelectSearch({
   title,
   placeholder,
   selectId,
   inputBaseId,
   selectLabel,
-  inputBaseLabel,
   menuItems,
+  inputBaseLabel,
   ...props
 }) {
   const classes = useStyles(props);
@@ -221,14 +277,18 @@ function SelectSearch({
         >
           {menuItems?.map(({ countryName, countryUrl, items }) => (
             <div key={countryName} value={countryName} className={classes.menu}>
-              <Link href={countryUrl}>
+              <Link
+                href={countryUrl}
+                key={countryName}
+                className={classes.link}
+              >
                 <Typography variant="body2" className={classes.country}>
                   {countryName}
                 </Typography>
               </Link>
               <ul className={classes.ul}>
                 {items?.map(({ name, url }) => (
-                  <a href={url} key={name}>
+                  <a href={url} key={name} className={classes.link}>
                     <li className={classes.list}>
                       <Typography variant="body2" className={classes.name}>
                         {name}
@@ -292,7 +352,7 @@ SelectSearch.propTypes = {
       countryUrl: PropTypes.string,
       items: PropTypes.arrayOf(
         PropTypes.shape({
-          name: PropTypes.number,
+          name: PropTypes.string,
           url: PropTypes.string,
         })
       ),

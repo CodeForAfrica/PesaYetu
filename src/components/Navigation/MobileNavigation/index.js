@@ -110,7 +110,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" timeout={1000} ref={ref} {...props} />;
 });
 
-function MobileNavigation({ logoProps, menuProps, selectProps, ...props }) {
+function MobileNavigation({
+  logoProps,
+  menuProps,
+  selectProps,
+  socialLinks,
+  ...props
+}) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
 
@@ -132,6 +138,7 @@ function MobileNavigation({ logoProps, menuProps, selectProps, ...props }) {
           <IconButton
             aria-label="Open drawer"
             edge="start"
+            size="medium"
             onClick={handleClickOpen}
             className={classes.menuButton}
           >
@@ -184,6 +191,7 @@ function MobileNavigation({ logoProps, menuProps, selectProps, ...props }) {
                 <IconButton
                   aria-label="Close drawer"
                   edge="end"
+                  size="medium"
                   onClick={handleClose}
                   className={classes.closeButton}
                 >
@@ -193,7 +201,7 @@ function MobileNavigation({ logoProps, menuProps, selectProps, ...props }) {
             </Grid>
           </DialogActions>
           <DialogContent className={classes.dialogContent}>
-            <Menu links={menuProps}>
+            <Menu links={menuProps} socialLinks={socialLinks}>
               <SelectSearch {...selectProps} />
             </Menu>
           </DialogContent>
@@ -206,12 +214,14 @@ function MobileNavigation({ logoProps, menuProps, selectProps, ...props }) {
 MobileNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
   selectProps: PropTypes.shape({}),
 };
 
 MobileNavigation.defaultProps = {
   logoProps: undefined,
   menuProps: undefined,
+  socialLinks: undefined,
   selectProps: undefined,
 };
 export default MobileNavigation;

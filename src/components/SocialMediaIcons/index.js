@@ -9,18 +9,27 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     [breakpoints.up('lg')]: {
       paddingTop: typography.pxToRem(8),
     },
-  },
-  button: {
-    background: '#EBEBEB',
-    borderRadius: 50,
-    margin: typography.pxToRem(3.2),
-    '&:hover': {
-      background: '#EBEBEB',
-      borderRadius: 50,
+    '& > svg:nth-of-type(2)': {
+      padding: '3rem',
     },
   },
-  toolbar: {
-    display: 'block',
+  button: {
+    background: '#7DB2D3',
+    borderRadius: 50,
+    width: 48,
+    height: 48,
+    margin: typography.pxToRem(3.2),
+    '&:hover': {
+      background: '#7DB2D3',
+      borderRadius: 50,
+    },
+    [breakpoints.up('lg')]: {
+      background: '#EBEBEB',
+      '&:hover': {
+        background: '#EBEBEB',
+        borderRadius: 50,
+      },
+    },
   },
   svgIcon: {},
 }));
@@ -37,6 +46,7 @@ function SocialMediaIcons({ socialLinks, ...props }) {
         <Link href={url} key={label}>
           <IconButton
             size="medium"
+            edge="center"
             aria-label={label}
             viewBox={viewBoxValue}
             className={classes.button}

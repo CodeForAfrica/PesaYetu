@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   menu: {
     margin: 0,
     [breakpoints.up('lg')]: {
-      margin: `0 ${typography.pxToRem(12.8)}`,
+      margin: `0 ${typography.pxToRem(8)}`,
     },
   },
   menuLinks: {
