@@ -12,10 +12,10 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   backgroundWrap: {
     position: "fixed",
     zIndex: -1,
-    height: typography.pxToRem(468),
+    height: typography.pxToRem(390),
     width: "100vw",
     [breakpoints.up("md")]: {
-      height: typography.pxToRem(456),
+      height: typography.pxToRem(618),
     },
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(728),
