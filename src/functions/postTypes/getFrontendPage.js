@@ -1,8 +1,8 @@
-import getMenus from '@/pesayetu/functions/menus/getMenus';
-import formatDefaultSeoData from '@/pesayetu/functions/seo/formatDefaultSeoData';
-import frontendPageSeo from '@/pesayetu/lib/wordpress/_config/frontendPageSeo';
-import { initializeWpApollo } from '@/pesayetu/lib/wordpress/connector';
-import queryDefaultPageData from '@/pesayetu/lib/wordpress/pages/queryDefaultPageData';
+import getMenus from "@/pesayetu/functions/menus/getMenus";
+import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
+import frontendPageSeo from "@/pesayetu/lib/wordpress/_config/frontendPageSeo";
+import { initializeWpApollo } from "@/pesayetu/lib/wordpress/connector";
+import queryDefaultPageData from "@/pesayetu/lib/wordpress/pages/queryDefaultPageData";
 
 /**
  * Retrieve data for Frontend-only route (i.e., page that do not exist in WordPress).
@@ -37,10 +37,10 @@ export default async function getFrontendPage(route) {
       return {
         seo: {
           title: `${frontendPageSeo?.[route]?.title} - ${
-            response.defaultSeo?.openGraph?.siteName ?? ''
+            response.defaultSeo?.openGraph?.siteName ?? ""
           }`,
           metaDesc: frontendPageSeo?.[route]?.description,
-          canonical: `${response.defaultSeo?.openGraph?.url ?? ''}/${route}`,
+          canonical: `${response.defaultSeo?.openGraph?.url ?? ""}/${route}`,
         },
       };
     })

@@ -1,36 +1,36 @@
-import RichTypography from '@commons-ui/core/RichTypography';
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import React from 'react';
+import RichTypography from "@commons-ui/core/RichTypography";
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
-import repeatGrid from '@/pesayetu/assets/images/Group 4780.svg';
-import mapLines from '@/pesayetu/assets/images/Mask Group 8@2x.png';
-import Section from '@/pesayetu/component/Section';
+import repeatGrid from "@/pesayetu/assets/images/Group 4780.svg";
+import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
+import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   root: {
     backgroundColor: palette.background.paper,
-    backgroundPosition: '50% 100%',
-    minHeight: 'min-content',
-    position: 'relative',
+    backgroundPosition: "50% 100%",
+    minHeight: "min-content",
+    position: "relative",
     paddingBottom: typography.pxToRem(43),
-    [breakpoints.up('md')]: {
+    [breakpoints.up("md")]: {
       paddingBottom: typography.pxToRem(98),
     },
   },
   textContainer: {
-    height: '100%',
+    height: "100%",
     color: palette.text.secondary,
     paddingTop: typography.pxToRem(129.94),
   },
   intro: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   title: {
     marginBottom: typography.pxToRem(20),
-    fontWeight: 'bold',
-    [breakpoints.up('md')]: {
+    fontWeight: "bold",
+    [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(40),
     },
   },
@@ -38,49 +38,49 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     marginRight: 0,
   },
   backgroundGrid: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
     backgroundImage: `url("${mapLines}")`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     flexGrow: 1,
-    display: 'flex',
-    [breakpoints.up('md')]: {
+    display: "flex",
+    [breakpoints.up("md")]: {
       paddingLeft: `calc((100vw - ${breakpoints.values.md}px)/2)`,
     },
   },
   leftBackground: {
     height: typography.pxToRem(244),
-    [breakpoints.up('md')]: {
-      opacity: '0',
-      visibility: 'hidden',
+    [breakpoints.up("md")]: {
+      opacity: "0",
+      visibility: "hidden",
     },
   },
   rightBackground: {
     height: typography.pxToRem(391),
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundImage: ({ image }) => `url("${image}")`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    [breakpoints.up('md')]: {
-      height: '100%',
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    [breakpoints.up("md")]: {
+      height: "100%",
       marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/6)`,
     },
   },
   repeatGrid: {
     width: typography.pxToRem(262),
-    height: 'auto',
-    [breakpoints.up('md')]: {
+    height: "auto",
+    [breakpoints.up("md")]: {
       width: typography.pxToRem(400),
     },
   },
   section: {
-    height: '100%',
+    height: "100%",
     flexGrow: 1,
-    display: 'flex',
+    display: "flex",
   },
 }));
 function AboutHero({ image, intro, tagline, title, ...props }) {

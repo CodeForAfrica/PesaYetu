@@ -1,11 +1,11 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-import defaultPageData from '@/pesayetu/lib/wordpress/_query-partials/defaultPageData';
-import seoPostFields from '@/pesayetu/lib/wordpress/_query-partials/seoPostFields';
+import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
+import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostFields";
 import {
   archivePostFragment,
   archivePosts,
-} from '@/pesayetu/lib/wordpress/posts/queryPostsArchive';
+} from "@/pesayetu/lib/wordpress/posts/queryPostsArchive";
 
 // Query: retrieve posts category archive.
 const queryPostsByCategory = gql`

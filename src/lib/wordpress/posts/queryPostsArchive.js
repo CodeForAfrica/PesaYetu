@@ -1,10 +1,10 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-import archivePageInfo from '@/pesayetu/lib/wordpress/_query-partials/archivePageInfo';
-import defaultPageData from '@/pesayetu/lib/wordpress/_query-partials/defaultPageData';
-import featuredImagePostFields from '@/pesayetu/lib/wordpress/_query-partials/featuredImagePostFields';
-import globalPostFields from '@/pesayetu/lib/wordpress/_query-partials/globalPostFields';
-import seoPostFields from '@/pesayetu/lib/wordpress/_query-partials/seoPostFields';
+import archivePageInfo from "@/pesayetu/lib/wordpress/_query-partials/archivePageInfo";
+import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
+import featuredImagePostFields from "@/pesayetu/lib/wordpress/_query-partials/featuredImagePostFields";
+import globalPostFields from "@/pesayetu/lib/wordpress/_query-partials/globalPostFields";
+import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostFields";
 
 // Fragment: retrieve archive post fields.
 export const archivePostFragment = gql`
