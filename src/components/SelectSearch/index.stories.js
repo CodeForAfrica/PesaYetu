@@ -1,3 +1,4 @@
+import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
 import SearchSelect from ".";
@@ -9,7 +10,20 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <SearchSelect {...args} />;
+const Template = ({ ...args }) => {
+  const classes = makeStyles(() => ({
+    root: {
+      backgroundColor: "#0067A3",
+      padding: "1rem",
+    },
+  }))();
+
+  return (
+    <div className={classes.root}>
+      <SearchSelect {...args} />
+    </div>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {

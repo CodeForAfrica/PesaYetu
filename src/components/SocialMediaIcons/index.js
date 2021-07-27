@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 function SocialMediaIcons({ socialLinks, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
-  const isUpMd = useMediaQuery(theme.breakpoints.up("md"));
+  const isUplg = useMediaQuery(theme.breakpoints.up("lg"));
   const viewBoxValue = "0 0 48 48";
   if (!socialLinks?.length) {
     return null;
@@ -60,7 +60,7 @@ function SocialMediaIcons({ socialLinks, ...props }) {
             className={classes.button}
           >
             <SvgIcon
-              component={isUpMd ? desktopComponent : mobileComponent}
+              component={isUplg ? desktopComponent : mobileComponent}
               classes={{
                 root: classes.svgIcon,
               }}
