@@ -3,6 +3,7 @@ import { A } from "@commons-ui/core";
 import { Link as MuiLink } from "@material-ui/core";
 import clsx from "clsx";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { forwardRef } from "react";
 
@@ -62,9 +63,19 @@ NextComposed.defaultProps = {
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/api-reference/next/link/
 const Link = forwardRef(function Link(props, ref) {
-  const { href, className: classNameProp, naked, ...other } = props;
+  const {
+    href,
+    activeClassName = "active",
+    className: classNameProps,
+    naked,
+    ...other
+  } = props;
 
-  const className = clsx(classNameProp);
+  const router = useRouter();
+  const pathname = typeof href === "string" ? href : href?.pathname;
+  const className = clsx(classNameProps, {
+    [activeClassName]: router.pathname === pathname && activeClassName,
+  });
 
   let formattedHref = href;
 
