@@ -1,10 +1,9 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import repeatGrid from "@/pesayetu/assets/images/Group 4780.svg";
 import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
 import Section from "@/pesayetu/components/Section";
 
@@ -53,7 +52,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
   leftBackground: {
-    height: typography.pxToRem(391),
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(391),
+    },
   },
   rightBackground: {
     height: typography.pxToRem(391),
@@ -87,7 +88,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
 }));
-function OtherHero({ image, intro, tagline, title, ...props }) {
+function OtherHero({ image, intro, repeatGrid, tagline, title, ...props }) {
   const classes = useStyles({ image, ...props });
 
   if (!title?.length) {
@@ -98,11 +99,9 @@ function OtherHero({ image, intro, tagline, title, ...props }) {
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
         <Grid container>
-          <Hidden smDown implementation="css">
-            <Grid item xs={12} md={5}>
-              <div className={classes.leftBackground} />
-            </Grid>
-          </Hidden>
+          <Grid item xs={12} md={5}>
+            <div className={classes.leftBackground} />
+          </Grid>
 
           <Grid item xs={12} md={7}>
             <div className={classes.rightBackground}>
@@ -135,6 +134,7 @@ function OtherHero({ image, intro, tagline, title, ...props }) {
 OtherHero.propTypes = {
   image: PropTypes.string,
   intro: PropTypes.string,
+  repeatGrid: PropTypes.string,
   tagline: PropTypes.string,
   title: PropTypes.string,
 };
@@ -142,6 +142,7 @@ OtherHero.propTypes = {
 OtherHero.defaultProps = {
   image: undefined,
   intro: undefined,
+  repeatGrid: undefined,
   tagline: undefined,
   title: undefined,
 };
