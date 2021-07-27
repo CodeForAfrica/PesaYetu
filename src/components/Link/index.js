@@ -9,7 +9,7 @@ import React, { forwardRef } from "react";
 
 import site from "@/pesayetu/utils/site";
 
-const NextComposed = forwardRef(function NextComposed(props, ref) {
+const NextComposed = forwardRef((props, ref) => {
   const {
     as,
     href,
@@ -62,7 +62,7 @@ NextComposed.defaultProps = {
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/api-reference/next/link/
-const Link = forwardRef(function Link(props, ref) {
+const Link = forwardRef((props, ref) => {
   const {
     href,
     activeClassName = "active",
