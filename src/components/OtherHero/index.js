@@ -99,11 +99,11 @@ function OtherHero({ image, intro, repeatGrid, tagline, title, ...props }) {
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
         <Grid container>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />
           </Grid>
 
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={6}>
             <div className={classes.rightBackground}>
               <img className={classes.repeatGrid} src={repeatGrid} alt="" />
             </div>
