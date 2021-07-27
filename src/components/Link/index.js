@@ -5,11 +5,11 @@ import clsx from "clsx";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { forwardRef } from "react";
 
 import site from "@/pesayetu/utils/site";
 
-const NextComposed = React.forwardRef(function NextComposed(props, ref) {
+const NextComposed = forwardRef(function NextComposed(props, ref) {
   const {
     as,
     href,
@@ -62,7 +62,7 @@ NextComposed.defaultProps = {
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/api-reference/next/link/
-const Link = React.forwardRef(function Link(props, ref) {
+const Link = forwardRef(function Link(props, ref) {
   const {
     href,
     activeClassName = "active",
