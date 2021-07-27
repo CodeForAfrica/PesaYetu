@@ -58,15 +58,15 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
   rightBackground: {
-    height: typography.pxToRem(234),
+    height: typography.pxToRem(391),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundImage: ({ image }) => `url("${image}")`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     [breakpoints.up('md')]: {
       height: '100%',
-      backgroundImage: ({ image }) => `url("${image}")`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
       marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/6)`,
     },
   },
@@ -94,10 +94,10 @@ function AboutHero({ image, intro, tagline, title, ...props }) {
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
         <Grid container>
-          <Grid item xs={12} md={5}>
+          <Grid order={{ xs: 0, md: 1 }} item xs={12} md={5}>
             <div className={classes.leftBackground} />
           </Grid>
-          <Grid item xs={12} md={7}>
+          <Grid order={{ xs: 1, md: 0 }} item xs={12} md={7}>
             <div className={classes.rightBackground}>
               <img className={classes.repeatGrid} src={repeatGrid} alt="" />
             </div>
