@@ -1,5 +1,5 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Hidden, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
@@ -21,8 +21,10 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
   textContainer: {
     height: "100%",
-    color: palette.text.secondary,
-    paddingTop: typography.pxToRem(129.94),
+    paddingTop: typography.pxToRem(50),
+    [breakpoints.up("md")]: {
+      paddingTop: typography.pxToRem(129.94),
+    },
   },
   intro: {
     fontWeight: "bold",
@@ -38,7 +40,6 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     marginRight: 0,
   },
   backgroundGrid: {
-    position: "absolute",
     width: "100%",
     height: "100%",
     backgroundImage: `url('${mapLines}')`,
@@ -48,14 +49,11 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     display: "flex",
     [breakpoints.up("md")]: {
       paddingLeft: `calc((100vw - ${breakpoints.values.md}px)/2)`,
+      position: "absolute",
     },
   },
   leftBackground: {
-    height: typography.pxToRem(244),
-    [breakpoints.up("md")]: {
-      opacity: "0",
-      visibility: "hidden",
-    },
+    height: typography.pxToRem(391),
   },
   rightBackground: {
     height: typography.pxToRem(391),
@@ -81,9 +79,15 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     height: "100%",
     flexGrow: 1,
     display: "flex",
+    backgroundImage: `url('${mapLines}')`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    [breakpoints.up("md")]: {
+      backgroundImage: "none",
+    },
   },
 }));
-function AboutHero({ image, intro, tagline, title, ...props }) {
+function OtherHero({ image, intro, tagline, title, ...props }) {
   const classes = useStyles({ image, ...props });
 
   if (!title?.length) {
@@ -94,10 +98,13 @@ function AboutHero({ image, intro, tagline, title, ...props }) {
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
         <Grid container>
-          <Grid order={{ xs: 0, md: 1 }} item xs={12} md={5}>
-            <div className={classes.leftBackground} />
-          </Grid>
-          <Grid order={{ xs: 1, md: 0 }} item xs={12} md={7}>
+          <Hidden smDown implementation="css">
+            <Grid item xs={12} md={5}>
+              <div className={classes.leftBackground} />
+            </Grid>
+          </Hidden>
+
+          <Grid item xs={12} md={7}>
             <div className={classes.rightBackground}>
               <img className={classes.repeatGrid} src={repeatGrid} alt="" />
             </div>
@@ -125,18 +132,18 @@ function AboutHero({ image, intro, tagline, title, ...props }) {
   );
 }
 
-AboutHero.propTypes = {
+OtherHero.propTypes = {
   image: PropTypes.string,
   intro: PropTypes.string,
   tagline: PropTypes.string,
   title: PropTypes.string,
 };
 
-AboutHero.defaultProps = {
+OtherHero.defaultProps = {
   image: undefined,
   intro: undefined,
   tagline: undefined,
   title: undefined,
 };
 
-export default AboutHero;
+export default OtherHero;

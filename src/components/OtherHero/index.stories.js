@@ -1,14 +1,12 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
-import { withNextRouter } from "storybook-addon-next-router";
 
 import Hero from ".";
 
 import image from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
 
 export default {
-  title: "Section/Hero",
-  decorators: [withNextRouter],
+  title: "Sections/OtherHero",
   argTypes: {
     tagline: {
       control: {
