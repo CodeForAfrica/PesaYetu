@@ -25,15 +25,17 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   subtitle: {
     display: "flex",
     flexDirection: "column",
-    padding: `${typography.pxToRem(11)} ${typography.pxToRem(24)}`,
+    padding: `${typography.pxToRem(10)}`,
     letterSpacing: `${typography.pxToRem(1.32)}`,
     color: palette.grey.dark,
     textTransform: "uppercase",
     justifyContent: "center",
+    fontSize: "9px",
     [breakpoints.up("lg")]: {
       padding: 0,
       flexDirection: "row",
       justifyContent: "flex-start",
+      fontSize: "12px",
     },
   },
 }));

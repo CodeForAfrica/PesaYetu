@@ -1,5 +1,11 @@
-import { Grid, IconButton, Link, SvgIcon } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  Grid,
+  IconButton,
+  Link,
+  SvgIcon,
+  useMediaQuery,
+} from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -36,13 +42,15 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 
 function SocialMediaIcons({ socialLinks, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isUpMd = useMediaQuery(theme.breakpoints.up("md"));
   const viewBoxValue = "0 0 48 48";
   if (!socialLinks?.length) {
     return null;
   }
   return (
     <Grid item className={classes.root}>
-      {socialLinks.map(({ url, label, component }) => (
+      {socialLinks.map(({ url, label, desktopComponent, mobileComponent }) => (
         <Link href={url} key={label}>
           <IconButton
             size="medium"
@@ -52,7 +60,7 @@ function SocialMediaIcons({ socialLinks, ...props }) {
             className={classes.button}
           >
             <SvgIcon
-              component={component}
+              component={isUpMd ? desktopComponent : mobileComponent}
               classes={{
                 root: classes.svgIcon,
               }}
@@ -69,7 +77,8 @@ SocialMediaIcons.propTypes = {
     PropTypes.shape({
       url: PropTypes.string,
       label: PropTypes.string,
-      component: PropTypes.func,
+      desktopComponent: PropTypes.func,
+      mobileComponent: PropTypes.func,
     })
   ),
 };

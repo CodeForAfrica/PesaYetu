@@ -84,7 +84,7 @@ function Menu({ links, children, socialLinks, ...props }) {
             href={href}
             className={classes.links}
           >
-            <Typography variant="h6">{label}</Typography>
+            <Typography variant="h5">{label}</Typography>
           </Button>
         </Grid>
       ))}
@@ -98,7 +98,7 @@ function Menu({ links, children, socialLinks, ...props }) {
             href={href}
             className={classes.menuLinks}
           >
-            <Typography variant="h6">{label}</Typography>
+            <Typography variant="h5">{label}</Typography>
           </Button>
         </Grid>
       ))}

@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     padding: `${typography.pxToRem(16)} 0 `,
   },
   label: {
-    color: palette.background.main,
+    color: palette.background.default,
     textAlign: "left",
     fontSize: typography.pxToRem(18),
     position: "relative",
@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     fontWeight: "bold",
     transform: `translate(0, ${typography.pxToRem(0)}) scale(1)`,
     "&$focused": {
-      color: palette.background.main,
+      color: palette.background.default,
     },
   },
   country: {
@@ -69,11 +69,11 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   // TODO nyokabi Reference => https://github.com/mui-org/material-ui/issues/11244
   focused: {
-    color: palette.background.main,
+    color: palette.background.default,
   },
   svgIcon: {
     fontSize: typography.pxToRem(48),
-    color: palette.background.main,
+    color: palette.background.default,
   },
   button: {
     height: typography.pxToRem(48),
@@ -87,7 +87,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     paddingTop: 0,
     paddingBottom: 0,
     "&:hover, &:focus, &:focus-within": {
-      backgroundColor: palette.background.main,
+      backgroundColor: palette.background.default,
     },
   },
   noLabel: {
@@ -96,7 +96,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   inputBase: {
     padding: typography.pxToRem(2),
     color: palette.primary.main,
-    backgroundColor: palette.background.main,
+    backgroundColor: palette.background.default,
     height: typography.pxToRem(48),
     width: typography.pxToRem(278),
     border: "2px solid #00000000",

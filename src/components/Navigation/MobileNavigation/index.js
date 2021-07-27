@@ -20,7 +20,7 @@ import SelectSearch from "@/pesayetu/components/SelectSearch";
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
-    padding: `${typography.pxToRem(30.35)}`,
+    // padding: `${typography.pxToRem(30.35)}`,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -32,6 +32,10 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   firstTitle: {
     color: palette.background.default,
+    fontWeight: "normal",
+    [breakpoints.up("md")]: {
+      fontWeight: "bold",
+    },
   },
   secondTitle: {
     color: palette.background.default,
@@ -43,7 +47,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     borderBottom: "2px solid white",
   },
   backdrop: {
-    maxHeight: typography.pxToRem(608),
+    // maxHeight: typography.pxToRem(608),
     backgroundColor: "transparent",
   },
   dialogActions: {
@@ -54,21 +58,23 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     background: palette.primary.main,
   },
   dialogMenu: {
-    padding: `${typography.pxToRem(10.35)} 0`,
+    // padding: `${typography.pxToRem(10.35)} 0`,
   },
   menuButton: {
-    color: palette.background.dark,
-    background: palette.background.lightgrey,
+    color: palette.grey.dark,
+    background: "#F0F0F0",
+    width: "48px",
     borderRadius: typography.pxToRem(50),
     margin: typography.pxToRem(8),
     "&:hover": {
-      background: palette.background.lightgrey,
+      background: "#F0F0F0",
       borderRadius: typography.pxToRem(50),
       margin: typography.pxToRem(8),
     },
   },
   closeButton: {
     color: palette.background.main,
+    width: "48px",
     padding: `0 ${typography.pxToRem(71)}`,
     paddingLeft: typography.pxToRem(12),
     "&:hover": {
@@ -103,6 +109,13 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   button: {
     color: palette.background.dark,
     padding: typography.pxToRem(16),
+  },
+  open: {
+    fontSize: "2rem",
+  },
+  close: {
+    fontSize: "2rem",
+    color: "white",
   },
 }));
 
@@ -142,7 +155,12 @@ function MobileNavigation({
             onClick={handleClickOpen}
             className={classes.menuButton}
           >
-            <SvgIcon component={MenuOpenIcon} />
+            <SvgIcon
+              component={MenuOpenIcon}
+              classes={{
+                root: classes.open,
+              }}
+            />
           </IconButton>
         </Grid>
         <Dialog
@@ -195,7 +213,13 @@ function MobileNavigation({
                   onClick={handleClose}
                   className={classes.closeButton}
                 >
-                  <SvgIcon component={MenuCloseIcon} viewBox="0 0 26 26" />
+                  <SvgIcon
+                    component={MenuCloseIcon}
+                    viewBox="0 0 26 26"
+                    classes={{
+                      root: classes.close,
+                    }}
+                  />
                 </IconButton>
               </Grid>
             </Grid>

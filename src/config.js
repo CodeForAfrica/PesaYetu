@@ -1,16 +1,16 @@
 import cc from "@/pesayetu/assets/cc.svg";
 import footerLogo from "@/pesayetu/assets/footer-logo.svg";
-import facebook, {
-  ReactComponent as Facebook,
-} from "@/pesayetu/assets/footer-social-fb.svg";
+import facebook from "@/pesayetu/assets/footer-social-fb.svg";
 import instagram from "@/pesayetu/assets/footer-social-ig.svg";
 import linkedin from "@/pesayetu/assets/footer-social-in.svg";
-import twitter, {
-  ReactComponent as Twitter,
-} from "@/pesayetu/assets/footer-social-tw.svg";
+import twitter from "@/pesayetu/assets/footer-social-tw.svg";
 import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
 import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
+import { ReactComponent as DesktopFacebook } from "@/pesayetu/assets/nav-desktop-fb.svg";
+import { ReactComponent as DesktopTwitter } from "@/pesayetu/assets/nav-desktop-tw.svg";
+import { ReactComponent as MobileFacebook } from "@/pesayetu/assets/nav-mobile-fb.svg";
+import { ReactComponent as MobileTwitter } from "@/pesayetu/assets/nav-mobile-tw.svg";
 
 const CFA = {
   image: {
@@ -156,12 +156,14 @@ export const navigationArgs = {
   socialLinks: [
     {
       href: "/twitter",
-      component: Twitter,
+      desktopComponent: DesktopTwitter,
+      mobilepComponent: MobileTwitter,
       label: "twitter",
     },
     {
       href: "/facebook",
-      component: Facebook,
+      desktopComponent: DesktopFacebook,
+      mobileComponent: MobileFacebook,
       label: "facebook",
     },
   ],
