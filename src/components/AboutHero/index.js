@@ -41,7 +41,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     position: "absolute",
     width: "100%",
     height: "100%",
-    backgroundImage: `url("${mapLines}")`,
+    backgroundImage: `url('${mapLines}')`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     flexGrow: 1,
@@ -62,7 +62,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundImage: ({ image }) => `url("${image}")`,
+    backgroundImage: ({ image }) => `url('${image}')`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     [breakpoints.up("md")]: {
