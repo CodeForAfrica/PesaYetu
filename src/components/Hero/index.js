@@ -15,6 +15,10 @@ const Map = dynamic(() => import("./Map"), { ssr: false });
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     position: "relative",
+  },
+  background: {
+    position: "absolute",
+    zIndex: -1,
     height: typography.pxToRem(468),
     width: "100vw",
     [breakpoints.up("md")]: {
@@ -23,9 +27,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(600),
     },
-  },
-  background: {
-    zIndex: -1,
   },
   comment: {
     fontSize: typography.pxToRem(11),
@@ -36,7 +37,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     },
   },
   section: {
-    position: "relative",
     paddingBottom: typography.pxToRem(40),
     [breakpoints.up("md")]: {
       paddingBottom: typography.pxToRem(22),
@@ -83,7 +83,9 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Image src={heroBg} layout="fill" className={classes.backgroundWrap} />
+      <div className={classes.background}>
+        <Image src={heroBg} layout="fill" />
+      </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
           <Grid item lg={1} />

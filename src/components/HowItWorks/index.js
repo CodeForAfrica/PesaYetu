@@ -1,4 +1,11 @@
-import { Button, Grid, Typography } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  Hidden,
+  Typography,
+  useMediaQuery,
+} from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -12,37 +19,39 @@ import Section from "@/pesayetu/components/Section";
 function HowItWorks({ title, ctaText, description, href, ...props }) {
   const classes = useStyles(props);
 
+  const theme = useTheme();
+  const isDownSM = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <div className={classes.root}>
-      <Image src={howItWorksBg} layout="fill" className={classes.background} />
-      <div className={classes.tabletWhite}>
-        <Section classes={{ root: classes.section }}>
-          <Grid container>
-            <Grid item xs={12} md={7} lg={6}>
-              <div className={classes.content}>
-                <div className={classes.video}>
-                  <Player {...props} />
-                </div>
-                <Typography className={classes.title} variant="h4">
-                  {title}
-                </Typography>
-                <Typography variant="body2" className={classes.description}>
-                  {description}
-                </Typography>
-                <Button href={href} variant="text">
-                  {ctaText}
-                </Button>
-              </div>
-            </Grid>
-            <Grid item lg={1} />
-            <Grid item xs={12} md={5} className={classes.visualsGrid}>
-              <div className={classes.visuals}>
-                <Image src={visualsImg} layout="fill" objectFit="contain" />
-              </div>
-            </Grid>
-          </Grid>
-        </Section>
+      <div className={classes.background}>
+        <Image src={howItWorksBg} layout="fill" />
       </div>
+      <Hidden lgUp smDown implementation="css">
+        <div className={classes.tabletWhite} />
+      </Hidden>
+      <Section classes={{ root: classes.section }}>
+        <Grid container direction={isDownSM ? "column-reverse" : "row"}>
+          <Grid item xs={12} md={7} lg={6} className={classes.content}>
+            <Player {...props} />
+            <Typography className={classes.title} variant="h4">
+              {title}
+            </Typography>
+            <Typography variant="body2" className={classes.description}>
+              {description}
+            </Typography>
+            <Button href={href} variant="text">
+              {ctaText}
+            </Button>
+          </Grid>
+          <Grid item lg={1} />
+          <Grid item xs={12} md={5} className={classes.visualsGrid}>
+            <div className={classes.visuals}>
+              <Image src={visualsImg} layout="fill" objectFit="contain" />
+            </div>
+          </Grid>
+        </Grid>
+      </Section>
     </div>
   );
 }

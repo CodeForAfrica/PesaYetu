@@ -2,55 +2,77 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
+    height: typography.pxToRem(820),
     position: "relative",
-    height: typography.pxToRem(390),
-    width: "100vw",
     [breakpoints.up("md")]: {
       height: typography.pxToRem(618),
-      padding: `${typography.pxToRem(42)} 0`,
     },
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(728),
-      padding: `${typography.pxToRem(64)} 0`,
     },
   },
   background: {
+    position: "absolute",
+    height: typography.pxToRem(390),
+    width: "100vw",
     zIndex: -1,
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(618),
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(728),
+    },
   },
   section: {
+    zIndex: 1,
     position: "relative",
+    paddingTop: typography.pxToRem(62),
+    [breakpoints.up("md")]: {
+      padding: `${typography.pxToRem(42)} 0`,
+    },
+    [breakpoints.up("lg")]: {
+      padding: `${typography.pxToRem(64)} 0`,
+    },
   },
   video: {
     position: "relative",
     height: typography.pxToRem(227),
-    width: typography.pxToRem(350),
-    [breakpoints.up("md")]: {
-      height: typography.pxToRem(194),
-      width: typography.pxToRem(299),
-    },
-    [breakpoints.up("lg")]: {
-      height: typography.pxToRem(244),
-      width: typography.pxToRem(376),
-    },
+    width: "100%",
     "& .video-js": {
       width: "100%",
       height: "100%",
     },
     "& .vjs-poster": {
-      backgroundColor: palette.background.default,
-      backgroundSize: "auto",
+      backgroundColor: "#ffffffE6",
+      backgroundSize: "120%",
     },
     "& .video-js .vjs-big-play-button": {
       display: "none",
     },
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(194),
+      width: typography.pxToRem(299),
+      "& .vjs-poster": {
+        backgroundSize: "auto",
+      },
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(244),
+      width: typography.pxToRem(376),
+    },
   },
   visualsGrid: {
     display: "flex",
-    justifyContent: "flex-end",
     alignItems: "center",
+    justifyContent: "center",
+    marginBottom: typography.pxToRem(23),
+    [breakpoints.up("md")]: {
+      justifyContent: "flex-end",
+      marginBottom: 0,
+    },
   },
   visuals: {
-    position: "absolute",
+    position: "relative",
     height: typography.pxToRem(265),
     width: typography.pxToRem(253.6),
     [breakpoints.up("md")]: {
@@ -64,6 +86,8 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   content: {
     [breakpoints.up("md")]: {
+      position: "relative",
+      top: 0,
       height: typography.pxToRem(524),
       padding: `${typography.pxToRem(66)} ${typography.pxToRem(
         77
@@ -71,13 +95,10 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
     [breakpoints.up("lg")]: {
       backgroundColor: palette.background.default,
+      height: typography.pxToRem(600),
       opacity: 0.9,
       padding: `${typography.pxToRem(81)} ${typography.pxToRem(98)}`,
     },
-  },
-  image: {
-    fill: palette.primary.main,
-    padding: 0,
   },
   title: {
     fontWeight: 900,
@@ -93,10 +114,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   tabletWhite: {
-    [breakpoints.only("md")]: {
-      background: `linear-gradient(to right, #ffffffE6 0%, #ffffffE6 55%, transparent 55%, transparent 100%)`,
-      height: typography.pxToRem(524),
-    },
+    position: "absolute",
+    left: 0,
+    top: typography.pxToRem(42),
+    width: "100%",
+    background: `linear-gradient(to right, #ffffffE6 0%, #ffffffE6 56%, transparent 56%, transparent 100%)`,
+    height: typography.pxToRem(524),
   },
 }));
 
