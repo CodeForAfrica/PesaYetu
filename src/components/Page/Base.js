@@ -18,7 +18,7 @@ function BasePage({ children, menus, ...props }) {
     const logosProps = data
       .filter((item) => item.label.toLowerCase() === "logo")
       .map(({ label, url, title, description }) => {
-        const CFA = {
+        return {
           image: {
             src: url,
             alt: label.toLowerCase(),
@@ -26,15 +26,12 @@ function BasePage({ children, menus, ...props }) {
           url: title,
           description,
         };
-        return {
-          logoProps: CFA,
-        };
-      });
+      })[0];
     const socialLinks = data
       .filter((item) => item.label.toLowerCase() === "stay in touch")
       // eslint-disable-next-line no-shadow
       .map(({ children }) => {
-        const socialLinksProps = children.map(({ label, url, title }) => {
+        return children.map(({ label, url, title }) => {
           return {
             image: {
               src: url,
@@ -44,28 +41,22 @@ function BasePage({ children, menus, ...props }) {
             label,
           };
         });
-        return {
-          socialLinksProps,
-        };
-      });
+      })[0];
     const copyrightProps = data
       .filter((item) => item.label.toLowerCase() === "copyright")
       // eslint-disable-next-line no-shadow
       .map(({ url, description, title }) => {
-        const copyright = {
+        return {
           icon: url,
           copyright: description,
           copyrightUrl: title,
         };
-        return {
-          copyrightProps: copyright,
-        };
-      });
+      })[0];
     const quickLinks = data
       .filter((item) => item.label.toLowerCase() === "resources")
       // eslint-disable-next-line no-shadow
       .map(({ label, children }) => {
-        const quickLinksProps = {
+        return {
           title: label,
           // eslint-disable-next-line no-shadow
           links: children.map(({ label, url }) => {
@@ -75,13 +66,16 @@ function BasePage({ children, menus, ...props }) {
             };
           }),
         };
-        return {
-          quickLinksProps,
-        };
-      });
-    return { logosProps, socialLinks, copyrightProps, quickLinks };
+      })[0];
+    return {
+      logosProps,
+      socialLinks,
+      copyrightProps,
+      quickLinks,
+    };
   };
   getFooterMenu(menus?.footerMenu ?? []);
+  console.log(getFooterMenu(menus?.footerMenu ?? []));
   return (
     <>
       <NextSeo {...props} />
