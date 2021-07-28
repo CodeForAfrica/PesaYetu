@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 export default function getFooterMenu(data) {
   const logosProps = data
-    .filter((item) => item.label.toLowerCase() === "logo")
+    .filter((item) => item?.label?.toLowerCase() === "logo")
     .map(({ label, url, title, description }) => {
       return {
         src: url,
