@@ -4,11 +4,9 @@ export default function getFooterMenu(data) {
     .filter((item) => item.label.toLowerCase() === "logo")
     .map(({ label, url, title, description }) => {
       return {
-        image: {
-          src: url,
-          alt: label?.toLowerCase(),
-        },
-        url: title,
+        src: url,
+        alt: label?.toLowerCase(),
+        href: title,
         description,
       };
     })[0];

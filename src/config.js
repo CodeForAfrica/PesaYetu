@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */ // To be Removed
 
 import cc from "@/pesayetu/assets/cc.svg";
-import footerLogo from "@/pesayetu/assets/footer-logo.svg";
 import facebook from "@/pesayetu/assets/footer-social-fb.svg";
 import instagram from "@/pesayetu/assets/footer-social-ig.svg";
 import linkedin from "@/pesayetu/assets/footer-social-in.svg";
@@ -9,14 +8,6 @@ import twitter from "@/pesayetu/assets/footer-social-tw.svg";
 import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
 import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
-
-const CFA = {
-  image: {
-    src: footerLogo,
-    alt: "Code for Africa",
-  },
-  url: "https://codeforafrica.org",
-};
 
 const ABOUT = {
   about:
@@ -102,8 +93,9 @@ export const footerArgs = {
   title: "Stay in touch with us",
   description: ABOUT.about,
   logoProps: {
-    image: CFA.image,
-    url: CFA.url,
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-4426.png",
+    alt: "Code for Africa",
+    href: "https://codeforafrica.org",
   },
   socialMedia,
   quickLinks: QUICK_LINKS[0],
