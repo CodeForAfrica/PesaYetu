@@ -28,7 +28,6 @@ function Footer({
 }) {
   const classes = useStyles(props);
   const { url: logoHref, image: logoImg } = logoProps;
-
   return (
     <div className={classes.root}>
       <Section
