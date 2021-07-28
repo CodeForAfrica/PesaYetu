@@ -13,9 +13,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       marginTop: typography.pxToRem(20),
     },
   },
+
   section: {
     // paddingTop: typography.pxToRem(102),
     // paddingBottom: typography.pxToRem(163),
+    display: "flex",
   },
   image: {
     width: "max-content",
@@ -73,6 +75,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     fontSize: typography.pxToRem(30),
   },
   description: {},
+  // transition: (props) => ({
+  //   display: props.checked ? "block" : "none",
+  // }), // NOTE: This styling destructs page layout, investigate
 }));
 
 export default useStyles;

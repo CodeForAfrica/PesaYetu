@@ -1,6 +1,6 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Grow } from "@material-ui/core";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
@@ -12,7 +12,12 @@ import Group4659 from "@/pesayetu/assets/Group 4659.png";
 import Section from "@/pesayetu/components/Section";
 
 const DataIndicators = (props) => {
-  const classes = useStyles(props);
+  const [checked, setChecked] = useState(false);
+  const classes = useStyles({ checked, ...props });
+
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
 
   return (
     <div className={classes.root}>
@@ -28,6 +33,7 @@ const DataIndicators = (props) => {
                   className={classes.image}
                   src={Group4657}
                   layout="fill"
+                  onClick={handleChange}
                 />
               </div>
               <Typography className={classes.text}>Overview</Typography>
@@ -74,14 +80,16 @@ const DataIndicators = (props) => {
             </Grid>
           </div>
         </Grid>
-        <div className={classes.descriptionSection}>
-          <Typography className={classes.title}>Overview</Typography>
-          <Typography className={classes.description}>
-            This includes general county data. Topics include administrative and
-            political units, population size and composition, land use, tourism
-            and wildlife, industry and trade, finance, and education.
-          </Typography>
-        </div>
+        <Grow in={checked} onClick={handleChange}>
+          <div className={classes.descriptionSection}>
+            <Typography className={classes.title}>Overview</Typography>
+            <Typography className={classes.description}>
+              This includes general county data. Topics include administrative
+              and political units, population size and composition, land use,
+              tourism and wildlife, industry and trade, finance, and education.
+            </Typography>
+          </div>
+        </Grow>
       </Section>
     </div>
   );

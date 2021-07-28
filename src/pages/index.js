@@ -11,9 +11,9 @@ import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeSt
 export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
+      <DataIndicators />
       <Hero {...blocks?.hero} boundary={boundary} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
-      <DataIndicators />
     </Page>
   );
 }
