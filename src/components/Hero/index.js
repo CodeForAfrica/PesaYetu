@@ -13,10 +13,8 @@ import Section from "@/pesayetu/components/Section";
 const Map = dynamic(() => import("./Map"), { ssr: false });
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
-  root: {},
-  backgroundWrap: {
-    position: "fixed",
-    zIndex: -1,
+  root: {
+    position: "relative",
     height: typography.pxToRem(468),
     width: "100vw",
     [breakpoints.up("md")]: {
@@ -25,6 +23,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(600),
     },
+  },
+  background: {
+    zIndex: -1,
   },
   comment: {
     fontSize: typography.pxToRem(11),
@@ -35,6 +36,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     },
   },
   section: {
+    position: "relative",
     paddingBottom: typography.pxToRem(40),
     [breakpoints.up("md")]: {
       paddingBottom: typography.pxToRem(22),
@@ -81,9 +83,7 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
 
   return (
     <div className={classes.root}>
-      <div className={classes.backgroundWrap}>
-        <Image src={heroBg} layout="fill" />
-      </div>
+      <Image src={heroBg} layout="fill" className={classes.backgroundWrap} />
       <Section classes={{ root: classes.section }}>
         <Grid container>
           <Grid item lg={1} />
