@@ -25,6 +25,11 @@ export default {
         type: "text",
       },
     },
+    videoSrc: {
+      control: {
+        type: "text",
+      },
+    },
   },
 };
 
@@ -44,4 +49,6 @@ Default.args = {
     "Learn how the PesaYetu tool works and start using the provided data visualisations for free.",
   ctaText: "Find out more",
   href: "/?path=/story/components-how-it-works--default",
+  videoSrc:
+    "https://www.youtube.com/watch?v=lXKDBoRSqxo&list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH&t=2s",
 };

@@ -1,6 +1,9 @@
 import { createTheme } from "@material-ui/core/styles";
 import { deepmerge } from "@material-ui/utils";
 
+import chevronrightDark from "@/pesayetu/assets/icons/Group 997-dark.svg";
+import chevronright from "@/pesayetu/assets/icons/Group 997.svg";
+
 const FONT_FAMILY_TEXT = '"Poppins", "sans-serif"';
 
 const theme = createTheme({
@@ -122,10 +125,10 @@ deepmerge(
     },
     body2: {
       fontSize: pxToRem(16),
-      lineHeight: 24 / 16,
+      lineHeight: 30 / 16,
       [breakpoints.up("lg")]: {
         fontSize: pxToRem(16),
-        lineHeight: 24 / 16, // font body2
+        lineHeight: 30 / 16, // font body2
       },
     },
     subtitle1: {
@@ -179,6 +182,38 @@ deepmerge(
           backgroundColor: palette.primary.main,
           border: "2px solid transparent",
           borderRadius: pxToRem(50),
+        },
+      },
+      text: {
+        color: palette.primary.main,
+        padding: 0,
+        textTransform: "none",
+        fontWeight: "bold",
+        fontSize: pxToRem(16),
+        lineHeight: 23 / 16,
+        "&:hover": {
+          color: palette.grey.dark,
+          backgroundColor: "transparent",
+          border: 0,
+          fontWeight: "bold",
+        },
+        "&::after": {
+          content: '""',
+          backgroundImage: `url("${chevronright}")`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          marginLeft: pxToRem(20),
+          height: pxToRem(20), // Must equal button line-height
+          width: pxToRem(30),
+        },
+        "&:hover::after": {
+          content: '""',
+          backgroundImage: `url("${chevronrightDark}")`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          marginLeft: pxToRem(10),
+          height: pxToRem(20), // Must equal button line-height
+          width: pxToRem(30),
         },
       },
     },
