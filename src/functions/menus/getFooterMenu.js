@@ -19,7 +19,7 @@ export default function getFooterMenu(data) {
         return {
           url: title,
           image: {
-            src: url,
+            url,
             alt: label?.toLowerCase(),
           },
           label,

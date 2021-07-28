@@ -27,7 +27,9 @@ function Footer({
   ...props
 }) {
   const classes = useStyles(props);
-  const { url: logoHref, image: logoImg } = logoProps;
+  /*  const { url: logoHref, image: logoImg } = logoProps;
+  // eslint-disable-next-line no-console */
+  /*  console.log(logoHref); */
   return (
     <div className={classes.root}>
       <Section
@@ -39,8 +41,7 @@ function Footer({
           <Grid item xs={12} container>
             <LogoButton
               component={Link}
-              href={logoHref}
-              {...logoImg}
+              {...logoProps}
               classes={{
                 root: classes.logoButton,
               }}

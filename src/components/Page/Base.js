@@ -13,14 +13,14 @@ import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 function BasePage({ children, menus, ...props }) {
   const footerProps = {
     ...footerArgs,
-    links: getFooterMenu(menus?.footerMenu ?? []),
+    footerArgs: getFooterMenu(menus?.footerMenu ?? []),
   };
-  console.log(footerProps.links);
+  console.log(footerProps.footerArgs);
   return (
     <>
       <NextSeo {...props} />
       {children}
-      <Footer {...footerProps} />
+      <Footer {...footerProps.footerArgs} />
     </>
   );
 }
