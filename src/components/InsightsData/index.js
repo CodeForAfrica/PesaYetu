@@ -1,6 +1,6 @@
+import RichTypography from "@commons-ui/core/RichTypography";
 import { Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -17,24 +17,10 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
   itemsData = isTablet ? items.slice(0, 2) : items;
   const classes = useStyles(props);
 
-  // get the last part of title to give it background styling
-  const subTitleArr = subtitle.split(" ");
-  const subTitleEnd = subTitleArr.pop();
-  const subTitleFirst = subTitleArr.join(" ");
-
   return (
     <Section classes={{ root: classes.section }}>
       <Typography className={classes.title}>{title}</Typography>
-      <Typography
-        display="inline"
-        className={classes.subtitle}
-      >{`${subTitleFirst} `}</Typography>
-      <Typography
-        display="inline"
-        className={clsx(classes.subtitle, classes.subtitleTwo)}
-      >
-        {subTitleEnd}
-      </Typography>
+      <RichTypography className={classes.subtitle}>{subtitle}</RichTypography>
       <div className={classes.list}>
         {itemsData &&
           itemsData.map((item) => <InsightCard key={item.title} {...item} />)}

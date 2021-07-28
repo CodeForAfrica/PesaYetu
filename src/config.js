@@ -73,7 +73,7 @@ const socialMedia = [
 
 export const insightData = {
   title: "Stories",
-  subtitle: "Data Driven Insights",
+  subtitle: "Data Driven <span class='highlight'>Insights</span>",
   items: [
     {
       title: "Dolor sit amet ipsum dolor sit amet",
