@@ -100,20 +100,20 @@ export const exploreTools = {
 
 export const footerArgs = {
   title: "Stay in touch with us",
-  socialMedia,
-  quickLinks: QUICK_LINKS[0],
   description: ABOUT.about,
   logoProps: {
     image: CFA.image,
     url: CFA.url,
   },
-  aboutVariant: "subtitle1",
+  socialMedia,
+  quickLinks: QUICK_LINKS[0],
   copyrightProps: {
     icon: cc,
     copyright: "2021 PesaYetu",
     copyrightUrl: "https://dev.pesayetu.pesacheck.org",
     copyrightVariant: "subtitle1",
   },
+  aboutVariant: "subtitle1",
 };
 
 export default footerArgs;
