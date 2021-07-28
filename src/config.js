@@ -106,21 +106,18 @@ export const dataVisuals = {
   items: [
     {
       image: DataVisualOne,
-      order: "Step 1: ",
       description:
-        "Click the search field and select the county or municipality from the dropdown menu.",
+        "<span class='bold'>Step 1:</span> Click the search field and select the county or municipality from the dropdown menu.",
     },
     {
       image: DataVisualTwo,
-      order: "Step 2: ",
       description:
-        "Explore the map, confirm your selection and click on “Rich Data” to display the data.",
+        "<span class='bold'>Step 2:</span> Explore the map, confirm your selection and click on “Rich Data” to display the data.",
     },
     {
       image: DataVisualThree,
-      order: "Step 3: ",
       description:
-        "Browse the charts and download and share the data using the buttons on the right side.",
+        "<span class='bold'>Step 3:</span> Browse the charts and download and share the data using the buttons on the right side.",
     },
   ],
 };

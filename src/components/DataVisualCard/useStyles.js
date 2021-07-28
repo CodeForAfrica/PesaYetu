@@ -15,6 +15,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   content: {
     padding: 0,
     marginTop: typography.pxToRem(20),
+    "& .bold": {
+      [breakpoints.up("lg")]: {
+        fontWeight: "bold",
+      },
+    },
   },
   cardMedia: {
     height: typography.pxToRem(215),
@@ -29,11 +34,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   image: { objectFit: "contain" },
-  orderText: {
-    [breakpoints.up("lg")]: {
-      fontWeight: "bold",
-    },
-  },
 }));
 
 export default useStyles;
