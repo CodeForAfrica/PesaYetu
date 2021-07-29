@@ -37,8 +37,8 @@ function Footer({
         <Grid container direction="row" justifyContent="space-between">
           <Grid item xs={12} container>
             <LogoButton
-              component={Link}
               {...logoProps}
+              component={Link}
               classes={{
                 root: classes.logoButton,
               }}

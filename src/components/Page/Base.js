@@ -15,7 +15,6 @@ function BasePage({ children, menus, ...props }) {
     ...footerArgs,
     footerArgs: getFooterMenu(menus?.footerMenu ?? []),
   };
-  console.log(footerProps.footerArgs);
   return (
     <>
       <NextSeo {...props} />

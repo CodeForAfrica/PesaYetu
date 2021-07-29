@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 export default function getFooterMenu(data) {
-  const logosProps = data
+  const logoProps = data
     .filter((item) => item?.label?.toLowerCase() === "logo")
     .map(({ label, url, title, description }) => {
       return {
@@ -51,11 +51,11 @@ export default function getFooterMenu(data) {
       };
     })[0];
   return {
-    title: socialMedia?.label,
-    description: logosProps?.description,
-    logosProps,
-    socialMedia: socialMedia?.links,
+    logoProps,
     quickLinks,
     copyrightProps,
+    title: socialMedia?.label,
+    description: logoProps?.description,
+    socialMedia: socialMedia?.links,
   };
 }
