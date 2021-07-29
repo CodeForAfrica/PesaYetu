@@ -1,81 +1,82 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import { A } from "@commons-ui/core";
+// import { A } from "@commons-ui/core";
 import { Link as MuiLink } from "@material-ui/core";
-import clsx from "clsx";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
+// import clsx from "clsx";
+// import NextLink from "next/link";
+// import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { forwardRef } from "react";
 
 import site from "@/pesayetu/utils/site";
 
-const NextComposed = forwardRef(function NextComposed(props, ref) {
-  const {
-    as,
-    href,
-    locale,
-    passHref,
-    prefetch,
-    replace,
-    scroll,
-    shallow,
-    ...other
-  } = props;
+// const NextComposed = forwardRef(function NextComposed(props, ref) {
+//   const {
+//     as,
+//     href,
+//     locale,
+//     passHref,
+//     prefetch,
+//     replace,
+//     scroll,
+//     shallow,
+//     ...other
+//   } = props;
 
-  return (
-    <NextLink
-      href={href}
-      as={as}
-      passHref={passHref}
-      prefetch={prefetch}
-      replace={replace}
-      scroll={scroll}
-      shallow={shallow}
-      locale={locale}
-    >
-      <a ref={ref} {...other} />
-    </NextLink>
-  );
-});
+//   return (
+//     <NextLink
+//       href={href}
+//       as={as}
+//       passHref={passHref}
+//       prefetch={prefetch}
+//       replace={replace}
+//       scroll={scroll}
+//       shallow={shallow}
+//       locale={locale}
+//     >
+//       <a ref={ref} {...other} />
+//     </NextLink>
+//   );
+// });
 
-NextComposed.propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  locale: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  passHref: PropTypes.bool,
-  prefetch: PropTypes.bool,
-  replace: PropTypes.bool,
-  scroll: PropTypes.bool,
-  shallow: PropTypes.bool,
-};
+// NextComposed.propTypes = {
+//   as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+//   href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+//   locale: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+//   passHref: PropTypes.bool,
+//   prefetch: PropTypes.bool,
+//   replace: PropTypes.bool,
+//   scroll: PropTypes.bool,
+//   shallow: PropTypes.bool,
+// };
 
-NextComposed.defaultProps = {
-  as: undefined,
-  href: undefined,
-  locale: undefined,
-  passHref: undefined,
-  prefetch: undefined,
-  replace: undefined,
-  scroll: undefined,
-  shallow: undefined,
-};
+// NextComposed.defaultProps = {
+//   as: undefined,
+//   href: undefined,
+//   locale: undefined,
+//   passHref: undefined,
+//   prefetch: undefined,
+//   replace: undefined,
+//   scroll: undefined,
+//   shallow: undefined,
+// };
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/api-reference/next/link/
 const Link = forwardRef(function Link(props, ref) {
   const {
     href,
-    activeClassName = "active",
-    className: classNameProps,
+    // activeClassName = "active",
+    // className: classNameProps,
+    className,
     naked,
     ...other
   } = props;
 
-  const router = useRouter();
-  const pathname = typeof href === "string" ? href : href?.pathname;
-  const className = clsx(classNameProps, {
-    [activeClassName]: router.pathname === pathname && activeClassName,
-  });
+  // const router = useRouter();
+  // const pathname = typeof href === "string" ? href : href?.pathname;
+  // const className = clsx(classNameProps, {
+  //   [activeClassName]: router.pathname === pathname && activeClassName,
+  // });
 
   let formattedHref = href;
 
@@ -90,36 +91,36 @@ const Link = forwardRef(function Link(props, ref) {
     // do nothing
   }
 
-  const isRelative =
-    typeof formattedHref === "string" &&
-    formattedHref.indexOf("/") === 0 &&
-    formattedHref.indexOf("//") !== 0;
+  // const isRelative =
+  //   typeof formattedHref === "string" &&
+  //   formattedHref.indexOf("/") === 0 &&
+  //   formattedHref.indexOf("//") !== 0;
 
-  if (!isRelative) {
-    const noProtocol = href?.startsWith("www.");
-    return (
-      <A
-        href={noProtocol ? `https://${href}` : href}
-        className={className}
-        ref={ref}
-        {...other}
-      />
-    );
-  }
+  // if (!isRelative) {
+  //   const noProtocol = href?.startsWith("www.");
+  //   return (
+  //     <A
+  //       href={noProtocol ? `https://${href}` : href}
+  //       className={className}
+  //       ref={ref}
+  //       {...other}
+  //     />
+  //   );
+  // }
 
-  if (naked) {
-    return (
-      <NextComposed
-        className={className}
-        ref={ref}
-        href={formattedHref}
-        {...other}
-      />
-    );
-  }
+  // if (naked) {
+  //   return (
+  //     <NextComposed
+  //       className={className}
+  //       ref={ref}
+  //       href={formattedHref}
+  //       {...other}
+  //     />
+  //   );
+  // }
   return (
     <MuiLink
-      component={NextComposed}
+      // component={NextComposed}
       className={className}
       ref={ref}
       href={formattedHref}
