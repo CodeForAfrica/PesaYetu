@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 // import { A } from "@commons-ui/core";
-import { Link as MuiLink } from "@material-ui/core";
+import { Link } from "@material-ui/core";
 // import clsx from "clsx";
 // import NextLink from "next/link";
 // import { useRouter } from "next/router";
@@ -63,7 +63,7 @@ import site from "@/pesayetu/utils/site";
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/api-reference/next/link/
-const Link = function Link(props) {
+function Index(props) {
   const {
     href,
     // activeClassName = "active",
@@ -120,7 +120,7 @@ const Link = function Link(props) {
   //   );
   // }
   return (
-    <MuiLink
+    <Link
       // component={NextComposed}
       className={className}
       // ref={ref}
@@ -128,9 +128,9 @@ const Link = function Link(props) {
       {...other}
     />
   );
-};
+}
 
-Link.propTypes = {
+Index.propTypes = {
   activeClassName: PropTypes.string,
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
@@ -140,7 +140,7 @@ Link.propTypes = {
   prefetch: PropTypes.bool,
 };
 
-Link.defaultProps = {
+Index.defaultProps = {
   activeClassName: undefined,
   as: undefined,
   className: undefined,
@@ -150,4 +150,4 @@ Link.defaultProps = {
   prefetch: undefined,
 };
 
-export default Link;
+export default Index;
