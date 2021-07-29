@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Link from "@/pesayetu/components/Link";
 import SocialMediaIcons from "@/pesayetu/components/SocialMediaIcons";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
@@ -44,6 +45,9 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   links: {
     padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
   },
+  label: {
+    fontWeight: "600",
+  },
   menu: {
     margin: 0,
     [breakpoints.up("lg")]: {
@@ -55,6 +59,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     padding: `${typography.pxToRem(20)} 0`,
     "&:hover, &:focus, &:focus-within": {
       backgroundColor: "transparent",
+      textDecoration: "none",
     },
     [breakpoints.up("lg")]: {
       padding: `${typography.pxToRem(18)}`,
@@ -62,6 +67,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       "&:hover, &:focus, &:focus-within": {
         color: "#707070",
         backgroundColor: "transparent",
+        textDecoration: "none",
       },
     },
   },
@@ -92,13 +98,16 @@ function Menu({ links, children, socialLinks, ...props }) {
       {allMenulinks[0]?.map(({ href, label }) => (
         <Grid item key={label} className={classes.menu}>
           <Button
+            component={Link}
             color="default"
             variant="text"
             size="large"
             href={href}
             className={classes.menuLinks}
           >
-            <Typography variant="h5">{label}</Typography>
+            <Typography variant="h5" className={classes.label}>
+              {label}
+            </Typography>
           </Button>
         </Grid>
       ))}
