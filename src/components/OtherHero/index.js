@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   textContainer: {
     height: "100%",
     paddingTop: typography.pxToRem(50),
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       paddingTop: typography.pxToRem(129.94),
     },
   },
@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   repeatGrid: {
     width: typography.pxToRem(262),
     height: "auto",
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       width: typography.pxToRem(400),
     },
   },
@@ -112,7 +112,7 @@ function OtherHero({ image, intro, repeatGrid, tagline, title, ...props }) {
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={6} lg={4}>
             <div className={classes.textContainer}>
               <Typography className={classes.intro} variant="h6">
                 {intro}
