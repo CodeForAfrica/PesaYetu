@@ -20,7 +20,7 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
-    "chromatic": "chromatic --exit-once-uploaded --exit-zero-on-changes"
+    "chromatic": "chromatic --debug --exit-once-uploaded --exit-zero-on-changes"
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
