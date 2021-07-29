@@ -1,5 +1,4 @@
-import { Typography, useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Typography, Hidden } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import Carousel from "react-multi-carousel";
@@ -18,8 +17,6 @@ const responsive = {
 };
 
 const DataVisuals = ({ title, items, ...props }) => {
-  const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.only("md"));
   const classes = useStyles(props);
 
   return (
@@ -27,7 +24,8 @@ const DataVisuals = ({ title, items, ...props }) => {
       <Typography variant="h3" className={classes.title}>
         {title}
       </Typography>
-      {isTablet ? (
+
+      <Hidden smDown lgUp implementation="css">
         <Carousel
           swipeable
           responsive={responsive}
@@ -39,12 +37,14 @@ const DataVisuals = ({ title, items, ...props }) => {
           {items &&
             items.map((item) => <DataVisualCard key={item.image} {...item} />)}
         </Carousel>
-      ) : (
+      </Hidden>
+
+      <Hidden only="md" implementation="css">
         <div className={classes.section}>
           {items &&
             items.map((item) => <DataVisualCard key={item.image} {...item} />)}
         </div>
-      )}
+      </Hidden>
     </Section>
   );
 };
