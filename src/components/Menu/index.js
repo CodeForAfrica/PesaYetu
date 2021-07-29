@@ -47,6 +47,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   label: {
     fontWeight: "600",
+    letterSpacing: "1.6px",
   },
   menu: {
     margin: 0,

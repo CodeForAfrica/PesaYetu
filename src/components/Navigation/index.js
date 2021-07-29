@@ -5,9 +5,13 @@ import React from "react";
 import DesktopNavigation from "./DesktopNavigation";
 import MobileNavigation from "./MobileNavigation";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints, typography }) => ({
   root: {
     backgroundColor: palette.background.default,
+    width: "100%",
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(1190),
+    },
   },
   section: {},
   toolbar: {
