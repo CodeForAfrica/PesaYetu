@@ -1,11 +1,6 @@
-import {
-  Grid,
-  IconButton,
-  Link,
-  SvgIcon,
-  useMediaQuery,
-} from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Grid, IconButton, Link } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -15,8 +10,13 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     [breakpoints.up("lg")]: {
       paddingTop: typography.pxToRem(8),
     },
-    "& > svg:nth-of-type(2)": {
-      padding: "3rem",
+  },
+  image: {
+    filter:
+      "invert(15%) sepia(98%) saturate(6602%) hue-rotate(192deg) brightness(97%) contrast(101%);",
+    [breakpoints.up("lg")]: {
+      filter:
+        "invert(0%) sepia(7%) saturate(27%) hue-rotate(270deg) brightness(102%) contrast(109%)",
     },
   },
   button: {
@@ -37,34 +37,25 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       },
     },
   },
-  svgIcon: {},
 }));
 
 function SocialMediaIcons({ socialLinks, ...props }) {
   const classes = useStyles(props);
-  const theme = useTheme();
-  const isUplg = useMediaQuery(theme.breakpoints.up("lg"));
   const viewBoxValue = "0 0 48 48";
   if (!socialLinks?.length) {
     return null;
   }
   return (
     <Grid item className={classes.root}>
-      {socialLinks.map(({ url, label, desktopComponent, mobileComponent }) => (
+      {socialLinks.map(({ url, label, src }) => (
         <Link href={url} key={label}>
           <IconButton
             size="medium"
             edge="end"
-            aria-label={label}
             viewBox={viewBoxValue}
             className={classes.button}
           >
-            <SvgIcon
-              component={isUplg ? desktopComponent : mobileComponent}
-              classes={{
-                root: classes.svgIcon,
-              }}
-            />
+            <Image src={src} width={48} height={48} className={classes.image} />
           </IconButton>
         </Link>
       ))}
@@ -77,8 +68,7 @@ SocialMediaIcons.propTypes = {
     PropTypes.shape({
       url: PropTypes.string,
       label: PropTypes.string,
-      desktopComponent: PropTypes.func,
-      mobileComponent: PropTypes.func,
+      src: PropTypes.string,
     })
   ),
 };
