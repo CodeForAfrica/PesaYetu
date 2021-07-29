@@ -2,7 +2,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
-    paddingBottom: typography.pxToRem(80),
+    padding: `${typography.pxToRem(80)} 0`,
+    [breakpoints.up("lg")]: {
+      padding: `${typography.pxToRem(40)} 0`,
+    },
   },
   title: {
     fontWeight: "900",
