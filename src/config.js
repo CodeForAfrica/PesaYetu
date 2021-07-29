@@ -106,46 +106,46 @@ export const navigationArgs = {
     menuItems: [
       {
         countryName: "country 1",
-        countryUrl: "/country 1",
+        countryUrl: "/country-1",
         items: [
           {
-            name: "subcounty-1",
+            name: "subcounty 1",
             url: "/subcounty-1",
           },
           {
-            name: "subcounty-2",
+            name: "subcounty 2",
             url: "/subcounty-2",
           },
           {
-            name: "subcounty-2",
-            url: "/subcounty-2",
+            name: "subcounty 3",
+            url: "/subcounty-3",
           },
         ],
       },
       {
         countryName: "country 2",
-        countryUrl: "/country 2",
+        countryUrl: "/country-2",
         items: [
           {
-            name: "subcounty-4",
+            name: "subcounty 4",
             url: "/subcounty-4",
           },
           {
-            name: "subcounty-5",
+            name: "subcounty 5",
             url: "/subcounty-5",
           },
         ],
       },
       {
         countryName: "country 3",
-        countryUrl: "/country 3",
+        countryUrl: "/country-3",
         items: [
           {
-            name: "subcounty-6",
+            name: "subcounty 6",
             url: "/subcounty-6",
           },
           {
-            name: "subcounty-7",
+            name: "subcounty 7",
             url: "/subcounty-7",
           },
         ],

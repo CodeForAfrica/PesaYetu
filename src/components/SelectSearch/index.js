@@ -268,7 +268,7 @@ function SelectSearch({
           </IconButton>
         ) : (
           <IconButton
-            size="large"
+            size="medium"
             onClick={handleOpen}
             aria-label="open"
             disableRipple
