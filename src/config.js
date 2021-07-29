@@ -72,6 +72,7 @@ const socialMedia = [
 
 export const navigationArgs = {
   logoProps: {
+    href: "/",
     firstTitle: "Pesa",
     secondTitle: "Yetu",
     firstSubtitle: "Our County",

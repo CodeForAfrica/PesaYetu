@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Link from "@/pesayetu/components/Link";
+
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
     display: "flex",
@@ -10,6 +12,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     [breakpoints.up("lg")]: {
       flexDirection: "column",
       justifyContent: "flex-start",
+    },
+  },
+  link: {
+    textDecoration: "none",
+    "&:hover, &:focus, &:focus-within": {
+      textDecoration: "none",
     },
   },
   firstTitle: {
@@ -41,6 +49,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
 }));
 
 function Logo({
+  href,
   firstTitle,
   secondTitle,
   firstSubtitle,
@@ -49,22 +58,27 @@ function Logo({
 }) {
   const classes = useStyles(props);
   return (
-    <div className={classes.root}>
-      <RichTypography variant="h1">
-        {firstTitle && <span className={classes.firstTitle}>{firstTitle}</span>}
-        {secondTitle && (
-          <span className={classes.secondTitle}>{secondTitle}</span>
-        )}
-      </RichTypography>
-      <RichTypography variant="caption" className={classes.subtitle}>
-        {firstSubtitle && <span>{firstSubtitle}&nbsp;</span>}
-        {secondSubtitle && <span>{secondSubtitle}</span>}
-      </RichTypography>
-    </div>
+    <Link href={href} className={classes.link}>
+      <div className={classes.root}>
+        <RichTypography variant="h1">
+          {firstTitle && (
+            <span className={classes.firstTitle}>{firstTitle}</span>
+          )}
+          {secondTitle && (
+            <span className={classes.secondTitle}>{secondTitle}</span>
+          )}
+        </RichTypography>
+        <RichTypography variant="caption" className={classes.subtitle}>
+          {firstSubtitle && <span>{firstSubtitle}&nbsp;</span>}
+          {secondSubtitle && <span>{secondSubtitle}</span>}
+        </RichTypography>
+      </div>
+    </Link>
   );
 }
 
 Logo.propTypes = {
+  href: PropTypes.string,
   firstTitle: PropTypes.string,
   secondTitle: PropTypes.string,
   firstSubtitle: PropTypes.string,
@@ -72,6 +86,7 @@ Logo.propTypes = {
 };
 
 Logo.defaultProps = {
+  href: undefined,
   firstTitle: undefined,
   secondTitle: undefined,
   firstSubtitle: undefined,

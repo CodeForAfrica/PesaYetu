@@ -5,20 +5,11 @@ import React from "react";
 import DesktopNavigation from "./DesktopNavigation";
 import MobileNavigation from "./MobileNavigation";
 
-const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
+const useStyles = makeStyles(({ palette }) => ({
   root: {
     backgroundColor: palette.background.default,
   },
-  section: {
-    padding: `0 ${typography.pxToRem(21)} 0 ${typography.pxToRem(17)}`,
-    margin: 0,
-    width: "100%",
-    [breakpoints.up("lg")]: {
-      padding: `0 0 0 ${typography.pxToRem(100)}`,
-      margin: "0 auto",
-      maxWidth: typography.pxToRem(1196),
-    },
-  },
+  section: {},
   toolbar: {
     display: "block",
   },
