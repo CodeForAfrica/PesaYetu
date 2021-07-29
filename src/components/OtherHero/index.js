@@ -1,6 +1,7 @@
 import RichTypography from "@commons-ui/core/RichTypography";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -71,9 +72,11 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
   repeatGrid: {
     width: typography.pxToRem(262),
+    padding: `${typography.pxToRem(66)} !important`,
     height: "auto",
     [breakpoints.up("lg")]: {
       width: typography.pxToRem(400),
+      padding: `0 !important`,
     },
   },
   section: {
@@ -105,7 +108,14 @@ function OtherHero({ image, intro, repeatGrid, tagline, title, ...props }) {
 
           <Grid item xs={12} md={6}>
             <div className={classes.rightBackground}>
-              <img className={classes.repeatGrid} src={repeatGrid} alt="" />
+              <Image
+                width={400}
+                height={400}
+                layout="intrinsic"
+                className={classes.repeatGrid}
+                src={repeatGrid}
+                alt=""
+              />
             </div>
           </Grid>
         </Grid>
