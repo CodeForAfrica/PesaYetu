@@ -54,8 +54,7 @@ DataVisuals.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string,
-      order: PropTypes.string,
-      image: PropTypes.objectOf(PropTypes.any),
+      image: PropTypes.string,
     })
   ),
 };
