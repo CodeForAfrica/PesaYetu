@@ -105,8 +105,9 @@ Footer.propTypes = {
   socialMedia: PropTypes.arrayOf(PropTypes.shape({})),
   quickLinks: PropTypes.PropTypes.shape({}),
   logoProps: PropTypes.shape({
-    url: PropTypes.string,
-    image: PropTypes.shape({}),
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    href: PropTypes.string,
   }),
   aboutVariant: PropTypes.string,
   copyrightProps: PropTypes.shape({}),
