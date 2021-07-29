@@ -5,7 +5,8 @@ import { Link as MuiLink } from "@material-ui/core";
 // import NextLink from "next/link";
 // import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import React, { forwardRef } from "react";
+// import React, { forwardRef } from "react";
+import React from "react";
 
 import site from "@/pesayetu/utils/site";
 
@@ -62,7 +63,7 @@ import site from "@/pesayetu/utils/site";
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/api-reference/next/link/
-const Link = forwardRef(function Link(props, ref) {
+const Link = function Link(props) {
   const {
     href,
     // activeClassName = "active",
@@ -122,12 +123,12 @@ const Link = forwardRef(function Link(props, ref) {
     <MuiLink
       // component={NextComposed}
       className={className}
-      ref={ref}
+      // ref={ref}
       href={formattedHref}
       {...other}
     />
   );
-});
+};
 
 Link.propTypes = {
   activeClassName: PropTypes.string,
