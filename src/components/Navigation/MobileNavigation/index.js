@@ -9,18 +9,18 @@ import {
   DialogContent,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import { ReactComponent as MenuCloseIcon } from "@/pesayetu/assets/menu_close.svg";
-import { ReactComponent as MenuOpenIcon } from "@/pesayetu/assets/menu_open.svg";
+import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
 import Logo from "@/pesayetu/components/Logo";
 import Menu from "@/pesayetu/components/Menu";
 import SelectSearch from "@/pesayetu/components/SelectSearch";
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
-    // padding: `${typography.pxToRem(30.35)}`,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     borderBottom: "2px solid white",
   },
   backdrop: {
-    // maxHeight: typography.pxToRem(608),
+    maxHeight: typography.pxToRem(608),
     backgroundColor: "transparent",
   },
   dialogActions: {
@@ -58,7 +58,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     background: palette.primary.main,
   },
   dialogMenu: {
-    // padding: `${typography.pxToRem(10.35)} 0`,
+    padding: `${typography.pxToRem(10.35)} 0`,
   },
   menuButton: {
     color: palette.grey.dark,
@@ -86,25 +86,6 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   LogoButton: {
     color: palette.primary.main,
-  },
-  search: {
-    // tablet overide
-    [breakpoints.up("md")]: {
-      maxWidth: typography.pxToRem(400),
-    },
-  },
-  searchInput: {
-    // tablet overide
-    [breakpoints.up("md")]: {
-      width: typography.pxToRem(360),
-    },
-  },
-  searchButton: {
-    paddingBottom: 0,
-    paddingTop: 0,
-    "&:hover": {
-      background: "inherit",
-    },
   },
   button: {
     color: palette.background.dark,
@@ -155,11 +136,11 @@ function MobileNavigation({
             onClick={handleClickOpen}
             className={classes.menuButton}
           >
-            <SvgIcon
-              component={MenuOpenIcon}
-              classes={{
-                root: classes.open,
-              }}
+            <Image
+              src={MenuOpenIcon}
+              width={48}
+              height={48}
+              className={classes.open}
             />
           </IconButton>
         </Grid>
@@ -176,14 +157,10 @@ function MobileNavigation({
           classes={{ root: classes.dialog, paper: classes.dialogPaper }}
         >
           <DialogActions className={classes.dialogActions}>
-            <Grid
-              container
-              justifyContent="space-between"
-              className={classes.logoSection}
-            >
+            <Grid container direction="row" className={classes.logoSection}>
               <Grid
                 item
-                xs={10}
+                xs={8}
                 container
                 justifyContent="flex-start"
                 alignItems="center"
@@ -201,7 +178,7 @@ function MobileNavigation({
 
               <Grid
                 item
-                xs={2}
+                xs={4}
                 container
                 justifyContent="flex-end"
                 alignItems="center"
