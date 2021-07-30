@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import DataVisuals from "@/pesayetu/components/DataVisuals";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import Page from "@/pesayetu/components/Page";
@@ -11,6 +12,7 @@ export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
+      <DataVisuals {...blocks?.dataVisuals} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
@@ -21,6 +23,7 @@ Home.propTypes = {
   blocks: PropTypes.shape({
     hero: PropTypes.shape({}),
     exploreOtherTools: PropTypes.shape({}),
+    dataVisuals: PropTypes.shape({}),
   }),
 };
 
