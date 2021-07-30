@@ -4,6 +4,11 @@ function formatName(name) {
   return camelCase(name.split("/")[1]?.trim()); // converts blocks with other naming conversion to camel case, eg media-text to mediaText
 }
 
+function formatLazyBlockImage(image) {
+  const data = JSON.parse(decodeURIComponent(image)) || null;
+  return data?.url;
+}
+
 function formatLazyBlockIteratorContentWithImage(
   { items: itemsProps, ...rest },
   imgField
@@ -23,6 +28,8 @@ function format(block) {
   switch (name) {
     case "lazyblock/explore-other-tools":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
+    case "lazyblock/other-hero":
+      return { ...attributes, image: formatLazyBlockImage(attributes?.image) };
     case "lazyblock/hero":
     default:
       return attributes;
