@@ -70,7 +70,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     height: typography.pxToRem(48),
     width: typography.pxToRem(278),
     border: "2px solid #00000000",
-    borderRadius: typography.pxToRem(3.75),
+    borderRadius: typography.pxToRem(10),
     "&:hover, &:focus, &:focus-within": {
       backgroundColor: "white",
     },

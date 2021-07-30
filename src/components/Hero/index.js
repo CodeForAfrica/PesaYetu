@@ -14,6 +14,9 @@ const Map = dynamic(() => import("./Map"), { ssr: false });
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {},
+  dropdown: {
+    paddingBottom: 0,
+  },
   backgroundWrap: {
     position: "fixed",
     zIndex: -1,
@@ -107,6 +110,7 @@ function Hero({ comment, selectProps, title, tagline, ...props }) {
             <DropdownSearch
               {...selectProps}
               classes={{
+                root: classes.dropdown,
                 title: classes.dropdownTitle,
                 inputBase: classes.inputBase,
               }}

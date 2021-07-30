@@ -4,13 +4,18 @@ import React from "react";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import Page from "@/pesayetu/components/Page";
+import { navigationArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ boundary, blocks, ...props }) {
+  const heroProps = {
+    ...blocks?.hero,
+    selectProps: navigationArgs?.selectProps,
+  };
   return (
     <Page {...props}>
-      <Hero {...blocks?.hero} boundary={boundary} />
+      <Hero {...heroProps} boundary={boundary} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
