@@ -1,19 +1,22 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
-  root: {
-    padding: `${typography.pxToRem(80)} 0`,
-    [breakpoints.up("lg")]: {
-      padding: `${typography.pxToRem(40)} 0`,
-    },
-  },
+  root: {},
   title: {
     fontWeight: "900",
     textTransform: "uppercase",
     padding: `${typography.pxToRem(40)} 0`,
+    [breakpoints.only("md")]: {
+      paddingTop: typography.pxToRem(80),
+    },
   },
   section: {
-    display: "flex",
+    paddingBottom: typography.pxToRem(40),
+    [breakpoints.only("md")]: {
+      paddingBottom: typography.pxToRem(80),
+    },
+  },
+  container: {
     flexDirection: "column",
     [breakpoints.up("md")]: {
       flexDirection: "row",

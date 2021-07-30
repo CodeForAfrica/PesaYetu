@@ -1,4 +1,4 @@
-import { Typography, Hidden } from "@material-ui/core";
+import { Typography, Hidden, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import Carousel from "react-multi-carousel";
@@ -25,7 +25,7 @@ const DataVisuals = ({ title, items, ...props }) => {
         {title}
       </Typography>
 
-      <Hidden smDown lgUp implementation="css">
+      <Hidden smDown lgUp implementation="css" className={classes.section}>
         <Carousel
           swipeable
           responsive={responsive}
@@ -39,11 +39,17 @@ const DataVisuals = ({ title, items, ...props }) => {
         </Carousel>
       </Hidden>
 
-      <Hidden only="md" implementation="css">
-        <div className={classes.section}>
+      <Hidden only="md" implementation="css" className={classes.section}>
+        <Grid container className={classes.container}>
           {items &&
-            items.map((item) => <DataVisualCard key={item.image} {...item} />)}
-        </div>
+            items.map((item) => {
+              return (
+                <Grid item lg={4} xs={12}>
+                  <DataVisualCard key={item.image} {...item} />
+                </Grid>
+              );
+            })}
+        </Grid>
       </Hidden>
     </Section>
   );
