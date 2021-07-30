@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     borderBottom: "2px solid white",
   },
   backdrop: {
-    maxHeight: typography.pxToRem(608),
+    maxHeight: typography.pxToRem(844),
     backgroundColor: "transparent",
   },
   dialogActions: {
@@ -60,10 +60,16 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   dialogMenu: {
     padding: `${typography.pxToRem(10.35)} 0`,
   },
+  dialogPaper: {
+    maxHeight: typography.pxToRem(844),
+    position: "absolute",
+    left: 0,
+    top: 0,
+  },
   menuButton: {
     color: palette.grey.dark,
     background: "#F0F0F0",
-    width: "48px",
+    width: 48,
     borderRadius: typography.pxToRem(50),
     margin: typography.pxToRem(8),
     "&:hover": {
@@ -74,7 +80,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   closeButton: {
     color: palette.background.main,
-    width: "48px",
+    width: 48,
     padding: `0 ${typography.pxToRem(71)}`,
     paddingLeft: typography.pxToRem(12),
     "&:hover": {
