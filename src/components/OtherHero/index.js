@@ -70,7 +70,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/6)`,
     },
   },
-  repeatGrid: {
+  accentImage: {
     width: typography.pxToRem(262),
     padding: `${typography.pxToRem(66)} !important`,
     height: "auto",
@@ -91,7 +91,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
 }));
-function OtherHero({ image, intro, repeatGrid, tagline, title, ...props }) {
+function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
   const classes = useStyles({ image, ...props });
 
   if (!title?.length) {
@@ -112,8 +112,8 @@ function OtherHero({ image, intro, repeatGrid, tagline, title, ...props }) {
                 width={400}
                 height={400}
                 layout="intrinsic"
-                className={classes.repeatGrid}
-                src={repeatGrid}
+                className={classes.accentImage}
+                src={accentImage}
                 alt=""
               />
             </div>
@@ -144,7 +144,7 @@ function OtherHero({ image, intro, repeatGrid, tagline, title, ...props }) {
 OtherHero.propTypes = {
   image: PropTypes.string,
   intro: PropTypes.string,
-  repeatGrid: PropTypes.string,
+  accentImage: PropTypes.string,
   tagline: PropTypes.string,
   title: PropTypes.string,
 };
@@ -152,7 +152,7 @@ OtherHero.propTypes = {
 OtherHero.defaultProps = {
   image: undefined,
   intro: undefined,
-  repeatGrid: undefined,
+  accentImage: undefined,
   tagline: undefined,
   title: undefined,
 };

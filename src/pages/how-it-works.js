@@ -27,7 +27,7 @@ Home.defaultProps = {
 export async function getStaticProps() {
   const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
-    { slug: "/" },
+    { slug: "/how-it-works" },
     postType
   );
 

@@ -29,7 +29,11 @@ function format(block) {
     case "lazyblock/explore-other-tools":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/other-hero":
-      return { ...attributes, image: formatLazyBlockImage(attributes?.image) };
+      return {
+        ...attributes,
+        image: formatLazyBlockImage(attributes?.image),
+        accentImage: formatLazyBlockImage(attributes?.accentImage),
+      };
     case "lazyblock/hero":
     default:
       return attributes;

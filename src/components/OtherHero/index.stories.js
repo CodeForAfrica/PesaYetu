@@ -3,7 +3,7 @@ import React from "react";
 
 import Hero from ".";
 
-import repeatGrid from "@/pesayetu/assets/images/Group 4780.svg";
+import accentImage from "@/pesayetu/assets/images/Group 4780.svg";
 import image from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
 
 export default {
@@ -33,7 +33,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   intro: "Stories",
-  repeatGrid,
+  accentImage,
   title: "Data-driven news and insights",
   tagline:
     "Explore these curated stories showcasing how you can create impactful and informative pieces using data visualisations.",
