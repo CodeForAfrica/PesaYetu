@@ -141,7 +141,7 @@ function Hero({ comment, selectProps, title, tagline, ...props }) {
 
 Hero.propTypes = {
   comment: PropTypes.string,
-  selectProps: PropTypes.string,
+  selectProps: PropTypes.shape({}),
   tagline: PropTypes.string,
   title: PropTypes.string,
 };
