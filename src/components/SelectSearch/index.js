@@ -13,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
+import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
+
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
     display: "flex",
@@ -37,6 +40,58 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   title: {
     color: "white",
     padding: `${typography.pxToRem(16)} 0 `,
+  },
+  select: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: palette.background.default,
+    },
+  },
+  icon: {
+    padding: typography.pxToRem(32),
+  },
+  menuPaper: {
+    marginTop: typography.pxToRem(24),
+  },
+  menuMenuList: {
+    paddingTop: 0,
+  },
+  svgIcon: {
+    fontSize: typography.pxToRem(48),
+    color: palette.background.default,
+  },
+  button: {
+    height: typography.pxToRem(48),
+    width: typography.pxToRem(48),
+    marginLeft: "1rem",
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "transparent",
+    },
+  },
+  inputBase: {
+    padding: typography.pxToRem(2),
+    color: palette.primary.main,
+    backgroundColor: palette.background.default,
+    height: typography.pxToRem(48),
+    width: typography.pxToRem(278),
+    border: "2px solid #00000000",
+    borderRadius: typography.pxToRem(3.75),
+    [breakpoints.up("md")]: {
+      width: typography.pxToRem(186),
+    },
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "white",
+    },
+  },
+  inputBaseInput: {
+    textAlign: "left",
+    paddingLeft: typography.pxToRem(16),
+    fontSize: typography.pxToRem(16),
+    width: "100%",
+    "label[data-shrink=false] + .MuiInputBase-formControl &::placeholder": {
+      opacity: "0.5!important",
+    },
   },
   label: {
     color: palette.background.default,
@@ -68,54 +123,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   focused: {
     color: palette.background.default,
   },
-  svgIcon: {
-    fontSize: typography.pxToRem(48),
-    color: palette.background.default,
-  },
-  button: {
-    height: typography.pxToRem(48),
-    width: typography.pxToRem(48),
-    marginLeft: "1rem",
-    "&:hover, &:focus, &:focus-within": {
-      backgroundColor: "transparent",
-    },
-  },
-  select: {
-    paddingTop: 0,
-    paddingBottom: 0,
-    "&:hover, &:focus, &:focus-within": {
-      backgroundColor: palette.background.default,
-    },
-  },
-  noLabel: {
-    marginTop: 3,
-  },
-  inputBase: {
-    padding: typography.pxToRem(2),
-    color: palette.primary.main,
-    backgroundColor: palette.background.default,
-    height: typography.pxToRem(48),
-    width: typography.pxToRem(278),
-    border: "2px solid #00000000",
-    borderRadius: typography.pxToRem(3.75),
-  },
-  inputBaseInput: {
-    textAlign: "left",
-    paddingLeft: typography.pxToRem(16),
-    fontSize: typography.pxToRem(16),
-    "label[data-shrink=false] + .MuiInputBase-formControl &::placeholder": {
-      opacity: "0.5!important",
-    },
-  },
-  menuPaper: {
-    marginTop: typography.pxToRem(24),
-  },
-  menuMenuList: {
-    paddingTop: 0,
-  },
-  icon: {
-    padding: typography.pxToRem(32),
-  },
   link: {
     textDecoration: "none",
     color: "#1C2030",
@@ -131,8 +138,6 @@ function SelectSearch({
   inputBaseId,
   selectLabel,
   menuItems,
-  openIcon,
-  closeIcon,
   inputBaseLabel,
   ...props
 }) {
@@ -190,7 +195,7 @@ function SelectSearch({
         <Select
           labelId={selectLabel}
           id={selectId}
-          defaultValue=""
+          displayEmpty
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
@@ -198,11 +203,7 @@ function SelectSearch({
           onChange={handleChange}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return (
-                <Typography variant="caption" className={classes.placeholder}>
-                  {placeholder}
-                </Typography>
-              );
+              return <Typography variant="body2">{placeholder}</Typography>;
             }
             return selected;
           }}
@@ -210,7 +211,6 @@ function SelectSearch({
             <InputBase
               id={inputBaseId}
               inputProps={{ "aria-label": inputBaseLabel }}
-              placeholder={placeholder}
               classes={{
                 root: classes.inputBase,
                 input: classes.inputBaseInput,
@@ -248,45 +248,46 @@ function SelectSearch({
             </div>
           ))}
         </Select>
-        {open ? (
-          <IconButton
-            size="medium"
-            onClick={handleOpen}
-            aria-label="open"
-            disableRipple
-            disableFocusRipple
-            className={classes.button}
-          >
-            <SvgIcon
-              component={closeIcon}
-              viewBox={viewBoxValue}
-              classes={{
-                root: classes.svgIcon,
-              }}
-            />
-          </IconButton>
-        ) : (
-          <IconButton
-            size="medium"
-            onClick={handleOpen}
-            aria-label="open"
-            disableRipple
-            disableFocusRipple
-            className={classes.button}
-          >
-            <SvgIcon
-              component={openIcon}
-              viewBox={viewBoxValue}
-              classes={{
-                root: classes.svgIcon,
-              }}
-            />
-          </IconButton>
-        )}
       </FormControl>
+      {open ? (
+        <IconButton
+          size="medium"
+          onClick={handleOpen}
+          aria-label="open"
+          disableRipple
+          disableFocusRipple
+          className={classes.button}
+        >
+          <SvgIcon
+            component={SearchClose}
+            viewBox={viewBoxValue}
+            classes={{
+              root: classes.svgIcon,
+            }}
+          />
+        </IconButton>
+      ) : (
+        <IconButton
+          size="medium"
+          onClick={handleOpen}
+          aria-label="open"
+          disableRipple
+          disableFocusRipple
+          className={classes.button}
+        >
+          <SvgIcon
+            component={SearchOpen}
+            viewBox={viewBoxValue}
+            classes={{
+              root: classes.svgIcon,
+            }}
+          />
+        </IconButton>
+      )}
     </Grid>
   );
 }
+
 SelectSearch.propTypes = {
   title: PropTypes.string,
   placeholder: PropTypes.string,
@@ -294,8 +295,6 @@ SelectSearch.propTypes = {
   inputBaseId: PropTypes.string,
   selectLabel: PropTypes.string,
   inputBaseLabel: PropTypes.string,
-  openIcon: PropTypes.func,
-  closeIcon: PropTypes.func,
   menuItems: PropTypes.arrayOf(
     PropTypes.shape({
       countryName: PropTypes.string,
@@ -312,8 +311,6 @@ SelectSearch.propTypes = {
 
 SelectSearch.defaultProps = {
   title: undefined,
-  openIcon: undefined,
-  closeIcon: undefined,
   placeholder: undefined,
   selectId: undefined,
   inputBaseId: undefined,
