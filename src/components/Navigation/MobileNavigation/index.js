@@ -56,6 +56,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   dialogContent: {
     background: palette.primary.main,
+    overflow: "hidden",
   },
   dialogMenu: {
     padding: `${typography.pxToRem(10.35)} 0`,
@@ -65,6 +66,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     position: "absolute",
     left: 0,
     top: 0,
+    overflow: "hidden",
   },
   menuButton: {
     color: palette.grey.dark,
