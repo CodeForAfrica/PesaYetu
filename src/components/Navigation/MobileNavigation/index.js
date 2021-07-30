@@ -15,9 +15,9 @@ import React, { useState } from "react";
 
 import { ReactComponent as MenuCloseIcon } from "@/pesayetu/assets/menu_close.svg";
 import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
+import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Logo from "@/pesayetu/components/Logo";
 import Menu from "@/pesayetu/components/Menu";
-import SelectSearch from "@/pesayetu/components/SelectSearch";
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
@@ -203,7 +203,7 @@ function MobileNavigation({
           </DialogActions>
           <DialogContent className={classes.dialogContent}>
             <Menu links={menuProps} socialLinks={socialLinks}>
-              <SelectSearch {...selectProps} />
+              <DropdownSearch {...selectProps} />
             </Menu>
           </DialogContent>
         </Dialog>

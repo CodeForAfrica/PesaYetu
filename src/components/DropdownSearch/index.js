@@ -9,6 +9,7 @@ import {
   Link,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -121,8 +122,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     },
   },
 }));
-function SelectSearch({
+function DropdownSearch({
   title,
+  href: hrefProp,
+  onClick: onClickProp,
   placeholder,
   selectId,
   inputBaseId,
@@ -134,6 +137,7 @@ function SelectSearch({
   ...props
 }) {
   const classes = useStyles(props);
+  const router = useRouter();
   const [value, setValue] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const viewBoxValue = "0 0 48 48";
@@ -147,6 +151,20 @@ function SelectSearch({
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const handleClick = () => {
+    if (onClickProp) {
+      onClickProp(value);
+    } else if (hrefProp?.length) {
+      const href = `${hrefProp}/${value}`;
+      router.push(href);
+    }
+  };
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handleClick();
+    }
   };
 
   const MenuProps = {
@@ -191,6 +209,7 @@ function SelectSearch({
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
+          onClick={handleClick}
           value={value}
           onChange={handleChange}
           renderValue={(selected) => {
@@ -202,6 +221,7 @@ function SelectSearch({
           input={
             <InputBase
               id={inputBaseId}
+              onKeyDown={handleKeyDown}
               inputProps={{ "aria-label": inputBaseLabel }}
               classes={{
                 root: classes.inputBase,
@@ -280,15 +300,17 @@ function SelectSearch({
   );
 }
 
-SelectSearch.propTypes = {
+DropdownSearch.propTypes = {
   title: PropTypes.string,
   placeholder: PropTypes.string,
   selectId: PropTypes.string,
   inputBaseId: PropTypes.string,
   selectLabel: PropTypes.string,
   inputBaseLabel: PropTypes.string,
-  openIcon: PropTypes.string,
-  closeIcon: PropTypes.string,
+  openIcon: PropTypes.func,
+  closeIcon: PropTypes.func,
+  href: PropTypes.string,
+  onClick: PropTypes.func,
   menuItems: PropTypes.arrayOf(
     PropTypes.shape({
       countryName: PropTypes.string,
@@ -303,9 +325,11 @@ SelectSearch.propTypes = {
   ),
 };
 
-SelectSearch.defaultProps = {
+DropdownSearch.defaultProps = {
   title: undefined,
   placeholder: undefined,
+  href: undefined,
+  onClick: undefined,
   openIcon: undefined,
   closeIcon: undefined,
   selectId: undefined,
@@ -315,4 +339,4 @@ SelectSearch.defaultProps = {
   menuItems: undefined,
 };
 
-export default SelectSearch;
+export default DropdownSearch;

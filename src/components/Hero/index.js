@@ -7,12 +7,12 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import heroBg from "@/pesayetu/assets/images/map-lines.png";
-import Search from "@/pesayetu/components/Search";
+import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Section from "@/pesayetu/components/Section";
 
 const Map = dynamic(() => import("./Map"), { ssr: false });
 
-const useStyles = makeStyles(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {},
   backgroundWrap: {
     position: "fixed",
@@ -70,9 +70,17 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       marginTop: typography.pxToRem(65),
     },
   },
+  dropdownTitle: {
+    color: "#1C2030",
+  },
+  inputBase: {
+    borderRadius: typography.pxToRem(10),
+    color: palette.primary.main,
+    border: "2px solid #1c2030",
+  },
 }));
 
-function Hero({ comment, searchLabel, title, tagline, ...props }) {
+function Hero({ comment, selectProps, title, tagline, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
@@ -96,12 +104,13 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
                 {tagline}
               </Typography>
             )}
-            {searchLabel && (
-              <Typography variant="subtitle1" className={classes.slabel}>
-                {searchLabel}
-              </Typography>
-            )}
-            <Search href="/explore/" />
+            <DropdownSearch
+              {...selectProps}
+              classes={{
+                title: classes.dropdownTitle,
+                inputBase: classes.inputBase,
+              }}
+            />
             {comment && (
               <Typography variant="subtitle1" className={classes.comment}>
                 {comment}
@@ -128,14 +137,14 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
 
 Hero.propTypes = {
   comment: PropTypes.string,
-  searchLabel: PropTypes.string,
+  selectProps: PropTypes.string,
   tagline: PropTypes.string,
   title: PropTypes.string,
 };
 
 Hero.defaultProps = {
   comment: undefined,
-  searchLabel: undefined,
+  selectProps: undefined,
   tagline: undefined,
   title: undefined,
 };

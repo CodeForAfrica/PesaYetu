@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
-import SearchSelect from ".";
+import DropdownSearch from ".";
 
 import { navigationArgs } from "@/pesayetu/config";
 
 export default {
-  title: "Components/SelectSearch",
+  title: "Components/DropdownSearch",
   argTypes: {},
 };
 
@@ -20,12 +20,18 @@ const Template = ({ ...args }) => {
 
   return (
     <div className={classes.root}>
-      <SearchSelect {...args} />
+      <DropdownSearch {...args} />
     </div>
   );
 };
 
 export const Default = Template.bind({});
+Default.parameters = {
+  nextRouter: {
+    pathname: "/?path=/story/components-dropdownsearch--default",
+  },
+};
+
 Default.args = {
   ...navigationArgs.selectProps,
 };
