@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ palette, breakpoints, typography }) => ({
   section: {
     width: "100%",
     [breakpoints.up("lg")]: {
-      width: typography.pxToRem(1190),
+      maxWidth: typography.pxToRem(1160),
     },
   },
   toolbar: {

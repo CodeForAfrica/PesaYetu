@@ -9,6 +9,8 @@ import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
+import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
+import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
 
 const CFA = {
   image: {
@@ -103,6 +105,8 @@ export const navigationArgs = {
     inputBaseId: "inputbase-grouped-id",
     selectLabel: "select-grouped-label",
     inputBaseLabel: "inputbase-grouped-label",
+    openIcon: SearchOpen,
+    closeIcon: SearchClose,
     menuItems: [
       {
         countryName: "country 1",

@@ -13,9 +13,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
-import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
-
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
     display: "flex",
@@ -134,6 +131,8 @@ function SelectSearch({
   inputBaseId,
   selectLabel,
   menuItems,
+  openIcon,
+  closeIcon,
   inputBaseLabel,
   ...props
 }) {
@@ -259,7 +258,7 @@ function SelectSearch({
             className={classes.button}
           >
             <SvgIcon
-              component={SearchClose}
+              component={closeIcon}
               viewBox={viewBoxValue}
               classes={{
                 root: classes.svgIcon,
@@ -276,7 +275,7 @@ function SelectSearch({
             className={classes.button}
           >
             <SvgIcon
-              component={SearchOpen}
+              component={openIcon}
               viewBox={viewBoxValue}
               classes={{
                 root: classes.svgIcon,
@@ -295,6 +294,8 @@ SelectSearch.propTypes = {
   inputBaseId: PropTypes.string,
   selectLabel: PropTypes.string,
   inputBaseLabel: PropTypes.string,
+  openIcon: PropTypes.func,
+  closeIcon: PropTypes.func,
   menuItems: PropTypes.arrayOf(
     PropTypes.shape({
       countryName: PropTypes.string,
@@ -311,6 +312,8 @@ SelectSearch.propTypes = {
 
 SelectSearch.defaultProps = {
   title: undefined,
+  openIcon: undefined,
+  closeIcon: undefined,
   placeholder: undefined,
   selectId: undefined,
   inputBaseId: undefined,
