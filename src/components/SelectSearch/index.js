@@ -12,10 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
-import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
-
-const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -32,9 +29,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   form: {
     paddingTop: typography.pxToRem(40),
     paddingBottom: typography.pxToRem(16),
-    [breakpoints.up("md")]: {
-      padding: `${typography.pxToRem(40)} 0`,
-    },
   },
   title: {
     color: "white",
@@ -76,9 +70,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     width: typography.pxToRem(278),
     border: "2px solid #00000000",
     borderRadius: typography.pxToRem(3.75),
-    [breakpoints.up("md")]: {
-      width: typography.pxToRem(186),
-    },
     "&:hover, &:focus, &:focus-within": {
       backgroundColor: "white",
     },
@@ -136,6 +127,8 @@ function SelectSearch({
   selectId,
   inputBaseId,
   selectLabel,
+  openIcon,
+  closeIcon,
   menuItems,
   inputBaseLabel,
   ...props
@@ -257,7 +250,7 @@ function SelectSearch({
             className={classes.button}
           >
             <SvgIcon
-              component={SearchClose}
+              component={closeIcon}
               viewBox={viewBoxValue}
               classes={{
                 root: classes.svgIcon,
@@ -274,7 +267,7 @@ function SelectSearch({
             className={classes.button}
           >
             <SvgIcon
-              component={SearchOpen}
+              component={openIcon}
               viewBox={viewBoxValue}
               classes={{
                 root: classes.svgIcon,
@@ -294,6 +287,8 @@ SelectSearch.propTypes = {
   inputBaseId: PropTypes.string,
   selectLabel: PropTypes.string,
   inputBaseLabel: PropTypes.string,
+  openIcon: PropTypes.string,
+  closeIcon: PropTypes.string,
   menuItems: PropTypes.arrayOf(
     PropTypes.shape({
       countryName: PropTypes.string,
@@ -311,6 +306,8 @@ SelectSearch.propTypes = {
 SelectSearch.defaultProps = {
   title: undefined,
   placeholder: undefined,
+  openIcon: undefined,
+  closeIcon: undefined,
   selectId: undefined,
   inputBaseId: undefined,
   selectLabel: undefined,

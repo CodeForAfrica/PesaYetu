@@ -100,7 +100,7 @@ export const navigationArgs = {
   ],
   selectProps: {
     title: "Search for Location",
-    placeholder: "Search ...",
+    placeholder: "Abc_",
     selectId: "select-grouped-id",
     inputBaseId: "inputbase-grouped-id",
     selectLabel: "select-grouped-label",
