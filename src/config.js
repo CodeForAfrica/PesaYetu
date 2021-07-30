@@ -179,7 +179,7 @@ export const searchArgs = {
     selectLabel: "select-grouped-label",
     inputBaseLabel: "inputbase-grouped-label",
     openIcon: SearchOpen,
-    closeIcon: SearchClose,
+    closeIcon: SearchOpen,
     menuItems: [
       {
         countryName: "country 1",

@@ -75,6 +75,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       backgroundColor: "white",
     },
   },
+  // TODO nyokabi Reference => https://github.com/mui-org/material-ui/issues/11244
+  focused: {
+    color: palette.background.default,
+  },
   inputBaseInput: {
     textAlign: "left",
     paddingLeft: typography.pxToRem(16),
@@ -109,10 +113,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   ul: {
     padding: 0,
-  },
-  // TODO nyokabi Reference => https://github.com/mui-org/material-ui/issues/11244
-  focused: {
-    color: palette.background.default,
   },
   link: {
     textDecoration: "none",
@@ -205,7 +205,8 @@ function DropdownSearch({
         <Select
           labelId={selectLabel}
           id={selectId}
-          displayEmpty
+          displayEmptys
+          defaultValue=""
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}

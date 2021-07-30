@@ -44,7 +44,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     color: palette.background.default,
   },
   logoSection: {
-    borderBottom: "2px solid white",
+    borderBottom: `2px solid ${palette.background.default}`,
   },
   backdrop: {
     maxHeight: typography.pxToRem(844),
@@ -100,11 +100,11 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     padding: typography.pxToRem(16),
   },
   open: {
-    fontSize: "2rem",
+    fontSize: typography.pxToRem(32),
   },
   close: {
-    fontSize: "2rem",
-    color: "white",
+    fontSize: typography.pxToRem(32),
+    color: palette.background.default,
   },
 }));
 
