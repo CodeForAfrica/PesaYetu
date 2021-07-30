@@ -7,7 +7,6 @@ import {
   IconButton,
   SvgIcon,
   Link,
-  Grid,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
@@ -187,7 +186,7 @@ function SelectSearch({
   };
 
   return (
-    <Grid container direction="row" className={classes.root}>
+    <div className={classes.root}>
       <RichTypography variant="body2" className={classes.title}>
         {title}
       </RichTypography>
@@ -202,7 +201,7 @@ function SelectSearch({
           value={value}
           onChange={handleChange}
           renderValue={(selected) => {
-            if (selected.length === 0) {
+            if (selected.length === 0 && open) {
               return <Typography variant="body2">{placeholder}</Typography>;
             }
             return selected;
@@ -248,43 +247,43 @@ function SelectSearch({
             </div>
           ))}
         </Select>
+        {open ? (
+          <IconButton
+            size="medium"
+            onClick={handleOpen}
+            aria-label="open"
+            disableRipple
+            disableFocusRipple
+            className={classes.button}
+          >
+            <SvgIcon
+              component={SearchClose}
+              viewBox={viewBoxValue}
+              classes={{
+                root: classes.svgIcon,
+              }}
+            />
+          </IconButton>
+        ) : (
+          <IconButton
+            size="medium"
+            onClick={handleOpen}
+            aria-label="open"
+            disableRipple
+            disableFocusRipple
+            className={classes.button}
+          >
+            <SvgIcon
+              component={SearchOpen}
+              viewBox={viewBoxValue}
+              classes={{
+                root: classes.svgIcon,
+              }}
+            />
+          </IconButton>
+        )}
       </FormControl>
-      {open ? (
-        <IconButton
-          size="medium"
-          onClick={handleOpen}
-          aria-label="open"
-          disableRipple
-          disableFocusRipple
-          className={classes.button}
-        >
-          <SvgIcon
-            component={SearchClose}
-            viewBox={viewBoxValue}
-            classes={{
-              root: classes.svgIcon,
-            }}
-          />
-        </IconButton>
-      ) : (
-        <IconButton
-          size="medium"
-          onClick={handleOpen}
-          aria-label="open"
-          disableRipple
-          disableFocusRipple
-          className={classes.button}
-        >
-          <SvgIcon
-            component={SearchOpen}
-            viewBox={viewBoxValue}
-            classes={{
-              root: classes.svgIcon,
-            }}
-          />
-        </IconButton>
-      )}
-    </Grid>
+    </div>
   );
 }
 
