@@ -4,6 +4,7 @@ import React from "react";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import Page from "@/pesayetu/components/Page";
+import Enablingpartners from "@/pesayetu/components/Partners/EnablingPartners";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -12,6 +13,7 @@ export default function Home({ boundary, blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
+      <Enablingpartners> </Enablingpartners>
     </Page>
   );
 }

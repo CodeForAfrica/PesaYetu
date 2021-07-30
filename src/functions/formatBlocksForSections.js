@@ -18,11 +18,36 @@ function formatLazyBlockIteratorContentWithImage(
   return { ...rest, items };
 }
 
+function formatEnablingPartnersBlock(block) {
+  const { attributes, name } = block;
+  switch (name) {
+    default:
+      return attributes;
+  }
+}
+
+function formatEnablingPartners({
+  attributes: { partners, ...rest },
+  innerBlocks,
+}) {
+  const items = innerBlocks.reduce((acc, cur) => {
+    acc[formatName(cur.name)] = formatEnablingPartnersBlock(cur);
+    return acc;
+  }, {});
+  return {
+    ...rest,
+    partners: JSON.parse(decodeURIComponent(partners)) || null,
+    ...items,
+  };
+}
+
 function format(block) {
   const { attributes, name } = block;
   switch (name) {
     case "lazyblock/explore-other-tools":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
+    case "lazyblock/enabling-partners-and-newsletter":
+      return formatEnablingPartners(block);
     case "lazyblock/hero":
     default:
       return attributes;
