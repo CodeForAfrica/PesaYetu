@@ -21,6 +21,11 @@ function formatLazyBlockIteratorContentWithImage(
 function formatEnablingPartnersBlock(block) {
   const { attributes, name } = block;
   switch (name) {
+    case "lazyblock/main-partner":
+      return {
+        ...attributes,
+        logo: JSON.parse(decodeURIComponent(attributes?.logo)) || null,
+      };
     default:
       return attributes;
   }
@@ -36,8 +41,8 @@ function formatEnablingPartners({
   }, {});
   return {
     ...rest,
-    partners: JSON.parse(decodeURIComponent(partners)) || null,
     ...items,
+    partners: JSON.parse(decodeURIComponent(partners)) || null,
   };
 }
 
