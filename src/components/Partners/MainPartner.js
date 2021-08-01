@@ -1,16 +1,29 @@
 import { A } from "@commons-ui/core";
 import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-function MainPartner({ link, logo, name, description }) {
+const useStyles = makeStyles(({ typography }) => ({
+  root: {
+    paddingTop: typography.pxToRem(46.07),
+    paddingLeft: typography.pxToRem(119),
+  },
+  description: {
+    marginTop: typography.pxToRem(40.01),
+  },
+}));
+
+function MainPartner({ link, logo, name, description, ...props }) {
+  const classes = useStyles(props);
+
   return (
-    <div item xs={12} md={6}>
+    <div className={classes.root} item xs={12} md={6}>
       <A href={link}>
-        <Image src={logo} alt={name} />
+        <Image width={212.92} height={123.37} src={logo.url} alt={name} />
       </A>
-      <Typography>{description}</Typography>
+      <Typography className={classes.description}>{description}</Typography>
     </div>
   );
 }
