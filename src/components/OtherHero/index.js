@@ -28,12 +28,18 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
   intro: {
     fontWeight: "bold",
+    textTransform: "uppercase",
   },
   title: {
     marginBottom: typography.pxToRem(20),
     fontWeight: "bold",
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(40),
+    },
+    "& .highlight": {
+      display: "inline-block",
+      background:
+        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
     },
   },
   tagline: {
@@ -127,7 +133,7 @@ function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
               <Typography className={classes.intro} variant="h6">
                 {intro}
               </Typography>
-              <RichTypography className={classes.title} variant="h2">
+              <RichTypography variant="h1" className={classes.title}>
                 {title}
               </RichTypography>
               <Typography className={classes.tagline} variant="body1">
