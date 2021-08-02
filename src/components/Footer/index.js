@@ -36,28 +36,34 @@ function Footer({
       >
         <Grid container direction="row" justifyContent="space-between">
           <Grid item xs={12} container>
-            <LogoButton
-              {...logoProps}
-              component={Link}
-              classes={{
-                root: classes.logoButton,
-              }}
-            />
+            {logoProps && (
+              <LogoButton
+                {...logoProps}
+                component={Link}
+                classes={{
+                  root: classes.logoButton,
+                }}
+              />
+            )}
           </Grid>
           <Grid item xs={12} lg={6}>
-            <RichTypography
-              variant={aboutVariant}
-              className={classes.description}
-            >
-              {description}
-            </RichTypography>
-            <Copyright
-              {...copyrightProps}
-              classes={{
-                root: classes.copyright,
-                text: classes.copyrightText,
-              }}
-            />
+            {description && (
+              <RichTypography
+                variant={aboutVariant}
+                className={classes.description}
+              >
+                {description}
+              </RichTypography>
+            )}
+            {copyrightProps && (
+              <Copyright
+                {...copyrightProps}
+                classes={{
+                  root: classes.copyright,
+                  text: classes.copyrightText,
+                }}
+              />
+            )}
           </Grid>
           <Grid item xs={12} lg={4}>
             <Grid
@@ -67,29 +73,33 @@ function Footer({
               }}
             >
               <Grid item xs={12} lg={6}>
-                <QuickLinks
-                  linkComponent={Link}
-                  {...quickLinksProp}
-                  classes={{
-                    root: classes.quickLinkRoot,
-                    list: classes.quickList,
-                    link: classes.quickLink,
-                    title: classes.quickLinksTitle,
-                  }}
-                />
+                {quickLinksProp && (
+                  <QuickLinks
+                    linkComponent={Link}
+                    {...quickLinksProp}
+                    classes={{
+                      root: classes.quickLinkRoot,
+                      list: classes.quickList,
+                      link: classes.quickLink,
+                      title: classes.quickLinksTitle,
+                    }}
+                  />
+                )}
               </Grid>
               <Grid item xs={12} lg={6}>
-                <StayInTouch
-                  title={title}
-                  socialMedia={socialMedia}
-                  classes={{
-                    root: classes.stayInTouch,
-                    icon: classes.stayInTouchIcon,
-                    links: classes.stayInTouchLinks,
-                    text: classes.stayInTouchText,
-                    link: classes.stayInTouchLink,
-                  }}
-                />
+                {socialMedia && (
+                  <StayInTouch
+                    title={title}
+                    socialMedia={socialMedia}
+                    classes={{
+                      root: classes.stayInTouch,
+                      icon: classes.stayInTouchIcon,
+                      links: classes.stayInTouchLinks,
+                      text: classes.stayInTouchText,
+                      link: classes.stayInTouchLink,
+                    }}
+                  />
+                )}
               </Grid>
             </Grid>
           </Grid>
