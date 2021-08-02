@@ -7,6 +7,9 @@ import instagram from "@/pesayetu/assets/footer-social-ig.svg";
 import linkedin from "@/pesayetu/assets/footer-social-in.svg";
 import twitter from "@/pesayetu/assets/footer-social-tw.svg";
 import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
+import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
+import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
+import DataVisualTwo from "@/pesayetu/assets/images/DataVisualTwo.png";
 import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
 import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
@@ -129,6 +132,27 @@ export const exploreTools = {
       description:
         "DebunkBot was created to fight the spread of misinformation on social media by responding to tweets sharing questionable links.",
       image: Group3964,
+    },
+  ],
+};
+
+export const dataVisuals = {
+  title: "Visualise data for each county and municipality",
+  items: [
+    {
+      image: DataVisualOne,
+      description:
+        "<span class='bold'>Step 1:</span> Click the search field and select the county or municipality from the dropdown menu.",
+    },
+    {
+      image: DataVisualTwo,
+      description:
+        "<span class='bold'>Step 2:</span> Explore the map, confirm your selection and click on “Rich Data” to display the data.",
+    },
+    {
+      image: DataVisualThree,
+      description:
+        "<span class='bold'>Step 3:</span> Browse the charts and download and share the data using the buttons on the right side.",
     },
   ],
 };
