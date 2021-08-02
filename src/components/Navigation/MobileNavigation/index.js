@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     borderBottom: `2px solid ${palette.background.default}`,
   },
   backdrop: {
-    maxHeight: typography.pxToRem(671),
+    maxHeight: typography.pxToRem(844),
     backgroundColor: "transparent",
   },
   dialogActions: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     padding: `${typography.pxToRem(10.35)} 0`,
   },
   dialogPaper: {
-    maxHeight: typography.pxToRem(671),
+    maxHeight: typography.pxToRem(844),
     position: "absolute",
     left: 0,
     top: 0,
