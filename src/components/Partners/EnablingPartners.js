@@ -15,9 +15,11 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     marginBottom: typography.pxToRem(49.38),
   },
   link: {
-    display: "block",
+    display: "flex",
+    justifyContent: "center",
   },
   logo: {
+    margin: "0 auto ",
     mixBlendMode: "luminosity",
     filter: "grayscale(1)",
   },

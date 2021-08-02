@@ -19,37 +19,62 @@ const useStyles = makeStyles(
     backgroundGrid: {
       position: "absolute",
       display: "flex",
+      justifyContent: "flex-end",
+      flexDirection: "column",
       width: "100%",
       height: "100%",
       zIndex: -100,
+      [breakpoints.up("lg")]: {
+        flexDirection: "row",
+        justifyContent: "flex-start",
+      },
       // flexGrow: 1,
     },
     leftBackground: {
-      [breakpoints.up("md")]: {
-        width: `calc((100vw)/2)`,
-      },
+      width: `100%`,
       [breakpoints.up("lg")]: {
         width: `calc((100vw - ${widths.values.lg}px)/2 + (${widths.values.lg}px * 0.8))`,
       },
     },
     rightBackground: {
+      width: `100%`,
+      display: "flex",
+      flexDirection: "column",
       [breakpoints.up("md")]: {
-        width: `calc((100vw)/2)`,
+        flexDirection: "row",
       },
       [breakpoints.up("lg")]: {
         width: `calc((100vw - ${widths.values.lg}px)/2 + (${widths.values.lg}px * 0.4))`,
+        flexDirection: "column",
       },
     },
     rightTop: {
       background: palette.grey.light,
+      width: "100%",
       height: typography.pxToRem(300),
+
+      [breakpoints.up("md")]: {
+        width: `50%`,
+        height: typography.pxToRem(290),
+      },
       [breakpoints.up("lg")]: {
         marginLeft: typography.pxToRem(16),
+        height: typography.pxToRem(300),
+        width: "100%",
       },
     },
     rightBottom: {
       background: "#0067A31A",
+      width: "100%",
       height: typography.pxToRem(400),
+      [breakpoints.up("md")]: {
+        width: `50%`,
+        height: typography.pxToRem(290),
+      },
+      [breakpoints.up("lg")]: {
+        width: "100%",
+        height: typography.pxToRem(400),
+      },
     },
   })
 );
@@ -63,10 +88,8 @@ function Index({ mainPartner, newsletter, ...props }) {
         <div className={classes.leftBackground} />
 
         <div className={classes.rightBackground}>
-          <div>
-            <div className={classes.rightTop} />
-            <div className={classes.rightBottom} />
-          </div>
+          <div className={classes.rightTop} />
+          <div className={classes.rightBottom} />
         </div>
       </div>
       <Section className={classes.section}>

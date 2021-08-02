@@ -8,7 +8,10 @@ import React from "react";
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     paddingTop: typography.pxToRem(44.41),
-    minHeight: typography.pxToRem(290),
+    minHeight: typography.pxToRem(300),
+    [breakpoints.up("md")]: {
+      minHeight: typography.pxToRem(290),
+    },
     [breakpoints.up("lg")]: {
       paddingTop: typography.pxToRem(46.07),
       paddingLeft: typography.pxToRem(119),

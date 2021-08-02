@@ -21,8 +21,11 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     display: "flex",
     width: "100%",
-    minHeight: typography.pxToRem(290),
+    minHeight: typography.pxToRem(400),
     paddingTop: typography.pxToRem(40.98),
+    [breakpoints.up("md")]: {
+      minHeight: typography.pxToRem(290),
+    },
     [breakpoints.up("lg")]: {
       minHeight: typography.pxToRem(400),
       paddingTop: typography.pxToRem(108.09),
