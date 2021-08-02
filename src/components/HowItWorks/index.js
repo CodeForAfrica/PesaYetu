@@ -39,7 +39,7 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
             <Typography className={classes.title} variant="h4">
               {title}
             </Typography>
-            <Typography variant="body2" className={classes.description}>
+            <Typography variant="h6" className={classes.description}>
               {description}
             </Typography>
             <Button href={href} variant="text">

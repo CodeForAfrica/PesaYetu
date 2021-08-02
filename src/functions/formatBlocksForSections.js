@@ -22,6 +22,8 @@ function format(block) {
   const { attributes, name } = block;
   switch (name) {
     case "lazyblock/explore-other-tools":
+    case "lazyblock/data-visuals":
+    case "lazyblock/data-insights":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/hero":
     case "lazyblock/how-it-works":

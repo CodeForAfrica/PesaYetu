@@ -107,6 +107,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     color: palette.grey.dark,
   },
   description: {
+    fontFamily: typography.body1.fontFamily,
     margin: `${typography.pxToRem(16.5)} 0`,
     color: palette.grey.dark,
     [breakpoints.up("lg")]: {
