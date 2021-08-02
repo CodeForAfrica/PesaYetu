@@ -205,7 +205,7 @@ function DropdownSearch({
         <Select
           labelId={selectLabel}
           id={selectId}
-          displayEmptys
+          displayEmpty
           defaultValue=""
           open={open}
           onOpen={handleOpen}

@@ -8,7 +8,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
     paddingTop: typography.pxToRem(32),
     [breakpoints.up("lg")]: {
-      paddingTop: typography.pxToRem(8),
+      paddingTop: typography.pxToRem(4),
     },
   },
   image: {

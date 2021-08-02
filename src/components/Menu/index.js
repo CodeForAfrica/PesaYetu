@@ -91,7 +91,9 @@ function Menu({ links, children, socialLinks, ...props }) {
             href={href}
             className={classes.links}
           >
-            <Typography variant="h5">{label}</Typography>
+            <Typography variant="h5" className={classes.label}>
+              {label}
+            </Typography>
           </Button>
         </Grid>
       ))}
