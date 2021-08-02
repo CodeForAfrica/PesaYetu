@@ -1,14 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
-  root: {},
+  root: {
+    backgroundColor: "#F8F8F8",
+  },
   section: {
     paddingTop: typography.pxToRem(60),
-    "& .highlight": {
-      background:
-        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
-      display: "inline-block",
-    },
   },
   title: {
     fontWeight: "bold",
@@ -26,6 +23,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     [breakpoints.up("lg")]: {
       marginBottom: typography.pxToRem(80),
       fontSize: typography.pxToRem(48),
+    },
+    "& .highlight": {
+      background:
+        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
+      display: "inline-block",
     },
   },
 
