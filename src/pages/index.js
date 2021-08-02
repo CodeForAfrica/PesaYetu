@@ -5,11 +5,12 @@ import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
+import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function Home({ boundary, blocks, ...props }) {
+export default function Home({ boundary, footerProps, blocks, ...props }) {
   return (
-    <Page {...props}>
+    <Page {...props} footerProps={footerProps}>
       <Hero {...blocks?.hero} boundary={boundary} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
@@ -22,11 +23,13 @@ Home.propTypes = {
     hero: PropTypes.shape({}),
     exploreOtherTools: PropTypes.shape({}),
   }),
+  footerProps: PropTypes.shape({}),
 };
 
 Home.defaultProps = {
   boundary: undefined,
   blocks: undefined,
+  footerProps: undefined,
 };
 
 export async function getStaticProps() {
@@ -48,10 +51,12 @@ export async function getStaticProps() {
   const { children } = await res.json();
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
+  const footerProps = getFooterMenu(props?.menus?.footerMenu);
   return {
     props: {
       ...props,
       blocks,
+      footerProps,
       boundary: children?.county,
     },
     revalidate,
