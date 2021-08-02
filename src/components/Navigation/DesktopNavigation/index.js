@@ -12,19 +12,6 @@ const useStyles = makeStyles(({ typography }) => ({
     padding: `${typography.pxToRem(9.25)} 0`,
   },
   section: {},
-  logoButtonRoot: {
-    paddingLeft: 0,
-  },
-  linkTypo: {
-    color: "black",
-    padding: `0 ${typography.pxToRem(32)}`,
-  },
-  logo: {
-    width: typography.pxToRem(271),
-  },
-  search: {
-    width: typography.pxToRem(200),
-  },
 }));
 function DesktopNavigation({ logoProps, menuProps, socialLinks, ...props }) {
   const classes = useStyles(props);
