@@ -14,6 +14,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     color: palette.grey.dark,
     marginBottom: typography.pxToRem(49.38),
   },
+  link: {
+    display: "block",
+  },
   logo: {
     mixBlendMode: "luminosity",
     filter: "grayscale(1)",
@@ -32,7 +35,7 @@ function Enablingpartners({ title, partners, ...props }) {
         </Grid>
         {partners?.map(({ link, logo, name }) => (
           <Grid item xs={12} md={6}>
-            <A href={link}>
+            <A className={classes.link} href={link}>
               <Image
                 className={classes.logo}
                 objectFit="contain"

@@ -5,10 +5,17 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
-    paddingTop: typography.pxToRem(46.07),
-    paddingLeft: typography.pxToRem(119),
+    paddingTop: typography.pxToRem(44.41),
+    minHeight: typography.pxToRem(290),
+    [breakpoints.up("lg")]: {
+      paddingTop: typography.pxToRem(46.07),
+      paddingLeft: typography.pxToRem(119),
+    },
+  },
+  link: {
+    display: "block",
   },
   description: {
     marginTop: typography.pxToRem(40.01),
@@ -20,10 +27,12 @@ function MainPartner({ link, logo, name, description, ...props }) {
 
   return (
     <div className={classes.root} item xs={12} md={6}>
-      <A href={link}>
+      <A className={classes.link} href={link}>
         <Image width={212.92} height={123.37} src={logo.url} alt={name} />
       </A>
-      <Typography className={classes.description}>{description}</Typography>
+      <Typography variant="body2" className={classes.description}>
+        {description}
+      </Typography>
     </div>
   );
 }
