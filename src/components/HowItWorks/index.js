@@ -20,7 +20,7 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
   const classes = useStyles(props);
 
   const theme = useTheme();
-  const isDownSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <div className={classes.root}>
@@ -31,7 +31,7 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
         <div className={classes.tabletWhite} />
       </Hidden>
       <Section classes={{ root: classes.section }}>
-        <Grid container direction={isDownSM ? "column-reverse" : "row"}>
+        <Grid container direction={isMobile ? "column-reverse" : "row"}>
           <Grid item xs={12} md={7} lg={6} className={classes.content}>
             <Player {...props} />
             <Typography className={classes.title} variant="h4">
