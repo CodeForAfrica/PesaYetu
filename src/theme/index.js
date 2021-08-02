@@ -174,7 +174,7 @@ deepmerge(
         border: "3px solid white",
         textTransform: "uppercase",
         transition: "none !important",
-        "&:hover": {
+        "&:hover, &:focus, &:focus-within": {
           color: palette.primary.main,
           boxShadow: "none",
           backgroundColor: palette.background.default,
@@ -191,7 +191,7 @@ deepmerge(
           border: "3px solid #0067A3",
           textTransform: "uppercase",
           transition: "none !important",
-          "&:hover": {
+          "&:hover, &:focus, &:focus-within": {
             color: palette.background.default,
             boxShadow: "none",
             backgroundColor: palette.primary.main,
