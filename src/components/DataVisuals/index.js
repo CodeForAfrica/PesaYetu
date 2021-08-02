@@ -44,8 +44,8 @@ const DataVisuals = ({ title, items, ...props }) => {
           {items &&
             items.map((item) => {
               return (
-                <Grid item lg={4} xs={12}>
-                  <DataVisualCard key={item.image} {...item} />
+                <Grid item lg={4} xs={12} key={item.image}>
+                  <DataVisualCard {...item} />
                 </Grid>
               );
             })}
