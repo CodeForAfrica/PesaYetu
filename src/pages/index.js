@@ -48,6 +48,8 @@ export async function getStaticProps() {
   const { children } = await res.json();
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
+  // eslint-disable-next-line no-console
+  console.log(props?.post?.blocks);
   return {
     props: {
       ...props,
