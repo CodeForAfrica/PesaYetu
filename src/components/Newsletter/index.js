@@ -5,22 +5,32 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import email from "@/pesayetu/assets/icons/Component 117 – 1@2x.png";
+import { ReactComponent as EnvelopeIcon } from "@/pesayetu/assets/icons/Group 4767.svg";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   section: {},
   title: {
     fontWeight: "900",
     color: palette.grey.dark,
+    display: "flex",
+    alignItems: "center",
   },
-  titleContainer: {},
+  envelopeIcon: {
+    marginRight: typography.pxToRem(22.79),
+  },
   root: {
     display: "flex",
     width: "100%",
-    minHeight: typography.pxToRem(400),
-    paddingTop: typography.pxToRem(108.09),
-    paddingLeft: typography.pxToRem(116),
+    minHeight: typography.pxToRem(290),
+    paddingTop: typography.pxToRem(40.98),
+    [breakpoints.up("lg")]: {
+      minHeight: typography.pxToRem(400),
+      paddingTop: typography.pxToRem(108.09),
+      paddingLeft: typography.pxToRem(116),
+    },
   },
   form: {
+    width: "100%",
     "& #mc_embed_signup": {
       background: "none !important",
       color: "inherit",
@@ -40,7 +50,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     "& #mc_embed_signup input.email": {
       background: "none",
       border: "none",
-      borderBottom: "1px solid currentColor",
+      borderBottom: "2px solid #0067A3",
       borderRadius: 0,
       color: "currentColor",
       margin: "1rem 0",
@@ -62,6 +72,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       height: typography.pxToRem(48),
       padding: 0,
       width: typography.pxToRem(48),
+      minWidth: `${typography.pxToRem(48)} !important`,
       "&:hover , &:focus": {
         background: "initial",
         cursor: "pointer",
@@ -81,13 +92,11 @@ function Newsletter({ description, placeholder, title, embedCode, ...props }) {
   return (
     <div className={classes.root}>
       <Grid item xs={12} container alignItems="center">
-        <div className={classes.titleContainer}>
-          <Typography variant="h4" className={classes.title}>
-            {title}
-          </Typography>
-        </div>
+        <Typography variant="h4" className={classes.title}>
+          <EnvelopeIcon className={classes.envelopeIcon} /> {title}
+        </Typography>
         {description && (
-          <Typography variant="body1" className={classes.description}>
+          <Typography variant="body2" className={classes.description}>
             {description}
           </Typography>
         )}

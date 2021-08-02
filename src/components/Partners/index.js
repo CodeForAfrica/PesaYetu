@@ -26,7 +26,7 @@ const useStyles = makeStyles(
     },
     leftBackground: {
       [breakpoints.up("md")]: {
-        width: `calc((100vw - ${widths.values.md}px)/2 + (${widths.values.md}px * 0.8))`,
+        width: `calc((100vw)/2)`,
       },
       [breakpoints.up("lg")]: {
         width: `calc((100vw - ${widths.values.lg}px)/2 + (${widths.values.lg}px * 0.8))`,
@@ -34,7 +34,7 @@ const useStyles = makeStyles(
     },
     rightBackground: {
       [breakpoints.up("md")]: {
-        width: `calc((100vw - ${widths.values.md}px)/2 + (${widths.values.md}px * 0.4))`,
+        width: `calc((100vw)/2)`,
       },
       [breakpoints.up("lg")]: {
         width: `calc((100vw - ${widths.values.lg}px)/2 + (${widths.values.lg}px * 0.4))`,
@@ -43,6 +43,9 @@ const useStyles = makeStyles(
     rightTop: {
       background: palette.grey.light,
       height: typography.pxToRem(300),
+      [breakpoints.up("lg")]: {
+        marginLeft: typography.pxToRem(16),
+      },
     },
     rightBottom: {
       background: "#0067A31A",
@@ -68,17 +71,17 @@ function Index({ mainPartner, newsletter, ...props }) {
       </div>
       <Section className={classes.section}>
         <Grid container xs={12}>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} lg={7}>
             <Enablingpartners {...props} />
           </Grid>
           <Grid xs={12} md={1} />
-          <Grid direction="row" item container xs={12} md={4}>
-            <Grid md={12}>
+          <Grid direction="row" item container xs={12} lg={4}>
+            <Grid xs={12} md={6} lg={12}>
               <div className={classes.mainContainer}>
                 <MainPartner {...mainPartner} />
               </div>
             </Grid>
-            <Grid md={12}>
+            <Grid xs={12} md={6} lg={12}>
               <div className={classes.newsletterContainer}>
                 <Newsletter {...newsletter} />
               </div>
