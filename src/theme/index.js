@@ -211,6 +211,7 @@ deepmerge(
           backgroundImage: `url("${chevronrightDark}")`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          transition: "margin 0.3s ease",
           marginLeft: pxToRem(10),
           height: pxToRem(20), // Must equal button line-height
           width: pxToRem(30),
