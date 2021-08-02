@@ -23,6 +23,7 @@ function format(block) {
   switch (name) {
     case "lazyblock/explore-other-tools":
     case "lazyblock/data-visuals":
+    case "lazyblock/data-insights":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/hero":
     default:
