@@ -22,7 +22,7 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
       <Section classes={{ root: classes.section }}>
         <Typography className={classes.title}>{title}</Typography>
         <RichTypography className={classes.subtitle}>{subtitle}</RichTypography>
-        <Grid className={classes.list}>
+        <Grid container className={classes.list}>
           {itemsData &&
             itemsData.map((item) => <InsightCard key={item.title} {...item} />)}
         </Grid>
