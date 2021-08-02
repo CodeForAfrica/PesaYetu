@@ -10,7 +10,7 @@ import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeSt
 
 export default function Home({ boundary, footerProps, blocks, ...props }) {
   return (
-    <Page {...props} footerProps={footerProps}>
+    <Page footerProps={footerProps} {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
@@ -51,7 +51,7 @@ export async function getStaticProps() {
   const { children } = await res.json();
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const footerProps = getFooterMenu(props?.menus?.footerMenu);
+  const footerProps = getFooterMenu(props?.menus?.footerMenu || []);
   return {
     props: {
       ...props,
