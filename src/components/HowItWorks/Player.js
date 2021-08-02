@@ -1,47 +1,51 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import videojs from "video.js";
 import "videojs-youtube";
 import "video.js/dist/video-js.css";
 
 import videoImg from "@/pesayetu/assets/images/Group 4702.svg";
-import useStyles from "@/pesayetu/components/HowItWorks/useStyles";
 
-function Player({ videoSrc, ...props }) {
-  const classes = useStyles(props);
+function Player({ videoSrc, videoType }) {
+  const [videoEl, setVideoEl] = useState(null);
+  const onVideo = useCallback((el) => {
+    setVideoEl(el);
+  }, []);
+
+  useEffect(() => {
+    if (videoEl == null) return null;
+    const player = videojs(videoEl);
+    return () => {
+      player.dispose();
+    };
+  }, [videoEl]);
+
   return (
-    <div className={classes.video}>
-      <div data-vjs-player>
-        <video
-          id="how-it-works-video"
-          className="video-js"
-          playsInline
-          controls
-          preload="auto"
-          poster={videoImg}
-          data-setup={{
-            techOrder: ["youtube"],
-            sources: [
-              {
-                type: "video/youtube",
-                src: videoSrc,
-              },
-            ],
-          }}
-        >
-          <source src={videoSrc} type="video/youtube" />
-        </video>
-      </div>
+    <div data-vjs-player>
+      <video
+        ref={onVideo}
+        className="video-js vjs-default-skin hide"
+        playsInline
+        controls
+        preload="auto"
+        poster={videoImg}
+        data-setup={{}}
+      >
+        <source src={videoSrc} type={videoType} />
+      </video>
     </div>
   );
 }
 
 Player.propTypes = {
   videoSrc: PropTypes.string,
+  videoType: PropTypes.string,
 };
 
 Player.defaultProps = {
   videoSrc: undefined,
+  videoType: undefined,
 };
 
 export default Player;

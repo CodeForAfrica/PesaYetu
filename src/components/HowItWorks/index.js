@@ -33,7 +33,9 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
       <Section classes={{ root: classes.section }}>
         <Grid container direction={isMobile ? "column-reverse" : "row"}>
           <Grid item xs={12} md={7} lg={6} className={classes.content}>
-            <Player {...props} />
+            <div className={classes.video}>
+              <Player {...props} />
+            </div>
             <Typography className={classes.title} variant="h4">
               {title}
             </Typography>
