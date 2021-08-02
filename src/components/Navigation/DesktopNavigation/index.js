@@ -22,10 +22,6 @@ const useStyles = makeStyles(({ typography }) => ({
   logo: {
     width: typography.pxToRem(271),
   },
-  menu: {
-    width: typography.pxToRem(625),
-    paddingRight: typography.pxToRem(42),
-  },
   search: {
     width: typography.pxToRem(200),
   },
@@ -47,7 +43,6 @@ function DesktopNavigation({ logoProps, menuProps, socialLinks, ...props }) {
             direction="row"
             justifyContent="flex-end"
             alignItems="center"
-            className={classes.menu}
           >
             <Menu links={menuProps} socialLinks={socialLinks} />
           </Grid>
