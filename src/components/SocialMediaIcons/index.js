@@ -27,13 +27,13 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     margin: typography.pxToRem(3.2),
     "&:hover": {
       background: "#7DB2D3",
-      borderRadius: 50,
+      borderRadius: 60,
     },
     [breakpoints.up("lg")]: {
       background: "#EBEBEB",
       "&:hover": {
         background: "#EBEBEB",
-        borderRadius: 50,
+        borderRadius: 60,
       },
     },
   },

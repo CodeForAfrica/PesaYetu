@@ -33,7 +33,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   firstTitle: {
     color: palette.background.default,
     fontWeight: "normal",
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       fontWeight: "bold",
     },
   },
@@ -47,22 +47,24 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     borderBottom: `2px solid ${palette.background.default}`,
   },
   backdrop: {
-    maxHeight: typography.pxToRem(844),
+    maxHeight: typography.pxToRem(671),
     backgroundColor: "transparent",
   },
   dialogActions: {
     transform: "matrix(-1, 0, 0, -1, 0, 0, )",
     background: palette.primary.main,
+    padding: `0 ${typography.pxToRem(24.5)}`,
   },
   dialogContent: {
     background: palette.primary.main,
     overflow: "hidden",
+    padding: typography.pxToRem(24.5),
   },
   dialogMenu: {
     padding: `${typography.pxToRem(10.35)} 0`,
   },
   dialogPaper: {
-    maxHeight: typography.pxToRem(844),
+    maxHeight: typography.pxToRem(671),
     position: "absolute",
     left: 0,
     top: 0,
@@ -83,7 +85,6 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   closeButton: {
     color: palette.background.main,
     width: 48,
-    padding: `0 ${typography.pxToRem(71)}`,
     paddingLeft: typography.pxToRem(12),
     "&:hover": {
       background: "none",
@@ -91,9 +92,6 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   menuItems: {
     padding: `${typography.pxToRem(20)} 0 ${typography.pxToRem(71)}`,
-  },
-  LogoButton: {
-    color: palette.primary.main,
   },
   button: {
     color: palette.background.dark,

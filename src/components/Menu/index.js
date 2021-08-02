@@ -57,7 +57,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   menuLinks: {
     color: palette.text.secondary,
-    padding: `${typography.pxToRem(20)} 0`,
+    margin: `${typography.pxToRem(10)} ${typography.pxToRem(-8)}`,
     "&:hover, &:focus, &:focus-within": {
       backgroundColor: "transparent",
       textDecoration: "none",
