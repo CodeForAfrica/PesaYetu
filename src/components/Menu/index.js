@@ -55,6 +55,27 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       margin: `0 ${typography.pxToRem(8)}`,
     },
   },
+  text: {
+    "&::after": {
+      content: '""',
+      backgroundImage: "none",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      marginLeft: 0,
+      height: 0,
+      width: 0,
+    },
+    "&:hover::after": {
+      content: '""',
+      backgroundImage: "none",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      transition: "margin 0.3s ease",
+      marginLeft: 0,
+      height: 0,
+      width: 0,
+    },
+  },
   menuLinks: {
     color: palette.text.secondary,
     margin: `${typography.pxToRem(10)} ${typography.pxToRem(-8)}`,
@@ -107,6 +128,7 @@ function Menu({ links, children, socialLinks, ...props }) {
             size="large"
             href={href}
             className={classes.menuLinks}
+            classes={{ root: classes.menuLinks, text: classes.text }}
           >
             <Typography variant="h5" className={classes.label}>
               {label}

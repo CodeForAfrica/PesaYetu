@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import DataVisuals from "@/pesayetu/components/DataVisuals";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
+import HowItWorks from "@/pesayetu/components/HowItWorks";
+import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
 import { searchArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
@@ -16,6 +19,9 @@ export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...heroProps} boundary={boundary} />
+      <HowItWorks {...blocks?.howItWorks} />
+      <InsightData {...blocks?.dataInsights} />
+      <DataVisuals {...blocks?.dataVisuals} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
@@ -25,7 +31,10 @@ Home.propTypes = {
   boundary: PropTypes.shape({}),
   blocks: PropTypes.shape({
     hero: PropTypes.shape({}),
+    howItWorks: PropTypes.shape({}),
     exploreOtherTools: PropTypes.shape({}),
+    dataInsights: PropTypes.shape({}),
+    dataVisuals: PropTypes.shape({}),
   }),
 };
 
