@@ -34,7 +34,7 @@ const InsightCard = ({
         )}
         <Link className={classes.link} href={href}>
           {linkdescription && (
-            <Typography className={classes.linkText}>
+            <Typography variant="subtitle2" className={classes.linkText}>
               {linkdescription}
             </Typography>
           )}

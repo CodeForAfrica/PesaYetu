@@ -32,7 +32,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
 
   list: {
-    display: "flex",
     flexDirection: "column",
     [breakpoints.up("md")]: {
       flexDirection: "row",

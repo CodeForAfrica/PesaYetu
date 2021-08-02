@@ -1,5 +1,5 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Typography, useMediaQuery } from "@material-ui/core";
+import { Typography, useMediaQuery, Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
@@ -22,10 +22,10 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
       <Section classes={{ root: classes.section }}>
         <Typography className={classes.title}>{title}</Typography>
         <RichTypography className={classes.subtitle}>{subtitle}</RichTypography>
-        <div className={classes.list}>
+        <Grid className={classes.list}>
           {itemsData &&
             itemsData.map((item) => <InsightCard key={item.title} {...item} />)}
-        </div>
+        </Grid>
       </Section>
     </div>
   );
