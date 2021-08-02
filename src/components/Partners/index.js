@@ -15,7 +15,12 @@ const useStyles = makeStyles(
       minHeight: "min-content",
       position: "relative",
     },
-    section: {},
+    section: {
+      maxWidth: typography.pxToRem(310),
+      [breakpoints.up("md")]: {
+        maxWidth: "unset",
+      },
+    },
     backgroundGrid: {
       position: "absolute",
       display: "flex",

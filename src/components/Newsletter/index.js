@@ -25,6 +25,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     paddingTop: typography.pxToRem(40.98),
     [breakpoints.up("md")]: {
       minHeight: typography.pxToRem(290),
+      paddingLeft: typography.pxToRem(45),
     },
     [breakpoints.up("lg")]: {
       minHeight: typography.pxToRem(400),
