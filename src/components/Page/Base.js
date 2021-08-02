@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
 import { NextSeo } from "next-seo";
 import PropTypes from "prop-types";
 import React from "react";
