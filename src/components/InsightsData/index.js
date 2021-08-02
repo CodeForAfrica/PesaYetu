@@ -38,7 +38,7 @@ InsightsData.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
-      image: PropTypes.objectOf(PropTypes.any),
+      image: PropTypes.string,
     })
   ),
 };
