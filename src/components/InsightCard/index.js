@@ -1,11 +1,14 @@
-import { Card, CardContent, Typography } from "@material-ui/core";
-import Image from "next/image";
+// import { Card, CardContent, Typography } from "@material-ui/core";
+// import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Content from "./Content";
 import useStyles from "./useStyles";
 
-import Link from "@/pesayetu/components/Link";
+import Card from "@/pesayetu/components/Card";
+
+// import Link from "@/pesayetu/components/Link";
 
 const InsightCard = ({
   title,
@@ -17,30 +20,42 @@ const InsightCard = ({
 }) => {
   const classes = useStyles(props);
   return (
-    <Card className={classes.card}>
-      <div className={classes.cardMedia}>
-        {image && <Image src={image} layout="fill" className={classes.image} />}
-      </div>
-      <CardContent className={classes.content}>
-        {title && (
-          <Typography variant="h4" className={classes.cardTitle}>
-            {title}
-          </Typography>
-        )}
-        {description && (
-          <Typography variant="subtitle2" className={classes.cardDescription}>
-            {description}
-          </Typography>
-        )}
-        <Link className={classes.link} href={href}>
-          {linkdescription && (
-            <Typography variant="subtitle2" className={classes.linkText}>
-              {linkdescription}
-            </Typography>
-          )}
-        </Link>
-      </CardContent>
-    </Card>
+    <Card
+      classes={{ root: classes.card }}
+      content={
+        <Content
+          title={title}
+          description={description}
+          image={image}
+          href={href}
+          linkdescription={linkdescription}
+        />
+      }
+    />
+    // <Card className={classes.card}>
+    //    <div className={classes.cardMedia}>
+    //     {image && <Image src={image} layout="fill" className={classes.image} />}
+    //   </div>
+    //   <CardContent className={classes.content}>
+    //     {title && (
+    //       <Typography variant="h4" className={classes.cardTitle}>
+    //         {title}
+    //       </Typography>
+    //     )}
+    //     {description && (
+    //       <Typography variant="subtitle2" className={classes.cardDescription}>
+    //         {description}
+    //       </Typography>
+    //     )}
+    //     <Link className={classes.link} href={href}>
+    //       {linkdescription && (
+    //         <Typography variant="subtitle2" className={classes.linkText}>
+    //           {linkdescription}
+    //         </Typography>
+    //       )}
+    //     </Link>
+    //   </CardContent>
+    //  </Card>
   );
 };
 
