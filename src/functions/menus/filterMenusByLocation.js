@@ -16,11 +16,11 @@ export default function filterMenusByLocation(menus, locations) {
     // Convert dashes to underscores.
     const locationName = location.replace(/-/g, "_");
     // Filter menus array by location and assign to new object.
-    const wpmenu = menus?.filter(function filterMenu(menu) {
+    const wpmenu = menus?.filter((menu) => {
       return menu.locations.includes(locationName.toUpperCase());
     });
-    const camelLocation = camelCase(locationName);
     // Format the returned menu.
+    const camelLocation = camelCase(locationName);
     data[camelLocation] = formatHierarchicalMenu(wpmenu[0]?.menuItems?.nodes);
   });
   return data;
