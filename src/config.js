@@ -88,20 +88,18 @@ export const navigationArgs = {
     {
       href: "/explore",
       label: "EXPLORE",
-      menuLinks: [
-        {
-          href: "/data",
-          label: "DATA",
-        },
-        {
-          href: "/stories",
-          label: "STORIES",
-        },
-        {
-          href: "/how-it-works",
-          label: "HOW IT WORKS",
-        },
-      ],
+    },
+    {
+      href: "/data",
+      label: "DATA",
+    },
+    {
+      href: "/stories",
+      label: "STORIES",
+    },
+    {
+      href: "/how-it-works",
+      label: "HOW IT WORKS",
     },
   ],
   selectProps: {

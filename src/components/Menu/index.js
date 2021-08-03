@@ -12,11 +12,14 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
-    "& > div:nth-of-type(3)": {
+    "& > div:nth-of-type(2)": {
       order: 3,
     },
+    "& > div:nth-of-type(3)": {
+      order: 5,
+    },
     "& > div:nth-of-type(4)": {
-      order: 4,
+      order: 3,
     },
     "& > div:nth-of-type(5)": {
       order: 2,
@@ -28,6 +31,9 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       padding: 0,
       flexDirection: "row",
       justifyContent: "flex-end",
+      "& > div:nth-of-type(2)": {
+        order: 0,
+      },
       "& > div:nth-of-type(3)": {
         order: 0,
       },
@@ -105,44 +111,29 @@ function Menu({ links, children, socialLinks, ...props }) {
   if (!links?.length) {
     return null;
   }
-  const allMenulinks = links?.map(({ menuLinks }) => menuLinks);
-  // eslint-disable-next-line no-console
-  console.log(allMenulinks);
   return (
     <Grid container className={classes.root}>
-      {links.map(({ href, label }) => (
-        <Grid item key={label} className={classes.menu}>
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-            href={href}
-            className={classes.links}
-          >
-            <Typography variant="body1" className={classes.label}>
-              {label}
-            </Typography>
-          </Button>
-        </Grid>
-      ))}
+      {links &&
+        links?.map((item, index) => (
+          <Grid item key={item.label} className={classes.menu}>
+            <Button
+              component={index !== 0 ? Link : Button}
+              color={index !== 0 ? "default" : "primary"}
+              variant={index !== 0 ? "text" : "contained"}
+              size="large"
+              href={item.href}
+              classes={{
+                root: index !== 0 ? classes.menuLinks : classes.links,
+                text: classes.text,
+              }}
+            >
+              <Typography variant="body1" className={classes.label}>
+                {item.label}
+              </Typography>
+            </Button>
+          </Grid>
+        ))}
       {children}
-      {allMenulinks[0]?.map(({ href, label }) => (
-        <Grid item key={label} className={classes.menu}>
-          <Button
-            component={Link}
-            color="default"
-            variant="text"
-            size="large"
-            href={href}
-            className={classes.menuLinks}
-            classes={{ root: classes.menuLinks, text: classes.text }}
-          >
-            <Typography variant="body1" className={classes.label}>
-              {label}
-            </Typography>
-          </Button>
-        </Grid>
-      ))}
       <SocialMediaIcons socialLinks={socialLinks} />
     </Grid>
   );
