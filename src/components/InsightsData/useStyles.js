@@ -6,6 +6,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   section: {
     paddingTop: typography.pxToRem(60),
+    paddingLeft: typography.pxToRem(20),
+    paddingRight: typography.pxToRem(20),
   },
   title: {
     fontWeight: "bold",

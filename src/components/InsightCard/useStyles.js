@@ -7,11 +7,14 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     color: "#000",
     boxShadow: "none",
     backgroundColor: "unset",
+    paddingBottom: typography.pxToRem(30),
     [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(296),
+      padding: 0,
     },
     [breakpoints.up("lg")]: {
       maxWidth: typography.pxToRem(376),
+      padding: 0,
     },
   },
   content: {
