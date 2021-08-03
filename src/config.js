@@ -86,19 +86,19 @@ export const navigationArgs = {
   },
   menuProps: [
     {
-      href: "https://dev.pesayetu.pesacheck.org",
+      href: "/explore",
       label: "EXPLORE",
       menuLinks: [
         {
-          href: "https://dev.pesayetu.pesacheck.org",
+          href: "/data",
           label: "DATA",
         },
         {
-          href: "https://dev.pesayetu.pesacheck.org",
+          href: "/stories",
           label: "STORIES",
         },
         {
-          href: "https://dev.pesayetu.pesacheck.org",
+          href: "/how-it-works",
           label: "HOW IT WORKS",
         },
       ],
