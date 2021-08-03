@@ -12,11 +12,9 @@ const ExploreCard = ({ item, ...props }) => {
   const { image } = item;
 
   return (
-    <Card
-      image={image}
-      classes={{ root: classes.root }}
-      content={<Content {...item} />}
-    />
+    <Card image={image} classes={{ root: classes.root }}>
+      <Content {...item} />
+    </Card>
   );
 };
 

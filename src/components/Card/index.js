@@ -11,7 +11,7 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-const Card = ({ href, content, image, ...props }) => {
+const Card = ({ href, children, image, ...props }) => {
   const classes = useStyles(props);
 
   return (
@@ -23,12 +23,14 @@ const Card = ({ href, content, image, ...props }) => {
           underline="none"
           {...props}
         >
-          {image && (
-            <div className={classes.cardMedia}>
-              <Image src={image} layout="fill" className={classes.image} />
-            </div>
-          )}
-          <CardContent className={classes.content}>{content}</CardContent>
+          <CardContent className={classes.content}>
+            {image && (
+              <div className={classes.cardMedia}>
+                <Image src={image} layout="fill" className={classes.image} />
+              </div>
+            )}
+            {children}
+          </CardContent>
         </CardActionArea>
       ) : (
         <CardContent className={classes.content}>
@@ -37,7 +39,7 @@ const Card = ({ href, content, image, ...props }) => {
               <Image src={image} layout="fill" className={classes.image} />
             </div>
           )}
-          {content}
+          {children}
         </CardContent>
       )}
     </MuiCard>
@@ -47,7 +49,7 @@ const Card = ({ href, content, image, ...props }) => {
 Card.propTypes = {
   href: PropTypes.string,
   image: PropTypes.string,
-  content: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 Card.defaultProps = {

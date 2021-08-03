@@ -17,18 +17,13 @@ const InsightCard = ({
   const classes = useStyles(props);
 
   return (
-    <Card
-      classes={{ root: classes.card }}
-      image={image}
-      href={href}
-      content={
-        <Content
-          title={title}
-          description={description}
-          linkdescription={linkdescription}
-        />
-      }
-    />
+    <Card classes={{ root: classes.card }} image={image} href={href}>
+      <Content
+        title={title}
+        description={description}
+        linkdescription={linkdescription}
+      />
+    </Card>
   );
 };
 
