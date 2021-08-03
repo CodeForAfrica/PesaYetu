@@ -198,7 +198,7 @@ function DropdownSearch({
 
   return (
     <div className={classes.root}>
-      <RichTypography variant="body2" className={classes.title}>
+      <RichTypography variant="body1" className={classes.title}>
         {title}
       </RichTypography>
       <FormControl className={classes.formControl}>

@@ -48,6 +48,10 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   label: {
     fontWeight: "600",
     letterSpacing: "1.6px",
+    fontSize: typography.pxToRem(20),
+    [breakpoints.up("lg")]: {
+      fontSize: typography.pxToRem(16),
+    },
   },
   menu: {
     margin: 0,
@@ -82,6 +86,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     "&:hover, &:focus, &:focus-within": {
       backgroundColor: "transparent",
       textDecoration: "none",
+      color: palette.text.secondary,
     },
     [breakpoints.up("lg")]: {
       padding: `${typography.pxToRem(9.6)} ${typography.pxToRem(18)}`,
@@ -112,7 +117,7 @@ function Menu({ links, children, socialLinks, ...props }) {
             href={href}
             className={classes.links}
           >
-            <Typography variant="h5" className={classes.label}>
+            <Typography variant="body1" className={classes.label}>
               {label}
             </Typography>
           </Button>
@@ -130,7 +135,7 @@ function Menu({ links, children, socialLinks, ...props }) {
             className={classes.menuLinks}
             classes={{ root: classes.menuLinks, text: classes.text }}
           >
-            <Typography variant="h5" className={classes.label}>
+            <Typography variant="body1" className={classes.label}>
               {label}
             </Typography>
           </Button>
