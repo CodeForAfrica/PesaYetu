@@ -40,6 +40,8 @@
     "react-leaflet": "^3.2.0",
     "react-multi-carousel": "^2.6.3",
     "simplebar-react": "^2.1.0",
+    "video.js": "^7.14.3",
+    "videojs-youtube": "^2.6.1",
     "webpack": "^5.0.0"
   },
   "devDependencies": {

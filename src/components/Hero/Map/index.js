@@ -86,17 +86,14 @@ function Map({
 
 Map.propTypes = {
   center: (props, propName, componentName) => {
-    if (
-      !Array.isArray(props[propName]) ||
-      props[propName].length !== 2 ||
-      props[propName].some(Number.isNaN)
-    ) {
+    const { [propName]: prop } = props;
+    if (!Array.isArray(prop) || prop.length !== 2 || prop.some(Number.isNaN)) {
       return new Error(
         `Invalid prop \`${propName}\` supplied to` +
           ` \`${componentName}\`. Validation failed.`
       );
     }
-    return true;
+    return null;
   },
   tileLayer: PropTypes.shape({}),
   zoom: PropTypes.number,

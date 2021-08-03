@@ -1,6 +1,12 @@
+import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
+import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
+import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
+import DataVisualTwo from "@/pesayetu/assets/images/DataVisualTwo.png";
 import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
 import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
+import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
+import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
 
 const ABOUT = {
   about:
@@ -52,6 +58,38 @@ const socialMedia = [
   },
 ];
 
+export const insightData = {
+  title: "Stories",
+  subtitle: "Data Driven <span class='highlight'>Insights</span>",
+  items: [
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashTwo,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashThree,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+  ],
+};
+
 export const exploreTools = {
   title: "EXPLORE OUR OTHER TOOLS",
   items: [
@@ -78,6 +116,27 @@ export const exploreTools = {
       description:
         "DebunkBot was created to fight the spread of misinformation on social media by responding to tweets sharing questionable links.",
       image: Group3964,
+    },
+  ],
+};
+
+export const dataVisuals = {
+  title: "Visualise data for each county and municipality",
+  items: [
+    {
+      image: DataVisualOne,
+      description:
+        "<span class='bold'>Step 1:</span> Click the search field and select the county or municipality from the dropdown menu.",
+    },
+    {
+      image: DataVisualTwo,
+      description:
+        "<span class='bold'>Step 2:</span> Explore the map, confirm your selection and click on “Rich Data” to display the data.",
+    },
+    {
+      image: DataVisualThree,
+      description:
+        "<span class='bold'>Step 3:</span> Browse the charts and download and share the data using the buttons on the right side.",
     },
   ],
 };
