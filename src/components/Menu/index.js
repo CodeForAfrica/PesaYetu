@@ -106,8 +106,10 @@ function Menu({ links, children, socialLinks, ...props }) {
     return null;
   }
   const allMenulinks = links?.map(({ menuLinks }) => menuLinks);
+  // eslint-disable-next-line no-console
+  console.log(allMenulinks);
   return (
-    <div className={classes.root}>
+    <Grid container className={classes.root}>
       {links.map(({ href, label }) => (
         <Grid item key={label} className={classes.menu}>
           <Button
@@ -142,7 +144,7 @@ function Menu({ links, children, socialLinks, ...props }) {
         </Grid>
       ))}
       <SocialMediaIcons socialLinks={socialLinks} />
-    </div>
+    </Grid>
   );
 }
 
