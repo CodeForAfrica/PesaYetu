@@ -145,7 +145,7 @@ export const footerArgs = {
   title: "Stay in touch with us",
   description: ABOUT.about,
   logoProps: {
-    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-4426.png",
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-4426.svg",
     alt: "Code for Africa",
     href: "https://codeforafrica.org",
   },
