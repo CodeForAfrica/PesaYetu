@@ -17,11 +17,17 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   link: {
     display: "flex",
     justifyContent: "center",
+    "&>div": {
+      filter: "grayscale(1)",
+      "&:hover": {
+        filter: "unset",
+        boxShadow: "0px 3px 6px #00000029",
+      },
+    },
   },
   logo: {
     margin: "0 auto ",
     mixBlendMode: "luminosity",
-    filter: "grayscale(1)",
   },
 }));
 function Enablingpartners({ title, partners, ...props }) {
