@@ -42,10 +42,10 @@ export default function getFooterMenu(data) {
     .map(({ label, children }) => {
       return {
         title: label,
-        links: children?.map(({ label, url }) => {
+        links: children?.map(({ label, path }) => {
           return {
             label,
-            href: url,
+            href: path,
           };
         }),
       };
