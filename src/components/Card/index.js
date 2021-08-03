@@ -16,19 +16,30 @@ const Card = ({ href, content, image, ...props }) => {
 
   return (
     <MuiCard className={classes.root}>
-      <CardActionArea
-        component={href ? Link : undefined}
-        href={href}
-        underline="none"
-        {...props}
-      >
-        {image && (
-          <div className={classes.cardMedia}>
-            <Image src={image} layout="fill" className={classes.image} />
-          </div>
-        )}
-        <CardContent className={classes.content}>{content}</CardContent>
-      </CardActionArea>
+      {href ? (
+        <CardActionArea
+          component={href ? Link : undefined}
+          href={href}
+          underline="none"
+          {...props}
+        >
+          {image && (
+            <div className={classes.cardMedia}>
+              <Image src={image} layout="fill" className={classes.image} />
+            </div>
+          )}
+          <CardContent className={classes.content}>{content}</CardContent>
+        </CardActionArea>
+      ) : (
+        <CardContent className={classes.content}>
+          {image && (
+            <div className={classes.cardMedia}>
+              <Image src={image} layout="fill" className={classes.image} />
+            </div>
+          )}
+          {content}
+        </CardContent>
+      )}
     </MuiCard>
   );
 };

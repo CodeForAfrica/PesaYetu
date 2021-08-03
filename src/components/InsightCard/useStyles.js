@@ -4,6 +4,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
   card: {
     maxWidth: typography.pxToRem(350),
+    color: "#000",
     boxShadow: "none",
     backgroundColor: "unset",
     [breakpoints.up("md")]: {

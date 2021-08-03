@@ -24,11 +24,11 @@ const InsightCard = ({
     <Card
       classes={{ root: classes.card }}
       image={image}
+      href={href}
       content={
         <Content
           title={title}
           description={description}
-          href={href}
           linkdescription={linkdescription}
         />
       }
