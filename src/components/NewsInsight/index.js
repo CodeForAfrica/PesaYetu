@@ -9,19 +9,10 @@ const useStyles = makeStyles(() => ({
   },
   tabs: {
     textTransform: "none",
-    minWidth: 72,
-    fontWeight: 500,
-    marginRight: "4px",
-    "&:hover": {
-      opacity: 1,
-    },
-    "&$selected": {
-      color: "#1890ff",
-      fontWeight: 600,
-    },
-    "&:focus": {
-      color: "#40a9ff",
-    },
+    borderBottom: "1px solid #e8e8e8",
+  },
+  indicator: {
+    backgroundColor: "#1890ff",
   },
   selected: {},
   demo1: {
@@ -88,23 +79,17 @@ export default function NewsInsight() {
           aria-label="simple tabs"
           classes={{ root: classes.tabs }}
         >
-          <Tab label="News" {...a11yProps(0)} />
-          <Tab label="Insights" {...a11yProps(1)} />
+          <Tab label="News" {...a11yProps(0)} disableRipple />
+          <Tab label="Insights" {...a11yProps(1)} disableRipple />
         </Tabs>
         <Typography className={classes.padding} />
       </div>
       <div className={classes.demo2}>
         <TabPanel value={value} index={0}>
           <Typography variant="h2">News content</Typography>
-          <Typography variant="body1">this is one </Typography>
-          <Typography variant="body1">this is two </Typography>
-          <Typography variant="body1">this is three </Typography>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Typography variant="h2">Insight Content</Typography>
-          <Typography variant="body1">this is four </Typography>
-          <Typography variant="body1">this is five </Typography>
-          <Typography variant="body1">this is six </Typography>
         </TabPanel>
       </div>
     </div>
