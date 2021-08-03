@@ -4,6 +4,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
     boxShadow: "none",
     backgroundColor: "unset",
+    maxWidth: typography.pxToRem(350),
     [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(296),
     },
@@ -20,14 +21,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       },
     },
   },
-  cardMedia: {
-    height: typography.pxToRem(215),
-    position: "relative",
-    [breakpoints.up("lg")]: {
-      height: typography.pxToRem(231),
-    },
-  },
-  image: { objectFit: "contain" },
 }));
 
 export default useStyles;

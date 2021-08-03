@@ -35,22 +35,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   linkText: {
     fontWeight: "bold",
   },
-  image: {
-    objectFit: "contain",
-  },
-  cardMedia: {
-    position: "relative",
-    height: typography.pxToRem(216),
-    width: typography.pxToRem(350),
-    [breakpoints.up("md")]: {
-      width: typography.pxToRem(296),
-      height: typography.pxToRem(183),
-    },
-    [breakpoints.up("lg")]: {
-      width: typography.pxToRem(376),
-      height: typography.pxToRem(233),
-    },
-  },
 }));
 
 export default useStyles;
