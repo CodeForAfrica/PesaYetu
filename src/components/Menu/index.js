@@ -13,7 +13,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     flexDirection: "column",
     justifyContent: "flex-start",
     "& > div:nth-of-type(2)": {
-      order: 3,
+      order: 4,
     },
     "& > div:nth-of-type(3)": {
       order: 5,
