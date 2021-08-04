@@ -212,7 +212,7 @@ function MobileNavigation({
               ustifyContent="space-between"
               className={classes.logoSection}
             >
-              <Grid item xs={8}>
+              <Grid item xs={11}>
                 <Logo
                   {...logoProps}
                   classes={{
@@ -222,7 +222,7 @@ function MobileNavigation({
                   }}
                 />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={1}>
                 <IconButton
                   aria-label="Close drawer"
                   edge="end"
