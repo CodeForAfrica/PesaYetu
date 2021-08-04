@@ -15,8 +15,8 @@ export default function Home({ boundary, blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
-      <DataVisuals {...blocks?.dataVisuals} />
       <InsightData {...blocks?.dataInsights} />
+      <DataVisuals {...blocks?.dataVisuals} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
