@@ -6,8 +6,9 @@ import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
 
-const ExploreCard = ({ title, description, image, ...props }) => {
+const ExploreCard = ({ item, ...props }) => {
   const classes = useStyles(props);
+  const { title, description, image } = item;
 
   return (
     <Card image={image} classes={{ root: classes.root }} imageMargin="true">
@@ -20,15 +21,15 @@ const ExploreCard = ({ title, description, image, ...props }) => {
 };
 
 ExploreCard.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
+  item: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
+  }),
 };
 
 ExploreCard.defaultProps = {
-  title: undefined,
-  description: undefined,
-  image: undefined,
+  item: undefined,
 };
 
 export default ExploreCard;
