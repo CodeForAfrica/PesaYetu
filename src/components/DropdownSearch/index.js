@@ -122,6 +122,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     },
   },
 }));
+
 function DropdownSearch({
   title,
   href: hrefProp,
