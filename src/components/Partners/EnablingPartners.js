@@ -27,7 +27,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
   logo: {
     margin: "0 auto ",
-    mixBlendMode: "luminosity",
   },
 }));
 function EnablingPartners({ title, partners, ...props }) {
