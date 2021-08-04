@@ -174,10 +174,10 @@ function MobileNavigation({
   return (
     <Section classes={{ root: classes.section }}>
       <div className={classes.root}>
-        <Grid item>
+        <Grid item xs={10}>
           <Logo {...logoProps} />
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <IconButton
             aria-label="Open drawer"
             edge="start"
