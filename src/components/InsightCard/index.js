@@ -1,10 +1,11 @@
+import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Content from "./Content";
 import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
+import Link from "@/pesayetu/components/Link";
 
 const InsightCard = ({
   title,
@@ -18,11 +19,23 @@ const InsightCard = ({
 
   return (
     <Card classes={{ root: classes.card }} image={image} href={href}>
-      <Content
-        title={title}
-        description={description}
-        linkdescription={linkdescription}
-      />
+      {title && (
+        <Typography variant="h4" className={classes.cardTitle}>
+          {title}
+        </Typography>
+      )}
+      {description && (
+        <Typography variant="subtitle2" className={classes.cardDescription}>
+          {description}
+        </Typography>
+      )}
+      <Link className={classes.link} href={href}>
+        {linkdescription && (
+          <Typography variant="subtitle2" className={classes.linkText}>
+            {linkdescription}
+          </Typography>
+        )}
+      </Link>
     </Card>
   );
 };

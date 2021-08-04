@@ -1,33 +1,34 @@
+import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Content from "./Content";
 import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
 
-const ExploreCard = ({ item, ...props }) => {
+const ExploreCard = ({ title, description, image, ...props }) => {
   const classes = useStyles(props);
-
-  const { image } = item;
 
   return (
     <Card image={image} classes={{ root: classes.root }} imageMargin="true">
-      <Content {...item} />
+      <Typography className={classes.title} variant="h4">
+        {title}
+      </Typography>
+      <Typography className={classes.description}>{description}</Typography>
     </Card>
   );
 };
 
 ExploreCard.propTypes = {
-  item: PropTypes.shape({
-    title: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-  }),
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
 };
 
 ExploreCard.defaultProps = {
-  item: undefined,
+  title: undefined,
+  description: undefined,
+  image: undefined,
 };
 
 export default ExploreCard;
