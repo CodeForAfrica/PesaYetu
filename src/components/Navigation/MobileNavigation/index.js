@@ -4,7 +4,6 @@ import {
   Dialog,
   DialogActions,
   IconButton,
-  SvgIcon,
   DialogContent,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,7 +11,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import { ReactComponent as MenuCloseIcon } from "@/pesayetu/assets/menu_close.svg";
+import MenuCloseIcon from "@/pesayetu/assets/menu_close.svg";
 import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Logo from "@/pesayetu/components/Logo";
@@ -187,12 +186,11 @@ function MobileNavigation({
                   onClick={handleClose}
                   className={classes.closeButton}
                 >
-                  <SvgIcon
-                    component={MenuCloseIcon}
-                    viewBox="0 0 26 26"
-                    classes={{
-                      root: classes.close,
-                    }}
+                  <Image
+                    src={MenuCloseIcon}
+                    width={48}
+                    height={48}
+                    className={classes.close}
                   />
                 </IconButton>
               </Grid>

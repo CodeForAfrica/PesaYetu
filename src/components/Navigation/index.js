@@ -5,13 +5,14 @@ import React from "react";
 import DesktopNavigation from "./DesktopNavigation";
 import MobileNavigation from "./MobileNavigation";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     backgroundColor: palette.background.default,
   },
   section: {},
   toolbar: {
     display: "block",
+    padding: `${typography.pxToRem(12)} 0`,
   },
 }));
 
