@@ -8,11 +8,12 @@ import HowItWorks from "@/pesayetu/components/HowItWorks";
 import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
+import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function Home({ boundary, blocks, ...props }) {
+export default function Home({ boundary, footerProps, blocks, ...props }) {
   return (
-    <Page {...props}>
+    <Page footerProps={footerProps} {...props}>
       <Hero {...blocks?.hero} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
       <InsightData {...blocks?.dataInsights} />
@@ -31,11 +32,13 @@ Home.propTypes = {
     dataInsights: PropTypes.shape({}),
     dataVisuals: PropTypes.shape({}),
   }),
+  footerProps: PropTypes.shape({}),
 };
 
 Home.defaultProps = {
   boundary: undefined,
   blocks: undefined,
+  footerProps: undefined,
 };
 
 export async function getStaticProps() {
@@ -57,10 +60,12 @@ export async function getStaticProps() {
   const { children } = await res.json();
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
+  const footerProps = getFooterMenu(props?.menus?.footerMenu || []);
   return {
     props: {
       ...props,
       blocks,
+      footerProps,
       boundary: children?.county,
     },
     revalidate,
