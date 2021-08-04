@@ -90,7 +90,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
 }));
 
-function Newsletter({ description, placeholder, title, embedCode, ...props }) {
+function Newsletter({ description, title, embedCode, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -114,14 +114,12 @@ function Newsletter({ description, placeholder, title, embedCode, ...props }) {
 Newsletter.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
-  placeholder: PropTypes.string,
   embedCode: PropTypes.string,
 };
 
 Newsletter.defaultProps = {
   description: undefined,
   title: undefined,
-  placeholder: "Please Enter your email",
   embedCode: undefined,
 };
 

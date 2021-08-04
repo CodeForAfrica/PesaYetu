@@ -30,7 +30,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     mixBlendMode: "luminosity",
   },
 }));
-function Enablingpartners({ title, partners, ...props }) {
+function EnablingPartners({ title, partners, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -60,7 +60,7 @@ function Enablingpartners({ title, partners, ...props }) {
   );
 }
 
-Enablingpartners.propTypes = {
+EnablingPartners.propTypes = {
   title: PropTypes.string,
   partners: PropTypes.arrayOf(
     PropTypes.shape({
@@ -71,8 +71,8 @@ Enablingpartners.propTypes = {
   ),
 };
 
-Enablingpartners.defaultProps = {
+EnablingPartners.defaultProps = {
   title: undefined,
   partners: undefined,
 };
-export default Enablingpartners;
+export default EnablingPartners;
