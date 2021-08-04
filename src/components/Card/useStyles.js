@@ -58,6 +58,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   content: {
     padding: 0,
   },
+  image: {
+    objectFit: "contain",
+  },
 }));
 
 export default useStyles;
