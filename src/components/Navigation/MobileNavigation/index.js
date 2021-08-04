@@ -25,7 +25,14 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  section: {},
+  section: {
+    paddingRight: typography.pxToRem(20),
+    paddingLeft: typography.pxToRem(17),
+    [breakpoints.up("lg")]: {
+      paddingRight: 0,
+      paddingLeft: 0,
+    },
+  },
   dialog: {
     padding: 0,
   },
@@ -52,16 +59,12 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   dialogActions: {
     transform: "matrix(-1, 0, 0, -1, 0, 0, )",
     background: palette.primary.main,
-    paddingTop: typography.pxToRem(10),
-    paddingRight: typography.pxToRem(29),
-    paddingleft: typography.pxToRem(20),
+    padding: `${typography.pxToRem(16)} ${typography.pxToRem(24.5)}`,
   },
   dialogContent: {
     background: palette.primary.main,
     overflow: "hidden",
-    paddingTop: typography.pxToRem(30.5),
-    paddingRight: typography.pxToRem(29),
-    paddingleft: typography.pxToRem(20),
+    padding: `${typography.pxToRem(24.5)}`,
   },
   dialogMenu: {
     padding: `${typography.pxToRem(10.35)} 0`,
@@ -78,7 +81,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     background: "#F0F0F0",
     width: 48,
     borderRadius: typography.pxToRem(50),
-    margin: typography.pxToRem(8),
+    // margin: typography.pxToRem(8),
     "&:hover": {
       background: "#F0F0F0",
       borderRadius: typography.pxToRem(50),
