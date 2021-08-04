@@ -163,15 +163,13 @@ function MobileNavigation({
           classes={{ root: classes.dialog, paper: classes.dialogPaper }}
         >
           <DialogActions className={classes.dialogActions}>
-            <Grid container direction="row" className={classes.logoSection}>
-              <Grid
-                item
-                xs={8}
-                container
-                justifyContent="flex-start"
-                alignItems="center"
-                className={classes.dialogMenu}
-              >
+            <Grid
+              container
+              direction="row"
+              ustifyContent="space-between"
+              className={classes.logoSection}
+            >
+              <Grid item xs={8}>
                 <Logo
                   {...logoProps}
                   classes={{
@@ -181,14 +179,7 @@ function MobileNavigation({
                   }}
                 />
               </Grid>
-
-              <Grid
-                item
-                xs={4}
-                container
-                justifyContent="flex-end"
-                alignItems="center"
-              >
+              <Grid item xs={4}>
                 <IconButton
                   aria-label="Close drawer"
                   edge="end"
