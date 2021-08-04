@@ -13,9 +13,11 @@ import Section from "@/pesayetu/components/Section";
 const Map = dynamic(() => import("./Map"), { ssr: false });
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
-  root: {},
-  backgroundWrap: {
-    position: "fixed",
+  root: {
+    position: "relative",
+  },
+  background: {
+    position: "absolute",
     zIndex: -1,
     height: typography.pxToRem(468),
     width: "100vw",
@@ -81,7 +83,7 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
 
   return (
     <div className={classes.root}>
-      <div className={classes.backgroundWrap}>
+      <div className={classes.background}>
         <Image src={heroBg} layout="fill" />
       </div>
       <Section classes={{ root: classes.section }}>
