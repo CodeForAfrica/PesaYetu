@@ -1,4 +1,3 @@
-import { Section } from "@commons-ui/core";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
@@ -6,11 +5,10 @@ import React from "react";
 
 import Logo from "@/pesayetu/components/Logo";
 import Menu from "@/pesayetu/components/Menu";
+import Section from "@/pesayetu/components/Section";
 
-const useStyles = makeStyles(({ typography }) => ({
-  root: {
-    padding: `${typography.pxToRem(9.25)} 0`,
-  },
+const useStyles = makeStyles(() => ({
+  root: {},
   section: {},
 }));
 

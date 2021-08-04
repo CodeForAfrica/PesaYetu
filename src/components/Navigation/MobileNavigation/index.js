@@ -1,4 +1,3 @@
-import { Section } from "@commons-ui/core";
 import {
   Grid,
   Slide,
@@ -18,6 +17,7 @@ import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Logo from "@/pesayetu/components/Logo";
 import Menu from "@/pesayetu/components/Menu";
+import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
