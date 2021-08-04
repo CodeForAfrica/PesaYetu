@@ -52,12 +52,16 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   dialogActions: {
     transform: "matrix(-1, 0, 0, -1, 0, 0, )",
     background: palette.primary.main,
-    padding: `0 ${typography.pxToRem(24.5)}`,
+    paddingTop: typography.pxToRem(10),
+    paddingRight: typography.pxToRem(29),
+    paddingleft: typography.pxToRem(20),
   },
   dialogContent: {
     background: palette.primary.main,
     overflow: "hidden",
-    padding: typography.pxToRem(24.5),
+    paddingTop: typography.pxToRem(30.5),
+    paddingRight: typography.pxToRem(29),
+    paddingleft: typography.pxToRem(20),
   },
   dialogMenu: {
     padding: `${typography.pxToRem(10.35)} 0`,
@@ -102,6 +106,46 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   close: {
     fontSize: typography.pxToRem(32),
     color: palette.background.default,
+  },
+  label: {
+    [breakpoints.up("lg")]: {
+      fontWeight: "600",
+      letterSpacing: "1.6px",
+      fontSize: typography.pxToRem(20),
+    },
+  },
+  buttonMenu: {
+    margin: 0,
+  },
+  menuLinks: {
+    color: palette.text.secondary,
+    margin: `${typography.pxToRem(10)} ${typography.pxToRem(-8)}`,
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "transparent",
+      textDecoration: "none",
+      color: palette.text.secondary,
+    },
+  },
+  mainMenu: {
+    [breakpoints.up("lg")]: {
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      "& > div:nth-of-type(2)": {
+        order: 4,
+      },
+      "& > div:nth-of-type(3)": {
+        order: 5,
+      },
+      "& > div:nth-of-type(4)": {
+        order: 3,
+      },
+      "& > div:nth-of-type(5)": {
+        order: 2,
+      },
+      "& > div:nth-of-type(6)": {
+        order: 5,
+      },
+    },
   },
 }));
 
@@ -197,7 +241,16 @@ function MobileNavigation({
             </Grid>
           </DialogActions>
           <DialogContent className={classes.dialogContent}>
-            <Menu links={menuProps} socialLinks={socialLinks}>
+            <Menu
+              links={menuProps}
+              socialLinks={socialLinks}
+              classes={{
+                root: classes.mainMenu,
+                menuLinks: classes.menuLinks,
+                label: classes.label,
+                menu: classes.buttonMenu,
+              }}
+            >
               <DropdownSearch {...selectProps} />
             </Menu>
           </DialogContent>
