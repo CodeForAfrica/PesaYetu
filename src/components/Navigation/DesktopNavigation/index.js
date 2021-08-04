@@ -13,6 +13,7 @@ const useStyles = makeStyles(({ typography }) => ({
   },
   section: {},
 }));
+
 function DesktopNavigation({ logoProps, menuProps, socialLinks, ...props }) {
   const classes = useStyles(props);
 
