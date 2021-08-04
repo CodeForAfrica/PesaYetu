@@ -1,8 +1,10 @@
-import { Grid, IconButton, Link } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
+
+import Link from "@/pesayetu/components/Link";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
@@ -48,15 +50,17 @@ function SocialMediaIcons({ socialLinks, ...props }) {
   return (
     <Grid item className={classes.root}>
       {socialLinks.map(({ url, label, src }) => (
-        <IconButton component={Link} href={url} key={label}
-            size="medium"
-            edge="end"
-            viewBox={viewBoxValue}
-            className={classes.button}
-          >
-            <Image src={src} width={48} height={48} className={classes.image} />
-          </IconButton>
-        </Link>
+        <IconButton
+          component={Link}
+          href={url}
+          key={label}
+          size="medium"
+          edge="end"
+          viewBox={viewBoxValue}
+          className={classes.button}
+        >
+          <Image src={src} width={48} height={48} className={classes.image} />
+        </IconButton>
       ))}
     </Grid>
   );

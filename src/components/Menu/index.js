@@ -113,25 +113,25 @@ function Menu({ links, children, socialLinks, ...props }) {
   }
   return (
     <Grid container className={classes.root}>
-      {links?.map((item, index) => (
-          <Grid item key={item.label} className={classes.menu}>
-            <Button
-              component={index !== 0 ? Link : Button}
-              color={index !== 0 ? "default" : "primary"}
-              variant={index !== 0 ? "text" : "contained"}
-              size="large"
-              href={item.href}
-              classes={{
-                root: index !== 0 ? classes.menuLinks : classes.links,
-                text: classes.text,
-              }}
-            >
-              <Typography variant="body1" className={classes.label}>
-                {item.label}
-              </Typography>
-            </Button>
-          </Grid>
-        ))}
+      {links.map((item, index) => (
+        <Grid item key={item.label} className={classes.menu}>
+          <Button
+            component={index !== 0 ? Link : Button}
+            color={index !== 0 ? "default" : "primary"}
+            variant={index !== 0 ? "text" : "contained"}
+            size="large"
+            href={item.href}
+            classes={{
+              root: index !== 0 ? classes.menuLinks : classes.links,
+              text: classes.text,
+            }}
+          >
+            <Typography variant="body1" className={classes.label}>
+              {item.label}
+            </Typography>
+          </Button>
+        </Grid>
+      ))}
       {children}
       <SocialMediaIcons socialLinks={socialLinks} />
     </Grid>
