@@ -113,8 +113,7 @@ function Menu({ links, children, socialLinks, ...props }) {
   }
   return (
     <Grid container className={classes.root}>
-      {links &&
-        links?.map((item, index) => (
+      {links?.map((item, index) => (
           <Grid item key={item.label} className={classes.menu}>
             <Button
               component={index !== 0 ? Link : Button}
