@@ -4,6 +4,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
   cardMedia: (props) => {
     if (props.imageMargin) {
+      // TODO(kilemensi): Explore card images have invisible margins
+      //                  around them. The following calculations are to
+      //                  remove all negative margins
       return {
         margin: `
       -${typography.pxToRem((254 - 216.89) / 2)}
@@ -51,21 +54,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
         width: typography.pxToRem(376),
       },
     };
-  },
-  cardMedias: {
-    // TODO(kilemensi): Confirm if all image will have invisible margins
-    //                  around them. If yes, leave this as is. Otherwise
-    //                  remove all negative margins calculations
-    height: typography.pxToRem(215),
-    position: "relative",
-    [breakpoints.up("md")]: {
-      height: typography.pxToRem(183),
-      width: typography.pxToRem(296),
-    },
-    [breakpoints.up("lg")]: {
-      height: typography.pxToRem(231),
-      width: typography.pxToRem(376),
-    },
   },
   content: {
     padding: 0,
