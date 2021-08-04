@@ -49,7 +49,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     },
   },
   links: {
-    padding: `${typography.pxToRem(18)} ${typography.pxToRem(28)} `,
+    padding: `${typography.pxToRem(14)} ${typography.pxToRem(28)} `,
   },
   label: {
     fontWeight: "600",
@@ -95,7 +95,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       color: palette.text.secondary,
     },
     [breakpoints.up("lg")]: {
-      padding: `${typography.pxToRem(9.6)} ${typography.pxToRem(18)}`,
+      padding: `${typography.pxToRem(7)} ${typography.pxToRem(18)}`,
       color: palette.grey.dark,
       "&:hover, &:focus, &:focus-within": {
         color: "#707070",
