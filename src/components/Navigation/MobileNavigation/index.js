@@ -81,7 +81,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     background: "#F0F0F0",
     width: 48,
     borderRadius: typography.pxToRem(50),
-    // margin: typography.pxToRem(8),
+    margin: typography.pxToRem(8),
     "&:hover": {
       background: "#F0F0F0",
       borderRadius: typography.pxToRem(50),
