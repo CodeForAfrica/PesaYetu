@@ -14,7 +14,6 @@ const ExploreCard = ({ item, ...props }) => {
     <Card
       image={image}
       classes={{ root: classes.root, cardMedia: classes.cardMedia }}
-      imageMargin="true"
     >
       <Typography className={classes.title} variant="h4">
         {title}
