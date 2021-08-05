@@ -29,7 +29,7 @@ function MainPartner({ link, logo, name, description, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <div className={classes.root} xs={12} md={6}>
+    <div className={classes.root}>
       <A className={classes.link} href={link}>
         <Image width={212.92} height={123.37} src={logo.url} alt={name} />
       </A>
