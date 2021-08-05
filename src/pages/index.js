@@ -8,6 +8,7 @@ import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
 import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
+import { dataIndicator } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
@@ -20,7 +21,7 @@ export default function Home({ boundary, footerProps, blocks, ...props }) {
       <InsightData {...blocks?.dataInsights} />
       <DataVisuals {...blocks?.dataVisuals} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
-      <DataIndicators />
+      <DataIndicators {...dataIndicator} />
     </Page>
   );
 }

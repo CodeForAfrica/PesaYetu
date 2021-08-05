@@ -1,3 +1,8 @@
+import Group4646 from "@/pesayetu/assets/Group 4646.png";
+import Group4656 from "@/pesayetu/assets/Group 4656.png";
+import Group4657 from "@/pesayetu/assets/Group 4657.png";
+import Group4658 from "@/pesayetu/assets/Group 4658.png";
+import Group4659 from "@/pesayetu/assets/Group 4659.png";
 import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
 import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
 import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
@@ -146,26 +151,31 @@ export const dataIndicator = {
   items: [
     {
       title: "Overview",
+      image: Group4657,
       description:
         "This includes general county data. Topics include administrative and political units, population size and composition, land use, tourism and wildlife, industry and trade, finance, and education.",
     },
     {
       title: "Revenue",
+      image: Group4656,
       description:
         "This looks at the review of the implementation of the previous County Integrated Development Plan for the period of 2014 to 2017. Datasets include county revenue streams and expenditure analysis.",
     },
     {
       title: "Development",
+      image: Group4646,
       description:
         "This highlights the county development priorities and strategies. It looks at the programmes and associated budgets the county has proposed for the period 2018 to 2022.",
     },
     {
       title: "Implement",
+      image: Group4659,
       description:
         "This showcases the implementation framework for the county as published in the County Integrated Development Plan. It covers the resource mobilisation framework on the proposed and predicted revenue and expenditure.",
     },
     {
       title: "Summary",
+      image: Group4658,
       description:
         "The summary takes a look at the monitoring and evaluation framework as published in the County Integrated Development Plan. This includes the outcome indicators for each of the sector plans proposed.",
     },

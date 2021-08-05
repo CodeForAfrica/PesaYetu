@@ -1,5 +1,6 @@
 import { Grid, Typography, Grow } from "@material-ui/core";
 import Image from "next/image";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import useStyles from "./useStyles";
@@ -9,10 +10,24 @@ import Group4656 from "@/pesayetu/assets/Group 4656.png";
 import Group4657 from "@/pesayetu/assets/Group 4657.png";
 import Group4658 from "@/pesayetu/assets/Group 4658.png";
 import Group4659 from "@/pesayetu/assets/Group 4659.png";
+// import { dataIndicator } from "@/pesayetu/config";
 
-const DataIndicators = (props) => {
+const DataIndicators = ({ title, items, ...props }) => {
   const [checked, setChecked] = useState(false);
   const classes = useStyles({ checked, ...props });
+
+  // const indicatorMap = {
+  //   Overview:
+  //     "This includes general county data. Topics include administrative and political units, population size and composition, land use, tourism and wildlife, industry and trade, finance, and education.",
+  //   Revenue:
+  //     "This looks at the review of the implementation of the previous County Integrated Development Plan for the period of 2014 to 2017. Datasets include county revenue streams and expenditure analysis.",
+  //   Development:
+  //     "This highlights the county development priorities and strategies. It looks at the programmes and associated budgets the county has proposed for the period 2018 to 2022.",
+  //   Implement:
+  //     "This showcases the implementation framework for the county as published in the County Integrated Development Plan. It covers the resource mobilisation framework on the proposed and predicted revenue and expenditure.",
+  //   Summary:
+  //     "The summary takes a look at the monitoring and evaluation framework as published in the County Integrated Development Plan. This includes the outcome indicators for each of the sector plans proposed.",
+  // };
 
   const handleChange = () => {
     setChecked((prev) => !prev);
@@ -65,7 +80,7 @@ const DataIndicators = (props) => {
                   layout="fill"
                 />
               </div>
-              <Typography className={classes.text}>Implementation</Typography>
+              <Typography className={classes.text}>Implement</Typography>
             </Grid>
             <Grid item className={classes.item}>
               <div className={classes.imageContainer}>
@@ -96,6 +111,20 @@ const DataIndicators = (props) => {
       </Grid>
     </div>
   );
+};
+
+DataIndicators.propTypes = {
+  title: PropTypes.string,
+  items: PropTypes.shape({
+    image: PropTypes.string,
+    title: PropTypes.string,
+    string: PropTypes.string,
+  }),
+};
+
+DataIndicators.defaultProps = {
+  title: undefined,
+  items: undefined,
 };
 
 export default DataIndicators;
