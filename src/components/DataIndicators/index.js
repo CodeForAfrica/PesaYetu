@@ -9,7 +9,6 @@ import Group4656 from "@/pesayetu/assets/Group 4656.png";
 import Group4657 from "@/pesayetu/assets/Group 4657.png";
 import Group4658 from "@/pesayetu/assets/Group 4658.png";
 import Group4659 from "@/pesayetu/assets/Group 4659.png";
-import Section from "@/pesayetu/components/Section";
 
 const DataIndicators = (props) => {
   const [checked, setChecked] = useState(false);
@@ -21,8 +20,8 @@ const DataIndicators = (props) => {
 
   return (
     <div className={classes.root}>
-      <Section classes={{ root: classes.section }}>
-        <Grid container className={classes.container}>
+      <Grid container className={classes.container}>
+        <Grid container className={classes.indicatorsContainer}>
           <Typography className={classes.sectionTitle}>
             Data Indicators
           </Typography>
@@ -80,7 +79,11 @@ const DataIndicators = (props) => {
             </Grid>
           </div>
         </Grid>
-        <Grow in={checked} onClick={handleChange}>
+        <Grow
+          in={checked}
+          onClick={handleChange}
+          className={classes.transition}
+        >
           <div className={classes.descriptionSection}>
             <Typography className={classes.title}>Overview</Typography>
             <Typography className={classes.description}>
@@ -90,7 +93,7 @@ const DataIndicators = (props) => {
             </Typography>
           </div>
         </Grow>
-      </Section>
+      </Grid>
     </div>
   );
 };

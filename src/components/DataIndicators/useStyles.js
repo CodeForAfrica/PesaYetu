@@ -13,12 +13,10 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       marginTop: typography.pxToRem(20),
     },
   },
-
-  section: {
-    // paddingTop: typography.pxToRem(102),
-    // paddingBottom: typography.pxToRem(163),
-    display: "flex",
+  container: {
+    flexWrap: "nowrap",
   },
+  section: {},
   image: {
     width: "max-content",
   },
@@ -49,7 +47,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     marginTop: typography.pxToRem(80),
     marginBottom: typography.pxToRem(163),
   },
-  container: {
+  indicatorsContainer: {
     flexDirection: "column",
     paddingTop: typography.pxToRem(102),
 
@@ -75,9 +73,13 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     fontSize: typography.pxToRem(30),
   },
   description: {},
-  // transition: (props) => ({
-  //   display: props.checked ? "block" : "none",
-  // }), // NOTE: This styling destructs page layout, investigate
+  transition: (props) => ({
+    backgroundColor: "#0067A3",
+    color: "#fff",
+    width: typography.pxToRem(400),
+    padding: `0 ${typography.pxToRem(84)}`,
+    display: props.checked ? "block" : "none",
+  }), // NOTE: This styling destructs page layout, investigate
 }));
 
 export default useStyles;
