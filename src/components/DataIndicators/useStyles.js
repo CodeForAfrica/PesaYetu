@@ -9,8 +9,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     fontSize: typography.pxToRem(30),
     fontWeight: 900,
     [breakpoints.up("md")]: {
-      fontSize: typography.pxToRem(48),
+      fontSize: typography.pxToRem(30),
       marginTop: typography.pxToRem(20),
+    },
+    [breakpoints.up("lg")]: {
+      fontSize: typography.pxToRem(48),
     },
   },
   container: {
@@ -47,6 +50,32 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     marginTop: typography.pxToRem(80),
     marginBottom: typography.pxToRem(163),
   },
+  // refine these styles
+  mdImageContainer: {
+    marginTop: typography.pxToRem(16),
+  },
+  mdIndicatorContainer: {},
+  mdText: {
+    margin: 0,
+    display: "flex",
+    alignItems: "center",
+    marginLeft: typography.pxToRem(30),
+  },
+  mdContainer: {
+    padding: typography.pxToRem(40),
+  },
+  mdDescription: {
+    backgroundColor: "#0067A3",
+    marginTop: typography.pxToRem(40),
+    color: "#fff",
+    paddingRight: typography.pxToRem(30),
+    paddingLeft: typography.pxToRem(30),
+  },
+
+  smTitle: {
+    padding: `${typography.pxToRem(40)} 0`,
+  },
+
   indicatorsContainer: {
     flexDirection: "column",
     paddingTop: typography.pxToRem(102),

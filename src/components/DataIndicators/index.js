@@ -1,8 +1,10 @@
-import { Grid, Typography, Grow } from "@material-ui/core";
+import { Grid, Typography, Grow, Hidden } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
+import Mobile from "./Mobile";
+import Tablet from "./Tablet";
 import useStyles from "./useStyles";
 
 import Section from "@/pesayetu/components/Section";
@@ -22,39 +24,52 @@ const DataIndicators = ({ title, items, ...props }) => {
   return (
     <div className={classes.root}>
       <Section>
-        <Grid container className={classes.container}>
-          <Grid container className={classes.indicatorsContainer}>
-            <Typography className={classes.sectionTitle}>{title}</Typography>
-            <div className={classes.iconContainer}>
-              {items?.map((item) => (
-                <Grid key={item.title} item className={classes.item}>
-                  <div className={classes.imageContainer}>
-                    <Image
-                      className={classes.image}
-                      src={item.image}
-                      layout="fill"
-                      onClick={() => handleChange(item)}
-                    />
-                  </div>
-                  <Typography className={classes.text}>{item.title}</Typography>
-                </Grid>
-              ))}
-            </div>
+        <Hidden mdDown>
+          <Grid container className={classes.container}>
+            <Grid container className={classes.indicatorsContainer}>
+              <Typography className={classes.sectionTitle}>{title}</Typography>
+              <div className={classes.iconContainer}>
+                {items?.map((item) => (
+                  <Grid key={item.title} item className={classes.item}>
+                    <div className={classes.imageContainer}>
+                      <Image
+                        className={classes.image}
+                        src={item.image}
+                        layout="fill"
+                        onClick={() => handleChange(item)}
+                      />
+                    </div>
+                    <Typography className={classes.text}>
+                      {item.title}
+                    </Typography>
+                  </Grid>
+                ))}
+              </div>
+            </Grid>
+            <Grow
+              in={checked}
+              onClick={handleChange}
+              className={classes.transition}
+            >
+              <div className={classes.descriptionSection}>
+                <Typography className={classes.title}>
+                  {currentTitle}
+                </Typography>
+                <Typography className={classes.description}>
+                  {currentDescription}
+                </Typography>
+              </div>
+            </Grow>
           </Grid>
-          <Grow
-            in={checked}
-            onClick={handleChange}
-            className={classes.transition}
-          >
-            <div className={classes.descriptionSection}>
-              <Typography className={classes.title}>{currentTitle}</Typography>
-              <Typography className={classes.description}>
-                {currentDescription}
-              </Typography>
-            </div>
-          </Grow>
-        </Grid>
+        </Hidden>
+
+        <Hidden smUp>
+          <Mobile items={items} title={title} />
+        </Hidden>
       </Section>
+      <Hidden lgUp smDown>
+        <Tablet items={items} title={title} />
+      </Hidden>
     </div>
   );
 };
