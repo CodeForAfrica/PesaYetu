@@ -29,6 +29,9 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     paddingRight: typography.pxToRem(20),
     paddingLeft: typography.pxToRem(17),
     [breakpoints.up("md")]: {
+      width: "100%",
+    },
+    [breakpoints.up("lg")]: {
       paddingRight: 0,
       paddingLeft: 0,
     },
@@ -177,10 +180,10 @@ function MobileNavigation({
   return (
     <Section classes={{ root: classes.section }}>
       <div className={classes.root}>
-        <Grid item xs={10}>
+        <Grid item xs={10} md={11}>
           <Logo {...logoProps} />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={2} md={1}>
           <IconButton
             aria-label="Open drawer"
             edge="start"
