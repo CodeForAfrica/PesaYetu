@@ -34,7 +34,7 @@ function EnablingPartners({ title, partners, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container xs={12}>
+      <Grid container>
         <Grid item xs={12}>
           <Typography variant="h4" className={classes.title}>
             {title}
@@ -64,7 +64,9 @@ EnablingPartners.propTypes = {
   partners: PropTypes.arrayOf(
     PropTypes.shape({
       link: PropTypes.string,
-      logo: PropTypes.string,
+      logo: PropTypes.shape({
+        url: PropTypes.string,
+      }),
       name: PropTypes.string,
     })
   ),

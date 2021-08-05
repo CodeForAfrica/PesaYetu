@@ -98,7 +98,7 @@ function Index({ mainPartner, newsletter, ...props }) {
         </div>
       </div>
       <Section className={classes.section}>
-        <Grid container xs={12}>
+        <Grid container>
           <Grid item xs={12} lg={7}>
             <Enablingpartners {...props} />
           </Grid>
