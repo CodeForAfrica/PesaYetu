@@ -5,11 +5,6 @@ import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
-import Group4646 from "@/pesayetu/assets/Group 4646.png";
-import Group4656 from "@/pesayetu/assets/Group 4656.png";
-import Group4657 from "@/pesayetu/assets/Group 4657.png";
-import Group4658 from "@/pesayetu/assets/Group 4658.png";
-import Group4659 from "@/pesayetu/assets/Group 4659.png";
 // import { dataIndicator } from "@/pesayetu/config";
 
 const DataIndicators = ({ title, items, ...props }) => {
@@ -41,57 +36,18 @@ const DataIndicators = ({ title, items, ...props }) => {
             Data Indicators
           </Typography>
           <div className={classes.iconContainer}>
-            <Grid item className={classes.item}>
-              <div className={classes.imageContainer}>
-                <Image
-                  className={classes.image}
-                  src={Group4657}
-                  layout="fill"
-                  onClick={handleChange}
-                />
-              </div>
-              <Typography className={classes.text}>Overview</Typography>
-            </Grid>
-            <Grid item className={classes.item}>
-              <div className={classes.imageContainer}>
-                <Image
-                  className={classes.image}
-                  src={Group4656}
-                  layout="fill"
-                />
-              </div>
-              <Typography className={classes.text}>Revenue</Typography>
-            </Grid>
-            <Grid item className={classes.item}>
-              <div className={classes.imageContainer}>
-                <Image
-                  className={classes.image}
-                  src={Group4646}
-                  layout="fill"
-                />
-              </div>
-              <Typography className={classes.text}>Development</Typography>
-            </Grid>
-            <Grid item className={classes.item}>
-              <div className={classes.imageContainer}>
-                <Image
-                  className={classes.image}
-                  src={Group4659}
-                  layout="fill"
-                />
-              </div>
-              <Typography className={classes.text}>Implement</Typography>
-            </Grid>
-            <Grid item className={classes.item}>
-              <div className={classes.imageContainer}>
-                <Image
-                  className={classes.image}
-                  src={Group4658}
-                  layout="fill"
-                />
-              </div>
-              <Typography className={classes.text}>Summary</Typography>
-            </Grid>
+            {items?.map((item) => (
+              <Grid item className={classes.item}>
+                <div className={classes.imageContainer}>
+                  <Image
+                    className={classes.image}
+                    src={item.image}
+                    layout="fill"
+                  />
+                </div>
+                <Typography className={classes.text}>{item.title}</Typography>
+              </Grid>
+            ))}
           </div>
         </Grid>
         <Grow
@@ -115,7 +71,7 @@ const DataIndicators = ({ title, items, ...props }) => {
 
 DataIndicators.propTypes = {
   title: PropTypes.string,
-  items: PropTypes.shape({
+  items: PropTypes.arrayOf({
     image: PropTypes.string,
     title: PropTypes.string,
     string: PropTypes.string,
