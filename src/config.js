@@ -1,9 +1,3 @@
-import cc from "@/pesayetu/assets/cc.svg";
-import footerLogo from "@/pesayetu/assets/footer-logo.svg";
-import facebook from "@/pesayetu/assets/footer-social-fb.svg";
-import instagram from "@/pesayetu/assets/footer-social-ig.svg";
-import linkedin from "@/pesayetu/assets/footer-social-in.svg";
-import twitter from "@/pesayetu/assets/footer-social-tw.svg";
 import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
 import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
 import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
@@ -17,14 +11,6 @@ import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
 import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
-
-const CFA = {
-  image: {
-    src: footerLogo,
-    alt: "Code for Africa",
-  },
-  url: "https://codeforafrica.org",
-};
 
 const ABOUT = {
   about:
@@ -49,28 +35,28 @@ const socialMedia = [
   {
     url: "https://www.instagram.com/code4africa__/",
     image: {
-      url: instagram,
+      url: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-3049.svg",
       alt: "Instagram",
     },
   },
   {
     url: "https://www.facebook.com/CodeForAfrica/",
     image: {
-      url: facebook,
+      url: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-3048.svg",
       alt: "Facebook",
     },
   },
   {
     url: "https://twitter.com/Code4Africa",
     image: {
-      url: twitter,
+      url: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-3047.svg",
       alt: "Twitter",
     },
   },
   {
     url: "https://github.com/codeforafrica",
     image: {
-      url: linkedin,
+      url: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-3184.svg",
       alt: "LinkedIn",
     },
   },
@@ -318,20 +304,21 @@ export const dataVisuals = {
 
 export const footerArgs = {
   title: "Stay in touch with us",
-  socialMedia,
-  quickLinks: QUICK_LINKS[0],
   description: ABOUT.about,
   logoProps: {
-    image: CFA.image,
-    url: CFA.url,
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/Group-4426.svg",
+    alt: "Code for Africa",
+    href: "https://codeforafrica.org",
   },
-  aboutVariant: "subtitle1",
+  socialMedia,
+  quickLinks: QUICK_LINKS[0],
   copyrightProps: {
-    icon: cc,
+    icon: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/07/cc.svg",
     copyright: "2021 PesaYetu",
     copyrightUrl: "https://dev.pesayetu.pesacheck.org",
     copyrightVariant: "subtitle1",
   },
+  aboutVariant: "subtitle1",
 };
 
 export default {
