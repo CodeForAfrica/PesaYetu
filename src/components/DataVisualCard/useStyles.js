@@ -21,6 +21,18 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       },
     },
   },
+  cardMedia: {
+    height: typography.pxToRem(215),
+    position: "relative",
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(183),
+      width: typography.pxToRem(296),
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(231),
+      width: typography.pxToRem(376),
+    },
+  },
 }));
 
 export default useStyles;

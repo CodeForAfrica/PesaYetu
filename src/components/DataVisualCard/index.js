@@ -9,7 +9,10 @@ import Card from "@/pesayetu/components/Card";
 const DataVisualCard = ({ image, description, ...props }) => {
   const classes = useStyles(props);
   return (
-    <Card classes={{ root: classes.root }} image={image}>
+    <Card
+      classes={{ root: classes.root, cardMedia: classes.cardMedia }}
+      image={image}
+    >
       <RichTypography
         className={classes.content}
         variant="subtitle2"

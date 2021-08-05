@@ -18,7 +18,11 @@ const InsightCard = ({
   const classes = useStyles(props);
 
   return (
-    <Card classes={{ root: classes.card }} image={image} href={href}>
+    <Card
+      classes={{ root: classes.card, cardMedia: classes.cardMedia }}
+      image={image}
+      href={href}
+    >
       {title && (
         <Typography variant="h4" className={classes.cardTitle}>
           {title}

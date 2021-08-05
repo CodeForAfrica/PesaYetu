@@ -29,6 +29,18 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   cardDescription: {
     marginBottom: typography.pxToRem(20),
   },
+  cardMedia: {
+    height: typography.pxToRem(215),
+    position: "relative",
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(183),
+      width: typography.pxToRem(296),
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(231),
+      width: typography.pxToRem(376),
+    },
+  },
   link: {
     textDecoration: "underline",
   },

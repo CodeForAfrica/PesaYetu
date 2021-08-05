@@ -11,7 +11,11 @@ const ExploreCard = ({ item, ...props }) => {
   const { title, description, image } = item;
 
   return (
-    <Card image={image} classes={{ root: classes.root }} imageMargin="true">
+    <Card
+      image={image}
+      classes={{ root: classes.root, cardMedia: classes.cardMedia }}
+      imageMargin="true"
+    >
       <Typography className={classes.title} variant="h4">
         {title}
       </Typography>
