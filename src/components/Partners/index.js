@@ -102,14 +102,14 @@ function Index({ mainPartner, newsletter, ...props }) {
           <Grid item xs={12} lg={7}>
             <Enablingpartners {...props} />
           </Grid>
-          <Grid xs={12} md={1} />
+          <Grid item xs={12} md={1} />
           <Grid direction="row" item container xs={12} lg={4}>
-            <Grid xs={12} md={6} lg={12}>
+            <Grid item xs={12} md={6} lg={12}>
               <div className={classes.mainContainer}>
                 <MainPartner {...mainPartner} />
               </div>
             </Grid>
-            <Grid xs={12} md={6} lg={12}>
+            <Grid item xs={12} md={6} lg={12}>
               <div className={classes.newsletterContainer}>
                 <Newsletter {...newsletter} />
               </div>

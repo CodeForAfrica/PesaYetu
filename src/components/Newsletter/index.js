@@ -95,7 +95,7 @@ function Newsletter({ description, title, embedCode, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid item xs={12} container alignItems="center">
+      <Grid xs={12} container alignItems="center">
         <Typography variant="h4" className={classes.title}>
           <EnvelopeIcon className={classes.envelopeIcon} /> {title}
         </Typography>

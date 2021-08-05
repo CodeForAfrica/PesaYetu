@@ -35,13 +35,13 @@ function EnablingPartners({ title, partners, ...props }) {
   return (
     <div className={classes.root}>
       <Grid container xs={12}>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <Typography variant="h4" className={classes.title}>
             {title}
           </Typography>
         </Grid>
         {partners?.map(({ link, logo, name }) => (
-          <Grid item xs={12} md={6}>
+          <Grid key={link} item xs={12} md={6}>
             <A className={classes.link} href={link}>
               <Image
                 className={classes.logo}
