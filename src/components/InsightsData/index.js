@@ -20,11 +20,20 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Typography className={classes.title}>{title}</Typography>
-        <RichTypography className={classes.subtitle}>{subtitle}</RichTypography>
+        {title && <Typography className={classes.title}>{title}</Typography>}
+        {subtitle && (
+          <RichTypography className={classes.subtitle}>
+            {subtitle}
+          </RichTypography>
+        )}
         <Grid container className={classes.list}>
-          {itemsData &&
-            itemsData.map((item) => <InsightCard key={item.title} {...item} />)}
+          {itemsData?.map((item) => {
+            return (
+              <Grid item lg={4} xs={12} md={6}>
+                <InsightCard key={item.title} {...item} />
+              </Grid>
+            );
+          })}
         </Grid>
       </Section>
     </div>
