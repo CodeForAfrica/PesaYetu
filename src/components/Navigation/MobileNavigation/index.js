@@ -28,7 +28,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   section: {
     paddingRight: typography.pxToRem(20),
     paddingLeft: typography.pxToRem(17),
-    [breakpoints.up("lg")]: {
+    [breakpoints.up("md")]: {
       paddingRight: 0,
       paddingLeft: 0,
     },
