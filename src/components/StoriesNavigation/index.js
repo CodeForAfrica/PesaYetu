@@ -1,7 +1,9 @@
-import { Grid, Tab, Tabs, Typography } from "@material-ui/core";
+import { Tab, Tabs, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+
+import TabPanel from "@/pesayetu/components/StoriesNavigation/TabPanel";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -18,42 +20,13 @@ const useStyles = makeStyles(() => ({
   demo1: {
     backgroundColor: "white",
   },
-  demo2: {
+  tabpanel: {
     backgroundColor: "white",
   },
   padding: {
     padding: "1rem",
   },
 }));
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <Grid
-      container
-      direction="column"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <div>{children}</div>}
-    </Grid>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({})),
-  index: PropTypes.number,
-  value: PropTypes.string,
-};
-
-TabPanel.defaultProps = {
-  children: undefined,
-  index: undefined,
-  value: undefined,
-};
 
 function a11yProps(index) {
   return {
@@ -62,8 +35,14 @@ function a11yProps(index) {
   };
 }
 
-export default function NewsInsight() {
-  const classes = useStyles();
+function StoriesNavigation({
+  firstLabel,
+  secondLabel,
+  firstchild,
+  secondChild,
+  ...props
+}) {
+  const classes = useStyles(props);
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -79,19 +58,35 @@ export default function NewsInsight() {
           aria-label="simple tabs"
           classes={{ root: classes.tabs }}
         >
-          <Tab label="News" {...a11yProps(0)} disableRipple />
-          <Tab label="Insights" {...a11yProps(1)} disableRipple />
+          <Tab label={firstLabel} {...a11yProps(0)} disableRipple />
+          <Tab label={secondLabel} {...a11yProps(1)} disableRipple />
         </Tabs>
         <Typography className={classes.padding} />
       </div>
-      <div className={classes.demo2}>
+      <div className={classes.tabpanel}>
         <TabPanel value={value} index={0}>
-          <Typography variant="h2">News content</Typography>
+          {firstchild}
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Typography variant="h2">Insight Content</Typography>
+          {secondChild}
         </TabPanel>
       </div>
     </div>
   );
 }
+
+StoriesNavigation.propTypes = {
+  firstLabel: PropTypes.string,
+  secondLabel: PropTypes.string,
+  firstchild: PropTypes.arrayOf(PropTypes.shape({})),
+  secondChild: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+StoriesNavigation.defaultProps = {
+  firstchild: undefined,
+  secondChild: undefined,
+  firstLabel: undefined,
+  secondLabel: undefined,
+};
+
+export default StoriesNavigation;
