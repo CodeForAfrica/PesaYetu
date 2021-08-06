@@ -3,11 +3,17 @@ import React from "react";
 import NewsTabStories from ".";
 
 import cardImage from "@/pesayetu/assets/images/stephen-dawson-qwtCeJ5cLYs-unsplash.png";
+import { insightDataTabStories } from "@/pesayetu/config";
 
 export default {
   title: "Components/NewsTabStories",
   argTypes: {
     featuredStoryProps: {
+      control: {
+        type: "object",
+      },
+    },
+    dataInsightDataProps: {
       control: {
         type: "object",
       },
@@ -28,4 +34,5 @@ Default.args = {
     ctaText: "Read More",
     image: cardImage,
   },
+  dataInsightDataProps: insightDataTabStories,
 };
