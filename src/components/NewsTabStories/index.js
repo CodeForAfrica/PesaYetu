@@ -1,11 +1,32 @@
 import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
+import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
 import InsightsData from "@/pesayetu/components/InsightsData";
+import Section from "@/pesayetu/components/Section";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  desktop: {
+    breakpoint: {
+      max: 3000,
+      min: 1280,
+    },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1279, min: 768 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 767, min: 0 },
+    items: 1,
+  },
+};
 
 function NewsTabStories({
   featuredStoryProps,
@@ -16,12 +37,23 @@ function NewsTabStories({
 
   return (
     <Grid container direction="column" className={classes.root}>
-      <Grid item>
-        <FeaturedStoryCard {...featuredStoryProps} />
-      </Grid>
-      <Grid item>
-        <InsightsData {...dataInsightDataProps} />
-      </Grid>
+      <Section classes={{ root: classes.section }}>
+        <Grid item>
+          <FeaturedStoryCard {...featuredStoryProps} />
+        </Grid>
+        <Grid item>
+          <Carousel
+            swipeable
+            responsive={responsive}
+            arrows={false}
+            renderDotsOutside
+            showDots
+            dotListClass={classes.dots}
+          >
+            <InsightsData {...dataInsightDataProps} />
+          </Carousel>
+        </Grid>
+      </Section>
     </Grid>
   );
 }
