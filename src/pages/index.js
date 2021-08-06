@@ -9,7 +9,6 @@ import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
 import { searchArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
-import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ boundary, blocks, ...props }) {
@@ -65,12 +64,10 @@ export async function getStaticProps() {
   const { children } = await res.json();
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const footerProps = getFooterMenu(props?.menus?.footerMenu || []);
   return {
     props: {
       ...props,
       blocks,
-      footerProps,
       boundary: children?.county,
     },
     revalidate,
