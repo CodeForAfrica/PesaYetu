@@ -10,8 +10,54 @@ import DataVisualTwo from "@/pesayetu/assets/images/DataVisualTwo.png";
 import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
 import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
+import developmentHover from "@/pesayetu/assets/images/Group 4646.svg";
+import revenueHover from "@/pesayetu/assets/images/Group 4656.svg";
+import overviewHover from "@/pesayetu/assets/images/Group 4657.svg";
+import summaryHover from "@/pesayetu/assets/images/Group 4658.svg";
+import implementHover from "@/pesayetu/assets/images/Group 4659.svg";
 import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
+
+export const dataIndicator = {
+  title: "Data Indicators",
+  items: [
+    {
+      title: "Overview",
+      image: Group4657,
+      hover: overviewHover,
+      description:
+        "This includes general county data. Topics include administrative and political units, population size and composition, land use, tourism and wildlife, industry and trade, finance, and education.",
+    },
+    {
+      title: "Revenue",
+      image: Group4656,
+      hover: revenueHover,
+      description:
+        "This looks at the review of the implementation of the previous County Integrated Development Plan for the period of 2014 to 2017. Datasets include county revenue streams and expenditure analysis.",
+    },
+    {
+      title: "Development",
+      image: Group4646,
+      hover: developmentHover,
+      description:
+        "This highlights the county development priorities and strategies. It looks at the programmes and associated budgets the county has proposed for the period 2018 to 2022.",
+    },
+    {
+      title: "Implement",
+      image: Group4659,
+      hover: implementHover,
+      description:
+        "This showcases the implementation framework for the county as published in the County Integrated Development Plan. It covers the resource mobilisation framework on the proposed and predicted revenue and expenditure.",
+    },
+    {
+      title: "Summary",
+      image: Group4658,
+      hover: summaryHover,
+      description:
+        "The summary takes a look at the monitoring and evaluation framework as published in the County Integrated Development Plan. This includes the outcome indicators for each of the sector plans proposed.",
+    },
+  ],
+};
 
 const ABOUT = {
   about:
@@ -142,42 +188,6 @@ export const dataVisuals = {
       image: DataVisualThree,
       description:
         "<span class='bold'>Step 3:</span> Browse the charts and download and share the data using the buttons on the right side.",
-    },
-  ],
-};
-
-export const dataIndicator = {
-  title: "Data Indicators",
-  items: [
-    {
-      title: "Overview",
-      image: Group4657,
-      description:
-        "This includes general county data. Topics include administrative and political units, population size and composition, land use, tourism and wildlife, industry and trade, finance, and education.",
-    },
-    {
-      title: "Revenue",
-      image: Group4656,
-      description:
-        "This looks at the review of the implementation of the previous County Integrated Development Plan for the period of 2014 to 2017. Datasets include county revenue streams and expenditure analysis.",
-    },
-    {
-      title: "Development",
-      image: Group4646,
-      description:
-        "This highlights the county development priorities and strategies. It looks at the programmes and associated budgets the county has proposed for the period 2018 to 2022.",
-    },
-    {
-      title: "Implement",
-      image: Group4659,
-      description:
-        "This showcases the implementation framework for the county as published in the County Integrated Development Plan. It covers the resource mobilisation framework on the proposed and predicted revenue and expenditure.",
-    },
-    {
-      title: "Summary",
-      image: Group4658,
-      description:
-        "The summary takes a look at the monitoring and evaluation framework as published in the County Integrated Development Plan. This includes the outcome indicators for each of the sector plans proposed.",
     },
   ],
 };
