@@ -48,7 +48,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   backgroundGrid: {
     width: "100%",
     height: "100%",
-    backgroundImage: `url('${mapLines}')`,
+    position: "absolute",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     flexGrow: 1,
@@ -107,6 +107,7 @@ function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
+        <Image src={mapLines} layout="fill" />
         <Grid container>
           <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />
