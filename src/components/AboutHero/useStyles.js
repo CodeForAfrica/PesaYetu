@@ -60,11 +60,12 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     top: typography.pxToRem(70),
     width: "100%",
     background: `linear-gradient(to right, #ffffffE6 0%, #ffffffE6 87.5%, transparent 87.5%, transparent 100%)`,
-
+    [breakpoints.up("md")]: {
+      background: `linear-gradient(to right, #ffffffE6 0%, #ffffffE6 62.5%, transparent 62.5%, transparent 100%)`,
+    },
     height: typography.pxToRem(400),
     [breakpoints.up("lg")]: {
       top: typography.pxToRem(100),
-
       background: `linear-gradient(to right, #ffffffE6 0%, #ffffffE6 56%, transparent 56%, transparent 100%)`,
     },
   },
