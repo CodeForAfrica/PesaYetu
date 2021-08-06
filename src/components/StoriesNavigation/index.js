@@ -9,9 +9,17 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     flexGrow: 1,
   },
+  wrapper: {
+    borderBottom: `4px solid transparent`,
+  },
+  activeWrapper: {
+    borderBottom: `4px solid ${palette.primary.main}`,
+    color: palette.primary.main,
+  },
   divider: {
-    marginTop: typography.pxToRem(-8),
-    backgroundColor: "#e8e8e8",
+    marginTop: typography.pxToRem(-12.8),
+    backgroundColor: "#F0F0F0",
+    height: typography.pxToRem(2),
   },
   tabs: {
     textTransform: "none",
@@ -24,32 +32,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     backgroundColor: palette.background.default,
     height: 0,
   },
-  secondTab: {
+  firstTab: {
     textTransform: "uppercase",
     letterSpacing: typography.pxToRem(1.6),
-    fontWeight: 600,
-    fontSize: typography.pxToRem(16),
-    minHeight: typography.pxToRem(23),
-    padding: `0 ${typography.pxToRem(48)}`,
-    color: "#666666",
-    "&:hover": {
-      color: palette.primary.main,
-      opacity: 1,
-    },
-    "&$selected": {
-      color: palette.primary.main,
-      fontWeight: 600,
-      fontSize: typography.pxToRem(16),
-    },
-    "&:focus": {
-      color: palette.primary.main,
-      opacity: 1,
-    },
-  },
-  tab: {
-    textTransform: "uppercase",
-    letterSpacing: typography.pxToRem(1.6),
-    borderBottom: `2px solid transparent`,
     fontWeight: 600,
     fontSize: typography.pxToRem(16),
     minHeight: typography.pxToRem(23),
@@ -68,25 +53,25 @@ const useStyles = makeStyles(({ palette, typography }) => ({
       opacity: 1,
     },
   },
-  activeTab: {
+  secondTab: {
     textTransform: "uppercase",
-    borderBottom: `2px solid ${palette.primary.main}`,
     letterSpacing: typography.pxToRem(1.6),
     fontWeight: 600,
     fontSize: typography.pxToRem(16),
     minHeight: typography.pxToRem(23),
-    color: palette.primary.main,
+    padding: `0 ${typography.pxToRem(48)}`,
+    color: "#666666",
     "&:hover": {
-      color: palette.primary.main,
+      color: "#666666",
       opacity: 1,
     },
     "&$selected": {
-      color: palette.primary.main,
+      color: "#666666",
       fontWeight: 600,
       fontSize: typography.pxToRem(16),
     },
     "&:focus": {
-      color: palette.primary.main,
+      color: "#666666",
       opacity: 1,
     },
   },
@@ -137,13 +122,19 @@ function StoriesNavigation({
             label={firstLabel}
             {...a11yProps(0)}
             disableRipple
-            classes={{ root: value === 0 ? classes.activeTab : classes.tab }}
+            classes={{
+              root: classes.firstTab,
+              wrapper: value === 0 ? classes.activeWrapper : classes.wrapper,
+            }}
           />
           <Tab
             label={secondLabel}
             {...a11yProps(1)}
             disableRipple
-            classes={{ root: classes.secondTab }}
+            classes={{
+              root: classes.secondTab,
+              wrapper: classes.wrapper,
+            }}
           />
         </Tabs>
         <Divider className={classes.divider} />
