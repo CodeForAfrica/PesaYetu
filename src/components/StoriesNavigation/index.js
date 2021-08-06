@@ -1,4 +1,4 @@
-import { Tab, Tabs, Typography } from "@material-ui/core";
+import { Tab, Tabs, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -9,12 +9,30 @@ const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
+  divider: {},
   tabs: {
     textTransform: "none",
-    borderBottom: "1px solid #e8e8e8",
+    minHeight: "29px",
   },
-  indicator: {
-    backgroundColor: "#1890ff",
+  tab: {
+    textTransform: "uppercase",
+    fontWeight: 600,
+    fontSize: "16px",
+    minHeight: "23px",
+    color: "#666666",
+    "&:hover": {
+      color: "#0067A3",
+      opacity: 1,
+    },
+    "&$selected": {
+      color: "#0067A3",
+      fontWeight: 600,
+      fontSize: "16px",
+    },
+    "&:focus": {
+      color: "#0067A3",
+      opacity: 1,
+    },
   },
   selected: {},
   tabsContent: {
@@ -22,9 +40,6 @@ const useStyles = makeStyles(() => ({
   },
   tabpanel: {
     backgroundColor: "white",
-  },
-  padding: {
-    padding: "1rem",
   },
 }));
 
@@ -56,12 +71,28 @@ function StoriesNavigation({
           value={value}
           onChange={handleChange}
           aria-label="simple tabs"
+          TabIndicatorProps={{
+            style: {
+              display: "none",
+              padding: 0,
+            },
+          }}
           classes={{ root: classes.tabs }}
         >
-          <Tab label={firstLabel} {...a11yProps(0)} disableRipple />
-          <Tab label={secondLabel} {...a11yProps(1)} disableRipple />
+          <Tab
+            label={firstLabel}
+            {...a11yProps(0)}
+            disableRipple
+            classes={{ root: classes.tab }}
+          />
+          <Tab
+            label={secondLabel}
+            {...a11yProps(1)}
+            disableRipple
+            classes={{ root: classes.tab }}
+          />
         </Tabs>
-        <Typography className={classes.padding} />
+        <Divider className={classes.divider} />
       </div>
       <div className={classes.tabpanel}>
         <TabPanel value={value} index={0}>
