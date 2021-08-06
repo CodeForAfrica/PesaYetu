@@ -34,12 +34,12 @@ const useStyles = makeStyles(() => ({
       opacity: 1,
     },
   },
-  selected: {},
   tabsContent: {
     backgroundColor: "white",
   },
   tabpanel: {
     backgroundColor: "white",
+    padding: "2rem 1rem",
   },
 }));
 
