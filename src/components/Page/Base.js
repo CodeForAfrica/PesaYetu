@@ -29,7 +29,7 @@ BasePage.propTypes = {
     PropTypes.node,
   ]),
   menus: PropTypes.shape({
-    footerMenu: PropTypes.arrayOf({}),
+    footerMenu: PropTypes.arrayOf(PropTypes.shape({})),
   }),
 };
 

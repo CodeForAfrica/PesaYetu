@@ -45,11 +45,13 @@ Home.defaultProps = {
   footerProps: undefined,
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview, previewData }) {
   const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     { slug: "/" },
-    postType
+    postType,
+    preview,
+    previewData
   );
 
   if (notFound) {
