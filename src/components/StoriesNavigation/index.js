@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     color: palette.primary.main,
   },
   divider: {
-    marginTop: typography.pxToRem(-12.8),
+    marginTop: typography.pxToRem(-8),
     backgroundColor: "#F0F0F0",
     height: typography.pxToRem(2),
   },
@@ -105,6 +105,9 @@ function StoriesNavigation({
             style: {
               display: "none",
             },
+          }}
+          classes={{
+            root: classes.tabs,
           }}
         >
           <Tab
