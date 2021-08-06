@@ -9,17 +9,73 @@ const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
-  divider: {},
+  divider: {
+    marginTop: "-0.5rem",
+    backgroundColor: "#e8e8e8",
+  },
   tabs: {
     textTransform: "none",
-    minHeight: "29px",
+    minHeight: "23px",
+  },
+  activeIndicator: {
+    backgroundColor: "#0067A3",
+  },
+  indicator: {
+    backgroundColor: "white",
+    height: 0,
+  },
+  secondTab: {
+    textTransform: "uppercase",
+    letterSpacing: "1.6px",
+    fontWeight: 600,
+    fontSize: "16px",
+    minHeight: "23px",
+    padding: "0rem 3rem",
+    color: "#666666",
+    "&:hover": {
+      color: "#0067A3",
+      opacity: 1,
+    },
+    "&$selected": {
+      color: "#0067A3",
+      fontWeight: 600,
+      fontSize: "16px",
+    },
+    "&:focus": {
+      color: "#0067A3",
+      opacity: 1,
+    },
   },
   tab: {
     textTransform: "uppercase",
+    letterSpacing: "1.6px",
+    borderBottom: "2px solid transparent",
     fontWeight: 600,
     fontSize: "16px",
     minHeight: "23px",
     color: "#666666",
+    "&:hover": {
+      color: "#0067A3",
+      opacity: 1,
+    },
+    "&$selected": {
+      color: "#0067A3",
+      fontWeight: 600,
+      fontSize: "16px",
+    },
+    "&:focus": {
+      color: "#0067A3",
+      opacity: 1,
+    },
+  },
+  activeTab: {
+    textTransform: "uppercase",
+    borderBottom: "2px solid #0067A3",
+    letterSpacing: "1.6px",
+    fontWeight: 600,
+    fontSize: "16px",
+    minHeight: "23px",
+    color: "#0067A3",
     "&:hover": {
       color: "#0067A3",
       opacity: 1,
@@ -74,22 +130,20 @@ function StoriesNavigation({
           TabIndicatorProps={{
             style: {
               display: "none",
-              padding: 0,
             },
           }}
-          classes={{ root: classes.tabs }}
         >
           <Tab
             label={firstLabel}
             {...a11yProps(0)}
             disableRipple
-            classes={{ root: classes.tab }}
+            classes={{ root: value === 0 ? classes.activeTab : classes.tab }}
           />
           <Tab
             label={secondLabel}
             {...a11yProps(1)}
             disableRipple
-            classes={{ root: classes.tab }}
+            classes={{ root: classes.secondTab }}
           />
         </Tabs>
         <Divider className={classes.divider} />
