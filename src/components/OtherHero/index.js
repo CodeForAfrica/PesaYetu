@@ -34,10 +34,10 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     textTransform: "uppercase",
   },
   title: {
-    marginBottom: typography.pxToRem(20),
-    fontWeight: "bold",
+    marginBottom: typography.pxToRem(35.5),
+    fontWeight: 900,
     [breakpoints.up("md")]: {
-      marginBottom: typography.pxToRem(40),
+      marginBottom: typography.pxToRem(20),
     },
     "& .highlight": {
       display: "inline-block",
