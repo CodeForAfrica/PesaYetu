@@ -59,6 +59,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("md")]: {
       paddingLeft: `calc((100vw - ${breakpoints.values.md}px)/2)`,
       position: "absolute",
+      height: "100%",
     },
   },
   leftBackground: {
@@ -113,7 +114,7 @@ function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
-        <Image src={mapLines} layout="fill" />
+        <Image objectFit="cover" src={mapLines} layout="fill" />
         <Grid container>
           <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />
@@ -121,7 +122,7 @@ function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
           <Grid item xs={12} md={6}>
             <div className={classes.rightBackgroundWrapper}>
               <div className={classes.rightBackground}>
-                <Image src={image} layout="fill" />
+                <Image objectFit="cover" src={image} layout="fill" />
                 <Image
                   width={400}
                   height={400}
