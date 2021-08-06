@@ -25,13 +25,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     textTransform: "none",
     minHeight: typography.pxToRem(23),
   },
-  activeIndicator: {
-    backgroundColor: palette.primary.main,
-  },
-  indicator: {
-    backgroundColor: palette.background.default,
-    height: 0,
-  },
   firstTab: {
     textTransform: "uppercase",
     letterSpacing: typography.pxToRem(1.6),
@@ -41,7 +34,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     color: "#666666",
     "&:hover": {
       color: palette.primary.main,
-      opacity: 1,
     },
     "&$selected": {
       color: palette.primary.main,
@@ -50,7 +42,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     },
     "&:focus": {
       color: palette.primary.main,
-      opacity: 1,
     },
   },
   secondTab: {
@@ -63,7 +54,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     color: "#666666",
     "&:hover": {
       color: "#666666",
-      opacity: 1,
     },
     "&$selected": {
       color: "#666666",
@@ -72,7 +62,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     },
     "&:focus": {
       color: "#666666",
-      opacity: 1,
     },
   },
   tabsContent: {
