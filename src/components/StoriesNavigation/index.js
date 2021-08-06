@@ -5,97 +5,97 @@ import React, { useState } from "react";
 
 import TabPanel from "@/pesayetu/components/StoriesNavigation/TabPanel";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     flexGrow: 1,
   },
   divider: {
-    marginTop: "-0.5rem",
+    marginTop: typography.pxToRem(-8),
     backgroundColor: "#e8e8e8",
   },
   tabs: {
     textTransform: "none",
-    minHeight: "23px",
+    minHeight: typography.pxToRem(23),
   },
   activeIndicator: {
-    backgroundColor: "#0067A3",
+    backgroundColor: palette.primary.main,
   },
   indicator: {
-    backgroundColor: "white",
+    backgroundColor: palette.background.default,
     height: 0,
   },
   secondTab: {
     textTransform: "uppercase",
-    letterSpacing: "1.6px",
+    letterSpacing: typography.pxToRem(1.6),
     fontWeight: 600,
-    fontSize: "16px",
-    minHeight: "23px",
-    padding: "0rem 3rem",
+    fontSize: typography.pxToRem(16),
+    minHeight: typography.pxToRem(23),
+    padding: `0 ${typography.pxToRem(48)}`,
     color: "#666666",
     "&:hover": {
-      color: "#0067A3",
+      color: palette.primary.main,
       opacity: 1,
     },
     "&$selected": {
-      color: "#0067A3",
+      color: palette.primary.main,
       fontWeight: 600,
-      fontSize: "16px",
+      fontSize: typography.pxToRem(16),
     },
     "&:focus": {
-      color: "#0067A3",
+      color: palette.primary.main,
       opacity: 1,
     },
   },
   tab: {
     textTransform: "uppercase",
-    letterSpacing: "1.6px",
-    borderBottom: "2px solid transparent",
+    letterSpacing: typography.pxToRem(1.6),
+    borderBottom: `2px solid transparent`,
     fontWeight: 600,
-    fontSize: "16px",
-    minHeight: "23px",
+    fontSize: typography.pxToRem(16),
+    minHeight: typography.pxToRem(23),
     color: "#666666",
     "&:hover": {
-      color: "#0067A3",
+      color: palette.primary.main,
       opacity: 1,
     },
     "&$selected": {
-      color: "#0067A3",
+      color: palette.primary.main,
       fontWeight: 600,
       fontSize: "16px",
     },
     "&:focus": {
-      color: "#0067A3",
+      color: palette.primary.main,
       opacity: 1,
     },
   },
   activeTab: {
     textTransform: "uppercase",
-    borderBottom: "2px solid #0067A3",
-    letterSpacing: "1.6px",
+    borderBottom: `2px solid ${palette.primary.main}`,
+    letterSpacing: typography.pxToRem(1.6),
     fontWeight: 600,
-    fontSize: "16px",
-    minHeight: "23px",
-    color: "#0067A3",
+    fontSize: typography.pxToRem(16),
+    minHeight: typography.pxToRem(23),
+    color: palette.primary.main,
     "&:hover": {
-      color: "#0067A3",
+      color: palette.primary.main,
       opacity: 1,
     },
     "&$selected": {
-      color: "#0067A3",
+      color: palette.primary.main,
       fontWeight: 600,
-      fontSize: "16px",
+      fontSize: typography.pxToRem(16),
     },
     "&:focus": {
-      color: "#0067A3",
+      color: palette.primary.main,
       opacity: 1,
     },
   },
   tabsContent: {
-    backgroundColor: "white",
+    backgroundColor: palette.background.default,
   },
   tabpanel: {
-    backgroundColor: "white",
-    padding: "2rem 1rem",
+    backgroundColor: palette.background.default,
+    padding: `${typography.pxToRem(32)} ${typography.pxToRem(16)}`,
   },
 }));
 
