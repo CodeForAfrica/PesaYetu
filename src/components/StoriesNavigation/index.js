@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#1890ff",
   },
   selected: {},
-  demo1: {
+  tabsContent: {
     backgroundColor: "white",
   },
   tabpanel: {
@@ -38,7 +38,7 @@ function a11yProps(index) {
 function StoriesNavigation({
   firstLabel,
   secondLabel,
-  firstchild,
+  firstChild,
   secondChild,
   ...props
 }) {
@@ -51,7 +51,7 @@ function StoriesNavigation({
 
   return (
     <div className={classes.root}>
-      <div className={classes.demo1}>
+      <div className={classes.tabsContent}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -65,7 +65,7 @@ function StoriesNavigation({
       </div>
       <div className={classes.tabpanel}>
         <TabPanel value={value} index={0}>
-          {firstchild}
+          {firstChild}
         </TabPanel>
         <TabPanel value={value} index={1}>
           {secondChild}
@@ -78,15 +78,21 @@ function StoriesNavigation({
 StoriesNavigation.propTypes = {
   firstLabel: PropTypes.string,
   secondLabel: PropTypes.string,
-  firstchild: PropTypes.arrayOf(PropTypes.shape({})),
-  secondChild: PropTypes.arrayOf(PropTypes.shape({})),
+  firstChild: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  secondChild: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 StoriesNavigation.defaultProps = {
-  firstchild: undefined,
-  secondChild: undefined,
   firstLabel: undefined,
   secondLabel: undefined,
+  firstChild: undefined,
+  secondChild: undefined,
 };
 
 export default StoriesNavigation;
