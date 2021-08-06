@@ -21,7 +21,10 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
   textContainer: {
     height: "100%",
-    paddingTop: typography.pxToRem(50),
+    paddingTop: typography.pxToRem(50 + 390),
+    [breakpoints.up("md")]: {
+      paddingTop: typography.pxToRem(50),
+    },
     [breakpoints.up("lg")]: {
       paddingTop: typography.pxToRem(129.94),
     },
@@ -47,7 +50,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
   backgroundGrid: {
     width: "100%",
-    height: "100%",
+    height: typography.pxToRem(390),
     position: "absolute",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -60,18 +63,21 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
   leftBackground: {
     [breakpoints.up("md")]: {
-      height: typography.pxToRem(391),
+      height: typography.pxToRem(390),
     },
   },
   rightBackground: {
-    height: typography.pxToRem(391),
+    height: "100%",
+    width: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundImage: ({ image }) => `url('${image}')`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
+    position: "absolute",
+  },
+  rightBackgroundWrapper: {
+    height: typography.pxToRem(391),
     [breakpoints.up("md")]: {
+      position: "relative",
       height: "100%",
       marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/6)`,
     },
@@ -98,7 +104,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
 }));
 function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
-  const classes = useStyles({ image, ...props });
+  const classes = useStyles(props);
 
   if (!title?.length) {
     return null;
@@ -112,17 +118,19 @@ function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
           <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />
           </Grid>
-
           <Grid item xs={12} md={6}>
-            <div className={classes.rightBackground}>
-              <Image
-                width={400}
-                height={400}
-                layout="intrinsic"
-                className={classes.accentImage}
-                src={accentImage}
-                alt=""
-              />
+            <div className={classes.rightBackgroundWrapper}>
+              <div className={classes.rightBackground}>
+                <Image src={image} layout="fill" />
+                <Image
+                  width={400}
+                  height={400}
+                  layout="intrinsic"
+                  className={classes.accentImage}
+                  src={accentImage}
+                  alt=""
+                />
+              </div>
             </div>
           </Grid>
         </Grid>
