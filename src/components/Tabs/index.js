@@ -1,5 +1,6 @@
 import { Tab, Divider, Tabs as MuiTabs } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -107,14 +108,12 @@ function Tabs({ tabItems, ...props }) {
               {...a11yProps(index)}
               disableRipple
               classes={{
-                root:
-                  index === value && index === 0
-                    ? classes.firstTab
-                    : classes.secondTab,
-                wrapper:
-                  index === value && index === 0
-                    ? classes.activeWrapper
-                    : classes.wrapper,
+                root: classNames(classes.secondTab, {
+                  [classes.firstTab]: index === value && index === 0,
+                }),
+                wrapper: classNames(classes.wrapper, {
+                  [classes.activeWrapper]: index === value && index === 0,
+                }),
               }}
             />
           ))}
