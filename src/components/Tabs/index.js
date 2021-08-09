@@ -106,10 +106,10 @@ function Tabs({ tabItems, ...props }) {
               label={item.label}
               {...a11yProps(index)}
               disableRipple
-              /*  classes={{
-                root: value === 0 ? classes.firstTab : classes.secondTab,
-                wrapper: value === 0 ? classes.activeWrapper : classes.wrapper,
-              }} */
+              classes={{
+                root: index === 0 ? classes.firstTab : classes.secondTab,
+                wrapper: index === 0 ? classes.activeWrapper : classes.wrapper,
+              }}
             />
           ))}
         </MuiTabs>
