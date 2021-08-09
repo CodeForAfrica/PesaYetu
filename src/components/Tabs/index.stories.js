@@ -2,27 +2,17 @@ import React from "react";
 
 import Tabs from ".";
 
+const tabItems = [
+  { label: "News", children: "This is news section" },
+  { label: "Insight", children: "This is the insight section" },
+];
+
 export default {
   title: "Components/Tabs",
   argTypes: {
-    firstLabel: {
+    tabItems: {
       control: {
-        type: "text",
-      },
-    },
-    secondLabel: {
-      control: {
-        type: "text",
-      },
-    },
-    firstChild: {
-      control: {
-        type: "text",
-      },
-    },
-    secondChild: {
-      control: {
-        type: "text",
+        type: "array",
       },
     },
   },
@@ -33,8 +23,5 @@ const Template = ({ ...args }) => <Tabs {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  firstLabel: "News",
-  secondLabel: "Insights",
-  firstChild: "News content goes here",
-  secondChild: "Insight content goes here",
+  tabItems,
 };

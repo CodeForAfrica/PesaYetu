@@ -81,8 +81,7 @@ function a11yProps(index) {
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-
-function Tabs({ firstLabel, secondLabel, firstChild, secondChild, ...props }) {
+function Tabs({ tabItems, ...props }) {
   const classes = useStyles(props);
   const [value, setValue] = useState(0);
 
@@ -102,57 +101,42 @@ function Tabs({ firstLabel, secondLabel, firstChild, secondChild, ...props }) {
             indicator: classes.indicator,
           }}
         >
-          <Tab
-            label={firstLabel}
-            {...a11yProps(0)}
-            disableRipple
-            classes={{
-              root: classes.firstTab,
-              wrapper: value === 0 ? classes.activeWrapper : classes.wrapper,
-            }}
-          />
-          <Tab
-            label={secondLabel}
-            {...a11yProps(1)}
-            disableRipple
-            classes={{
-              root: classes.secondTab,
-              wrapper: classes.wrapper,
-            }}
-          />
+          {tabItems.map((item, index) => (
+            <Tab
+              label={item.label}
+              {...a11yProps(index)}
+              disableRipple
+              classes={{
+                root: value === 0 ? classes.firstTab : classes.secondTab,
+                wrapper: value === 0 ? classes.activeWrapper : classes.wrapper,
+              }}
+            />
+          ))}
         </MuiTabs>
         <Divider className={classes.divider} />
       </div>
       <div className={classes.tabpanel}>
-        <TabPanel value={value} index={0}>
-          {firstChild}
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          {secondChild}
-        </TabPanel>
+        {tabItems.map((item, index) => (
+          <TabPanel value={value} index={index} disableRipple>
+            {item.children}
+          </TabPanel>
+        ))}
       </div>
     </div>
   );
 }
 
 Tabs.propTypes = {
-  firstLabel: PropTypes.string,
-  secondLabel: PropTypes.string,
-  firstChild: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-  secondChild: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  tabItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      children: PropTypes.string,
+    })
+  ),
 };
 
 Tabs.defaultProps = {
-  firstLabel: undefined,
-  secondLabel: undefined,
-  firstChild: undefined,
-  secondChild: undefined,
+  tabItems: undefined,
 };
 
 export default Tabs;
