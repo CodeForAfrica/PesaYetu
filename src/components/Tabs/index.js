@@ -1,9 +1,9 @@
-import { Tab, Tabs, Divider } from "@material-ui/core";
+import { Tab, Divider, Tabs as MuiTabs } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import TabPanel from "@/pesayetu/components/NavigationTabs/TabPanel";
+import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
@@ -83,13 +83,7 @@ function a11yProps(index) {
   };
 }
 
-function NavigationTabs({
-  firstLabel,
-  secondLabel,
-  firstChild,
-  secondChild,
-  ...props
-}) {
+function Tabs({ firstLabel, secondLabel, firstChild, secondChild, ...props }) {
   const classes = useStyles(props);
   const [value, setValue] = useState(0);
 
@@ -100,7 +94,7 @@ function NavigationTabs({
   return (
     <div className={classes.root}>
       <div className={classes.tabsContent}>
-        <Tabs
+        <MuiTabs
           value={value}
           onChange={handleChange}
           aria-label="simple tabs"
@@ -127,7 +121,7 @@ function NavigationTabs({
               wrapper: classes.wrapper,
             }}
           />
-        </Tabs>
+        </MuiTabs>
         <Divider className={classes.divider} />
       </div>
       <div className={classes.tabpanel}>
@@ -142,7 +136,7 @@ function NavigationTabs({
   );
 }
 
-NavigationTabs.propTypes = {
+Tabs.propTypes = {
   firstLabel: PropTypes.string,
   secondLabel: PropTypes.string,
   firstChild: PropTypes.oneOfType([
@@ -155,11 +149,11 @@ NavigationTabs.propTypes = {
   ]),
 };
 
-NavigationTabs.defaultProps = {
+Tabs.defaultProps = {
   firstLabel: undefined,
   secondLabel: undefined,
   firstChild: undefined,
   secondChild: undefined,
 };
 
-export default NavigationTabs;
+export default Tabs;
