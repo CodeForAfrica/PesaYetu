@@ -8,7 +8,6 @@ function TabPanel({ children, value, index, ...other }) {
       container
       direction="column"
       role="tabpanel"
-      hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
