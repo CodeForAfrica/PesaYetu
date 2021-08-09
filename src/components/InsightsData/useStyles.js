@@ -6,6 +6,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   section: {
     paddingTop: typography.pxToRem(60),
+    paddingLeft: typography.pxToRem(20),
+    paddingRight: typography.pxToRem(20),
+    [breakpoints.up("md")]: {
+      padding: `${typography.pxToRem(80)} 0`,
+    },
   },
   title: {
     fontWeight: "bold",
@@ -15,7 +20,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   subtitle: {
     fontSize: typography.pxToRem(30),
-    fontWeight: "900",
+    fontWeight: 900,
     marginBottom: typography.pxToRem(60),
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(30),
@@ -35,7 +40,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     flexDirection: "column",
     [breakpoints.up("md")]: {
       flexDirection: "row",
-      justifyContent: "space-between",
     },
   },
 }));

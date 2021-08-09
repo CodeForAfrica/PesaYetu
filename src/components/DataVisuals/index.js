@@ -21,9 +21,11 @@ const DataVisuals = ({ title, items, ...props }) => {
 
   return (
     <Section classes={{ root: classes.root }}>
-      <Typography variant="h3" className={classes.title}>
-        {title}
-      </Typography>
+      {title && (
+        <Typography variant="h3" className={classes.title}>
+          {title}
+        </Typography>
+      )}
 
       <Hidden smDown lgUp implementation="css" className={classes.section}>
         <Carousel
@@ -34,21 +36,21 @@ const DataVisuals = ({ title, items, ...props }) => {
           showDots
           dotListClass={classes.dots}
         >
-          {items &&
-            items.map((item) => <DataVisualCard key={item.image} {...item} />)}
+          {items?.map((item) => (
+            <DataVisualCard key={item.image} {...item} />
+          ))}
         </Carousel>
       </Hidden>
 
       <Hidden only="md" implementation="css" className={classes.section}>
         <Grid container className={classes.container}>
-          {items &&
-            items.map((item) => {
-              return (
-                <Grid item lg={4} xs={12} key={item.image}>
-                  <DataVisualCard {...item} />
-                </Grid>
-              );
-            })}
+          {items?.map((item) => {
+            return (
+              <Grid item lg={4} xs={12} key={item.image}>
+                <DataVisualCard {...item} />
+              </Grid>
+            );
+          })}
         </Grid>
       </Hidden>
     </Section>
