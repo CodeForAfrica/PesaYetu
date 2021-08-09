@@ -53,7 +53,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     fontWeight: 600,
     fontSize: typography.pxToRem(16),
     minHeight: typography.pxToRem(23),
-    padding: `0 ${typography.pxToRem(48)}`,
     color: "#666666",
     "&:hover": {
       color: "#666666",
