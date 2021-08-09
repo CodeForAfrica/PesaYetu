@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     padding: `${typography.pxToRem(14)} ${typography.pxToRem(28)} `,
   },
   label: {
-    fontWeight: "600",
+    fontWeight: 600,
     letterSpacing: "1.6px",
     fontSize: typography.pxToRem(20),
     [breakpoints.up("lg")]: {
