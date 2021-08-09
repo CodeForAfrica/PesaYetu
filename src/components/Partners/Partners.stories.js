@@ -1,9 +1,9 @@
 import React from "react";
 
-import EnablingPartners from "./EnablingPartners";
+import Partners from "./Partners";
 
 export default {
-  title: "Components/EnablingPartners",
+  title: "Components/Our Partners",
   argTypes: {
     title: {
       control: {
@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <EnablingPartners {...args} />;
+const Template = ({ ...args }) => <Partners {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {

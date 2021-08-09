@@ -53,7 +53,7 @@ function format(block) {
     case "lazyblock/data-visuals":
     case "lazyblock/data-insights":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
-    case "lazyblock/enabling-partners-and-newsletter":
+    case "lazyblock/partners-and-newsletter":
       return formatEnablingPartners(block);
     case "lazyblock/hero":
     case "lazyblock/how-it-works":

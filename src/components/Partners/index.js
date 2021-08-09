@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Enablingpartners from "./EnablingPartners";
 import MainPartner from "./MainPartner";
+import OurPartners from "./Partners";
 
 import Newsletter from "@/pesayetu/components/Newsletter";
 import Section from "@/pesayetu/components/Section";
@@ -100,7 +100,7 @@ function Index({ mainPartner, newsletter, ...props }) {
       <Section className={classes.section}>
         <Grid container>
           <Grid item xs={12} lg={7}>
-            <Enablingpartners {...props} />
+            <OurPartners {...props} />
           </Grid>
           <Grid item xs={12} md={1} />
           <Grid direction="row" item container xs={12} lg={4}>

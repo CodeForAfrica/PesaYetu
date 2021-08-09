@@ -29,7 +29,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     margin: "0 auto ",
   },
 }));
-function EnablingPartners({ title, partners, ...props }) {
+function Partners({ title, partners, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -59,7 +59,7 @@ function EnablingPartners({ title, partners, ...props }) {
   );
 }
 
-EnablingPartners.propTypes = {
+Partners.propTypes = {
   title: PropTypes.string,
   partners: PropTypes.arrayOf(
     PropTypes.shape({
@@ -72,8 +72,8 @@ EnablingPartners.propTypes = {
   ),
 };
 
-EnablingPartners.defaultProps = {
+Partners.defaultProps = {
   title: undefined,
   partners: undefined,
 };
-export default EnablingPartners;
+export default Partners;
