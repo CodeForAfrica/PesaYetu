@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
@@ -14,6 +14,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     color: palette.grey.dark,
     display: "flex",
     alignItems: "center",
+    marginBottom: typography.pxToRem(19.93),
   },
   envelopeIcon: {
     marginRight: typography.pxToRem(22.79),
@@ -29,9 +30,12 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     },
     [breakpoints.up("lg")]: {
       minHeight: typography.pxToRem(400),
-      paddingTop: typography.pxToRem(108.09),
+      paddingTop: typography.pxToRem(96.09),
       paddingLeft: typography.pxToRem(116),
     },
+  },
+  description: {
+    marginBottom: typography.pxToRem(19.93),
   },
   form: {
     width: "100%",
@@ -95,7 +99,7 @@ function Newsletter({ description, title, embedCode, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container alignItems="center">
+      <div>
         <Typography variant="h4" className={classes.title}>
           <EnvelopeIcon className={classes.envelopeIcon} /> {title}
         </Typography>
@@ -107,7 +111,7 @@ function Newsletter({ description, title, embedCode, ...props }) {
         <RichTypography classes={{ root: classes.form }}>
           {embedCode}
         </RichTypography>
-      </Grid>
+      </div>
     </div>
   );
 }
