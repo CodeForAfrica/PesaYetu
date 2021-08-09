@@ -8,7 +8,6 @@ function TabPanel({ children, value, index, ...other }) {
       container
       direction="column"
       role="tabpanel"
-      hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
@@ -19,7 +18,7 @@ function TabPanel({ children, value, index, ...other }) {
 }
 
 TabPanel.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({})),
+  children: PropTypes.node,
   index: PropTypes.number,
   value: PropTypes.string,
 };

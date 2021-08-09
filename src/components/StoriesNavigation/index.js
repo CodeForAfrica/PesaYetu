@@ -12,6 +12,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   wrapper: {
     borderBottom: `4px solid transparent`,
   },
+  indicator: {
+    display: "none",
+  },
   activeWrapper: {
     borderBottom: `4px solid ${palette.primary.main}`,
     color: palette.primary.main,
@@ -101,13 +104,9 @@ function StoriesNavigation({
           value={value}
           onChange={handleChange}
           aria-label="simple tabs"
-          TabIndicatorProps={{
-            style: {
-              display: "none",
-            },
-          }}
           classes={{
             root: classes.tabs,
+            indicator: classes.indicator,
           }}
         >
           <Tab
