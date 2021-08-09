@@ -1,9 +1,9 @@
 import React from "react";
 
-import StoriesNavigation from ".";
+import NavigationTabs from ".";
 
 export default {
-  title: "Components/StoriesNavigation",
+  title: "Components/NavigationTabs",
   argTypes: {
     firstLabel: {
       control: {
@@ -28,7 +28,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <StoriesNavigation {...args} />;
+const Template = ({ ...args }) => <NavigationTabs {...args} />;
 
 export const Default = Template.bind({});
 

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import TabPanel from "@/pesayetu/components/StoriesNavigation/TabPanel";
+import TabPanel from "@/pesayetu/components/NavigationTabs/TabPanel";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
@@ -83,7 +83,7 @@ function a11yProps(index) {
   };
 }
 
-function StoriesNavigation({
+function NavigationTabs({
   firstLabel,
   secondLabel,
   firstChild,
@@ -142,7 +142,7 @@ function StoriesNavigation({
   );
 }
 
-StoriesNavigation.propTypes = {
+NavigationTabs.propTypes = {
   firstLabel: PropTypes.string,
   secondLabel: PropTypes.string,
   firstChild: PropTypes.oneOfType([
@@ -155,11 +155,11 @@ StoriesNavigation.propTypes = {
   ]),
 };
 
-StoriesNavigation.defaultProps = {
+NavigationTabs.defaultProps = {
   firstLabel: undefined,
   secondLabel: undefined,
   firstChild: undefined,
   secondChild: undefined,
 };
 
-export default StoriesNavigation;
+export default NavigationTabs;
