@@ -107,8 +107,14 @@ function Tabs({ tabItems, ...props }) {
               {...a11yProps(index)}
               disableRipple
               classes={{
-                root: index === 0 ? classes.firstTab : classes.secondTab,
-                wrapper: index === 0 ? classes.activeWrapper : classes.wrapper,
+                root:
+                  index === value && index === 0
+                    ? classes.firstTab
+                    : classes.secondTab,
+                wrapper:
+                  index === value && index === 0
+                    ? classes.activeWrapper
+                    : classes.wrapper,
               }}
             />
           ))}
