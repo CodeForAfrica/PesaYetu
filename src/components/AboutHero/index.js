@@ -20,7 +20,7 @@ function AboutHero({ title, tagline, intro, ...props }) {
       <Section classes={{ root: classes.section }}>
         <Grid container>
           <Grid item xs={9} md={9} lg={6} className={classes.textContainer}>
-            <Typography className={classes.intro} variant="h6">
+            <Typography className={classes.intro} variant="body2">
               {intro}
             </Typography>
             <RichTypography variant="h1" className={classes.title}>

@@ -37,13 +37,11 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   intro: {
     fontWeight: "bold",
     textTransform: "uppercase",
+    marginBottom: typography.pxToRem(13),
   },
   title: {
-    marginBottom: typography.pxToRem(20),
+    marginBottom: typography.pxToRem(10),
     fontWeight: "bold",
-    [breakpoints.up("md")]: {
-      marginBottom: typography.pxToRem(40),
-    },
     "& .highlight": {
       display: "inline-block",
       background:
