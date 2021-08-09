@@ -106,10 +106,10 @@ function Tabs({ tabItems, ...props }) {
               label={item.label}
               {...a11yProps(index)}
               disableRipple
-              classes={{
+              /*  classes={{
                 root: value === 0 ? classes.firstTab : classes.secondTab,
                 wrapper: value === 0 ? classes.activeWrapper : classes.wrapper,
-              }}
+              }} */
             />
           ))}
         </MuiTabs>
@@ -117,7 +117,7 @@ function Tabs({ tabItems, ...props }) {
       </div>
       <div className={classes.tabpanel}>
         {tabItems.map((item, index) => (
-          <TabPanel value={value} index={index} disableRipple>
+          <TabPanel value={value} index={index}>
             {item.children}
           </TabPanel>
         ))}
