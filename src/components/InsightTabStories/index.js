@@ -22,7 +22,12 @@ function InsightTabStories({
         }}
       >
         <Grid item>
-          <FeaturedStoryCard {...featuredInsightProps} />
+          <FeaturedStoryCard
+            {...featuredInsightProps}
+            classes={{
+              media: classes.media,
+            }}
+          />
         </Grid>
         <Grid item>
           <Grid container className={classes.insightStories}>
