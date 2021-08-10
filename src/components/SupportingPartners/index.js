@@ -18,9 +18,20 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     color: palette.grey.dark,
     marginBottom: typography.pxToRem(49.38),
   },
-
+  logoContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
+  },
+  link: {
+    display: "inline-block",
+    marginLeft: typography.pxToRem(12),
+    marginRight: typography.pxToRem(12),
+    flexShrink: 0,
+  },
   logo: {
-    margin: "0 auto ",
+    margin: "0",
   },
 }));
 function Index({ title, partners, ...props }) {
@@ -34,7 +45,7 @@ function Index({ title, partners, ...props }) {
             {title}
           </Typography>
         </div>
-        <div>
+        <div className={classes.logoContainer}>
           {partners?.map(({ link, logo, name }) => (
             <A key={link} className={classes.link} href={link}>
               <Image
