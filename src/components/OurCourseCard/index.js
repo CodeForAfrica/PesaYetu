@@ -29,7 +29,7 @@ const OurCourseCard = ({
         </Typography>
       )}
       {description && (
-        <Typography variant="subtitle2" className={classes.cardDescription}>
+        <Typography variant="body2" className={classes.cardDescription}>
           {description}
         </Typography>
       )}

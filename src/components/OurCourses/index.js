@@ -1,4 +1,3 @@
-import RichTypography from "@commons-ui/core/RichTypography";
 import { Typography, useMediaQuery, Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
@@ -9,7 +8,7 @@ import useStyles from "./useStyles";
 import OurCourseCard from "@/pesayetu/components/OurCourseCard";
 import Section from "@/pesayetu/components/Section";
 
-const OurCourses = ({ title, subtitle, items, ...props }) => {
+const OurCourses = ({ title, items, ...props }) => {
   let itemsData = [];
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.only("md"));
@@ -20,12 +19,12 @@ const OurCourses = ({ title, subtitle, items, ...props }) => {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        {title && <Typography className={classes.title}>{title}</Typography>}
-        {subtitle && (
-          <RichTypography className={classes.subtitle}>
-            {subtitle}
-          </RichTypography>
+        {title && (
+          <Typography variant="h3" className={classes.title}>
+            {title}
+          </Typography>
         )}
+
         <Grid container className={classes.list}>
           {itemsData?.map((item) => {
             return (
@@ -42,7 +41,6 @@ const OurCourses = ({ title, subtitle, items, ...props }) => {
 
 OurCourses.propTypes = {
   title: PropTypes.string,
-  subtitle: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -54,7 +52,6 @@ OurCourses.propTypes = {
 
 OurCourses.defaultProps = {
   title: undefined,
-  subtitle: undefined,
   items: undefined,
 };
 

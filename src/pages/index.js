@@ -6,8 +6,9 @@ import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
 import InsightData from "@/pesayetu/components/InsightsData";
+import OurCourses from "@/pesayetu/components/OurCourses";
 import Page from "@/pesayetu/components/Page";
-import { searchArgs } from "@/pesayetu/config";
+import { searchArgs, ourCourses } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -22,6 +23,7 @@ export default function Home({ boundary, blocks, ...props }) {
       <HowItWorks {...blocks?.howItWorks} />
       <InsightData {...blocks?.dataInsights} />
       <DataVisuals {...blocks?.dataVisuals} />
+      <OurCourses {...ourCourses} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
