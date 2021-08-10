@@ -321,8 +321,11 @@ export const footerArgs = {
   aboutVariant: "subtitle1",
 };
 
-export default {
+const config = {
   footerArgs,
-  navigationArgs,
   exploreTools,
+  navigationArgs,
+  url: "http://localhost:3000",
 };
+
+export default config;
