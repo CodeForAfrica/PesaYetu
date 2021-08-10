@@ -32,7 +32,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   tab: {
     textTransform: "uppercase",
     minWidth: 0,
-    padding: `0 ${typography.pxToRem(40)} 0 0`,
+    padding: `0 ${typography.pxToRem(40.5)} 0 0`,
     letterSpacing: typography.pxToRem(1.6),
     fontWeight: 600,
     fontSize: typography.pxToRem(16),
@@ -47,6 +47,8 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   activeTab: {
     fontWeight: 600,
     textTransform: "uppercase",
+    minWidth: 0,
+    padding: `0 ${typography.pxToRem(40.5)} 0 0`,
     fontSize: typography.pxToRem(16),
     letterSpacing: typography.pxToRem(1.6),
     minHeight: typography.pxToRem(23),
