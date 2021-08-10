@@ -3,17 +3,19 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Footer from "@/pesayetu/components/Footer";
-import { footerArgs } from "@/pesayetu/config";
+import Navigation from "@/pesayetu/components/Navigation";
+import { navigationArgs } from "@/pesayetu/config";
+
 /**
  * Base page that can be used to build all other pages.
  */
-
-function BasePage({ children, ...props }) {
+function BasePage({ children, footerProps, ...props }) {
   return (
     <>
+      <Navigation {...navigationArgs} />
       <NextSeo {...props} />
       {children}
-      <Footer {...footerArgs} />
+      <Footer {...footerProps} />
     </>
   );
 }
@@ -23,10 +25,12 @@ BasePage.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  footerProps: PropTypes.shape({}),
 };
 
 BasePage.defaultProps = {
   children: undefined,
+  footerProps: undefined,
 };
 
 export default BasePage;

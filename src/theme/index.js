@@ -9,7 +9,8 @@ const FONT_FAMILY_TEXT = '"Poppins", "sans-serif"';
 const theme = createTheme({
   breakpoints: {
     values: {
-      xs: 0, // mobile
+      xs: 0,
+      sm: 390, // mobile
       md: 768, // tablet
       lg: 1280, // desktop
     },
@@ -24,7 +25,7 @@ const theme = createTheme({
       light: "#F8A199", // highlight red
     },
     background: {
-      default: "#FFFFFF", // white
+      default: "#FFF", // some white
       paper: "#F8F8F8", // light white
     },
     grey: {
@@ -34,7 +35,7 @@ const theme = createTheme({
     },
     text: {
       primary: "#333333",
-      secondary: "#fff",
+      secondary: "#FFFFFF",
       hint: "#1C2031",
     },
   },
@@ -163,21 +164,58 @@ deepmerge(
       root: {},
       contained: {},
       containedPrimary: {
-        color: palette.primary.main,
-        backgroundColor: palette.background.main,
+        color: palette.background.default,
+        backgroundColor: palette.primary.main,
         boxShadow: "none",
         borderRadius: pxToRem(50),
         letterspacing: "1.6px",
         textAlign: "center",
-        border: "2px solid #0067A3",
+        border: "3px solid white",
         textTransform: "uppercase",
         transition: "none !important",
-        "&:hover": {
-          color: palette.background.main,
+        "&:hover, &:focus, &:focus-within": {
+          color: palette.primary.main,
           boxShadow: "none",
-          backgroundColor: palette.primary.main,
-          border: "2px solid transparent",
+          backgroundColor: palette.background.default,
+          border: "3px solid transparent",
           borderRadius: pxToRem(50),
+        },
+        [breakpoints.up("lg")]: {
+          color: palette.primary.main,
+          backgroundColor: palette.background.default,
+          boxShadow: "none",
+          borderRadius: pxToRem(50),
+          letterspacing: "1.6px",
+          textAlign: "center",
+          border: "3px solid #0067A3",
+          textTransform: "uppercase",
+          transition: "none !important",
+          "&:hover, &:focus, &:focus-within": {
+            color: palette.background.default,
+            boxShadow: "none",
+            backgroundColor: palette.primary.main,
+            border: "3px solid transparent",
+            borderRadius: pxToRem(50),
+          },
+        },
+        "&::after": {
+          content: '""',
+          backgroundImage: "none",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          marginLeft: 0,
+          height: 0,
+          width: 0,
+        },
+        "&:hover::after": {
+          content: '""',
+          backgroundImage: "none",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          transition: "margin 0.3s ease",
+          marginLeft: 0,
+          height: 0,
+          width: 0,
         },
       },
       text: {

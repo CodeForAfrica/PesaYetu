@@ -27,8 +27,6 @@ function Footer({
   ...props
 }) {
   const classes = useStyles(props);
-  const { url: logoHref, image: logoImg } = logoProps;
-
   return (
     <div className={classes.root}>
       <Section
@@ -38,29 +36,34 @@ function Footer({
       >
         <Grid container direction="row" justifyContent="space-between">
           <Grid item xs={12} container>
-            <LogoButton
-              component={Link}
-              href={logoHref}
-              {...logoImg}
-              classes={{
-                root: classes.logoButton,
-              }}
-            />
+            {logoProps && (
+              <LogoButton
+                {...logoProps}
+                component={Link}
+                classes={{
+                  root: classes.logoButton,
+                }}
+              />
+            )}
           </Grid>
           <Grid item xs={12} lg={6}>
-            <RichTypography
-              variant={aboutVariant}
-              className={classes.description}
-            >
-              {description}
-            </RichTypography>
-            <Copyright
-              {...copyrightProps}
-              classes={{
-                root: classes.copyright,
-                text: classes.copyrightText,
-              }}
-            />
+            {description && (
+              <RichTypography
+                variant={aboutVariant}
+                className={classes.description}
+              >
+                {description}
+              </RichTypography>
+            )}
+            {copyrightProps && (
+              <Copyright
+                {...copyrightProps}
+                classes={{
+                  root: classes.copyright,
+                  text: classes.copyrightText,
+                }}
+              />
+            )}
           </Grid>
           <Grid item xs={12} lg={4}>
             <Grid
@@ -70,29 +73,33 @@ function Footer({
               }}
             >
               <Grid item xs={12} lg={6}>
-                <QuickLinks
-                  linkComponent={Link}
-                  {...quickLinksProp}
-                  classes={{
-                    root: classes.quickLinkRoot,
-                    list: classes.quickList,
-                    link: classes.quickLink,
-                    title: classes.quickLinksTitle,
-                  }}
-                />
+                {quickLinksProp && (
+                  <QuickLinks
+                    linkComponent={Link}
+                    {...quickLinksProp}
+                    classes={{
+                      root: classes.quickLinkRoot,
+                      list: classes.quickList,
+                      link: classes.quickLink,
+                      title: classes.quickLinksTitle,
+                    }}
+                  />
+                )}
               </Grid>
               <Grid item xs={12} lg={6}>
-                <StayInTouch
-                  title={title}
-                  socialMedia={socialMedia}
-                  classes={{
-                    root: classes.stayInTouch,
-                    icon: classes.stayInTouchIcon,
-                    links: classes.stayInTouchLinks,
-                    text: classes.stayInTouchText,
-                    link: classes.stayInTouchLink,
-                  }}
-                />
+                {socialMedia && (
+                  <StayInTouch
+                    title={title}
+                    socialMedia={socialMedia}
+                    classes={{
+                      root: classes.stayInTouch,
+                      icon: classes.stayInTouchIcon,
+                      links: classes.stayInTouchLinks,
+                      text: classes.stayInTouchText,
+                      link: classes.stayInTouchLink,
+                    }}
+                  />
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -108,8 +115,9 @@ Footer.propTypes = {
   socialMedia: PropTypes.arrayOf(PropTypes.shape({})),
   quickLinks: PropTypes.PropTypes.shape({}),
   logoProps: PropTypes.shape({
-    url: PropTypes.string,
-    image: PropTypes.shape({}),
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    href: PropTypes.string,
   }),
   aboutVariant: PropTypes.string,
   copyrightProps: PropTypes.shape({}),
