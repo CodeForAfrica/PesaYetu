@@ -6,7 +6,7 @@ import Carousel from "react-multi-carousel";
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
-import InsightCard from "@/pesayetu/components/InsightCard";
+import InsightsData from "@/pesayetu/components/InsightsData";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
@@ -16,7 +16,7 @@ const responsive = {
       max: 3000,
       min: 1280,
     },
-    items: 3,
+    items: 1,
   },
   tablet: {
     breakpoint: { max: 1279, min: 768 },
@@ -27,7 +27,11 @@ const responsive = {
     items: 1,
   },
 };
-function NewsTabStories({ featuredStoryProps, itemsData, ...props }) {
+function NewsTabStories({
+  featuredStoryProps,
+  dataInsightDataProps,
+  ...props
+}) {
   const classes = useStyles(props);
 
   return (
@@ -36,7 +40,7 @@ function NewsTabStories({ featuredStoryProps, itemsData, ...props }) {
         <Grid item>
           <FeaturedStoryCard {...featuredStoryProps} />
         </Grid>
-        <Grid item className={classes.stories}>
+        <Grid item>
           <Carousel
             swipeable
             responsive={responsive}
@@ -45,10 +49,7 @@ function NewsTabStories({ featuredStoryProps, itemsData, ...props }) {
             showDots
             dotListClass={classes.dots}
           >
-            {itemsData &&
-              itemsData?.map((item) => (
-                <InsightCard key={item.title} {...item} />
-              ))}
+            <InsightsData {...dataInsightDataProps} />
           </Carousel>
         </Grid>
       </Section>
@@ -57,18 +58,12 @@ function NewsTabStories({ featuredStoryProps, itemsData, ...props }) {
 }
 NewsTabStories.propTypes = {
   featuredStoryProps: PropTypes.shape({}),
-  itemsData: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ),
+  dataInsightDataProps: PropTypes.shape({}),
 };
 
 NewsTabStories.defaultProps = {
   featuredStoryProps: undefined,
-  itemsData: undefined,
+  dataInsightDataProps: undefined,
 };
 
 export default NewsTabStories;

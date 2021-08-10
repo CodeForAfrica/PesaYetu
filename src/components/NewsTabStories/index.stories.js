@@ -13,9 +13,9 @@ export default {
         type: "object",
       },
     },
-    items: {
+    dataInsightDataProps: {
       control: {
-        type: "array",
+        type: "object",
       },
     },
   },
@@ -34,5 +34,5 @@ Default.args = {
     ctaText: "Read More",
     image: cardImage,
   },
-  itemsData: insightDataTabStories.items,
+  dataInsightDataProps: insightDataTabStories,
 };
