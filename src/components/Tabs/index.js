@@ -18,7 +18,7 @@ function Tabs({ name: nameProp, items, ...props }) {
   const [value, setValue] = useState(0);
   const name = nameProp || "simple";
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_event, newValue) => {
     setValue(newValue);
   };
 

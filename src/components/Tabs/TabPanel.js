@@ -24,7 +24,7 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number,
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.number,
 };
 
 TabPanel.defaultProps = {
