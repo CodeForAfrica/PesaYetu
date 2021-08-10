@@ -37,6 +37,7 @@ const theme = createTheme({
       secondary: "#fff",
       hint: "#1C2031",
     },
+    divider: "#F0F0F0",
   },
   typography: {
     fontFamily: FONT_FAMILY_TEXT,
