@@ -1,18 +1,21 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-function TabPanel({ children, value, index, ...other }) {
+import useStyles from "./useStyles";
+
+function TabPanel({ children, index, name, value, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <div
-      container
-      direction="column"
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
+      id={`${name}-tabpanel-${index}`}
+      aria-labelledby={`${name}-tab-${index}`}
+      {...props}
+      className={classes.tabPanel}
     >
-      <div>{children}</div>
+      {value === index && children}
     </div>
   );
 }
@@ -20,12 +23,14 @@ function TabPanel({ children, value, index, ...other }) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number,
+  name: PropTypes.string,
   value: PropTypes.string,
 };
 
 TabPanel.defaultProps = {
   children: undefined,
   index: undefined,
+  name: undefined,
   value: undefined,
 };
 
