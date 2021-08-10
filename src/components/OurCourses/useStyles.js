@@ -13,10 +13,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: "900",
     fontSize: typography.pxToRem(20),
     marginBottom: typography.pxToRem(40),
     textTransform: "uppercase",
+    textAlign: "center",
   },
 
   list: {
