@@ -9,12 +9,16 @@ const Desktop = ({ items, title, ...props }) => {
   const [checked, setChecked] = useState(false);
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentDescription, setCurrentDescription] = useState("");
+  const [currentSelect, setCurrentSelect] = useState("");
+
   const classes = useStyles({ checked, ...props });
 
   const handleChange = ({ description, title: itemTitle }) => {
     if (description) {
       setCurrentTitle(itemTitle);
       setCurrentDescription(description);
+    } else {
+      setCurrentSelect("");
     }
     setChecked((prev) => !prev);
   };
@@ -25,7 +29,12 @@ const Desktop = ({ items, title, ...props }) => {
         <Typography className={classes.sectionTitle}>{title}</Typography>
         <div className={classes.iconContainer}>
           {items?.map((item) => (
-            <Icon handleChange={handleChange} item={item} />
+            <Icon
+              handleChange={handleChange}
+              item={item}
+              currentSelect={currentSelect}
+              setCurrentSelect={setCurrentSelect}
+            />
           ))}
         </div>
       </Grid>

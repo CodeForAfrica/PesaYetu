@@ -10,11 +10,17 @@ const TabletScreen = ({ items, title, ...props }) => {
   const [currentDescription, setCurrentDescription] = useState(
     items[0].description
   );
+  const [currentSelect, setCurrentSelect] = useState("");
+
   const classes = useStyles(props);
 
   const handleChange = ({ description, title: itemTitle }) => {
-    setCurrentTitle(itemTitle);
-    setCurrentDescription(description);
+    if (description) {
+      setCurrentTitle(itemTitle);
+      setCurrentDescription(description);
+    } else {
+      setCurrentSelect("");
+    }
   };
 
   return (
@@ -23,7 +29,13 @@ const TabletScreen = ({ items, title, ...props }) => {
         <Typography className={classes.sectionTitle}>{title}</Typography>
         <Grid>
           {items?.map((item) => (
-            <Icon item={item} handleChange={handleChange} />
+            <Icon
+              item={item}
+              handleChange={handleChange}
+              currentSelect={currentSelect}
+              setCurrentSelect={setCurrentSelect}
+              screen="tablet"
+            />
           ))}
         </Grid>
       </Grid>

@@ -1,22 +1,32 @@
 import { Grid, Typography } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 import useStyles from "./useStyles";
 
-const Icon = ({ item, handleChange, ...props }) => {
+const Icon = ({
+  item,
+  handleChange,
+  currentSelect,
+  setCurrentSelect,
+  screen,
+  ...props
+}) => {
   const classes = useStyles(props);
-  const { title, image } = item;
+  const { title, image, hover } = item;
 
-  const [imageState, setimageState] = useState(image);
-
-  const handleChangeImage = (itemSelected) => {
-    if (imageState === itemSelected.hover) {
-      setimageState(image);
+  const handleIconChange = (itemSelected) => {
+    if (!screen) {
+      if (!currentSelect) {
+        setCurrentSelect(itemSelected.title);
+      } else {
+        setCurrentSelect("");
+      }
     } else {
-      setimageState(itemSelected.hover);
+      setCurrentSelect(itemSelected.title);
     }
+
     handleChange(itemSelected);
   };
 
@@ -25,9 +35,9 @@ const Icon = ({ item, handleChange, ...props }) => {
       <div className={classes.imageContainer}>
         <Image
           className={classes.image}
-          src={imageState}
+          src={currentSelect === title ? hover : image}
           layout="fill"
-          onClick={() => handleChangeImage(item)}
+          onClick={() => handleIconChange(item)}
         />
       </div>
       <Typography className={classes.text}>{title}</Typography>
@@ -37,6 +47,9 @@ const Icon = ({ item, handleChange, ...props }) => {
 
 Icon.propTypes = {
   handleChange: PropTypes.func,
+  currentSelect: PropTypes.func,
+  setCurrentSelect: PropTypes.func,
+  screen: PropTypes.string,
   item: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
@@ -46,8 +59,11 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
+  currentSelect: undefined,
+  setCurrentSelect: undefined,
   handleChange: undefined,
   item: undefined,
+  screen: undefined,
 };
 
 export default Icon;
