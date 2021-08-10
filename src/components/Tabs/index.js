@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     display: "none",
   },
   divider: {
-    marginTop: typography.pxToRem(-8),
+    marginTop: typography.pxToRem(-4),
     backgroundColor: "#F0F0F0",
     height: typography.pxToRem(2),
   },
@@ -31,6 +31,8 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
   tab: {
     textTransform: "uppercase",
+    minWidth: 0,
+    padding: `0 ${typography.pxToRem(40)} 0 0`,
     letterSpacing: typography.pxToRem(1.6),
     fontWeight: 600,
     fontSize: typography.pxToRem(16),
@@ -60,7 +62,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
   tabpanel: {
     backgroundColor: palette.background.default,
-    padding: `${typography.pxToRem(32)} ${typography.pxToRem(16)}`,
+    padding: `${typography.pxToRem(24)} ${typography.pxToRem(0)}`,
   },
 }));
 
