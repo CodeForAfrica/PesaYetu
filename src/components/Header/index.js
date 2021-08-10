@@ -31,7 +31,6 @@ const useStyles = makeStyles(({ typography }) => ({
 
 function Header({ className, overline, subtitle, ...props }) {
   const classes = useStyles(props);
-  console.log("BOOM", { overline, subtitle });
 
   return (
     <header className={clsx(classes.root, className)}>
