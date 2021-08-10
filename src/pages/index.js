@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import AboutTeam from "@/pesayetu/components/AboutTeam";
 import DataVisuals from "@/pesayetu/components/DataVisuals";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
 import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
-import { searchArgs } from "@/pesayetu/config";
+import { searchArgs, aboutTeam } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -22,6 +23,7 @@ export default function Home({ boundary, blocks, ...props }) {
       <HowItWorks {...blocks?.howItWorks} />
       <InsightData {...blocks?.dataInsights} />
       <DataVisuals {...blocks?.dataVisuals} />
+      <AboutTeam {...aboutTeam} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );

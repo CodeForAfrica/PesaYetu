@@ -1,11 +1,11 @@
-import { Typography, Hidden, Grid } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import DataVisualCard from "@/pesayetu/components/DataVisualCard";
+import AboutTeamCard from "@/pesayetu/components/AboutTeamCard";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
@@ -27,22 +27,20 @@ const DataVisuals = ({ title, items, ...props }) => {
         </Typography>
       )}
 
-      <Hidden smDown lgUp implementation="css" className={classes.section}>
-        <Carousel
-          swipeable
-          responsive={responsive}
-          arrows={false}
-          renderDotsOutside
-          showDots
-          dotListClass={classes.dots}
-        >
-          {items?.map((item) => (
-            <DataVisualCard key={item.image} {...item} />
-          ))}
-        </Carousel>
-      </Hidden>
+      <Carousel
+        swipeable
+        responsive={responsive}
+        arrows={false}
+        renderDotsOutside
+        showDots
+        dotListClass={classes.dots}
+      >
+        {items?.map((item) => (
+          <AboutTeamCard key={item.image} {...item} />
+        ))}
+      </Carousel>
 
-      <Hidden only="md" implementation="css" className={classes.section}>
+      {/* <Hidden only="md" implementation="css" className={classes.section}>
         <Grid container className={classes.container}>
           {items?.map((item) => {
             return (
@@ -52,7 +50,7 @@ const DataVisuals = ({ title, items, ...props }) => {
             );
           })}
         </Grid>
-      </Hidden>
+      </Hidden> */}
     </Section>
   );
 };

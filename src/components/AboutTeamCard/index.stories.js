@@ -1,10 +1,9 @@
-/* eslint-disable import/no-anonymous-default-export */
 import React from "react";
 
-import DataVisualCard from "@/pesayetu/components/DataVisualCard";
-import { dataVisuals } from "@/pesayetu/config";
+import AboutTeamCard from "@/pesayetu/components/AboutTeamCard";
+import { aboutTeam } from "@/pesayetu/config";
 
-const { items } = dataVisuals;
+const { items } = aboutTeam;
 const [item] = items;
 
 export default {
@@ -12,7 +11,7 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <DataVisualCard {...args} />;
+const Template = ({ ...args }) => <AboutTeamCard {...args} />;
 
 export const Default = Template.bind({});
 

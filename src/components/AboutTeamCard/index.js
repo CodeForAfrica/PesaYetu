@@ -6,7 +6,7 @@ import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
 
-const DataVisualCard = ({ image, description, ...props }) => {
+const AboutTeamCard = ({ image, description, ...props }) => {
   const classes = useStyles(props);
   return (
     <Card
@@ -24,14 +24,14 @@ const DataVisualCard = ({ image, description, ...props }) => {
   );
 };
 
-DataVisualCard.propTypes = {
+AboutTeamCard.propTypes = {
   image: PropTypes.string,
   description: PropTypes.string,
 };
 
-DataVisualCard.defaultProps = {
+AboutTeamCard.defaultProps = {
   image: undefined,
   description: undefined,
 };
 
-export default DataVisualCard;
+export default AboutTeamCard;
