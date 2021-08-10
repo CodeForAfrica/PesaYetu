@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   subtitle: {
     fontSize: typography.pxToRem(30),
-    fontWeight: "900",
+    fontWeight: 900,
     marginBottom: typography.pxToRem(60),
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(30),

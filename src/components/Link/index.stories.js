@@ -4,7 +4,6 @@ import Link from ".";
 
 export default {
   title: "Components/Link",
-  component: Link,
   argTypes: {
     color: {
       control: {
