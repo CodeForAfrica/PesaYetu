@@ -1,10 +1,9 @@
-import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
 function TabPanel({ children, value, index, ...other }) {
   return (
-    <Grid
+    <div
       container
       direction="column"
       role="tabpanel"
@@ -13,7 +12,7 @@ function TabPanel({ children, value, index, ...other }) {
       {...other}
     >
       {value === index && <div>{children}</div>}
-    </Grid>
+    </div>
   );
 }
 
