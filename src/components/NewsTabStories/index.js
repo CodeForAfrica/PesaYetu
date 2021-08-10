@@ -35,7 +35,7 @@ function NewsTabStories({
   const classes = useStyles(props);
 
   return (
-    <Grid container direction="column" className={classes.root}>
+    <Grid container direction="column">
       <Section classes={{ root: classes.section }}>
         <Grid item>
           <FeaturedStoryCard {...featuredStoryProps} />
@@ -49,7 +49,12 @@ function NewsTabStories({
             showDots
             dotListClass={classes.dots}
           >
-            <InsightsData {...dataInsightDataProps} />
+            <InsightsData
+              {...dataInsightDataProps}
+              classes={{
+                root: classes.root,
+              }}
+            />
           </Carousel>
         </Grid>
       </Section>

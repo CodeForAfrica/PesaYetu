@@ -1,9 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {},
+  root: { backgroundColor: "white" },
+  insightsData: {},
   stories: {
     padding: `${typography.pxToRem(32)} 0`,
+    margin: "2rem",
   },
   dots: {
     margin: `0 ${typography.pxToRem(30)}`,
