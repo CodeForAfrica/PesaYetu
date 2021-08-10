@@ -4,25 +4,44 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
 import InsightsData from "@/pesayetu/components/InsightsData";
+import Section from "@/pesayetu/components/Section";
 
-function InsightTabStories({ insightProps, ...props }) {
+function InsightTabStories({
+  featuredInsightProps,
+  insightDataProps,
+  ...props
+}) {
   const classes = useStyles(props);
   return (
     <Grid container className={classes.root}>
-      <Grid container item>
-        <InsightsData {...insightProps} />
-      </Grid>
+      <Section
+        classes={{
+          root: classes.section,
+        }}
+      >
+        <Grid item>
+          <FeaturedStoryCard {...featuredInsightProps} />
+        </Grid>
+        <Grid item>
+          <Grid container className={classes.insightStories}>
+            <InsightsData {...insightDataProps} />
+          </Grid>
+        </Grid>
+      </Section>
     </Grid>
   );
 }
 
 InsightTabStories.propTypes = {
-  insightProps: PropTypes.arrayOf(PropTypes.shape({})),
+  featuredInsightProps: PropTypes.shape({}),
+  insightDataProps: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 InsightTabStories.defaultProps = {
-  insightProps: undefined,
+  featuredInsightProps: undefined,
+  insightDataProps: undefined,
 };
 
 export default InsightTabStories;
