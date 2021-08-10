@@ -1,14 +1,14 @@
 import { Grid, Typography } from "@material-ui/core";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
+import Icon from "./Icon";
 import useStyles from "./useStyles";
 
 const TabletScreen = ({ items, title, ...props }) => {
-  const [currentTitle, setCurrentTitle] = useState("Overview");
+  const [currentTitle, setCurrentTitle] = useState(items[0].title);
   const [currentDescription, setCurrentDescription] = useState(
-    "This includes general county data. Topics include administrative and political units, population size and composition, land use, tourism and wildlife, industry and trade, finance, and education."
+    items[0].description
   );
   const classes = useStyles(props);
 
@@ -23,21 +23,7 @@ const TabletScreen = ({ items, title, ...props }) => {
         <Typography className={classes.sectionTitle}>{title}</Typography>
         <Grid>
           {items?.map((item) => (
-            <Grid container>
-              <div
-                className={`${classes.imageContainer} ${classes.mdImageContainer}`}
-              >
-                <Image
-                  className={classes.image}
-                  src={item.image}
-                  layout="fill"
-                  onClick={() => handleChange(item)}
-                />
-              </div>
-              <Typography className={`${classes.text} ${classes.mdText}`}>
-                {item.title}
-              </Typography>
-            </Grid>
+            <Icon item={item} handleChange={handleChange} />
           ))}
         </Grid>
       </Grid>

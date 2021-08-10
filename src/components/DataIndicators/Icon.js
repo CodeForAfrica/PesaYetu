@@ -7,13 +7,19 @@ import useStyles from "./useStyles";
 
 const Icon = ({ item, handleChange, ...props }) => {
   const classes = useStyles(props);
-  const { title, image, hover } = item;
+  const { title, image } = item;
 
   const [imageState, setimageState] = useState(image);
 
-  const changeImage = (img) => {
-    setimageState(img);
+  const handleChangeImage = (itemSelected) => {
+    if (imageState === itemSelected.hover) {
+      setimageState(image);
+    } else {
+      setimageState(itemSelected.hover);
+    }
+    handleChange(itemSelected);
   };
+
   return (
     <Grid key={title} item className={classes.item}>
       <div className={classes.imageContainer}>
@@ -21,9 +27,7 @@ const Icon = ({ item, handleChange, ...props }) => {
           className={classes.image}
           src={imageState}
           layout="fill"
-          onClick={() => handleChange(item)}
-          onMouseEnter={() => changeImage(hover)}
-          onMouseLeave={() => changeImage(image)}
+          onClick={() => handleChangeImage(item)}
         />
       </div>
       <Typography className={classes.text}>{title}</Typography>

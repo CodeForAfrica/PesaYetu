@@ -1,9 +1,8 @@
-import { Grid, Typography, Grow, Hidden } from "@material-ui/core";
-// import Image from "next/image";
+import { Hidden } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
-import Icon from "./Icon";
+import Desktop from "./Desktop";
 import Mobile from "./Mobile";
 import Tablet from "./Tablet";
 import useStyles from "./useStyles";
@@ -11,58 +10,13 @@ import useStyles from "./useStyles";
 import Section from "@/pesayetu/components/Section";
 
 const DataIndicators = ({ title, items, ...props }) => {
-  const [checked, setChecked] = useState(false);
-  const [currentTitle, setCurrentTitle] = useState("");
-  const [currentDescription, setCurrentDescription] = useState("");
-  const classes = useStyles({ checked, ...props });
-
-  const handleChange = ({ description, title: itemTitle }) => {
-    setCurrentTitle(itemTitle);
-    setCurrentDescription(description);
-    setChecked((prev) => !prev);
-  };
+  const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
       <Section>
         <Hidden mdDown>
-          <Grid container className={classes.container}>
-            <Grid container className={classes.indicatorsContainer}>
-              <Typography className={classes.sectionTitle}>{title}</Typography>
-              <div className={classes.iconContainer}>
-                {items?.map((item) => (
-                  <Icon handleChange={handleChange} item={item} />
-                  // <Grid key={item.title} item className={classes.item}>
-                  //   <div className={classes.imageContainer}>
-                  //     <Image
-                  //       className={classes.image}
-                  //       src={item.image}
-                  //       layout="fill"
-                  //       onClick={() => handleChange(item)}
-                  //     />
-                  //   </div>
-                  //   <Typography className={classes.text}>
-                  //     {item.title}
-                  //   </Typography>
-                  // </Grid>
-                ))}
-              </div>
-            </Grid>
-            <Grow
-              in={checked}
-              onClick={handleChange}
-              className={classes.transition}
-            >
-              <div className={classes.descriptionSection}>
-                <Typography className={classes.title}>
-                  {currentTitle}
-                </Typography>
-                <Typography className={classes.description}>
-                  {currentDescription}
-                </Typography>
-              </div>
-            </Grow>
-          </Grid>
+          <Desktop items={items} title={title} />
         </Hidden>
 
         <Hidden smUp>
