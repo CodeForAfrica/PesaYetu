@@ -159,6 +159,37 @@ export const navigationArgs = {
     },
   ],
 };
+
+export const ourCourses = {
+  title: "Our Courses",
+  items: [
+    {
+      image: unsplashTwo,
+      title: "Data Visualization",
+      description:
+        "Learn the basics and all the tips and tricks needed to excel in data visualisation with this free, online course.",
+      linkdescription: "Read More",
+      href: "www.one.com",
+    },
+    {
+      image: unsplashTwo,
+      title: "Reporting on Human Trafficking",
+      description:
+        "Want to make a difference? This course will introduce you to the fundamentals of reporting on human trafficking.",
+      linkdescription: "Read More",
+      href: "www.two.com",
+    },
+    {
+      image: unsplashTwo,
+      title: "Reporting on Endemic Problems",
+      description:
+        "From this course you’ll learn everything you need to know about using solutions journalism to report on endemic problems.",
+      linkdescription: "Read More",
+      href: "www.one.com",
+    },
+  ],
+};
+
 export const insightData = {
   title: "Stories",
   subtitle: "Data Driven <span class='highlight'>Insights</span>",
