@@ -67,6 +67,7 @@ function format(block) {
         accentImage: formatLazyBlockImage(attributes?.accentImage),
       };
     case "lazyblock/hero":
+    case "lazyblock/about-hero":
     case "lazyblock/how-it-works":
     default:
       return attributes;
