@@ -1,3 +1,4 @@
+import { RichTypography } from "@commons-ui/core";
 import { Grid, Typography } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -9,10 +10,10 @@ const MobileScreen = ({ title, items, ...props }) => {
   const classes = useStyles(props);
 
   return (
-    <Grid>
-      <Typography className={`${classes.sectionTitle} ${classes.smTitle}`}>
+    <Grid className={classes.smContainer}>
+      <RichTypography className={`${classes.sectionTitle} ${classes.smTitle}`}>
         {title}
-      </Typography>
+      </RichTypography>
       <div>
         {items?.map((item) => (
           <Grid container>

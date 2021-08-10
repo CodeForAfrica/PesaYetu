@@ -15,7 +15,20 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     [breakpoints.up("lg")]: {
       fontSize: typography.pxToRem(48),
     },
+    "& .highlight": {
+      background:
+        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
+      display: "inline-block",
+    },
   },
+
+  desktopTitle: {
+    marginTop: typography.pxToRem(76),
+    marginBottom: typography.pxToRem(20),
+    fontSize: typography.pxToRem(30),
+    fontWeight: "bold",
+  },
+
   container: {
     flexWrap: "nowrap",
   },
@@ -61,29 +74,32 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     alignItems: "center",
     marginLeft: typography.pxToRem(30),
   },
-  mdContainer: {
-    padding: typography.pxToRem(40),
+
+  mdItems: {
+    padding: `${typography.pxToRem(43)} 0 ${typography.pxToRem(
+      40
+    )} ${typography.pxToRem(55)}`,
   },
   mdDescription: {
     backgroundColor: "#0067A3",
-    marginTop: typography.pxToRem(40),
+    marginTop: typography.pxToRem(70),
+    marginBottom: typography.pxToRem(70),
     color: "#fff",
     paddingRight: typography.pxToRem(30),
     paddingLeft: typography.pxToRem(30),
   },
 
   smTitle: {
+    paddingBottom: typography.pxToRem(40),
+  },
+
+  smContainer: {
     padding: `${typography.pxToRem(40)} 0`,
   },
 
   indicatorsContainer: {
     flexDirection: "column",
     paddingTop: typography.pxToRem(102),
-
-    [breakpoints.up("lg")]: {
-      // flexDirection: "row",
-      flexDirection: "column",
-    },
   },
   block: {
     display: "flex",

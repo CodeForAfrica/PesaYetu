@@ -1,3 +1,4 @@
+import { RichTypography } from "@commons-ui/core";
 import { Grid, Typography, Grow } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -26,7 +27,9 @@ const Desktop = ({ items, title, ...props }) => {
   return (
     <Grid container className={classes.container}>
       <Grid container className={classes.indicatorsContainer}>
-        <Typography className={classes.sectionTitle}>{title}</Typography>
+        <RichTypography className={classes.sectionTitle}>
+          {title}
+        </RichTypography>
         <div className={classes.iconContainer}>
           {items?.map((item) => (
             <Icon
@@ -40,10 +43,12 @@ const Desktop = ({ items, title, ...props }) => {
       </Grid>
       <Grow in={checked} onClick={handleChange} className={classes.transition}>
         <div className={classes.descriptionSection}>
-          <Typography className={classes.title}>{currentTitle}</Typography>
-          <Typography className={classes.description}>
-            {currentDescription}
+          <Typography className={classes.desktopTitle}>
+            {currentTitle}
           </Typography>
+          <RichTypography className={classes.description}>
+            {currentDescription}
+          </RichTypography>
         </div>
       </Grow>
     </Grid>

@@ -1,3 +1,4 @@
+import { RichTypography } from "@commons-ui/core";
 import { Grid, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -24,10 +25,12 @@ const TabletScreen = ({ items, title, ...props }) => {
   };
 
   return (
-    <Grid container className={classes.mdContainer}>
+    <Grid container>
       <Grid item md={7}>
-        <Typography className={classes.sectionTitle}>{title}</Typography>
-        <Grid>
+        <RichTypography className={classes.sectionTitle}>
+          {title}
+        </RichTypography>
+        <Grid className={classes.mdItems}>
           {items?.map((item) => (
             <Icon
               item={item}
@@ -41,9 +44,9 @@ const TabletScreen = ({ items, title, ...props }) => {
       </Grid>
       <Grid item md={5} className={classes.mdDescription}>
         <Typography className={classes.title}>{currentTitle}</Typography>
-        <Typography className={classes.description}>
+        <RichTypography className={classes.description}>
           {currentDescription}
-        </Typography>
+        </RichTypography>
       </Grid>
     </Grid>
   );
