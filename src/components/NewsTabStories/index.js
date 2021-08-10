@@ -6,7 +6,7 @@ import Carousel from "react-multi-carousel";
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
-import InsightsData from "@/pesayetu/components/InsightsData";
+import InsightCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
@@ -27,12 +27,7 @@ const responsive = {
     items: 1,
   },
 };
-
-function NewsTabStories({
-  featuredStoryProps,
-  dataInsightDataProps,
-  ...props
-}) {
+function NewsTabStories({ featuredStoryProps, itemsData, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -41,7 +36,7 @@ function NewsTabStories({
         <Grid item>
           <FeaturedStoryCard {...featuredStoryProps} />
         </Grid>
-        <Grid item>
+        <Grid item className={classes.stories}>
           <Carousel
             swipeable
             responsive={responsive}
@@ -50,7 +45,10 @@ function NewsTabStories({
             showDots
             dotListClass={classes.dots}
           >
-            <InsightsData {...dataInsightDataProps} />
+            {itemsData &&
+              itemsData?.map((item) => (
+                <InsightCard key={item.title} {...item} />
+              ))}
           </Carousel>
         </Grid>
       </Section>
@@ -59,12 +57,18 @@ function NewsTabStories({
 }
 NewsTabStories.propTypes = {
   featuredStoryProps: PropTypes.shape({}),
-  dataInsightDataProps: PropTypes.shape({}),
+  itemsData: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ),
 };
 
 NewsTabStories.defaultProps = {
   featuredStoryProps: undefined,
-  dataInsightDataProps: undefined,
+  itemsData: undefined,
 };
 
 export default NewsTabStories;
