@@ -36,14 +36,10 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     fontSize: typography.pxToRem(16),
     minHeight: typography.pxToRem(23),
     color: "#666666",
-    "&:hover": {
+    opacity: 1,
+    "&:hover, &:focus, &$selected": {
       color: "#666666",
-    },
-    "&$selected": {
-      color: "#666666",
-    },
-    "&:focus": {
-      color: "#666666",
+      opacity: 1,
     },
   },
   activeTab: {
@@ -53,14 +49,10 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     letterSpacing: typography.pxToRem(1.6),
     minHeight: typography.pxToRem(23),
     color: "#666666",
-    "&:hover": {
+    opacity: 1,
+    "&:hover, &:focus, &$selected": {
       color: palette.primary.main,
-    },
-    "&$selected": {
-      color: palette.primary.main,
-    },
-    "&:focus": {
-      color: palette.primary.main,
+      opacity: 1,
     },
   },
   tabsContent: {
