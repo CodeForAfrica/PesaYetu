@@ -32,7 +32,7 @@ const responsive = {
   },
 };
 
-function NewsTabStories({ featuredStoryProps, items, ...props }) {
+function Stories({ featuredStoryProps, items, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
@@ -61,7 +61,8 @@ function NewsTabStories({ featuredStoryProps, items, ...props }) {
     </Grid>
   );
 }
-NewsTabStories.propTypes = {
+
+Stories.propTypes = {
   featuredStoryProps: PropTypes.shape({}),
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -72,9 +73,9 @@ NewsTabStories.propTypes = {
   ),
 };
 
-NewsTabStories.defaultProps = {
+Stories.defaultProps = {
   featuredStoryProps: undefined,
   items: undefined,
 };
 
-export default NewsTabStories;
+export default Stories;

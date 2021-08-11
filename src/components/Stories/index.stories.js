@@ -1,12 +1,12 @@
 import React from "react";
 
-import NewsTabStories from ".";
+import Stories from ".";
 
 import cardImage from "@/pesayetu/assets/images/stephen-dawson-qwtCeJ5cLYs-unsplash.png";
 import { insightDataTabStories } from "@/pesayetu/config";
 
 export default {
-  title: "Components/NewsTabStories",
+  title: "Sections/Stories",
   argTypes: {
     featuredStoryProps: {
       control: {
@@ -21,7 +21,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <NewsTabStories {...args} />;
+const Template = ({ ...args }) => <Stories {...args} />;
 
 export const Default = Template.bind({});
 
