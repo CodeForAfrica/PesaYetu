@@ -1,14 +1,14 @@
-import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import AboutHeroBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
 import useStyles from "@/pesayetu/components/AboutHero/useStyles";
+import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
-function AboutHero({ title, tagline, intro, ...props }) {
+function AboutHero({ overline, subtitle, title, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -20,15 +20,17 @@ function AboutHero({ title, tagline, intro, ...props }) {
       <Section classes={{ root: classes.section }}>
         <Grid container>
           <Grid item xs={9} md={9} lg={6} className={classes.textContainer}>
-            <Typography className={classes.intro} variant="body2">
-              {intro}
-            </Typography>
-            <RichTypography variant="h1" className={classes.title}>
+            <Header
+              overline={overline}
+              subtitle={subtitle}
+              classes={{
+                overline: classes.overline,
+                subtitle: classes.subtitle,
+                title: classes.title,
+              }}
+            >
               {title}
-            </RichTypography>
-            <Typography className={classes.tagline} variant="body1">
-              {tagline}
-            </Typography>
+            </Header>
           </Grid>
         </Grid>
       </Section>
@@ -37,15 +39,15 @@ function AboutHero({ title, tagline, intro, ...props }) {
 }
 
 AboutHero.propTypes = {
-  tagline: PropTypes.string,
+  overline: PropTypes.string,
+  subtitle: PropTypes.string,
   title: PropTypes.string,
-  intro: PropTypes.string,
 };
 
 AboutHero.defaultProps = {
-  tagline: undefined,
+  overline: undefined,
+  subtitle: undefined,
   title: undefined,
-  intro: undefined,
 };
 
 export default AboutHero;

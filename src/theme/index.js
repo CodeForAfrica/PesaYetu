@@ -52,8 +52,14 @@ const theme = createTheme({
     hd: {},
     body1: {},
     body2: {},
-    subtitle1: {},
+    subtitle1: {
+      fontWeight: 500,
+    },
     subtitle2: {},
+    overline: {
+      fontWeight: 700,
+      textTransform: "uppercase",
+    },
   },
   widths: {
     values: {
@@ -75,6 +81,7 @@ deepmerge(
       [breakpoints.up("lg")]: {
         fontSize: pxToRem(48),
         lineHeight: 58 / 48, // font 48 H0
+        padding: `${pxToRem(4.5)} 0`, // 67 - 58
       },
     },
     h2: {
@@ -152,6 +159,10 @@ deepmerge(
         fontSize: pxToRem(12),
         lineHeight: 18 / 12, // font 12 caption
       },
+    },
+    overline: {
+      fontSize: pxToRem(14),
+      lineHeight: 21 / 14,
     },
   },
   { clone: false }

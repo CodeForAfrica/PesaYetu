@@ -1,4 +1,3 @@
-import { RichTypography } from "@commons-ui/core";
 import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
@@ -8,6 +7,7 @@ import React from "react";
 
 import heroBg from "@/pesayetu/assets/images/map-lines.png";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
+import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
 const Map = dynamic(() => import("./Map"), { ssr: false });
@@ -48,7 +48,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   slabel: {
     marginBottom: typography.pxToRem(10),
   },
-  tagline: {
+  subtitle: {
     margin: `${typography.pxToRem(20)} 0`,
     [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(335),
@@ -60,11 +60,6 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   title: {
     marginTop: typography.pxToRem(40),
-    "& .highlight": {
-      display: "inline-block",
-      background:
-        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
-    },
     [breakpoints.up("md")]: {
       marginTop: typography.pxToRem(46),
     },
@@ -82,7 +77,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
 }));
 
-function Hero({ comment, selectProps, title, tagline, ...props }) {
+function Hero({ comment, selectProps, title, subtitle, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
@@ -98,14 +93,12 @@ function Hero({ comment, selectProps, title, tagline, ...props }) {
         <Grid container>
           <Grid item lg={1} />
           <Grid item xs={12} md={7} lg={6}>
-            <RichTypography variant="h1" className={classes.title}>
+            <Header
+              subtitle={subtitle}
+              classes={{ title: classes.title, subtitle: classes.subtitle }}
+            >
               {title}
-            </RichTypography>
-            {tagline && (
-              <Typography variant="subtitle1" className={classes.tagline}>
-                {tagline}
-              </Typography>
-            )}
+            </Header>
             <DropdownSearch
               {...selectProps}
               classes={{
@@ -141,14 +134,14 @@ function Hero({ comment, selectProps, title, tagline, ...props }) {
 Hero.propTypes = {
   comment: PropTypes.string,
   selectProps: PropTypes.shape({}),
-  tagline: PropTypes.string,
+  subtitle: PropTypes.string,
   title: PropTypes.string,
 };
 
 Hero.defaultProps = {
   comment: undefined,
   selectProps: undefined,
-  tagline: undefined,
+  subtitle: undefined,
   title: undefined,
 };
 
