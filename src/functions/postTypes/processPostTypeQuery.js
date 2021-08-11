@@ -60,7 +60,6 @@ export default async function processPostTypeQuery(
       const post =
         postData?.[postType] ?? // Dynamic posts.
         postData?.additionalSettings?.additionalSettings?.[postType]; // Settings custom page.
-
       // Set error props if data not found.
       if (!post) {
         response.error = true;
@@ -69,7 +68,11 @@ export default async function processPostTypeQuery(
         return null;
       }
 
-      return post;
+      // Retrieve blocks from archive stories page
+      return {
+        ...post,
+        commonBlockJSON: homepageSettings?.postsPage?.blocksJSON,
+      };
     })
     .then(async (post) => {
       // Add slug/ID to post.
@@ -83,18 +86,19 @@ export default async function processPostTypeQuery(
       }
 
       // Handle blocks.
-      newPost.blocks = await formatBlockData(
-        JSON.parse(newPost.blocksJSON) ?? []
-      );
+      const { blocksJSON, commonBlockJSON } = post;
+      const blocks = JSON.parse(blocksJSON).concat(JSON.parse(commonBlockJSON));
+
+      newPost.blocks = await formatBlockData(blocks);
 
       delete newPost.blocksJSON;
+      delete newPost.commonBlockJSON;
 
       return newPost;
     })
     .catch((error) => {
       response.error = true;
       response.errorMessage = error.message;
-
       return null;
     });
 

@@ -87,8 +87,12 @@ export default async function getPostTypeStaticProps(
   /* -- Handle individual posts. -- */
 
   // Handle catch-all routes.
-  const slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
+  let slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
 
+  // append stories for posts
+  if (postType === "post") {
+    slug = `stories/${slug}`;
+  }
   /* -- Handle dynamic posts. -- */
 
   // Get post identifier (ID or slug).

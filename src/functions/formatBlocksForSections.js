@@ -66,6 +66,11 @@ function format(block) {
         image: formatLazyBlockImage(attributes?.image),
         accentImage: formatLazyBlockImage(attributes?.accentImage),
       };
+    case "lazyblock/share-story":
+      return {
+        ...attributes,
+        socialLinks: JSON.parse(decodeURIComponent(attributes.socialLinks)),
+      };
     case "lazyblock/hero":
     case "lazyblock/about-hero":
     case "lazyblock/how-it-works":
