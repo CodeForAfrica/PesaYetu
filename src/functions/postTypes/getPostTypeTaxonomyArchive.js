@@ -1,3 +1,4 @@
+import formatBlockData from "@/pesayetu/functions/formatBlockData";
 import getMenus from "@/pesayetu/functions/menus/getMenus";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
@@ -72,7 +73,7 @@ export default async function getPostTypeTaxonomyArchive(
   // Execute query.
   await apolloClient
     .query({ query, variables })
-    .then((archive) => {
+    .then(async (archive) => {
       const { homepageSettings, siteSeo, menus, ...archiveData } = archive.data;
 
       // Retrieve menus.
@@ -126,6 +127,9 @@ export default async function getPostTypeTaxonomyArchive(
           metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
           metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
         },
+        blocks: await formatBlockData(
+          JSON.parse(homepageSettings?.postsPage?.blocksJSON) ?? []
+        ),
       };
 
       // Extract pagination data.

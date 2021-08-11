@@ -47,6 +47,7 @@ const queryPostsArchive = gql`
     ${defaultPageData}
     homepageSettings {
       postsPage {
+        blocksJSON
         ${seoPostFields}
       }
     }

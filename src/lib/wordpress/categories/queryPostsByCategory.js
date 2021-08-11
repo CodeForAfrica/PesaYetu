@@ -25,6 +25,11 @@ const queryPostsByCategory = gql`
       ${seoPostFields}
       ${archivePosts}
     }
+    homepageSettings {
+      postsPage {
+        blocksJSON
+      }
+    }
   }
   ${archivePostFragment}
 `;
