@@ -35,6 +35,13 @@ export default async function getPostTypeStaticPaths(postType) {
           }
         }
       }
+      categories {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `;
 
@@ -50,7 +57,11 @@ export default async function getPostTypeStaticPaths(postType) {
     : posts.data[pluralName].edges
         .map((post) => {
           // Trim leading and trailing slashes then split into array on inner slashes.
-          const slug = post.node[pathField].replace(/^\/|\/$/g, "").split("/");
+          let slug = post.node[pathField].replace(/^\/|\/$/g, "").split("/");
+          // slice off the first item as uri includes the parent page name (i.e stories)
+          if (isHierarchical) {
+            slug = slug.slice(1);
+          }
 
           return {
             params: {
@@ -58,6 +69,16 @@ export default async function getPostTypeStaticPaths(postType) {
             },
           };
         })
+        // include categories path
+        .concat(
+          posts.data.categories.edges.map(({ node: { slug } }) => {
+            return {
+              params: {
+                slug: [slug],
+              },
+            };
+          })
+        )
         // Filter out certain posts with custom routes (e.g., homepage).
         .filter((post) => !!post.params.slug.join("/").length);
 
