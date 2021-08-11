@@ -11,22 +11,14 @@ import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeSt
 // Define route post type.
 const postType = "post";
 
-/**
- * Render the News component.
- *
- * @param  {object}  props            The component attributes as props.
- * @param  {object}  props.post       Post data from WordPress.
- * @param  {boolean} props.archive    Whether displaying single post (false) or archive (true).
- * @param  {Array}   props.posts      Array of post data (news) from WordPress.
- * @param  {object}  props.pagination Archive pagination data from WordPress.
- * @return {Element}                  The News component.
- */
-
 export default function Index({ archive, post, blocks, ...props }) {
-  console.log(blocks.otherHero);
   return (
     <Page {...props}>
-      {archive ? <Hero {...blocks?.otherHero} /> : <ExpandedStoy {...post} />}
+      {archive ? (
+        <Hero {...blocks?.otherHero} />
+      ) : (
+        <ExpandedStoy {...post} {...blocks?.shareStory} />
+      )}
     </Page>
   );
 }
@@ -35,6 +27,7 @@ Index.propTypes = {
   archive: PropTypes.bool,
   blocks: PropTypes.shape({
     otherHero: PropTypes.shape({}),
+    shareStory: PropTypes.shape({}),
   }),
   post: PropTypes.shape({}),
 };
@@ -63,7 +56,6 @@ export async function getStaticProps({ params, preview, previewData }) {
     };
   }
   const blocks = formatBlocksForSections(props?.post?.blocks);
-
   return {
     props: {
       ...props,
