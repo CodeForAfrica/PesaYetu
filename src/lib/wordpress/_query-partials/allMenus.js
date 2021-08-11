@@ -11,10 +11,11 @@ const allMenus = `
           path
           target
           title
+          url,
+          description
         }
       }
     }
   }
 `;
-
 export default allMenus;

@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   background: {
     position: "absolute",
     height: typography.pxToRem(390),
-    width: "100vw",
+    width: "100%",
     zIndex: -1,
     [breakpoints.up("md")]: {
       height: typography.pxToRem(618),

@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
-    minWidth: typography.pxToRem(350),
+    maxWidth: typography.pxToRem(350),
     [breakpoints.up("md")]: {
       minWidth: typography.pxToRem(296),
     },
@@ -16,18 +16,22 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     boxShadow: "none",
     backgroundColor: "unset",
   },
+  title: {
+    marginTop: typography.pxToRem(20),
+    marginBottom: typography.pxToRem(20),
+    color: "#000",
+  },
+  description: {
+    color: "#000",
+  },
   cardMedia: {
-    // TODO(kilemensi): Confirm if all image will have invisible margins
-    //                  around them. If yes, leave this as is. Otherwise
-    //                  remove all negative margins calculations
     margin: `
       -${typography.pxToRem((254 - 216.89) / 2)}
       -${typography.pxToRem((390 - 350) / 2)}
       0
       -${typography.pxToRem((390 - 350) / 2)}
     `,
-    height: typography.pxToRem(254),
-    width: typography.pxToRem(390),
+    height: typography.pxToRem(215),
     position: "relative",
     [breakpoints.up("md")]: {
       margin: `
@@ -53,17 +57,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       ),
       width: typography.pxToRem(356 + (((390 - 350) / 2) * 296) / 350),
     },
-  },
-  image: {
-    objectFit: "contain",
-  },
-  title: {
-    marginTop: typography.pxToRem(20),
-    marginBottom: typography.pxToRem(20),
-    color: "#000",
-  },
-  description: {
-    color: "#000",
   },
 }));
 

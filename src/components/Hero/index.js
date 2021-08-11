@@ -1,4 +1,3 @@
-import { RichTypography } from "@commons-ui/core";
 import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
@@ -7,12 +6,13 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import heroBg from "@/pesayetu/assets/images/map-lines.png";
-import Search from "@/pesayetu/components/Search";
+import DropdownSearch from "@/pesayetu/components/DropdownSearch";
+import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
 const Map = dynamic(() => import("./Map"), { ssr: false });
 
-const useStyles = makeStyles(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     position: "relative",
   },
@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     position: "absolute",
     zIndex: -1,
     height: typography.pxToRem(468),
-    width: "100vw",
+    width: "100%",
     [breakpoints.up("md")]: {
       height: typography.pxToRem(456),
     },
@@ -48,7 +48,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   slabel: {
     marginBottom: typography.pxToRem(10),
   },
-  tagline: {
+  subtitle: {
     margin: `${typography.pxToRem(20)} 0`,
     [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(335),
@@ -60,11 +60,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
   title: {
     marginTop: typography.pxToRem(40),
-    "& .highlight": {
-      display: "inline-block",
-      background:
-        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
-    },
     [breakpoints.up("md")]: {
       marginTop: typography.pxToRem(46),
     },
@@ -72,9 +67,17 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       marginTop: typography.pxToRem(65),
     },
   },
+  dropdownTitle: {
+    color: "#1C2030",
+  },
+  inputBase: {
+    borderRadius: typography.pxToRem(10),
+    color: palette.primary.main,
+    border: "2px solid #1c2030",
+  },
 }));
 
-function Hero({ comment, searchLabel, title, tagline, ...props }) {
+function Hero({ comment, selectProps, title, subtitle, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
@@ -90,20 +93,20 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
         <Grid container>
           <Grid item lg={1} />
           <Grid item xs={12} md={7} lg={6}>
-            <RichTypography variant="h1" className={classes.title}>
+            <Header
+              subtitle={subtitle}
+              classes={{ title: classes.title, subtitle: classes.subtitle }}
+            >
               {title}
-            </RichTypography>
-            {tagline && (
-              <Typography variant="subtitle1" className={classes.tagline}>
-                {tagline}
-              </Typography>
-            )}
-            {searchLabel && (
-              <Typography variant="subtitle1" className={classes.slabel}>
-                {searchLabel}
-              </Typography>
-            )}
-            <Search href="/explore/" />
+            </Header>
+            <DropdownSearch
+              {...selectProps}
+              classes={{
+                root: classes.dropdown,
+                title: classes.dropdownTitle,
+                inputBase: classes.inputBase,
+              }}
+            />
             {comment && (
               <Typography variant="subtitle1" className={classes.comment}>
                 {comment}
@@ -130,15 +133,15 @@ function Hero({ comment, searchLabel, title, tagline, ...props }) {
 
 Hero.propTypes = {
   comment: PropTypes.string,
-  searchLabel: PropTypes.string,
-  tagline: PropTypes.string,
+  selectProps: PropTypes.shape({}),
+  subtitle: PropTypes.string,
   title: PropTypes.string,
 };
 
 Hero.defaultProps = {
   comment: undefined,
-  searchLabel: undefined,
-  tagline: undefined,
+  selectProps: undefined,
+  subtitle: undefined,
   title: undefined,
 };
 

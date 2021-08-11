@@ -1,25 +1,25 @@
 import { RichTypography } from "@commons-ui/core";
-import { Card, CardContent } from "@material-ui/core";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
+import Card from "@/pesayetu/components/Card";
+
 const DataVisualCard = ({ image, description, ...props }) => {
   const classes = useStyles(props);
   return (
-    <Card className={classes.root}>
-      <div className={classes.cardMedia}>
-        {image && <Image src={image} layout="fill" className={classes.image} />}
-      </div>
-      <CardContent className={classes.content}>
-        {description && (
-          <RichTypography variant="subtitle2" display="inline">
-            {description}
-          </RichTypography>
-        )}
-      </CardContent>
+    <Card
+      classes={{ root: classes.root, cardMedia: classes.cardMedia }}
+      image={image}
+    >
+      <RichTypography
+        className={classes.content}
+        variant="subtitle2"
+        display="inline"
+      >
+        {description}
+      </RichTypography>
     </Card>
   );
 };
