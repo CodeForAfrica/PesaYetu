@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     margin: "0",
   },
 }));
-function Index({ title, partners, ...props }) {
+function Index({ title, items, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -46,14 +46,14 @@ function Index({ title, partners, ...props }) {
           </Typography>
         </div>
         <div className={classes.logoContainer}>
-          {partners?.map(({ link, logo, name }) => (
+          {items?.map(({ link, logo, name }) => (
             <A key={link} className={classes.link} href={link}>
               <Image
                 className={classes.logo}
                 objectFit="contain"
                 width={138}
                 height={64}
-                src={logo.url}
+                src={logo}
                 alt={name}
               />
             </A>
@@ -66,12 +66,10 @@ function Index({ title, partners, ...props }) {
 
 Index.propTypes = {
   title: PropTypes.string,
-  partners: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       link: PropTypes.string,
-      logo: PropTypes.shape({
-        url: PropTypes.string,
-      }),
+      logo: PropTypes.string,
       name: PropTypes.string,
     })
   ),
@@ -79,6 +77,6 @@ Index.propTypes = {
 
 Index.defaultProps = {
   title: undefined,
-  partners: undefined,
+  items: undefined,
 };
 export default Index;
