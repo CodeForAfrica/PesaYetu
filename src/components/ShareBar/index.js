@@ -30,14 +30,14 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
         </Typography>
       )}
       {socialLinks.map((social) => {
-        switch (social.name) {
+        switch (social) {
           case "facebook":
             return (
               <ShareButton
                 component={FacebookShareButton}
                 title={title}
                 url={url}
-                alt={social.alt}
+                alt={social}
               >
                 <FacebookIcon classes={classes.icon} />
               </ShareButton>
@@ -48,7 +48,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
                 component={TwitterShareButton}
                 title={title}
                 url={url}
-                alt={social.alt}
+                alt={social}
               >
                 <TwitterIcon classes={classes.icon} />
               </ShareButton>
@@ -59,6 +59,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
                 component={LinkedinShareButton}
                 title={title}
                 url={url}
+                alt={social}
               >
                 <LinkedInIcon classes={classes.icon} />
               </ShareButton>
@@ -69,7 +70,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
                 component={EmailShareButton}
                 title={title}
                 url={url}
-                alt={social.alt}
+                alt={social}
               >
                 <EmailIcon classes={classes.icon} />
               </ShareButton>
@@ -83,20 +84,14 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
 };
 
 ShareBar.propTypes = {
-  socialLinks: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      alt: PropTypes.string,
-      url: PropTypes.string,
-    })
-  ),
+  socialLinks: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string,
   children: PropTypes.string,
 };
 
 ShareBar.defaultProps = {
-  socialLinks: undefined,
-  children: undefined,
+  socialLinks: ["email", "twitter", "linkedin", "facebook"],
+  children: "Share",
   title: undefined,
 };
 
