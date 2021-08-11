@@ -10,6 +10,13 @@ import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
+  desktop: {
+    breakpoint: {
+      max: 3000,
+      min: 1280,
+    },
+    items: 4,
+  },
   tablet: {
     breakpoint: { max: 1279, min: 768 },
     items: 2,

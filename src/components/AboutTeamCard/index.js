@@ -1,4 +1,4 @@
-import { RichTypography } from "@commons-ui/core";
+import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -6,20 +6,21 @@ import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
 
-const AboutTeamCard = ({ image, description, ...props }) => {
+const AboutTeamCard = ({ image, description, title, ...props }) => {
   const classes = useStyles(props);
   return (
     <Card
       classes={{ root: classes.root, cardMedia: classes.cardMedia }}
       image={image}
     >
-      <RichTypography
-        className={classes.content}
-        variant="subtitle2"
-        display="inline"
-      >
-        {description}
-      </RichTypography>
+      {title && (
+        <Typography variant="h4" className={classes.title}>
+          {title}
+        </Typography>
+      )}
+      {description && (
+        <Typography className={classes.content}>{description}</Typography>
+      )}
     </Card>
   );
 };
@@ -27,11 +28,13 @@ const AboutTeamCard = ({ image, description, ...props }) => {
 AboutTeamCard.propTypes = {
   image: PropTypes.string,
   description: PropTypes.string,
+  title: PropTypes.string,
 };
 
 AboutTeamCard.defaultProps = {
   image: undefined,
   description: undefined,
+  title: undefined,
 };
 
 export default AboutTeamCard;

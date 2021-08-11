@@ -309,7 +309,7 @@ export const dataVisuals = {
 };
 
 export const aboutTeam = {
-  title: "About The Team",
+  title: "The Team",
   items: [
     {
       title: "Tricia Govindasamy",

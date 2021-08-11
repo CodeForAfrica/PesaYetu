@@ -12,6 +12,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       maxWidth: typography.pxToRem(376),
     },
   },
+  title: {
+    marginTop: typography.pxToRem(20),
+  },
   content: {
     padding: 0,
     marginTop: typography.pxToRem(20),
