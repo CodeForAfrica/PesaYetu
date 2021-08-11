@@ -30,11 +30,20 @@ const responsive = {
   },
 };
 
+const chunkItems = (list, size) =>
+  list.reduce(
+    (acc, items) =>
+      (!acc.length || acc[acc.length - 1].length === size
+        ? acc.push([items])
+        : acc[acc.length - 1].push(items)) && acc,
+    []
+  );
+
 function NewsTabStories({ featuredStoryProps, items, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
-  const showItemsData = isTablet ? items.slice(0, 6) : items.slice(0, 3);
+  const showItemsData = isTablet ? chunkItems(items, 6) : chunkItems(items, 3);
   return (
     <Grid container direction="column">
       <Section classes={{ root: classes.section }}>
