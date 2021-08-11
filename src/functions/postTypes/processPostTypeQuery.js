@@ -71,7 +71,7 @@ export default async function processPostTypeQuery(
       // Retrieve blocks from archive stories page
       return {
         ...post,
-        commonBlockJSON: homepageSettings?.postsPage?.blocksJSON,
+        commonBlockJSON: homepageSettings?.postsPage?.blocksJSON ?? null,
       };
     })
     .then(async (post) => {
@@ -86,10 +86,15 @@ export default async function processPostTypeQuery(
       }
 
       // Handle blocks.
-      const { blocksJSON, commonBlockJSON } = post;
-      const blocks = JSON.parse(blocksJSON).concat(JSON.parse(commonBlockJSON));
+      const { blocksJSON, commonBlockJSON } = newPost;
 
-      newPost.blocks = await formatBlockData(blocks);
+      const blocks = await formatBlockData(JSON.parse(blocksJSON) ?? []);
+
+      const commonPostBlocks = await formatBlockData(
+        JSON.parse(commonBlockJSON) ?? []
+      );
+
+      newPost.blocks = blocks.concat(commonPostBlocks);
 
       delete newPost.blocksJSON;
       delete newPost.commonBlockJSON;
