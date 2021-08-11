@@ -80,8 +80,10 @@ export default function formatBlocksForSections(blocks) {
   );
   blocks?.push({ name: "core/texts", attributes: texts });
 
-  return blocks.reduce((acc, cur) => {
-    acc[formatName(cur.name)] = format(cur);
-    return acc;
-  }, {});
+  return (
+    blocks?.reduce((acc, cur) => {
+      acc[formatName(cur.name)] = format(cur);
+      return acc;
+    }, {}) ?? null
+  );
 }
