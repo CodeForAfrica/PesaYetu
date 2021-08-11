@@ -15,7 +15,7 @@ const NewsGrid = ({ items, ...props }) => {
   itemsData = isTablet ? items.slice(0, 6) : items.slice(0, 3);
   const classes = useStyles(props);
   return (
-    <Grid item className={classes.stories}>
+    <Grid container item className={classes.stories}>
       {itemsData &&
         itemsData.map((item) => <InsightCard key={item.title} {...item} />)}
     </Grid>
