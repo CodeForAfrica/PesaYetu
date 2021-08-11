@@ -36,11 +36,11 @@ export default function getFooterMenu(data) {
   const socialMedia = data
     .filter((item) => item?.label?.toLowerCase() === labels[3])
     .map(({ label, children }) => {
-      const links = children?.map(({ label, url, title }) => {
+      const links = children?.map(({ label, url, description }) => {
         return {
-          url: title,
+          url,
           image: {
-            url,
+            url: description,
             alt: label?.toLowerCase(),
           },
           label,

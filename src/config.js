@@ -166,8 +166,8 @@ export const navigationArgs = {
   ],
 };
 export const insightData = {
-  title: "Stories",
-  subtitle: "Data Driven <span class='highlight'>Insights</span>",
+  overline: "Stories",
+  title: "Data-driven <span class='highlight'>Insights</span>",
   items: [
     {
       title: "Dolor sit amet ipsum dolor sit amet",
