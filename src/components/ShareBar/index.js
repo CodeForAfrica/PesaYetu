@@ -29,7 +29,8 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
           {children}
         </Typography>
       )}
-      {socialLinks.map((social) => {
+      {socialLinks.map(({ name }) => {
+        const social = name.toLowerCase();
         switch (social) {
           case "facebook":
             return (
@@ -84,14 +85,14 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
 };
 
 ShareBar.propTypes = {
-  socialLinks: PropTypes.arrayOf(PropTypes.string),
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })),
   title: PropTypes.string,
   children: PropTypes.string,
 };
 
 ShareBar.defaultProps = {
-  socialLinks: ["email", "twitter", "linkedin", "facebook"],
-  children: "Share",
+  socialLinks: undefined,
+  children: undefined,
   title: undefined,
 };
 
