@@ -1,13 +1,15 @@
-import { Card, CardContent, Typography } from "@material-ui/core";
-import Image from "next/image";
+import { Typography } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
+import Card from "@/pesayetu/components/Card";
 import Link from "@/pesayetu/components/Link";
 
 const InsightCard = ({
+  className,
   title,
   description,
   image,
@@ -16,35 +18,39 @@ const InsightCard = ({
   ...props
 }) => {
   const classes = useStyles(props);
+
   return (
-    <Card className={classes.card}>
-      <div className={classes.cardMedia}>
-        {image && <Image src={image} layout="fill" className={classes.image} />}
-      </div>
-      <CardContent className={classes.content}>
-        {title && (
-          <Typography variant="h4" className={classes.cardTitle}>
-            {title}
+    <Card
+      classes={{
+        root: clsx(classes.root, classes.card, className),
+        cardMedia: classes.cardMedia,
+      }}
+      image={image}
+      href={href}
+    >
+      {title && (
+        <Typography variant="h4" className={classes.cardTitle}>
+          {title}
+        </Typography>
+      )}
+      {description && (
+        <Typography variant="subtitle2" className={classes.cardDescription}>
+          {description}
+        </Typography>
+      )}
+      <Link className={classes.link} href={href}>
+        {linkdescription && (
+          <Typography variant="subtitle2" className={classes.linkText}>
+            {linkdescription}
           </Typography>
         )}
-        {description && (
-          <Typography variant="subtitle2" className={classes.cardDescription}>
-            {description}
-          </Typography>
-        )}
-        <Link className={classes.link} href={href}>
-          {linkdescription && (
-            <Typography variant="subtitle2" className={classes.linkText}>
-              {linkdescription}
-            </Typography>
-          )}
-        </Link>
-      </CardContent>
+      </Link>
     </Card>
   );
 };
 
 InsightCard.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
@@ -53,6 +59,7 @@ InsightCard.propTypes = {
 };
 
 InsightCard.defaultProps = {
+  className: undefined,
   title: undefined,
   description: undefined,
   image: undefined,

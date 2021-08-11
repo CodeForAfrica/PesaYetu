@@ -46,7 +46,7 @@ const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
     },
   },
   title: {
-    fontWeight: "400",
+    fontWeight: 400,
     [breakpoints.up("md")]: {
       fontWeight: 900,
       textTransform: "uppercase",
