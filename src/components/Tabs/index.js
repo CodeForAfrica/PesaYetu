@@ -38,6 +38,7 @@ function Tabs({ name: nameProp, items, ...props }) {
       >
         {items.map((item, index) => (
           <Tab
+            key={item.label}
             label={item.label}
             {...a11yProps(name, index)}
             disableRipple
