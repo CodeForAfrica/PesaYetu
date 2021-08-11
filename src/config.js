@@ -113,6 +113,30 @@ export const insightDataStories = {
       linkdescription: "Read More",
       href: "www.test.com",
     },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
   ],
 };
 
