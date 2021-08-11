@@ -34,21 +34,11 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       paddingTop: typography.pxToRem(74),
     },
   },
-  intro: {
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    marginBottom: typography.pxToRem(13),
-  },
+  overline: {},
   title: {
     marginBottom: typography.pxToRem(10),
-    fontWeight: "bold",
-    "& .highlight": {
-      display: "inline-block",
-      background:
-        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
-    },
   },
-  tagline: {
+  subtitle: {
     marginRight: 0,
     maxWidth: typography.pxToRem(376),
   },

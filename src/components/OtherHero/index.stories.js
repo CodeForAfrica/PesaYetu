@@ -9,12 +9,17 @@ import image from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
 export default {
   title: "Sections/OtherHero",
   argTypes: {
-    tagline: {
+    overline: {
       control: {
         type: "text",
       },
     },
     title: {
+      control: {
+        type: "text",
+      },
+    },
+    subtitle: {
       control: {
         type: "text",
       },
@@ -32,10 +37,10 @@ const Template = ({ ...args }) => <Hero {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  intro: "Stories",
+  overline: "How it Works",
   accentImage,
-  title: "Data-driven news and insights",
-  tagline:
-    "Explore these curated stories showcasing how you can create impactful and informative pieces using data visualisations.",
+  title: 'Explore and compare <span class="highlight">budget data</span>',
+  subtitle:
+    "Finding, comparing and using eye-catching data visualisations for specific regions is now much easier with PesaYetu",
   image,
 };
