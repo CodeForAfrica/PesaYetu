@@ -1,4 +1,5 @@
 import { Typography } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -8,6 +9,7 @@ import Card from "@/pesayetu/components/Card";
 import Link from "@/pesayetu/components/Link";
 
 const InsightCard = ({
+  className,
   title,
   description,
   image,
@@ -19,7 +21,10 @@ const InsightCard = ({
 
   return (
     <Card
-      classes={{ root: classes.card, cardMedia: classes.cardMedia }}
+      classes={{
+        root: clsx(classes.root, classes.card, className),
+        cardMedia: classes.cardMedia,
+      }}
       image={image}
       href={href}
     >
@@ -45,6 +50,7 @@ const InsightCard = ({
 };
 
 InsightCard.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
@@ -53,6 +59,7 @@ InsightCard.propTypes = {
 };
 
 InsightCard.defaultProps = {
+  className: undefined,
   title: undefined,
   description: undefined,
   image: undefined,
