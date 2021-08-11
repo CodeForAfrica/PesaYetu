@@ -9,33 +9,19 @@ import useStyles from "./useStyles";
 import Section from "@/pesayetu/components/Section";
 import ShareBar from "@/pesayetu/components/ShareBar";
 
-const dateOptions = {
-  year: "numeric",
-  month: "long",
-};
-
 function ExpandedStory({
   title,
   author,
   date,
   content,
   children,
-  featuredImage,
+  image,
   socialLinks,
-  categories,
+  category,
   ...props
 }) {
   const classes = useStyles(props);
 
-  let authorName = `${author?.node?.firstName ?? ""} ${
-    author?.node?.lastName ?? ""
-  }`;
-  if (authorName?.length < 2) {
-    authorName = author?.node?.nickname ?? author?.node?.slug;
-  }
-  const image = featuredImage?.node?.sourceUrl;
-
-  const category = categories.edges[0]?.node?.name;
   return (
     <>
       <div className={classes.headerRoot}>
@@ -53,12 +39,12 @@ function ExpandedStory({
               )}
               {date && (
                 <Typography className={classes.displayFlex} variant="overline">
-                  {new Date(date).toLocaleString("en-GB", dateOptions)}
+                  {date}
                 </Typography>
               )}
-              {authorName && (
+              {author && (
                 <Typography className={classes.displayFlex} variant="overline">
-                  {authorName}
+                  {author}
                 </Typography>
               )}
             </Grid>
@@ -102,28 +88,9 @@ ExpandedStory.propTypes = {
   date: PropTypes.string,
   content: PropTypes.string,
   children: PropTypes.string,
-  featuredImage: PropTypes.shape({
-    node: PropTypes.shape({
-      sourceUrl: PropTypes.string,
-    }),
-  }),
-  categories: PropTypes.shape({
-    edges: PropTypes.arrayOf(
-      PropTypes.shape({
-        node: PropTypes.shape({
-          name: PropTypes.string,
-        }),
-      })
-    ),
-  }),
-  author: PropTypes.shape({
-    node: PropTypes.shape({
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
-      nickname: PropTypes.string,
-      slug: PropTypes.string,
-    }),
-  }),
+  image: PropTypes.string,
+  category: PropTypes.string,
+  author: PropTypes.string,
 };
 
 ExpandedStory.defaultProps = {
@@ -132,8 +99,8 @@ ExpandedStory.defaultProps = {
   content: undefined,
   children: undefined,
   socialLinks: undefined,
-  featuredImage: undefined,
-  categories: undefined,
+  image: undefined,
+  category: undefined,
   author: undefined,
 };
 
