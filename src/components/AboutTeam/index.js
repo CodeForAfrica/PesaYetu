@@ -50,18 +50,6 @@ const DataVisuals = ({ title, items, ...props }) => {
           <AboutTeamCard key={item.image} {...item} />
         ))}
       </Carousel>
-
-      {/* <Hidden only="md" implementation="css" className={classes.section}>
-        <Grid container className={classes.container}>
-          {items?.map((item) => {
-            return (
-              <Grid item lg={4} xs={12} key={item.image}>
-                <DataVisualCard {...item} />
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Hidden> */}
     </Section>
   );
 };
