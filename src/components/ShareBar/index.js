@@ -40,7 +40,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
                 url={url}
                 alt={social}
               >
-                <FacebookIcon classes={classes.icon} />
+                <FacebookIcon className={classes.icon} />
               </ShareButton>
             );
           case "twitter":
@@ -51,7 +51,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
                 url={url}
                 alt={social}
               >
-                <TwitterIcon classes={classes.icon} />
+                <TwitterIcon className={classes.icon} />
               </ShareButton>
             );
           case "linkedin":
@@ -62,7 +62,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
                 url={url}
                 alt={social}
               >
-                <LinkedInIcon classes={classes.icon} />
+                <LinkedInIcon className={classes.icon} />
               </ShareButton>
             );
           case "email":
@@ -73,7 +73,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
                 url={url}
                 alt={social}
               >
-                <EmailIcon classes={classes.icon} />
+                <EmailIcon className={classes.icon} />
               </ShareButton>
             );
           default:

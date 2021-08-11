@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
+const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     display: "flex",
   },
@@ -17,17 +17,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     fontSize: 11,
   },
   icon: {
-    padding: typography.pxToRem(14),
-    fill: palette.primary.main, // temporary until we get correct icons
-    background: palette.background.light,
-    height: typography.pxToRem(43),
-    width: typography.pxToRem(43),
-    marginRight: typography.pxToRem(1),
-    cursor: "pointer",
-    [breakpoints.up("md")]: {
-      height: typography.pxToRem(48),
-      width: typography.pxToRem(48),
-    },
+    marginLeft: typography.pxToRem(1),
   },
 }));
 
