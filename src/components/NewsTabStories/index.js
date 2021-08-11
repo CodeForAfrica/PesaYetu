@@ -1,15 +1,17 @@
 /* eslint-disable no-console */
 import { Grid, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
+import { chunk } from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 import Carousel from "react-multi-carousel";
 
+import CarouselItem from "./CarouselItem";
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
-import InsightCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
+
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
@@ -34,7 +36,9 @@ function NewsTabStories({ featuredStoryProps, items, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
-  const showItemsData = isTablet ? items.slice(0, 6) : items.slice(0, 3);
+  const itemsToShow = isTablet ? 6 : 3;
+  const carouselItems = chunk(items, itemsToShow);
+
   return (
     <Grid container direction="column">
       <Section classes={{ root: classes.section }}>
@@ -49,12 +53,9 @@ function NewsTabStories({ featuredStoryProps, items, ...props }) {
           showDots
           dotListClass={classes.dots}
         >
-          <Grid container item className={classes.stories}>
-            {showItemsData &&
-              showItemsData?.map((item) => (
-                <InsightCard key={item.title} {...item} />
-              ))}
-          </Grid>
+          {carouselItems.map((ci) => (
+            <CarouselItem items={ci} />
+          ))}
         </Carousel>
       </Section>
     </Grid>
