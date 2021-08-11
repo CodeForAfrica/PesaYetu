@@ -14,8 +14,9 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.only("md"));
 
-  itemsData = isTablet ? items.slice(0, 3) : items;
+  itemsData = isTablet ? items.slice(0, 2) : items;
   const classes = useStyles(props);
+  // map grid by six
 
   return (
     <div className={classes.root}>

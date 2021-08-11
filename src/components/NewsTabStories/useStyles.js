@@ -1,11 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: { backgroundColor: "white" },
   insightsData: {},
   stories: {
     padding: `${typography.pxToRem(32)} 0`,
-    margin: "2rem",
+    flexDirection: "column",
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
   },
   dots: {
     margin: `0 ${typography.pxToRem(30)}`,
