@@ -30,11 +30,9 @@ function MainPartner({ link, logo, name, description, ...props }) {
 
   return (
     <div className={classes.root}>
-      {logo?.url && link && (
-        <A className={classes.link} href={link}>
-          <Image width={212.92} height={123.37} src={logo?.url} alt={name} />
-        </A>
-      )}
+      <A className={classes.link} href={link}>
+        <Image width={212.92} height={123.37} src={logo.url} alt={name} />
+      </A>
       <Typography variant="body2" className={classes.description}>
         {description}
       </Typography>
