@@ -23,8 +23,8 @@ export default function Home({ boundary, blocks, ...props }) {
       <HowItWorks {...blocks?.howItWorks} />
       <InsightData {...blocks?.dataInsights} />
       <DataVisuals {...blocks?.dataVisuals} />
-      <AboutTeam {...aboutTeam} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
+      <AboutTeam {...aboutTeam} />
     </Page>
   );
 }

@@ -21,6 +21,10 @@ const responsive = {
     breakpoint: { max: 1279, min: 768 },
     items: 2,
   },
+  mobile: {
+    breakpoint: { max: 767, min: 0 },
+    items: 1,
+  },
 };
 
 const DataVisuals = ({ title, items, ...props }) => {

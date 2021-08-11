@@ -1,14 +1,19 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
-  root: {},
+  root: {
+    padding: `${typography.pxToRem(40)} 0`,
+    [breakpoints.up("md")]: {
+      padding: `${typography.pxToRem(80)} 0`,
+    },
+  },
   title: {
     fontWeight: 900,
     textAlign: "center",
     textTransform: "uppercase",
-    padding: `${typography.pxToRem(40)} 0`,
+    paddingBottom: typography.pxToRem(40),
     [breakpoints.only("md")]: {
-      paddingTop: typography.pxToRem(80),
+      paddingBottom: typography.pxToRem(80),
     },
   },
   section: {

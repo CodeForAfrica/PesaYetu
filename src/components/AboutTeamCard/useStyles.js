@@ -5,8 +5,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     boxShadow: "none",
     backgroundColor: "unset",
     maxWidth: typography.pxToRem(350),
+    padding: `0 ${typography.pxToRem(20)}`,
     [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(296),
+      marginRight: typography.pxToRem(16),
+      padding: 0,
     },
     [breakpoints.up("lg")]: {
       maxWidth: typography.pxToRem(376),
@@ -15,6 +18,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   title: {
     marginTop: typography.pxToRem(20),
   },
+
   content: {
     padding: 0,
     marginTop: typography.pxToRem(20),
@@ -25,15 +29,15 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   cardMedia: {
-    height: typography.pxToRem(215),
+    height: typography.pxToRem(278),
     position: "relative",
     [breakpoints.up("md")]: {
-      height: typography.pxToRem(183),
-      width: typography.pxToRem(296),
+      height: typography.pxToRem(278),
+      width: typography.pxToRem(278),
     },
     [breakpoints.up("lg")]: {
-      height: typography.pxToRem(231),
-      width: typography.pxToRem(376),
+      height: typography.pxToRem(278),
+      width: typography.pxToRem(278),
     },
   },
 }));
