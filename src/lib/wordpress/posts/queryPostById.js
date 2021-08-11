@@ -13,6 +13,7 @@ const singlePostFragment = gql`
   fragment SinglePostFields on Post {
     ${globalPostFields}
     blocksJSON
+    content
     excerpt
     ${seoPostFields}
     ${authorPostFields}
@@ -29,6 +30,11 @@ const queryPostById = gql`
     $imageSize: MediaItemSizeEnum = LARGE
   ) {
     ${defaultPageData}
+    homepageSettings {
+      postsPage {
+        blocksJSON
+      }
+    }
     post(id: $id, idType: $idType) {
       ...SinglePostFields
     }

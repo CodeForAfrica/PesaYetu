@@ -21,14 +21,14 @@ const queryPostsByCategory = gql`
     $idType: CategoryIdType = SLUG
   ) {
     ${defaultPageData}
-    category(id: $id, idType: $idType) {
-      ${seoPostFields}
-      ${archivePosts}
-    }
     homepageSettings {
       postsPage {
         blocksJSON
       }
+    }
+    category(id: $id, idType: $idType) {
+      ${seoPostFields}
+      ${archivePosts}
     }
   }
   ${archivePostFragment}
