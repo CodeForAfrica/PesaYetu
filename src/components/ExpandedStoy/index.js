@@ -6,6 +6,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 import ShareBar from "@/pesayetu/components/ShareBar";
 
@@ -29,14 +30,15 @@ function ExpandedStory({
           <Grid container className={classes.root}>
             <Grid item lg={1} />
             <Grid item xs={12} lg={10}>
-              {category && (
-                <Typography variant="overline">{category}</Typography>
-              )}
-              {title && (
-                <Typography variant="h1" className={classes.title}>
-                  {title}
-                </Typography>
-              )}
+              <Header
+                overline={category}
+                classes={{
+                  overline: classes.overline,
+                  title: classes.title,
+                }}
+              >
+                {title}
+              </Header>
               {date && (
                 <Typography className={classes.displayFlex} variant="overline">
                   {date}

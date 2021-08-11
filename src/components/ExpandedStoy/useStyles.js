@@ -19,7 +19,11 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     },
   },
   title: {
+    padding: 0,
     margin: `${typography.pxToRem(20)} 0`,
+  },
+  overline: {
+    marginBottom: 0,
   },
   displayFlex: {
     display: "flex",
