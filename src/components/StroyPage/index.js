@@ -10,7 +10,7 @@ import useStyles from "./useStyles";
 import Section from "@/pesayetu/components/Section";
 import ShareBar from "@/pesayetu/components/ShareBar";
 
-function ExpandedStory({ content, children, image, socialLinks, ...props }) {
+function StoryPage({ content, children, image, socialLinks, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -21,23 +21,21 @@ function ExpandedStory({ content, children, image, socialLinks, ...props }) {
           <Grid item xs={false} lg={1} />
           <Grid item xs={12} lg={7}>
             {image && (
-              <div className={classes.image}>
+              <figure className={classes.image}>
                 <Image
                   alt="article"
                   src={image}
                   layout="fill"
                   objectFit="cover"
                 />
-              </div>
+              </figure>
             )}
             <ShareBar title={props?.title} socialLinks={socialLinks}>
               Share
             </ShareBar>
-            {content && (
-              <RichTypography className={classes.content} variant="body1">
-                {content}
-              </RichTypography>
-            )}
+            <RichTypography className={classes.content} variant="body1">
+              {content}
+            </RichTypography>
           </Grid>
         </Grid>
       </Section>
@@ -45,7 +43,7 @@ function ExpandedStory({ content, children, image, socialLinks, ...props }) {
   );
 }
 
-ExpandedStory.propTypes = {
+StoryPage.propTypes = {
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
   content: PropTypes.string,
   children: PropTypes.string,
@@ -53,7 +51,7 @@ ExpandedStory.propTypes = {
   title: PropTypes.string,
 };
 
-ExpandedStory.defaultProps = {
+StoryPage.defaultProps = {
   content: undefined,
   children: undefined,
   socialLinks: undefined,
@@ -61,4 +59,4 @@ ExpandedStory.defaultProps = {
   title: undefined,
 };
 
-export default ExpandedStory;
+export default StoryPage;

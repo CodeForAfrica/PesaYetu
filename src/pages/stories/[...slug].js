@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import ExpandedStoy from "@/pesayetu/components/ExpandedStoy";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
+import StoryPage from "@/pesayetu/components/StroyPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
@@ -32,7 +32,7 @@ export default function Index({ archive, post, blocks, ...props }) {
       {archive ? (
         <Hero {...blocks?.otherHero} />
       ) : (
-        <ExpandedStoy
+        <StoryPage
           {...post}
           {...blocks?.shareStory}
           author={authorName}

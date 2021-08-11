@@ -1,15 +1,15 @@
 import React from "react";
 
-import ExpandedStory from ".";
+import StoryPage from ".";
 
 import storyImage from "@/pesayetu/assets/images/stephen-dawson-qwtCeJ5cLYs-unsplash.png";
 
 export default {
-  title: "Sections/ExpandedStory",
+  title: "Sections/StoryPage",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <ExpandedStory {...args} />;
+const Template = ({ ...args }) => <StoryPage {...args} />;
 
 export const Default = Template.bind({});
 
