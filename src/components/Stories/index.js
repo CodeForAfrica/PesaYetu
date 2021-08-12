@@ -42,7 +42,12 @@ function Stories({ featuredStoryProps, items, ...props }) {
     <Grid container direction="column">
       <Section classes={{ root: classes.section }}>
         <Grid item>
-          <FeaturedStoryCard {...featuredStoryProps} />
+          <FeaturedStoryCard
+            {...featuredStoryProps}
+            classes={{
+              media: classes.featuredCardImage,
+            }}
+          />
         </Grid>
         <Carousel
           swipeable
