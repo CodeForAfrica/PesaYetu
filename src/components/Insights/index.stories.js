@@ -1,8 +1,7 @@
 import React from "react";
 
-import Insights from ".";
-
 import Group8522 from "@/pesayetu/assets/Group852-2.svg";
+import Insights from "@/pesayetu/components/Stories";
 import { insightStories } from "@/pesayetu/config";
 
 export default {
