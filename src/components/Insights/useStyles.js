@@ -15,7 +15,10 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     opacity: 1,
     boxShadow: "0px 3px 10px #0000001A",
     "& > div:first-child": {
-      margin: "40px !important",
+      display: "block",
+      margin: "auto !important",
+      height: typography.pxToRem(129.5),
+      width: typography.pxToRem(259),
     },
   },
   image: {},
