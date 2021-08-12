@@ -9,6 +9,18 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
       margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(100)}`,
     },
   },
+  featuredCardImage: {
+    border: "0px solid #0000001A",
+    background: "#FFFFFF",
+    opacity: 1,
+    boxShadow: "0px 3px 10px #0000001A",
+    "& > div:first-child": {
+      display: "block",
+      margin: "auto !important",
+      height: typography.pxToRem(231),
+      width: typography.pxToRem(460),
+    },
+  },
   cardMedia: {
     border: "0px solid #0000001A",
     background: "#FFFFFF",
@@ -21,7 +33,6 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
       width: typography.pxToRem(259),
     },
   },
-  image: {},
   story: {
     marginTop: `${typography.pxToRem(40)}`,
   },

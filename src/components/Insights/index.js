@@ -43,7 +43,12 @@ function Insights({ featuredStoryProps, items, ...props }) {
     <Grid container direction="column">
       <Section classes={{ root: classes.section }}>
         <Grid item>
-          <FeaturedStoryCard {...featuredStoryProps} classes={{}} />
+          <FeaturedStoryCard
+            {...featuredStoryProps}
+            classes={{
+              media: classes.featuredCardImage,
+            }}
+          />
         </Grid>
         <Carousel
           swipeable
