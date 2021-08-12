@@ -52,6 +52,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     [breakpoints.up("lg")]: {
       display: "block",
       marginLeft: typography.pxToRem(2),
+      width: typography.pxToRem(140),
     },
   },
   text: {
@@ -59,6 +60,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     fontSize: typography.pxToRem(20),
     [breakpoints.up("lg")]: {
       marginTop: typography.pxToRem(20),
+      marginLeft: 0,
+      textAlign: "center",
     },
   },
   iconContainer: {
@@ -128,7 +131,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   transition: (props) => ({
     backgroundColor: "#0067A3",
     color: "#fff",
-    width: typography.pxToRem(400),
+    minWidth: typography.pxToRem(480),
+    width: typography.pxToRem(480),
     padding: `0 ${typography.pxToRem(84)}`,
     display: props.checked ? "block" : "none",
   }), // NOTE: This styling destructs page layout, investigate
