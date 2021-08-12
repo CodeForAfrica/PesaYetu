@@ -2,7 +2,7 @@ import React from "react";
 
 import Insights from ".";
 
-import cardImage from "@/pesayetu/assets/images/stephen-dawson-qwtCeJ5cLYs-unsplash.png";
+import Group8522 from "@/pesayetu/assets/Group852-2.svg";
 import { insightDataStories } from "@/pesayetu/config";
 
 export default {
@@ -32,7 +32,7 @@ Default.args = {
       "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
     href: "/?path=/story/components-featured-story-card--default",
     ctaText: "Read More",
-    image: cardImage,
+    image: Group8522,
   },
   items: insightDataStories.items,
 };

@@ -1,3 +1,6 @@
+import Group4089 from "@/pesayetu/assets/Group4089.svg";
+import Group4136 from "@/pesayetu/assets/Group4136.svg";
+import Group852 from "@/pesayetu/assets/Group852.svg";
 import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
 import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
 import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
@@ -68,7 +71,7 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashOne,
+      image: Group4089,
       linkdescription: "Read More",
       href: "www.test.com",
     },
@@ -76,16 +79,7 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashTwo,
-      linkdescription: "Read More",
-      href: "www.test.com",
-    },
-
-    {
-      title: "Dolor sit amet ipsum dolor sit amet",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashThree,
+      image: Group4136,
       linkdescription: "Read More",
       href: "www.test.com",
     },
@@ -93,7 +87,7 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashOne,
+      image: Group852,
       linkdescription: "Read More",
       href: "www.test.com",
     },
@@ -101,7 +95,7 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashOne,
+      image: Group4089,
       linkdescription: "Read More",
       href: "www.test.com",
     },
@@ -109,7 +103,7 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashOne,
+      image: Group4136,
       linkdescription: "Read More",
       href: "www.test.com",
     },
@@ -117,7 +111,7 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashOne,
+      image: Group852,
       linkdescription: "Read More",
       href: "www.test.com",
     },
@@ -125,7 +119,7 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashOne,
+      image: Group4089,
       linkdescription: "Read More",
       href: "www.test.com",
     },
@@ -133,7 +127,15 @@ export const insightDataStories = {
       title: "Dolor sit amet ipsum dolor sit amet",
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
-      image: unsplashOne,
+      image: Group4136,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: Group852,
       linkdescription: "Read More",
       href: "www.test.com",
     },

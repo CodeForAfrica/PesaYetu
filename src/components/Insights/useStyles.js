@@ -9,6 +9,16 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
       margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(100)}`,
     },
   },
+  cardMedia: {
+    border: "0px solid #0000001A",
+    background: "#FFFFFF",
+    opacity: 1,
+    boxShadow: "0px 3px 10px #0000001A",
+    "& > div:first-child": {
+      margin: "40px !important",
+    },
+  },
+  image: {},
   story: {
     marginTop: `${typography.pxToRem(40)}`,
   },

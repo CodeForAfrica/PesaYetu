@@ -16,7 +16,14 @@ function CarouselItem({ items, ...props }) {
     <Grid container className={classes.carouselItem}>
       {items.map((item) => (
         <Grid key={item.title} item xs={12} md={6} lg={4}>
-          <InsightCard {...item} className={classes.story} />
+          <InsightCard
+            {...item}
+            classes={{
+              cardMedia: classes.cardMedia,
+              story: classes.story,
+              image: classes.image,
+            }}
+          />
         </Grid>
       ))}
     </Grid>
