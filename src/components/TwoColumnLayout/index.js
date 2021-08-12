@@ -14,22 +14,24 @@ const TwoColumnLayout = ({ content, title, subtitle, ...props }) => {
   }
 
   return (
-    <Section classes={{ root: classes.section }}>
-      <Grid container className={classes.root}>
-        <Grid item xs={12} lg={4}>
-          <Typography className={classes.title} variant="h1">
-            {title}
-          </Typography>
-          <Typography className={classes.subtitle} variant="h4">
-            {subtitle}
-          </Typography>
+    <div className={classes.root}>
+      <Section classes={{ root: classes.section }}>
+        <Grid container>
+          <Grid item xs={12} lg={4}>
+            <Typography className={classes.title} variant="h1">
+              {title}
+            </Typography>
+            <Typography className={classes.subtitle} variant="h4">
+              {subtitle}
+            </Typography>
+          </Grid>
+          <Grid item lg={2} />
+          <Grid item xs={12} lg={6} className={classes.container}>
+            <RichTypography variant="body2">{content}</RichTypography>
+          </Grid>
         </Grid>
-        <Grid item lg={2} />
-        <Grid item xs={12} lg={6} className={classes.container}>
-          <RichTypography variant="body2">{content}</RichTypography>
-        </Grid>
-      </Grid>
-    </Section>
+      </Section>
+    </div>
   );
 };
 
