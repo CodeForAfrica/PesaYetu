@@ -1,5 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
 import { Grid, Typography } from "@material-ui/core";
+import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -11,18 +12,18 @@ const MobileScreen = ({ title, items, ...props }) => {
 
   return (
     <Grid className={classes.smContainer}>
-      <RichTypography className={`${classes.sectionTitle} ${classes.smTitle}`}>
+      <RichTypography className={clsx(classes.sectionTitle, classes.smTitle)}>
         {title}
       </RichTypography>
       <div>
         {items?.map((item) => (
           <Grid container key={item.title}>
             <div
-              className={`${classes.imageContainer} ${classes.mdImageContainer}`}
+              className={clsx(classes.imageContainer, classes.mdImageContainer)}
             >
               <Image className={classes.image} src={item.image} layout="fill" />
             </div>
-            <Typography className={`${classes.text} ${classes.mdText}`}>
+            <Typography className={clsx(classes.text, classes.mdText)}>
               {item.title}
             </Typography>
           </Grid>
