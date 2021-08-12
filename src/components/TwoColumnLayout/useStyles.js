@@ -6,6 +6,8 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     marginBottom: typography.pxToRem(80),
     backgroundColor: palette.background.light,
   },
+  title: {},
+  subtitle: {},
   container: {
     [breakpoints.up("md")]: {
       margin: typography.pxToRem(0),
@@ -32,13 +34,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       maxWidth: "100%",
       objectFit: "contain",
       height: "auto",
-    },
-    "& .wp-block-columns": {
-      display: "flex",
-      flexDirection: "column",
-      [breakpoints.up("lg")]: {
-        flexDirection: "row",
-      },
     },
     "& .wp-block-image": {
       width: "100%",
