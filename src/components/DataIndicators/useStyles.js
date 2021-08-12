@@ -39,7 +39,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   imageContainer: {
     height: typography.pxToRem(88),
     width: typography.pxToRem(88),
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       height: typography.pxToRem(140),
       width: typography.pxToRem(140),
     },

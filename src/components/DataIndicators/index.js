@@ -7,14 +7,12 @@ import Mobile from "./Mobile";
 import Tablet from "./Tablet";
 import useStyles from "./useStyles";
 
-import Section from "@/pesayetu/components/Section";
-
 const DataIndicators = ({ title, items, ...props }) => {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <Section>
+      <div>
         <Hidden mdDown>
           <Desktop items={items} title={title} />
         </Hidden>
@@ -22,7 +20,7 @@ const DataIndicators = ({ title, items, ...props }) => {
         <Hidden smUp>
           <Mobile items={items} title={title} />
         </Hidden>
-      </Section>
+      </div>
       <Hidden lgUp smDown>
         <Tablet items={items} title={title} />
       </Hidden>
