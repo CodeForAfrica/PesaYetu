@@ -6,28 +6,23 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     marginBottom: typography.pxToRem(80),
     backgroundColor: palette.background.light,
   },
-  title: {},
-  subtitle: {},
+  title: {
+    fontSize: typography.pxToRem(50),
+    lineHeight: 66 / 50,
+    marginBottom: typography.pxToRem(40),
+    fontWeight: "300",
+  },
+  subtitle: {
+    fontWeight: "normal",
+    marginBottom: typography.pxToRem(40),
+  },
   container: {
     [breakpoints.up("md")]: {
       margin: typography.pxToRem(0),
     },
-    "& p strong:only-child": {
-      marginTop: typography.pxToRem(80),
-      display: "block",
-    },
-    "& h1": {
-      fontSize: typography.pxToRem(50),
-      lineHeight: 66 / 50,
-      fontWeight: "300",
-    },
-    "& .has-medium-font-size": {
-      fontSize: typography.pxToRem(20),
-      lineHeight: 30 / 20,
-      fontWeight: "normal",
-    },
     "& p": {
-      paddingTop: typography.pxToRem(24),
+      paddingBottom: typography.pxToRem(24),
+      marginTop: 0,
     },
     "& img": {
       width: "100%",

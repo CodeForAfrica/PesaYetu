@@ -20,7 +20,7 @@ const TwoColumnLayout = ({ content, title, subtitle, ...props }) => {
           <Typography className={classes.title} variant="h1">
             {title}
           </Typography>
-          <Typography className={classes.subtitle} variant="body1">
+          <Typography className={classes.subtitle} variant="h4">
             {subtitle}
           </Typography>
         </Grid>
