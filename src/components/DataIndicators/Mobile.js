@@ -16,7 +16,7 @@ const MobileScreen = ({ title, items, ...props }) => {
       </RichTypography>
       <div>
         {items?.map((item) => (
-          <Grid container>
+          <Grid container key={item.title}>
             <div
               className={`${classes.imageContainer} ${classes.mdImageContainer}`}
             >

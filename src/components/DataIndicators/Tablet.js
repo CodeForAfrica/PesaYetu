@@ -33,6 +33,7 @@ const TabletScreen = ({ items, title, ...props }) => {
         <Grid className={classes.mdItems}>
           {items?.map((item) => (
             <Icon
+              key={item.title}
               item={item}
               handleChange={handleChange}
               currentSelect={currentSelect}

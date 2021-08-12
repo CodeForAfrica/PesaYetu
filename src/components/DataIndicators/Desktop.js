@@ -33,6 +33,7 @@ const Desktop = ({ items, title, ...props }) => {
         <div className={classes.iconContainer}>
           {items?.map((item) => (
             <Icon
+              key={item.title}
               handleChange={handleChange}
               item={item}
               currentSelect={currentSelect}
