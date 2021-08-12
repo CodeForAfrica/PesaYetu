@@ -15,7 +15,7 @@ export const Default = Template.bind({});
 Default.args = {
   overline: "Stories",
   title: "Your County in <span class='highlight'>data</span>",
-  items: [
+  stories: [
     {
       title: "Isiolo v Samburu Voter registration discrepancy 1",
       description:

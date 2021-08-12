@@ -12,11 +12,11 @@ import Section from "@/pesayetu/components/Section";
 
 import "react-multi-carousel/lib/styles.css";
 
-const InsightsData = ({ overline, title, items, ...props }) => {
+const InsightsData = ({ overline, title, ctatext, stories, ...props }) => {
   const classes = useStyles(props);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
-  if (!items?.length) {
+  if (!stories?.length) {
     return null;
   }
 
@@ -47,7 +47,7 @@ const InsightsData = ({ overline, title, items, ...props }) => {
           <Grid item lg={8} md={12}>
             <div className={classes.chartContainer}>
               <RichTypography className={classes.chart}>
-                {items[currentItemIndex].chart}
+                {stories[currentItemIndex].chart}
               </RichTypography>
             </div>
           </Grid>
@@ -65,38 +65,33 @@ const InsightsData = ({ overline, title, items, ...props }) => {
                 setCurrentItemIndex(currentSlide);
               }}
             >
-              {items?.map(
-                ({ title: storyTitle, description, ctaText, href }) => (
-                  <>
-                    {storyTitle && (
-                      <Typography
-                        variant="h4"
-                        className={classes.marginBottom20}
-                      >
-                        {storyTitle}
-                      </Typography>
-                    )}
-                    {description && (
+              {stories?.map(({ title: storyTitle, description, href }) => (
+                <>
+                  {storyTitle && (
+                    <Typography variant="h4" className={classes.marginBottom20}>
+                      {storyTitle}
+                    </Typography>
+                  )}
+                  {description && (
+                    <Typography
+                      variant="subtitle2"
+                      className={classes.marginBottom20}
+                    >
+                      {description}
+                    </Typography>
+                  )}
+                  {ctatext && href && (
+                    <Link href={href} underline="always">
                       <Typography
                         variant="subtitle2"
-                        className={classes.marginBottom20}
+                        className={classes.linkText}
                       >
-                        {description}
+                        {ctatext}
                       </Typography>
-                    )}
-                    {ctaText && href && (
-                      <Link href={href} underline="always">
-                        <Typography
-                          variant="subtitle2"
-                          className={classes.linkText}
-                        >
-                          {ctaText}
-                        </Typography>
-                      </Link>
-                    )}
-                  </>
-                )
-              )}
+                    </Link>
+                  )}
+                </>
+              ))}
             </Carousel>
           </Grid>
         </Grid>
@@ -108,13 +103,13 @@ const InsightsData = ({ overline, title, items, ...props }) => {
 InsightsData.propTypes = {
   overline: PropTypes.string,
   title: PropTypes.string,
-  items: PropTypes.arrayOf(
+  ctatext: PropTypes.string,
+  stories: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       chart: PropTypes.string,
       description: PropTypes.string,
       href: PropTypes.string,
-      ctaText: PropTypes.string,
     })
   ),
 };
@@ -122,7 +117,8 @@ InsightsData.propTypes = {
 InsightsData.defaultProps = {
   overline: undefined,
   title: undefined,
-  items: undefined,
+  stories: undefined,
+  ctatext: undefined,
 };
 
 export default InsightsData;

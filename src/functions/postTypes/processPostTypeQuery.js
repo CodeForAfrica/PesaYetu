@@ -81,10 +81,9 @@ export default async function processPostTypeQuery(
         return post;
       }
 
-      // Merge blocks from query with all blocksJSONs
-      newPost.blocks = newPost.blocks.concat(
-        JSON.parse(newPost.blocksJSON) ?? []
-      );
+      // Handle blocksJSONs and merge to blocks fields from query
+      const blocks = JSON.parse(newPost.blocksJSON) ?? [];
+      newPost.blocks = (newPost?.blocks ?? []).concat(blocks);
 
       delete newPost.blocksJSON;
 
