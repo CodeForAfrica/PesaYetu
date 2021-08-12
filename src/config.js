@@ -65,7 +65,7 @@ const socialMedia = [
   },
 ];
 
-export const insightDataStories = {
+export const insightStories = {
   items: [
     {
       title: "Dolor sit amet ipsum dolor sit amet",
@@ -331,7 +331,7 @@ export const searchArgs = {
   },
 };
 
-export const insightDataTabStories = {
+export const newsStories = {
   items: [
     {
       title: "Dolor sit amet ipsum dolor sit amet",

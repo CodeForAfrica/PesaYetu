@@ -3,7 +3,7 @@ import React from "react";
 import Insights from ".";
 
 import Group8522 from "@/pesayetu/assets/Group852-2.svg";
-import { insightDataStories } from "@/pesayetu/config";
+import { insightStories } from "@/pesayetu/config";
 
 export default {
   title: "Sections/Insights",
@@ -34,5 +34,5 @@ Default.args = {
     ctaText: "Read More",
     image: Group8522,
   },
-  items: insightDataStories.items,
+  items: insightStories.items,
 };

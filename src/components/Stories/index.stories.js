@@ -3,7 +3,7 @@ import React from "react";
 import Stories from ".";
 
 import cardImage from "@/pesayetu/assets/images/stephen-dawson-qwtCeJ5cLYs-unsplash.png";
-import { insightDataTabStories } from "@/pesayetu/config";
+import { newsStories } from "@/pesayetu/config";
 
 export default {
   title: "Sections/Stories",
@@ -34,5 +34,5 @@ Default.args = {
     ctaText: "Read More",
     image: cardImage,
   },
-  items: insightDataTabStories.items,
+  items: newsStories.items,
 };
