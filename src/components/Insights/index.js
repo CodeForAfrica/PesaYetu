@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Grid, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { chunk } from "lodash";
