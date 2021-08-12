@@ -72,7 +72,6 @@ export async function getStaticProps({ preview, previewData }) {
   const { children } = await res.json();
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-
   return {
     props: {
       ...props,

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(
   ({ palette, typography, breakpoints, widths }) => ({
     root: {
-      backgroundColor: "#F8F8F8",
+      backgroundColor: palette.background.palette,
     },
     section: {},
     header: {
