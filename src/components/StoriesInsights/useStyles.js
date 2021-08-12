@@ -5,32 +5,14 @@ const useStyles = makeStyles(
     root: {
       backgroundColor: "#F8F8F8",
     },
-    section: {
-      paddingTop: typography.pxToRem(60),
-      paddingLeft: typography.pxToRem(20),
-      paddingRight: typography.pxToRem(20),
+    section: {},
+    header: {
+      padding: `${typography.pxToRem(40)} 0`,
       [breakpoints.up("md")]: {
-        padding: `${typography.pxToRem(80)} 0`,
+        paddingTop: typography.pxToRem(80),
       },
-    },
-    title: {
-      fontWeight: "bold",
-      fontSize: typography.pxToRem(14),
-      marginBottom: typography.pxToRem(13),
-      textTransform: "uppercase",
-    },
-    subtitle: {
-      fontSize: typography.pxToRem(30),
-      fontWeight: 900,
-      marginBottom: typography.pxToRem(40),
       [breakpoints.up("lg")]: {
-        marginBottom: typography.pxToRem(85),
-        fontSize: typography.pxToRem(48),
-      },
-      "& .highlight": {
-        background:
-          "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
-        display: "inline-block",
+        paddingBottom: typography.pxToRem(85),
       },
     },
     carouselList: {

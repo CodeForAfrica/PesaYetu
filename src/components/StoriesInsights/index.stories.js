@@ -13,8 +13,8 @@ const Template = ({ ...args }) => <StoriesInsights {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  title: "Stories",
-  subtitle: "Your County in data",
+  overline: "Stories",
+  title: "Your County in <span class='highlight'>data</span>",
   items: [
     {
       title: "Isiolo v Samburu Voter registration discrepancy 1",

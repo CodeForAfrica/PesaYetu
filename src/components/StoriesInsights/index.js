@@ -6,15 +6,15 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
+import Header from "@/pesayetu/components/Header";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
 import "react-multi-carousel/lib/styles.css";
 
-const InsightsData = ({ title, subtitle, items, ...props }) => {
+const InsightsData = ({ overline, title, items, ...props }) => {
   const classes = useStyles(props);
-  const [item] = items || [];
-  const [chart, setChart] = useState(item?.chart);
+  const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   if (!items?.length) {
     return null;
@@ -40,16 +40,15 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        {title && <Typography className={classes.title}>{title}</Typography>}
-        {subtitle && (
-          <RichTypography className={classes.subtitle}>
-            {subtitle}
-          </RichTypography>
-        )}
+        <Header overline={overline} className={classes.header}>
+          {title}
+        </Header>
         <Grid container>
           <Grid item lg={8} md={12}>
             <div className={classes.chartContainer}>
-              <RichTypography className={classes.chart}>{chart}</RichTypography>
+              <RichTypography className={classes.chart}>
+                {items[currentItemIndex].chart}
+              </RichTypography>
             </div>
           </Grid>
           <Grid item lg={1} />
@@ -63,8 +62,7 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
               containerClass={classes.carouselList}
               dotListClass={classes.dots}
               afterChange={(_, { currentSlide }) => {
-                const currentItem = items[currentSlide];
-                setChart(currentItem?.chart);
+                setCurrentItemIndex(currentSlide);
               }}
             >
               {items?.map(
@@ -108,8 +106,8 @@ const InsightsData = ({ title, subtitle, items, ...props }) => {
 };
 
 InsightsData.propTypes = {
+  overline: PropTypes.string,
   title: PropTypes.string,
-  subtitle: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -122,8 +120,8 @@ InsightsData.propTypes = {
 };
 
 InsightsData.defaultProps = {
+  overline: undefined,
   title: undefined,
-  subtitle: undefined,
   items: undefined,
 };
 
