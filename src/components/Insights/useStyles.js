@@ -17,8 +17,14 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     "& > div:first-child": {
       display: "block",
       margin: "auto !important",
-      height: typography.pxToRem(231),
-      width: typography.pxToRem(460),
+      height: typography.pxToRem(240),
+      width: typography.pxToRem(240),
+      [breakpoints.up("md")]: {
+        width: typography.pxToRem(246.88),
+      },
+      [breakpoints.up("lg")]: {
+        width: typography.pxToRem(460),
+      },
     },
   },
   cardMedia: {

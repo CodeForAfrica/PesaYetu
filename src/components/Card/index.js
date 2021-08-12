@@ -1,8 +1,3 @@
-import {
-  CardActionArea,
-  CardContent,
-  Card as MuiCard,
-} from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -15,34 +10,34 @@ const Card = ({ href, children, image, ...props }) => {
   const classes = useStyles(props);
 
   return (
-    <MuiCard className={classes.root}>
+    <div className={classes.root}>
       {href ? (
-        <CardActionArea
+        <div
           component={href ? Link : undefined}
           href={href}
           underline="none"
           {...props}
         >
-          <CardContent className={classes.content}>
+          <div className={classes.content}>
             {image && (
               <div className={classes.cardMedia}>
                 <Image src={image} layout="fill" className={classes.image} />
               </div>
             )}
             {children}
-          </CardContent>
-        </CardActionArea>
+          </div>
+        </div>
       ) : (
-        <CardContent className={classes.content}>
+        <div className={classes.content}>
           {image && (
             <div className={classes.cardMedia}>
               <Image src={image} layout="fill" className={classes.image} />
             </div>
           )}
           {children}
-        </CardContent>
+        </div>
       )}
-    </MuiCard>
+    </div>
   );
 };
 
