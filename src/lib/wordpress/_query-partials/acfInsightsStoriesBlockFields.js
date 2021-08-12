@@ -10,6 +10,7 @@ const acfInsightsStoriesBlockFields = `
       story {
         ... on Post {
           id
+          slug
           uri
           title
           excerpt(format: RAW)

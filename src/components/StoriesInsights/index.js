@@ -1,18 +1,18 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 
+import Content from "./Content";
 import useStyles from "./useStyles";
 
 import Header from "@/pesayetu/components/Header";
-import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
 import "react-multi-carousel/lib/styles.css";
 
-const InsightsData = ({ overline, title, ctatext, stories, ...props }) => {
+function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
   const classes = useStyles(props);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
@@ -65,32 +65,8 @@ const InsightsData = ({ overline, title, ctatext, stories, ...props }) => {
                 setCurrentItemIndex(currentSlide);
               }}
             >
-              {stories?.map(({ title: storyTitle, description, href }) => (
-                <>
-                  {storyTitle && (
-                    <Typography variant="h4" className={classes.marginBottom20}>
-                      {storyTitle}
-                    </Typography>
-                  )}
-                  {description && (
-                    <Typography
-                      variant="subtitle2"
-                      className={classes.marginBottom20}
-                    >
-                      {description}
-                    </Typography>
-                  )}
-                  {ctatext && href && (
-                    <Link href={href} underline="always">
-                      <Typography
-                        variant="subtitle2"
-                        className={classes.linkText}
-                      >
-                        {ctatext}
-                      </Typography>
-                    </Link>
-                  )}
-                </>
+              {stories?.map((story) => (
+                <Content key={story.slug} {...story} ctaText={ctatext} />
               ))}
             </Carousel>
           </Grid>
@@ -98,27 +74,25 @@ const InsightsData = ({ overline, title, ctatext, stories, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
-InsightsData.propTypes = {
+StoriesInsights.propTypes = {
   overline: PropTypes.string,
   title: PropTypes.string,
   ctatext: PropTypes.string,
   stories: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
+      slug: PropTypes.string,
       chart: PropTypes.string,
-      description: PropTypes.string,
-      href: PropTypes.string,
     })
   ),
 };
 
-InsightsData.defaultProps = {
+StoriesInsights.defaultProps = {
   overline: undefined,
   title: undefined,
   stories: undefined,
   ctatext: undefined,
 };
 
-export default InsightsData;
+export default StoriesInsights;

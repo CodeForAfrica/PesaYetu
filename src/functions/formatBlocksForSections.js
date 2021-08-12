@@ -53,19 +53,21 @@ function formatEnablingPartners({
 
 function formatInsightsStories(attr) {
   const { stories, ...attributes } = attr;
-  const formattedStories = stories?.map(({ story }) => {
-    const chartBlock = story?.blocks?.find(
-      (b) =>
-        Object.hasOwnProperty.call(b, "name") &&
-        b?.name === "lazyblock/insight-chart"
-    );
-    return {
-      title: story?.title,
-      description: story?.excerpt,
-      href: story?.uri,
-      chart: chartBlock?.attributes?.chart ?? "",
-    };
-  });
+  const formattedStories = stories?.map(
+    ({ blocks, excerpt: description, uri: href, ...rest }) => {
+      const chartBlock = blocks?.find(
+        (b) =>
+          Object.hasOwnProperty.call(b, "name") &&
+          b?.name === "lazyblock/insight-chart"
+      );
+      return {
+        ...rest,
+        description,
+        href,
+        chart: chartBlock?.attributes?.chart ?? "",
+      };
+    }
+  );
 
   if (!formattedStories) {
     return null;
