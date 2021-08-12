@@ -51,9 +51,26 @@ function formatEnablingPartners({
   };
 }
 
+function formatInsightsStories(attr) {
+  const { stories, ...attributes } = attr;
+  const formattedStories = stories.map(({ story }) => {
+    const chartBlock = story?.blocks?.find(
+      (b) => b.hasOwnPropert("name") && b?.name === "lazyblock/insight-chart"
+    );
+    return {
+      ...story,
+      chart: chartBlock?.attributes?.chart ?? "",
+    };
+  });
+
+  return { ...attributes, stories: formattedStories };
+}
+
 function format(block) {
   const { attributes, name } = block;
   switch (name) {
+    case "acf/acf/insights-stories":
+      return formatInsightsStories(attributes);
     case "lazyblock/explore-other-tools":
     case "lazyblock/data-visuals":
     case "lazyblock/data-insights":
@@ -74,7 +91,10 @@ function format(block) {
   }
 }
 
-export default function formatBlocksForSections(blocks) {
+export default function formatBlocksForSections(blc) {
+  // filter empty block {}
+  const blocks = blc?.filter((b) => !(b && Object.keys(b).length === 0));
+
   const texts = blocks?.filter(
     ({ name }) => name === "core/heading" || name === "core/paragraph"
   );

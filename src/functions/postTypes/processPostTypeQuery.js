@@ -1,4 +1,3 @@
-import formatBlockData from "@/pesayetu/functions/formatBlockData";
 import getMenus from "@/pesayetu/functions/menus/getMenus";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import {
@@ -82,8 +81,8 @@ export default async function processPostTypeQuery(
         return post;
       }
 
-      // Handle blocks.
-      newPost.blocks = await formatBlockData(
+      // Merge blocks from query with all blocksJSONs
+      newPost.blocks = newPost.blocks.concat(
         JSON.parse(newPost.blocksJSON) ?? []
       );
 
