@@ -73,8 +73,20 @@ const useStyles = makeStyles(
         )} ${typography.pxToRem(27)}`,
       },
     },
-    marginBottom20: {
+    card: {
+      border: 0,
+      boxShadow: "unset",
+    },
+    cardTitle: {
       marginBottom: typography.pxToRem(20),
+      color: "#212529",
+    },
+    cardDescription: {
+      marginBottom: typography.pxToRem(20),
+      color: palette.text.primary,
+    },
+    cardFocusHighlight: {
+      color: palette.background.paper,
     },
     linkText: {
       fontWeight: "bold",

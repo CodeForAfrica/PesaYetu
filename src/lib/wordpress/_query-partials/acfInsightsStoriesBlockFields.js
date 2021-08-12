@@ -13,7 +13,7 @@ const acfInsightsStoriesBlockFields = `
           slug
           uri
           title
-          excerpt(format: RAW)
+          excerpt
           blocks {
             ... on LazyblockInsightChartBlock {
               name

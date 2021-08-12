@@ -1,3 +1,4 @@
+import RichTypography from "@commons-ui/core/RichTypography";
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
@@ -13,17 +14,18 @@ function Content({ description, title, ctaText, href, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <Card href={href}>
+    <Card
+      href={href}
+      classes={{ root: classes.card, focusHighlight: classes.focusHighlight }}
+    >
       {title && (
-        <Typography variant="h4" className={classes.marginBottom20}>
+        <Typography variant="h4" className={classes.cardTitle}>
           {title}
         </Typography>
       )}
-      {description && (
-        <Typography variant="subtitle2" className={classes.marginBottom20}>
-          {description}
-        </Typography>
-      )}
+      <RichTypography variant="subtitle2" className={classes.cardDescription}>
+        {description}
+      </RichTypography>
       {ctaText && href && (
         <Link href={href} underline="always">
           <Typography variant="subtitle2" className={classes.linkText}>

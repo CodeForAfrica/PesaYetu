@@ -54,7 +54,7 @@ function formatEnablingPartners({
 function formatInsightsStories(attr) {
   const { stories, ...attributes } = attr;
   const formattedStories = stories?.map(
-    ({ blocks, excerpt: description, uri: href, ...rest }) => {
+    ({ story: { blocks, excerpt, uri: href, ...rest } }) => {
       const chartBlock = blocks?.find(
         (b) =>
           Object.hasOwnProperty.call(b, "name") &&
@@ -62,7 +62,7 @@ function formatInsightsStories(attr) {
       );
       return {
         ...rest,
-        description,
+        description: excerpt ?? "",
         href,
         chart: chartBlock?.attributes?.chart ?? "",
       };
