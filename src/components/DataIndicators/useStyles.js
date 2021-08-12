@@ -96,7 +96,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   smContainer: {
     padding: `${typography.pxToRem(40)} 0`,
   },
-
+  smItem: {
+    display: "flex",
+  },
   indicatorsContainer: {
     flexDirection: "column",
     paddingTop: typography.pxToRem(102),

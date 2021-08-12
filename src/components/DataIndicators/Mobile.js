@@ -15,9 +15,9 @@ const MobileScreen = ({ title, items, ...props }) => {
       <RichTypography className={clsx(classes.sectionTitle, classes.smTitle)}>
         {title}
       </RichTypography>
-      <div>
+      <Grid container>
         {items?.map((item) => (
-          <Grid container key={item.title}>
+          <Grid item key={item.title} className={classes.smItem}>
             <div
               className={clsx(classes.imageContainer, classes.mdImageContainer)}
             >
@@ -28,7 +28,7 @@ const MobileScreen = ({ title, items, ...props }) => {
             </Typography>
           </Grid>
         ))}
-      </div>
+      </Grid>
     </Grid>
   );
 };
