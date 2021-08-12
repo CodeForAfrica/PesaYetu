@@ -1,5 +1,6 @@
 import RichTypography from "@commons-ui/core/RichTypography";
 import { Grid } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
@@ -46,9 +47,16 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
         <Grid container>
           <Grid item lg={8} md={12}>
             <div className={classes.chartContainer}>
-              <RichTypography className={classes.chart}>
-                {stories[currentItemIndex].chart}
-              </RichTypography>
+              {stories.map(({ chart, slug }, index) => (
+                <RichTypography
+                  key={slug}
+                  className={clsx(classes.chart, {
+                    [classes.currentChart]: index === currentItemIndex,
+                  })}
+                >
+                  {chart}
+                </RichTypography>
+              ))}
             </div>
           </Grid>
           <Grid item lg={1} />

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(
   ({ palette, typography, breakpoints, widths }) => ({
     root: {
-      backgroundColor: palette.background.palette,
+      backgroundColor: palette.background.paper,
     },
     section: {},
     header: {
@@ -57,6 +57,7 @@ const useStyles = makeStyles(
       "& > iframe": {
         height: "100%",
       },
+      display: "none",
       height: typography.pxToRem(400),
       width: "100%",
       padding: `0 ${typography.pxToRem(20)}`,
@@ -72,6 +73,9 @@ const useStyles = makeStyles(
           33
         )} ${typography.pxToRem(27)}`,
       },
+    },
+    currentChart: {
+      display: "flex",
     },
     card: {
       border: 0,
