@@ -7,18 +7,24 @@ import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
 import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
+import PartnersAndNewsletter from "@/pesayetu/components/Partners";
+import { searchArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
-import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function Home({ boundary, footerProps, blocks, ...props }) {
+export default function Home({ boundary, blocks, ...props }) {
+  const heroProps = {
+    ...blocks?.hero,
+    selectProps: searchArgs?.selectProps,
+  };
   return (
-    <Page footerProps={footerProps} {...props}>
-      <Hero {...blocks?.hero} boundary={boundary} />
+    <Page {...props}>
+      <Hero {...heroProps} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
       <InsightData {...blocks?.dataInsights} />
       <DataVisuals {...blocks?.dataVisuals} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
+      <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
     </Page>
   );
 }
@@ -29,6 +35,7 @@ Home.propTypes = {
     hero: PropTypes.shape({}),
     howItWorks: PropTypes.shape({}),
     exploreOtherTools: PropTypes.shape({}),
+    partnersAndNewsletter: PropTypes.shape({}),
     dataInsights: PropTypes.shape({}),
     dataVisuals: PropTypes.shape({}),
   }),
@@ -41,11 +48,13 @@ Home.defaultProps = {
   footerProps: undefined,
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview, previewData }) {
   const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     { slug: "/" },
-    postType
+    postType,
+    preview,
+    previewData
   );
 
   if (notFound) {
@@ -60,12 +69,10 @@ export async function getStaticProps() {
   const { children } = await res.json();
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const footerProps = getFooterMenu(props?.menus?.footerMenu || []);
   return {
     props: {
       ...props,
       blocks,
-      footerProps,
       boundary: children?.county,
     },
     revalidate,

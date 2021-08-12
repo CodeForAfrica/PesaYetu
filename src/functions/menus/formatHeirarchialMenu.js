@@ -17,6 +17,10 @@ export default function formatHeirarchialMenu(
   const childrenOf = {};
   data.forEach((item) => {
     const newItem = { ...item };
+    const path = `${newItem.path}`;
+    if (path.startsWith(process.env.NEXT_PUBLIC_MULTISITE_PREFIX.toString())) {
+      newItem.path = path.replace(process.env.NEXT_PUBLIC_MULTISITE_PREFIX, "");
+    }
     const { [idKey]: id, [parentKey]: parentId = 0 } = newItem;
     childrenOf[id] = childrenOf[id] || [];
     newItem[childrenKey] = childrenOf[id];
