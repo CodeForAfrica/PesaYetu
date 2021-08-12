@@ -1,4 +1,3 @@
-import formatBlockData from "@/pesayetu/functions/formatBlockData";
 import getMenus from "@/pesayetu/functions/menus/getMenus";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import {
@@ -71,7 +70,7 @@ export default async function processPostTypeQuery(
       // Retrieve blocks from archive stories page
       return {
         ...post,
-        commonBlockJSON: homepageSettings?.postsPage?.blocksJSON ?? null,
+        postsPageBlockJSON: homepageSettings?.postsPage?.blocksJSON ?? null,
       };
     })
     .then(async (post) => {
@@ -85,19 +84,18 @@ export default async function processPostTypeQuery(
         return post;
       }
 
-      // Handle blocks.
-      const { blocksJSON, commonBlockJSON } = newPost;
+      // Handle blocksJSONs and merge blocks fields from query
+      const blocks = JSON.parse(newPost?.blocksJSON) ?? [];
+      const postsPageBlocks = JSON.parse(newPost?.postsPageBlockJSON) ?? [];
 
-      const blocks = await formatBlockData(JSON.parse(blocksJSON) ?? []);
-
-      const commonPostBlocks = await formatBlockData(
-        JSON.parse(commonBlockJSON) ?? []
-      );
-
-      newPost.blocks = blocks.concat(commonPostBlocks);
+      newPost.blocks = (newPost?.blocks ?? []).concat(blocks);
+      // merge postsPageblocks only on post
+      if (postType === "post") {
+        newPost.blocks = (newPost?.blocks ?? []).concat(postsPageBlocks);
+      }
 
       delete newPost.blocksJSON;
-      delete newPost.commonBlockJSON;
+      delete newPost?.postsPageBlocks;
 
       return newPost;
     })
