@@ -17,6 +17,10 @@ import summaryHover from "@/pesayetu/assets/images/Group 4658.svg";
 import implementHover from "@/pesayetu/assets/images/Group 4659.svg";
 import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
+import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
+import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
+import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
+import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
 
 export const dataIndicator = {
   title: "Data <span class='highlight'>Indicators</span>",
@@ -109,9 +113,106 @@ const socialMedia = [
   },
 ];
 
+export const navigationArgs = {
+  logoProps: {
+    href: "/",
+    firstTitle: "Pesa",
+    secondTitle: "Yetu",
+    firstSubtitle: "Our County",
+    secondSubtitle: "Our Responsibility",
+  },
+  menuProps: [
+    {
+      href: "/explore",
+      label: "EXPLORE",
+    },
+    {
+      href: "/data",
+      label: "DATA",
+    },
+    {
+      href: "/stories",
+      label: "STORIES",
+    },
+    {
+      href: "/how-it-works",
+      label: "HOW IT WORKS",
+    },
+  ],
+  selectProps: {
+    title: "Search for location",
+    placeholder: "Abc_",
+    selectId: "select-grouped-id",
+    inputBaseId: "inputbase-grouped-id",
+    selectLabel: "select-grouped-label",
+    inputBaseLabel: "inputbase-grouped-label",
+    openIcon: SearchOpen,
+    closeIcon: SearchClose,
+    menuItems: [
+      {
+        countryName: "country 1",
+        countryUrl: "/country-1",
+        items: [
+          {
+            name: "subcounty 1",
+            url: "/subcounty-1",
+          },
+          {
+            name: "subcounty 2",
+            url: "/subcounty-2",
+          },
+          {
+            name: "subcounty 3",
+            url: "/subcounty-3",
+          },
+        ],
+      },
+      {
+        countryName: "country 2",
+        countryUrl: "/country-2",
+        items: [
+          {
+            name: "subcounty 4",
+            url: "/subcounty-4",
+          },
+          {
+            name: "subcounty 5",
+            url: "/subcounty-5",
+          },
+        ],
+      },
+      {
+        countryName: "country 3",
+        countryUrl: "/country-3",
+        items: [
+          {
+            name: "subcounty 6",
+            url: "/subcounty-6",
+          },
+          {
+            name: "subcounty 7",
+            url: "/subcounty-7",
+          },
+        ],
+      },
+    ],
+  },
+  socialLinks: [
+    {
+      href: "/twitter",
+      src: Twitter,
+      label: "twitter",
+    },
+    {
+      href: "/facebook",
+      src: Facebook,
+      label: "facebook",
+    },
+  ],
+};
 export const insightData = {
-  title: "Stories",
-  subtitle: "Data Driven <span class='highlight'>Insights</span>",
+  overline: "Stories",
+  title: "Data-driven <span class='highlight'>Insights</span>",
   items: [
     {
       title: "Dolor sit amet ipsum dolor sit amet",
@@ -139,6 +240,66 @@ export const insightData = {
       href: "www.test.com",
     },
   ],
+};
+export const searchArgs = {
+  selectProps: {
+    title: "Search for Location",
+    placeholder: "Abc_",
+    selectId: "select-grouped-id",
+    inputBaseId: "inputbase-grouped-id",
+    selectLabel: "select-grouped-label",
+    inputBaseLabel: "inputbase-grouped-label",
+    openIcon: SearchOpen,
+    closeIcon: SearchOpen,
+    menuItems: [
+      {
+        countryName: "country 1",
+        countryUrl: "/country-1",
+        items: [
+          {
+            name: "subcounty 1",
+            url: "/subcounty-1",
+          },
+          {
+            name: "subcounty 2",
+            url: "/subcounty-2",
+          },
+          {
+            name: "subcounty 3",
+            url: "/subcounty-3",
+          },
+        ],
+      },
+      {
+        countryName: "country 2",
+        countryUrl: "/country-2",
+        items: [
+          {
+            name: "subcounty 4",
+            url: "/subcounty-4",
+          },
+          {
+            name: "subcounty 5",
+            url: "/subcounty-5",
+          },
+        ],
+      },
+      {
+        countryName: "country 3",
+        countryUrl: "/country-3",
+        items: [
+          {
+            name: "subcounty 6",
+            url: "/subcounty-6",
+          },
+          {
+            name: "subcounty 7",
+            url: "/subcounty-7",
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export const exploreTools = {
@@ -210,3 +371,12 @@ export const footerArgs = {
   },
   aboutVariant: "subtitle1",
 };
+
+const config = {
+  footerArgs,
+  exploreTools,
+  navigationArgs,
+  url: "http://localhost:3000",
+};
+
+export default config;
