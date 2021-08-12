@@ -31,7 +31,7 @@ function StoryPage({ content, children, image, socialLinks, ...props }) {
               </figure>
             )}
             <ShareBar title={props?.title} socialLinks={socialLinks}>
-              Share
+              {children}
             </ShareBar>
             <RichTypography className={classes.content} variant="body1">
               {content}
