@@ -64,7 +64,7 @@ export default async function getPostTypeStaticProps(
   /* -- Handle taxonomy archives. -- */
   if (
     Object.keys(archiveQuerySeo).includes(postType) &&
-    params.slug.length === 1
+    params.slug.length === 2
   ) {
     const taxonomy = "category";
     const taxonomySlug = params.slug.pop(); // category slug ( insights or new )
@@ -87,12 +87,8 @@ export default async function getPostTypeStaticProps(
   /* -- Handle individual posts. -- */
 
   // Handle catch-all routes.
-  let slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
+  const slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
 
-  // append stories for posts
-  if (postType === "post") {
-    slug = `stories/${slug}`;
-  }
   /* -- Handle dynamic posts. -- */
 
   // Get post identifier (ID or slug).

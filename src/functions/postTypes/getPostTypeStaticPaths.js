@@ -57,11 +57,7 @@ export default async function getPostTypeStaticPaths(postType) {
     : posts.data[pluralName].edges
         .map((post) => {
           // Trim leading and trailing slashes then split into array on inner slashes.
-          let slug = post.node[pathField].replace(/^\/|\/$/g, "").split("/");
-          // slice off the first item as uri includes the parent page name (i.e stories)
-          if (isHierarchical) {
-            slug = slug.slice(1);
-          }
+          const slug = post.node[pathField].replace(/^\/|\/$/g, "").split("/");
 
           return {
             params: {
@@ -74,7 +70,7 @@ export default async function getPostTypeStaticPaths(postType) {
           posts.data.categories.edges.map(({ node: { slug } }) => {
             return {
               params: {
-                slug: [slug],
+                slug: ["stories", slug],
               },
             };
           })

@@ -80,7 +80,7 @@ export const navigationArgs = {
       label: "DATA",
     },
     {
-      href: "/stories",
+      href: "/stories/news",
       label: "STORIES",
     },
     {
