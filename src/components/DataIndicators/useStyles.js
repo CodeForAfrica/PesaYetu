@@ -37,8 +37,12 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     width: "max-content",
   },
   imageContainer: {
-    height: typography.pxToRem(140),
-    width: typography.pxToRem(140),
+    height: typography.pxToRem(88),
+    width: typography.pxToRem(88),
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(140),
+      width: typography.pxToRem(140),
+    },
     position: "relative",
   },
   item: {
@@ -98,6 +102,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   smItem: {
     display: "flex",
+    minWidth: typography.pxToRem(260),
   },
   indicatorsContainer: {
     flexDirection: "column",

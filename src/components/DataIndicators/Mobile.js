@@ -15,7 +15,7 @@ const MobileScreen = ({ title, items, ...props }) => {
       <RichTypography className={clsx(classes.sectionTitle, classes.smTitle)}>
         {title}
       </RichTypography>
-      <Grid container>
+      <Grid container justifyContent="center">
         {items?.map((item) => (
           <Grid item key={item.title} className={classes.smItem}>
             <div
