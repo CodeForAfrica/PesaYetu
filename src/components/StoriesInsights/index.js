@@ -14,8 +14,8 @@ import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
 function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
-  const classes = useStyles(props);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
+  const classes = useStyles({ currentItemIndex, ...props });
 
   if (!stories?.length) {
     return null;
@@ -45,19 +45,20 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
           {title}
         </Header>
         <Grid container>
-          <Grid item lg={8} md={12}>
-            <div className={classes.chartContainer}>
-              {stories.map(({ chart, slug }, index) => (
-                <RichTypography
-                  key={slug}
-                  className={clsx(classes.chart, {
-                    [classes.currentChart]: index === currentItemIndex,
-                  })}
-                >
+          <Grid item lg={8} md={12} container direction="row" wrap="nowrap">
+            {stories.map(({ chart, slug }, index) => (
+              <Grid
+                item
+                key={slug}
+                className={clsx(classes.chartContainer, {
+                  [classes.currentChart]: index === currentItemIndex,
+                })}
+              >
+                <RichTypography className={classes.chart}>
                   {chart}
                 </RichTypography>
-              ))}
-            </div>
+              </Grid>
+            ))}
           </Grid>
           <Grid item lg={1} />
           <Grid item lg={3} md={12} container direction="column">
@@ -69,8 +70,8 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
               showDots
               containerClass={classes.carouselList}
               dotListClass={classes.dots}
-              afterChange={(_, { currentSlide }) => {
-                setCurrentItemIndex(currentSlide);
+              beforeChange={(nextSlide) => {
+                setCurrentItemIndex(nextSlide);
               }}
             >
               {stories?.map((story) => (
