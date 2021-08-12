@@ -69,6 +69,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     justifyContent: "space-evenly",
     marginTop: typography.pxToRem(80),
     marginBottom: typography.pxToRem(163),
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(900),
+    },
   },
   // refine these styles
   mdImageContainer: {
@@ -110,6 +113,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   indicatorsContainer: {
     flexDirection: "column",
     paddingTop: typography.pxToRem(102),
+    [breakpoints.up("lg")]: {
+      alignItems: "center",
+    },
   },
   block: {
     display: "flex",
