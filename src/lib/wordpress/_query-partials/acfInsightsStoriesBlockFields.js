@@ -1,4 +1,6 @@
 // Query partial: retrieve pagination info for acf insightsstories blocks.
+import lazyBlockInsightChartBlockFields from "./lazyBlockInsightChartBlockFields";
+
 const acfInsightsStoriesBlockFields = `
 ... on AcfInsightsStoriesBlock {
   name
@@ -15,12 +17,7 @@ const acfInsightsStoriesBlockFields = `
           title
           excerpt
           blocks {
-            ... on LazyblockInsightChartBlock {
-              name
-              attributes {
-                chart
-              }
-            }
+            ${lazyBlockInsightChartBlockFields}
           }
         }
       }

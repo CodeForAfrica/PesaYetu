@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+import acfFeaturedStoriesBlockFields from "@/pesayetu/lib/wordpress/_query-partials/acfFeaturedStoriesBlockFields";
 import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
 import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostFields";
 import {
@@ -24,6 +25,9 @@ const queryPostsByCategory = gql`
     homepageSettings {
       postsPage {
         blocksJSON
+        blocks {
+          ${acfFeaturedStoriesBlockFields}
+        }
       }
     }
     category(id: $id, idType: $idType) {
