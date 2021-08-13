@@ -14,7 +14,7 @@ const InsightCard = ({
   description,
   image,
   href,
-  linkdescription,
+  ctaText,
   ...props
 }) => {
   const classes = useStyles(props);
@@ -27,6 +27,7 @@ const InsightCard = ({
       }}
       image={image}
       href={href}
+      {...props}
     >
       {title && (
         <Typography variant="h4" className={classes.cardTitle}>
@@ -38,13 +39,13 @@ const InsightCard = ({
           {description}
         </Typography>
       )}
-      <Link className={classes.link} href={href}>
-        {linkdescription && (
+      {ctaText && href && (
+        <Link className={classes.link} href={href}>
           <Typography variant="subtitle2" className={classes.linkText}>
-            {linkdescription}
+            {ctaText}
           </Typography>
-        )}
-      </Link>
+        </Link>
+      )}
     </Card>
   );
 };
@@ -55,7 +56,7 @@ InsightCard.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   href: PropTypes.string,
-  linkdescription: PropTypes.string,
+  ctaText: PropTypes.string,
 };
 
 InsightCard.defaultProps = {
@@ -64,7 +65,7 @@ InsightCard.defaultProps = {
   description: undefined,
   image: undefined,
   href: undefined,
-  linkdescription: undefined,
+  ctaText: undefined,
 };
 
 export default InsightCard;
