@@ -13,10 +13,12 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     lineHeight: 66 / 50,
     marginBottom: typography.pxToRem(40),
     fontWeight: "300",
+    color: palette.text.hint,
   },
   subtitle: {
     fontWeight: "normal",
     marginBottom: typography.pxToRem(40),
+    color: "#212529",
   },
   container: {
     [breakpoints.up("md")]: {
