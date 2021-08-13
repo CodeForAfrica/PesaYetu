@@ -45,13 +45,7 @@ const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
       height: typography.pxToRem(415),
     },
   },
-  title: {
-    fontWeight: 400,
-    [breakpoints.up("md")]: {
-      fontWeight: 900,
-      textTransform: "uppercase",
-    },
-  },
+  title: {},
 }));
 
 export default useStyles;
