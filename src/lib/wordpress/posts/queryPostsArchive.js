@@ -4,6 +4,7 @@ import archivePageInfo from "@/pesayetu/lib/wordpress/_query-partials/archivePag
 import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
 import featuredImagePostFields from "@/pesayetu/lib/wordpress/_query-partials/featuredImagePostFields";
 import globalPostFields from "@/pesayetu/lib/wordpress/_query-partials/globalPostFields";
+import lazyBlockInsightChartBlockFields from "@/pesayetu/lib/wordpress/_query-partials/lazyBlockInsightChartBlockFields";
 import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostFields";
 
 // Fragment: retrieve archive post fields.
@@ -12,6 +13,9 @@ export const archivePostFragment = gql`
     ${globalPostFields}
     excerpt
     ${featuredImagePostFields}
+    blocks {
+      ${lazyBlockInsightChartBlockFields}
+    }
   }
 `;
 
