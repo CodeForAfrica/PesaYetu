@@ -7,10 +7,19 @@ import React from "react";
 import StoryHeader from "./StoryHeader";
 import useStyles from "./useStyles";
 
+import RelatedStories from "@/pesayetu/components/InsightsData";
 import Section from "@/pesayetu/components/Section";
 import ShareBar from "@/pesayetu/components/ShareBar";
 
-function StoryPage({ content, children, image, chart, socialLinks, ...props }) {
+function StoryPage({
+  content,
+  children,
+  image,
+  chart,
+  socialLinks,
+  relatedPosts,
+  ...props
+}) {
   const classes = useStyles(props);
 
   return (
@@ -42,12 +51,17 @@ function StoryPage({ content, children, image, chart, socialLinks, ...props }) {
           </Grid>
         </Grid>
       </Section>
+      <RelatedStories
+        {...relatedPosts}
+        classes={{ title: classes.relatedTitle }}
+      />
     </div>
   );
 }
 
 StoryPage.propTypes = {
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
+  relatedPosts: PropTypes.shape({}),
   content: PropTypes.string,
   children: PropTypes.string,
   image: PropTypes.string,
@@ -59,6 +73,7 @@ StoryPage.defaultProps = {
   content: undefined,
   children: undefined,
   socialLinks: undefined,
+  relatedPosts: undefined,
   image: undefined,
   title: undefined,
   chart: undefined,

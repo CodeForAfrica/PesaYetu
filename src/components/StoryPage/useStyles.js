@@ -25,6 +25,10 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   content: {
     marginTop: typography.pxToRem(20),
   },
+  relatedTitle: {
+    textAlign: "center",
+    marginBottom: typography.pxToRem(40),
+  },
 }));
 
 export default useStyles;

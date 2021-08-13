@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   section: {},
   divider: {
     display: "flex",
-    marginTop: typography.pxToRem(-2),
+    marginTop: typography.pxToRem(-3.5),
     height: typography.pxToRem(2),
   },
   list: {

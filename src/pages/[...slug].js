@@ -35,6 +35,10 @@ export default function Index({
     : null;
 
   const postsItems = formatStoryPosts(posts, featuredStory);
+  const relatedPosts = formatStoryPosts(
+    post?.categories?.edges[0]?.node?.posts?.nodes ?? [],
+    { slug: post?.slug, ctaText: blocks?.relatedPosts?.ctaText }
+  );
 
   const filteredCategories = categories?.edges
     ?.map(({ node }) => {
@@ -70,6 +74,10 @@ export default function Index({
             year: "numeric",
             month: "long",
           })}
+          relatedPosts={{
+            ...blocks?.relatedPosts,
+            items: relatedPosts.slice(0, 3),
+          }}
         />
       )}
     </Page>
@@ -84,6 +92,9 @@ Index.propTypes = {
     insightChart: PropTypes.shape({}),
     otherHero: PropTypes.shape({}),
     shareStory: PropTypes.shape({}),
+    relatedPosts: PropTypes.shape({
+      ctaText: PropTypes.string,
+    }),
   }),
   categories: PropTypes.shape({
     edges: PropTypes.arrayOf(
@@ -93,7 +104,19 @@ Index.propTypes = {
     ),
   }),
   post: PropTypes.shape({
+    slug: PropTypes.string,
     date: PropTypes.string,
+    categories: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes({
+          node: PropTypes.shape({
+            posts: PropTypes.shape({
+              nodes: PropTypes.arrayOf(PropTypes.shape({})),
+            }),
+          }),
+        })
+      ),
+    }),
     featuredImage: PropTypes.shape({
       node: PropTypes.shape({
         sourceUrl: PropTypes.string,

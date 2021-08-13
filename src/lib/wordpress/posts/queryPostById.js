@@ -1,13 +1,39 @@
 import { gql } from "@apollo/client";
 
 import authorPostFields from "@/pesayetu/lib/wordpress/_query-partials/authorPostFields";
-import categoriesPostFields from "@/pesayetu/lib/wordpress/_query-partials/categoriesPostFields";
 import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
 import featuredImagePostFields from "@/pesayetu/lib/wordpress/_query-partials/featuredImagePostFields";
 import globalPostFields from "@/pesayetu/lib/wordpress/_query-partials/globalPostFields";
+import lazyBlockInsightChartBlockFields from "@/pesayetu/lib/wordpress/_query-partials/lazyBlockInsightChartBlockFields";
 import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostFields";
 import tagsPostFields from "@/pesayetu/lib/wordpress/_query-partials/tagsPostFields";
 
+// fragment to retrieve related stories
+const categoryPosts = `
+  categories {
+    edges {
+      node {
+        name
+        posts {
+          nodes {
+            title
+            uri
+            slug
+            featuredImage {
+              node {
+                sourceUrl(size: $relatedStoriesImageSize)
+              }
+            }
+            blocks {
+              ${lazyBlockInsightChartBlockFields}
+            }
+            excerpt
+          }
+        }
+      }
+    }
+  }
+`;
 // Fragment: retrieve single post fields.
 const singlePostFragment = gql`
   fragment SinglePostFields on Post {
@@ -19,16 +45,17 @@ const singlePostFragment = gql`
     ${authorPostFields}
     ${featuredImagePostFields}
     ${tagsPostFields}
-    ${categoriesPostFields}
+    ${categoryPosts}
   }
 `;
+
 // Query: retrieve post by specified identifier.
 const queryPostById = gql`
   query GET_POST_BY_ID(
     $id: ID!
     $idType: PostIdType = SLUG
     $imageSize: MediaItemSizeEnum = LARGE
-    $order: OrderEnum = DESC
+    $relatedStoriesImageSize: MediaItemSizeEnum = MEDIUM
   ) {
     ${defaultPageData}
     homepageSettings {
