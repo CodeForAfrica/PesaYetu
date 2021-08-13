@@ -1,4 +1,3 @@
-import formatBlockData from "@/pesayetu/functions/formatBlockData";
 import getMenus from "@/pesayetu/functions/menus/getMenus";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
@@ -115,7 +114,10 @@ export default async function getPostTypeTaxonomyArchive(
         postTypes?.[postType]?.route
       }/${taxonomy}/${taxonomyId}`;
 
-      // Structure archive SEO.
+      const postsPageBlocks = (
+        homepageSettings?.postsPage?.blocks ?? []
+      ).concat(JSON.parse(homepageSettings?.postsPage?.blocksJSON) ?? []);
+      // Structure archive SEO & blocks.
       response.post = {
         seo: {
           ...archiveSeo,
@@ -127,9 +129,7 @@ export default async function getPostTypeTaxonomyArchive(
           metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
           metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
         },
-        blocks: await formatBlockData(
-          JSON.parse(homepageSettings?.postsPage?.blocksJSON) ?? []
-        ),
+        blocks: postsPageBlocks,
       };
 
       // Extract pagination data.
