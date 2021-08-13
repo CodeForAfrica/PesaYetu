@@ -1,15 +1,18 @@
-import { Hidden, useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { chunk } from "lodash";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
+import useSWR from "swr";
 
 import CarouselItem from "./CarouselItem";
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
 import Section from "@/pesayetu/components/Section";
+import fetchAPI from "@/pesayetu/utils/fetchApi";
+import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
 
 import "react-multi-carousel/lib/styles.css";
 
@@ -31,19 +34,51 @@ const responsive = {
   },
 };
 
-function Stories({ featuredStoryProps, items, ...props }) {
+function Stories({
+  featuredStoryProps,
+  items,
+  activeCategory,
+  pagination,
+  ...props
+}) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
   const itemsToShow = isTablet ? 6 : 3;
-  const carouselItems = chunk(items, itemsToShow);
+
+  // Track all news, including initial news and additionally loaded pages.
+  const [allStories, setAllStories] = useState(items);
+  // Track carousel slide
+  const [nextItemIndex, setNextItemIndex] = useState();
+  const [paginator, setPaginator] = useState(pagination);
+
+  const fetchMore =
+    paginator?.hasNextPage &&
+    allStories.length - nextItemIndex * itemsToShow <= itemsToShow;
+  const { data: moreStoriesProps } = useSWR(
+    fetchMore
+      ? ["/api/wp/archive", activeCategory, paginator?.endCursor]
+      : null,
+    (url, taxonomyId, cursor) =>
+      fetchAPI(`${url}/?taxonomyId=${taxonomyId}&cursor=${cursor}`)
+  );
+
+  if (fetchMore && moreStoriesProps) {
+    const moreFormatStories = formatStoryPosts(
+      moreStoriesProps?.posts,
+      featuredStoryProps
+    );
+    setAllStories([...allStories, ...(moreFormatStories ?? [])]);
+    const newPaginator = moreStoriesProps?.pagination;
+    setPaginator(newPaginator);
+  }
+
+  const carouselItems = chunk(allStories, itemsToShow);
 
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Hidden smDown implementation="css">
-          <FeaturedStoryCard {...featuredStoryProps} />
-        </Hidden>
+        <FeaturedStoryCard {...featuredStoryProps} />
         <Carousel
           swipeable
           responsive={responsive}
@@ -51,6 +86,9 @@ function Stories({ featuredStoryProps, items, ...props }) {
           renderDotsOutside
           showDots
           dotListClass={classes.dots}
+          beforeChange={(nextSlide) => {
+            setNextItemIndex(nextSlide);
+          }}
         >
           {carouselItems.map((ci) => (
             <CarouselItem items={ci} />
@@ -62,13 +100,19 @@ function Stories({ featuredStoryProps, items, ...props }) {
 }
 
 Stories.propTypes = {
+  activeCategory: PropTypes.string,
   featuredStoryProps: PropTypes.shape({}),
   items: PropTypes.arrayOf(PropTypes.shape({})),
+  pagination: PropTypes.shape({
+    hasNextPage: PropTypes.bool,
+  }),
 };
 
 Stories.defaultProps = {
+  activeCategory: undefined,
   featuredStoryProps: undefined,
   items: undefined,
+  pagination: undefined,
 };
 
 export default Stories;

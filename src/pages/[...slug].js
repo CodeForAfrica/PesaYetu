@@ -9,7 +9,7 @@ import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
-
+import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
 // Define route post type.
 const postType = "post";
 
@@ -17,6 +17,7 @@ export default function Index({
   archive,
   activeCategory,
   categories,
+  pagination,
   post,
   posts,
   blocks,
@@ -33,23 +34,7 @@ export default function Index({
     ? blocks?.featuredStories[activeCategory]
     : null;
 
-  const postsItems = posts
-    ?.filter(({ slug }) => slug !== featuredStory.slug)
-    .map(({ title, excerpt, uri, featuredImage, blocks: postBlocks }) => {
-      const chartBlock = postBlocks?.find(
-        (b) =>
-          Object.hasOwnProperty.call(b, "name") &&
-          b?.name === "lazyblock/insight-chart"
-      );
-      return {
-        title,
-        description: excerpt?.replace(/<[^>]+>/g, "") ?? "",
-        href: uri,
-        image: featuredImage?.node?.sourceUrl,
-        ctaText: featuredStory?.ctaText,
-        chart: chartBlock?.attributes?.chart,
-      };
-    });
+  const postsItems = formatStoryPosts(posts, featuredStory);
 
   const filteredCategories = categories?.edges
     ?.map(({ node }) => {
@@ -66,7 +51,12 @@ export default function Index({
             categories={filteredCategories}
             activeCategory={activeCategory}
           />
-          <Stories featuredStoryProps={featuredStory} items={postsItems} />
+          <Stories
+            activeCategory={activeCategory}
+            featuredStoryProps={featuredStory}
+            items={postsItems}
+            pagination={pagination}
+          />
         </>
       ) : (
         <StoryPage
@@ -118,6 +108,7 @@ Index.propTypes = {
       }),
     }),
   }),
+  pagination: PropTypes.shape({}),
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -141,6 +132,7 @@ Index.defaultProps = {
   categories: undefined,
   post: undefined,
   posts: undefined,
+  pagination: undefined,
 };
 
 export async function getStaticPaths() {

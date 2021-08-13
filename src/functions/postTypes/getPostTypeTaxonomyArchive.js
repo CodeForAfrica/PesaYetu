@@ -26,7 +26,7 @@ export default async function getPostTypeTaxonomyArchive(
   order = "DESC",
   cursor = null,
   getNext = true,
-  perPage = 10
+  perPage = 12
 ) {
   // Define single post query based on taxonomy.
   const postTypeQuery = {
