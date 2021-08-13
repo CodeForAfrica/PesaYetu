@@ -30,7 +30,7 @@ const InsightCard = ({
       {...props}
     >
       {title && (
-        <Typography variant="h4" className={classes.cardTitle}>
+        <Typography variant="h5" className={classes.cardTitle}>
           {title}
         </Typography>
       )}

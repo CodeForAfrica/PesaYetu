@@ -19,7 +19,7 @@ function Content({ description, title, ctaText, href, ...props }) {
       classes={{ root: classes.card, focusHighlight: classes.focusHighlight }}
     >
       {title && (
-        <Typography variant="h4" className={classes.cardTitle}>
+        <Typography variant="h5" className={classes.cardTitle}>
           {title}
         </Typography>
       )}

@@ -15,7 +15,7 @@ const ExploreCard = ({ item, ...props }) => {
       image={image}
       classes={{ root: classes.root, cardMedia: classes.cardMedia }}
     >
-      <Typography className={classes.title} variant="h4">
+      <Typography className={classes.title} variant="h5">
         {title}
       </Typography>
       <Typography className={classes.description}>{description}</Typography>

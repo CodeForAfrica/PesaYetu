@@ -22,7 +22,7 @@ const DataVisuals = ({ title, items, ...props }) => {
   return (
     <Section classes={{ root: classes.root }}>
       {title && (
-        <Typography variant="h3" className={classes.title}>
+        <Typography variant="h4" className={classes.title}>
           {title}
         </Typography>
       )}
