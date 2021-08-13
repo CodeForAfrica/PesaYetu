@@ -3,14 +3,15 @@ import React from "react";
 
 import Hero from "@/pesayetu/components/AboutHero";
 import Page from "@/pesayetu/components/Page";
+import TwoColumnLayout from "@/pesayetu/components/TwoColumnLayout";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
-import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function About({ footerProps, blocks, ...props }) {
+export default function About({ blocks, ...props }) {
   return (
-    <Page footerProps={footerProps} {...props}>
+    <Page {...props}>
       <Hero {...blocks?.aboutHero} />
+      <TwoColumnLayout {...blocks?.twoColumnLayout} />
     </Page>
   );
 }
@@ -18,13 +19,12 @@ export default function About({ footerProps, blocks, ...props }) {
 About.propTypes = {
   blocks: PropTypes.shape({
     aboutHero: PropTypes.shape({}),
+    twoColumnLayout: PropTypes.shape({}),
   }),
-  footerProps: PropTypes.shape({}),
 };
 
 About.defaultProps = {
   blocks: undefined,
-  footerProps: undefined,
 };
 
 export async function getStaticProps() {
@@ -41,12 +41,10 @@ export async function getStaticProps() {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const footerProps = getFooterMenu(props?.menus?.footerMenu || []);
   return {
     props: {
       ...props,
       blocks,
-      footerProps,
     },
     revalidate,
   };
