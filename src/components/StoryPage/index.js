@@ -10,7 +10,7 @@ import useStyles from "./useStyles";
 import Section from "@/pesayetu/components/Section";
 import ShareBar from "@/pesayetu/components/ShareBar";
 
-function StoryPage({ content, children, image, socialLinks, ...props }) {
+function StoryPage({ content, children, image, chart, socialLinks, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -29,6 +29,9 @@ function StoryPage({ content, children, image, socialLinks, ...props }) {
                   objectFit="cover"
                 />
               </figure>
+            )}
+            {!image && (
+              <RichTypography className={classes.image}>{chart}</RichTypography>
             )}
             <ShareBar title={props?.title} socialLinks={socialLinks}>
               {children}
@@ -49,6 +52,7 @@ StoryPage.propTypes = {
   children: PropTypes.string,
   image: PropTypes.string,
   title: PropTypes.string,
+  chart: PropTypes.string,
 };
 
 StoryPage.defaultProps = {
@@ -57,6 +61,7 @@ StoryPage.defaultProps = {
   socialLinks: undefined,
   image: undefined,
   title: undefined,
+  chart: undefined,
 };
 
 export default StoryPage;
