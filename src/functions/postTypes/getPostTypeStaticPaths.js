@@ -76,7 +76,12 @@ export default async function getPostTypeStaticPaths(postType) {
           })
         )
         // Filter out certain posts with custom routes (e.g., homepage).
-        .filter((post) => !!post.params.slug.join("/").length);
+        // also filter uncategorized category route route
+        .filter(
+          (post) =>
+            !!post.params.slug.join("/").length &&
+            !post.params.slug.includes("uncategorized")
+        );
 
   return {
     paths,
