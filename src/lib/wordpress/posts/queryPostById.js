@@ -28,6 +28,7 @@ const queryPostById = gql`
     $id: ID!
     $idType: PostIdType = SLUG
     $imageSize: MediaItemSizeEnum = LARGE
+    $order: OrderEnum = DESC
   ) {
     ${defaultPageData}
     homepageSettings {

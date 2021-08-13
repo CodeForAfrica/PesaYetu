@@ -12,7 +12,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     position: "relative",
     height: typography.pxToRem(217),
     width: "100%",
-    marginBottom: typography.pxToRem(40),
+
+    margin: `0 0 ${typography.pxToRem(40)}`,
     [breakpoints.up("md")]: {
       height: typography.pxToRem(320),
     },
