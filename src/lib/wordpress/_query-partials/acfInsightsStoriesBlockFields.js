@@ -5,7 +5,7 @@ const acfInsightsStoriesBlockFields = `
 ... on AcfInsightsStoriesBlock {
   name
   attributes: insightsStories {
-    ctatext
+    ctaText: ctatext
     overline
     title
     stories {

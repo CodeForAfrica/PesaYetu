@@ -17,7 +17,8 @@ const queryPostsByCategory = gql`
     $before: String
     $orderBy: PostObjectsConnectionOrderbyEnum = DATE
     $order: OrderEnum = DESC
-    $imageSize: MediaItemSizeEnum = THUMBNAIL
+    $imageSize: MediaItemSizeEnum = MEDIUM
+    $featuredImageSize: MediaItemSizeEnum = LARGE
     $id: ID!
     $idType: CategoryIdType = SLUG
   ) {

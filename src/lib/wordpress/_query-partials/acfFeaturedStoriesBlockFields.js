@@ -1,18 +1,24 @@
 // Query partial: retrieve pagination info for acf insightsstories blocks.
-import featuredImagePostFields from "./featuredImagePostFields";
 import lazyBlockInsightChartBlockFields from "./lazyBlockInsightChartBlockFields";
 
 const acfFeaturedStoriesBlockFields = `
 ... on AcfFeaturedStoriesBlock {
   name
   attributes: featuredStories {
+    ctaText: ctatext
     featuredStory {
       news {
         ... on Post {
           title
           uri
+          slug
           excerpt
-          ${featuredImagePostFields}
+          featuredImage {
+            node {
+              altText
+              sourceUrl(size: $featuredImageSize)
+            }
+          }
         }
       }
       insights {
@@ -20,6 +26,7 @@ const acfFeaturedStoriesBlockFields = `
           id
           title
           uri
+          slug
           excerpt
           blocks {
             ${lazyBlockInsightChartBlockFields}
