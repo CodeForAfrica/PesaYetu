@@ -11,7 +11,7 @@ export default function Home({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <TwoColumnLayout {...blocks.twoColumnLayout} />
+      <TwoColumnLayout {...blocks?.twoColumnLayout} />
     </Page>
   );
 }
