@@ -3,6 +3,7 @@ import React from "react";
 
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
+import Stories from "@/pesayetu/components/Stories";
 import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
@@ -10,35 +11,63 @@ import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeSt
 
 // Define route post type.
 const postType = "post";
-const dateOptions = {
-  year: "numeric",
-  month: "long",
-};
 
-export default function Index({ archive, post, blocks, ...props }) {
-  const { author, categories, featuredImage, date } = post;
-  let authorName = `${author?.node?.firstName ?? ""} ${
-    author?.node?.lastName ?? ""
+export default function Index({
+  archive,
+  activeCategory,
+  post,
+  posts,
+  blocks,
+  ...props
+}) {
+  let authorName = `${post?.author?.node?.firstName ?? ""} ${
+    post?.author?.node?.lastName ?? ""
   }`;
   if (authorName?.length < 2) {
-    authorName = author?.node?.nickname ?? author?.node?.slug;
+    authorName = post?.author?.node?.nickname ?? post?.author?.node?.slug;
   }
-  const image = featuredImage?.node?.sourceUrl;
 
-  const category = categories?.edges[0]?.node?.name;
+  const featuredStory = blocks?.featuredStories
+    ? blocks?.featuredStories[activeCategory]
+    : null;
+
+  const postsItems = posts
+    ?.filter(({ slug }) => slug !== featuredStory.slug)
+    .map(({ title, excerpt, uri, featuredImage, blocks: postBlocks }) => {
+      const chartBlock = postBlocks?.find(
+        (b) =>
+          Object.hasOwnProperty.call(b, "name") &&
+          b?.name === "lazyblock/insight-chart"
+      );
+      return {
+        title,
+        description: excerpt?.replace(/<[^>]+>/g, "") ?? "",
+        href: uri,
+        image: featuredImage?.node?.sourceUrl,
+        ctaText: featuredStory?.ctaText,
+        chart: chartBlock?.attributes?.chart,
+      };
+    });
 
   return (
     <Page {...props}>
       {archive ? (
-        <Hero {...blocks?.otherHero} />
+        <>
+          <Hero {...blocks?.otherHero} />
+          <Stories featuredStoryProps={featuredStory} items={postsItems} />
+        </>
       ) : (
         <StoryPage
           {...post}
           {...blocks?.shareStory}
+          {...blocks?.insightChart}
           author={authorName}
-          category={category}
-          image={image}
-          date={new Date(date).toLocaleString("en-GB", dateOptions)}
+          category={activeCategory}
+          image={post?.featuredImage?.node?.sourceUrl}
+          date={new Date(post?.date).toLocaleString("en-GB", {
+            year: "numeric",
+            month: "long",
+          })}
         />
       )}
     </Page>
@@ -47,7 +76,10 @@ export default function Index({ archive, post, blocks, ...props }) {
 
 Index.propTypes = {
   archive: PropTypes.bool,
+  activeCategory: PropTypes.string,
   blocks: PropTypes.shape({
+    featuredStories: PropTypes.shape({}),
+    insightChart: PropTypes.shape({}),
     otherHero: PropTypes.shape({}),
     shareStory: PropTypes.shape({}),
   }),
@@ -58,15 +90,6 @@ Index.propTypes = {
         sourceUrl: PropTypes.string,
       }),
     }),
-    categories: PropTypes.shape({
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            name: PropTypes.string,
-          }),
-        })
-      ),
-    }),
     author: PropTypes.shape({
       node: PropTypes.shape({
         firstName: PropTypes.string,
@@ -76,12 +99,28 @@ Index.propTypes = {
       }),
     }),
   }),
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      slug: PropTypes.string,
+      excerpt: PropTypes.string,
+      date: PropTypes.string,
+      blocks: PropTypes.arrayOf(PropTypes.shape({})),
+      featuredImage: PropTypes.shape({
+        node: PropTypes.shape({
+          sourceUrl: PropTypes.string,
+        }),
+      }),
+    })
+  ),
 };
 
 Index.defaultProps = {
   archive: undefined,
+  activeCategory: undefined,
   blocks: undefined,
   post: undefined,
+  posts: undefined,
 };
 
 export async function getStaticPaths() {
@@ -89,6 +128,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview, previewData }) {
+  const activeCategory = params.slug[1];
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     params,
     postType,
@@ -106,6 +146,7 @@ export async function getStaticProps({ params, preview, previewData }) {
     props: {
       ...props,
       blocks,
+      activeCategory,
     },
     revalidate,
   };
