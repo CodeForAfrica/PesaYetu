@@ -9,7 +9,7 @@ import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostField
 import tagsPostFields from "@/pesayetu/lib/wordpress/_query-partials/tagsPostFields";
 
 // fragment to retrieve related stories
-const categoryPosts = `
+const relatedCategoryPostsFields = `
   categories {
     edges {
       node {
@@ -45,7 +45,7 @@ const singlePostFragment = gql`
     ${authorPostFields}
     ${featuredImagePostFields}
     ${tagsPostFields}
-    ${categoryPosts}
+    ${relatedCategoryPostsFields}
   }
 `;
 

@@ -1,11 +1,8 @@
 import getPostTypeTaxonomyArchive from "@/pesayetu/functions/postTypes/getPostTypeTaxonomyArchive";
 
 /**
- * Load more posts for an archive.
+ * Load more posts for category archive.
  *
- * @author WebDevStudios
- * @param {object} req Instance of http.IncomingMessage.
- * @param {object} res Instance of http.ServerResponse.
  */
 export default async function archive(req, res) {
   try {

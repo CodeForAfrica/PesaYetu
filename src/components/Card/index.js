@@ -55,6 +55,11 @@ const Card = ({ href, children, image, chart, ...props }) => {
               />
             </div>
           )}
+          {!image && (
+            <RichTypography className={classes.cardMedia}>
+              {chart}
+            </RichTypography>
+          )}
           {children}
         </CardContent>
       )}
