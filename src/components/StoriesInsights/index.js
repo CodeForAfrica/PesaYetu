@@ -13,7 +13,7 @@ import Section from "@/pesayetu/components/Section";
 
 import "react-multi-carousel/lib/styles.css";
 
-function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
+function StoriesInsights({ overline, title, stories, ...props }) {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
   const classes = useStyles({ currentItemIndex, ...props });
 
@@ -75,7 +75,7 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
               }}
             >
               {stories?.map((story) => (
-                <Content key={story.slug} {...story} ctaText={ctatext} />
+                <Content key={story.slug} {...story} />
               ))}
             </Carousel>
           </Grid>
@@ -88,7 +88,6 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
 StoriesInsights.propTypes = {
   overline: PropTypes.string,
   title: PropTypes.string,
-  ctatext: PropTypes.string,
   stories: PropTypes.arrayOf(
     PropTypes.shape({
       slug: PropTypes.string,
@@ -101,7 +100,6 @@ StoriesInsights.defaultProps = {
   overline: undefined,
   title: undefined,
   stories: undefined,
-  ctatext: undefined,
 };
 
 export default StoriesInsights;
