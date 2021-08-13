@@ -1,4 +1,4 @@
-import { Grid, useMediaQuery } from "@material-ui/core";
+import { Hidden, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { chunk } from "lodash";
 import PropTypes from "prop-types";
@@ -39,11 +39,11 @@ function Stories({ featuredStoryProps, items, ...props }) {
   const carouselItems = chunk(items, itemsToShow);
 
   return (
-    <Grid container direction="column">
+    <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Grid item>
+        <Hidden smDown implementation="css">
           <FeaturedStoryCard {...featuredStoryProps} />
-        </Grid>
+        </Hidden>
         <Carousel
           swipeable
           responsive={responsive}
@@ -57,19 +57,13 @@ function Stories({ featuredStoryProps, items, ...props }) {
           ))}
         </Carousel>
       </Section>
-    </Grid>
+    </div>
   );
 }
 
 Stories.propTypes = {
   featuredStoryProps: PropTypes.shape({}),
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ),
+  items: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 Stories.defaultProps = {
