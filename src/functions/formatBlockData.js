@@ -13,7 +13,7 @@ export default async function formatBlockData(blocks) {
 
   return Promise.all(
     blocks.map(async (block) => {
-      const { name, attributes, innerBlocks, saveContent } = block;
+      const { name, attributes, innerBlocks } = block;
       switch (name) {
         case "acf/acf-media-text":
           // Retrieve additional image meta.
@@ -36,7 +36,6 @@ export default async function formatBlockData(blocks) {
       return {
         name,
         attributes,
-        content: saveContent,
         innerBlocks: innerBlocksFormatted,
       };
     })
