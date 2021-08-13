@@ -13,6 +13,7 @@ function FeaturedStoryCard({
   description,
   href,
   image,
+  chart,
   title,
   ...props
 }) {
@@ -21,9 +22,14 @@ function FeaturedStoryCard({
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} md={7}>
-        <div className={classes.media}>
-          <Image src={image} alt={title} layout="fill" />
-        </div>
+        {image && (
+          <div className={classes.media}>
+            <Image src={image} alt={title} layout="fill" />
+          </div>
+        )}
+        {!image && (
+          <RichTypography className={classes.media}>{chart}</RichTypography>
+        )}
       </Grid>
       <Grid item xs={12} md={5} className={classes.content}>
         {title && (
@@ -31,11 +37,9 @@ function FeaturedStoryCard({
             {title}
           </Typography>
         )}
-        {description && (
-          <RichTypography variant="body2" className={classes.description}>
-            {description}
-          </RichTypography>
-        )}
+        <RichTypography variant="body2" className={classes.description}>
+          {description}
+        </RichTypography>
         {href && (
           <Link href={href} underline="always" variant="subtitle2">
             {ctaText}
@@ -52,6 +56,7 @@ FeaturedStoryCard.propTypes = {
   image: PropTypes.string,
   href: PropTypes.string,
   ctaText: PropTypes.string,
+  chart: PropTypes.string,
 };
 FeaturedStoryCard.defaultProps = {
   description: undefined,
@@ -59,5 +64,6 @@ FeaturedStoryCard.defaultProps = {
   image: undefined,
   href: undefined,
   ctaText: undefined,
+  chart: undefined,
 };
 export default FeaturedStoryCard;

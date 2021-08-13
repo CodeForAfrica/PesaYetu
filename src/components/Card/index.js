@@ -1,3 +1,4 @@
+import { RichTypography } from "@commons-ui/core";
 import {
   CardActionArea,
   CardContent,
@@ -11,7 +12,7 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-const Card = ({ href, children, image, ...props }) => {
+const Card = ({ href, children, image, chart, ...props }) => {
   const classes = useStyles(props);
 
   return (
@@ -26,8 +27,18 @@ const Card = ({ href, children, image, ...props }) => {
           <CardContent classes={{ root: classes.content }}>
             {image && (
               <div className={classes.cardMedia}>
-                <Image src={image} layout="fill" className={classes.image} />
+                <Image
+                  src={image}
+                  layout="fill"
+                  className={classes.image}
+                  objectFit="cover"
+                />
               </div>
+            )}
+            {!image && (
+              <RichTypography className={classes.cardMedia}>
+                {chart}
+              </RichTypography>
             )}
             {children}
           </CardContent>
@@ -36,7 +47,12 @@ const Card = ({ href, children, image, ...props }) => {
         <CardContent classes={{ root: classes.content }}>
           {image && (
             <div className={classes.cardMedia}>
-              <Image src={image} layout="fill" className={classes.image} />
+              <Image
+                src={image}
+                layout="fill"
+                className={classes.image}
+                objectFit="cover"
+              />
             </div>
           )}
           {children}
@@ -49,12 +65,14 @@ const Card = ({ href, children, image, ...props }) => {
 Card.propTypes = {
   href: PropTypes.string,
   image: PropTypes.string,
+  chart: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
 Card.defaultProps = {
   href: undefined,
   image: undefined,
+  chart: undefined,
 };
 
 export default Card;
