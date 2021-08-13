@@ -150,7 +150,7 @@ export default function formatBlocksForSections(blc) {
   );
   blocks?.push({ name: "core/texts", attributes: texts });
 
-  return blocks.reduce((acc, cur) => {
+  return blocks?.reduce((acc, cur) => {
     const attr = format(cur);
     if (attr) {
       acc[formatName(cur.name)] = format(cur);

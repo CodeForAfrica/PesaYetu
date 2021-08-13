@@ -4,6 +4,7 @@ import React from "react";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import Stories from "@/pesayetu/components/Stories";
+import StoriesNavigation from "@/pesayetu/components/StoriesNavigation";
 import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
@@ -15,6 +16,7 @@ const postType = "post";
 export default function Index({
   archive,
   activeCategory,
+  categories,
   post,
   posts,
   blocks,
@@ -49,11 +51,21 @@ export default function Index({
       };
     });
 
+  const filteredCategories = categories?.edges
+    ?.map(({ node }) => {
+      return { ...node };
+    })
+    ?.filter(({ slug }) => slug !== "uncategorized");
+
   return (
     <Page {...props}>
       {archive ? (
         <>
           <Hero {...blocks?.otherHero} />
+          <StoriesNavigation
+            categories={filteredCategories}
+            activeCategory={activeCategory}
+          />
           <Stories featuredStoryProps={featuredStory} items={postsItems} />
         </>
       ) : (
@@ -82,6 +94,13 @@ Index.propTypes = {
     insightChart: PropTypes.shape({}),
     otherHero: PropTypes.shape({}),
     shareStory: PropTypes.shape({}),
+  }),
+  categories: PropTypes.shape({
+    edges: PropTypes.arrayOf(
+      PropTypes.shape({
+        node: PropTypes.shape({}),
+      })
+    ),
   }),
   post: PropTypes.shape({
     date: PropTypes.string,
@@ -119,6 +138,7 @@ Index.defaultProps = {
   archive: undefined,
   activeCategory: undefined,
   blocks: undefined,
+  categories: undefined,
   post: undefined,
   posts: undefined,
 };

@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 
 import acfFeaturedStoriesBlockFields from "@/pesayetu/lib/wordpress/_query-partials/acfFeaturedStoriesBlockFields";
+import categoriesPostFields from "@/pesayetu/lib/wordpress/_query-partials/categoriesPostFields";
 import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
 import seoPostFields from "@/pesayetu/lib/wordpress/_query-partials/seoPostFields";
 import {
@@ -22,6 +23,7 @@ const queryPostsByCategory = gql`
     $id: ID!
     $idType: CategoryIdType = SLUG
   ) {
+    ${categoriesPostFields}
     ${defaultPageData}
     homepageSettings {
       postsPage {
