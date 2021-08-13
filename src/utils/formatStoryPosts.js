@@ -1,6 +1,7 @@
 export default function formatStoryPosts(posts, featuredStory) {
+  const fSlug = featuredStory?.slug?.split("/")?.pop();
   return posts
-    ?.filter(({ slug }) => slug !== featuredStory.slug)
+    ?.filter(({ slug }) => slug !== fSlug)
     .map(({ title, excerpt, uri, featuredImage, blocks: postBlocks }) => {
       const chartBlock = postBlocks?.find(
         (b) =>

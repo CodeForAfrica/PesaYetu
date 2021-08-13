@@ -108,7 +108,7 @@ Index.propTypes = {
     date: PropTypes.string,
     categories: PropTypes.shape({
       edges: PropTypes.arrayOf(
-        PropTypes({
+        PropTypes.shape({
           node: PropTypes.shape({
             posts: PropTypes.shape({
               nodes: PropTypes.arrayOf(PropTypes.shape({})),

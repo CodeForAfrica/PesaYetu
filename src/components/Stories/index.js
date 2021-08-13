@@ -78,7 +78,7 @@ function Stories({
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <FeaturedStoryCard {...featuredStoryProps} />
+        <FeaturedStoryCard {...featuredStoryProps} variant={activeCategory} />
         <Carousel
           swipeable
           responsive={responsive}

@@ -27,7 +27,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   relatedTitle: {
     textAlign: "center",
-    marginBottom: typography.pxToRem(40),
+    marginBottom: `${typography.pxToRem(40)} !important`,
+    fontSize: typography.h4.fontSize,
   },
 }));
 
