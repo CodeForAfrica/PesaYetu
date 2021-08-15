@@ -3,13 +3,13 @@ import React from "react";
 import Index from ".";
 
 export default {
-  title: "Components/Supporting Partners",
+  title: "Components/SupportingPartners",
   argTypes: {
     title: {
       control: {
         type: "text",
       },
-      partners: {
+      items: {
         control: {
           type: "array",
         },
