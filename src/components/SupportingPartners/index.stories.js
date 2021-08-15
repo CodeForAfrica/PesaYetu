@@ -1,6 +1,6 @@
 import React from "react";
 
-import Index from ".";
+import SupportingPartners from ".";
 
 export default {
   title: "Components/SupportingPartners",
@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <Index {...args} />;
+const Template = ({ ...args }) => <SupportingPartners {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
