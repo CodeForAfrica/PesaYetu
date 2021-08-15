@@ -8,9 +8,6 @@ import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ typography }) => ({
-  section: {
-    textAlign: "center",
-  },
   root: {
     backgroundImage: `url('${mapLines}')`,
     backgroundSize: "cover",
@@ -18,8 +15,12 @@ const useStyles = makeStyles(({ typography }) => ({
     paddingTop: typography.pxToRem(80),
     paddingBottom: typography.pxToRem(80),
   },
+  section: {
+    textAlign: "center",
+  },
   subtitle: {
-    fontWeight: 500,
+    fontWeight: 600,
+    color: "#212529",
     marginTop: typography.pxToRem(40),
     marginBottom: typography.pxToRem(40),
   },
