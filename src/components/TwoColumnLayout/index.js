@@ -16,7 +16,7 @@ const TwoColumnLayout = ({ content, title, subtitle, ...props }) => {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Grid container>
+        <Grid justifyContent="space-between" container>
           <Grid item xs={12} lg={4}>
             <Typography className={classes.title} variant="h1">
               {title}
@@ -25,7 +25,6 @@ const TwoColumnLayout = ({ content, title, subtitle, ...props }) => {
               {subtitle}
             </Typography>
           </Grid>
-          <Grid item lg={2} />
           <Grid item xs={12} lg={6} className={classes.container}>
             <RichTypography variant="body2">{content}</RichTypography>
           </Grid>
