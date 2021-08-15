@@ -3,7 +3,7 @@ import React from "react";
 import StartLearning from ".";
 
 export default {
-  title: "Components/Start Learning",
+  title: "Components/StartLearning",
   argTypes: {
     title: {
       control: {
