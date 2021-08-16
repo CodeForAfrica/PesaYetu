@@ -83,6 +83,7 @@ function format(block) {
       return formatInsightsStories(attributes);
     case "lazyblock/explore-other-tools":
     case "lazyblock/data-visuals":
+    case "lazyblock/our-courses":
     case "lazyblock/data-insights":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/partners-and-newsletter":
