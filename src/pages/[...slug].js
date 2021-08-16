@@ -163,7 +163,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview, previewData }) {
-  console.log(params);
   const activeCategory = params.slug[1];
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     params,
@@ -172,7 +171,7 @@ export async function getStaticProps({ params, preview, previewData }) {
     previewData
   );
 
-  if (notFound && !props) {
+  if (notFound && props.error) {
     return {
       notFound,
     };
