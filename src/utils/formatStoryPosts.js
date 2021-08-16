@@ -12,8 +12,8 @@ export default function formatStoryPosts(posts, featuredStory) {
         title,
         description: excerpt?.replace(/<[^>]+>/g, "") ?? "",
         href: `/stories${uri}`,
-        image: featuredImage?.node?.sourceUrl,
-        ctaText: featuredStory?.ctaText,
+        image: featuredImage?.node?.sourceUrl ?? null,
+        ctaText: featuredStory?.ctaText ?? "",
         chart: chartBlock?.attributes?.chart ?? null,
       };
     });
