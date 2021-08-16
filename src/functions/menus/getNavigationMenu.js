@@ -1,24 +1,21 @@
 export default function getNavigationMenu(data) {
-  const socialLinks = data[data?.length - 1];
-  const { children } = socialLinks;
-  const menuProps = data.slice(0, 4).map(({ label, id, path, url }) => {
+  const socialMedia = data[data?.length - 1];
+  const { children } = socialMedia;
+  const menuProps = data.slice(0, 4).map(({ label, path }) => {
     return {
-      id,
-      url,
-      label,
-      path,
+      label: label.toUpperCase(),
+      url: path,
     };
   });
-  const socialLinksProps = children.map(({ label, id, path, url }) => {
+  const socialLinks = children.map(({ label, title, url }) => {
     return {
-      id,
-      url,
-      label,
-      path,
+      src: url,
+      label: label.toLowerCase(),
+      href: title,
     };
   });
   return {
     menuProps,
-    socialLinksProps,
+    socialLinks,
   };
 }
