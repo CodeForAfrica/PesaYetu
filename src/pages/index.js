@@ -9,6 +9,7 @@ import InsightData from "@/pesayetu/components/InsightsData";
 import OurCourses from "@/pesayetu/components/OurCourses";
 import Page from "@/pesayetu/components/Page";
 import PartnersAndNewsletter from "@/pesayetu/components/Partners";
+import StoriesInsights from "@/pesayetu/components/StoriesInsights";
 import { searchArgs, ourCourses } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
@@ -22,9 +23,10 @@ export default function Home({ boundary, blocks, ...props }) {
     <Page {...props}>
       <Hero {...heroProps} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
-      <InsightData {...blocks?.dataInsights} />
       <DataVisuals {...blocks?.dataVisuals} />
       <OurCourses {...ourCourses} />
+      <StoriesInsights {...blocks?.insightsStories} />
+      <InsightData {...blocks?.dataInsights} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
       <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
     </Page>
@@ -37,6 +39,7 @@ Home.propTypes = {
     hero: PropTypes.shape({}),
     howItWorks: PropTypes.shape({}),
     exploreOtherTools: PropTypes.shape({}),
+    insightsStories: PropTypes.shape({}),
     partnersAndNewsletter: PropTypes.shape({}),
     dataInsights: PropTypes.shape({}),
     dataVisuals: PropTypes.shape({}),

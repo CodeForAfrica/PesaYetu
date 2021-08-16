@@ -1,11 +1,11 @@
-import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
+import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
@@ -29,23 +29,14 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       paddingTop: typography.pxToRem(129.94),
     },
   },
-  intro: {
-    fontWeight: "bold",
-    textTransform: "uppercase",
-  },
+  overline: {},
   title: {
     marginBottom: typography.pxToRem(35.5),
-    fontWeight: 900,
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(20),
     },
-    "& .highlight": {
-      display: "inline-block",
-      background:
-        "linear-gradient(180deg,rgba(255,255,255,0) 30%, #0067A31A 50% )",
-    },
   },
-  tagline: {
+  subtitle: {
     marginRight: 0,
   },
   backgroundGrid: {
@@ -104,13 +95,20 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
 }));
-function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
+
+function OtherHero({
+  accentImage,
+  image,
+  overline,
+  subtitle,
+  title,
+  ...props
+}) {
   const classes = useStyles(props);
 
   if (!title?.length) {
     return null;
   }
-
   return (
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
@@ -140,15 +138,17 @@ function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
         <Grid container>
           <Grid item xs={12} md={6} lg={4}>
             <div className={classes.textContainer}>
-              <Typography className={classes.intro} variant="h6">
-                {intro}
-              </Typography>
-              <RichTypography variant="h1" className={classes.title}>
+              <Header
+                overline={overline}
+                subtitle={subtitle}
+                classes={{
+                  overline: classes.overline,
+                  subtitle: classes.subtitle,
+                  title: classes.title,
+                }}
+              >
                 {title}
-              </RichTypography>
-              <Typography className={classes.tagline} variant="body1">
-                {tagline}
-              </Typography>
+              </Header>
             </div>
           </Grid>
         </Grid>
@@ -158,18 +158,18 @@ function OtherHero({ image, intro, accentImage, tagline, title, ...props }) {
 }
 
 OtherHero.propTypes = {
-  image: PropTypes.string,
-  intro: PropTypes.string,
   accentImage: PropTypes.string,
-  tagline: PropTypes.string,
+  image: PropTypes.string,
+  overline: PropTypes.string,
+  subtitle: PropTypes.string,
   title: PropTypes.string,
 };
 
 OtherHero.defaultProps = {
-  image: undefined,
-  intro: undefined,
   accentImage: undefined,
-  tagline: undefined,
+  image: undefined,
+  overline: undefined,
+  subtitle: undefined,
   title: undefined,
 };
 

@@ -191,8 +191,8 @@ export const ourCourses = {
 };
 
 export const insightData = {
-  title: "Stories",
-  subtitle: "Data Driven <span class='highlight'>Insights</span>",
+  overline: "Stories",
+  title: "Data-driven <span class='highlight'>Insights</span>",
   items: [
     {
       title: "Dolor sit amet ipsum dolor sit amet",
@@ -280,6 +280,86 @@ export const searchArgs = {
       },
     ],
   },
+};
+
+export const insightDataTabStories = {
+  items: [
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashTwo,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashThree,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashTwo,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashThree,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashTwo,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashThree,
+      linkdescription: "Read More",
+      href: "www.test.com",
+    },
+  ],
 };
 
 export const exploreTools = {

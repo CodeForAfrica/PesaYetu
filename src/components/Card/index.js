@@ -15,7 +15,7 @@ const Card = ({ href, children, image, ...props }) => {
   const classes = useStyles(props);
 
   return (
-    <MuiCard className={classes.root}>
+    <MuiCard classes={{ root: classes.root }}>
       {href ? (
         <CardActionArea
           component={href ? Link : undefined}
@@ -23,7 +23,7 @@ const Card = ({ href, children, image, ...props }) => {
           underline="none"
           {...props}
         >
-          <CardContent className={classes.content}>
+          <CardContent classes={{ root: classes.content }}>
             {image && (
               <div className={classes.cardMedia}>
                 <Image src={image} layout="fill" className={classes.image} />
@@ -33,7 +33,7 @@ const Card = ({ href, children, image, ...props }) => {
           </CardContent>
         </CardActionArea>
       ) : (
-        <CardContent className={classes.content}>
+        <CardContent classes={{ root: classes.content }}>
           {image && (
             <div className={classes.cardMedia}>
               <Image src={image} layout="fill" className={classes.image} />

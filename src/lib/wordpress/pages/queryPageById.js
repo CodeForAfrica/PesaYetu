@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+import acfInsightsStoriesBlockFields from "@/pesayetu/lib/wordpress/_query-partials/acfInsightsStoriesBlockFields";
 import authorPostFields from "@/pesayetu/lib/wordpress/_query-partials/authorPostFields";
 import defaultPageData from "@/pesayetu/lib/wordpress/_query-partials/defaultPageData";
 import featuredImagePostFields from "@/pesayetu/lib/wordpress/_query-partials/featuredImagePostFields";
@@ -15,6 +16,9 @@ export const singlePageFragment = gql`
     ${seoPostFields}
     ${authorPostFields}
     ${featuredImagePostFields}
+    blocks {
+      ${acfInsightsStoriesBlockFields}
+    }
   }
 `;
 
