@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
   section: {
-    padding: `${typography.pxToRem(60)} 0 ${typography.pxToRem(80)}`,
+    paddingTop: typography.pxToRem(60),
+    paddingBottom: typography.pxToRem(80),
     [breakpoints.up("md")]: {
       paddingTop: typography.pxToRem(40),
     },
