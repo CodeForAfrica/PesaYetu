@@ -1,6 +1,6 @@
 import React from "react";
 
-import OurCourseCard from "@/pesayetu/components/OurCourseCard";
+import OurCourses from "@/pesayetu/components/OurCourses";
 import { ourCourses } from "@/pesayetu/config";
 
 export default {
@@ -8,7 +8,7 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <OurCourseCard {...args} />;
+const Template = ({ ...args }) => <OurCourses {...args} />;
 
 export const Default = Template.bind({});
 
