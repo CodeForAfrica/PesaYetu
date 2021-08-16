@@ -24,9 +24,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   overline: {
     marginBottom: 0,
   },
-  displayFlex: {
-    display: "flex",
-  },
 }));
 
 function StoryHeader({ title, author, date, category, ...props }) {
@@ -48,12 +45,12 @@ function StoryHeader({ title, author, date, category, ...props }) {
               {title}
             </Header>
             {date && (
-              <Typography className={classes.displayFlex} variant="overline">
+              <Typography component="div" variant="overline">
                 {date}
               </Typography>
             )}
             {author && (
-              <Typography className={classes.displayFlex} variant="overline">
+              <Typography component="div" variant="overline">
                 {author}
               </Typography>
             )}
