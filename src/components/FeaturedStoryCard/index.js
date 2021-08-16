@@ -16,7 +16,7 @@ function FeaturedStoryCard({ variant, ...props }) {
         <Card
           {...props}
           variant={variant}
-          classes={{ cardMedia: classes.media }}
+          classes={{ root: classes.card, cardMedia: classes.media }}
         />
       </Grid>
       <Grid item xs={12} md={5} className={classes.content}>

@@ -4,6 +4,7 @@ import {
   CardContent,
   Card as MuiCard,
 } from "@material-ui/core";
+import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -35,7 +36,10 @@ const Card = ({ href, children, image, chart, variant, ...props }) => {
                 />
               </div>
             ) : (
-              <RichTypography className={classes.cardMedia} component="div">
+              <RichTypography
+                className={clsx(classes.cardMedia, classes.insightViz)}
+                component="div"
+              >
                 {visual}
               </RichTypography>
             )}
@@ -54,7 +58,10 @@ const Card = ({ href, children, image, chart, variant, ...props }) => {
               />
             </div>
           ) : (
-            <RichTypography className={classes.cardMedia} component="div">
+            <RichTypography
+              className={clsx(classes.cardMedia, classes.insightViz)}
+              component="div"
+            >
               {visual}
             </RichTypography>
           )}
