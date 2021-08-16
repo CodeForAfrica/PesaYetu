@@ -44,19 +44,18 @@ const Card = ({ href, children, image, chart, variant, ...props }) => {
         </CardActionArea>
       ) : (
         <CardContent classes={{ root: classes.content }}>
-          {image && (
+          {visual && variant === "news" ? (
             <div className={classes.cardMedia}>
               <Image
-                src={image}
+                src={visual}
                 layout="fill"
                 className={classes.image}
                 objectFit="cover"
               />
             </div>
-          )}
-          {!image && (
-            <RichTypography className={classes.cardMedia}>
-              {chart}
+          ) : (
+            <RichTypography className={classes.cardMedia} component="div">
+              {visual}
             </RichTypography>
           )}
           {children}

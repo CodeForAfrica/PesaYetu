@@ -42,9 +42,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   link: {
-    textDecoration: "underline",
-  },
-  linkText: {
     fontWeight: "bold",
   },
 }));

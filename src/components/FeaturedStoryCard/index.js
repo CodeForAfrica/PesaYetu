@@ -1,54 +1,33 @@
-import { RichTypography } from "@commons-ui/core";
-import { Grid, Typography } from "@material-ui/core";
-import Image from "next/image";
+import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-import Link from "@/pesayetu/components/Link";
+import Card from "@/pesayetu/components/Card";
+import Content from "@/pesayetu/components/InsightCard/Content";
 
-function FeaturedStoryCard({
-  ctaText,
-  description,
-  href,
-  image,
-  chart,
-  title,
-  variant: variantProp,
-  ...props
-}) {
+function FeaturedStoryCard({ variant, ...props }) {
   const classes = useStyles(props);
-
-  const variant = variantProp === "news" ? "h4" : "h3";
-  const visual = variantProp === "news" ? image : chart;
+  const titleVariant = variant === "news" ? "h4" : "h3";
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} md={7}>
-        {visual && variantProp === "news" ? (
-          <div className={classes.media}>
-            <Image src={visual} alt={title} layout="fill" />
-          </div>
-        ) : (
-          <RichTypography className={classes.media} component="div">
-            {visual}
-          </RichTypography>
-        )}
+        <Card
+          {...props}
+          variant={variant}
+          classes={{ cardMedia: classes.media }}
+        />
       </Grid>
       <Grid item xs={12} md={5} className={classes.content}>
-        {title && (
-          <Typography variant={variant} className={classes.title}>
-            {title}
-          </Typography>
-        )}
-        <RichTypography variant="body2" className={classes.description}>
-          {description}
-        </RichTypography>
-        {href && (
-          <Link href={href} underline="always" variant="subtitle2">
-            {ctaText}
-          </Link>
-        )}
+        <Content
+          {...props}
+          variant={titleVariant}
+          classes={{
+            cardTitle: classes.title,
+            cardDescription: classes.description,
+          }}
+        />
       </Grid>
     </Grid>
   );
