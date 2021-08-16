@@ -15,7 +15,7 @@ function CarouselItem({ items, activeCategory, ...props }) {
   return (
     <Grid container className={classes.carouselItem}>
       {items.map((item) => (
-        <Grid key={item.title} item xs={12} md={6} lg={4}>
+        <Grid key={item.slug} item xs={12} md={6} lg={4}>
           <InsightCard
             {...item}
             variant={activeCategory}
@@ -28,7 +28,11 @@ function CarouselItem({ items, activeCategory, ...props }) {
 }
 
 CarouselItem.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({})),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      slug: PropTypes.string,
+    })
+  ),
   activeCategory: PropTypes.string,
 };
 
