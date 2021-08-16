@@ -11,7 +11,7 @@ export default {
       },
       items: {
         control: {
-          type: "array",
+          type: "object",
         },
       },
     },
