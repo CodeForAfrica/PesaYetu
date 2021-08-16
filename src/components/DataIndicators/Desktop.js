@@ -46,6 +46,7 @@ const Desktop = ({ items, title, ...props }) => {
         in={checked}
         mountOnEnter
         unmountOnExit
+        onClick={handleChange}
         className={classes.transition}
         direction="left"
         timeout={500}
