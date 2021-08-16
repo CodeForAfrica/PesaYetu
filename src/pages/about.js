@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Hero from "@/pesayetu/components/AboutHero";
+import MetaTextBlock from "@/pesayetu/components/MetaTextBlock";
 import Page from "@/pesayetu/components/Page";
-import TwoColumnLayout from "@/pesayetu/components/TwoColumnLayout";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -11,7 +11,7 @@ export default function About({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.aboutHero} />
-      <TwoColumnLayout {...blocks?.twoColumnLayout} />
+      <MetaTextBlock {...blocks?.twoColumnLayout} />
     </Page>
   );
 }
