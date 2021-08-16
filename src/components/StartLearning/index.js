@@ -9,7 +9,7 @@ import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {
-    backgroundImage: `url('${mapLines}')`,
+    backgroundImage: `url('${mapLines.src}')`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     paddingTop: typography.pxToRem(80),
@@ -28,7 +28,6 @@ const useStyles = makeStyles(({ typography }) => ({
 
 const StartLearning = ({ ctaText, href, title, subtitle, ...props }) => {
   const classes = useStyles(props);
-
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
