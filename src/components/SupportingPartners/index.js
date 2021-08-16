@@ -15,8 +15,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
   section: {},
   title: {
-    fontWeight: 900,
-    color: palette.grey.dark,
     marginBottom: typography.pxToRem(49.38),
   },
   logoContainer: {},
@@ -41,7 +39,7 @@ function SupportingPartners({ title, items, ...props }) {
           className={classes.logoContainer}
         >
           {items?.map(({ link, logo, name }) => (
-            <Grid xs={6} md={3} lg="auto" item key={link}>
+            <Grid item key={link}>
               <A className={classes.link} href={link}>
                 <Image
                   className={classes.logo}
