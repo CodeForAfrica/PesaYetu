@@ -49,7 +49,7 @@ const Desktop = ({ items, title, ...props }) => {
         onClick={handleChange}
         className={classes.transition}
         direction="left"
-        timeout={500}
+        timeout={600}
       >
         <div className={classes.descriptionSection}>
           <Typography className={classes.desktopTitle}>

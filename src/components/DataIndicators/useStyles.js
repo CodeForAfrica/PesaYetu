@@ -122,8 +122,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   indicatorsContainer: {
     flexDirection: "column",
     paddingTop: typography.pxToRem(102),
+
     [breakpoints.up("lg")]: {
+      // width: ({ checked }) => (checked ? "90%" : "100%"), //
       alignItems: "center",
+      // transition: "width 1s linear",
     },
   },
   block: {
