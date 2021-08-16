@@ -33,8 +33,8 @@ const OurCourses = ({ title, items, ...props }) => {
         <Hidden mdDown>
           <Grid container className={classes.list}>
             {items?.map((item) => (
-              <Grid item lg={4}>
-                <OurCourseCard key={item.title} {...item} />
+              <Grid item lg={4} key={item.title}>
+                <OurCourseCard {...item} />
               </Grid>
             ))}
           </Grid>
@@ -50,8 +50,8 @@ const OurCourses = ({ title, items, ...props }) => {
             dotListClass={classes.dots}
           >
             {items?.map((item) => (
-              <Grid item lg={4}>
-                <OurCourseCard key={item.title} {...item} />
+              <Grid item key={item.title}>
+                <OurCourseCard {...item} />
               </Grid>
             ))}
           </Carousel>
