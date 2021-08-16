@@ -171,9 +171,9 @@ export async function getStaticProps({ params, preview, previewData }) {
     previewData
   );
 
-  if (notFound && props.error) {
+  if (notFound || props?.error) {
     return {
-      notFound,
+      notFound: true,
     };
   }
   const blocks = formatBlocksForSections(props?.post?.blocks);
