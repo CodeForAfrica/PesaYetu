@@ -1,19 +1,25 @@
-import { Typography, useMediaQuery, Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Typography, Grid, Hidden } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
+import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
 import OurCourseCard from "@/pesayetu/components/OurCourseCard";
 import Section from "@/pesayetu/components/Section";
 
-const OurCourses = ({ title, items, ...props }) => {
-  let itemsData = [];
-  const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.only("md"));
+const responsive = {
+  tablet: {
+    breakpoint: { max: 1279, min: 768 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 767, min: 0 },
+    items: 1,
+  },
+};
 
-  itemsData = isTablet ? items.slice(0, 2) : items;
+const OurCourses = ({ title, items, ...props }) => {
   const classes = useStyles(props);
 
   return (
@@ -24,14 +30,32 @@ const OurCourses = ({ title, items, ...props }) => {
             {title}
           </Typography>
         )}
+        <Hidden mdDown>
+          <Grid container className={classes.list}>
+            {items?.map((item) => (
+              <Grid item lg={4}>
+                <OurCourseCard key={item.title} {...item} />
+              </Grid>
+            ))}
+          </Grid>
+        </Hidden>
 
-        <Grid container className={classes.list}>
-          {itemsData?.map((item) => (
-            <Grid item lg={4} xs={12} md={6}>
-              <OurCourseCard key={item.title} {...item} />
-            </Grid>
-          ))}
-        </Grid>
+        <Hidden lgUp>
+          <Carousel
+            swipeable
+            responsive={responsive}
+            arrows={false}
+            renderDotsOutside
+            showDots
+            dotListClass={classes.dots}
+          >
+            {items?.map((item) => (
+              <Grid item lg={4}>
+                <OurCourseCard key={item.title} {...item} />
+              </Grid>
+            ))}
+          </Carousel>
+        </Hidden>
       </Section>
     </div>
   );
