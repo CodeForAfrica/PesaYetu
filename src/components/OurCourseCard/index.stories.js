@@ -8,7 +8,7 @@ const { items } = ourCourses;
 const [dataItem] = items;
 
 export default {
-  title: "Components/Course ard",
+  title: "Components/Course Card",
   argTypes: {},
 };
 

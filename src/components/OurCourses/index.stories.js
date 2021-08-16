@@ -4,7 +4,7 @@ import OurCourseCard from "@/pesayetu/components/OurCourseCard";
 import { ourCourses } from "@/pesayetu/config";
 
 export default {
-  title: "Sections/InsightsData",
+  title: "Sections/OurCourses",
   argTypes: {},
 };
 

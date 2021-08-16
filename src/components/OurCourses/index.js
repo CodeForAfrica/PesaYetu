@@ -26,13 +26,11 @@ const OurCourses = ({ title, items, ...props }) => {
         )}
 
         <Grid container className={classes.list}>
-          {itemsData?.map((item) => {
-            return (
-              <Grid item lg={4} xs={12} md={6}>
-                <OurCourseCard key={item.title} {...item} />
-              </Grid>
-            );
-          })}
+          {itemsData?.map((item) => (
+            <Grid item lg={4} xs={12} md={6}>
+              <OurCourseCard key={item.title} {...item} />
+            </Grid>
+          ))}
         </Grid>
       </Section>
     </div>
