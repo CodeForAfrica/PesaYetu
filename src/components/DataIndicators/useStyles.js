@@ -143,14 +143,14 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     fontSize: typography.pxToRem(30),
   },
   description: {},
-  transition: (props) => ({
+  transition: {
     backgroundColor: "#0067A3",
     color: "#fff",
     minWidth: typography.pxToRem(480),
     width: typography.pxToRem(480),
     padding: `0 ${typography.pxToRem(84)}`,
-    display: props.checked ? "block" : "none",
-  }), // NOTE: This styling destructs page layout, investigate
+    // display: props.checked ? "block" : "none",
+  }, // NOTE: This styling destructs page layout, investigate
 }));
 
 export default useStyles;

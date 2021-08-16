@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Typography, Grow } from "@material-ui/core";
+import { Grid, Typography, Slide } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -42,7 +42,14 @@ const Desktop = ({ items, title, ...props }) => {
           ))}
         </div>
       </Grid>
-      <Grow in={checked} onClick={handleChange} className={classes.transition}>
+      <Slide
+        in={checked}
+        mountOnEnter
+        unmountOnExit
+        className={classes.transition}
+        direction="left"
+        timeout={500}
+      >
         <div className={classes.descriptionSection}>
           <Typography className={classes.desktopTitle}>
             {currentTitle}
@@ -51,7 +58,7 @@ const Desktop = ({ items, title, ...props }) => {
             {currentDescription}
           </RichTypography>
         </div>
-      </Grow>
+      </Slide>
     </Grid>
   );
 };
