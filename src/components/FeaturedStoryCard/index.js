@@ -21,16 +21,18 @@ function FeaturedStoryCard({
   const classes = useStyles(props);
 
   const variant = variantProp === "news" ? "h4" : "h3";
+  const visual = variantProp === "news" ? image : chart;
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} md={7}>
-        {image && (
+        {visual && variantProp === "news" ? (
           <div className={classes.media}>
-            <Image src={image} alt={title} layout="fill" />
+            <Image src={visual} alt={title} layout="fill" />
           </div>
-        )}
-        {!image && (
-          <RichTypography className={classes.media}>{chart}</RichTypography>
+        ) : (
+          <RichTypography className={classes.media} component="div">
+            {visual}
+          </RichTypography>
         )}
       </Grid>
       <Grid item xs={12} md={5} className={classes.content}>

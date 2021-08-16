@@ -6,7 +6,7 @@ import useStyles from "./useStyles";
 
 import InsightCard from "@/pesayetu/components/InsightCard";
 
-function CarouselItem({ items, ...props }) {
+function CarouselItem({ items, activeCategory, ...props }) {
   const classes = useStyles(props);
 
   if (!items?.length) {
@@ -16,7 +16,11 @@ function CarouselItem({ items, ...props }) {
     <Grid container className={classes.carouselItem}>
       {items.map((item) => (
         <Grid key={item.title} item xs={12} md={6} lg={4}>
-          <InsightCard {...item} className={classes.story} />
+          <InsightCard
+            {...item}
+            variant={activeCategory}
+            className={classes.story}
+          />
         </Grid>
       ))}
     </Grid>
@@ -25,10 +29,12 @@ function CarouselItem({ items, ...props }) {
 
 CarouselItem.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
+  activeCategory: PropTypes.string,
 };
 
 CarouselItem.defaultProps = {
   items: undefined,
+  activeCategory: undefined,
 };
 
 export default CarouselItem;

@@ -91,7 +91,7 @@ function Stories({
           }}
         >
           {carouselItems.map((ci) => (
-            <CarouselItem items={ci} />
+            <CarouselItem items={ci} activeCategory={activeCategory} />
           ))}
         </Carousel>
       </Section>

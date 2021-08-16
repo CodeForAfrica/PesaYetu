@@ -12,9 +12,9 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-const Card = ({ href, children, image, chart, ...props }) => {
+const Card = ({ href, children, image, chart, variant, ...props }) => {
   const classes = useStyles(props);
-
+  const visual = variant === "news" ? image : chart;
   return (
     <MuiCard classes={{ root: classes.root }}>
       {href ? (
@@ -25,19 +25,18 @@ const Card = ({ href, children, image, chart, ...props }) => {
           {...props}
         >
           <CardContent classes={{ root: classes.content }}>
-            {image && (
+            {visual && variant === "news" ? (
               <div className={classes.cardMedia}>
                 <Image
-                  src={image}
+                  src={visual}
                   layout="fill"
                   className={classes.image}
                   objectFit="cover"
                 />
               </div>
-            )}
-            {!image && (
-              <RichTypography className={classes.cardMedia}>
-                {chart}
+            ) : (
+              <RichTypography className={classes.cardMedia} component="div">
+                {visual}
               </RichTypography>
             )}
             {children}
@@ -72,12 +71,14 @@ Card.propTypes = {
   image: PropTypes.string,
   chart: PropTypes.string,
   children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(["insights", "news"]),
 };
 
 Card.defaultProps = {
   href: undefined,
   image: undefined,
   chart: undefined,
+  variant: "news",
 };
 
 export default Card;

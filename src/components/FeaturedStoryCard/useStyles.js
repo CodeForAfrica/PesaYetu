@@ -39,13 +39,15 @@ const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
     position: "relative",
     width: "100%",
     [breakpoints.up("md")]: {
-      height: typography.pxToRem(315),
-    },
-    [breakpoints.up("lg")]: {
       height: typography.pxToRem(415),
     },
   },
-  title: {},
+  title: {
+    overflow: "hidden",
+    boxOrient: "vertical",
+    display: "-webkit-box",
+    lineClamp: 3,
+  },
 }));
 
 export default useStyles;
