@@ -20,8 +20,13 @@ const Card = ({ href, children, image, ...props }) => {
         <CardActionArea
           component={href ? Link : undefined}
           href={href}
+          disableRipple
           underline="none"
           {...props}
+          classes={{
+            root: classes.actionArea,
+            focusHighlight: classes.focusHighlight,
+          }}
         >
           <CardContent className={classes.content}>
             {image && (
