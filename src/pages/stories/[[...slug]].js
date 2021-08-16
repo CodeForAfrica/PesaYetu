@@ -18,6 +18,8 @@ export default function Index({
   activeCategory,
   categories,
   pagination,
+  featuredStory,
+  relatedPosts,
   post,
   posts,
   blocks,
@@ -30,35 +32,19 @@ export default function Index({
     authorName = post?.author?.node?.nickname ?? post?.author?.node?.slug;
   }
 
-  const featuredStory = blocks?.featuredStories
-    ? blocks?.featuredStories[activeCategory]
-    : null;
-
-  const postsItems = formatStoryPosts(posts, featuredStory);
-  const relatedPosts = formatStoryPosts(
-    post?.categories?.edges[0]?.node?.posts?.nodes ?? [],
-    { slug: post?.slug, ctaText: blocks?.relatedPosts?.ctaText }
-  );
-
-  const filteredCategories = categories?.edges
-    ?.map(({ node }) => {
-      return { ...node };
-    })
-    ?.filter(({ slug }) => slug !== "uncategorized");
-
   return (
     <Page {...props}>
       {archive ? (
         <>
           <Hero {...blocks?.otherHero} />
           <StoriesNavigation
-            categories={filteredCategories}
+            categories={categories}
             activeCategory={activeCategory}
           />
           <Stories
             activeCategory={activeCategory}
             featuredStoryProps={featuredStory}
-            items={postsItems}
+            items={posts}
             pagination={pagination}
           />
         </>
@@ -76,7 +62,7 @@ export default function Index({
           })}
           relatedPosts={{
             ...blocks?.relatedPosts,
-            items: relatedPosts.slice(0, 3),
+            items: relatedPosts,
           }}
         />
       )}
@@ -96,27 +82,11 @@ Index.propTypes = {
       ctaText: PropTypes.string,
     }),
   }),
-  categories: PropTypes.shape({
-    edges: PropTypes.arrayOf(
-      PropTypes.shape({
-        node: PropTypes.shape({}),
-      })
-    ),
-  }),
+  featuredStory: PropTypes.shape({}),
+  categories: PropTypes.arrayOf(PropTypes.shape({})),
   post: PropTypes.shape({
     slug: PropTypes.string,
     date: PropTypes.string,
-    categories: PropTypes.shape({
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            posts: PropTypes.shape({
-              nodes: PropTypes.arrayOf(PropTypes.shape({})),
-            }),
-          }),
-        })
-      ),
-    }),
     featuredImage: PropTypes.shape({
       node: PropTypes.shape({
         sourceUrl: PropTypes.string,
@@ -132,20 +102,8 @@ Index.propTypes = {
     }),
   }),
   pagination: PropTypes.shape({}),
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      slug: PropTypes.string,
-      excerpt: PropTypes.string,
-      date: PropTypes.string,
-      blocks: PropTypes.arrayOf(PropTypes.shape({})),
-      featuredImage: PropTypes.shape({
-        node: PropTypes.shape({
-          sourceUrl: PropTypes.string,
-        }),
-      }),
-    })
-  ),
+  posts: PropTypes.arrayOf(PropTypes.shape({})),
+  relatedPosts: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 Index.defaultProps = {
@@ -156,6 +114,8 @@ Index.defaultProps = {
   post: undefined,
   posts: undefined,
   pagination: undefined,
+  featuredStory: undefined,
+  relatedPosts: undefined,
 };
 
 export async function getStaticPaths() {
@@ -179,11 +139,32 @@ export async function getStaticProps({ params, preview, previewData }) {
     };
   }
   const blocks = formatBlocksForSections(props?.post?.blocks);
+  const featuredStory = blocks?.featuredStories
+    ? blocks?.featuredStories[activeCategory]
+    : null;
+
+  const posts = formatStoryPosts(props?.posts, featuredStory) || [];
+  const relatedPosts =
+    formatStoryPosts(
+      props?.post?.categories?.edges[0]?.node?.posts?.nodes ?? [],
+      { slug: props?.post?.slug, ctaText: blocks?.relatedPosts?.ctaText }
+    ) || [];
+
+  const categories =
+    props?.categories?.edges
+      ?.map(({ node }) => {
+        return { ...node };
+      })
+      ?.filter(({ slug }) => slug !== "uncategorized") ?? [];
   return {
     props: {
       ...props,
       blocks,
       activeCategory,
+      categories,
+      posts,
+      featuredStory,
+      relatedPosts: relatedPosts.slice(0, 3),
     },
     revalidate,
   };

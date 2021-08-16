@@ -14,7 +14,7 @@ export default function formatStoryPosts(posts, featuredStory) {
         href: `/stories${uri}`,
         image: featuredImage?.node?.sourceUrl,
         ctaText: featuredStory?.ctaText,
-        chart: chartBlock?.attributes?.chart,
+        chart: chartBlock?.attributes?.chart ?? null,
       };
     });
 }
