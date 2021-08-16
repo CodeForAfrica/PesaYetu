@@ -46,19 +46,21 @@ function StoriesInsights({ overline, title, stories, ...props }) {
         </Header>
         <Grid container>
           <Grid item lg={8} md={12} container direction="row" wrap="nowrap">
-            {stories.map(({ chart, slug }, index) => (
-              <Grid
-                item
-                key={slug}
-                className={clsx(classes.chartContainer, {
-                  [classes.currentChart]: index === currentItemIndex,
-                })}
-              >
-                <RichTypography className={classes.chart}>
-                  {chart}
-                </RichTypography>
-              </Grid>
-            ))}
+            <div className={classes.fullWidth}>
+              {stories.map(({ chart, slug }, index) => (
+                <Grid
+                  item
+                  key={slug}
+                  className={clsx(classes.chartContainer, {
+                    [classes.currentChart]: index === currentItemIndex,
+                  })}
+                >
+                  <RichTypography className={classes.chart}>
+                    {chart}
+                  </RichTypography>
+                </Grid>
+              ))}
+            </div>
           </Grid>
           <Grid item lg={1} />
           <Grid item lg={3} md={12} container direction="column">
