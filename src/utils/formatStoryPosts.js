@@ -11,7 +11,7 @@ export default function formatStoryPosts(posts, featuredStory) {
       return {
         title,
         description: excerpt?.replace(/<[^>]+>/g, "") ?? "",
-        href: uri,
+        href: `/stories${uri}`,
         image: featuredImage?.node?.sourceUrl,
         ctaText: featuredStory?.ctaText,
         chart: chartBlock?.attributes?.chart,

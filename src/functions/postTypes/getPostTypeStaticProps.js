@@ -64,7 +64,7 @@ export default async function getPostTypeStaticProps(
   /* -- Handle taxonomy archives. -- */
   if (
     Object.keys(archiveQuerySeo).includes(postType) &&
-    params.slug.length === 2
+    params.slug.length === 1
   ) {
     const taxonomy = "category";
     const taxonomySlug = params.slug.pop(); // category slug ( insights or news )

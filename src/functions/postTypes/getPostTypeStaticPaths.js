@@ -70,7 +70,7 @@ export default async function getPostTypeStaticPaths(postType) {
           posts.data.categories.edges.map(({ node: { slug } }) => {
             return {
               params: {
-                slug: ["stories", slug],
+                slug: [slug],
               },
             };
           })

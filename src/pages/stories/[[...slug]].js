@@ -163,7 +163,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview, previewData }) {
-  const activeCategory = params.slug[1];
+  const {
+    slug: [activeCategory],
+  } = params;
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     params,
     postType,

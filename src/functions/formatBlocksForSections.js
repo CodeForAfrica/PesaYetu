@@ -85,7 +85,7 @@ function formatFeaturedStories(attributes) {
   const formattedNews = {
     title: news?.title,
     description: news?.excerpt?.replace(/<[^>]+>/g, ""),
-    href: news?.uri,
+    href: `/stories${news?.uri}`,
     slug: news?.slug,
     image: news?.featuredImage?.node?.sourceUrl,
     ctaText: attributes?.ctaText ?? "",
@@ -98,7 +98,7 @@ function formatFeaturedStories(attributes) {
   const formattedInsights = {
     title: insights?.title,
     description: insights?.excerpt?.replace(/<[^>]+>/g, ""),
-    href: insights?.uri,
+    href: `/stories${insights?.uri}`,
     slug: insights?.slug,
     chart: chartBlock?.attributes?.chart ?? "",
     ctaText: attributes?.ctaText ?? "",
