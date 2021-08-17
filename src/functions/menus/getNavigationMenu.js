@@ -4,14 +4,14 @@ export default function getNavigationMenu(data) {
   const menuProps = data.slice(0, 4).map(({ label, path }) => {
     return {
       label: label.toUpperCase(),
-      url: path,
+      href: path,
     };
   });
   const socialLinks = children.map(({ label, title, url }) => {
     return {
+      href: title,
       src: url,
       label: label.toLowerCase(),
-      href: title,
     };
   });
   return {
