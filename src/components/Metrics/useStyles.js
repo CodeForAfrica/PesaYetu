@@ -6,7 +6,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     width: typography.pxToRem(768),
     height: typography.pxToRem(415),
   },
-  content: {},
   subtitle: {
     paddingTop: "40px",
   },
@@ -23,10 +22,10 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       width: typography.pxToRem(768),
     },
   },
-  grid: {
+  metrics: {
     padding: "80px 0rem",
   },
-  gridOne: {
+  content: {
     paddingTop: "16.5px",
   },
   secondGrid: {

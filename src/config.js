@@ -1,3 +1,5 @@
+import richDataIcon from "@/pesayetu/assets/Component121.svg";
+import pinIcon from "@/pesayetu/assets/Component122.svg";
 import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
 import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
 import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
@@ -385,10 +387,27 @@ export const dataVisuals = {
 };
 
 export const metrics = {
-  items: [{ image: Metric1 }],
-};
-export const secondMetrics = {
-  secondMetricsItems: [{ image: Metric2 }],
+  sectionTitle: "Our Metrics",
+  items: [
+    {
+      icon: richDataIcon,
+      title: "Rich Data",
+      description:
+        "This section includes all the data indicators visualised in interactive charts for a particular location. These charts - as well as the datasets behind them - can be shared, embedded, or downloaded.",
+      dataVisualProps: {
+        image: Metric1,
+      },
+    },
+    {
+      icon: pinIcon,
+      title: "Pin to Compare",
+      description:
+        "Several sets of data exist for different counties and municipalities allowing you to visualise multiple locations side by side and make comparisons where similar datasets exist.",
+      dataVisualProps: {
+        image: Metric2,
+      },
+    },
+  ],
 };
 
 export const footerArgs = {
