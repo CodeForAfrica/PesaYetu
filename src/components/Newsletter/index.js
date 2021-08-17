@@ -7,11 +7,9 @@ import React from "react";
 import email from "@/pesayetu/assets/icons/Component 117 – 1@2x.png";
 import { ReactComponent as EnvelopeIcon } from "@/pesayetu/assets/icons/Group 4767.svg";
 
-const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   section: {},
   title: {
-    fontWeight: "900",
-    color: palette.grey.dark,
     display: "flex",
     alignItems: "center",
     marginBottom: typography.pxToRem(19.93),

@@ -14,10 +14,12 @@ function FeaturedStoryCard({
   href,
   image,
   title,
+  variant: variantProp,
   ...props
 }) {
   const classes = useStyles(props);
 
+  const variant = variantProp === "news" ? "h4" : "h3";
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} md={7}>
@@ -27,7 +29,7 @@ function FeaturedStoryCard({
       </Grid>
       <Grid item xs={12} md={5} className={classes.content}>
         {title && (
-          <Typography variant="h3" className={classes.title}>
+          <Typography variant={variant} className={classes.title}>
             {title}
           </Typography>
         )}
@@ -52,6 +54,7 @@ FeaturedStoryCard.propTypes = {
   image: PropTypes.string,
   href: PropTypes.string,
   ctaText: PropTypes.string,
+  variant: PropTypes.oneOf(["insights", "news"]),
 };
 FeaturedStoryCard.defaultProps = {
   description: undefined,
@@ -59,5 +62,6 @@ FeaturedStoryCard.defaultProps = {
   image: undefined,
   href: undefined,
   ctaText: undefined,
+  variant: "news",
 };
 export default FeaturedStoryCard;
