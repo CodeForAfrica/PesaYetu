@@ -17,6 +17,7 @@ function CarouselItem({ items, activeCategory, ...props }) {
       {items.map((item) => (
         <Grid key={item.slug} item xs={12} md={6} lg={4}>
           <InsightCard
+            key={item.slug}
             {...item}
             variant={activeCategory}
             className={classes.story}

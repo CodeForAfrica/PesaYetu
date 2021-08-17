@@ -7,7 +7,7 @@ const items = [
   {
     label: "Insights",
     children: "This is the insights panel",
-    href: "/stories/news",
+    href: "/stories/insights",
   },
 ];
 

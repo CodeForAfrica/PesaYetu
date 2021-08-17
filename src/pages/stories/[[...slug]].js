@@ -4,8 +4,9 @@ import React from "react";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import Stories from "@/pesayetu/components/Stories";
-import StoriesNavigation from "@/pesayetu/components/StoriesNavigation";
+// import StoriesNavigation from "@/pesayetu/components/StoriesNavigation";
 import StoryPage from "@/pesayetu/components/StoryPage";
+import Tabs from "@/pesayetu/components/Tabs";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
@@ -37,15 +38,33 @@ export default function Index({
       {archive ? (
         <>
           <Hero {...blocks?.otherHero} />
-          <StoriesNavigation
-            categories={categories}
-            activeCategory={activeCategory}
-          />
-          <Stories
-            activeCategory={activeCategory}
-            featuredStoryProps={featuredStory}
-            items={posts}
-            pagination={pagination}
+          <Tabs
+            items={[
+              {
+                label: "News",
+                href: "/stories/news",
+                children: (
+                  <Stories
+                    activeCategory={activeCategory}
+                    featuredStoryProps={featuredStory}
+                    items={posts}
+                    pagination={pagination}
+                  />
+                ),
+              },
+              {
+                label: "Insights",
+                href: "/stories/insights",
+                children: (
+                  <Stories
+                    activeCategory={activeCategory}
+                    featuredStoryProps={featuredStory}
+                    items={posts}
+                    pagination={pagination}
+                  />
+                ),
+              },
+            ]}
           />
         </>
       ) : (

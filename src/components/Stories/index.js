@@ -79,21 +79,27 @@ function Stories({
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <FeaturedStoryCard {...featuredStoryProps} variant={activeCategory} />
-        <Carousel
-          swipeable
-          responsive={responsive}
-          arrows={false}
-          renderDotsOutside
-          showDots
-          dotListClass={classes.dots}
-          beforeChange={(nextSlide) => {
-            setNextItemIndex(nextSlide);
-          }}
-        >
-          {carouselItems.map((ci) => (
-            <CarouselItem items={ci} activeCategory={activeCategory} />
-          ))}
-        </Carousel>
+        <React.StrictMode>
+          <Carousel
+            swipeable
+            responsive={responsive}
+            arrows={false}
+            renderDotsOutside
+            showDots
+            dotListClass={classes.dots}
+            beforeChange={(nextSlide) => {
+              setNextItemIndex(nextSlide);
+            }}
+          >
+            {carouselItems.map((ci) => (
+              <CarouselItem
+                items={ci}
+                activeCategory={activeCategory}
+                key={ci[0].slug}
+              />
+            ))}
+          </Carousel>
+        </React.StrictMode>
       </Section>
     </div>
   );
