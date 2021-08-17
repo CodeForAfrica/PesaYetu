@@ -13,9 +13,9 @@ export default function About({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.aboutHero} />
+      <Summary {...blocks?.summary} />
       <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
-      <Summary {...blocks?.summary} />
     </Page>
   );
 }

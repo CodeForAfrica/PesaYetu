@@ -13,9 +13,9 @@ export default function Home({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
+      <Summary {...blocks?.summary} />
       <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
-      <Summary {...blocks?.summary} />
     </Page>
   );
 }
