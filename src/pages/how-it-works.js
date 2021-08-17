@@ -3,6 +3,7 @@ import React from "react";
 
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
+import Summary from "@/pesayetu/components/Summary";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -10,6 +11,7 @@ export default function Home({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
+      <Summary {...blocks?.summary} />
     </Page>
   );
 }
@@ -17,6 +19,7 @@ export default function Home({ blocks, ...props }) {
 Home.propTypes = {
   blocks: PropTypes.shape({
     otherHero: PropTypes.shape({}),
+    summary: PropTypes.shape({}),
   }),
 };
 
