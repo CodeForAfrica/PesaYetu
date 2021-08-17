@@ -5,6 +5,7 @@ import React from "react";
 
 import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
 import Header from "@/pesayetu/components/Header";
+import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ typography }) => ({
@@ -14,6 +15,12 @@ const useStyles = makeStyles(({ typography }) => ({
     backgroundRepeat: "no-repeat",
     paddingTop: typography.pxToRem(80),
     paddingBottom: typography.pxToRem(80),
+  },
+  button: {
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
   section: {
     textAlign: "center",
@@ -33,7 +40,12 @@ const StartLearning = ({ ctaText, href, title, subtitle, ...props }) => {
         <Typography variant="h3" className={classes.subtitle}>
           {subtitle}
         </Typography>
-        <Button href={href} variant="text">
+        <Button
+          className={classes.button}
+          component={Link}
+          href={href}
+          variant="text"
+        >
           {ctaText}
         </Button>
       </Section>
