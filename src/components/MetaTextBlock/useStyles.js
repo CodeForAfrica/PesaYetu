@@ -9,16 +9,10 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     paddingTop: typography.pxToRem(80),
   },
   title: {
-    fontSize: typography.pxToRem(50),
-    lineHeight: 66 / 50,
     marginBottom: typography.pxToRem(40),
-    fontWeight: "300",
-    color: palette.text.hint,
   },
   subtitle: {
-    fontWeight: "normal",
     marginBottom: typography.pxToRem(40),
-    color: "#212529",
   },
   container: {
     [breakpoints.up("md")]: {

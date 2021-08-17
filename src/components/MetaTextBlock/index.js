@@ -18,10 +18,10 @@ const TwoColumnLayout = ({ content, title, subtitle, ...props }) => {
       <Section classes={{ root: classes.section }}>
         <Grid justifyContent="space-between" container>
           <Grid item xs={12} lg={4}>
-            <Typography className={classes.title} variant="h1">
+            <Typography className={classes.title} variant="h2">
               {title}
             </Typography>
-            <Typography className={classes.subtitle} variant="h4">
+            <Typography className={classes.subtitle} variant="h5">
               {subtitle}
             </Typography>
           </Grid>
