@@ -1,4 +1,5 @@
 import { Hidden } from "@material-ui/core";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -7,11 +8,16 @@ import Mobile from "./Mobile";
 import Tablet from "./Tablet";
 import useStyles from "./useStyles";
 
+import bg from "@/pesayetu/assets/images/Mask Group 8.png";
+
 const DataIndicators = ({ title, items, ...props }) => {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
+      <div className={classes.background}>
+        <Image objectFit="cover" src={bg} layout="fill" />
+      </div>
       <div>
         <Hidden mdDown>
           <Desktop items={items} title={title} />

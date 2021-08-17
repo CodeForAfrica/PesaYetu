@@ -1,14 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-import bg from "@/pesayetu/assets/images/Mask Group 8.png";
-
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
     backgroundColor: "#F0F0F0",
-    backgroundImage: `url('${bg}')`,
-    zIndex: "-1",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
+  },
+  background: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
   },
   sectionTitle: {
     textAlign: "center",
@@ -37,11 +36,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 
   container: {
     flexWrap: "nowrap",
-    // backgroundImage: `url('${bg})`,
-    // backgroundSize: "cover",
-    // backgroundRepeat: "no-repeat",
   },
-  section: {},
   image: {
     width: "max-content",
   },
@@ -86,7 +81,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   mdImageContainer: {
     marginTop: typography.pxToRem(16),
   },
-  mdIndicatorContainer: {},
   mdText: {
     margin: 0,
     display: "flex",
