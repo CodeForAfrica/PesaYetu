@@ -34,7 +34,7 @@ function SupportingPartners({ title, items, ...props }) {
         </Typography>
         <Grid
           container
-          spacing={4}
+          spacing={2}
           justifyContent="center"
           className={classes.logoContainer}
         >
