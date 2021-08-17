@@ -4,6 +4,7 @@ import React from "react";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import PartnersAndNewsletter from "@/pesayetu/components/Partners";
+import Summary from "@/pesayetu/components/Summary";
 import SupportingPartners from "@/pesayetu/components/SupportingPartners";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
@@ -14,6 +15,7 @@ export default function Home({ blocks, ...props }) {
       <Hero {...blocks?.otherHero} />
       <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
+      <Summary {...blocks?.summary} />
     </Page>
   );
 }
@@ -23,6 +25,7 @@ Home.propTypes = {
     otherHero: PropTypes.shape({}),
     supportingPartners: PropTypes.shape({}),
     partnersAndNewsletter: PropTypes.shape({}),
+    summary: PropTypes.shape({}),
   }),
 };
 
