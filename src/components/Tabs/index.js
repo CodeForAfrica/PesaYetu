@@ -1,15 +1,10 @@
 import { Tab, Divider, Tabs as MuiTabs } from "@material-ui/core";
-import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
-
-// function LinkTab(props) {
-//   return <Tab component={Link} underline="none" {...props} />;
-// }
 
 function a11yProps(name, index) {
   return {
@@ -20,7 +15,6 @@ function a11yProps(name, index) {
 
 function Tabs({ name: nameProp, items, ...props }) {
   const classes = useStyles(props);
-  const router = useRouter();
   const [value, setValue] = useState(0);
   const name = nameProp || "simple";
 
@@ -46,10 +40,6 @@ function Tabs({ name: nameProp, items, ...props }) {
           <Tab
             key={item.label}
             label={item.label}
-            onClick={(event) => {
-              event.preventDefault();
-              router.push(item.href);
-            }}
             {...a11yProps(name, index)}
             disableRipple
             classes={{
