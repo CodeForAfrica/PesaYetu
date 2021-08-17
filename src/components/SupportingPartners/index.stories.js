@@ -3,7 +3,7 @@ import React from "react";
 import SupportingPartners from ".";
 
 export default {
-  title: "Components/SupportingPartners",
+  title: "Sections/SupportingPartners",
   argTypes: {
     title: {
       control: {
