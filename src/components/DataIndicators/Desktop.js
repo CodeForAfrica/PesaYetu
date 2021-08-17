@@ -47,7 +47,7 @@ const Desktop = ({ items, title, ...props }) => {
         mountOnEnter
         unmountOnExit
         onClick={handleChange}
-        className={classes.transition}
+        className={classes.slide}
         direction="left"
         timeout={600}
       >

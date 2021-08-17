@@ -124,9 +124,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     paddingTop: typography.pxToRem(102),
 
     [breakpoints.up("lg")]: {
-      // width: ({ checked }) => (checked ? "90%" : "100%"), //
+      width: ({ checked }) => (checked ? "90%" : "100%"), //
       alignItems: "center",
-      // transition: "width 1s linear",
+      transition: "width 4s linear",
     },
   },
   block: {
@@ -146,7 +146,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     fontSize: typography.pxToRem(30),
   },
   description: {},
-  transition: {
+  slide: {
     backgroundColor: "#0067A3",
     color: "#fff",
     minWidth: typography.pxToRem(480),

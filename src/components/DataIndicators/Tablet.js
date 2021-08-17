@@ -11,7 +11,7 @@ const TabletScreen = ({ items, title, ...props }) => {
   const [currentDescription, setCurrentDescription] = useState(
     items[0].description
   );
-  const [currentSelect, setCurrentSelect] = useState("");
+  const [currentSelect, setCurrentSelect] = useState(items[0].title);
 
   const classes = useStyles(props);
 
