@@ -118,9 +118,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     paddingTop: typography.pxToRem(102),
 
     [breakpoints.up("lg")]: {
-      width: ({ checked }) => (checked ? "90%" : "100%"), //
+      // width: ({ checked }) => (checked ? "90%" : "100%"), //
       alignItems: "center",
-      transition: "width 4s linear",
+      // transition: "width 4s linear",
     },
   },
   block: {

@@ -23,7 +23,7 @@ const DataIndicators = ({ title, items, ...props }) => {
           <Desktop items={items} title={title} />
         </Hidden>
 
-        <Hidden smUp>
+        <Hidden mdUp>
           <Mobile items={items} title={title} />
         </Hidden>
       </div>
