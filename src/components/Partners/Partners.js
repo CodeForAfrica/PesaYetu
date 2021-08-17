@@ -5,13 +5,11 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(({ palette, typography }) => ({
+const useStyles = makeStyles(({ typography }) => ({
   root: {
     paddingTop: typography.pxToRem(56.69),
   },
   title: {
-    fontWeight: 900,
-    color: palette.grey.dark,
     marginBottom: typography.pxToRem(49.38),
   },
   link: {

@@ -32,6 +32,12 @@ export default {
         type: "text",
       },
     },
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: ["insights", "news"],
+    },
   },
 };
 
@@ -52,4 +58,5 @@ Default.args = {
   href: "/?path=/story/components-featured-story-card--default",
   ctaText: "Read More",
   image: cardImage,
+  variant: "news",
 };

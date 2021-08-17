@@ -101,10 +101,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   title: {
-    fontWeight: 900,
-    textTransform: "uppercase",
     marginTop: typography.pxToRem(18),
-    color: palette.grey.dark,
   },
   description: {
     fontFamily: typography.body1.fontFamily,

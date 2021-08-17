@@ -32,7 +32,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
   return (
     <div className={classes.root}>
       <Section>
-        <Typography variant="h3" className={classes.title}>
+        <Typography variant="h4" className={classes.title}>
           {title}
         </Typography>
 
