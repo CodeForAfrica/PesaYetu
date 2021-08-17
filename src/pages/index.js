@@ -6,7 +6,6 @@ import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
 import InsightData from "@/pesayetu/components/InsightsData";
-import OurCourses from "@/pesayetu/components/OurCourses";
 import Page from "@/pesayetu/components/Page";
 import PartnersAndNewsletter from "@/pesayetu/components/Partners";
 import StoriesInsights from "@/pesayetu/components/StoriesInsights";
@@ -24,7 +23,6 @@ export default function Home({ boundary, blocks, ...props }) {
       <Hero {...heroProps} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
       <DataVisuals {...blocks?.dataVisuals} />
-      <OurCourses {...blocks?.ourCourses} />
       <StoriesInsights {...blocks?.insightsStories} />
       <InsightData {...blocks?.dataInsights} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
@@ -43,7 +41,6 @@ Home.propTypes = {
     partnersAndNewsletter: PropTypes.shape({}),
     dataInsights: PropTypes.shape({}),
     dataVisuals: PropTypes.shape({}),
-    ourCourses: PropTypes.shape({}),
   }),
   footerProps: PropTypes.shape({}),
 };
