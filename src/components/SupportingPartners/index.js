@@ -32,12 +32,7 @@ function SupportingPartners({ title, items, ...props }) {
         <Typography variant="h4" className={classes.title}>
           {title}
         </Typography>
-        <Grid
-          container
-          spacing={2}
-          justifyContent="center"
-          className={classes.logoContainer}
-        >
+        <Grid container spacing={2} className={classes.logoContainer}>
           {items?.map(({ link, logo, name }) => (
             <Grid item key={link}>
               <A className={classes.link} href={link}>
