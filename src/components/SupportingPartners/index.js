@@ -26,7 +26,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 }));
 function SupportingPartners({ title, items, ...props }) {
   const classes = useStyles(props);
-
+  if (!items || !items.length) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <Section className={classes.section}>
@@ -34,7 +36,7 @@ function SupportingPartners({ title, items, ...props }) {
           {title}
         </Typography>
         <Grid container spacing={2} className={classes.logoContainer}>
-          {items?.map(({ link, logo, name }) => (
+          {items.map(({ link, logo, name }) => (
             <Grid item key={link}>
               <A className={classes.link} href={link}>
                 <Image
