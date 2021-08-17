@@ -9,7 +9,7 @@ export default function getNavigationMenu(data) {
   });
   const socialLinks = children.map(({ label, title, url }) => {
     return {
-      href: title,
+      url: title,
       src: url,
       label: label.toLowerCase(),
     };

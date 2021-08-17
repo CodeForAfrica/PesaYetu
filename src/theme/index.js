@@ -273,6 +273,11 @@ deepmerge(
           width: 0,
         },
       },
+      MuiButtonBase: {
+        "&:hover": {
+          backgroundColor: "unset",
+        },
+      },
       text: {
         color: palette.primary.main,
         padding: 0,
