@@ -4,7 +4,20 @@ import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
+import Link from "@/pesayetu/components/Link";
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
+
+function LinkTab(props) {
+  return (
+    <Tab
+      component={Link}
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
 
 function a11yProps(name, index) {
   return {
@@ -37,9 +50,10 @@ function Tabs({ name: nameProp, items, ...props }) {
         }}
       >
         {items.map((item, index) => (
-          <Tab
+          <LinkTab
             key={item.label}
             label={item.label}
+            href={item.href}
             {...a11yProps(name, index)}
             disableRipple
             classes={{
