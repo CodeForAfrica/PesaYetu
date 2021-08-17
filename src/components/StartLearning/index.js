@@ -19,8 +19,6 @@ const useStyles = makeStyles(({ typography }) => ({
     textAlign: "center",
   },
   subtitle: {
-    fontWeight: 600,
-    color: "#212529",
     marginTop: typography.pxToRem(40),
     marginBottom: typography.pxToRem(40),
   },
