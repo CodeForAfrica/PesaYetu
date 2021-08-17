@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 
 import Section from "@/pesayetu/components/Section";
 
-const TwoColumnLayout = ({ content, title, subtitle, ...props }) => {
+const Summary = ({ content, title, subtitle, ...props }) => {
   const classes = useStyles(props);
   if (!content) {
     return null;
@@ -34,16 +34,16 @@ const TwoColumnLayout = ({ content, title, subtitle, ...props }) => {
   );
 };
 
-TwoColumnLayout.propTypes = {
+Summary.propTypes = {
   content: PropTypes.string,
   subtitle: PropTypes.string,
   title: PropTypes.string,
 };
 
-TwoColumnLayout.defaultProps = {
+Summary.defaultProps = {
   content: undefined,
   subtitle: undefined,
   title: undefined,
 };
 
-export default TwoColumnLayout;
+export default Summary;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import TwoColumnLayout from ".";
+import Summary from ".";
 
 export default {
   title: "Components/CMSContent",
@@ -13,7 +13,7 @@ export default {
   },
 };
 
-const Template = (args) => <TwoColumnLayout {...args} />;
+const Template = (args) => <Summary {...args} />;
 
 export const Default = Template.bind({});
 
