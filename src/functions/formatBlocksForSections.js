@@ -23,7 +23,7 @@ function formatLazyBlockIteratorContentWithImage(
   return { ...rest, items };
 }
 
-function formatEnablingPartnersBlock(block) {
+function formatPartnersBlock(block) {
   const { attributes, name } = block;
   switch (name) {
     case "lazyblock/main-partner":
@@ -36,12 +36,9 @@ function formatEnablingPartnersBlock(block) {
   }
 }
 
-function formatEnablingPartners({
-  attributes: { partners, ...rest },
-  innerBlocks,
-}) {
+function formatPartners({ attributes: { partners, ...rest }, innerBlocks }) {
   const items = innerBlocks.reduce((acc, cur) => {
-    acc[formatName(cur.name)] = formatEnablingPartnersBlock(cur);
+    acc[formatName(cur.name)] = formatPartnersBlock(cur);
     return acc;
   }, {});
   return {
@@ -86,7 +83,9 @@ function format(block) {
     case "lazyblock/data-insights":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/partners-and-newsletter":
-      return formatEnablingPartners(block);
+      return formatPartners(block);
+    case "lazyblock/supporting-partners":
+      return formatLazyBlockIteratorContentWithImage(attributes, "logo");
     case "lazyblock/other-hero":
       return {
         ...attributes,
