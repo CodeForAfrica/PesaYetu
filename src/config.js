@@ -8,6 +8,7 @@ import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
 import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
 import Metric1 from "@/pesayetu/assets/Metric1.png";
+import Metric2 from "@/pesayetu/assets/Metric2.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
@@ -385,6 +386,9 @@ export const dataVisuals = {
 
 export const metrics = {
   items: [{ image: Metric1 }],
+};
+export const secondMetrics = {
+  secondMetricsItems: [{ image: Metric2 }],
 };
 
 export const footerArgs = {

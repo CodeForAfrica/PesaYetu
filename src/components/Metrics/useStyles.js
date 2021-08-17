@@ -7,6 +7,10 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     height: typography.pxToRem(415),
   },
   content: {},
+  subtitle: {
+    paddingTop: "40px",
+  },
+
   cardMedia: {
     height: typography.pxToRem(215),
     position: "absolute",
@@ -20,7 +24,13 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   grid: {
-    padding: "4rem 0rem",
+    padding: "80px 0rem",
+  },
+  gridOne: {
+    paddingTop: "16.5px",
+  },
+  secondGrid: {
+    marginLeft: "-1rem",
   },
 }));
 

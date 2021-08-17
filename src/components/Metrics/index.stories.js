@@ -18,4 +18,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   dataVisualsProps: item,
+  secondDataVisualsProps: item,
 };
