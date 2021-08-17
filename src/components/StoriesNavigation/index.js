@@ -56,8 +56,8 @@ function StoriesNavigation({ categories, activeCategory, ...props }) {
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <List classes={{ root: classes.list }}>
-          {categories?.map(({ slug, name }) => (
-            <ListItemLink underline="none" href={`/stories/${slug}`} key={slug}>
+          {categories?.map(({ slug, name, href }) => (
+            <ListItemLink underline="none" href={href} key={slug}>
               <ListItemText
                 disableTypography
                 className={clsx(classes.listItemText, {
@@ -82,6 +82,7 @@ StoriesNavigation.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
       slug: PropTypes.string,
+      href: PropTypes.string,
       name: PropTypes.string,
     })
   ),

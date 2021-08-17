@@ -2,7 +2,7 @@ import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { chunk } from "lodash";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import useSWR from "swr";
 
@@ -52,9 +52,14 @@ function Stories({
   const [nextItemIndex, setNextItemIndex] = useState();
   const [paginator, setPaginator] = useState(pagination);
 
+  useEffect(() => {
+    setAllStories(items);
+  }, [items]);
+
   const fetchMore =
     paginator?.hasNextPage &&
     allStories.length - nextItemIndex * itemsToShow <= itemsToShow;
+
   const { data: moreStoriesProps } = useSWR(
     fetchMore
       ? ["/api/wp/archive", activeCategory, paginator?.endCursor]
@@ -79,27 +84,25 @@ function Stories({
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <FeaturedStoryCard {...featuredStoryProps} variant={activeCategory} />
-        <React.StrictMode>
-          <Carousel
-            swipeable
-            responsive={responsive}
-            arrows={false}
-            renderDotsOutside
-            showDots
-            dotListClass={classes.dots}
-            beforeChange={(nextSlide) => {
-              setNextItemIndex(nextSlide);
-            }}
-          >
-            {carouselItems.map((ci) => (
-              <CarouselItem
-                items={ci}
-                activeCategory={activeCategory}
-                key={ci[0].slug}
-              />
-            ))}
-          </Carousel>
-        </React.StrictMode>
+        <Carousel
+          swipeable
+          responsive={responsive}
+          arrows={false}
+          renderDotsOutside
+          showDots
+          dotListClass={classes.dots}
+          beforeChange={(nextSlide) => {
+            setNextItemIndex(nextSlide);
+          }}
+        >
+          {carouselItems.map((ci) => (
+            <CarouselItem
+              items={ci}
+              activeCategory={activeCategory}
+              key={ci[0].slug}
+            />
+          ))}
+        </Carousel>
       </Section>
     </div>
   );
