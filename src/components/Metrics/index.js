@@ -22,13 +22,21 @@ function Metrics({ items, sectionTitle, direction, ...props }) {
       </RichTypography>
       {items?.map((item) => (
         <Grid
+          key={item.title}
           container
           direction="row"
           justifyContent="space-between"
           alignItems="flex-start"
           className={classes.metrics}
         >
-          <Grid container item xs={3} className={classes.content}>
+          <Grid
+            container
+            item
+            xs={12}
+            md={6}
+            lg={3}
+            className={classes.content}
+          >
             <Grid
               container
               item
@@ -53,7 +61,9 @@ function Metrics({ items, sectionTitle, direction, ...props }) {
           </Grid>
           <Grid
             item
-            xs={8}
+            xs={12}
+            md={4}
+            lg={8}
             container
             direction="row"
             justifyContent="center"
