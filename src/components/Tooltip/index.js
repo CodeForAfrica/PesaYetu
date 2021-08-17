@@ -22,7 +22,9 @@ function Banner({ tagline, ctaText, ...props }) {
     <>
       <Divider className={classes.divider} />
       {tagline && (
-        <Typography className={classes.tagline}>{tagline}</Typography>
+        <Typography variant="h5" className={classes.tagline}>
+          {tagline}
+        </Typography>
       )}
       {ctaText && (
         <Button variant="text" onClick={handleClick}>
