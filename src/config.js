@@ -7,6 +7,7 @@ import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
 import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
+import Metric1 from "@/pesayetu/assets/Metric1.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
@@ -380,6 +381,10 @@ export const dataVisuals = {
         "<span class='bold'>Step 3:</span> Browse the charts and download and share the data using the buttons on the right side.",
     },
   ],
+};
+
+export const metrics = {
+  items: [{ image: Metric1 }],
 };
 
 export const footerArgs = {

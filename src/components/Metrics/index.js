@@ -1,22 +1,18 @@
 import { RichTypography } from "@commons-ui/core";
-import { IconButton, Grid, makeStyles } from "@material-ui/core";
+import { IconButton, Grid } from "@material-ui/core";
 import Image from "next/image";
+import PropTypes from "prop-types";
 import React from "react";
 
+import useStyles from "./useStyles";
+
 import statsIcon from "@/pesayetu/assets/Component121.svg";
+import DataVisualCard from "@/pesayetu/components/DataVisualCard";
 
-const useStyles = makeStyles(() => ({
-  root: {},
-  title: {},
-  grid: {
-    padding: "3rem 0rem",
-  },
-}));
-
-function Metrics({ ...props }) {
+function Metrics({ dataVisualsProps, ...props }) {
   const classes = useStyles(props);
   return (
-    <div className={classes.root}>
+    <div>
       <div>
         <RichTypography variant="h1" className={classes.title}>
           Our metrics
@@ -47,17 +43,35 @@ function Metrics({ ...props }) {
             </RichTypography>
           </div>
         </Grid>
-        <Grid container direction="row" item xs={8} justifyContent="flex-end">
-          <RichTypography variant="body1" className={classes.subtitle}>
-            This section includes all the data indicators visualised in
-            interactive charts for a particular location. These charts - as well
-            as the datasets behind them - can be shared, embedded, or
-            downloaded.
-          </RichTypography>
+
+        <Grid
+          container
+          direction="row"
+          item
+          xs={8}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <DataVisualCard
+            {...dataVisualsProps}
+            classes={{
+              root: classes.dataVisualCard,
+              cardMedia: classes.cardMedia,
+              content: classes.content,
+            }}
+          />
         </Grid>
       </Grid>
     </div>
   );
 }
+
+Metrics.propTypes = {
+  dataVisualsProps: PropTypes.shape({}),
+};
+
+Metrics.defaultProps = {
+  dataVisualsProps: undefined,
+};
 
 export default Metrics;

@@ -13,13 +13,15 @@ const DataVisualCard = ({ image, description, ...props }) => {
       classes={{ root: classes.root, cardMedia: classes.cardMedia }}
       image={image}
     >
-      <RichTypography
-        className={classes.content}
-        variant="subtitle2"
-        display="inline"
-      >
-        {description}
-      </RichTypography>
+      {description && (
+        <RichTypography
+          className={classes.content}
+          variant="subtitle2"
+          display="inline"
+        >
+          {description}
+        </RichTypography>
+      )}
     </Card>
   );
 };
