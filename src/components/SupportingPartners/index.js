@@ -16,6 +16,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   section: {},
   title: {
     marginBottom: typography.pxToRem(49.38),
+    textTransform: "uppercase",
   },
   logoContainer: {},
   link: {},
