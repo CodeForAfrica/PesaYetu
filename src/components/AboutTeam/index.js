@@ -5,7 +5,8 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import AboutTeamCard from "@/pesayetu/components/AboutTeamCard";
+// import AboutTeamCard from "@/pesayetu/components/AboutTeamCard";
+import AboutTeamCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
@@ -31,13 +32,12 @@ const DataVisuals = ({ title, items, ...props }) => {
   const classes = useStyles(props);
 
   return (
-    <Section classes={{ root: classes.root }}>
+    <Section>
       {title && (
         <Typography variant="h3" className={classes.title}>
           {title}
         </Typography>
       )}
-
       <Carousel
         swipeable
         responsive={responsive}
@@ -47,7 +47,16 @@ const DataVisuals = ({ title, items, ...props }) => {
         dotListClass={classes.dots}
       >
         {items?.map((item) => (
-          <AboutTeamCard key={item.image} {...item} />
+          <AboutTeamCard
+            key={item.image}
+            titleVariant="h4"
+            {...item}
+            classes={{
+              root: classes.cardRoot,
+              cardMedia: classes.cardMedia,
+              image: classes.image,
+            }}
+          />
         ))}
       </Carousel>
     </Section>
