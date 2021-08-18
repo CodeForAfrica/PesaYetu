@@ -1,5 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { IconButton, Grid } from "@material-ui/core";
+import { IconButton, Grid, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -11,6 +12,8 @@ import Section from "@/pesayetu/components/Section";
 
 function Metrics({ items, sectionTitle, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.only("md"));
   if (!items?.length) {
     return null;
   }
@@ -55,7 +58,9 @@ function Metrics({ items, sectionTitle, ...props }) {
               lg={8}
               container
               direction="row"
-              justifyContent="flex-start"
+              justifyContent={
+                isTablet && index === 0 ? "flex-end" : "flex-start"
+              }
               alignItems="center"
             >
               <DataVisualCard
