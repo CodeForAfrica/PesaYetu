@@ -262,41 +262,22 @@ function DropdownSearch({
             </div>
           ))}
         </Select>
-        {open ? (
-          <IconButton
-            size="medium"
-            onClick={handleOpen}
-            aria-label="open"
-            disableRipple
-            disableFocusRipple
-            className={classes.button}
-          >
-            <SvgIcon
-              component={closeIcon}
-              viewBox={viewBoxValue}
-              classes={{
-                root: classes.svgIcon,
-              }}
-            />
-          </IconButton>
-        ) : (
-          <IconButton
-            size="medium"
-            onClick={handleOpen}
-            aria-label="open"
-            disableRipple
-            disableFocusRipple
-            className={classes.button}
-          >
-            <SvgIcon
-              component={openIcon}
-              viewBox={viewBoxValue}
-              classes={{
-                root: classes.svgIcon,
-              }}
-            />
-          </IconButton>
-        )}
+        <IconButton
+          size="medium"
+          onClick={handleOpen}
+          aria-label="open"
+          disableRipple
+          disableFocusRipple
+          className={classes.button}
+        >
+          <SvgIcon
+            component={open ? closeIcon : openIcon}
+            viewBox={viewBoxValue}
+            classes={{
+              root: classes.svgIcon,
+            }}
+          />
+        </IconButton>
       </FormControl>
     </div>
   );
