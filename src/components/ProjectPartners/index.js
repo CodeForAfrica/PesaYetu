@@ -11,6 +11,12 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     padding: `${typography.pxToRem(56.69)} 0`,
   },
+  content: {
+    justifyContent: "center",
+    [breakpoints.up("md")]: {
+      justifyContent: "flex-start",
+    },
+  },
   title: {
     textAlign: "center",
     marginBottom: typography.pxToRem(49.38),
@@ -40,14 +46,14 @@ function ProjectPartners({ title, partners, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container>
+      <Grid container className={classes.content}>
         <Grid item xs={12}>
           <Typography variant="h4" className={classes.title}>
             {title}
           </Typography>
         </Grid>
         {partners?.map(({ link, logo, name }) => (
-          <Grid key={link} item xs={12} md={6}>
+          <Grid key={link} item md={6}>
             <LogoButton
               component={Link}
               href={link}
