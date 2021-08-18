@@ -9,6 +9,8 @@ import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSection
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ blocks, ...props }) {
+  // eslint-disable-next-line no-console
+  console.log(blocks);
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
@@ -43,6 +45,7 @@ export async function getStaticProps({ preview, previewData }) {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
+
   return {
     props: {
       ...props,

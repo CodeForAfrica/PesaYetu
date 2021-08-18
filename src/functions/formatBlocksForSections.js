@@ -78,8 +78,6 @@ function formatInsightsStories(attr) {
 
 function format(block) {
   const { attributes, name } = block;
-  // eslint-disable-next-line no-console
-  console.log(name);
   switch (name) {
     case "acf/insights-stories":
       return formatInsightsStories(attributes);
@@ -87,10 +85,10 @@ function format(block) {
     case "lazyblock/data-visuals":
     case "lazyblock/data-insights":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
-    case "lazyblock/metrics":
-      return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/partners-and-newsletter":
       return formatEnablingPartners(block);
+    case "lazyblock/metrics":
+      return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/other-hero":
       return {
         ...attributes,

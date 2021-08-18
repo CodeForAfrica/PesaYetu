@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { RichTypography } from "@commons-ui/core";
 import { IconButton, Grid } from "@material-ui/core";
 import Image from "next/image";
@@ -25,26 +24,13 @@ function Metrics({ items, sectionTitle, ...props }) {
           <Grid
             key={item.title}
             container
-            direction="row"
+            direction={index === 0 ? "row" : "row-reverse"}
             justifyContent="space-between"
             alignItems="flex-start"
             className={classes.metrics}
           >
-            <Grid
-              container
-              item
-              xs={12}
-              md={6}
-              lg={3}
-              className={index === 0 ? classes.content : classes.moveOrder}
-            >
-              <Grid
-                container
-                item
-                direction="row"
-                alignItems="center"
-                style={{ marginLeft: "-0.5rem" }}
-              >
+            <Grid container item xs={12} md={5} lg={3}>
+              <Grid container item direction="row" alignItems="center">
                 <IconButton
                   disableRipple
                   disableFocusRipple
@@ -56,16 +42,14 @@ function Metrics({ items, sectionTitle, ...props }) {
                 </IconButton>
                 <RichTypography variant="h4">{item.title}</RichTypography>
               </Grid>
-              <div className={classes.description}>
-                <RichTypography variant="body2">
-                  {item.description}
-                </RichTypography>
-              </div>
+              <RichTypography variant="body2" className={classes.description}>
+                {item.description}
+              </RichTypography>
             </Grid>
             <Grid
               item
               xs={12}
-              md={4}
+              md={7}
               lg={8}
               container
               direction="row"
@@ -78,6 +62,7 @@ function Metrics({ items, sectionTitle, ...props }) {
                   root: classes.dataVisualCard,
                   cardMedia: classes.cardMedia,
                   content: classes.content,
+                  image: classes.image,
                 }}
               />
             </Grid>
