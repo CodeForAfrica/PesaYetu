@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
 }));
 
-function Project({ className, description, link, logo, name, ...props }) {
+function ProjectOwner({ className, description, link, logo, name, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -64,7 +64,7 @@ function Project({ className, description, link, logo, name, ...props }) {
   );
 }
 
-Project.propTypes = {
+ProjectOwner.propTypes = {
   className: PropTypes.string,
   description: PropTypes.string,
   link: PropTypes.string,
@@ -74,7 +74,7 @@ Project.propTypes = {
   name: PropTypes.string,
 };
 
-Project.defaultProps = {
+ProjectOwner.defaultProps = {
   className: undefined,
   description: undefined,
   link: undefined,
@@ -82,4 +82,4 @@ Project.defaultProps = {
   name: undefined,
 };
 
-export default Project;
+export default ProjectOwner;

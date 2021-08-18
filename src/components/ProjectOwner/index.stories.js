@@ -1,12 +1,12 @@
 import React from "react";
 
-import Project from ".";
+import ProjectOwner from ".";
 
 export default {
   title: "Components/Project",
 };
 
-const Template = ({ ...args }) => <Project {...args} />;
+const Template = ({ ...args }) => <ProjectOwner {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
