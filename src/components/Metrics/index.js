@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { RichTypography } from "@commons-ui/core";
 import { IconButton, Grid } from "@material-ui/core";
 import Image from "next/image";
@@ -9,8 +10,9 @@ import useStyles from "./useStyles";
 import DataVisualCard from "@/pesayetu/components/DataVisualCard";
 import Section from "@/pesayetu/components/Section";
 
-function Metrics({ items, sectionTitle, direction, ...props }) {
+function Metrics({ items, sectionTitle, ...props }) {
   const classes = useStyles(props);
+  console.log(items.map((item, index) => index));
 
   if (!items?.length) {
     return null;
@@ -20,7 +22,7 @@ function Metrics({ items, sectionTitle, direction, ...props }) {
       <RichTypography variant="h2" className={classes.sectionTitle}>
         {sectionTitle}
       </RichTypography>
-      {items?.map((item) => (
+      {items?.map((item, index) => (
         <Grid
           key={item.title}
           container
@@ -35,7 +37,7 @@ function Metrics({ items, sectionTitle, direction, ...props }) {
             xs={12}
             md={6}
             lg={3}
-            className={classes.content}
+            className={index === 0 ? classes.content : classes.moveOrder}
           >
             <Grid
               container
@@ -66,7 +68,7 @@ function Metrics({ items, sectionTitle, direction, ...props }) {
             lg={8}
             container
             direction="row"
-            justifyContent="center"
+            justifyContent="flex-start"
             alignItems="center"
           >
             <DataVisualCard
@@ -86,7 +88,6 @@ function Metrics({ items, sectionTitle, direction, ...props }) {
 
 Metrics.propTypes = {
   sectionTitle: PropTypes.string,
-  direction: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       icon: PropTypes.string,
@@ -99,7 +100,6 @@ Metrics.propTypes = {
 
 Metrics.defaultProps = {
   sectionTitle: undefined,
-  direction: undefined,
   items: undefined,
 };
 

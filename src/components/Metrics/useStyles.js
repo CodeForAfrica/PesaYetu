@@ -16,7 +16,10 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   subtitle: {
     paddingTop: "40px",
   },
-
+  moveOrder: {
+    padding: "80px 0rem",
+    order: 4,
+  },
   cardMedia: {
     position: "relative",
     [breakpoints.up("md")]: {
