@@ -42,29 +42,41 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       padding: `0 0 ${typography.pxToRem(40)} 0`,
     },
   },
+  fullWidth: {
+    width: "100vw",
+    position: "relative",
+    overflow: "hidden",
+    boxShadow: "0px 3px 6px #00000029",
+    backgroundColor: palette.background.default,
+    [breakpoints.up("md")]: {
+      left: "50%",
+      right: "50%",
+      margin: `0 -50vw`,
+    },
+    [breakpoints.up("lg")]: {
+      margin: "0 auto",
+      width: "100%",
+      left: 0,
+      right: 0,
+    },
+  },
   chartContainer: ({ currentItemIndex }) => {
     return {
       visibility: "hidden",
       height: 0,
       opacity: 0,
       transition: "transform 400ms ease-in-out",
-      boxShadow: "0px 3px 6px #00000029",
-      backgroundColor: palette.background.default,
-      transform: `translate3d(${typography.pxToRem(
-        -768 * currentItemIndex
-      )},0,0)`,
-      [breakpoints.down("md")]: {
-        margin: "0 -50vw",
-        width: "100vw",
-        position: "relative",
-        left: "50%",
-        right: "50%",
+      overflow: "unset",
+      transform: `translate3d(${-100 * currentItemIndex}vw,0,0)`,
+      [breakpoints.up("md")]: {
         transform: `translate3d(${typography.pxToRem(
           -608 * currentItemIndex
         )},0,0)`,
       },
-      [breakpoints.down("sm")]: {
-        transform: `translate3d(${-100 * currentItemIndex}vw,0,0)`,
+      [breakpoints.down("lg")]: {
+        transform: `translate3d(${typography.pxToRem(
+          -768 * currentItemIndex
+        )},0,0)`,
       },
     };
   },

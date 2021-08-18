@@ -16,4 +16,13 @@ module.exports = {
     });
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/stories",
+        destination: "/stories/news",
+        permanent: true,
+      },
+    ];
+  },
 };
