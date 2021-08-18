@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
-    paddingTop: "80px",
+    paddingTop: typography.pxToRem(80),
   },
   dataVisualCard: {
     height: typography.pxToRem(189),
@@ -15,11 +15,16 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       width: typography.pxToRem(768),
     },
   },
-  subtitle: {
-    paddingTop: "40px",
+  description: {
+    paddingTop: typography.pxToRem(40),
+  },
+  button: {
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "transparent",
+    },
   },
   moveOrder: {
-    padding: "80px 0rem",
+    padding: `${typography.pxToRem(80)} 0`,
     order: 4,
   },
   cardMedia: {
@@ -36,10 +41,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   metrics: {
-    padding: "80px 0rem",
-  },
-  secondGrid: {
-    marginLeft: "-1rem",
+    padding: `${typography.pxToRem(80)} 0`,
   },
 }));
 

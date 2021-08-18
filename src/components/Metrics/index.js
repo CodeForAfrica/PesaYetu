@@ -48,6 +48,8 @@ function Metrics({ items, sectionTitle, ...props }) {
                 style={{ marginLeft: "-0.5rem" }}
               >
                 <IconButton
+                  disableRipple
+                  disableFocusRipple
                   color="primary"
                   size="small"
                   className={classes.button}
