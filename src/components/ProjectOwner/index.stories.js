@@ -3,7 +3,7 @@ import React from "react";
 import ProjectOwner from ".";
 
 export default {
-  title: "Components/Project",
+  title: "Components/ProjectOwner",
 };
 
 const Template = ({ ...args }) => <ProjectOwner {...args} />;
