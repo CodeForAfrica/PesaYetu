@@ -1,25 +1,32 @@
-import { A } from "@commons-ui/core";
+import { LogoButton } from "@commons-ui/core";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(({ typography }) => ({
+import Link from "@/pesayetu/components/Link";
+
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
-    paddingTop: typography.pxToRem(56.69),
+    padding: `${typography.pxToRem(56.69)} 0`,
   },
   title: {
+    textAlign: "center",
     marginBottom: typography.pxToRem(49.38),
+    [breakpoints.up("md")]: {
+      textAlign: "left",
+    },
   },
-  link: {
-    display: "flex",
+  partner: {
     justifyContent: "center",
-    "&>div": {
+    "&:hover": {
+      boxShadow: "0px 3px 6px #00000029",
+    },
+    "& img": {
       filter: "grayscale(1)",
       "&:hover": {
         filter: "unset",
-        boxShadow: "0px 3px 6px #00000029",
       },
     },
   },
@@ -27,6 +34,7 @@ const useStyles = makeStyles(({ typography }) => ({
     margin: "0 auto ",
   },
 }));
+
 function Partners({ title, partners, ...props }) {
   const classes = useStyles(props);
 
@@ -40,16 +48,20 @@ function Partners({ title, partners, ...props }) {
         </Grid>
         {partners?.map(({ link, logo, name }) => (
           <Grid key={link} item xs={12} md={6}>
-            <A className={classes.link} href={link}>
+            <LogoButton
+              component={Link}
+              href={link}
+              className={classes.partner}
+            >
               <Image
-                className={classes.logo}
                 objectFit="contain"
                 width={310}
                 height={224}
                 src={logo.url}
                 alt={name}
+                className={classes.logo}
               />
-            </A>
+            </LogoButton>
           </Grid>
         ))}
       </Grid>
