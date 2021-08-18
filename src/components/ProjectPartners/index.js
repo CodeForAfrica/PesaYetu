@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
 }));
 
-function Partners({ title, partners, ...props }) {
+function ProjectPartners({ title, partners, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -69,7 +69,7 @@ function Partners({ title, partners, ...props }) {
   );
 }
 
-Partners.propTypes = {
+ProjectPartners.propTypes = {
   title: PropTypes.string,
   partners: PropTypes.arrayOf(
     PropTypes.shape({
@@ -82,8 +82,8 @@ Partners.propTypes = {
   ),
 };
 
-Partners.defaultProps = {
+ProjectPartners.defaultProps = {
   title: undefined,
   partners: undefined,
 };
-export default Partners;
+export default ProjectPartners;
