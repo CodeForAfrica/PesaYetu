@@ -18,8 +18,13 @@ export default function formatHeirarchialMenu(
   data.forEach((item) => {
     const newItem = { ...item };
     const path = `${newItem.path}`;
-    if (path.startsWith(process.env.NEXT_PUBLIC_MULTISITE_PREFIX.toString())) {
-      newItem.path = path.replace(process.env.NEXT_PUBLIC_MULTISITE_PREFIX, "");
+
+    const multisitePrefix = process.env.WORDPRESS_MULTISITE_PREFIX;
+    if (
+      multisitePrefix?.length &&
+      path.startsWith(multisitePrefix.toString())
+    ) {
+      newItem.path = path.replace(multisitePrefix, "");
     }
     const { [idKey]: id, [parentKey]: parentId = 0 } = newItem;
     childrenOf[id] = childrenOf[id] || [];
