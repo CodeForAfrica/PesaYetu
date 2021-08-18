@@ -40,7 +40,9 @@ function Metrics({ items, sectionTitle, ...props }) {
                 >
                   <Image src={item.icon} width={44} height={44} />
                 </IconButton>
-                <RichTypography variant="h4">{item.title}</RichTypography>
+                <RichTypography variant="h4" className={classes.title}>
+                  {item.title}
+                </RichTypography>
               </Grid>
               <RichTypography variant="body2" className={classes.description}>
                 {item.description}

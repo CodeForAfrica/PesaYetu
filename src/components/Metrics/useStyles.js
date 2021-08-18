@@ -20,7 +20,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   description: {
+    width: typography.pxToRem(350),
     paddingTop: typography.pxToRem(40),
+    [breakpoints.up("md")]: {
+      width: "auto",
+    },
   },
   button: {
     "&:hover, &:focus, &:focus-within": {
@@ -38,7 +42,9 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       width: typography.pxToRem(768),
     },
   },
-  image: {},
+  title: {
+    paddingTop: "1rem",
+  },
   metrics: {
     padding: `${typography.pxToRem(10)} 0`,
     [breakpoints.up("md")]: {
