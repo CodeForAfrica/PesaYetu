@@ -66,7 +66,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     "& #mc_embed_signup .button": {
       background: "initial",
       outline: "none",
-      backgroundImage: `url('${email.src}')`,
+      // TODO(kilemensi): Nextjs import impage as object while storybook import as string
+      //                  Find a way to import image as object in both storybook and nextjs
+      backgroundImage: `url('${email?.src || email}')`,
       backgroundRepeat: "no-repeat",
       backgroundSize: `${typography.pxToRem(48)} ${typography.pxToRem(48)}`,
       border: "none",
@@ -78,7 +80,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
         background: "initial",
         cursor: "pointer",
         outline: "none",
-        backgroundImage: `url('${email.src}')`,
+        backgroundImage: `url('${email?.src || email}')`,
         backgroundRepeat: "no-repeat",
         backgroundSize: `${typography.pxToRem(48)} ${typography.pxToRem(48)}`,
         border: "none",
