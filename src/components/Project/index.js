@@ -1,5 +1,6 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -20,7 +21,7 @@ const useStyles = makeStyles(
     },
     newsletter: {
       background: palette.primary.main,
-      opacity: 0.1,
+      backgroundColor: alpha(palette.primary.main, 0.1),
       [breakpoints.up("lg")]: {
         marginLeft: `-${typography.pxToRem(16)}`,
       },
@@ -48,11 +49,10 @@ function Project({ mainPartner, newsletter, ...props }) {
   return (
     <div className={classes.root}>
       <Section className={classes.section}>
-        <Grid container>
+        <Grid container justify="space-between">
           <Grid item xs={12} lg={7}>
             <ProjectPartners {...props} />
           </Grid>
-          <Grid item xs={12} md={1} />
           <Grid item xs={12} lg={4}>
             <Grid container className={classes.aside}>
               <Grid
