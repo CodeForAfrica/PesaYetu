@@ -98,6 +98,11 @@ const theme = createTheme({
       textTransform: "uppercase",
     },
   },
+  props: {
+    MuiButtonBase: {
+      disableRipple: true,
+    },
+  },
   widths: {
     values: {
       md: 608, // 0, 80, 0, 80 margin
@@ -216,7 +221,11 @@ deepmerge(
   overrides,
   {
     MuiButton: {
-      root: {},
+      root: {
+        "&:hover": {
+          backgroundColor: "inherit",
+        },
+      },
       contained: {},
       containedPrimary: {
         color: palette.background.default,
@@ -301,6 +310,14 @@ deepmerge(
           marginLeft: pxToRem(10),
           height: pxToRem(23), // Must equal button line-height
           width: pxToRem(30),
+        },
+      },
+    },
+    MuiIconButton: {
+      root: {
+        borderRadius: 0,
+        "&:hover": {
+          backgroundColor: "inherit",
         },
       },
     },
