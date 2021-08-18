@@ -18,71 +18,73 @@ function Metrics({ items, sectionTitle, ...props }) {
     return null;
   }
   return (
-    <Section classes={{ root: classes.section }}>
-      <RichTypography variant="h2" className={classes.sectionTitle}>
-        {sectionTitle}
-      </RichTypography>
-      {items?.map((item, index) => (
-        <Grid
-          key={item.title}
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="flex-start"
-          className={classes.metrics}
-        >
+    <div className={classes.root}>
+      <Section classes={{ root: classes.section }}>
+        <RichTypography variant="h2" className={classes.sectionTitle}>
+          {sectionTitle}
+        </RichTypography>
+        {items?.map((item, index) => (
           <Grid
+            key={item.title}
             container
-            item
-            xs={12}
-            md={6}
-            lg={3}
-            className={index === 0 ? classes.content : classes.moveOrder}
+            direction="row"
+            justifyContent="space-between"
+            alignItems="flex-start"
+            className={classes.metrics}
           >
             <Grid
               container
               item
-              direction="row"
-              alignItems="center"
-              style={{ marginLeft: "-0.5rem" }}
+              xs={12}
+              md={6}
+              lg={3}
+              className={index === 0 ? classes.content : classes.moveOrder}
             >
-              <IconButton
-                color="primary"
-                size="small"
-                className={classes.button}
+              <Grid
+                container
+                item
+                direction="row"
+                alignItems="center"
+                style={{ marginLeft: "-0.5rem" }}
               >
-                <Image src={item.icon} width={44} height={44} />
-              </IconButton>
-              <RichTypography variant="h4">{item.title}</RichTypography>
+                <IconButton
+                  color="primary"
+                  size="small"
+                  className={classes.button}
+                >
+                  <Image src={item.icon} width={44} height={44} />
+                </IconButton>
+                <RichTypography variant="h4">{item.title}</RichTypography>
+              </Grid>
+              <div className={classes.description}>
+                <RichTypography variant="body2">
+                  {item.description}
+                </RichTypography>
+              </div>
             </Grid>
-            <div className={classes.description}>
-              <RichTypography variant="body2">
-                {item.description}
-              </RichTypography>
-            </div>
+            <Grid
+              item
+              xs={12}
+              md={4}
+              lg={8}
+              container
+              direction="row"
+              justifyContent="flex-start"
+              alignItems="center"
+            >
+              <DataVisualCard
+                {...item.dataVisualProps}
+                classes={{
+                  root: classes.dataVisualCard,
+                  cardMedia: classes.cardMedia,
+                  content: classes.content,
+                }}
+              />
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            md={4}
-            lg={8}
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-          >
-            <DataVisualCard
-              {...item.dataVisualProps}
-              classes={{
-                root: classes.dataVisualCard,
-                cardMedia: classes.cardMedia,
-                content: classes.content,
-              }}
-            />
-          </Grid>
-        </Grid>
-      ))}
-    </Section>
+        ))}
+      </Section>
+    </div>
   );
 }
 
