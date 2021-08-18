@@ -35,6 +35,13 @@ export default async function getPostTypeStaticPaths(postType) {
           }
         }
       }
+      categories {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `;
 
@@ -58,8 +65,23 @@ export default async function getPostTypeStaticPaths(postType) {
             },
           };
         })
+        // include categories path
+        .concat(
+          posts.data.categories.edges.map(({ node: { slug } }) => {
+            return {
+              params: {
+                slug: [slug],
+              },
+            };
+          })
+        )
         // Filter out certain posts with custom routes (e.g., homepage).
-        .filter((post) => !!post.params.slug.join("/").length);
+        // also filter uncategorized category route route
+        .filter(
+          (post) =>
+            !!post.params.slug.join("/").length &&
+            !post.params.slug.includes("uncategorized")
+        );
 
   return {
     paths,

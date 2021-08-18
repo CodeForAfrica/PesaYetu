@@ -11,4 +11,4 @@ export const postTypes = {
 };
 
 // Define hierarchical post types.
-export const hierarchicalPostTypes = ["page"];
+export const hierarchicalPostTypes = ["page", "post"];

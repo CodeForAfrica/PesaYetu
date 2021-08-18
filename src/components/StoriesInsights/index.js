@@ -13,7 +13,7 @@ import Section from "@/pesayetu/components/Section";
 
 import "react-multi-carousel/lib/styles.css";
 
-function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
+function StoriesInsights({ overline, title, stories, ...props }) {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
   const classes = useStyles({ currentItemIndex, ...props });
 
@@ -46,19 +46,21 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
         </Header>
         <Grid container>
           <Grid item lg={8} md={12} container direction="row" wrap="nowrap">
-            {stories.map(({ chart, slug }, index) => (
-              <Grid
-                item
-                key={slug}
-                className={clsx(classes.chartContainer, {
-                  [classes.currentChart]: index === currentItemIndex,
-                })}
-              >
-                <RichTypography className={classes.chart}>
-                  {chart}
-                </RichTypography>
-              </Grid>
-            ))}
+            <div className={classes.fullWidth}>
+              {stories.map(({ chart, slug }, index) => (
+                <Grid
+                  item
+                  key={slug}
+                  className={clsx(classes.chartContainer, {
+                    [classes.currentChart]: index === currentItemIndex,
+                  })}
+                >
+                  <RichTypography className={classes.chart}>
+                    {chart}
+                  </RichTypography>
+                </Grid>
+              ))}
+            </div>
           </Grid>
           <Grid item lg={1} />
           <Grid item lg={3} md={12} container direction="column">
@@ -75,7 +77,7 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
               }}
             >
               {stories?.map((story) => (
-                <Content key={story.slug} {...story} ctaText={ctatext} />
+                <Content key={story.slug} {...story} />
               ))}
             </Carousel>
           </Grid>
@@ -88,7 +90,6 @@ function StoriesInsights({ overline, title, ctatext, stories, ...props }) {
 StoriesInsights.propTypes = {
   overline: PropTypes.string,
   title: PropTypes.string,
-  ctatext: PropTypes.string,
   stories: PropTypes.arrayOf(
     PropTypes.shape({
       slug: PropTypes.string,
@@ -101,7 +102,6 @@ StoriesInsights.defaultProps = {
   overline: undefined,
   title: undefined,
   stories: undefined,
-  ctatext: undefined,
 };
 
 export default StoriesInsights;

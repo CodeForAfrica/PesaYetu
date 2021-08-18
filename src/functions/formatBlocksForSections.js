@@ -69,8 +69,39 @@ function formatInsightsStories(attr) {
   if (!formattedStories) {
     return null;
   }
-
   return { ...attributes, stories: formattedStories };
+}
+
+function formatFeaturedStories(attributes) {
+  const featuredStory = attributes?.featuredStory;
+  if (!featuredStory) {
+    return null;
+  }
+  const { news, insights } = featuredStory;
+
+  const formattedNews = {
+    title: news?.title,
+    description: news?.excerpt?.replace(/<[^>]+>/g, ""),
+    href: `/stories${news?.uri}`,
+    slug: news?.slug,
+    image: news?.featuredImage?.node?.sourceUrl,
+    ctaText: attributes?.ctaText ?? "",
+  };
+  const chartBlock = insights.blocks?.find(
+    (b) =>
+      Object.hasOwnProperty.call(b, "name") &&
+      b?.name === "lazyblock/insight-chart"
+  );
+  const formattedInsights = {
+    title: insights?.title,
+    description: insights?.excerpt?.replace(/<[^>]+>/g, ""),
+    href: `/stories${insights?.uri}`,
+    slug: insights?.slug,
+    chart: chartBlock?.attributes?.chart ?? "",
+    ctaText: attributes?.ctaText ?? "",
+  };
+
+  return { news: formattedNews, insights: formattedInsights };
 }
 
 function format(block) {
@@ -78,6 +109,8 @@ function format(block) {
   switch (name) {
     case "acf/insights-stories":
       return formatInsightsStories(attributes);
+    case "acf/featured-stories":
+      return formatFeaturedStories(attributes);
     case "lazyblock/explore-other-tools":
     case "lazyblock/data-visuals":
     case "lazyblock/data-insights":
@@ -91,6 +124,11 @@ function format(block) {
         ...attributes,
         image: formatLazyBlockImage(attributes?.image),
         accentImage: formatLazyBlockImage(attributes?.accentImage),
+      };
+    case "lazyblock/share-story":
+      return {
+        ...attributes,
+        socialLinks: JSON.parse(decodeURIComponent(attributes.socialLinks)),
       };
     case "lazyblock/hero":
     case "lazyblock/about-hero":
@@ -111,7 +149,7 @@ export default function formatBlocksForSections(blc) {
   );
   blocks?.push({ name: "core/texts", attributes: texts });
 
-  return blocks.reduce((acc, cur) => {
+  return blocks?.reduce((acc, cur) => {
     const attr = format(cur);
     if (attr) {
       acc[formatName(cur.name)] = format(cur);

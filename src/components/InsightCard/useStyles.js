@@ -3,10 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
   card: {
-    maxWidth: typography.pxToRem(350),
     color: "#000",
     boxShadow: "none",
     backgroundColor: "unset",
+    width: "100%",
     paddingBottom: typography.pxToRem(30),
     [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(296),
@@ -42,9 +42,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   link: {
-    textDecoration: "underline",
-  },
-  linkText: {
     fontWeight: "bold",
   },
 }));
