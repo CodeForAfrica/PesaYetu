@@ -14,6 +14,7 @@ const useStyles = makeStyles(
     root: {
       minHeight: "min-content",
       position: "relative",
+      overflowX: "hidden",
     },
     section: {
       maxWidth: typography.pxToRem(310),
@@ -33,7 +34,6 @@ const useStyles = makeStyles(
         flexDirection: "row",
         justifyContent: "flex-start",
       },
-      // flexGrow: 1,
     },
     leftBackground: {
       width: `100%`,

@@ -1,9 +1,11 @@
 // Query partial: retrieve pagination info for acf insightsstories blocks.
+import lazyBlockInsightChartBlockFields from "./lazyBlockInsightChartBlockFields";
+
 const acfInsightsStoriesBlockFields = `
 ... on AcfInsightsStoriesBlock {
   name
   attributes: insightsStories {
-    ctatext
+    ctaText: ctatext
     overline
     title
     stories {
@@ -15,12 +17,7 @@ const acfInsightsStoriesBlockFields = `
           title
           excerpt
           blocks {
-            ... on LazyblockInsightChartBlock {
-              name
-              attributes {
-                chart
-              }
-            }
+            ${lazyBlockInsightChartBlockFields}
           }
         }
       }
