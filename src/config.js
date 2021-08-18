@@ -168,7 +168,7 @@ export const ourCourses = {
       title: "Data Visualization",
       description:
         "Learn the basics and all the tips and tricks needed to excel in data visualisation with this free, online course.",
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.one.com",
     },
     {
@@ -176,7 +176,7 @@ export const ourCourses = {
       title: "Reporting on Human Trafficking",
       description:
         "Want to make a difference? This course will introduce you to the fundamentals of reporting on human trafficking.",
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.two.com",
     },
     {
@@ -184,7 +184,7 @@ export const ourCourses = {
       title: "Reporting on Endemic Problems",
       description:
         "From this course you’ll learn everything you need to know about using solutions journalism to report on endemic problems.",
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.one.com",
     },
   ],

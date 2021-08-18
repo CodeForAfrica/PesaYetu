@@ -15,10 +15,10 @@ export default function Home({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <OurCourses {...blocks?.ourCourses} />
       <Summary {...blocks?.summary} />
       <StartLearning {...blocks?.startLearning} />
       <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
+      <OurCourses {...blocks?.ourCourses} />
       <SupportingPartners {...blocks?.supportingPartners} />
     </Page>
   );

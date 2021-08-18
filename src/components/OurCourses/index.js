@@ -1,14 +1,23 @@
-import { Typography, Grid, Hidden } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import OurCourseCard from "@/pesayetu/components/OurCourseCard";
+import OurCourseCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
+import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
+  desktop: {
+    breakpoint: {
+      max: 3000,
+      min: 1280,
+    },
+    items: 3,
+  },
   tablet: {
     breakpoint: { max: 1279, min: 768 },
     items: 2,
@@ -21,6 +30,8 @@ const responsive = {
 
 const OurCourses = ({ title, items, ...props }) => {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <div className={classes.root}>
@@ -30,32 +41,20 @@ const OurCourses = ({ title, items, ...props }) => {
             {title}
           </Typography>
         )}
-        <Hidden mdDown>
-          <Grid container className={classes.list}>
-            {items?.map((item) => (
-              <Grid item lg={4} key={item.title}>
-                <OurCourseCard {...item} />
-              </Grid>
-            ))}
-          </Grid>
-        </Hidden>
-
-        <Hidden lgUp>
-          <Carousel
-            swipeable
-            responsive={responsive}
-            arrows={false}
-            renderDotsOutside
-            showDots
-            dotListClass={classes.dots}
-          >
-            {items?.map((item) => (
-              <Grid item key={item.title}>
-                <OurCourseCard {...item} />
-              </Grid>
-            ))}
-          </Carousel>
-        </Hidden>
+        <Carousel
+          swipeable
+          responsive={responsive}
+          arrows={false}
+          renderDotsOutside
+          showDots={!isDesktop}
+          dotListClass={classes.dots}
+        >
+          {items?.map((item) => (
+            <Grid item key={item.title}>
+              <OurCourseCard {...item} />
+            </Grid>
+          ))}
+        </Carousel>
       </Section>
     </div>
   );
