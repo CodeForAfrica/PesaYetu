@@ -8,36 +8,38 @@ import ProjectOwner from "@/pesayetu/components/ProjectOwner";
 import ProjectPartners from "@/pesayetu/components/ProjectPartners";
 import Section from "@/pesayetu/components/Section";
 
-const useStyles = makeStyles(({ breakpoints, widths, palette }) => ({
-  root: {
-    overflow: "hidden",
-  },
-  section: {},
-  project: {
-    display: "flex",
-    background: palette.grey.light,
-  },
-  newsletter: {
-    background: "#0067A31A",
-    [breakpoints.up("lg")]: {
-      marginLeft: -16,
+const useStyles = makeStyles(
+  ({ breakpoints, palette, typography, widths }) => ({
+    root: {
+      overflow: "hidden",
     },
-  },
-  aside: {
-    height: "100%",
-    position: "relative",
-    left: "calc(-50vw + 50%)",
-    width: "100vw",
-    [breakpoints.up("md")]: {
-      left: `calc(-50vw + ${widths.values.md / 2}px)`,
+    section: {},
+    project: {
+      display: "flex",
+      background: palette.grey.light,
     },
-    [breakpoints.up("lg")]: {
-      left: 0,
-      right: 0,
-      width: `calc(100% + (100vw - ${widths.values.lg}px)/2)`,
+    newsletter: {
+      background: "#0067A31A",
+      [breakpoints.up("lg")]: {
+        marginLeft: `-${typography.pxToRem(16)}`,
+      },
     },
-  },
-}));
+    aside: {
+      height: "100%",
+      position: "relative",
+      left: "calc(-50vw + 50%)",
+      width: "100vw",
+      [breakpoints.up("md")]: {
+        left: `calc(-50vw + ${widths.values.md / 2}px)`,
+      },
+      [breakpoints.up("lg")]: {
+        left: 0,
+        right: 0,
+        width: `calc(100% + (100vw - ${widths.values.lg}px)/2)`,
+      },
+    },
+  })
+);
 
 function Project({ mainPartner, newsletter, ...props }) {
   const classes = useStyles(props);
