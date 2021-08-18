@@ -7,10 +7,8 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   section: {},
   title: {
-    fontWeight: "bold",
     textAlign: "center",
     marginBottom: typography.pxToRem(40),
-    color: "#000",
   },
   dots: {
     margin: `0 ${typography.pxToRem(30)}`,

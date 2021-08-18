@@ -1,46 +1,33 @@
-import { RichTypography } from "@commons-ui/core";
-import { Grid, Typography } from "@material-ui/core";
-import Image from "next/image";
+import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-import Link from "@/pesayetu/components/Link";
+import Card from "@/pesayetu/components/Card";
+import Content from "@/pesayetu/components/InsightCard/Content";
 
-function FeaturedStoryCard({
-  ctaText,
-  description,
-  href,
-  image,
-  title,
-  ...props
-}) {
+function FeaturedStoryCard({ variant, ...props }) {
   const classes = useStyles(props);
-
+  const titleVariant = variant === "news" ? "h4" : "h3";
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} md={7}>
-        <div className={classes.media}>
-          <Image src={image} alt={title} layout="fill" />
-        </div>
+        <Card
+          {...props}
+          variant={variant}
+          classes={{ root: classes.card, cardMedia: classes.media }}
+        />
       </Grid>
       <Grid item xs={12} md={5} className={classes.content}>
-        {title && (
-          <Typography variant="h3" className={classes.title}>
-            {title}
-          </Typography>
-        )}
-        {description && (
-          <RichTypography variant="body2" className={classes.description}>
-            {description}
-          </RichTypography>
-        )}
-        {href && (
-          <Link href={href} underline="always" variant="subtitle2">
-            {ctaText}
-          </Link>
-        )}
+        <Content
+          {...props}
+          variant={titleVariant}
+          classes={{
+            cardTitle: classes.title,
+            cardDescription: classes.description,
+          }}
+        />
       </Grid>
     </Grid>
   );
@@ -52,6 +39,8 @@ FeaturedStoryCard.propTypes = {
   image: PropTypes.string,
   href: PropTypes.string,
   ctaText: PropTypes.string,
+  chart: PropTypes.string,
+  variant: PropTypes.oneOf(["insights", "news"]),
 };
 FeaturedStoryCard.defaultProps = {
   description: undefined,
@@ -59,5 +48,7 @@ FeaturedStoryCard.defaultProps = {
   image: undefined,
   href: undefined,
   ctaText: undefined,
+  chart: undefined,
+  variant: "news",
 };
 export default FeaturedStoryCard;

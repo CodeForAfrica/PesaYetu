@@ -1,63 +1,36 @@
-import { Typography } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Content from "./Content";
 import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
-import Link from "@/pesayetu/components/Link";
 
-const InsightCard = ({
-  title,
-  description,
-  image,
-  href,
-  linkdescription,
-  ...props
-}) => {
+const InsightCard = ({ className, titleVariant, ...props }) => {
   const classes = useStyles(props);
 
   return (
     <Card
-      classes={{ root: classes.card, cardMedia: classes.cardMedia }}
-      image={image}
-      href={href}
+      classes={{
+        root: clsx(classes.root, classes.card, className),
+        cardMedia: classes.cardMedia,
+      }}
+      {...props}
     >
-      {title && (
-        <Typography variant="h4" className={classes.cardTitle}>
-          {title}
-        </Typography>
-      )}
-      {description && (
-        <Typography variant="subtitle2" className={classes.cardDescription}>
-          {description}
-        </Typography>
-      )}
-      <Link className={classes.link} href={href}>
-        {linkdescription && (
-          <Typography variant="subtitle2" className={classes.linkText}>
-            {linkdescription}
-          </Typography>
-        )}
-      </Link>
+      <Content {...props} variant={titleVariant} />
     </Card>
   );
 };
 
 InsightCard.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  href: PropTypes.string,
-  linkdescription: PropTypes.string,
+  className: PropTypes.string,
+  titleVariant: PropTypes.string,
 };
 
 InsightCard.defaultProps = {
-  title: undefined,
-  description: undefined,
-  image: undefined,
-  href: undefined,
-  linkdescription: undefined,
+  className: undefined,
+  titleVariant: undefined,
 };
 
 export default InsightCard;

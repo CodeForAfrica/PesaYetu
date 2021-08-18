@@ -1,4 +1,3 @@
-import formatBlockData from "@/pesayetu/functions/formatBlockData";
 import getMenus from "@/pesayetu/functions/menus/getMenus";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import {
@@ -60,7 +59,6 @@ export default async function processPostTypeQuery(
       const post =
         postData?.[postType] ?? // Dynamic posts.
         postData?.additionalSettings?.additionalSettings?.[postType]; // Settings custom page.
-
       // Set error props if data not found.
       if (!post) {
         response.error = true;
@@ -69,7 +67,11 @@ export default async function processPostTypeQuery(
         return null;
       }
 
-      return post;
+      // Retrieve blocks from archive stories page
+      return {
+        ...post,
+        postsPageBlockJSON: homepageSettings?.postsPage?.blocksJSON ?? null,
+      };
     })
     .then(async (post) => {
       // Add slug/ID to post.
@@ -82,19 +84,24 @@ export default async function processPostTypeQuery(
         return post;
       }
 
-      // Handle blocks.
-      newPost.blocks = await formatBlockData(
-        JSON.parse(newPost.blocksJSON) ?? []
-      );
+      // Handle blocksJSONs and merge blocks fields from query
+      const blocks = JSON.parse(newPost?.blocksJSON) ?? [];
+      const postsPageBlocks = JSON.parse(newPost?.postsPageBlockJSON) ?? [];
+
+      newPost.blocks = (newPost?.blocks ?? []).concat(blocks);
+      // merge postsPageblocks only on post
+      if (postType === "post") {
+        newPost.blocks = (newPost?.blocks ?? []).concat(postsPageBlocks);
+      }
 
       delete newPost.blocksJSON;
+      delete newPost?.postsPageBlocks;
 
       return newPost;
     })
     .catch((error) => {
       response.error = true;
       response.errorMessage = error.message;
-
       return null;
     });
 

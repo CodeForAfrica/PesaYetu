@@ -86,7 +86,7 @@ export const navigationArgs = {
       label: "DATA",
     },
     {
-      href: "/stories",
+      href: "/stories/news",
       label: "STORIES",
     },
     {
@@ -174,7 +174,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -182,7 +182,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -191,7 +191,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
   ],
@@ -255,6 +255,86 @@ export const searchArgs = {
       },
     ],
   },
+};
+
+export const insightDataTabStories = {
+  items: [
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashTwo,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashThree,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashTwo,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashThree,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashOne,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashTwo,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+
+    {
+      title: "Dolor sit amet ipsum dolor sit amet",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
+      image: unsplashThree,
+      ctaText: "Read More",
+      href: "www.test.com",
+    },
+  ],
 };
 
 export const exploreTools = {

@@ -1,6 +1,6 @@
 // Query partial: retrieve categories post fields.
 const categoriesPostFields = `
-  categories {
+  categories (where: {orderby: NAME, order: $order}) {
     edges {
       node {
         slug
