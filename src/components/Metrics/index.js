@@ -12,8 +12,6 @@ import Section from "@/pesayetu/components/Section";
 
 function Metrics({ items, sectionTitle, ...props }) {
   const classes = useStyles(props);
-  console.log(items.map((item, index) => index));
-
   if (!items?.length) {
     return null;
   }
