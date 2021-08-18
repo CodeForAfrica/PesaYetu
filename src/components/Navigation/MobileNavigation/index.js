@@ -153,6 +153,13 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
       },
     },
   },
+  search: {
+    margin: `${typography.pxToRem(20)} 0 ${typography.pxToRem(60)}`,
+  },
+  searchInput: {
+    border: `2px solid ${palette.background.default}`,
+    backgroundColor: palette.background.default,
+  },
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -257,7 +264,14 @@ function MobileNavigation({
                 menu: classes.buttonMenu,
               }}
             >
-              <DropdownSearch {...selectProps} />
+              <DropdownSearch
+                classes={{
+                  root: classes.search,
+                  inputRoot: classes.searchInput,
+                }}
+                nav
+                {...selectProps}
+              />
             </Menu>
           </DialogContent>
         </Dialog>
