@@ -8,7 +8,7 @@ import React from "react";
 import email from "@/pesayetu/assets/icons/Component 117 – 1@2x.png";
 import { ReactComponent as EnvelopeIcon } from "@/pesayetu/assets/icons/Group 4767.svg";
 
-const useStyles = makeStyles(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
     flexGrow: 1,
     padding: `${typography.pxToRem(96.09)} 0`,
@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     "& #mc_embed_signup input.email": {
       background: "none",
       border: "none",
-      borderBottom: "2px solid #0067A3",
+      borderBottom: `2px solid ${palette.primary.main}`,
       borderRadius: 0,
       color: "currentColor",
       margin: 0,

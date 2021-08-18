@@ -251,7 +251,7 @@ deepmerge(
           borderRadius: pxToRem(50),
           letterspacing: "1.6px",
           textAlign: "center",
-          border: "3px solid #0067A3",
+          border: `3px solid ${palette.primary.main}`,
           textTransform: "uppercase",
           transition: "none !important",
           "&:hover, &:focus, &:focus-within": {

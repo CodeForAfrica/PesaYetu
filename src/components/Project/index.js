@@ -19,7 +19,8 @@ const useStyles = makeStyles(
       background: palette.grey.light,
     },
     newsletter: {
-      background: "#0067A31A",
+      background: palette.primary.main,
+      opacity: 0.1,
       [breakpoints.up("lg")]: {
         marginLeft: `-${typography.pxToRem(16)}`,
       },
