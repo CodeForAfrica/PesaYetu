@@ -1,6 +1,6 @@
 import React from "react";
 
-import Banner from "@/pesayetu/components/Tooltip";
+import TooltipBanner from ".";
 
 export default {
   title: "Components/TooltipBanner",
@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <Banner {...args} />;
+const Template = ({ ...args }) => <TooltipBanner {...args} />;
 
 export const Default = Template.bind({});
 

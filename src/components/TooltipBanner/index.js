@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 const useStyles = makeStyles(({ typography }) => ({
+  root: {},
   tagline: {
     margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(20)}`,
   },
@@ -12,14 +13,14 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-function Banner({ tagline, ctaText, ...props }) {
+function TooltipBanner({ tagline, ctaText, ...props }) {
   const classes = useStyles(props);
   const handleClick = (event) => {
     event.preventDefault();
     // open toolbox
   };
   return (
-    <>
+    <div className={classes.root}>
       <Divider className={classes.divider} />
       {tagline && (
         <Typography variant="h5" className={classes.tagline}>
@@ -31,18 +32,18 @@ function Banner({ tagline, ctaText, ...props }) {
           {ctaText}
         </Button>
       )}
-    </>
+    </div>
   );
 }
 
-Banner.propTypes = {
+TooltipBanner.propTypes = {
   ctaText: PropTypes.string,
   tagline: PropTypes.string,
 };
 
-Banner.defaultProps = {
+TooltipBanner.defaultProps = {
   ctaText: undefined,
   tagline: undefined,
 };
 
-export default Banner;
+export default TooltipBanner;
