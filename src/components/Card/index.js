@@ -23,7 +23,10 @@ const Card = ({ href, children, image, chart, variant, ...props }) => {
           component={href ? Link : undefined}
           href={href}
           underline="none"
-          {...props}
+          classes={{
+            root: classes.cardActionRoot,
+            focusHighlight: classes.focusHighlight,
+          }}
         >
           <CardContent classes={{ root: classes.content }}>
             {visual && variant === "news" ? (

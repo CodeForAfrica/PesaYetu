@@ -10,7 +10,10 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#FFFFFF",
     boxShadow: "0px 3px 10px #0000001A",
   },
-  focusHighlight: {},
+  focusHighlight: {
+    background: "transparent",
+  },
+  cardActionRoot: {},
   content: {
     padding: 0,
   },
