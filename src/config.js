@@ -387,7 +387,7 @@ export const dataVisuals = {
 };
 
 export const metrics = {
-  sectionTitle: "Our Metrics",
+  title: "Our Metrics",
   items: [
     {
       icon: richDataIcon,

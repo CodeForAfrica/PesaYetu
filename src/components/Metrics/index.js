@@ -10,7 +10,7 @@ import useStyles from "./useStyles";
 import DataVisualCard from "@/pesayetu/components/DataVisualCard";
 import Section from "@/pesayetu/components/Section";
 
-function Metrics({ items, sectionTitle, ...props }) {
+function Metrics({ items, title, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.only("md"));
@@ -21,13 +21,13 @@ function Metrics({ items, sectionTitle, ...props }) {
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <RichTypography variant="h2" className={classes.sectionTitle}>
-          {sectionTitle}
+          {title}
         </RichTypography>
         {items?.map((item, index) => (
           <Grid
             key={item.title}
             container
-            direction={index === 0 ? "row" : "row-reverse"}
+            direction={index % 2 === 0 ? "row" : "row-reverse"}
             justifyContent="space-between"
             alignItems="flex-start"
             className={classes.metrics}
@@ -81,7 +81,7 @@ function Metrics({ items, sectionTitle, ...props }) {
 }
 
 Metrics.propTypes = {
-  sectionTitle: PropTypes.string,
+  title: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       icon: PropTypes.string,
@@ -93,7 +93,7 @@ Metrics.propTypes = {
 };
 
 Metrics.defaultProps = {
-  sectionTitle: undefined,
+  title: undefined,
   items: undefined,
 };
 
