@@ -14,6 +14,6 @@ const Template = ({ ...args }) => <Metrics {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  sectionTitle: metrics.sectionTitle,
+  title: metrics.title,
   items: metrics.items,
 };
