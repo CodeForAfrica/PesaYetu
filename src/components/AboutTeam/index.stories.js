@@ -5,7 +5,7 @@ import AboutTeam from ".";
 import { aboutTeam } from "@/pesayetu/config";
 
 export default {
-  title: "Sections/About Team",
+  title: "Sections/AboutTeam",
 };
 
 const Template = ({ ...args }) => <AboutTeam {...args} />;

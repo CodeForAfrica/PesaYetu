@@ -5,7 +5,6 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-// import AboutTeamCard from "@/pesayetu/components/AboutTeamCard";
 import AboutTeamCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
