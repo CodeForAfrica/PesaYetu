@@ -32,7 +32,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       position: "absolute",
     },
     [breakpoints.up("lg")]: {
-      position: "absolute",
       height: typography.pxToRem(415),
       width: typography.pxToRem(768),
     },
