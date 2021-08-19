@@ -72,7 +72,7 @@ const Content = ({ items, title, ...props }) => {
           className={classes.content}
         >
           {currentItem?.title && (
-            <Typography component="div" className={classes.title}>
+            <Typography component="div" variant="h3" className={classes.title}>
               {currentItem.title}
             </Typography>
           )}

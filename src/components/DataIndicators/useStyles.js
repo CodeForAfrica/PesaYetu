@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {
     backgroundColor: "#F0F0F0",
     height: typography.pxToRem(672),
@@ -75,12 +75,12 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   slide: {
     backgroundColor: "#0067A3",
-    color: "#fff",
+    color: palette.text.secondary,
     width: typography.pxToRem(250),
     height: typography.pxToRem(528),
     margin: "auto 0",
     display: "flex",
-    textAlign: "start",
+    justifyContent: "flex-start",
     alignItems: "flex-start",
     flexDirection: "column",
     padding: typography.pxToRem(15),
@@ -120,7 +120,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       display: "flex",
     },
   },
-  description: {},
+  title: { color: "inherit" },
+  description: { lineHeight: 30 / 16, textAlign: "initial" },
 }));
 
 export default useStyles;
