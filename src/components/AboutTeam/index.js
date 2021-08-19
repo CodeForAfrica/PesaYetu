@@ -34,7 +34,7 @@ const DataVisuals = ({ title, items, ...props }) => {
     <div className={classes.root}>
       <Section>
         {title && (
-          <Typography variant="h3" className={classes.title}>
+          <Typography variant="h4" className={classes.title}>
             {title}
           </Typography>
         )}
@@ -49,7 +49,7 @@ const DataVisuals = ({ title, items, ...props }) => {
           {items?.map((item) => (
             <AboutTeamCard
               key={item.image}
-              titleVariant="h4"
+              titleVariant="h5"
               {...item}
               classes={{
                 root: classes.cardRoot,

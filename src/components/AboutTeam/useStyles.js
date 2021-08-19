@@ -30,9 +30,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   title: {
-    fontWeight: 900,
     textAlign: "center",
-    textTransform: "uppercase",
     paddingBottom: typography.pxToRem(40),
     [breakpoints.only("md")]: {
       paddingBottom: typography.pxToRem(80),
