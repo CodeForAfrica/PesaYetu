@@ -17,11 +17,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       width: "auto",
     },
   },
-  button: {
+  /* button: {
     "&:hover, &:focus, &:focus-within": {
       backgroundColor: "transparent",
     },
-  },
+  }, */
   cardMedia: {
     position: "relative",
     [breakpoints.up("md")]: {

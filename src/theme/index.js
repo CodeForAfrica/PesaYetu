@@ -51,7 +51,13 @@ const theme = createTheme({
     },
     divider: "#F0F0F0",
   },
-
+  props: {
+    MuiButtonBase: {
+      // Disable ripple effect globally
+      disableRipple: true,
+      disableTouchRipple: true,
+    },
+  },
   // Font weights:
   // see: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
   // 300 	Light
@@ -96,6 +102,11 @@ const theme = createTheme({
       fontFamily: FONT_FAMILY,
       fontWeight: 700,
       textTransform: "uppercase",
+    },
+  },
+  button: {
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "transparent",
     },
   },
   widths: {
@@ -216,7 +227,11 @@ deepmerge(
   overrides,
   {
     MuiButton: {
-      root: {},
+      root: {
+        "&:hover, &:focus, &:focus-within": {
+          backgroundColor: "transparent",
+        },
+      },
       contained: {},
       containedPrimary: {
         color: palette.background.default,
