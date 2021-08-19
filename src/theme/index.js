@@ -104,11 +104,6 @@ const theme = createTheme({
       textTransform: "uppercase",
     },
   },
-  button: {
-    "&:hover, &:focus, &:focus-within": {
-      backgroundColor: "transparent",
-    },
-  },
   widths: {
     values: {
       md: 608, // 0, 80, 0, 80 margin
@@ -316,6 +311,14 @@ deepmerge(
           marginLeft: pxToRem(10),
           height: pxToRem(23), // Must equal button line-height
           width: pxToRem(30),
+        },
+      },
+    },
+    MuiIconButton: {
+      root: {
+        // Disable ripple effect globally
+        "&:hover, &:focus, &:focus-within": {
+          backgroundColor: "transparent",
         },
       },
     },

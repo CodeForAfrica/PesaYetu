@@ -39,7 +39,6 @@ function Metrics({ items, title, ...props }) {
                   disableFocusRipple
                   color="primary"
                   size="small"
-                  // className={classes.button}
                 >
                   <Image src={item.icon} width={44} height={44} />
                 </IconButton>
