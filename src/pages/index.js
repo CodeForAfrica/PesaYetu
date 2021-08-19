@@ -7,7 +7,7 @@ import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
 import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
-import PartnersAndNewsletter from "@/pesayetu/components/Partners";
+import Project from "@/pesayetu/components/Project";
 import StoriesInsights from "@/pesayetu/components/StoriesInsights";
 import { searchArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
@@ -26,7 +26,7 @@ export default function Home({ boundary, blocks, ...props }) {
       <StoriesInsights {...blocks?.insightsStories} />
       <InsightData {...blocks?.dataInsights} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
-      <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
+      <Project {...blocks?.partnersAndNewsletter} />
     </Page>
   );
 }
