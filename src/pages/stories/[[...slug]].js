@@ -3,10 +3,10 @@ import React from "react";
 
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
-import Stories from "@/pesayetu/components/Stories";
-import StoriesNavigation from "@/pesayetu/components/StoriesNavigation";
+import StoriesPage from "@/pesayetu/components/StoriesPage";
 import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
+import getCategories from "@/pesayetu/functions/getCategories";
 import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
@@ -16,12 +16,8 @@ const postType = "post";
 export default function Index({
   archive,
   activeCategory,
-  categories,
-  pagination,
-  featuredStory,
   relatedPosts,
   post,
-  posts,
   blocks,
   ...props
 }) {
@@ -37,15 +33,10 @@ export default function Index({
       {archive ? (
         <>
           <Hero {...blocks?.otherHero} />
-          <StoriesNavigation
-            categories={categories}
+          <StoriesPage
             activeCategory={activeCategory}
-          />
-          <Stories
-            activeCategory={activeCategory}
-            featuredStoryProps={featuredStory}
-            items={posts}
-            pagination={pagination}
+            featuredStories={blocks.featuredStories}
+            {...props}
           />
         </>
       ) : (
@@ -82,8 +73,6 @@ Index.propTypes = {
       ctaText: PropTypes.string,
     }),
   }),
-  featuredStory: PropTypes.shape({}),
-  categories: PropTypes.arrayOf(PropTypes.shape({})),
   post: PropTypes.shape({
     slug: PropTypes.string,
     date: PropTypes.string,
@@ -101,8 +90,6 @@ Index.propTypes = {
       }),
     }),
   }),
-  pagination: PropTypes.shape({}),
-  posts: PropTypes.arrayOf(PropTypes.shape({})),
   relatedPosts: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
@@ -110,11 +97,7 @@ Index.defaultProps = {
   archive: undefined,
   activeCategory: undefined,
   blocks: undefined,
-  categories: undefined,
   post: undefined,
-  posts: undefined,
-  pagination: undefined,
-  featuredStory: undefined,
   relatedPosts: undefined,
 };
 
@@ -126,6 +109,27 @@ export async function getStaticProps({ params, preview, previewData }) {
   const {
     slug: [activeCategory],
   } = params;
+  const categories = await getCategories();
+
+  let categoriesPosts = [];
+
+  if (params?.slug?.length === 1) {
+    categoriesPosts = await Promise.all(
+      categories?.map(async ({ slug: categorySlug, name }) => {
+        const {
+          props: { posts: categoryPosts, pagination: categoryPagination },
+        } = await getPostTypeStaticProps({ slug: [categorySlug] }, postType);
+        return {
+          name,
+          slug: categorySlug,
+          href: `/stories/${categorySlug}`,
+          pagination: categoryPagination,
+          posts: categoryPosts,
+        };
+      })
+    );
+  }
+
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     params,
     postType,
@@ -139,31 +143,19 @@ export async function getStaticProps({ params, preview, previewData }) {
     };
   }
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const featuredStory = blocks?.featuredStories
-    ? blocks?.featuredStories[activeCategory]
-    : null;
 
-  const posts = formatStoryPosts(props?.posts, featuredStory) || [];
   const relatedPosts =
     formatStoryPosts(
       props?.post?.categories?.edges[0]?.node?.posts?.nodes ?? [],
       { slug: props?.post?.slug, ctaText: blocks?.relatedPosts?.ctaText }
     ) || [];
 
-  const categories =
-    props?.categories?.edges
-      ?.map(({ node: { name, slug } }) => {
-        return { name, slug, href: `/stories/${slug}` };
-      })
-      ?.filter(({ slug }) => slug !== "uncategorized") ?? [];
   return {
     props: {
       ...props,
       blocks,
       activeCategory,
-      categories,
-      posts,
-      featuredStory,
+      categoriesPosts,
       relatedPosts: relatedPosts.slice(0, 3),
     },
     revalidate,
