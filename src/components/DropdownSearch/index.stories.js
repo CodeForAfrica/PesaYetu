@@ -11,9 +11,9 @@ export default {
 };
 
 const Template = ({ ...args }) => {
-  const classes = makeStyles(() => ({
+  const classes = makeStyles(({ palette }) => ({
     root: {
-      backgroundColor: "#0067A3",
+      backgroundColor: palette.primary.main,
       padding: "1rem",
     },
   }))();
