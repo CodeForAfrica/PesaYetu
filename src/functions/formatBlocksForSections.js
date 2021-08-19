@@ -23,6 +23,24 @@ function formatLazyBlockIteratorContentWithImage(
   return { ...rest, items };
 }
 
+function formatLazyBlockIteratorContentWithImages(
+  { items: itemsProps, ...rest },
+  imgField
+) {
+  const items =
+    JSON.parse(decodeURIComponent(itemsProps)).map((item) => {
+      return {
+        title: item.title,
+        description: item.description,
+        icon: item.icon?.url,
+        dataVisualProps: {
+          [imgField]: item[imgField]?.url,
+        },
+      };
+    }) || null;
+  return { ...rest, items };
+}
+
 function formatEnablingPartnersBlock(block) {
   const { attributes, name } = block;
   switch (name) {
@@ -88,7 +106,7 @@ function format(block) {
     case "lazyblock/partners-and-newsletter":
       return formatEnablingPartners(block);
     case "lazyblock/metrics":
-      return formatLazyBlockIteratorContentWithImage(attributes, "image");
+      return formatLazyBlockIteratorContentWithImages(attributes, "image");
     case "lazyblock/other-hero":
       return {
         ...attributes,

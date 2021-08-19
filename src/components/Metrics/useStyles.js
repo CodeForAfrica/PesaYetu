@@ -16,7 +16,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   description: {
-    width: typography.pxToRem(350),
     paddingTop: typography.pxToRem(40),
     [breakpoints.up("md")]: {
       width: "auto",
@@ -39,7 +38,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   title: {
-    paddingTop: "1rem",
+    paddingTop: typography.pxToRem(16),
   },
   metrics: {
     padding: `${typography.pxToRem(10)} 0`,
