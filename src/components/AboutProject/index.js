@@ -6,9 +6,11 @@ import aboutProjectBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.jpg";
 import useStyles from "@/pesayetu/components/AboutProject/useStyles";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
+import useProgressiveImage from "@/pesayetu/utils/useProgressiveImage";
 
 function AboutProject({ subtitle, title, href, ctaText, ...props }) {
-  const classes = useStyles({ aboutProjectBg, ...props });
+  const image = useProgressiveImage(aboutProjectBg.src);
+  const classes = useStyles({ image, ...props });
 
   return (
     <div className={classes.root}>

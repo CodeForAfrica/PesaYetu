@@ -7,6 +7,7 @@ import React from "react";
 import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
+import useProgressiveImage from "@/pesayetu/utils/useProgressiveImage";
 
 const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   root: {
@@ -101,12 +102,13 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
 
 function OtherHero({
   accentImage,
-  image,
+  image: imageProps,
   overline,
   subtitle,
   title,
   ...props
 }) {
+  const image = useProgressiveImage(imageProps);
   const classes = useStyles({ image, ...props });
 
   if (!title?.length) {
