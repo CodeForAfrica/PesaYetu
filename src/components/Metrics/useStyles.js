@@ -2,10 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
-    paddingTop: typography.pxToRem(40),
-    paddingBottom: typography.pxToRem(40),
+    padding: `${typography.pxToRem(40)} 0`,
     [breakpoints.up("md")]: {
-      paddingTop: typography.pxToRem(80),
+      padding: `${typography.pxToRem(80)} 0`,
     },
   },
   dataVisualCard: {
