@@ -4,7 +4,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   root: {
     backgroundColor: palette.background.paper,
   },
-  section: {},
+  section: {
+    overflow: "hidden",
+  },
   header: {
     padding: `${typography.pxToRem(40)} 0`,
     [breakpoints.up("md")]: {
