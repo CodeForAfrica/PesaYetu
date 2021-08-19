@@ -1,4 +1,5 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Typography, IconButton } from "@material-ui/core";
+import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -7,49 +8,34 @@ import useStyles from "./useStyles";
 
 const Icon = ({
   item,
-  handleChange,
-  currentSelect,
-  setCurrentSelect,
-  screen,
+  handleIconClick,
+  currentItemIndex,
+  checked,
+  index,
   ...props
 }) => {
   const classes = useStyles(props);
   const { title, image, hover } = item;
 
-  const handleIconChange = (itemSelected) => {
-    if (!screen) {
-      if (!currentSelect) {
-        setCurrentSelect(itemSelected.title);
-      } else {
-        setCurrentSelect("");
-      }
-    } else {
-      setCurrentSelect(itemSelected.title);
-    }
-
-    handleChange(itemSelected);
-  };
-
   return (
-    <Grid key={title} item className={classes.item}>
-      <div className={classes.imageContainer}>
-        <Image
-          className={classes.image}
-          src={currentSelect === title ? hover : image}
-          layout="fill"
-          onClick={() => handleIconChange(item)}
-        />
-      </div>
-      <Typography className={classes.text}>{title}</Typography>
-    </Grid>
+    <>
+      <IconButton className={classes.imageContainer} onClick={handleIconClick}>
+        <Image src={index === currentItemIndex ? hover : image} layout="fill" />
+      </IconButton>
+      <Typography
+        className={clsx(classes.text, { [classes.slideInText]: checked })}
+      >
+        {title}
+      </Typography>
+    </>
   );
 };
 
 Icon.propTypes = {
-  handleChange: PropTypes.func,
-  currentSelect: PropTypes.func,
-  setCurrentSelect: PropTypes.func,
-  screen: PropTypes.string,
+  handleIconClick: PropTypes.func,
+  currentItemIndex: PropTypes.number,
+  checked: PropTypes.bool,
+  index: PropTypes.number,
   item: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
@@ -59,11 +45,11 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  currentSelect: undefined,
-  setCurrentSelect: undefined,
-  handleChange: undefined,
+  checked: undefined,
+  currentItemIndex: undefined,
+  handleIconClick: undefined,
   item: undefined,
-  screen: undefined,
+  index: undefined,
 };
 
 export default Icon;
