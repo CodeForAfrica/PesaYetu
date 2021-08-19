@@ -4,7 +4,6 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     height: typography.pxToRem(600),
     margin: 0,
-    position: "relative",
     backgroundImage: ({ image }) => `url("${image}")`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -13,7 +12,6 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     },
   },
   section: {
-    zIndex: 1,
     height: "100%",
   },
   content: {
