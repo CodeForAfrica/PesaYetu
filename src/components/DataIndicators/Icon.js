@@ -40,6 +40,7 @@ Icon.propTypes = {
     PropTypes.shape({
       image: PropTypes.string,
       title: PropTypes.string,
+      hover: PropTypes.string,
     })
   ),
 };

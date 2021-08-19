@@ -10,7 +10,7 @@ import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
 import PartnersAndNewsletter from "@/pesayetu/components/Partners";
 import StoriesInsights from "@/pesayetu/components/StoriesInsights";
-import { searchArgs, dataIndicator } from "@/pesayetu/config";
+import { searchArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -28,7 +28,7 @@ export default function Home({ boundary, blocks, ...props }) {
       <InsightData {...blocks?.dataInsights} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
       <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
-      <DataIndicators {...dataIndicator} />
+      <DataIndicators {...blocks.dataIndicators} />
     </Page>
   );
 }
@@ -43,6 +43,7 @@ Home.propTypes = {
     partnersAndNewsletter: PropTypes.shape({}),
     dataInsights: PropTypes.shape({}),
     dataVisuals: PropTypes.shape({}),
+    dataIndicators: PropTypes.shape({}),
   }),
   footerProps: PropTypes.shape({}),
 };

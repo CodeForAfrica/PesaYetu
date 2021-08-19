@@ -117,7 +117,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   slideInText: {
     display: "none",
     [breakpoints.up("md")]: {
-      display: "inline-flex",
+      display: "flex",
     },
   },
   description: {},
