@@ -18,19 +18,14 @@ function AboutProject({ subtitle, title, href, ctaText, ...props }) {
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Grid item xs={12} md={9} lg={6} className={classes.textContainer}>
+          <Grid item xs={12} md={9} lg={6} className={classes.content}>
             <Typography variant="h4" className={classes.title}>
               {title}
             </Typography>
             <Typography variant="body1" className={classes.subtitle}>
               {subtitle}
             </Typography>
-            <Button
-              className={classes.button}
-              component={Link}
-              href={href}
-              variant="text"
-            >
+            <Button component={Link} href={href} variant="text">
               {ctaText}
             </Button>
           </Grid>

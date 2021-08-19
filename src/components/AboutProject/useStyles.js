@@ -24,13 +24,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     zIndex: 1,
     height: "100%",
   },
-  button: {
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "none",
-    },
-  },
-  textContainer: {
+  content: {
     marginTop: typography.pxToRem(169),
     marginBottom: typography.pxToRem(149),
     background: palette.background.default,

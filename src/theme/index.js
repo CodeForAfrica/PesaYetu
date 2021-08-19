@@ -216,7 +216,12 @@ deepmerge(
   overrides,
   {
     MuiButton: {
-      root: {},
+      root: {
+        textDecoration: "none !important",
+        "&:hover": {
+          textDecoration: "none !important",
+        },
+      },
       contained: {},
       containedPrimary: {
         color: palette.background.default,
