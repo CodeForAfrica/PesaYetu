@@ -18,12 +18,16 @@ const useStyles = makeStyles(
     project: {
       display: "flex",
       background: palette.grey.light,
+      [breakpoints.up("lg")]: {
+        paddingLeft: typography.pxToRem(119),
+      },
     },
     newsletter: {
       background: palette.primary.main,
       backgroundColor: alpha(palette.primary.main, 0.1),
       [breakpoints.up("lg")]: {
         marginLeft: `-${typography.pxToRem(16)}`,
+        paddingLeft: typography.pxToRem(116),
       },
     },
     aside: {
@@ -55,24 +59,10 @@ function Project({ mainPartner, newsletter, ...props }) {
           </Grid>
           <Grid item xs={12} lg={4}>
             <Grid container className={classes.aside}>
-              <Grid
-                item
-                xs={12}
-                md={6}
-                lg={12}
-                container
-                justifyContent="center"
-              >
+              <Grid item xs={12} md={6} lg={12} container>
                 <ProjectOwner {...mainPartner} className={classes.project} />
               </Grid>
-              <Grid
-                item
-                xs={12}
-                md={6}
-                lg={12}
-                container
-                justifyContent="center"
-              >
+              <Grid item xs={12} md={6} lg={12} container>
                 <Newsletter {...newsletter} className={classes.newsletter} />
               </Grid>
             </Grid>

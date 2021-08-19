@@ -49,7 +49,7 @@ function ProjectOwner({ className, description, link, logo, name, ...props }) {
   return (
     <Box
       display="flex"
-      justifyContent="center"
+      justifyContent={{ xs: "center", lg: "flex-start" }}
       className={clsx(classes.root, className)}
     >
       <div className={classes.content}>

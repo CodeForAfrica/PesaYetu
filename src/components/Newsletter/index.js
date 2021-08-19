@@ -95,7 +95,7 @@ function Newsletter({ className, description, embedCode, title, ...props }) {
   return (
     <Box
       display="flex"
-      justifyContent="center"
+      justifyContent={{ xs: "center", lg: "flex-start" }}
       className={clsx(classes.root, className)}
     >
       <Grid container justifyContent="center" className={classes.content}>
