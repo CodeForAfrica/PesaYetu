@@ -29,19 +29,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       paddingBottom: typography.pxToRem(80),
     },
   },
-  section: {
-    paddingBottom: typography.pxToRem(40),
-    [breakpoints.only("md")]: {
-      paddingBottom: typography.pxToRem(80),
-    },
-  },
-  container: {
-    flexDirection: "column",
-    [breakpoints.up("md")]: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-    },
-  },
   dots: {
     margin: `0 ${typography.pxToRem(30)}`,
     paddingTop: `${typography.pxToRem(40)}`,
