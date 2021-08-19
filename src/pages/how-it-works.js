@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import AboutProject from "@/pesayetu/components/AboutProject";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import PartnersAndNewsletter from "@/pesayetu/components/Partners";
@@ -15,6 +16,7 @@ export default function Home({ blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
       <Summary {...blocks?.summary} />
+      <AboutProject {...blocks?.aboutProject} />
       <StartLearning {...blocks?.startLearning} />
       <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
@@ -24,6 +26,7 @@ export default function Home({ blocks, ...props }) {
 
 Home.propTypes = {
   blocks: PropTypes.shape({
+    aboutProject: PropTypes.shape({}),
     otherHero: PropTypes.shape({}),
     startLearning: PropTypes.shape({}),
     supportingPartners: PropTypes.shape({}),
