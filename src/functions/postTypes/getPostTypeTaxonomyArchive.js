@@ -78,7 +78,7 @@ export default async function getPostTypeTaxonomyArchive(
 
       response.categories = categories;
       // Retrieve menus.
-      response.menus = getMenus(menus);
+      response.menus = await getMenus(menus);
 
       // Retrieve default SEO data.
       response.defaultSeo = formatDefaultSeoData({ homepageSettings, siteSeo });

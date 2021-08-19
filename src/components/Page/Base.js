@@ -15,7 +15,7 @@ function BasePage({ children, menus, ...props }) {
 
   return (
     <>
-      <Navigation {...navigationArgs} />
+      <Navigation {...navigationArgs} {...menus} />
       <NextSeo {...props} />
       {children}
       <Footer {...footerProps} />

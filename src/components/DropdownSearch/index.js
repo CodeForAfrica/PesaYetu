@@ -10,8 +10,8 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-import NavSearch from "@/pesayetu/assets/icons/search-open.svg";
-import Search from "@/pesayetu/assets/icons/search.svg";
+import NavSearchIcon from "@/pesayetu/assets/icons/search-open.svg";
+import SearchIcon from "@/pesayetu/assets/icons/search.svg";
 import Link from "@/pesayetu/components/Link";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
@@ -104,7 +104,7 @@ function DropdownSearch({
     }
   };
 
-  const icon = nav && !suggestions?.length ? NavSearch : Search;
+  const icon = nav && !suggestions?.length ? NavSearchIcon : SearchIcon;
 
   return (
     <div className={classes.root}>

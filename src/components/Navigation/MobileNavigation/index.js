@@ -271,6 +271,7 @@ function MobileNavigation({
                 }}
                 nav
                 {...selectProps}
+                {...props}
               />
             </Menu>
           </DialogContent>
