@@ -3,7 +3,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import AboutProjectBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
+import AboutProjectBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.jpg";
 import useStyles from "@/pesayetu/components/AboutProject/useStyles";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
