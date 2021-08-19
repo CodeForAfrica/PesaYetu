@@ -1,4 +1,4 @@
-import { Typography, Grid, useMediaQuery } from "@material-ui/core";
+import { Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
@@ -37,7 +37,7 @@ const OurCourses = ({ title, items, ...props }) => {
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         {title && (
-          <Typography variant="h3" className={classes.title}>
+          <Typography variant="h4" className={classes.title}>
             {title}
           </Typography>
         )}
@@ -50,9 +50,9 @@ const OurCourses = ({ title, items, ...props }) => {
           dotListClass={classes.dots}
         >
           {items?.map((item) => (
-            <Grid item key={item.title}>
+            <div key={item.title}>
               <OurCourseCard {...item} />
-            </Grid>
+            </div>
           ))}
         </Carousel>
       </Section>
