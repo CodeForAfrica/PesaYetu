@@ -4,7 +4,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ palette, typography }) => ({
   root: {},
   overline: {
     marginBottom: `${typography.pxToRem(12)}`,
@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ typography }) => ({
       display: "inline-block",
       position: "relative",
       "&:after": {
-        borderBottom: `${typography.pxToRem(30)} solid #0067A3`,
+        borderBottom: `${typography.pxToRem(30)} solid ${palette.primary.main}`,
         bottom: 0,
         content: '""',
         left: 0,

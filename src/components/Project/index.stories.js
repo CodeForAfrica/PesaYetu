@@ -1,29 +1,12 @@
 import React from "react";
 
-import Partners from ".";
+import Project from ".";
 
 export default {
-  title: "Components/Partners",
-  argTypes: {
-    title: {
-      control: {
-        type: "text",
-      },
-    },
-    newsletter: {
-      control: {
-        type: "array",
-      },
-    },
-    partners: {
-      control: {
-        type: "array",
-      },
-    },
-  },
+  title: "Sections/Project",
 };
 
-const Template = ({ ...args }) => <Partners {...args} />;
+const Template = ({ ...args }) => <Project {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
