@@ -19,15 +19,8 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   cardMedia: {
     height: typography.pxToRem(278),
+    width: typography.pxToRem(278),
     position: "relative",
-    [breakpoints.up("md")]: {
-      height: typography.pxToRem(278),
-      width: typography.pxToRem(278),
-    },
-    [breakpoints.up("lg")]: {
-      height: typography.pxToRem(278),
-      width: typography.pxToRem(278),
-    },
   },
   title: {
     textAlign: "center",
