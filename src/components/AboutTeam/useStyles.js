@@ -11,15 +11,10 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   cardRoot: {
     boxShadow: "none",
     backgroundColor: "unset",
-    maxWidth: typography.pxToRem(350),
     padding: `0 ${typography.pxToRem(20)}`,
     [breakpoints.up("md")]: {
-      maxWidth: typography.pxToRem(296),
       marginRight: typography.pxToRem(16),
       padding: 0,
-    },
-    [breakpoints.up("lg")]: {
-      maxWidth: typography.pxToRem(376),
     },
   },
   cardMedia: {
