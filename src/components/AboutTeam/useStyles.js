@@ -2,9 +2,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {
-    margin: `${typography.pxToRem(40)} 0`,
+    backgroundColor: "#f8f8f8",
+    padding: `${typography.pxToRem(40)} 0`,
     [breakpoints.up("md")]: {
-      margin: `${typography.pxToRem(80)} 0`,
+      padding: `${typography.pxToRem(80)} 0`,
     },
   },
   cardRoot: {
@@ -64,7 +65,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       height: typography.pxToRem(16),
       marginRight: typography.pxToRem(12),
       width: typography.pxToRem(16),
-      background: "#DFDFDF",
+      background: "#F8F8F8",
     },
     "& .react-multi-carousel-dot--active button": {
       borderColor: "#000",

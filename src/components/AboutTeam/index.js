@@ -32,34 +32,36 @@ const DataVisuals = ({ title, items, ...props }) => {
   const classes = useStyles(props);
 
   return (
-    <Section>
-      {title && (
-        <Typography variant="h3" className={classes.title}>
-          {title}
-        </Typography>
-      )}
-      <Carousel
-        swipeable
-        responsive={responsive}
-        arrows={false}
-        renderDotsOutside
-        showDots
-        dotListClass={classes.dots}
-      >
-        {items?.map((item) => (
-          <AboutTeamCard
-            key={item.image}
-            titleVariant="h4"
-            {...item}
-            classes={{
-              root: classes.cardRoot,
-              cardMedia: classes.cardMedia,
-              image: classes.image,
-            }}
-          />
-        ))}
-      </Carousel>
-    </Section>
+    <div className={classes.root}>
+      <Section>
+        {title && (
+          <Typography variant="h3" className={classes.title}>
+            {title}
+          </Typography>
+        )}
+        <Carousel
+          swipeable
+          responsive={responsive}
+          arrows={false}
+          renderDotsOutside
+          showDots
+          dotListClass={classes.dots}
+        >
+          {items?.map((item) => (
+            <AboutTeamCard
+              key={item.image}
+              titleVariant="h4"
+              {...item}
+              classes={{
+                root: classes.cardRoot,
+                cardMedia: classes.cardMedia,
+                image: classes.image,
+              }}
+            />
+          ))}
+        </Carousel>
+      </Section>
+    </div>
   );
 };
 
