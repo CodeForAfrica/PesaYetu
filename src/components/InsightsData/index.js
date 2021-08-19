@@ -30,7 +30,7 @@ const InsightsData = ({ title, overline, items, ...props }) => {
         <Grid container className={classes.list}>
           {itemsToShow.map((item) => {
             return (
-              <Grid item lg={4} xs={12} md={6} key={item.title}>
+              <Grid item lg={4} xs={12} md={6} key={item.href}>
                 <InsightCard {...item} />
               </Grid>
             );
@@ -44,9 +44,7 @@ const InsightsData = ({ title, overline, items, ...props }) => {
 InsightsData.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
+      href: PropTypes.string,
     })
   ),
   overline: PropTypes.string,

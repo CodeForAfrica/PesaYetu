@@ -84,7 +84,7 @@ export const navigationArgs = {
       label: "DATA",
     },
     {
-      href: "/stories",
+      href: "/stories/news",
       label: "STORIES",
     },
     {
@@ -172,7 +172,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -180,7 +180,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -189,7 +189,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
   ],
@@ -262,7 +262,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -270,7 +270,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -279,7 +279,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -287,7 +287,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -295,7 +295,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -304,7 +304,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -312,7 +312,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -320,7 +320,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -329,7 +329,7 @@ export const insightDataTabStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
   ],

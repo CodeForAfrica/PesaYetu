@@ -26,7 +26,7 @@ export default async function getPostTypeTaxonomyArchive(
   order = "DESC",
   cursor = null,
   getNext = true,
-  perPage = 10
+  perPage = 12
 ) {
   // Define single post query based on taxonomy.
   const postTypeQuery = {
@@ -72,9 +72,11 @@ export default async function getPostTypeTaxonomyArchive(
   // Execute query.
   await apolloClient
     .query({ query, variables })
-    .then((archive) => {
-      const { homepageSettings, siteSeo, menus, ...archiveData } = archive.data;
+    .then(async (archive) => {
+      const { homepageSettings, siteSeo, menus, categories, ...archiveData } =
+        archive.data;
 
+      response.categories = categories;
       // Retrieve menus.
       response.menus = getMenus(menus);
 
@@ -114,7 +116,10 @@ export default async function getPostTypeTaxonomyArchive(
         postTypes?.[postType]?.route
       }/${taxonomy}/${taxonomyId}`;
 
-      // Structure archive SEO.
+      const postsPageBlocks = (
+        homepageSettings?.postsPage?.blocks ?? []
+      ).concat(JSON.parse(homepageSettings?.postsPage?.blocksJSON) ?? []);
+      // Structure archive SEO & blocks.
       response.post = {
         seo: {
           ...archiveSeo,
@@ -126,6 +131,7 @@ export default async function getPostTypeTaxonomyArchive(
           metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
           metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
         },
+        blocks: postsPageBlocks,
       };
 
       // Extract pagination data.
