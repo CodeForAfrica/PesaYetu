@@ -32,7 +32,7 @@ function Metrics({ items, title, ...props }) {
             alignItems="flex-start"
             className={classes.metrics}
           >
-            <Grid container item xs={12} md={5} lg={3}>
+            <Grid item xs={12} md={5} lg={3}>
               <Grid container item direction="row" alignItems="center">
                 <IconButton
                   disableRipple
@@ -59,7 +59,7 @@ function Metrics({ items, title, ...props }) {
               container
               direction="row"
               justifyContent={
-                isTablet && index === 0 ? "flex-end" : "flex-start"
+                isTablet && index % 2 === 0 ? "flex-end" : "flex-start"
               }
               alignItems="center"
             >

@@ -5,7 +5,7 @@ import Metrics from ".";
 import { metrics } from "@/pesayetu/config";
 
 export default {
-  title: "Components/Metrics",
+  title: "Sections/Metrics",
   argTypes: {},
 };
 
