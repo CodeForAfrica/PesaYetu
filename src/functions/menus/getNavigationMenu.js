@@ -1,7 +1,7 @@
 export default function getNavigationMenu(data) {
   const socialMedia = data[data?.length - 1];
   const { children } = socialMedia;
-  const menuProps = data.slice(0, 4).map(({ label, path }) => {
+  const menuProps = data.slice(1, 5).map(({ label, path }) => {
     return {
       label: label.toUpperCase(),
       href: path,
