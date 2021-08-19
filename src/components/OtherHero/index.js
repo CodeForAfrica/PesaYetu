@@ -64,6 +64,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundImage: ({ image }) => `url("${image}")`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     position: "absolute",
   },
   rightBackgroundWrapper: {
@@ -104,7 +107,7 @@ function OtherHero({
   title,
   ...props
 }) {
-  const classes = useStyles(props);
+  const classes = useStyles({ image, ...props });
 
   if (!title?.length) {
     return null;
@@ -120,7 +123,6 @@ function OtherHero({
           <Grid item xs={12} md={6}>
             <div className={classes.rightBackgroundWrapper}>
               <div className={classes.rightBackground}>
-                <Image objectFit="cover" src={image} layout="fill" />
                 <Image
                   width={400}
                   height={400}

@@ -5,18 +5,10 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     height: typography.pxToRem(600),
     margin: 0,
     position: "relative",
+    backgroundImage: ({ aboutProjectBg }) => `url("${aboutProjectBg.src}")`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     [breakpoints.up("md")]: {
-      height: typography.pxToRem(400),
-    },
-  },
-  background: {
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    height: typography.pxToRem(600),
-    width: "100%",
-    zIndex: -1,
-    [breakpoints.up("lg")]: {
       height: typography.pxToRem(400),
     },
   },

@@ -1,21 +1,17 @@
 import { Grid, Typography, Button } from "@material-ui/core";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import AboutProjectBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.jpg";
+import aboutProjectBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.jpg";
 import useStyles from "@/pesayetu/components/AboutProject/useStyles";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
 function AboutProject({ subtitle, title, href, ctaText, ...props }) {
-  const classes = useStyles(props);
+  const classes = useStyles({ aboutProjectBg, ...props });
 
   return (
     <div className={classes.root}>
-      <div className={classes.background}>
-        <Image objectFit="cover" src={AboutProjectBg} layout="fill" />
-      </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
           <Grid item xs={12} md={9} lg={6} className={classes.content}>
