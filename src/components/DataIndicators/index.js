@@ -1,5 +1,11 @@
 import { RichTypography } from "@commons-ui/core";
-import { ButtonBase, Grid, Typography, Slide } from "@material-ui/core";
+import {
+  ButtonBase,
+  ClickAwayListener,
+  Grid,
+  Typography,
+  Slide,
+} from "@material-ui/core";
 import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -26,7 +32,7 @@ function DataIndicators({ items, title, ...props }) {
     setChecked(true);
   };
 
-  const handleSlideClick = () => {
+  const resetItemClick = () => {
     setChecked(false);
     setCurrentItemIndex(null);
   };
@@ -45,25 +51,28 @@ function DataIndicators({ items, title, ...props }) {
           })}
         >
           <Header className={classes.header}>{title}</Header>
-          <Grid container alignItems="center" justifyContent="center">
-            {items?.map((item, index) => (
-              <Grid
-                item
-                key={item.title}
-                className={clsx(classes.iconContainer, {
-                  [classes.slideInIconContainer]: checked,
-                })}
-              >
-                <Icon
-                  handleIconClick={() => handleIconClick(index)}
-                  item={item}
-                  index={index}
-                  checked={checked}
-                  currentItemIndex={currentItemIndex}
-                />
-              </Grid>
-            ))}
-          </Grid>
+          <ClickAwayListener onClickAway={resetItemClick}>
+            <Grid container alignItems="center" justifyContent="center">
+              {items?.map((item, index) => (
+                <Grid
+                  item
+                  key={item.title}
+                  className={clsx(classes.iconContainer, {
+                    [classes.slideInIconContainer]: checked,
+                  })}
+                >
+                  <Icon
+                    handleIconClick={() => handleIconClick(index)}
+                    item={item}
+                    index={index}
+                    checked={checked}
+                    currentItemIndex={currentItemIndex}
+                    handleClickAway={() => resetItemClick()}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </ClickAwayListener>
         </div>
         <Slide
           in={checked}
@@ -78,7 +87,7 @@ function DataIndicators({ items, title, ...props }) {
           <ButtonBase
             disableRipple
             disableTouchRipple
-            onClick={handleSlideClick}
+            onClick={resetItemClick}
             className={classes.content}
           >
             {currentItem?.title && (

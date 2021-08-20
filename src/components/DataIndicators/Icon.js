@@ -1,4 +1,4 @@
-import { Typography, IconButton } from "@material-ui/core";
+import { ButtonBase, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -18,16 +18,16 @@ const Icon = ({
   const { title, image, hover } = item;
 
   return (
-    <>
-      <IconButton className={classes.imageContainer} onClick={handleIconClick}>
+    <ButtonBase onClick={handleIconClick} className={classes.iconRoot}>
+      <div className={classes.image}>
         <Image src={index === currentItemIndex ? hover : image} layout="fill" />
-      </IconButton>
+      </div>
       <Typography
         className={clsx(classes.text, { [classes.slideInText]: checked })}
       >
         {title}
       </Typography>
-    </>
+    </ButtonBase>
   );
 };
 

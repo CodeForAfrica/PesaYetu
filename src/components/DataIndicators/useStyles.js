@@ -50,11 +50,13 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   iconContainer: {
     width: "100%",
-    textAlign: "center",
     marginBottom: typography.pxToRem(16),
+    display: "flex",
+    justifyContent: "center",
     [breakpoints.up("lg")]: {
+      display: "initial",
       width: "auto",
-      marginLeft: typography.pxToRem(60),
+      marginRight: typography.pxToRem(60),
       "&:last-of-type": {
         marginRight: 0,
       },
@@ -70,8 +72,9 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   iconRoot: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    [breakpoints.up("lg")]: {
+      display: "block",
+    },
   },
   slide: {
     backgroundColor: "#0067A3",
@@ -94,7 +97,8 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       padding: `${typography.pxToRem(76)} ${typography.pxToRem(84)}`,
     },
   },
-  imageContainer: {
+  image: {
+    position: "relative",
     height: typography.pxToRem(88.8),
     width: typography.pxToRem(88.8),
     [breakpoints.up("lg")]: {
@@ -103,21 +107,20 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     },
   },
   text: {
-    display: "inline-flex",
+    display: "flex",
     marginLeft: typography.pxToRem(31),
     fontSize: typography.pxToRem(20),
     width: typography.pxToRem(200),
     [breakpoints.up("lg")]: {
       width: "auto",
-      display: "flex",
-      textAlign: "center",
-      marginTop: typography.pxToRem(20),
+      display: "block",
+      margin: `${typography.pxToRem(20)} auto 0`,
     },
   },
   slideInText: {
     display: "none",
     [breakpoints.up("md")]: {
-      display: "flex",
+      display: "block",
     },
   },
   title: { color: "inherit" },
