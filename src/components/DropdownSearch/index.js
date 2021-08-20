@@ -282,8 +282,6 @@ function DropdownSearch({
             size="medium"
             onClick={handleOpen}
             aria-label="open"
-            disableRipple
-            disableFocusRipple
             className={classes.button}
           >
             <SvgIcon
