@@ -169,7 +169,7 @@ export const ourCourses = {
       description:
         "Learn the basics and all the tips and tricks needed to excel in data visualisation with this free, online course.",
       ctaText: "Read More",
-      href: "www.one.com",
+      href: "https://courses.academy.africa/courses/data-visualization/",
     },
     {
       image: unsplashTwo,
@@ -177,7 +177,7 @@ export const ourCourses = {
       description:
         "Want to make a difference? This course will introduce you to the fundamentals of reporting on human trafficking.",
       ctaText: "Read More",
-      href: "www.two.com",
+      href: "https://courses.academy.africa/courses/reporting-on-human-trafficking/",
     },
     {
       image: unsplashTwo,
@@ -185,7 +185,7 @@ export const ourCourses = {
       description:
         "From this course you’ll learn everything you need to know about using solutions journalism to report on endemic problems.",
       ctaText: "Read More",
-      href: "www.one.com",
+      href: "https://courses.academy.africa/courses/reporting-endemic-problems-solutions-journalism/",
     },
   ],
 };

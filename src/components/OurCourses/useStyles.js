@@ -37,13 +37,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       paddingBottom: typography.pxToRem(0),
     },
   },
-
-  list: {
-    flexDirection: "column",
-    [breakpoints.up("md")]: {
-      flexDirection: "row",
-    },
-  },
 }));
 
 export default useStyles;

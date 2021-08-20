@@ -50,9 +50,7 @@ const OurCourses = ({ title, items, ...props }) => {
           dotListClass={classes.dots}
         >
           {items?.map((item) => (
-            <div key={item.title}>
-              <OurCourseCard {...item} />
-            </div>
+            <OurCourseCard key={item.title} {...item} />
           ))}
         </Carousel>
       </Section>
