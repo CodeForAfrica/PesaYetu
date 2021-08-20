@@ -68,22 +68,17 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     },
   },
   dropdownTitle: {
-    color: "#1C2030",
-  },
-  inputBase: {
-    borderRadius: typography.pxToRem(10),
-    color: palette.primary.main,
-    border: "2px solid #1c2030",
+    color: palette.text.hint,
   },
 }));
 
-function Hero({ comment, selectProps, title, subtitle, ...props }) {
+function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
 
   const zoom = isUpLg ? 6 : 5.25;
-
+  const counties = boundary?.features?.map(({ properties }) => properties);
   return (
     <div className={classes.root}>
       <div className={classes.background}>
@@ -100,12 +95,12 @@ function Hero({ comment, selectProps, title, subtitle, ...props }) {
               {title}
             </Header>
             <DropdownSearch
-              {...selectProps}
+              label={searchLabel}
+              counties={counties}
               classes={{
-                root: classes.dropdown,
-                title: classes.dropdownTitle,
-                inputBase: classes.inputBase,
+                label: classes.dropdownTitle,
               }}
+              {...props}
             />
             {comment && (
               <Typography variant="subtitle1" className={classes.comment}>
@@ -121,6 +116,7 @@ function Hero({ comment, selectProps, title, subtitle, ...props }) {
                 tileLayer={{
                   url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
                 }}
+                boundary={boundary}
                 {...props}
               />
             </Grid>
@@ -133,16 +129,20 @@ function Hero({ comment, selectProps, title, subtitle, ...props }) {
 
 Hero.propTypes = {
   comment: PropTypes.string,
-  selectProps: PropTypes.shape({}),
   subtitle: PropTypes.string,
+  searchLabel: PropTypes.string,
   title: PropTypes.string,
+  boundary: PropTypes.shape({
+    features: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
 };
 
 Hero.defaultProps = {
   comment: undefined,
-  selectProps: undefined,
   subtitle: undefined,
+  searchLabel: undefined,
   title: undefined,
+  boundary: undefined,
 };
 
 export default Hero;
