@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
   focusHighlight: {
     background: "transparent",
   },
+  focusVisible: {},
   cardActionRoot: {},
   content: {
     padding: 0,

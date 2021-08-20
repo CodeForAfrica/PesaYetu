@@ -26,6 +26,7 @@ const Card = ({ href, children, image, chart, variant, ...props }) => {
           classes={{
             root: classes.cardActionRoot,
             focusHighlight: classes.focusHighlight,
+            focusVisible: classes.focusVisible,
           }}
         >
           <CardContent classes={{ root: classes.content }}>

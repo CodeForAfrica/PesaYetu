@@ -5,14 +5,14 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     marginBottom: typography.pxToRem(80),
   },
   carouselItem: {
-    margin: `${typography.pxToRem(40)} 0`,
+    margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(10)}`,
     [breakpoints.up("lg")]: {
       margin: `${typography.pxToRem(60)} 0`,
     },
   },
   story: {
     [breakpoints.up("md")]: {
-      paddingBottom: typography.pxToRem(40),
+      marginBottom: typography.pxToRem(40),
     },
   },
   dots: {
