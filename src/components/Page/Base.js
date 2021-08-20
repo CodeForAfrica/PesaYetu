@@ -15,14 +15,15 @@ import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 function BasePage({ children, menus, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
-  const { menuProps, socialLinks } = navigation;
-  const { selectProps, logoProps } = navigationArgs;
+  const { menuProps } = navigation;
+  const { selectProps, logoProps, socialLinks } = navigationArgs;
   const navigationProps = {
     logoProps,
     menuProps,
     selectProps,
     socialLinks,
   };
+  console.log(socialLinks);
   return (
     <>
       <Navigation {...navigationProps} />
