@@ -115,8 +115,6 @@ function Menu({ links, children, socialLinks, ...props }) {
       {links.map((item, index) => (
         <Grid item key={item.label} className={classes.menu}>
           <Button
-            disableFocusRipple
-            disableRipple
             component={index !== 0 ? Link : Button}
             color={index !== 0 ? "default" : "primary"}
             variant={index !== 0 ? "text" : "contained"}
