@@ -104,6 +104,11 @@ const theme = createTheme({
       textTransform: "uppercase",
     },
   },
+  props: {
+    MuiButtonBase: {
+      disableRipple: true,
+    },
+  },
   widths: {
     values: {
       md: 608, // 0, 80, 0, 80 margin
@@ -223,7 +228,7 @@ deepmerge(
   {
     MuiButton: {
       root: {
-        "&:hover, &:focus, &:focus-within": {
+        "&:hover": {
           backgroundColor: "transparent",
         },
       },
@@ -252,7 +257,7 @@ deepmerge(
           borderRadius: pxToRem(50),
           letterspacing: "1.6px",
           textAlign: "center",
-          border: "3px solid #0067A3",
+          border: `3px solid ${palette.primary.main}`,
           textTransform: "uppercase",
           transition: "none !important",
           "&:hover, &:focus, &:focus-within": {
@@ -281,6 +286,11 @@ deepmerge(
           marginLeft: 0,
           height: 0,
           width: 0,
+        },
+      },
+      MuiButtonBase: {
+        "&:hover": {
+          backgroundColor: "unset",
         },
       },
       text: {
@@ -317,8 +327,9 @@ deepmerge(
     MuiIconButton: {
       root: {
         // Disable ripple effect globally
+        borderRadius: 0,
         "&:hover, &:focus, &:focus-within": {
-          backgroundColor: "transparent",
+          backgroundColor: "inherit",
         },
       },
     },

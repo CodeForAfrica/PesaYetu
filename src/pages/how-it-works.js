@@ -4,7 +4,7 @@ import React from "react";
 import Metrics from "@/pesayetu/components/Metrics";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
-import PartnersAndNewsletter from "@/pesayetu/components/Partners";
+import Project from "@/pesayetu/components/Project";
 import StartLearning from "@/pesayetu/components/StartLearning";
 import Summary from "@/pesayetu/components/Summary";
 import SupportingPartners from "@/pesayetu/components/SupportingPartners";
@@ -22,7 +22,7 @@ export default function Home({ blocks, ...props }) {
       <Metrics {...metricsProps} />
       <Summary {...blocks?.summary} />
       <StartLearning {...blocks?.startLearning} />
-      <PartnersAndNewsletter {...blocks?.partnersAndNewsletter} />
+      <Project {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
     </Page>
   );

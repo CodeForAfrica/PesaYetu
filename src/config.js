@@ -152,12 +152,12 @@ export const navigationArgs = {
   },
   socialLinks: [
     {
-      href: "/twitter",
+      href: "https://twitter.com/",
       src: Twitter,
       label: "twitter",
     },
     {
-      href: "/facebook",
+      href: "https://web.facebook.com/?_rdc=1&_rdr",
       src: Facebook,
       label: "facebook",
     },
