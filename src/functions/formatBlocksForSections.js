@@ -113,6 +113,7 @@ function format(block) {
       return formatFeaturedStories(attributes);
     case "lazyblock/explore-other-tools":
     case "lazyblock/data-visuals":
+    case "lazyblock/our-courses":
     case "lazyblock/data-insights":
     case "lazyblock/about-team":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");

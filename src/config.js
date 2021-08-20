@@ -122,6 +122,37 @@ export const navigationArgs = {
     },
   ],
 };
+
+export const ourCourses = {
+  title: "Our Courses",
+  items: [
+    {
+      image: unsplashTwo,
+      title: "Data Visualization",
+      description:
+        "Learn the basics and all the tips and tricks needed to excel in data visualisation with this free, online course.",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      image: unsplashTwo,
+      title: "Reporting on Human Trafficking",
+      description:
+        "Want to make a difference? This course will introduce you to the fundamentals of reporting on human trafficking.",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/reporting-on-human-trafficking/",
+    },
+    {
+      image: unsplashTwo,
+      title: "Reporting on Endemic Problems",
+      description:
+        "From this course you’ll learn everything you need to know about using solutions journalism to report on endemic problems.",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/reporting-endemic-problems-solutions-journalism/",
+    },
+  ],
+};
+
 export const insightData = {
   overline: "Stories",
   title: "Data-driven <span class='highlight'>Insights</span>",
