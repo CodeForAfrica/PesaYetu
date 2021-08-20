@@ -5,15 +5,14 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     backgroundColor: palette.grey.main,
   },
   section: {
-    paddingTop: typography.pxToRem(60),
-    paddingLeft: typography.pxToRem(20),
-    paddingRight: typography.pxToRem(20),
+    padding: `${typography.pxToRem(60)} ${typography.pxToRem(
+      20
+    )} 0 ${typography.pxToRem(20)}`,
     [breakpoints.up("md")]: {
       padding: `${typography.pxToRem(80)} 0`,
     },
   },
   title: {
-    fontSize: typography.pxToRem(20),
     marginBottom: typography.pxToRem(40),
     textAlign: "center",
   },
