@@ -224,7 +224,9 @@ deepmerge(
   {
     MuiButton: {
       root: {
+        textDecoration: "none !important",
         "&:hover": {
+          textDecoration: "none !important",
           backgroundColor: "inherit",
         },
       },
