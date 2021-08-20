@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     height: typography.pxToRem(600),
-    margin: 0,
     backgroundImage: ({ image }) => `url("${image}")`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -11,9 +10,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
       height: typography.pxToRem(400),
     },
   },
-  section: {
-    height: "100%",
-  },
+  section: {},
   content: {
     marginTop: typography.pxToRem(169),
     marginBottom: typography.pxToRem(149),
