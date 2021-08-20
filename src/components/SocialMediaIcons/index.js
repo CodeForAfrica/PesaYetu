@@ -52,6 +52,8 @@ function SocialMediaIcons({ socialLinks, ...props }) {
       {socialLinks.map(({ url, label, src }) => (
         <IconButton
           component={Link}
+          disableRipple
+          disableFocusRipple
           href={url}
           key={label}
           size="medium"
