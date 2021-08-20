@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import StoriesPage from "@/pesayetu/components/StoriesPage";
 import StoryPage from "@/pesayetu/components/StoryPage";
@@ -32,8 +31,8 @@ export default function Index({
     <Page {...props}>
       {archive ? (
         <>
-          <Hero {...blocks?.otherHero} />
           <StoriesPage
+            hero={{ ...blocks?.otherHero }}
             activeCategory={activeCategory}
             featuredStories={blocks.featuredStories}
             {...props}
@@ -111,10 +110,10 @@ export async function getStaticProps({ params, preview, previewData }) {
   } = params;
   const categories = await getCategories();
 
-  let categoriesPosts = [];
+  let items = [];
 
   if (params?.slug?.length === 1) {
-    categoriesPosts = await Promise.all(
+    items = await Promise.all(
       categories?.map(async ({ slug: categorySlug, name }) => {
         const {
           props: { posts: categoryPosts, pagination: categoryPagination },
@@ -155,7 +154,7 @@ export async function getStaticProps({ params, preview, previewData }) {
       ...props,
       blocks,
       activeCategory,
-      categoriesPosts,
+      items,
       relatedPosts: relatedPosts.slice(0, 3),
     },
     revalidate,

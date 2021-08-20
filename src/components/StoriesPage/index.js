@@ -2,52 +2,51 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Hero from "@/pesayetu/components/OtherHero";
 import Section from "@/pesayetu/components/Section";
 import Stories from "@/pesayetu/components/Stories";
 import Tabs from "@/pesayetu/components/Tabs";
 import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
-  root: {
-    padding: `${typography.pxToRem(40)} 0`,
+  root: {},
+  section: {
+    marginTop: typography.pxToRem(40),
     [breakpoints.up("md")]: {
-      padding: `${typography.pxToRem(60)} 0 ${typography.pxToRem(80)}  `,
+      marginTop: typography.pxToRem(60),
     },
   },
-  section: {},
 }));
 
 function StoriesPage({
   activeCategory,
-  categoriesPosts,
+  items,
+  hero,
   featuredStories,
   ...props
 }) {
   const classes = useStyles(props);
 
-  const activeTab = categoriesPosts
-    ?.map(({ slug }) => slug)
-    ?.indexOf(activeCategory);
-  const tabItems = categoriesPosts?.map(
-    ({ name, slug, href, pagination, posts }) => {
-      return {
-        label: name,
-        slug,
-        href,
-        children: (
-          <Stories
-            featuredStoryProps={featuredStories[slug]}
-            category={slug}
-            pagination={pagination}
-            items={formatStoryPosts(posts, featuredStories[slug])}
-          />
-        ),
-      };
-    }
-  );
+  const activeTab = items?.map(({ slug }) => slug)?.indexOf(activeCategory);
+  const tabItems = items?.map(({ name, slug, href, pagination, posts }) => {
+    return {
+      label: name,
+      slug,
+      href,
+      children: (
+        <Stories
+          featuredStoryProps={featuredStories[slug]}
+          category={slug}
+          pagination={pagination}
+          items={formatStoryPosts(posts, featuredStories[slug])}
+        />
+      ),
+    };
+  });
 
   return (
     <div className={classes.root}>
+      <Hero {...hero} />
       <Section classes={{ root: classes.section }}>
         <Tabs activeTab={activeTab} items={tabItems} />
       </Section>
@@ -57,7 +56,7 @@ function StoriesPage({
 
 StoriesPage.propTypes = {
   activeCategory: PropTypes.string,
-  categoriesPosts: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       href: PropTypes.string,
@@ -70,12 +69,14 @@ StoriesPage.propTypes = {
     news: PropTypes.shape({}),
     insights: PropTypes.shape({}),
   }),
+  hero: PropTypes.shape({}),
 };
 
 StoriesPage.defaultProps = {
   activeCategory: undefined,
-  categoriesPosts: undefined,
+  items: undefined,
   featuredStories: undefined,
+  hero: undefined,
 };
 
 export default StoriesPage;
