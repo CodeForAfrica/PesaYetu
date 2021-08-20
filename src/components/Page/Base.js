@@ -16,14 +16,14 @@ function BasePage({ children, menus, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
   const { menuProps } = navigation;
-  const { selectProps, logoProps, socialLinks } = navigationArgs;
+  const { logoProps, socialLinks } = navigationArgs;
   const navigationProps = {
     logoProps,
     menuProps,
-    selectProps,
     socialLinks,
+    ...menus,
   };
-  console.log(socialLinks);
+
   return (
     <>
       <Navigation {...navigationProps} />

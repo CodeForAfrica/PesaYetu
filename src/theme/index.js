@@ -105,11 +105,6 @@ const theme = createTheme({
       textTransform: "uppercase",
     },
   },
-  props: {
-    MuiButtonBase: {
-      disableRipple: true,
-    },
-  },
   widths: {
     values: {
       md: 608, // 0, 80, 0, 80 margin

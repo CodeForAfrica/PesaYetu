@@ -1,37 +1,29 @@
-import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
 import DropdownSearch from ".";
 
-import { navigationArgs } from "@/pesayetu/config";
+import { searchArgs } from "@/pesayetu/config";
 
 export default {
   title: "Components/DropdownSearch",
-  argTypes: {},
-};
-
-const Template = ({ ...args }) => {
-  const classes = makeStyles(({ palette }) => ({
-    root: {
-      backgroundColor: palette.primary.main,
-      padding: "1rem",
+  argTypes: {
+    title: {
+      control: {
+        type: "string",
+      },
     },
-  }))();
-
-  return (
-    <div className={classes.root}>
-      <DropdownSearch {...args} />
-    </div>
-  );
-};
-
-export const Default = Template.bind({});
-Default.parameters = {
-  nextRouter: {
-    pathname: "/?path=/story/components-dropdownsearch--default",
+    counties: {
+      control: {
+        type: "object",
+      },
+    },
   },
 };
 
+const Template = ({ ...args }) => <DropdownSearch {...args} />;
+
+export const Default = Template.bind({});
+
 Default.args = {
-  ...navigationArgs.selectProps,
+  ...searchArgs,
 };

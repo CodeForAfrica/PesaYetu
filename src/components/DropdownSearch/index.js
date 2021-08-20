@@ -1,344 +1,172 @@
-import { RichTypography } from "@commons-ui/core";
 import {
-  Select,
-  Typography,
-  InputBase,
-  FormControl,
   IconButton,
-  SvgIcon,
-  Link,
+  InputBase,
+  Typography,
+  List,
+  ListItem,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    paddingBottom: typography.pxToRem(56),
-  },
-  formControl: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-  },
-  form: {
-    paddingTop: typography.pxToRem(40),
-    paddingBottom: typography.pxToRem(16),
-  },
-  title: {
-    color: "white",
-    padding: `${typography.pxToRem(16)} 0 `,
-  },
-  select: {
-    paddingTop: 0,
-    paddingBottom: 0,
-    "&:hover, &:focus, &:focus-within": {
-      backgroundColor: palette.background.default,
-    },
-  },
-  icon: {
-    padding: typography.pxToRem(32),
-  },
-  menuPaper: {
-    marginTop: typography.pxToRem(24),
-  },
-  menuMenuList: {
-    paddingTop: 0,
-  },
-  svgIcon: {
-    fontSize: typography.pxToRem(48),
-    color: palette.background.default,
-  },
-  button: {
-    height: typography.pxToRem(48),
-    width: typography.pxToRem(48),
-    marginLeft: "1rem",
-    "&:hover, &:focus, &:focus-within": {
-      backgroundColor: "transparent",
-    },
-  },
-  inputBase: {
-    padding: typography.pxToRem(2),
-    color: palette.primary.main,
-    backgroundColor: palette.background.default,
-    height: typography.pxToRem(48),
-    width: typography.pxToRem(278),
-    border: "2px solid #00000000",
+import NavSearchIcon from "@/pesayetu/assets/icons/search-open.svg";
+import SearchIcon from "@/pesayetu/assets/icons/search.svg";
+import Link from "@/pesayetu/components/Link";
+
+const useStyles = makeStyles(({ palette, typography }) => ({
+  root: {},
+  inputRoot: {
     borderRadius: typography.pxToRem(10),
-    "&:hover, &:focus, &:focus-within": {
-      backgroundColor: "white",
-    },
+    color: palette.primary.main,
+    border: `2px solid ${palette.text.hint}`,
+    width: typography.pxToRem(278),
   },
-  // TODO nyokabi Reference => https://github.com/mui-org/material-ui/issues/11244
   focused: {
-    color: palette.background.default,
-  },
-  inputBaseInput: {
-    textAlign: "left",
-    paddingLeft: typography.pxToRem(16),
-    fontSize: typography.pxToRem(16),
-    width: "100%",
-    "label[data-shrink=false] + .MuiInputBase-formControl &::placeholder": {
-      opacity: "0.5!important",
-    },
+    border: `2px solid ${palette.primary.main}`,
   },
   label: {
-    color: palette.background.default,
-    textAlign: "left",
-    fontSize: typography.pxToRem(18),
-    position: "relative",
-    marginBottom: typography.pxToRem(20),
-    fontFamily: typography.fontFamily,
-    fontWeight: "bold",
-    transform: `translate(0, ${typography.pxToRem(0)}) scale(1)`,
-    "&$focused": {
-      color: palette.background.default,
-    },
+    color: palette.text.secondary,
+    marginBottom: typography.pxToRem(10),
   },
-  country: {
-    fontWeight: "bold",
-  },
-  name: {
-    fontWeight: "normal",
-  },
-  list: {
-    fontWeight: "normal",
-    listStyleType: "none",
-  },
-  ul: {
+  button: {
     padding: 0,
+    marginLeft: typography.pxToRem(15),
   },
-  link: {
-    textDecoration: "none",
-    color: "#1C2030",
-    "&:hover, &:focus, &:focus-within": {
-      textDecoration: "none",
-    },
+  input: {
+    backgroundColor: "inherit",
+    height: typography.pxToRem(48),
+    borderRadius: typography.pxToRem(10),
+    padding: `0 ${typography.pxToRem(20)}`,
+    textTransform: "capitalize",
+  },
+  suggestions: {
+    position: "relative",
+  },
+  selectMenu: {
+    width: typography.pxToRem(278),
+    position: "absolute",
+    marginTop: typography.pxToRem(5),
+    zIndex: 1,
+    background: palette.background.default,
+    border: `2px solid ${palette.grey.main}`,
+    borderRadius: typography.pxToRem(10),
+    padding: 0,
+    textTransform: "capitalize",
+  },
+  menuList: {},
+  menuItem: {
+    paddingLeft: typography.pxToRem(20),
+    color: palette.text.hint,
   },
 }));
 
 function DropdownSearch({
-  title,
   href: hrefProp,
+  nav,
+  label,
+  counties,
   onClick: onClickProp,
-  placeholder,
-  selectId,
-  inputBaseId,
-  selectLabel,
-  openIcon,
-  closeIcon,
-  menuItems,
-  inputBaseLabel,
   ...props
 }) {
   const classes = useStyles(props);
   const router = useRouter();
-  const [value, setValue] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
-  const viewBoxValue = "0 0 48 48";
+  const [query, setQuery] = useState("");
+  const [countyCode, setCountyCode] = useState(null);
+  const [suggestions, setSuggestions] = useState([]);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-  const handleClose = () => {
-    setOpen(false);
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+    setCountyCode(null);
   };
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleSelect = (code, name) => {
+    setQuery(name.toLowerCase());
+    setCountyCode(code);
   };
 
-  const handleClick = () => {
+  useEffect(() => {
+    if (query?.length > 2 && !countyCode) {
+      const matchedGeo = counties?.filter(({ name }) =>
+        name.match(new RegExp(query, "i"))
+      );
+      setSuggestions(matchedGeo);
+    } else {
+      setSuggestions([]);
+    }
+  }, [query]);
+
+  const handleSearchClick = () => {
     if (onClickProp) {
-      onClickProp(value);
-    } else if (hrefProp?.length) {
-      const href = `${hrefProp}/${value}`;
+      onClickProp(countyCode);
+    } else if (hrefProp?.length && countyCode) {
+      const href = `${hrefProp}/${countyCode}`;
       router.push(href);
     }
   };
-  const handleKeyDown = (e) => {
-    if (e.keyCode === 13) {
-      handleClick();
-    }
-  };
 
-  const MenuProps = {
-    MenuListProps: {
-      className: classes.menuMenuList,
-    },
-    PaperProps: {
-      style: {
-        width: 287,
-        height: 175,
-        paddingLeft: 16,
-        border: "2px solid #00000000",
-        borderRadius: "10px",
-      },
-      className: classes.menuPaper,
-    },
-    // TODO Nyokabi => Prevents menu from  attempting to vertically align/or move to currently selected menu item in the select input box
-    variant: "menu",
-    getContentAnchorEl: null,
-
-    // Popover props
-    anchorOrigin: {
-      vertical: "bottom",
-      horizontal: "center",
-    },
-    transformOrigin: {
-      vertical: "top",
-      horizontal: "center",
-    },
-  };
+  const icon = nav && !suggestions?.length ? NavSearchIcon : SearchIcon;
 
   return (
     <div className={classes.root}>
-      <RichTypography variant="body1" className={classes.title}>
-        {title}
-      </RichTypography>
-      <FormControl className={classes.formControl}>
-        <Select
-          labelId={selectLabel}
-          id={selectId}
-          displayEmpty
-          defaultValue=""
-          open={open}
-          onOpen={handleOpen}
-          onClose={handleClose}
-          onClick={handleClick}
-          value={value}
-          onChange={handleChange}
-          renderValue={(selected) => {
-            if (selected.length === 0 && open) {
-              return <Typography variant="body2">{placeholder}</Typography>;
-            }
-            return selected;
-          }}
-          input={
-            <InputBase
-              id={inputBaseId}
-              onKeyDown={handleKeyDown}
-              inputProps={{ "aria-label": inputBaseLabel }}
-              classes={{
-                root: classes.inputBase,
-                input: classes.inputBaseInput,
-              }}
-            />
-          }
-          MenuProps={MenuProps}
-          classes={{
-            root: classes.select,
-            icon: classes.icon,
-          }}
-        >
-          {menuItems?.map(({ countryName, countryUrl, items }) => (
-            <div key={countryName} value={countryName} className={classes.menu}>
-              <Link
-                href={countryUrl}
-                key={countryName}
-                className={classes.link}
+      <Typography variant="body1" className={classes.label}>
+        {label}
+      </Typography>
+      <InputBase
+        inputProps={{ "aria-label": "search" }}
+        onChange={handleChange}
+        value={query}
+        {...props}
+        classes={{
+          root: classes.inputRoot,
+          input: classes.input,
+          focused: classes.focused,
+        }}
+      />
+      <IconButton
+        color="primary"
+        onClick={handleSearchClick}
+        size="small"
+        className={classes.button}
+      >
+        <Image src={icon} width={48} height={48} alt="search" />
+      </IconButton>
+      <div className={classes.suggestions}>
+        {suggestions?.length > 0 && (
+          <List classes={{ root: classes.selectMenu }}>
+            {suggestions.map(({ name, code }) => (
+              <ListItem
+                component={Link}
+                variant="subtitle1"
+                underline="none"
+                onClick={() => handleSelect(code, name)}
+                className={classes.menuItem}
               >
-                <Typography variant="body2" className={classes.country}>
-                  {countryName}
-                </Typography>
-              </Link>
-              <ul className={classes.ul}>
-                {items?.map(({ name, url }) => (
-                  <a href={url} key={name} className={classes.link}>
-                    <li className={classes.list}>
-                      <Typography variant="body2" className={classes.name}>
-                        {name}
-                      </Typography>
-                    </li>
-                  </a>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </Select>
-        {open ? (
-          <IconButton
-            size="medium"
-            onClick={handleOpen}
-            aria-label="open"
-            disableRipple
-            disableFocusRipple
-            className={classes.button}
-          >
-            <SvgIcon
-              component={closeIcon}
-              viewBox={viewBoxValue}
-              classes={{
-                root: classes.svgIcon,
-              }}
-            />
-          </IconButton>
-        ) : (
-          <IconButton
-            size="medium"
-            onClick={handleOpen}
-            aria-label="open"
-            disableRipple
-            disableFocusRipple
-            className={classes.button}
-          >
-            <SvgIcon
-              component={openIcon}
-              viewBox={viewBoxValue}
-              classes={{
-                root: classes.svgIcon,
-              }}
-            />
-          </IconButton>
+                {name.toLowerCase()}
+              </ListItem>
+            ))}
+          </List>
         )}
-      </FormControl>
+      </div>
     </div>
   );
 }
 
 DropdownSearch.propTypes = {
-  title: PropTypes.string,
-  placeholder: PropTypes.string,
-  selectId: PropTypes.string,
-  inputBaseId: PropTypes.string,
-  selectLabel: PropTypes.string,
-  inputBaseLabel: PropTypes.string,
-  openIcon: PropTypes.func,
-  closeIcon: PropTypes.func,
+  label: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  menuItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      countryName: PropTypes.string,
-      countryUrl: PropTypes.string,
-      items: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string,
-          url: PropTypes.string,
-        })
-      ),
-    })
-  ),
+  nav: PropTypes.bool,
+  counties: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 DropdownSearch.defaultProps = {
-  title: undefined,
-  placeholder: undefined,
-  href: undefined,
+  label: "Search for a location",
+  href: "/explore",
   onClick: undefined,
-  openIcon: undefined,
-  closeIcon: undefined,
-  selectId: undefined,
-  inputBaseId: undefined,
-  selectLabel: undefined,
-  inputBaseLabel: undefined,
-  menuItems: undefined,
+  nav: false,
+  counties: undefined,
 };
 
 export default DropdownSearch;
