@@ -12,11 +12,17 @@ import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
 import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
 import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
 import DataVisualTwo from "@/pesayetu/assets/images/DataVisualTwo.png";
+import FaithOnkundi from "@/pesayetu/assets/images/Faith-Onkundi.png";
 import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
 import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
+import Jacopo from "@/pesayetu/assets/images/Jacopo.png";
 import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
+import LewisChalo from "@/pesayetu/assets/images/Lewis-Chalo.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
+import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
+import Piero from "@/pesayetu/assets/images/Piero.png";
+import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 
@@ -343,6 +349,43 @@ export const dataVisuals = {
       image: DataVisualThree,
       description:
         "<span class='bold'>Step 3:</span> Browse the charts and download and share the data using the buttons on the right side.",
+    },
+  ],
+};
+
+export const aboutTeam = {
+  title: "The Team",
+  items: [
+    {
+      title: "Tricia Govindasamy",
+      image: Tricia,
+      description:
+        "Senior Data Product Manager at Code for Africa, based in South Africa.",
+    },
+    {
+      title: "Jacopo Ottaviani",
+      image: Jacopo,
+      description: "Chief Data Officer at Code for Africa, based in Italy.",
+    },
+    {
+      title: "Mercy Karagi",
+      image: MercyKaragi,
+      description: "Data Analyst at Code for Africa, based in Kenya.",
+    },
+    {
+      title: "Lewis Chalo",
+      image: LewisChalo,
+      description: "Data Analyst at Code for Africa, based in Kenya.",
+    },
+    {
+      title: "Pierro",
+      image: Piero,
+      description: "UI/UX Designer at Code for Africa, based in South Africa.",
+    },
+    {
+      title: "Faith Onkundi",
+      image: FaithOnkundi,
+      description: "Data Analyst at Code for Africa, based in Kenya.",
     },
   ],
 };
