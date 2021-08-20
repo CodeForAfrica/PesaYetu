@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
@@ -70,6 +71,7 @@ function DropdownSearch({
   ...props
 }) {
   const classes = useStyles(props);
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [countyCode, setCountyCode] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
@@ -99,8 +101,8 @@ function DropdownSearch({
     if (onClickProp) {
       onClickProp(countyCode);
     } else if (hrefProp?.length && countyCode) {
-      // const href = `${hrefProp}/${countyCode}`;
-      // router.push(href) and redirect to explore page
+      const href = `${hrefProp}/${countyCode}`;
+      router.push(href);
     }
   };
 

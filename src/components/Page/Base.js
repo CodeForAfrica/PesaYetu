@@ -23,7 +23,7 @@ function BasePage({ children, menus, ...props }) {
     socialLinks,
     ...menus,
   };
-  console.log(socialLinks);
+
   return (
     <>
       <Navigation {...navigationProps} />
