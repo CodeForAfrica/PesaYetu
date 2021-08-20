@@ -30,6 +30,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   title: {
     paddingTop: typography.pxToRem(16),
   },
+  image: {},
   metrics: {
     padding: `${typography.pxToRem(10)} 0`,
     [breakpoints.up("md")]: {
