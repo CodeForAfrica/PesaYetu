@@ -23,19 +23,29 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   cardMedia: {
     position: "relative",
     "& > div:first-child": {
-      position: "relative",
+      position: "relative !important",
     },
     [breakpoints.up("lg")]: {
       position: "absolute",
       height: typography.pxToRem(415),
       width: typography.pxToRem(768),
       "& > div:first-child": {
-        position: "absolute",
+        position: "absolute !important",
       },
     },
   },
   title: {
     paddingTop: typography.pxToRem(16),
+  },
+  image: {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    [breakpoints.up("md")]: {
+      position: "absolute",
+      height: "100%",
+      width: "100%",
+    },
   },
   description: {
     paddingTop: typography.pxToRem(40),

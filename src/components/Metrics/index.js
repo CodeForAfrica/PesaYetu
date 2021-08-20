@@ -63,6 +63,7 @@ function Metrics({ items, title, ...props }) {
                   root: classes.dataVisualCard,
                   cardMedia: classes.cardMedia,
                   content: classes.content,
+                  image: classes.image,
                 }}
               />
             </Grid>
