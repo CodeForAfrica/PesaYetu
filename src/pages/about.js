@@ -3,6 +3,7 @@ import React from "react";
 
 import Hero from "@/pesayetu/components/AboutHero";
 import AboutTeam from "@/pesayetu/components/AboutTeam";
+import DataIndicators from "@/pesayetu/components/DataIndicators";
 import Page from "@/pesayetu/components/Page";
 import Project from "@/pesayetu/components/Project";
 import Summary from "@/pesayetu/components/Summary";
@@ -15,6 +16,7 @@ export default function About({ blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.aboutHero} />
       <Summary {...blocks?.summary} />
+      <DataIndicators {...blocks.dataIndicators} />
       <AboutTeam {...blocks?.aboutTeam} />
       <Project {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
@@ -25,6 +27,7 @@ export default function About({ blocks, ...props }) {
 About.propTypes = {
   blocks: PropTypes.shape({
     aboutHero: PropTypes.shape({}),
+    dataIndicators: PropTypes.shape({}),
     aboutTeam: PropTypes.shape({}),
     partnersAndNewsletter: PropTypes.shape({}),
     supportingPartners: PropTypes.shape({}),

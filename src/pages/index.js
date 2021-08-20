@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import DataIndicators from "@/pesayetu/components/DataIndicators";
 import DataVisuals from "@/pesayetu/components/DataVisuals";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
@@ -26,6 +27,7 @@ export default function Home({ boundary, blocks, ...props }) {
       <StoriesInsights {...blocks?.insightsStories} />
       <InsightData {...blocks?.dataInsights} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
+      <DataIndicators {...blocks.dataIndicators} />
       <Project {...blocks?.partnersAndNewsletter} />
     </Page>
   );
@@ -41,6 +43,7 @@ Home.propTypes = {
     partnersAndNewsletter: PropTypes.shape({}),
     dataInsights: PropTypes.shape({}),
     dataVisuals: PropTypes.shape({}),
+    dataIndicators: PropTypes.shape({}),
   }),
   footerProps: PropTypes.shape({}),
 };
