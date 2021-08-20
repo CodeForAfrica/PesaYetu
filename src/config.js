@@ -9,8 +9,6 @@ import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
-import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
-import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
 
 const ABOUT = {
   about:
@@ -89,71 +87,30 @@ export const navigationArgs = {
     },
   ],
   selectProps: {
-    title: "Search for location",
-    placeholder: "Abc_",
-    selectId: "select-grouped-id",
-    inputBaseId: "inputbase-grouped-id",
-    selectLabel: "select-grouped-label",
-    inputBaseLabel: "inputbase-grouped-label",
-    openIcon: SearchOpen,
-    closeIcon: SearchClose,
-    menuItems: [
+    label: "Search for location",
+    counties: [
       {
-        countryName: "country 1",
-        countryUrl: "/country-1",
-        items: [
-          {
-            name: "subcounty 1",
-            url: "/subcounty-1",
-          },
-          {
-            name: "subcounty 2",
-            url: "/subcounty-2",
-          },
-          {
-            name: "subcounty 3",
-            url: "/subcounty-3",
-          },
-        ],
+        name: "Nairobi",
+        code: 47,
       },
       {
-        countryName: "country 2",
-        countryUrl: "/country-2",
-        items: [
-          {
-            name: "subcounty 4",
-            url: "/subcounty-4",
-          },
-          {
-            name: "subcounty 5",
-            url: "/subcounty-5",
-          },
-        ],
+        name: "Marsabit",
+        code: 10,
       },
       {
-        countryName: "country 3",
-        countryUrl: "/country-3",
-        items: [
-          {
-            name: "subcounty 6",
-            url: "/subcounty-6",
-          },
-          {
-            name: "subcounty 7",
-            url: "/subcounty-7",
-          },
-        ],
+        name: "Meru",
+        code: 6,
       },
     ],
   },
   socialLinks: [
     {
-      href: "/twitter",
+      href: "https://twitter.com/",
       src: Twitter,
       label: "twitter",
     },
     {
-      href: "/facebook",
+      href: "https://web.facebook.com/?_rdc=1&_rdr",
       src: Facebook,
       label: "facebook",
     },
@@ -191,64 +148,21 @@ export const insightData = {
   ],
 };
 export const searchArgs = {
-  selectProps: {
-    title: "Search for Location",
-    placeholder: "Abc_",
-    selectId: "select-grouped-id",
-    inputBaseId: "inputbase-grouped-id",
-    selectLabel: "select-grouped-label",
-    inputBaseLabel: "inputbase-grouped-label",
-    openIcon: SearchOpen,
-    closeIcon: SearchOpen,
-    menuItems: [
-      {
-        countryName: "country 1",
-        countryUrl: "/country-1",
-        items: [
-          {
-            name: "subcounty 1",
-            url: "/subcounty-1",
-          },
-          {
-            name: "subcounty 2",
-            url: "/subcounty-2",
-          },
-          {
-            name: "subcounty 3",
-            url: "/subcounty-3",
-          },
-        ],
-      },
-      {
-        countryName: "country 2",
-        countryUrl: "/country-2",
-        items: [
-          {
-            name: "subcounty 4",
-            url: "/subcounty-4",
-          },
-          {
-            name: "subcounty 5",
-            url: "/subcounty-5",
-          },
-        ],
-      },
-      {
-        countryName: "country 3",
-        countryUrl: "/country-3",
-        items: [
-          {
-            name: "subcounty 6",
-            url: "/subcounty-6",
-          },
-          {
-            name: "subcounty 7",
-            url: "/subcounty-7",
-          },
-        ],
-      },
-    ],
-  },
+  label: "Search for Location",
+  counties: [
+    {
+      name: "Nairobi",
+      code: 47,
+    },
+    {
+      name: "Marsabit",
+      code: 10,
+    },
+    {
+      name: "Meru",
+      code: 6,
+    },
+  ],
 };
 
 export const insightDataTabStories = {

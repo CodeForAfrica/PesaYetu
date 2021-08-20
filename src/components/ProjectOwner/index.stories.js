@@ -1,34 +1,12 @@
 import React from "react";
 
-import MainPartner from "./MainPartner";
+import ProjectOwner from ".";
 
 export default {
-  title: "Components/MainPartner",
-  argTypes: {
-    title: {
-      control: {
-        type: "text",
-      },
-    },
-    description: {
-      control: {
-        type: "text",
-      },
-    },
-    link: {
-      control: {
-        type: "text",
-      },
-    },
-    logo: {
-      control: {
-        type: "object",
-      },
-    },
-  },
+  title: "Components/ProjectOwner",
 };
 
-const Template = ({ ...args }) => <MainPartner {...args} />;
+const Template = ({ ...args }) => <ProjectOwner {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
