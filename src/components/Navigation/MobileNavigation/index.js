@@ -166,13 +166,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" timeout={1000} ref={ref} {...props} />;
 });
 
-function MobileNavigation({
-  logoProps,
-  menuProps,
-  selectProps,
-  socialLinks,
-  ...props
-}) {
+function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
 
@@ -270,7 +264,6 @@ function MobileNavigation({
                   inputRoot: classes.searchInput,
                 }}
                 nav
-                {...selectProps}
                 {...props}
               />
             </Menu>
@@ -285,13 +278,11 @@ MobileNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
-  selectProps: PropTypes.shape({}),
 };
 
 MobileNavigation.defaultProps = {
   logoProps: undefined,
   menuProps: undefined,
   socialLinks: undefined,
-  selectProps: undefined,
 };
 export default MobileNavigation;
