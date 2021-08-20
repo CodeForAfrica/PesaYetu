@@ -11,11 +11,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   cardRoot: {
     boxShadow: "none",
     backgroundColor: "unset",
-    padding: `0 ${typography.pxToRem(20)}`,
-    [breakpoints.up("md")]: {
-      marginRight: typography.pxToRem(16),
-      padding: 0,
-    },
   },
   cardMedia: {
     height: typography.pxToRem(278),

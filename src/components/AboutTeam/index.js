@@ -49,7 +49,6 @@ const DataVisuals = ({ title, items, ...props }) => {
           {items?.map((item) => (
             <AboutTeamCard
               key={item.image}
-              titleVariant="h5"
               {...item}
               classes={{
                 root: classes.cardRoot,
