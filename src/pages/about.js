@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Hero from "@/pesayetu/components/AboutHero";
+import AboutTeam from "@/pesayetu/components/AboutTeam";
 import Page from "@/pesayetu/components/Page";
 import Project from "@/pesayetu/components/Project";
 import Summary from "@/pesayetu/components/Summary";
@@ -14,6 +15,7 @@ export default function About({ blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.aboutHero} />
       <Summary {...blocks?.summary} />
+      <AboutTeam {...blocks?.aboutTeam} />
       <Project {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
     </Page>
@@ -23,6 +25,7 @@ export default function About({ blocks, ...props }) {
 About.propTypes = {
   blocks: PropTypes.shape({
     aboutHero: PropTypes.shape({}),
+    aboutTeam: PropTypes.shape({}),
     partnersAndNewsletter: PropTypes.shape({}),
     supportingPartners: PropTypes.shape({}),
     summary: PropTypes.shape({}),

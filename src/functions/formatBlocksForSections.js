@@ -114,6 +114,7 @@ function format(block) {
     case "lazyblock/explore-other-tools":
     case "lazyblock/data-visuals":
     case "lazyblock/data-insights":
+    case "lazyblock/about-team":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/partners-and-newsletter":
       return formatPartners(block);
