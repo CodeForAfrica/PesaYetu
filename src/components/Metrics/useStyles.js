@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       height: typography.pxToRem(480),
     },
   },
-  dataVisualCard: {
+  card: {
     height: "100%",
     width: "100%",
     maxWidth: "350px",
