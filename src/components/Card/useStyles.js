@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
     padding: 0,
   },
   image: {
-    objectFit: "contain",
+    // objectFit: "contain",
   },
 }));
 

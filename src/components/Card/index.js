@@ -31,8 +31,7 @@ const Card = ({ href, children, image, chart, variant, ...props }) => {
                 <Image
                   src={visual}
                   layout="fill"
-                  className={classes.image}
-                  objectFit="cover"
+                  classes={{ image: classes.image }}
                 />
               </div>
             ) : (
