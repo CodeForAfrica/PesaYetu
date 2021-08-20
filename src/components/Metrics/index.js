@@ -34,12 +34,7 @@ function Metrics({ items, title, ...props }) {
           >
             <Grid item xs={12} md={5} lg={3}>
               <Grid container item direction="row" alignItems="center">
-                <IconButton
-                  disableRipple
-                  disableFocusRipple
-                  color="primary"
-                  size="small"
-                >
+                <IconButton color="primary" size="small">
                   <Image src={item.icon} width={44} height={44} />
                 </IconButton>
                 <RichTypography variant="h4" className={classes.title}>
