@@ -19,16 +19,19 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   dataVisualCard: {
     height: "100%",
     width: "100%",
+    maxWidth: "350px",
   },
   cardMedia: {
     position: "relative",
     height: typography.pxToRem(189),
     width: typography.pxToRem(350),
     [breakpoints.up("md")]: {
+      position: "absolute",
       height: typography.pxToRem(189),
       width: typography.pxToRem(350),
     },
     [breakpoints.up("lg")]: {
+      position: "absolute",
       height: typography.pxToRem(415),
       width: typography.pxToRem(768),
     },
