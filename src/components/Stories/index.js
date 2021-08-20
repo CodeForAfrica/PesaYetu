@@ -10,7 +10,6 @@ import CarouselItem from "./CarouselItem";
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
-import Section from "@/pesayetu/components/Section";
 import fetchAPI from "@/pesayetu/utils/fetchApi";
 import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
 
@@ -37,7 +36,7 @@ const responsive = {
 function Stories({
   featuredStoryProps,
   items,
-  activeCategory,
+  category,
   pagination,
   ...props
 }) {
@@ -61,9 +60,7 @@ function Stories({
     allStories.length - nextItemIndex * itemsToShow <= itemsToShow;
 
   const { data: moreStoriesProps } = useSWR(
-    fetchMore
-      ? ["/api/wp/archive", activeCategory, paginator?.endCursor]
-      : null,
+    fetchMore ? ["/api/wp/archive", category, paginator?.endCursor] : null,
     (url, taxonomyId, cursor) =>
       fetchAPI(`${url}/?taxonomyId=${taxonomyId}&cursor=${cursor}`)
   );
@@ -82,34 +79,28 @@ function Stories({
 
   return (
     <div className={classes.root}>
-      <Section classes={{ root: classes.section }}>
-        <FeaturedStoryCard {...featuredStoryProps} variant={activeCategory} />
-        <Carousel
-          swipeable
-          responsive={responsive}
-          arrows={false}
-          renderDotsOutside
-          showDots
-          dotListClass={classes.dots}
-          beforeChange={(nextSlide) => {
-            setNextItemIndex(nextSlide);
-          }}
-        >
-          {carouselItems.map((ci) => (
-            <CarouselItem
-              items={ci}
-              activeCategory={activeCategory}
-              key={ci[0].slug}
-            />
-          ))}
-        </Carousel>
-      </Section>
+      <FeaturedStoryCard {...featuredStoryProps} variant={category} />
+      <Carousel
+        swipeable
+        responsive={responsive}
+        arrows={false}
+        renderDotsOutside
+        showDots
+        dotListClass={classes.dots}
+        beforeChange={(nextSlide) => {
+          setNextItemIndex(nextSlide);
+        }}
+      >
+        {carouselItems.map((ci) => (
+          <CarouselItem items={ci} category={category} key={ci[0].slug} />
+        ))}
+      </Carousel>
     </div>
   );
 }
 
 Stories.propTypes = {
-  activeCategory: PropTypes.string,
+  category: PropTypes.string,
   featuredStoryProps: PropTypes.shape({}),
   items: PropTypes.arrayOf(PropTypes.shape({})),
   pagination: PropTypes.shape({
@@ -118,7 +109,7 @@ Stories.propTypes = {
 };
 
 Stories.defaultProps = {
-  activeCategory: undefined,
+  category: undefined,
   featuredStoryProps: undefined,
   items: undefined,
   pagination: undefined,
