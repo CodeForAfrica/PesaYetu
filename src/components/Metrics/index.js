@@ -60,7 +60,7 @@ function Metrics({ items, title, ...props }) {
               <DataVisualCard
                 {...item.dataVisualProps}
                 classes={{
-                  root: classes.dataVisualCard,
+                  root: classes.card,
                   cardMedia: classes.cardMedia,
                   content: classes.content,
                   image: classes.image,

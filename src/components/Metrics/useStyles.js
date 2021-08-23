@@ -17,21 +17,19 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   card: {
-    height: "100%",
     width: "100%",
-    maxWidth: "350px",
+    maxWidth: typography.pxToRem(215),
+    height: "100%",
   },
   cardMedia: {
     position: "relative",
-    height: typography.pxToRem(189),
+    height: typography.pxToRem(215),
     width: typography.pxToRem(350),
     [breakpoints.up("md")]: {
-      position: "absolute",
-      height: typography.pxToRem(189),
+      height: typography.pxToRem(215),
       width: typography.pxToRem(350),
     },
     [breakpoints.up("lg")]: {
-      position: "absolute",
       height: typography.pxToRem(415),
       width: typography.pxToRem(768),
     },
