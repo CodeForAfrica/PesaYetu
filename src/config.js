@@ -362,6 +362,42 @@ export const exploreTools = {
     },
   ],
 };
+export const documentsArg = {
+  items: [
+    {
+      date: 2021,
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      date: 2021,
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      date: 2021,
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      date: 2021,
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      date: 2021,
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      date: 2021,
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+  ],
+};
 
 export const dataVisuals = {
   title: "Visualise data for each county and municipality",
