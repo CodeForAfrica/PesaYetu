@@ -1,4 +1,3 @@
-
 import richDataIcon from "@/pesayetu/assets/Component121.svg";
 import pinIcon from "@/pesayetu/assets/Component122.svg";
 import Group4646 from "@/pesayetu/assets/icons/Group 4646-white.svg";
@@ -23,12 +22,11 @@ import Jacopo from "@/pesayetu/assets/images/Jacopo.png";
 import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
 import LewisChalo from "@/pesayetu/assets/images/Lewis-Chalo.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
-import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
-import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
 import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
 import Piero from "@/pesayetu/assets/images/Piero.png";
 import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
-
+import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
+import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 

@@ -227,7 +227,6 @@ deepmerge(
         "&:hover": {
           backgroundColor: "transparent",
           textDecoration: "none !important",
-          backgroundColor: "inherit",
         },
       },
       contained: {},

@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import Metrics from "@/pesayetu/components/Metrics";
+
 import AboutProject from "@/pesayetu/components/AboutProject";
+import Metrics from "@/pesayetu/components/Metrics";
 import Hero from "@/pesayetu/components/OtherHero";
 import OurCourses from "@/pesayetu/components/OurCourses";
 import Page from "@/pesayetu/components/Page";

@@ -40,7 +40,7 @@ function formatLazyBlockIteratorContentWithImages(
     }) || null;
   return { ...rest, items };
 }
- 
+
 function formatDataIndicators({ items: itemsProps, ...rest }) {
   const items =
     JSON.parse(decodeURIComponent(itemsProps)).map((item) => {
