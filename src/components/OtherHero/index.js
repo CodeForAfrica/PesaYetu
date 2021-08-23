@@ -7,6 +7,7 @@ import React from "react";
 import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
+import useProgressiveImage from "@/pesayetu/utils/useProgressiveImage";
 
 const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   root: {
@@ -64,6 +65,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundImage: ({ image }) => `url("${image}")`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     position: "absolute",
   },
   rightBackgroundWrapper: {
@@ -98,13 +102,14 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
 
 function OtherHero({
   accentImage,
-  image,
+  image: imageProps,
   overline,
   subtitle,
   title,
   ...props
 }) {
-  const classes = useStyles(props);
+  const image = useProgressiveImage(imageProps);
+  const classes = useStyles({ image, ...props });
 
   if (!title?.length) {
     return null;
@@ -120,7 +125,6 @@ function OtherHero({
           <Grid item xs={12} md={6}>
             <div className={classes.rightBackgroundWrapper}>
               <div className={classes.rightBackground}>
-                <Image objectFit="cover" src={image} layout="fill" />
                 <Image
                   width={400}
                   height={400}

@@ -1,9 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {},
   card: {
-    color: "#000",
     boxShadow: "none",
     backgroundColor: "unset",
     width: "100%",
@@ -28,6 +27,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   cardDescription: {
     marginBottom: typography.pxToRem(20),
+    color: palette.text.primary,
   },
   cardMedia: {
     height: typography.pxToRem(215),

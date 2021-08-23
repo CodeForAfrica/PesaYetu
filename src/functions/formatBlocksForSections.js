@@ -40,6 +40,18 @@ function formatLazyBlockIteratorContentWithImages(
     }) || null;
   return { ...rest, items };
 }
+ 
+function formatDataIndicators({ items: itemsProps, ...rest }) {
+  const items =
+    JSON.parse(decodeURIComponent(itemsProps)).map((item) => {
+      return {
+        ...item,
+        image: item?.image?.url ?? null,
+        hover: item?.hover?.url ?? null,
+      };
+    }) || null;
+  return { ...rest, items };
+}
 
 function formatPartnersBlock(block) {
   const { attributes, name } = block;
@@ -131,7 +143,9 @@ function format(block) {
       return formatFeaturedStories(attributes);
     case "lazyblock/explore-other-tools":
     case "lazyblock/data-visuals":
+    case "lazyblock/our-courses":
     case "lazyblock/data-insights":
+    case "lazyblock/about-team":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/partners-and-newsletter":
       return formatPartners(block);
@@ -150,6 +164,8 @@ function format(block) {
         ...attributes,
         socialLinks: JSON.parse(decodeURIComponent(attributes.socialLinks)),
       };
+    case "lazyblock/data-indicators":
+      return formatDataIndicators(attributes);
     case "lazyblock/hero":
     case "lazyblock/about-hero":
     case "lazyblock/how-it-works":

@@ -1,4 +1,5 @@
 import { Tab, Divider, Tabs as MuiTabs } from "@material-ui/core";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -13,9 +14,10 @@ function a11yProps(name, index) {
   };
 }
 
-function Tabs({ name: nameProp, items, ...props }) {
+function Tabs({ name: nameProp, items, activeTab, ...props }) {
+  const router = useRouter();
   const classes = useStyles(props);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(activeTab);
   const name = nameProp || "simple";
 
   const handleChange = (_event, newValue) => {
@@ -36,10 +38,18 @@ function Tabs({ name: nameProp, items, ...props }) {
           indicator: classes.indicator,
         }}
       >
-        {items.map((item, index) => (
+        {items.map(({ label, href }, index) => (
           <Tab
-            key={item.label}
-            label={item.label}
+            key={label}
+            label={label}
+            onClick={
+              href
+                ? (e) => {
+                    e.preventDefault();
+                    router.push(href, href, { shallow: true });
+                  }
+                : null
+            }
             {...a11yProps(name, index)}
             disableRipple
             classes={{
@@ -63,6 +73,7 @@ function Tabs({ name: nameProp, items, ...props }) {
 
 Tabs.propTypes = {
   name: PropTypes.string,
+  activeTab: PropTypes.number,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -74,6 +85,7 @@ Tabs.propTypes = {
 Tabs.defaultProps = {
   name: undefined,
   items: undefined,
+  activeTab: 0,
 };
 
 export default Tabs;
