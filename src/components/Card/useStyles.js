@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
     padding: 0,
   },
   image: {
-    objectFit: "contain !importnant",
+    objectFit: "contain !important",
   },
 }));
 
