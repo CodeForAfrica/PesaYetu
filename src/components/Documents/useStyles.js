@@ -8,6 +8,14 @@ const useStyles = makeStyles(() => ({
     border: "1px solid #DFDFDF",
     opacity: 1,
   },
+  text: {
+    fontWeight: "500",
+    color: "#212529",
+  },
+  link: {
+    fontWeight: "600",
+    color: "#0067A3",
+  },
 }));
 
 export default useStyles;
