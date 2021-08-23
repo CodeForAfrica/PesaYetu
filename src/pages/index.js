@@ -25,10 +25,10 @@ export default function Home({ boundary, blocks, ...props }) {
       <HowItWorks {...blocks?.howItWorks} />
       <DataVisuals {...blocks?.dataVisuals} />
       <StoriesInsights {...blocks?.insightsStories} />
-      <InsightData {...blocks?.dataInsights} />
-      <ExploreOtherTools {...blocks?.exploreOtherTools} />
       <DataIndicators {...blocks.dataIndicators} />
+      <InsightData {...blocks?.dataInsights} />
       <Project {...blocks?.partnersAndNewsletter} />
+      <ExploreOtherTools {...blocks?.exploreOtherTools} />
     </Page>
   );
 }
