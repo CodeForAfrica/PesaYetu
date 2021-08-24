@@ -4,7 +4,7 @@ import React from "react";
 import Hero from ".";
 
 import accentImage from "@/pesayetu/assets/images/Group 4780.svg";
-import image from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
+import image from "@/pesayetu/assets/images/sat-mtKenya-2@2x.jpg";
 
 export default {
   title: "Sections/OtherHero",

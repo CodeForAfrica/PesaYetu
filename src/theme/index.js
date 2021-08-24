@@ -4,7 +4,18 @@ import { deepmerge } from "@material-ui/utils";
 import chevronrightDark from "@/pesayetu/assets/icons/Group 997-dark.svg";
 import chevronright from "@/pesayetu/assets/icons/Group 997.svg";
 
-const FONT_FAMILY_TEXT = '"Poppins", "sans-serif"';
+const FONT_FAMILY = '"Poppins", "sans-serif"';
+
+const buildVariant = (
+  fontWeight,
+  letterSpacing = 0,
+  textTransform = "none"
+) => ({
+  fontFamily: FONT_FAMILY,
+  fontWeight,
+  letterSpacing,
+  textTransform,
+});
 
 const theme = createTheme({
   breakpoints: {
@@ -40,23 +51,56 @@ const theme = createTheme({
     },
     divider: "#F0F0F0",
   },
-  typography: {
-    fontFamily: FONT_FAMILY_TEXT,
-    h1: {
-      fontWeight: 900,
+  props: {
+    MuiButtonBase: {
+      // Disable ripple effect globally
+      disableRipple: true,
+      disableTouchRipple: true,
     },
-    h2: {},
-    h3: {},
-    h4: {},
-    h5: {},
-    hd: {},
-    body1: {},
-    body2: {},
+  },
+
+  // Font weights:
+  // see: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+  // 300 	Light
+  // 400 	Normal
+  // 500 	Medium
+  // 600 	Semi Bold
+  // 700 	Bold
+  // 900 	Black
+  typography: {
+    fontFamily: FONT_FAMILY,
+    // e.g. Homepage, Hero
+    h1: buildVariant(900),
+    // e.g. Stories page, Featured Insight
+    h2: buildVariant(300),
+    // e.g. How it works, Our metrics
+    h3: buildVariant(600),
+    // e.g. Homepage, our Partners
+    h4: buildVariant(900, 0.4, "uppercase"),
+    // e.g. Homepage, Insights, Isiolo v Samburu Voter registration discrepancy
+    h5: buildVariant(500),
+    h6: {
+      fontFamily: FONT_FAMILY,
+    },
     subtitle1: {
+      fontFamily: FONT_FAMILY,
       fontWeight: 500,
     },
-    subtitle2: {},
+    subtitle2: {
+      fontFamily: FONT_FAMILY,
+    },
+    body1: {
+      fontFamily: FONT_FAMILY,
+    },
+    body2: {
+      fontFamily: FONT_FAMILY,
+    },
+    button: buildVariant(600),
+    caption: {
+      fontFamily: FONT_FAMILY,
+    },
     overline: {
+      fontFamily: FONT_FAMILY,
       fontWeight: 700,
       textTransform: "uppercase",
     },
@@ -75,66 +119,53 @@ const { pxToRem } = typography;
 deepmerge(
   typography,
   {
+    // H0
     h1: {
+      color: palette.grey.dark,
       fontSize: pxToRem(30),
-      lineHeight: 40 / 30, // font 30 H0m
+      lineHeight: 40 / 30,
+      padding: `${pxToRem(1.5)} 0`, // 43 - 40
       [breakpoints.up("lg")]: {
         fontSize: pxToRem(48),
-        lineHeight: 58 / 48, // font 48 H0
+        lineHeight: 58 / 48,
         padding: `${pxToRem(4.5)} 0`, // 67 - 58
       },
     },
+    // H1
     h2: {
-      fontSize: pxToRem(38),
-      lineHeight: 48 / 38,
-      [breakpoints.up("lg")]: {
-        fontSize: pxToRem(48),
-        lineHeight: 58 / 48, // font 48 H1
-      },
+      color: palette.text.hint,
+      fontSize: pxToRem(50),
+      lineHeight: 66 / 50,
+      margin: `${pxToRem(2.5)} 0`, // 71 - 66
     },
+    // H2
     h3: {
-      fontSize: pxToRem(24),
-      lineHeight: 40 / 24,
-      [breakpoints.up("lg")]: {
-        fontSize: pxToRem(30),
-        lineHeight: 48 / 30, // font 30 H2
-      },
+      color: "#212529",
+      fontSize: pxToRem(30),
+      lineHeight: 48 / 30,
+      margin: `${pxToRem(-2.5)} 0`, // 91 - 96
     },
+    // H3
     h4: {
+      color: palette.grey.dark,
       fontSize: pxToRem(20),
       lineHeight: 30 / 20,
-      [breakpoints.up("lg")]: {
-        fontSize: pxToRem(20),
-        lineHeight: 30 / 20, // font 20 H4
-      },
+      margin: `${pxToRem(-1)} 0`, // 28 - 30
     },
+    // H4
     h5: {
+      color: "#212529",
+      fontSize: pxToRem(20),
+      lineHeight: 30 / 20,
+      margin: `${pxToRem(-1)} 0`, // 28 - 30
+    },
+    h6: {
       fontSize: pxToRem(18),
       lineHeight: 27 / 18,
       [breakpoints.up("lg")]: {
         fontSize: pxToRem(18),
-        lineHeight: 27 / 18, // font 18 H5
+        lineHeight: 27 / 18,
       },
-    },
-    h6: {
-      fontSize: pxToRem(16),
-      lineHeight: 30 / 16,
-      [breakpoints.up("lg")]: {
-        fontSize: pxToRem(16),
-        lineHeight: 30 / 16, // font 18 body1
-      },
-    },
-    body1: {
-      fontSize: pxToRem(16),
-      lineHeight: 25 / 16,
-      [breakpoints.up("lg")]: {
-        fontSize: pxToRem(16),
-        lineHeight: 25 / 16, // font 18 body1
-      },
-    },
-    body2: {
-      fontSize: pxToRem(14),
-      lineHeight: 24 / 14, // font body2 P2
     },
     subtitle1: {
       fontSize: pxToRem(16),
@@ -152,6 +183,23 @@ deepmerge(
         lineHeight: 18 / 14, // font 14 subtitle2
       },
     },
+    body1: {
+      fontSize: pxToRem(16),
+      lineHeight: 25 / 16,
+      [breakpoints.up("lg")]: {
+        fontSize: pxToRem(16),
+        lineHeight: 25 / 16, // font 18 body1
+      },
+    },
+    body2: {
+      fontSize: pxToRem(14),
+      lineHeight: 24 / 14, // font body2 P2
+    },
+    button: {
+      fontSize: pxToRem(16),
+      lineHeight: 24 / 16,
+      margin: `${pxToRem(-0.5)} 0`, // 23 - 24
+    },
     caption: {
       fontSize: pxToRem(12),
       lineHeight: 18 / 12,
@@ -161,8 +209,10 @@ deepmerge(
       },
     },
     overline: {
+      color: palette.text.hint,
       fontSize: pxToRem(14),
       lineHeight: 21 / 14,
+      margin: `${pxToRem(-0.5)} 0`, // 21 - 20
     },
   },
   { clone: false }
@@ -173,7 +223,13 @@ deepmerge(
   overrides,
   {
     MuiButton: {
-      root: {},
+      root: {
+        textDecoration: "none !important",
+        "&:hover": {
+          textDecoration: "none !important",
+          backgroundColor: "inherit",
+        },
+      },
       contained: {},
       containedPrimary: {
         color: palette.background.default,
@@ -199,7 +255,7 @@ deepmerge(
           borderRadius: pxToRem(50),
           letterspacing: "1.6px",
           textAlign: "center",
-          border: "3px solid #0067A3",
+          border: `3px solid ${palette.primary.main}`,
           textTransform: "uppercase",
           transition: "none !important",
           "&:hover, &:focus, &:focus-within": {
@@ -230,13 +286,15 @@ deepmerge(
           width: 0,
         },
       },
+      MuiButtonBase: {
+        "&:hover": {
+          backgroundColor: "unset",
+        },
+      },
       text: {
         color: palette.primary.main,
         padding: 0,
         textTransform: "none",
-        fontWeight: "bold",
-        fontSize: pxToRem(16),
-        lineHeight: 23 / 16,
         "&:hover": {
           color: palette.grey.dark,
           backgroundColor: "transparent",
@@ -249,7 +307,7 @@ deepmerge(
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           marginLeft: pxToRem(20),
-          height: pxToRem(20), // Must equal button line-height
+          height: pxToRem(23), // Must equal button line-height
           width: pxToRem(30),
         },
         "&:hover::after": {
@@ -259,12 +317,21 @@ deepmerge(
           backgroundRepeat: "no-repeat",
           transition: "margin 0.3s ease",
           marginLeft: pxToRem(10),
-          height: pxToRem(20), // Must equal button line-height
+          height: pxToRem(23), // Must equal button line-height
           width: pxToRem(30),
+        },
+      },
+    },
+    MuiIconButton: {
+      root: {
+        borderRadius: 0,
+        "&:hover": {
+          backgroundColor: "inherit",
         },
       },
     },
   }, // overides settings goes here
   { clone: false }
 );
+
 export default theme;

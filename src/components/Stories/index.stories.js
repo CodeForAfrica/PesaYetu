@@ -6,7 +6,7 @@ import cardImage from "@/pesayetu/assets/images/stephen-dawson-qwtCeJ5cLYs-unspl
 import { newsStories } from "@/pesayetu/config";
 
 export default {
-  title: "Sections/Stories",
+  title: "Components/Stories",
   argTypes: {
     featuredStoryProps: {
       control: {

@@ -1,8 +1,10 @@
+import { RichTypography } from "@commons-ui/core";
 import {
   CardActionArea,
   CardContent,
   Card as MuiCard,
 } from "@material-ui/core";
+import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -11,11 +13,11 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-const Card = ({ href, children, image, ...props }) => {
+const Card = ({ href, children, image, chart, variant, ...props }) => {
   const classes = useStyles(props);
-
+  const visual = variant === "news" ? image : chart;
   return (
-    <MuiCard className={classes.root}>
+    <MuiCard classes={{ root: classes.root }}>
       {href ? (
         <CardActionArea
           component={href ? Link : undefined}
@@ -24,25 +26,50 @@ const Card = ({ href, children, image, ...props }) => {
           underline="none"
           {...props}
           classes={{
-            root: classes.actionArea,
+            root: classes.cardActionRoot,
             focusHighlight: classes.focusHighlight,
+            focusVisible: classes.focusVisible,
           }}
         >
-          <CardContent className={classes.content}>
-            {image && (
+          <CardContent classes={{ root: classes.content }}>
+            {visual && variant === "news" ? (
               <div className={classes.cardMedia}>
-                <Image src={image} layout="fill" className={classes.image} />
+                <Image
+                  src={visual}
+                  layout="fill"
+                  className={classes.image}
+                  objectFit="cover"
+                />
               </div>
+            ) : (
+              <RichTypography
+                className={clsx(classes.cardMedia, classes.insightViz)}
+                component="div"
+              >
+                {visual}
+              </RichTypography>
             )}
             {children}
           </CardContent>
         </CardActionArea>
       ) : (
-        <CardContent className={classes.content}>
-          {image && (
+        <CardContent classes={{ root: classes.content }}>
+          {visual && variant === "news" ? (
             <div className={classes.cardMedia}>
-              <Image src={image} layout="fill" className={classes.image} />
+              <Image
+                src={visual}
+                layout="fill"
+                className={classes.image}
+                objectFit="cover"
+              />
             </div>
+          ) : (
+            <RichTypography
+              className={clsx(classes.cardMedia, classes.insightViz)}
+              component="div"
+            >
+              {visual}
+            </RichTypography>
           )}
           {children}
         </CardContent>
@@ -54,12 +81,16 @@ const Card = ({ href, children, image, ...props }) => {
 Card.propTypes = {
   href: PropTypes.string,
   image: PropTypes.string,
+  chart: PropTypes.string,
   children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(["insights", "news"]),
 };
 
 Card.defaultProps = {
   href: undefined,
   image: undefined,
+  chart: undefined,
+  variant: "news",
 };
 
 export default Card;

@@ -1,17 +1,22 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
-  root: { backgroundColor: "white" },
+  root: {
+    marginBottom: typography.pxToRem(80),
+    backgroundColor: "white"
+  },
   carouselItem: {
-    margin: `${typography.pxToRem(40)} 0`,
-    [breakpoints.up("md")]: {
-      margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(100)}`,
+    margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(10)}`,
+    [breakpoints.up("lg")]: {
+      margin: `${typography.pxToRem(60)} 0`,
     },
   },
   featuredCardImage: {},
   cardMedia: {},
   story: {
-    marginTop: `${typography.pxToRem(40)}`,
+    [breakpoints.up("md")]: {
+      marginBottom: typography.pxToRem(40),
+    },
   },
   dots: {
     margin: `0 ${typography.pxToRem(30)}`,

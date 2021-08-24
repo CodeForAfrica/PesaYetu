@@ -1,19 +1,75 @@
+
 import Group4089 from "@/pesayetu/assets/Group4089.svg";
 import Group4136 from "@/pesayetu/assets/Group4136.svg";
 import Group852 from "@/pesayetu/assets/Group852.svg";
+import Group4646 from "@/pesayetu/assets/icons/Group 4646-white.svg";
+import developmentHover from "@/pesayetu/assets/icons/Group 4646.svg";
+import Group4656 from "@/pesayetu/assets/icons/Group 4656-white.svg";
+import revenueHover from "@/pesayetu/assets/icons/Group 4656.svg";
+import Group4657 from "@/pesayetu/assets/icons/Group 4657-white.svg";
+import overviewHover from "@/pesayetu/assets/icons/Group 4657.svg";
+import Group4658 from "@/pesayetu/assets/icons/Group 4658-white.svg";
+import summaryHover from "@/pesayetu/assets/icons/Group 4658.svg";
+import Group4659 from "@/pesayetu/assets/icons/Group 4659-white.svg";
+import implementHover from "@/pesayetu/assets/icons/Group 4659.svg";
 import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
 import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
 import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
 import DataVisualTwo from "@/pesayetu/assets/images/DataVisualTwo.png";
+import FaithOnkundi from "@/pesayetu/assets/images/Faith-Onkundi.png";
 import Group3964 from "@/pesayetu/assets/images/Group 3964@2x.png";
 import Group3973 from "@/pesayetu/assets/images/Group 3973@2x.png";
 import Group4619 from "@/pesayetu/assets/images/Group 4619@2x.png";
+import Jacopo from "@/pesayetu/assets/images/Jacopo.png";
 import unsplashTwo from "@/pesayetu/assets/images/josh-sorenson-unsplash.png";
+import LewisChalo from "@/pesayetu/assets/images/Lewis-Chalo.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
+import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
+import Piero from "@/pesayetu/assets/images/Piero.png";
+import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
-import { ReactComponent as SearchClose } from "@/pesayetu/assets/search-close.svg";
-import { ReactComponent as SearchOpen } from "@/pesayetu/assets/search-open.svg";
+
+export const dataIndicator = {
+  title: "Data <span class='highlight'>Indicators</span>",
+  items: [
+    {
+      title: "Overview",
+      image: Group4657,
+      hover: overviewHover,
+      description:
+        "<p class='paragraph'>This includes general county data.</p> Topics include administrative and political units, population size and composition, land use, tourism and wildlife, industry and trade, finance, and education.",
+    },
+    {
+      title: "Revenue",
+      image: Group4656,
+      hover: revenueHover,
+      description:
+        "<p>This looks at the review of the implementation of the previous County Integrated Development Plan for the period of 2014 to 2017.</p> Datasets include county revenue streams and expenditure analysis.",
+    },
+    {
+      title: "Development",
+      image: Group4646,
+      hover: developmentHover,
+      description:
+        "<p>This highlights the county development priorities and strategies.</p> It looks at the programmes and associated budgets the county has proposed for the period 2018 to 2022.",
+    },
+    {
+      title: "Implement",
+      image: Group4659,
+      hover: implementHover,
+      description:
+        "<p>This showcases the implementation framework for the county as published in the County Integrated Development Plan.</p> It covers the resource mobilisation framework on the proposed and predicted revenue and expenditure.",
+    },
+    {
+      title: "Summary",
+      image: Group4658,
+      hover: summaryHover,
+      description:
+        "<p>The summary takes a look at the monitoring and evaluation framework as published in the County Integrated Development Plan.</p> This includes the outcome indicators for each of the sector plans proposed.",
+    },
+  ],
+};
 
 const ABOUT = {
   about:
@@ -160,7 +216,7 @@ export const navigationArgs = {
       label: "DATA",
     },
     {
-      href: "/stories",
+      href: "/stories/news",
       label: "STORIES",
     },
     {
@@ -169,76 +225,66 @@ export const navigationArgs = {
     },
   ],
   selectProps: {
-    title: "Search for location",
-    placeholder: "Abc_",
-    selectId: "select-grouped-id",
-    inputBaseId: "inputbase-grouped-id",
-    selectLabel: "select-grouped-label",
-    inputBaseLabel: "inputbase-grouped-label",
-    openIcon: SearchOpen,
-    closeIcon: SearchClose,
-    menuItems: [
+    label: "Search for location",
+    counties: [
       {
-        countryName: "country 1",
-        countryUrl: "/country-1",
-        items: [
-          {
-            name: "subcounty 1",
-            url: "/subcounty-1",
-          },
-          {
-            name: "subcounty 2",
-            url: "/subcounty-2",
-          },
-          {
-            name: "subcounty 3",
-            url: "/subcounty-3",
-          },
-        ],
+        name: "Nairobi",
+        code: 47,
       },
       {
-        countryName: "country 2",
-        countryUrl: "/country-2",
-        items: [
-          {
-            name: "subcounty 4",
-            url: "/subcounty-4",
-          },
-          {
-            name: "subcounty 5",
-            url: "/subcounty-5",
-          },
-        ],
+        name: "Marsabit",
+        code: 10,
       },
       {
-        countryName: "country 3",
-        countryUrl: "/country-3",
-        items: [
-          {
-            name: "subcounty 6",
-            url: "/subcounty-6",
-          },
-          {
-            name: "subcounty 7",
-            url: "/subcounty-7",
-          },
-        ],
+        name: "Meru",
+        code: 6,
       },
     ],
   },
   socialLinks: [
     {
-      href: "/twitter",
+      href: "https://twitter.com/",
       src: Twitter,
       label: "twitter",
     },
     {
-      href: "/facebook",
+      href: "https://web.facebook.com/?_rdc=1&_rdr",
       src: Facebook,
       label: "facebook",
     },
   ],
 };
+
+export const ourCourses = {
+  title: "Our Courses",
+  items: [
+    {
+      image: unsplashTwo,
+      title: "Data Visualization",
+      description:
+        "Learn the basics and all the tips and tricks needed to excel in data visualisation with this free, online course.",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      image: unsplashTwo,
+      title: "Reporting on Human Trafficking",
+      description:
+        "Want to make a difference? This course will introduce you to the fundamentals of reporting on human trafficking.",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/reporting-on-human-trafficking/",
+    },
+    {
+      image: unsplashTwo,
+      title: "Reporting on Endemic Problems",
+      description:
+        "From this course you’ll learn everything you need to know about using solutions journalism to report on endemic problems.",
+      ctaText: "Read More",
+      href: "https://courses.academy.africa/courses/reporting-endemic-problems-solutions-journalism/",
+    },
+  ],
+};
+
 export const insightData = {
   overline: "Stories",
   title: "Data-driven <span class='highlight'>Insights</span>",
@@ -248,7 +294,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -256,7 +302,7 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -265,70 +311,27 @@ export const insightData = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
   ],
 };
 export const searchArgs = {
-  selectProps: {
-    title: "Search for Location",
-    placeholder: "Abc_",
-    selectId: "select-grouped-id",
-    inputBaseId: "inputbase-grouped-id",
-    selectLabel: "select-grouped-label",
-    inputBaseLabel: "inputbase-grouped-label",
-    openIcon: SearchOpen,
-    closeIcon: SearchOpen,
-    menuItems: [
-      {
-        countryName: "country 1",
-        countryUrl: "/country-1",
-        items: [
-          {
-            name: "subcounty 1",
-            url: "/subcounty-1",
-          },
-          {
-            name: "subcounty 2",
-            url: "/subcounty-2",
-          },
-          {
-            name: "subcounty 3",
-            url: "/subcounty-3",
-          },
-        ],
-      },
-      {
-        countryName: "country 2",
-        countryUrl: "/country-2",
-        items: [
-          {
-            name: "subcounty 4",
-            url: "/subcounty-4",
-          },
-          {
-            name: "subcounty 5",
-            url: "/subcounty-5",
-          },
-        ],
-      },
-      {
-        countryName: "country 3",
-        countryUrl: "/country-3",
-        items: [
-          {
-            name: "subcounty 6",
-            url: "/subcounty-6",
-          },
-          {
-            name: "subcounty 7",
-            url: "/subcounty-7",
-          },
-        ],
-      },
-    ],
-  },
+  label: "Search for Location",
+  counties: [
+    {
+      name: "Nairobi",
+      code: 47,
+    },
+    {
+      name: "Marsabit",
+      code: 10,
+    },
+    {
+      name: "Meru",
+      code: 6,
+    },
+  ],
 };
 
 export const newsStories = {
@@ -338,7 +341,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -346,7 +349,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -355,7 +358,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -363,7 +366,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -371,7 +374,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -380,7 +383,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -388,7 +391,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashOne,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
     {
@@ -396,7 +399,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashTwo,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
 
@@ -405,7 +408,7 @@ export const newsStories = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit, magnis mus etiam nam lectus lobortis varius ultrices, donec dapibus dui felis est penatibus.",
       image: unsplashThree,
-      linkdescription: "Read More",
+      ctaText: "Read More",
       href: "www.test.com",
     },
   ],
@@ -458,6 +461,43 @@ export const dataVisuals = {
       image: DataVisualThree,
       description:
         "<span class='bold'>Step 3:</span> Browse the charts and download and share the data using the buttons on the right side.",
+    },
+  ],
+};
+
+export const aboutTeam = {
+  title: "The Team",
+  items: [
+    {
+      title: "Tricia Govindasamy",
+      image: Tricia,
+      description:
+        "Senior Data Product Manager at Code for Africa, based in South Africa.",
+    },
+    {
+      title: "Jacopo Ottaviani",
+      image: Jacopo,
+      description: "Chief Data Officer at Code for Africa, based in Italy.",
+    },
+    {
+      title: "Mercy Karagi",
+      image: MercyKaragi,
+      description: "Data Analyst at Code for Africa, based in Kenya.",
+    },
+    {
+      title: "Lewis Chalo",
+      image: LewisChalo,
+      description: "Data Analyst at Code for Africa, based in Kenya.",
+    },
+    {
+      title: "Pierro",
+      image: Piero,
+      description: "UI/UX Designer at Code for Africa, based in South Africa.",
+    },
+    {
+      title: "Faith Onkundi",
+      image: FaithOnkundi,
+      description: "Data Analyst at Code for Africa, based in Kenya.",
     },
   ],
 };

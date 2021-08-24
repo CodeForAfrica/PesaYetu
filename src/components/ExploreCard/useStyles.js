@@ -19,7 +19,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   title: {
     marginTop: typography.pxToRem(20),
     marginBottom: typography.pxToRem(20),
-    color: "#000",
   },
   description: {
     color: "#000",

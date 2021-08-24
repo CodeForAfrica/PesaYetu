@@ -61,11 +61,11 @@ export default async function getPostTypeArchive(
   // Execute query.
   await apolloClient
     .query({ query, variables })
-    .then((archive) => {
+    .then(async (archive) => {
       const { homepageSettings, siteSeo, menus, ...archiveData } = archive.data;
 
       // Retrieve menus.
-      response.menus = getMenus(menus);
+      response.menus = await getMenus(menus);
 
       // Retrieve default SEO data.
       response.defaultSeo = formatDefaultSeoData({ homepageSettings, siteSeo });

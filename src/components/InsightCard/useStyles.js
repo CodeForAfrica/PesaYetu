@@ -1,12 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   root: {},
   card: {
-    maxWidth: typography.pxToRem(350),
-    color: "#000",
     boxShadow: "none",
     backgroundColor: "unset",
+    width: "100%",
     paddingBottom: typography.pxToRem(30),
     [breakpoints.up("md")]: {
       maxWidth: typography.pxToRem(296),
@@ -28,6 +27,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   cardDescription: {
     marginBottom: typography.pxToRem(20),
+    color: palette.text.primary,
   },
   cardMedia: {
     height: typography.pxToRem(215),
@@ -42,9 +42,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   link: {
-    textDecoration: "underline",
-  },
-  linkText: {
     fontWeight: "bold",
   },
 }));

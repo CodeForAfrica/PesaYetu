@@ -153,19 +153,20 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
       },
     },
   },
+  search: {
+    margin: `${typography.pxToRem(20)} 0 ${typography.pxToRem(60)}`,
+  },
+  searchInput: {
+    border: `2px solid ${palette.background.default}`,
+    backgroundColor: palette.background.default,
+  },
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" timeout={1000} ref={ref} {...props} />;
 });
 
-function MobileNavigation({
-  logoProps,
-  menuProps,
-  selectProps,
-  socialLinks,
-  ...props
-}) {
+function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
 
@@ -257,7 +258,14 @@ function MobileNavigation({
                 menu: classes.buttonMenu,
               }}
             >
-              <DropdownSearch {...selectProps} />
+              <DropdownSearch
+                classes={{
+                  root: classes.search,
+                  inputRoot: classes.searchInput,
+                }}
+                nav
+                {...props}
+              />
             </Menu>
           </DialogContent>
         </Dialog>
@@ -270,13 +278,11 @@ MobileNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
-  selectProps: PropTypes.shape({}),
 };
 
 MobileNavigation.defaultProps = {
   logoProps: undefined,
   menuProps: undefined,
   socialLinks: undefined,
-  selectProps: undefined,
 };
 export default MobileNavigation;

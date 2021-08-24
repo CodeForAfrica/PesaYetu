@@ -2,15 +2,24 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Hero from "@/pesayetu/components/AboutHero";
+import AboutTeam from "@/pesayetu/components/AboutTeam";
+import DataIndicators from "@/pesayetu/components/DataIndicators";
 import Page from "@/pesayetu/components/Page";
+import Project from "@/pesayetu/components/Project";
+import Summary from "@/pesayetu/components/Summary";
+import SupportingPartners from "@/pesayetu/components/SupportingPartners";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
-import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function About({ footerProps, blocks, ...props }) {
+export default function About({ blocks, ...props }) {
   return (
-    <Page footerProps={footerProps} {...props}>
+    <Page {...props}>
       <Hero {...blocks?.aboutHero} />
+      <Summary {...blocks?.summary} />
+      <DataIndicators {...blocks.dataIndicators} />
+      <AboutTeam {...blocks?.aboutTeam} />
+      <Project {...blocks?.partnersAndNewsletter} />
+      <SupportingPartners {...blocks?.supportingPartners} />
     </Page>
   );
 }
@@ -18,13 +27,16 @@ export default function About({ footerProps, blocks, ...props }) {
 About.propTypes = {
   blocks: PropTypes.shape({
     aboutHero: PropTypes.shape({}),
+    dataIndicators: PropTypes.shape({}),
+    aboutTeam: PropTypes.shape({}),
+    partnersAndNewsletter: PropTypes.shape({}),
+    supportingPartners: PropTypes.shape({}),
+    summary: PropTypes.shape({}),
   }),
-  footerProps: PropTypes.shape({}),
 };
 
 About.defaultProps = {
   blocks: undefined,
-  footerProps: undefined,
 };
 
 export async function getStaticProps() {
@@ -41,12 +53,10 @@ export async function getStaticProps() {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const footerProps = getFooterMenu(props?.menus?.footerMenu || []);
   return {
     props: {
       ...props,
       blocks,
-      footerProps,
     },
     revalidate,
   };
