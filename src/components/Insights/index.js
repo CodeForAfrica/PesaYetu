@@ -10,9 +10,7 @@ function Insights({ featuredStoryProps, items, ...props }) {
   return (
     <Stories
       classes={{
-        media: classes.featuredCardImage,
-        cardMedia: classes.cardMedia,
-        story: classes.story,
+        content: classes.content,
       }}
       {...featuredStoryProps}
       {...items}
