@@ -36,10 +36,7 @@ Home.propTypes = {
   blocks: PropTypes.shape({
     aboutProject: PropTypes.shape({}),
     otherHero: PropTypes.shape({}),
-    metrics: PropTypes.shape({
-      title: PropTypes.string,
-      items: PropTypes.arrayOf({}),
-    }),
+    metrics: PropTypes.shape({}),
     ourCourses: PropTypes.shape({}),
     startLearning: PropTypes.shape({}),
     supportingPartners: PropTypes.shape({}),
