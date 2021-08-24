@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { IconButton, Grid, useMediaQuery } from "@material-ui/core";
+import { IconButton, Grid, Box, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -33,14 +33,14 @@ function Metrics({ items, title, ...props }) {
             className={classes.metrics}
           >
             <Grid item xs={12} md={5} lg={3}>
-              <Grid container item direction="row" alignItems="center">
+              <Box container display="flex" alignItems="center">
                 <IconButton color="primary" size="small">
                   <Image src={item.icon} width={44} height={44} />
                 </IconButton>
                 <RichTypography variant="h4" className={classes.title}>
                   {item.title}
                 </RichTypography>
-              </Grid>
+              </Box>
               <RichTypography variant="body2" className={classes.description}>
                 {item.description}
               </RichTypography>
