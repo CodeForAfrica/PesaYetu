@@ -1,3 +1,5 @@
+import richDataIcon from "@/pesayetu/assets/Component121.svg";
+import pinIcon from "@/pesayetu/assets/Component122.svg";
 import Group4646 from "@/pesayetu/assets/icons/Group 4646-white.svg";
 import developmentHover from "@/pesayetu/assets/icons/Group 4646.svg";
 import Group4656 from "@/pesayetu/assets/icons/Group 4656-white.svg";
@@ -23,6 +25,8 @@ import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash
 import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
 import Piero from "@/pesayetu/assets/images/Piero.png";
 import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
+import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
+import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
 import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 
@@ -417,6 +421,30 @@ export const aboutTeam = {
       title: "Faith Onkundi",
       image: FaithOnkundi,
       description: "Data Analyst at Code for Africa, based in Kenya.",
+    },
+  ],
+};
+
+export const metrics = {
+  title: "Our Metrics",
+  items: [
+    {
+      icon: richDataIcon,
+      title: "Rich Data",
+      description:
+        "This section includes all the data indicators visualised in interactive charts for a particular location. These charts - as well as the datasets behind them - can be shared, embedded, or downloaded.",
+      dataVisualProps: {
+        image: Metric1,
+      },
+    },
+    {
+      icon: pinIcon,
+      title: "Pin to Compare",
+      description:
+        "Several sets of data exist for different counties and municipalities allowing you to visualise multiple locations side by side and make comparisons where similar datasets exist.",
+      dataVisualProps: {
+        image: Metric2,
+      },
     },
   ],
 };
