@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import AboutProject from "@/pesayetu/components/AboutProject";
+import Metrics from "@/pesayetu/components/Metrics";
 import Hero from "@/pesayetu/components/OtherHero";
 import OurCourses from "@/pesayetu/components/OurCourses";
 import Page from "@/pesayetu/components/Page";
@@ -16,6 +17,7 @@ export default function Home({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
+      <Metrics {...blocks?.metrics} />
       <Summary {...blocks?.summary} />
       <AboutProject {...blocks?.aboutProject} />
       <StartLearning {...blocks?.startLearning} />
@@ -30,6 +32,7 @@ Home.propTypes = {
   blocks: PropTypes.shape({
     aboutProject: PropTypes.shape({}),
     otherHero: PropTypes.shape({}),
+    metrics: PropTypes.shape({}),
     ourCourses: PropTypes.shape({}),
     startLearning: PropTypes.shape({}),
     supportingPartners: PropTypes.shape({}),
@@ -58,6 +61,7 @@ export async function getStaticProps({ preview, previewData }) {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
+
   return {
     props: {
       ...props,
