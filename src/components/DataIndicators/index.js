@@ -32,7 +32,9 @@ function DataIndicators({ items, title, ...props }) {
     setChecked(true);
   };
 
-  const resetItemClick = () => {
+  const resetItemClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setChecked(false);
     setCurrentItemIndex(null);
   };
@@ -65,7 +67,6 @@ function DataIndicators({ items, title, ...props }) {
                     handleIconClick={() => handleIconClick(index)}
                     item={item}
                     index={index}
-                    checked={checked}
                     currentItemIndex={currentItemIndex}
                     handleClickAway={() => resetItemClick()}
                   />
@@ -80,9 +81,7 @@ function DataIndicators({ items, title, ...props }) {
           unmountOnExit
           className={classes.slide}
           direction="left"
-          timeout={{
-            enter: 300,
-          }}
+          timeout={300}
         >
           <ButtonBase
             disableRipple

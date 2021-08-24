@@ -20,21 +20,17 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   indicatorsContainer: {
     width: "100%",
     height: typography.pxToRem(672),
-    transition: "width 0.3s linear",
+    transition: "width 0.3s ease-in-out",
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(600),
     },
   },
   slideIn: {
-    width: "calc(100% -250px)",
-    height: typography.pxToRem(750),
     [breakpoints.up("md")]: {
       width: "calc(100% - 355px)",
-      height: typography.pxToRem(672),
     },
     [breakpoints.up("lg")]: {
       width: "calc(100% - 480px)",
-      height: typography.pxToRem(600),
     },
   },
   header: {
@@ -64,7 +60,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   slideInIconContainer: {
     [breakpoints.up("lg")]: {
-      marginLeft: typography.pxToRem(20),
+      marginRight: typography.pxToRem(20),
       "&:last-of-type": {
         marginRight: 0,
       },
@@ -77,9 +73,12 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     },
   },
   slide: {
-    backgroundColor: "#0067A3",
+    backgroundColor: palette.primary.main,
+    position: "absolute",
+    right: 0,
+    top: typography.pxToRem(110),
     color: palette.text.secondary,
-    width: typography.pxToRem(250),
+    width: `92%`,
     height: typography.pxToRem(528),
     margin: "auto 0",
     display: "flex",
@@ -88,10 +87,12 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     flexDirection: "column",
     padding: typography.pxToRem(15),
     [breakpoints.up("md")]: {
+      top: typography.pxToRem(80),
       width: typography.pxToRem(355),
       padding: `${typography.pxToRem(50)} ${typography.pxToRem(36)}`,
     },
     [breakpoints.up("lg")]: {
+      top: 0,
       width: typography.pxToRem(480),
       height: typography.pxToRem(600),
       padding: `${typography.pxToRem(76)} ${typography.pxToRem(84)}`,
@@ -115,12 +116,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       width: "auto",
       display: "block",
       margin: `${typography.pxToRem(20)} auto 0`,
-    },
-  },
-  slideInText: {
-    display: "none",
-    [breakpoints.up("md")]: {
-      display: "block",
     },
   },
   title: { color: "inherit" },
