@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   card: {
     width: "100%",
-    maxWidth: typography.pxToRem(215),
+    maxWidth: "unset",
     height: "100%",
   },
   cardMedia: {
