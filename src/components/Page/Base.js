@@ -23,6 +23,7 @@ function BasePage({ children, menus, ...props }) {
     socialLinks,
     ...menus,
   };
+
   return (
     <>
       <Navigation {...navigationProps} />
