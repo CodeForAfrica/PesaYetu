@@ -34,12 +34,7 @@ const Card = ({ href, children, image, chart, variant, ...props }) => {
           <CardContent classes={{ root: classes.content }}>
             {visual && variant === "news" ? (
               <div className={classes.cardMedia}>
-                <Image
-                  src={visual}
-                  layout="fill"
-                  className={classes.image}
-                  objectFit="cover"
-                />
+                <Image src={visual} layout="fill" className={classes.image} />
               </div>
             ) : (
               <RichTypography
