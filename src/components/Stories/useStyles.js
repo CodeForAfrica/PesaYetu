@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: {
     marginBottom: typography.pxToRem(80),
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   carouselItem: {
     margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(10)}`,
