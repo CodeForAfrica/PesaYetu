@@ -95,8 +95,7 @@ function DropdownSearch({
     } else {
       setSuggestions([]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [counties, countyCode, query]);
 
   const handleSearchClick = () => {
     if (onClickProp) {
