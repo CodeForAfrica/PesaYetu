@@ -34,8 +34,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       width: typography.pxToRem(768),
     },
   },
-  title: {
-  },
+  title: {},
   image: {},
   description: {
     paddingTop: typography.pxToRem(40),

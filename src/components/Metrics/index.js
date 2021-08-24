@@ -20,7 +20,7 @@ function Metrics({ items, title, ...props }) {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <RichTypography variant="h2" className={classes.sectionTitle}>
+        <RichTypography variant="h2" className={classes.title}>
           {title}
         </RichTypography>
         {items?.map((item, index) => (
