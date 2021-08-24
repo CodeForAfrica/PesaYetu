@@ -14,10 +14,6 @@ import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSection
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ blocks, ...props }) {
-  /* const metricsProps = {
-    title: blocks?.metrics.title,
-    items: blocks?.metrics.items,
-  }; */
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />

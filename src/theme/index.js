@@ -326,7 +326,7 @@ deepmerge(
         // Disable ripple effect globally
         borderRadius: 0,
         "&:hover, &:focus, &:focus-within": {
-          backgroundColor: "inherit",
+          backgroundColor: "transparent",
         },
       },
     },
