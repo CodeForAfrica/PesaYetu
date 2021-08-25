@@ -39,7 +39,14 @@ const DataSources = ({ items, title, subtitle, ...props }) => {
               </Typography>
             ))}
           </Grid>
-          <Grid item xs={12} lg={6} justifyContent="center" alignItems="center">
+          <Grid
+            container
+            item
+            xs={12}
+            lg={6}
+            justifyContent="center"
+            alignItems="center"
+          >
             <Image
               height={572}
               width={572}
