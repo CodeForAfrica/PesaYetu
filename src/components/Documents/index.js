@@ -1,6 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Container, useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Grid, Container } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -8,10 +8,8 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-function Documents({ items, ...props }) {
+function Documents({ items, children, ...props }) {
   const classes = useStyles(props);
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   if (!items?.length) {
     return null;
   }
@@ -19,30 +17,22 @@ function Documents({ items, ...props }) {
     <>
       {items.map((item) => (
         <Container className={classes.root} key={item.title}>
-          <Grid
-            item
-            xs={12}
-            md={7}
-            container
-            direction="row"
-            justifyContent={isDesktop ? "space-evenly" : "flex-start"}
-            className={classes.content}
-          >
-            <RichTypography variant="body1" className={classes.text}>
-              {item.date}
-            </RichTypography>
-            <RichTypography variant="body1" className={classes.text}>
+          <Grid item xs={12} className={classes.textContent}>
+            <RichTypography
+              variant="body1"
+              className={clsx(classes.text, classes.title)}
+            >
               {item.title}
             </RichTypography>
+            <RichTypography
+              variant="body1"
+              className={clsx(classes.text, classes.description)}
+            >
+              {item.description}
+            </RichTypography>
           </Grid>
-          <Grid
-            container
-            item
-            xs={12}
-            md={5}
-            direction="row"
-            justifyContent={isDesktop ? "center" : "flex-start"}
-          >
+          <Grid item xs={12} className={classes.linkContent}>
+            {children}
             <Link
               className={classes.link}
               href={item.href}
@@ -59,10 +49,11 @@ function Documents({ items, ...props }) {
 }
 
 Documents.propTypes = {
+  children: PropTypes.node,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      date: PropTypes.number,
       title: PropTypes.string,
+      description: PropTypes.string,
       href: PropTypes.string,
       link: PropTypes.string,
     })
@@ -70,6 +61,7 @@ Documents.propTypes = {
 };
 
 Documents.defaultProps = {
+  children: undefined,
   items: undefined,
 };
 

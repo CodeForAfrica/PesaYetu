@@ -365,36 +365,53 @@ export const exploreTools = {
 export const documentsArg = {
   items: [
     {
-      date: 2021,
-      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      title: "2021",
+      description: "The County Integrated Development Plan (CIDP) in Kenya",
       href: "https://courses.academy.africa/courses/data-visualization/",
     },
     {
-      date: 2021,
-      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      title: "2021",
+      description: "The County Integrated Development Plan (CIDP) in Kenya",
       href: "https://courses.academy.africa/courses/data-visualization/",
     },
     {
-      date: 2021,
-      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      title: "2021",
+      description: "The County Integrated Development Plan (CIDP) in Kenya",
       href: "https://courses.academy.africa/courses/data-visualization/",
     },
     {
-      date: 2021,
-      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      title: "2021",
+      description: "The County Integrated Development Plan (CIDP) in Kenya",
       href: "https://courses.academy.africa/courses/data-visualization/",
     },
     {
-      date: 2021,
-      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      title: "2021",
+      description: "The County Integrated Development Plan (CIDP) in Kenya",
       ctaText: "Read More",
       href: "https://courses.academy.africa/courses/data-visualization/",
     },
     {
-      date: 2021,
-      title: "The County Integrated Development Plan (CIDP) in Kenya",
+      title: "2021",
+      description: "The County Integrated Development Plan (CIDP) in Kenya",
       ctaText: "Read More",
       href: "https://courses.academy.africa/courses/data-visualization/",
+    },
+  ],
+};
+
+export const datasetTypeArgs = {
+  types: [
+    {
+      name: "csv",
+      link: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      name: "xls",
+      link: "https://courses.academy.africa/courses/data-visualization/",
+    },
+    {
+      name: "json",
+      link: "https://courses.academy.africa/courses/data-visualization/",
     },
   ],
 };
