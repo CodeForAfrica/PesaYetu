@@ -17,7 +17,7 @@ function formatLazyBlockIteratorContentWithImage(
     JSON.parse(decodeURIComponent(itemsProps)).map((item) => {
       return {
         ...item,
-        [imgField]: item[imgField]?.url,
+        [imgField]: item[imgField]?.url || null,
       };
     }) || null;
   return { ...rest, items };
@@ -151,6 +151,8 @@ function format(block) {
       return formatPartners(block);
     case "lazyblock/metrics":
       return formatLazyBlockIteratorContentWithImages(attributes, "image");
+    case "lazyblock/data-source":
+      return formatLazyBlockIteratorContentWithImage(attributes, "cover");
     case "lazyblock/supporting-partners":
       return formatLazyBlockIteratorContentWithImage(attributes, "logo");
     case "lazyblock/other-hero":
