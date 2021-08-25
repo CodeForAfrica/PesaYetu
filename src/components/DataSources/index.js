@@ -9,7 +9,7 @@ import Header from "@/pesayetu/components/Header";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
-const DataSource = ({ items, title, subtitle, ...props }) => {
+const DataSources = ({ items, title, subtitle, ...props }) => {
   const classes = useStyles(props);
   const [selectedIndex, setSelectedIndex] = useState(0);
   useEffect(() => {
@@ -51,7 +51,7 @@ const DataSource = ({ items, title, subtitle, ...props }) => {
   );
 };
 
-DataSource.propTypes = {
+DataSources.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       cover: PropTypes.string,
@@ -63,10 +63,10 @@ DataSource.propTypes = {
   title: PropTypes.string,
 };
 
-DataSource.defaultProps = {
+DataSources.defaultProps = {
   items: undefined,
   subtitle: undefined,
   title: undefined,
 };
 
-export default DataSource;
+export default DataSources;

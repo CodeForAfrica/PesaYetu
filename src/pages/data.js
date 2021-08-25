@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import DataSource from "@/pesayetu/components/DataSource";
+import DataSources from "@/pesayetu/components/DataSources";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
@@ -11,7 +11,7 @@ export default function Data({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <DataSource {...blocks?.dataSource} />
+      <DataSources {...blocks?.dataSource} />
     </Page>
   );
 }

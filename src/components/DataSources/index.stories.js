@@ -1,12 +1,12 @@
 import React from "react";
 
-import DataSource from ".";
+import DataSources from ".";
 
 export default {
-  title: "Components/DataSource",
+  title: "Components/DataSources",
 };
 
-const Template = (args) => <DataSource {...args} />;
+const Template = (args) => <DataSources {...args} />;
 
 export const Default = Template.bind({});
 
