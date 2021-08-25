@@ -22,6 +22,10 @@ function formatLazyBlockIteratorContentWithImage(
     }) || null;
   return { ...rest, items };
 }
+function formatDataSource({ items: itemsProps, cover, ...rest }) {
+  const items = JSON.parse(decodeURIComponent(itemsProps)) || null;
+  return { ...rest, cover: formatLazyBlockImage(cover), items };
+}
 
 function formatLazyBlockIteratorContentWithImages(
   { items: itemsProps, ...rest },
@@ -152,7 +156,7 @@ function format(block) {
     case "lazyblock/metrics":
       return formatLazyBlockIteratorContentWithImages(attributes, "image");
     case "lazyblock/data-source":
-      return formatLazyBlockIteratorContentWithImage(attributes, "cover");
+      return formatDataSource(attributes);
     case "lazyblock/supporting-partners":
       return formatLazyBlockIteratorContentWithImage(attributes, "logo");
     case "lazyblock/other-hero":

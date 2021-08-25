@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import useStyles from "./useStyles";
 
@@ -9,17 +9,8 @@ import Header from "@/pesayetu/components/Header";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
-const DataSources = ({ items, title, subtitle, ...props }) => {
+const DataSources = ({ items, title, subtitle, cover, ...props }) => {
   const classes = useStyles(props);
-
-  const [selectedIndex, setSelectedIndex] = useState(0); // selected index to show cover image for
-  /** Loop through items every 3 seconds and set as selected index to be used for the cover image */
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSelectedIndex((selectedIndex + 1) % items?.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  });
 
   if (!items || !items.length) {
     return null;
@@ -47,12 +38,7 @@ const DataSources = ({ items, title, subtitle, ...props }) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Image
-              height={572}
-              width={572}
-              src={items[selectedIndex]?.cover}
-              alt={items[selectedIndex]?.title}
-            />
+            <Image height={572} width={572} src={cover} alt={title} />
           </Grid>
         </Grid>
       </Section>
@@ -63,19 +49,20 @@ const DataSources = ({ items, title, subtitle, ...props }) => {
 DataSources.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      cover: PropTypes.string,
       title: PropTypes.string,
       href: PropTypes.string,
     })
   ),
   subtitle: PropTypes.string,
   title: PropTypes.string,
+  cover: PropTypes.string,
 };
 
 DataSources.defaultProps = {
   items: undefined,
   subtitle: undefined,
   title: undefined,
+  cover: undefined,
 };
 
 export default DataSources;
