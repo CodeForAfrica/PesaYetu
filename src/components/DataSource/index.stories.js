@@ -11,8 +11,49 @@ const Template = (args) => <DataSource {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  title: "History",
+  title: "Data sources",
   subtitle:
-    "The PesaYetu data portal was built as part of the ‘Our County: Our Responsibility’ project, which started back in 2019.",
-  items: [],
+    "All data can be found Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+  items: [
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+    {
+      cover:
+        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
+      title: "County Government of Nairobi",
+    },
+  ],
 };
