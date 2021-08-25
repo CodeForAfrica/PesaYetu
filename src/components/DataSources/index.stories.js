@@ -3,7 +3,7 @@ import React from "react";
 import DataSources from ".";
 
 export default {
-  title: "Components/DataSources",
+  title: "Sections/DataSources",
 };
 
 const Template = (args) => <DataSources {...args} />;
