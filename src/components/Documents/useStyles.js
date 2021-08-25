@@ -16,13 +16,16 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       alignItems: "center",
     },
   },
-  text: {
+  title: {
     fontWeight: "500",
     color: "#212529",
     padding: `${typography.pxToRem(16)} 0`,
   },
-  title: {},
-  description: {},
+  description: {
+    fontWeight: "500",
+    color: "#212529",
+    padding: `${typography.pxToRem(16)} 0`,
+  },
   textContent: {
     display: "flex",
     flexDirection: "column",
@@ -43,6 +46,17 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       justifyContent: "space-evenly",
       alignItems: "center",
     },
+  },
+  dataTypes: {},
+  typeContent: {
+    background: "#F0F0F0",
+    opacity: 1,
+    textAlign: "center",
+    padding: "12px",
+    fontSize: "10px",
+    color: "#666666",
+    letterSpacing: "0.8px",
+    fontWeight: "600",
   },
   link: {
     fontWeight: "600",

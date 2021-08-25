@@ -400,18 +400,120 @@ export const documentsArg = {
 };
 
 export const datasetTypeArgs = {
-  types: [
+  items: [
     {
-      name: "csv",
-      link: "https://courses.academy.africa/courses/data-visualization/",
+      title: "Health facilities in Africa",
+      description: "Updated: 20/04/2020",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
     },
     {
-      name: "xls",
-      link: "https://courses.academy.africa/courses/data-visualization/",
+      title: "Health facilities in Africa",
+      description: "Updated: 20/04/2020",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
     },
     {
-      name: "json",
-      link: "https://courses.academy.africa/courses/data-visualization/",
+      title: "Health facilities in Africa",
+      description: "Updated: 20/04/2020",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
+    },
+    {
+      title: "Health facilities in Africa",
+      description: "Updated: 20/04/2020",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
+    },
+    {
+      title: "Health facilities in Africa",
+      description: "Updated: 20/04/2020",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
+    },
+    {
+      title: "Health facilities in Africa",
+      description: "Updated: 20/04/2020",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          link: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
     },
   ],
 };

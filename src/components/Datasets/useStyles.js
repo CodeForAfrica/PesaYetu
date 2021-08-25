@@ -12,7 +12,24 @@ const useStyles = makeStyles(() => ({
     letterSpacing: "0.8px",
     fontWeight: "600",
   },
+  title: {
+    fontSize: "16px",
+    textAlign: "left",
+    padding: 0,
+  },
+  description: {
+    fontSize: "11px",
+    textAlign: "left",
+    padding: 0,
+    marginLeft: "-4.5rem",
+  },
   dataTypes: {},
+  textContent: {
+    flexDirection: "column !important",
+    justifyContent: "center !important",
+    alignItems: "center !important",
+  },
+  linkContent: {},
 }));
 
 export default useStyles;

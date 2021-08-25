@@ -1,5 +1,4 @@
-import { RichTypography } from "@commons-ui/core";
-import { Grid } from "@material-ui/core";
+/* eslint-disable no-console */
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -7,53 +6,38 @@ import useStyles from "./useStyles";
 
 import Documents from "@/pesayetu/components/Documents";
 
-function Datasets({ items, datasetType, ...props }) {
+function Datasets({ items, ...props }) {
   const classes = useStyles(props);
-  if (!datasetType?.length) {
-    return null;
-  }
   return (
-    <Documents items={items}>
-      <Grid
-        item
-        xs={6}
-        md={4}
-        container
-        direction="row"
-        justifyContent="space-evenly"
-        alignItems="center"
-        className={classes.dataTypes}
-      >
-        {datasetType.map((data) => (
-          <RichTypography className={classes.typeContent}>
-            {data.name}
-          </RichTypography>
-        ))}
-      </Grid>
-    </Documents>
+    <Documents
+      // datasetTypes
+      items={items}
+      classes={{
+        title: classes.title,
+        description: classes.description,
+        textContent: classes.textContent,
+      }}
+    />
   );
 }
 
 Datasets.propTypes = {
-  datasetType: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      href: PropTypes.string,
-    })
-  ),
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
       href: PropTypes.string,
       link: PropTypes.string,
+      types: PropTypes.arrayOf({
+        name: PropTypes.string,
+        link: PropTypes.string,
+      }),
     })
   ),
 };
 
 Datasets.defaultProps = {
   items: undefined,
-  datasetType: undefined,
 };
 
 export default Datasets;
