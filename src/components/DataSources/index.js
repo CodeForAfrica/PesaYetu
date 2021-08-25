@@ -11,11 +11,13 @@ import Section from "@/pesayetu/components/Section";
 
 const DataSources = ({ items, title, subtitle, ...props }) => {
   const classes = useStyles(props);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const [selectedIndex, setSelectedIndex] = useState(0); // selected index to show cover image for
+  /** Loop through items every 3 seconds and set as selected index to be used for the cover image */
   useEffect(() => {
     const interval = setInterval(() => {
       setSelectedIndex((selectedIndex + 1) % items?.length);
-    }, 1000);
+    }, 3000);
     return () => clearInterval(interval);
   });
 
