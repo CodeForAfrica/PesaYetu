@@ -16,7 +16,8 @@ function Datasets({ items, datasetType, ...props }) {
     <Documents items={items}>
       <Grid
         item
-        xs={3}
+        xs={6}
+        md={4}
         container
         direction="row"
         justifyContent="space-evenly"

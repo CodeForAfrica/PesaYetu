@@ -40,7 +40,8 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     alignItems: "flex-start",
     [breakpoints.up("md")]: {
       flexDirection: "row",
-      justifyContent: "center",
+      justifyContent: "space-evenly",
+      alignItems: "center",
     },
   },
   link: {
