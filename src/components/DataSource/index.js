@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import useStyles from "./useStyles";
 
 import Header from "@/pesayetu/components/Header";
+import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
 const DataSource = ({ items, title, subtitle, ...props }) => {
@@ -30,12 +31,18 @@ const DataSource = ({ items, title, subtitle, ...props }) => {
             <Header subtitle={subtitle} className={classes.title} variant="h2">
               {title}
             </Header>
-            {}
+            {items.map(({ title: dataSourceTitle, href }) => (
+              <Typography variant="body2" className={classes.link}>
+                <Link href={href}>{dataSourceTitle} </Link>{" "}
+              </Typography>
+            ))}
           </Grid>
           <Grid item xs={12} lg={6} justifyContent="center" alignItems="center">
             <Image
-              src={items[selectedIndex].img}
-              alt={items[selectedIndex].title}
+              height={572}
+              width={572}
+              src={items[selectedIndex]?.cover}
+              alt={items[selectedIndex]?.title}
             />
           </Grid>
         </Grid>
@@ -47,8 +54,9 @@ const DataSource = ({ items, title, subtitle, ...props }) => {
 DataSource.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      img: PropTypes.string,
+      cover: PropTypes.string,
       title: PropTypes.string,
+      href: PropTypes.string,
     })
   ),
   subtitle: PropTypes.string,
