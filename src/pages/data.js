@@ -11,7 +11,7 @@ export default function Data({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <DataSource />
+      <DataSource {...blocks?.dataSource} />
     </Page>
   );
 }
@@ -19,6 +19,7 @@ export default function Data({ blocks, ...props }) {
 Data.propTypes = {
   blocks: PropTypes.shape({
     otherHero: PropTypes.shape({}),
+    dataSource: PropTypes.shape({}),
   }),
 };
 
