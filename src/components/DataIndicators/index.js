@@ -4,8 +4,11 @@ import {
   ClickAwayListener,
   Grid,
   Typography,
+  Dialog,
   Slide,
+  useMediaQuery,
 } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -17,8 +20,14 @@ import useStyles from "./useStyles";
 import bg from "@/pesayetu/assets/images/Mask Group 8.png";
 import Header from "@/pesayetu/components/Header";
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="left" timeout={300} ref={ref} {...props} />;
+});
+
 function DataIndicators({ items, title, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   const [checked, setChecked] = useState(false);
   const [currentItemIndex, setCurrentItemIndex] = useState(null);
@@ -75,36 +84,72 @@ function DataIndicators({ items, title, ...props }) {
             </Grid>
           </ClickAwayListener>
         </div>
-        <Slide
-          in={checked}
-          mountOnEnter
-          unmountOnExit
-          className={classes.slide}
-          direction="left"
-          timeout={300}
-        >
-          <ButtonBase
-            disableRipple
-            disableTouchRipple
-            onClick={resetItemClick}
-            className={classes.content}
+        {isDesktop ? (
+          <Slide
+            in={checked}
+            mountOnEnter
+            unmountOnExit
+            className={classes.slide}
+            direction="left"
+            timeout={300}
           >
-            {currentItem?.title && (
-              <Typography
-                component="div"
-                variant="h3"
-                className={classes.title}
-              >
-                {currentItem.title}
-              </Typography>
-            )}
-            {currentItem?.description && (
-              <RichTypography component="div" className={classes.description}>
-                {currentItem.description}
-              </RichTypography>
-            )}
-          </ButtonBase>
-        </Slide>
+            <ButtonBase
+              disableRipple
+              disableTouchRipple
+              onClick={resetItemClick}
+              className={classes.content}
+            >
+              {currentItem?.title && (
+                <Typography
+                  component="div"
+                  variant="h3"
+                  className={classes.title}
+                >
+                  {currentItem.title}
+                </Typography>
+              )}
+              {currentItem?.description && (
+                <RichTypography component="div" className={classes.description}>
+                  {currentItem.description}
+                </RichTypography>
+              )}
+            </ButtonBase>
+          </Slide>
+        ) : (
+          <Dialog
+            open={checked}
+            onClose={resetItemClick}
+            BackdropProps={{
+              classes: {
+                root: classes.backdrop,
+              },
+            }}
+            TransitionComponent={Transition}
+            classes={{ root: classes.dialog, paper: classes.dialogPaper }}
+          >
+            <ButtonBase
+              disableRipple
+              disableTouchRipple
+              onClick={resetItemClick}
+              className={classes.content}
+            >
+              {currentItem?.title && (
+                <Typography
+                  component="div"
+                  variant="h3"
+                  className={classes.title}
+                >
+                  {currentItem.title}
+                </Typography>
+              )}
+              {currentItem?.description && (
+                <RichTypography component="div" className={classes.description}>
+                  {currentItem.description}
+                </RichTypography>
+              )}
+            </ButtonBase>
+          </Dialog>
+        )}
       </div>
     </div>
   );
