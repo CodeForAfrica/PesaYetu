@@ -43,7 +43,7 @@ function Documents({ items, className, datasetTypes, children, ...props }) {
                 alignItems="center"
                 className={classes.dataTypes}
               >
-                {item.types.flatMap((data) => (
+                {item.types.map((data) => (
                   <RichTypography className={classes.typeContent}>
                     {data.name}
                   </RichTypography>
