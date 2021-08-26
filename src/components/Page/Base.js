@@ -18,10 +18,11 @@ function BasePage({ children, menus, ...props }) {
   const { menuProps } = navigation;
   const { logoProps, socialLinks } = navigationArgs;
   const navigationProps = {
+    ...props,
+    ...menus,
     logoProps,
     menuProps,
     socialLinks,
-    ...menus,
   };
 
   return (
