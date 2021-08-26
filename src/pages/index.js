@@ -10,18 +10,13 @@ import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
 import Project from "@/pesayetu/components/Project";
 import StoriesInsights from "@/pesayetu/components/StoriesInsights";
-import { searchArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ boundary, blocks, ...props }) {
-  const heroProps = {
-    ...blocks?.hero,
-    selectProps: searchArgs?.selectProps,
-  };
   return (
     <Page {...props}>
-      <Hero {...heroProps} boundary={boundary} />
+      <Hero {...blocks.hero} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
       <DataVisuals {...blocks?.dataVisuals} />
       <StoriesInsights {...blocks?.insightsStories} />
