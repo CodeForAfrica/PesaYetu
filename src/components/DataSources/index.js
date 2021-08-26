@@ -9,7 +9,7 @@ import Header from "@/pesayetu/components/Header";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
-const DataSources = ({ items, title, subtitle, cover, ...props }) => {
+const DataSources = ({ items, title, subtitle, image, ...props }) => {
   const classes = useStyles(props);
 
   if (!items || !items.length) {
@@ -39,7 +39,7 @@ const DataSources = ({ items, title, subtitle, cover, ...props }) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Image height={572} width={572} src={cover} alt={title} />
+            <Image height={572} width={572} src={image} alt={title} />
           </Grid>
         </Grid>
       </Section>
@@ -56,14 +56,14 @@ DataSources.propTypes = {
   ),
   subtitle: PropTypes.string,
   title: PropTypes.string,
-  cover: PropTypes.string,
+  image: PropTypes.string,
 };
 
 DataSources.defaultProps = {
   items: undefined,
   subtitle: undefined,
   title: undefined,
-  cover: undefined,
+  image: undefined,
 };
 
 export default DataSources;

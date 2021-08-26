@@ -22,9 +22,9 @@ function formatLazyBlockIteratorContentWithImage(
     }) || null;
   return { ...rest, items };
 }
-function formatDataSource({ items: itemsProps, cover, ...rest }) {
+function formatDataSource({ items: itemsProps, image, ...rest }) {
   const items = JSON.parse(decodeURIComponent(itemsProps)) || null;
-  return { ...rest, cover: formatLazyBlockImage(cover), items };
+  return { ...rest, image: formatLazyBlockImage(image), items };
 }
 
 function formatLazyBlockIteratorContentWithImages(

@@ -16,44 +16,30 @@ Default.args = {
     "All data can be found Lorem ipsum dolor sit amet consectetur adipiscing elit.",
   items: [
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
     {
-      cover:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/report.png",
       title: "County Government of Nairobi",
     },
   ],
+  image:
+    "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/08/Report-mockup.png",
 };
