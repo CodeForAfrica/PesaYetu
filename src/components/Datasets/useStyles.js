@@ -6,8 +6,10 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     fontSize: typography.pxToRem(16),
     textAlign: "left",
     padding: 0,
+    fontWeight: "500",
   },
   description: {
+    color: "#707070",
     fontSize: typography.pxToRem(11),
     textAlign: "left",
     padding: 0,
@@ -16,7 +18,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       marginLeft: typography.pxToRem(-72),
     },
   },
-  dataTypes: {},
   textContent: {
     flexDirection: "column !important",
     justifyContent: "flex-start !important",
@@ -28,14 +29,12 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     },
   },
   linkContent: {
-    flexDirection: "column",
+    flexDirection: "column! important",
     justifyContent: "center !important",
     alignItems: "center !important",
     padding: "2rem! important",
     [breakpoints.up("md")]: {
-      flexDirection: "row",
-      justifyContent: "space-evenly",
-      alignItems: "center",
+      flexDirection: "column! important",
     },
     [breakpoints.up("lg")]: {
       flexDirection: "row !important",
