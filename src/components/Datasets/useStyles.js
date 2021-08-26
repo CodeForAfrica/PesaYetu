@@ -21,7 +21,10 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     fontSize: "11px",
     textAlign: "left",
     padding: 0,
-    marginLeft: "-4.5rem",
+    marginLeft: "0",
+    [breakpoints.up("md")]: {
+      marginLeft: "-4.5rem",
+    },
   },
   dataTypes: {},
   textContent: {
@@ -38,6 +41,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     flexDirection: "column",
     justifyContent: "center !important",
     alignItems: "center !important",
+    padding: "2rem! important",
     [breakpoints.up("md")]: {
       flexDirection: "row",
       justifyContent: "space-evenly",
