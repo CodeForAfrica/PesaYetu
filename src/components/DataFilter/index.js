@@ -20,6 +20,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     },
     color: palette.grey.main,
     border: "none !important",
+    height: "max-content",
   },
   selectedOption: {
     color: `${palette.grey.dark} !important`,
@@ -40,13 +41,13 @@ const DataFilter = ({
     paginationOptions[0]
   );
   return (
-    <Grid container>
+    <Grid container alignItems="center">
       <Grid lg={2}>
         <Typography variant="body1">
           {datasetLabel}:{datatset}
         </Typography>
       </Grid>
-      <Grid item lg={2} container>
+      <Grid item lg={2} container alignItems="center">
         <Typography className={classes.paginationLabel} variant="body1">
           {paginationlabel}
         </Typography>
@@ -69,11 +70,11 @@ const DataFilter = ({
           ))}
         </ButtonGroup>
       </Grid>
-      <Grid item lg={4} container>
+      <Grid item lg={4} container alignItems="center">
         <Typography className={classes.paginationLabel} variant="body1">
           {orderLabel}
-        </Typography>{" "}
-        <Input />
+        </Typography>
+        <Input options={orderOptions} />
       </Grid>
     </Grid>
   );
