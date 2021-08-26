@@ -4,6 +4,8 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
+import Input from "./input";
+
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     width: "100%",
@@ -67,7 +69,12 @@ const DataFilter = ({
           ))}
         </ButtonGroup>
       </Grid>
-      <Grid lg={4} />
+      <Grid item lg={4} container>
+        <Typography className={classes.paginationLabel} variant="body1">
+          {orderLabel}
+        </Typography>{" "}
+        <Input />
+      </Grid>
     </Grid>
   );
 };
