@@ -24,7 +24,7 @@ const DataSources = ({ items, title, subtitle, image, ...props }) => {
               {title}
             </Header>
             {items.map(({ title: dataSourceTitle, href }) => (
-              <Typography variant="body2" className={classes.link}>
+              <Typography variant="body2" className={classes.linkWrapper}>
                 <Link underline="always" href={href}>
                   {dataSourceTitle}
                 </Link>

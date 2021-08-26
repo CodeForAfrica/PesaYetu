@@ -9,7 +9,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     marginTop: typography.pxToRem(93),
     marginBottom: typography.pxToRem(40),
   },
-  link: {
+  linkWrapper: {
     fontWeight: "bold",
     marginBottom: typography.pxToRem(10),
   },
