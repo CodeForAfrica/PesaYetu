@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Container } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -8,24 +8,18 @@ import useStyles from "./useStyles";
 
 import DataFilter from "@/pesayetu/components/DataFilter";
 import Link from "@/pesayetu/components/Link";
+import Section from "@/pesayetu/components/Section";
 
-function Documents({
-  items,
-  className,
-  datasetTypes,
-  children,
-  filterProps,
-  ...props
-}) {
+function Documents({ items, className, datasetTypes, filterProps, ...props }) {
   const classes = useStyles(props);
   if (!items?.length) {
     return null;
   }
   return (
-    <>
+    <Section>
       <DataFilter {...filterProps} />
       {items.map((item) => (
-        <Container className={classes.root} key={item.title}>
+        <div className={classes.root} key={item.title}>
           <Grid
             item
             xs={12}
@@ -74,14 +68,13 @@ function Documents({
               Read More
             </Link>
           </Grid>
-        </Container>
+        </div>
       ))}
-    </>
+    </Section>
   );
 }
 
 Documents.propTypes = {
-  children: PropTypes.node,
   datasetTypes: PropTypes.bool,
   className: PropTypes.string,
   filterProps: PropTypes.shape({}),
@@ -97,7 +90,6 @@ Documents.propTypes = {
 };
 
 Documents.defaultProps = {
-  children: undefined,
   datasetTypes: undefined,
   className: undefined,
   items: undefined,
