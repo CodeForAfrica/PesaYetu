@@ -20,7 +20,7 @@ export default async function getMenus(menus, locations = menuLocations) {
     `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
   );
   const { children } = await res.json();
-
+  filteredMenus.boundary = children?.county;
   filteredMenus.counties = children?.county?.features?.map(
     ({ properties }) => properties
   );
