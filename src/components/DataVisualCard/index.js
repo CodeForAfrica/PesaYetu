@@ -10,7 +10,10 @@ const DataVisualCard = ({ image, description, ...props }) => {
   const classes = useStyles(props);
   return (
     <Card
-      classes={{ root: classes.root, cardMedia: classes.cardMedia }}
+      classes={{
+        root: classes.root,
+        cardMedia: classes.cardMedia,
+      }}
       image={image}
     >
       <RichTypography

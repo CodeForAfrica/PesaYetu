@@ -58,7 +58,6 @@ const theme = createTheme({
       disableTouchRipple: true,
     },
   },
-
   // Font weights:
   // see: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
   // 300 	Light
@@ -226,8 +225,8 @@ deepmerge(
       root: {
         textDecoration: "none !important",
         "&:hover": {
+          backgroundColor: "transparent",
           textDecoration: "none !important",
-          backgroundColor: "inherit",
         },
       },
       contained: {},
@@ -324,9 +323,10 @@ deepmerge(
     },
     MuiIconButton: {
       root: {
+        // Disable ripple effect globally
         borderRadius: 0,
-        "&:hover": {
-          backgroundColor: "inherit",
+        "&:hover, &:focus, &:focus-within": {
+          backgroundColor: "transparent",
         },
       },
     },
