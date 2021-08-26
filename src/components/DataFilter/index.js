@@ -1,14 +1,26 @@
 import { Grid, Typography, ButtonGroup, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     width: "100%",
   },
   paginationLabel: {
     marginRight: typography.pxToRem(40),
+  },
+  buttonGroup: {},
+  button: {
+    "&::after": {
+      display: "none",
+    },
+    color: palette.grey.main,
+    border: "none !important",
+  },
+  selectedOption: {
+    color: `${palette.grey.dark} !important`,
   },
 }));
 
@@ -32,21 +44,23 @@ const DataFilter = ({
           {datasetLabel}:{datatset}
         </Typography>
       </Grid>
-      <Grid lg={2}>
+      <Grid item lg={2} container>
         <Typography className={classes.paginationLabel} variant="body1">
           {paginationlabel}
         </Typography>
         <ButtonGroup
+          classes={{ root: classes.buttonGroup, groupedTextHorizontal: {} }}
           variant="text"
           color="primary"
-          aria-label="text primary button group"
         >
           {paginationOptions?.map((option) => (
             <Button
-              className={classes.button}
+              className={clsx(classes.button, {
+                [classes.selectedOption]: option === selectedPageCount,
+              })}
               onClick={() => setSelectedPageCount(option)}
               key={option}
-              disabled={selectedPageCount}
+              disabled={selectedPageCount === option}
             >
               {option}
             </Button>
