@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
+import ExploreSearchIcon from "@/pesayetu/assets/icons/search-explore.svg";
 import NavSearchIcon from "@/pesayetu/assets/icons/search-open.svg";
 import SearchIcon from "@/pesayetu/assets/icons/search.svg";
 import Link from "@/pesayetu/components/Link";
@@ -68,6 +69,7 @@ function DropdownSearch({
   label,
   counties,
   onClick: onClickProp,
+  isExplore,
   ...props
 }) {
   const classes = useStyles(props);
@@ -107,6 +109,21 @@ function DropdownSearch({
   };
 
   const icon = nav && !suggestions?.length ? NavSearchIcon : SearchIcon;
+  const searchIconButton = (
+    <IconButton
+      color="primary"
+      onClick={handleSearchClick}
+      size="small"
+      className={classes.button}
+    >
+      <Image
+        src={isExplore ? ExploreSearchIcon : icon}
+        width={48}
+        height={48}
+        alt="search"
+      />
+    </IconButton>
+  );
 
   return (
     <div className={classes.root}>
@@ -116,6 +133,7 @@ function DropdownSearch({
       <InputBase
         inputProps={{ "aria-label": "search" }}
         onChange={handleChange}
+        placeholder={isExplore ? label : ""}
         value={query}
         {...props}
         classes={{
@@ -123,15 +141,10 @@ function DropdownSearch({
           input: classes.input,
           focused: classes.focused,
         }}
+        endAdornment={isExplore ? searchIconButton : null}
       />
-      <IconButton
-        color="primary"
-        onClick={handleSearchClick}
-        size="small"
-        className={classes.button}
-      >
-        <Image src={icon} width={48} height={48} alt="search" />
-      </IconButton>
+      {!isExplore && searchIconButton}
+
       <div className={classes.suggestions}>
         {suggestions?.length > 0 && (
           <List classes={{ root: classes.selectMenu }}>
@@ -141,7 +154,7 @@ function DropdownSearch({
                 variant="subtitle1"
                 underline="none"
                 onClick={() => handleSelect(code, name)}
-                className={classes.menuItem}
+                classes={{ root: classes.menuItem }}
               >
                 {name.toLowerCase()}
               </ListItem>
@@ -154,6 +167,7 @@ function DropdownSearch({
 }
 
 DropdownSearch.propTypes = {
+  isExplore: PropTypes.bool,
   label: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
@@ -167,6 +181,7 @@ DropdownSearch.defaultProps = {
   onClick: undefined,
   nav: false,
   counties: undefined,
+  isExplore: false,
 };
 
 export default DropdownSearch;
