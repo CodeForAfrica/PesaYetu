@@ -26,26 +26,32 @@ function Documents({
       <DataFilter {...filterProps} />
       {items.map((item) => (
         <Container className={classes.root} key={item.title}>
-          <Grid item xs={12} className={clsx(classes.textContent, className)}>
+          <Grid
+            item
+            xs={12}
+            lg={7}
+            className={clsx(classes.textContent, className)}
+          >
             <RichTypography
               variant="body1"
-              className={clsx(classes.title, className)}
+              className={clsx(classes.text, classes.title, className)}
             >
               {item.title}
             </RichTypography>
             <RichTypography
               variant="body1"
-              className={clsx(classes.description, className)}
+              className={clsx(classes.text, classes.description, className)}
             >
               {item.description}
             </RichTypography>
           </Grid>
-          <Grid item xs={12} className={classes.linkContent}>
+          <Grid item xs={12} lg={5} className={classes.linkContent}>
             {datasetTypes && (
               <Grid
                 item
                 xs={6}
-                md={4}
+                md={3}
+                lg={4}
                 container
                 direction="row"
                 justifyContent="space-evenly"

@@ -19,15 +19,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       alignItems: "center",
     },
   },
-  title: {
-    fontWeight: "500",
-    color: "#212529",
+  text: {
+    color: "#333333",
     padding: `${typography.pxToRem(16)} 0`,
-  },
-  description: {
-    fontWeight: "500",
-    color: "#212529",
-    padding: `${typography.pxToRem(16)} 0`,
+    [breakpoints.up("lg")]: {
+      color: "#212529",
+    },
   },
   textContent: {
     display: "flex",
@@ -50,7 +47,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       alignItems: "center",
     },
   },
-  dataTypes: {},
+  dataTypes: {
+    padding: "0.5rem 0rem",
+    [breakpoints.up("md")]: {
+      padding: 0,
+    },
+  },
   typeContent: {
     opacity: 1,
     textAlign: "center",
