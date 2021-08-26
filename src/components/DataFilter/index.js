@@ -8,7 +8,8 @@ import Input from "./input";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
-    width: "100%",
+    paddingBottom: typography.pxToRem(20),
+    borderBottom: `1px solid ${palette.grey.main}`,
   },
   paginationLabel: {
     marginRight: typography.pxToRem(40),
@@ -41,7 +42,7 @@ const DataFilter = ({
     paginationOptions[0]
   );
   return (
-    <Grid container alignItems="center">
+    <Grid className={classes.root} container alignItems="center">
       <Grid lg={2}>
         <Typography variant="body1">
           {datasetLabel}:{datatset}

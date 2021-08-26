@@ -20,6 +20,4 @@ const Template = ({ label, ...args }) => <Documents {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {
-  items: documentsArg.items,
-};
+Default.args = documentsArg;

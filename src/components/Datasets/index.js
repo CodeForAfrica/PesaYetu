@@ -10,6 +10,7 @@ function Datasets({ items, ...props }) {
   const classes = useStyles(props);
   return (
     <Documents
+      {...props}
       datasetTypes
       items={items}
       classes={{

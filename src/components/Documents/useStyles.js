@@ -10,6 +10,9 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     justifyContent: "space-evenly",
     background: palette.background.default,
     border: `1px solid ${palette.grey.main}`,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 40,
     padding: `${typography.pxToRem(31)} ${typography.pxToRem(10)}`,
     [breakpoints.up("lg")]: {
       flexDirection: "row",

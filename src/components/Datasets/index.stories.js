@@ -19,6 +19,4 @@ const Template = ({ ...args }) => <Datasets {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {
-  items: datasetTypeArgs.items,
-};
+Default.args = datasetTypeArgs;

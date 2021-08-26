@@ -6,15 +6,24 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import DataFilter from "@/pesayetu/components/DataFilter";
 import Link from "@/pesayetu/components/Link";
 
-function Documents({ items, className, datasetTypes, children, ...props }) {
+function Documents({
+  items,
+  className,
+  datasetTypes,
+  children,
+  filterProps,
+  ...props
+}) {
   const classes = useStyles(props);
   if (!items?.length) {
     return null;
   }
   return (
     <>
+      <DataFilter {...filterProps} />
       {items.map((item) => (
         <Container className={classes.root} key={item.title}>
           <Grid item xs={12} className={clsx(classes.textContent, className)}>
@@ -69,6 +78,7 @@ Documents.propTypes = {
   children: PropTypes.node,
   datasetTypes: PropTypes.bool,
   className: PropTypes.string,
+  filterProps: PropTypes.shape({}),
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -85,6 +95,7 @@ Documents.defaultProps = {
   datasetTypes: undefined,
   className: undefined,
   items: undefined,
+  filterProps: undefined,
 };
 
 export default Documents;

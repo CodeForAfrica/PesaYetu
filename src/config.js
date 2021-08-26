@@ -367,6 +367,14 @@ export const exploreTools = {
   ],
 };
 export const documentsArg = {
+  filterProps: {
+    datasetLabel: "Dataset",
+    datatset: 65,
+    orderLabel: "Order By",
+    orderOptions: ["Relevance", "Date", "Municipal"],
+    paginationOptions: [10, 25, 50],
+    paginationlabel: "Show",
+  },
   items: [
     {
       title: "2021",
@@ -404,6 +412,14 @@ export const documentsArg = {
 };
 
 export const datasetTypeArgs = {
+  filterProps: {
+    datasetLabel: "Dataset",
+    datatset: 65,
+    orderLabel: "Order By",
+    orderOptions: ["Relevance", "Date", "Municipal"],
+    paginationOptions: [10, 25, 50],
+    paginationlabel: "Show",
+  },
   items: [
     {
       title: "Health facilities in Africa",
