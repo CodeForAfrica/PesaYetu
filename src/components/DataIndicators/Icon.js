@@ -1,19 +1,11 @@
 import { ButtonBase, Typography } from "@material-ui/core";
-import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-const Icon = ({
-  item,
-  handleIconClick,
-  currentItemIndex,
-  checked,
-  index,
-  ...props
-}) => {
+const Icon = ({ item, handleIconClick, currentItemIndex, index, ...props }) => {
   const classes = useStyles(props);
   const { title, image, hover } = item;
 
@@ -22,11 +14,7 @@ const Icon = ({
       <div className={classes.image}>
         <Image src={index === currentItemIndex ? hover : image} layout="fill" />
       </div>
-      <Typography
-        className={clsx(classes.text, { [classes.slideInText]: checked })}
-      >
-        {title}
-      </Typography>
+      <Typography className={classes.text}>{title}</Typography>
     </ButtonBase>
   );
 };
@@ -34,7 +22,6 @@ const Icon = ({
 Icon.propTypes = {
   handleIconClick: PropTypes.func,
   currentItemIndex: PropTypes.number,
-  checked: PropTypes.bool,
   index: PropTypes.number,
   item: PropTypes.arrayOf(
     PropTypes.shape({
@@ -46,7 +33,6 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  checked: undefined,
   currentItemIndex: undefined,
   handleIconClick: undefined,
   item: undefined,
