@@ -11,7 +11,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   link: {
     fontWeight: "bold",
-    textDecoration: "underline",
     marginBottom: typography.pxToRem(10),
   },
 }));

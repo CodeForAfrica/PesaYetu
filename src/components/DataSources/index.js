@@ -15,26 +15,27 @@ const DataSources = ({ items, title, subtitle, cover, ...props }) => {
   if (!items || !items.length) {
     return null;
   }
-
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Grid justifyContent="space-between" container>
+        <Grid container justifyContent="space-between">
           <Grid item xs={12} lg={4}>
             <Header subtitle={subtitle} className={classes.title} variant="h2">
               {title}
             </Header>
             {items.map(({ title: dataSourceTitle, href }) => (
               <Typography variant="body2" className={classes.link}>
-                <Link href={href}>{dataSourceTitle} </Link>{" "}
+                <Link underline="always" href={href}>
+                  {dataSourceTitle}
+                </Link>
               </Typography>
             ))}
           </Grid>
           <Grid
-            container
             item
             xs={12}
             lg={6}
+            container
             justifyContent="center"
             alignItems="center"
           >
