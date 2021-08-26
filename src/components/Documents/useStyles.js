@@ -49,13 +49,13 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
   dataTypes: {},
   typeContent: {
-    background: "#F0F0F0",
     opacity: 1,
     textAlign: "center",
-    padding: "12px",
-    fontSize: "10px",
     color: "#666666",
-    letterSpacing: "0.8px",
+    background: "#F0F0F0",
+    padding: `${typography.pxToRem(12)}`,
+    fontSize: `${typography.pxToRem(10)}`,
+    letterSpacing: `${typography.pxToRem(0.8)}`,
     fontWeight: "600",
   },
   link: {

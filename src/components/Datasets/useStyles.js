@@ -1,29 +1,19 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ breakpoints }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
-  typeContent: {
-    background: "#F0F0F0",
-    opacity: 1,
-    textAlign: "center",
-    padding: "12px",
-    fontSize: "10px",
-    color: "#666666",
-    letterSpacing: "0.8px",
-    fontWeight: "600",
-  },
   title: {
-    fontSize: "16px",
+    fontSize: typography.pxToRem(16),
     textAlign: "left",
     padding: 0,
   },
   description: {
-    fontSize: "11px",
+    fontSize: typography.pxToRem(11),
     textAlign: "left",
     padding: 0,
     marginLeft: "0",
-    [breakpoints.up("md")]: {
-      marginLeft: "-4.5rem",
+    [breakpoints.up("lg")]: {
+      marginLeft: typography.pxToRem(-72),
     },
   },
   dataTypes: {},
@@ -46,6 +36,11 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       flexDirection: "row",
       justifyContent: "space-evenly",
       alignItems: "center",
+    },
+    [breakpoints.up("lg")]: {
+      flexDirection: "row !important",
+      justifyContent: "space-evenly !important",
+      alignItems: "center !important",
     },
   },
 }));
