@@ -6,17 +6,10 @@ import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ typography }) => ({
   root: {
+    height: "100vh",
     position: "relative",
-    height: typography.pxToRem(299),
-    width: typography.pxToRem(236),
-    marginTop: typography.pxToRem(55),
-    [breakpoints.up("lg")]: {
-      height: typography.pxToRem(471),
-      marginTop: typography.pxToRem(42),
-      width: typography.pxToRem(371),
-    },
   },
   tooltip: {
     fontFamily: typography.body1.fontFamily,
@@ -33,7 +26,6 @@ function Map({
   boundary,
   styles,
   geoJSONStyles,
-  onEachFeature: onEachFeatureProp,
   ...props
 }) {
   const classes = useStyles(props);
@@ -78,7 +70,7 @@ function Map({
         <GeoJSON
           data={boundary}
           style={geoJSONStyles}
-          onEachFeature={onEachFeatureProp || onEachFeature}
+          onEachFeature={onEachFeature}
         />
       </MapContainer>
     </div>
@@ -101,7 +93,6 @@ Map.propTypes = {
   styles: PropTypes.shape({}),
   boundary: PropTypes.shape({}),
   geoJSONStyles: PropTypes.shape({}),
-  onEachFeature: PropTypes.func,
 };
 
 Map.defaultProps = {
@@ -119,7 +110,6 @@ Map.defaultProps = {
     opacity: 1,
     fillColor: "#fff",
   },
-  onEachFeature: undefined,
 };
 
 export default Map;
