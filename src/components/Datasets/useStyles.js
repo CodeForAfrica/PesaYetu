@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   root: {},
   typeContent: {
     background: "#F0F0F0",
@@ -26,10 +26,24 @@ const useStyles = makeStyles(() => ({
   dataTypes: {},
   textContent: {
     flexDirection: "column !important",
+    justifyContent: "flex-start !important",
+    alignItems: "center !important",
+    [breakpoints.up("md")]: {
+      flexDirection: "column !important",
+      justifyContent: "center !important",
+      alignItems: "center !important",
+    },
+  },
+  linkContent: {
+    flexDirection: "column",
     justifyContent: "center !important",
     alignItems: "center !important",
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      justifyContent: "space-evenly",
+      alignItems: "center",
+    },
   },
-  linkContent: {},
 }));
 
 export default useStyles;

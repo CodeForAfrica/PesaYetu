@@ -16,6 +16,7 @@ function Datasets({ items, ...props }) {
         title: classes.title,
         description: classes.description,
         textContent: classes.textContent,
+        linkContent: classes.linkContent,
       }}
     />
   );
