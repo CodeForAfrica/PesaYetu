@@ -4,12 +4,12 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import Documents from "@/pesayetu/components/Documents";
+import Sources from "@/pesayetu/components/Sources";
 
 function Datasets({ items, ...props }) {
   const classes = useStyles(props);
   return (
-    <Documents
+    <Sources
       {...props}
       datasetTypes
       items={items}

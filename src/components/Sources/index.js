@@ -10,7 +10,7 @@ import DataFilter from "@/pesayetu/components/DataFilter";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
-function Documents({ items, className, datasetTypes, filterProps, ...props }) {
+function Sources({ items, className, datasetTypes, filterProps, ...props }) {
   const classes = useStyles(props);
   if (!items?.length) {
     return null;
@@ -74,7 +74,7 @@ function Documents({ items, className, datasetTypes, filterProps, ...props }) {
   );
 }
 
-Documents.propTypes = {
+Sources.propTypes = {
   datasetTypes: PropTypes.bool,
   className: PropTypes.string,
   filterProps: PropTypes.shape({}),
@@ -89,11 +89,11 @@ Documents.propTypes = {
   ),
 };
 
-Documents.defaultProps = {
+Sources.defaultProps = {
   datasetTypes: undefined,
   className: undefined,
   items: undefined,
   filterProps: undefined,
 };
 
-export default Documents;
+export default Sources;

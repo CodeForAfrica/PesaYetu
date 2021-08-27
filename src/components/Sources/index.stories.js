@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React from "react";
 
-import Documents from ".";
+import Sources from ".";
 
 import { documentsArg } from "@/pesayetu/config";
 
@@ -16,7 +16,7 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => <Documents {...args} />;
+const Template = ({ label, ...args }) => <Sources {...args} />;
 
 export const Default = Template.bind({});
 
