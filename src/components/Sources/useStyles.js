@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
-  root: {
+  sources: {
     opacity: 1,
     width: "100%",
     height: "100%",
@@ -10,14 +10,14 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     justifyContent: "space-evenly",
     background: palette.background.default,
     border: `1px solid ${palette.grey.main}`,
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: 40,
-    padding: `${typography.pxToRem(31)} ${typography.pxToRem(10)}`,
+    padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
     [breakpoints.up("lg")]: {
       flexDirection: "row",
       alignItems: "center",
     },
+  },
+  grid: {
+    padding: "3rem 0rem",
   },
   text: {
     color: "#333333",
@@ -33,7 +33,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     alignItems: "flex-start",
     [breakpoints.up("md")]: {
       flexDirection: "row",
-      justifyContent: "space-evenly",
+      justifyContent: "space-between",
     },
   },
   linkContent: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     alignItems: "flex-start",
     [breakpoints.up("md")]: {
       flexDirection: "row",
-      justifyContent: "space-evenly",
+      justifyContent: "flex-end",
       alignItems: "center",
     },
   },

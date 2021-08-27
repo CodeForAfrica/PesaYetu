@@ -12,7 +12,11 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     borderBottom: `1px solid ${palette.grey.main}`,
   },
   paginationLabel: {
-    marginRight: typography.pxToRem(40),
+    // marginRight: typography.pxToRem(40),
+    fontSize: "14px",
+  },
+  caption: {
+    fontSize: "14px",
   },
   buttonGroup: {},
   button: {
@@ -22,6 +26,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     color: palette.grey.main,
     border: "none !important",
     height: "max-content",
+    "&:hover, &:focus, &:focus-within": {
+      backgroundColor: "transparent",
+    },
   },
   selectedOption: {
     color: `${palette.grey.dark} !important`,
@@ -42,14 +49,19 @@ const DataFilter = ({
     paginationOptions[0]
   );
   return (
-    <Grid className={classes.root} container alignItems="center">
+    <Grid
+      className={classes.root}
+      container
+      alignItems="center"
+      justify="space-betweeen"
+    >
       <Grid lg={2}>
         <Typography variant="body1">
-          {datasetLabel}:{datatset}
+          {datasetLabel}: {datatset}
         </Typography>
       </Grid>
-      <Grid item lg={2} container alignItems="center">
-        <Typography className={classes.paginationLabel} variant="body1">
+      <Grid item lg={2} container alignItems="center" direction="row">
+        <Typography className={classes.paginationLabel} variant="caption">
           {paginationlabel}
         </Typography>
         <ButtonGroup
@@ -66,12 +78,14 @@ const DataFilter = ({
               key={option}
               disabled={selectedPageCount === option}
             >
-              {option}
+              <Typography variant="caption" className={classes.caption}>
+                {option}
+              </Typography>
             </Button>
           ))}
         </ButtonGroup>
       </Grid>
-      <Grid item lg={4} container alignItems="center">
+      <Grid item lg={3} container direction="row" alignItems="center">
         <Typography className={classes.paginationLabel} variant="body1">
           {orderLabel}
         </Typography>

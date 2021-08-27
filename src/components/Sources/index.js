@@ -16,60 +16,62 @@ function Sources({ items, className, datasetTypes, filterProps, ...props }) {
     return null;
   }
   return (
-    <Section>
+    <Section classes={{ root: classes.root }}>
       <DataFilter {...filterProps} />
-      {items.map((item) => (
-        <div className={classes.root} key={item.title}>
-          <Grid
-            item
-            xs={12}
-            lg={7}
-            className={clsx(classes.textContent, className)}
-          >
-            <RichTypography
-              variant="body1"
-              className={clsx(classes.text, classes.title, className)}
+      <div className={classes.grid}>
+        {items.map((item) => (
+          <div className={classes.sources} key={item.title}>
+            <Grid
+              item
+              xs={12}
+              lg={7}
+              className={clsx(classes.textContent, className)}
             >
-              {item.title}
-            </RichTypography>
-            <RichTypography
-              variant="body1"
-              className={clsx(classes.text, classes.description, className)}
-            >
-              {item.description}
-            </RichTypography>
-          </Grid>
-          <Grid item xs={12} lg={5} className={classes.linkContent}>
-            {datasetTypes && (
-              <Grid
-                item
-                xs={6}
-                md={3}
-                lg={4}
-                container
-                direction="row"
-                justifyContent="space-evenly"
-                alignItems="center"
-                className={classes.dataTypes}
+              <RichTypography
+                variant="body1"
+                className={clsx(classes.text, classes.title, className)}
               >
-                {item.types.map((data) => (
-                  <RichTypography className={classes.typeContent}>
-                    {data.name}
-                  </RichTypography>
-                ))}
-              </Grid>
-            )}
-            <Link
-              className={classes.link}
-              href={item.href}
-              underline="always"
-              variant="body2"
-            >
-              Read More
-            </Link>
-          </Grid>
-        </div>
-      ))}
+                {item.title}
+              </RichTypography>
+              <RichTypography
+                variant="body1"
+                className={clsx(classes.text, classes.description, className)}
+              >
+                {item.description}
+              </RichTypography>
+            </Grid>
+            <Grid item xs={12} lg={5} className={classes.linkContent}>
+              {datasetTypes && (
+                <Grid
+                  item
+                  xs={6}
+                  md={3}
+                  lg={4}
+                  container
+                  direction="row"
+                  justifyContent="space-evenly"
+                  alignItems="center"
+                  className={classes.dataTypes}
+                >
+                  {item.types.map((data) => (
+                    <RichTypography className={classes.typeContent}>
+                      {data.name}
+                    </RichTypography>
+                  ))}
+                </Grid>
+              )}
+              <Link
+                className={classes.link}
+                href={item.href}
+                underline="always"
+                variant="body2"
+              >
+                Read More
+              </Link>
+            </Grid>
+          </div>
+        ))}
+      </div>
     </Section>
   );
 }
