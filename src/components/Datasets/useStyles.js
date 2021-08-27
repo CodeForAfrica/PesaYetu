@@ -13,19 +13,20 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     fontSize: typography.pxToRem(11),
     textAlign: "left",
     padding: 0,
-    marginLeft: "0",
-    [breakpoints.up("lg")]: {
-      marginLeft: typography.pxToRem(-72),
-    },
   },
+  dataTypes: {},
   textContent: {
     flexDirection: "column !important",
     justifyContent: "flex-start !important",
     alignItems: "center !important",
     [breakpoints.up("md")]: {
-      flexDirection: "column !important",
       justifyContent: "center !important",
+      flexDirection: "column !important",
       alignItems: "center !important",
+    },
+    [breakpoints.up("lg")]: {
+      flexDirection: "column !important",
+      justifyContent: "flex-start !important",
     },
   },
   linkContent: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     },
     [breakpoints.up("lg")]: {
       flexDirection: "row !important",
-      justifyContent: "space-evenly !important",
+      justifyContent: "space-around !important",
       alignItems: "center !important",
     },
   },

@@ -40,13 +40,17 @@ function Sources({ items, className, datasetTypes, filterProps, ...props }) {
                 {item.description}
               </RichTypography>
             </Grid>
-            <Grid item xs={12} lg={5} className={classes.linkContent}>
+            <Grid
+              item
+              xs={12}
+              lg={5}
+              className={clsx(classes.linkContent, className)}
+            >
               {datasetTypes && (
                 <Grid
                   item
-                  xs={6}
-                  md={3}
-                  lg={4}
+                  xs={12}
+                  md={12}
                   container
                   direction="row"
                   justifyContent="space-evenly"
