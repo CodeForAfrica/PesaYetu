@@ -21,6 +21,27 @@ export default function Explore(props) {
   );
 }
 
+export async function getStaticPaths() {
+  const res = await fetch(
+    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
+  );
+  const result = await res.json();
+  const paths = result?.children?.county?.features?.map(
+    ({ properties: { code } }) => {
+      return {
+        params: {
+          slug: [code],
+        },
+      };
+    }
+  );
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+}
+
 export async function getStaticProps({ preview, previewData }) {
   const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(

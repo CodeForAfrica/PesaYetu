@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useRef } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
@@ -29,6 +30,8 @@ function Map({
   ...props
 }) {
   const classes = useStyles(props);
+  const mapRef = useRef();
+  const router = useRouter();
 
   const onEachFeature = (feature, layer) => {
     layer
@@ -49,18 +52,25 @@ function Map({
       });
     });
     layer.on("click", () => {
-      // get the the code for each county,
-      // and redirect to its explore page
-      // window.alert(feature.properties.code);
+      const href = `/explore/${feature.properties.level}-${feature.properties.code}`;
+      router.push(href, href, { shallow: true });
+      const map = mapRef.current;
+      map.flyToBounds(layer.getBounds(), {
+        animate: true,
+        duration: 0.3, // in seconds
+      });
     });
   };
 
   return (
     <div className={classes.root}>
       <MapContainer
+        whenCreated={(mapInstance) => {
+          mapRef.current = mapInstance;
+        }}
         center={center}
         zoom={zoom}
-        zoomControl={false}
+        zoomPosition="bottomright"
         scrollWheelZoom={false}
         touchZoom={false}
         zoomSnap={0.25}
