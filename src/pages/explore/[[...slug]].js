@@ -11,9 +11,9 @@ export default function Explore(props) {
     <Page {...props}>
       <Map
         center={[0.3051933453207569, 37.908818734483155]}
-        zoom={6.75}
+        zoom={5}
         tileLayer={{
-          url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+          url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png",
         }}
         {...props}
       />

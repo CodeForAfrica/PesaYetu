@@ -57,7 +57,7 @@ function Map({
       const map = mapRef.current;
       map.flyToBounds(layer.getBounds(), {
         animate: true,
-        duration: 0.3, // in seconds
+        duration: 0.5, // in seconds
       });
     });
   };
