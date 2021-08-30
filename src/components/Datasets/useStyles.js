@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
+  dataTypes: {},
   sources: {
     padding: `${typography.pxToRem(31)} ${typography.pxToRem(0)}`,
   },
@@ -17,7 +18,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     textAlign: "left",
     padding: 0,
   },
-  dataTypes: {},
+  text: {
+    padding: "0 !important",
+  },
   textContent: {
     justifyContent: "center !important",
     [breakpoints.up("md")]: {
@@ -33,7 +36,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     flexDirection: "column! important",
     justifyContent: "center !important",
     alignItems: "center !important",
-    padding: "1rem! important",
     [breakpoints.up("md")]: {
       flexDirection: "column! important",
     },

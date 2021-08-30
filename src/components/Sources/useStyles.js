@@ -10,10 +10,11 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     justifyContent: "space-evenly",
     background: palette.background.default,
     border: `1px solid ${palette.grey.main}`,
-    padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
+    padding: `${typography.pxToRem(31)}`,
     [breakpoints.up("lg")]: {
       flexDirection: "row",
       alignItems: "center",
+      padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
     },
   },
   grid: {
@@ -43,8 +44,11 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     alignItems: "flex-start",
     [breakpoints.up("md")]: {
       flexDirection: "row",
-      justifyContent: "flex-end",
+      justifyContent: "center",
       alignItems: "center",
+    },
+    [breakpoints.up("lg")]: {
+      justifyContent: "flex-end",
     },
   },
   dataTypes: {

@@ -15,6 +15,7 @@ function Datasets({ items, ...props }) {
       items={items}
       classes={{
         title: classes.title,
+        text: classes.text,
         sources: classes.sources,
         description: classes.description,
         textContent: classes.textContent,
