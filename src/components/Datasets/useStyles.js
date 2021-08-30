@@ -15,16 +15,13 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   description: {
     color: "#707070",
     fontSize: typography.pxToRem(11),
-    textAlign: "left",
     padding: 0,
   },
   text: {
     padding: "0 !important",
   },
   textContent: {
-    justifyContent: "center !important",
     [breakpoints.up("md")]: {
-      justifyContent: "center !important",
       flexDirection: "column !important",
     },
     [breakpoints.up("lg")]: {

@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   grid: {
-    padding: "3rem 0rem",
+    padding: `${typography.pxToRem(48)} 0`,
   },
   text: {
     color: "#333333",
@@ -33,8 +33,12 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     [breakpoints.up("md")]: {
+      alignItems: "center",
+    },
+    [breakpoints.up("lg")]: {
       flexDirection: "row",
       justifyContent: "space-between",
+      alignItems: "flex-start",
     },
   },
   linkContent: {
