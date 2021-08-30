@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     flexDirection: "column! important",
     justifyContent: "center !important",
     alignItems: "center !important",
-    padding: "2rem! important",
+    padding: "1rem! important",
     [breakpoints.up("md")]: {
       flexDirection: "column! important",
     },
