@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 import Input from "./input";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: {
     paddingBottom: typography.pxToRem(20),
     borderBottom: `1px solid ${palette.grey.main}`,
@@ -14,6 +14,12 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   paginationLabel: {
     // marginRight: typography.pxToRem(40),
     fontSize: "14px",
+  },
+  dataFilter: {
+    padding: "0.5rem 0rem",
+    [breakpoints.up("lg")]: {
+      padding: "0rem",
+    },
   },
   caption: {
     fontSize: "14px",
@@ -55,12 +61,19 @@ const DataFilter = ({
       alignItems="center"
       justify="space-betweeen"
     >
-      <Grid lg={2}>
+      <Grid lg={2} className={classes.dataFilter}>
         <Typography variant="body1">
           {datasetLabel}: {datatset}
         </Typography>
       </Grid>
-      <Grid item lg={2} container alignItems="center" direction="row">
+      <Grid
+        item
+        lg={2}
+        container
+        alignItems="center"
+        direction="row"
+        className={classes.dataFilter}
+      >
         <Typography className={classes.paginationLabel} variant="caption">
           {paginationlabel}
         </Typography>
@@ -85,7 +98,14 @@ const DataFilter = ({
           ))}
         </ButtonGroup>
       </Grid>
-      <Grid item lg={3} container direction="row" alignItems="center">
+      <Grid
+        item
+        lg={3}
+        container
+        direction="row"
+        alignItems="center"
+        className={classes.dataFilter}
+      >
         <Typography className={classes.paginationLabel} variant="body1">
           {orderLabel}
         </Typography>

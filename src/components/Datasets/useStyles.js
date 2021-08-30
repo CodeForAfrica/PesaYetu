@@ -8,7 +8,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
   title: {
     fontSize: typography.pxToRem(16),
-    textAlign: "left",
     padding: 0,
     fontWeight: "500",
   },
@@ -32,7 +31,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   linkContent: {
     flexDirection: "column! important",
     justifyContent: "center !important",
-    alignItems: "center !important",
     [breakpoints.up("md")]: {
       flexDirection: "column! important",
     },

@@ -50,11 +50,10 @@ function Sources({ items, className, datasetTypes, filterProps, ...props }) {
                 <Grid
                   item
                   xs={12}
-                  md={12}
                   lg={6}
                   container
                   direction="row"
-                  justifyContent="space-evenly"
+                  justifyContent="flex-start"
                   alignItems="center"
                   className={classes.dataTypes}
                 >

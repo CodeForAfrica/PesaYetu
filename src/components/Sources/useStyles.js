@@ -56,9 +56,14 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   dataTypes: {
-    padding: "0.5rem 0rem",
+    padding: `${typography.pxToRem(8)} 0`,
+    direction: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
     [breakpoints.up("md")]: {
       padding: 0,
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
   typeContent: {
@@ -70,6 +75,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     fontSize: `${typography.pxToRem(10)}`,
     letterSpacing: `${typography.pxToRem(0.8)}`,
     fontWeight: "600",
+    marginRight: `${typography.pxToRem(16)}`,
   },
   link: {
     fontWeight: "600",
