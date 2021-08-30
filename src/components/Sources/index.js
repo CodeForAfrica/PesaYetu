@@ -21,10 +21,11 @@ function Sources({ items, filterProps, ...props }) {
       {!isMobile && <DataFilter {...filterProps} />}
       {items.map((item) => (
         <SourceItem
+          datasetTypes={!!item.types}
           title={item.title}
           description={item.description}
           href={item.href}
-          types={item.types}
+          types={item.types || []}
           classes={{
             title: classes.title,
             text: classes.text,
