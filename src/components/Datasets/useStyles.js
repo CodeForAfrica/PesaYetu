@@ -19,13 +19,10 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
   dataTypes: {},
   textContent: {
-    flexDirection: "column !important",
-    justifyContent: "flex-start !important",
-    alignItems: "center !important",
+    justifyContent: "center !important",
     [breakpoints.up("md")]: {
       justifyContent: "center !important",
       flexDirection: "column !important",
-      alignItems: "center !important",
     },
     [breakpoints.up("lg")]: {
       flexDirection: "column !important",
