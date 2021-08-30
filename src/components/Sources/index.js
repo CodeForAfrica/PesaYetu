@@ -1,5 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid } from "@material-ui/core";
+import { Grid, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -12,12 +13,14 @@ import Section from "@/pesayetu/components/Section";
 
 function Sources({ items, className, datasetTypes, filterProps, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   if (!items?.length) {
     return null;
   }
   return (
     <Section classes={{ root: classes.root }}>
-      <DataFilter {...filterProps} />
+      {!isMobile && <DataFilter {...filterProps} />}
       <div className={classes.grid}>
         {items.map((item) => (
           <div className={classes.sources} key={item.title}>

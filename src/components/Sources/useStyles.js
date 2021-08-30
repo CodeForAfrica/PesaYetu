@@ -56,12 +56,11 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     },
   },
   dataTypes: {
-    padding: `${typography.pxToRem(8)} 0`,
+    padding: `${typography.pxToRem(16)} 0`,
     direction: "row",
     justifyContent: "flex-start",
     alignItems: "center",
     [breakpoints.up("md")]: {
-      padding: 0,
       justifyContent: "center",
       alignItems: "center",
     },
