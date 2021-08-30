@@ -50,7 +50,7 @@ function Sources({ items, className, datasetTypes, filterProps, ...props }) {
                 <Grid
                   item
                   xs={12}
-                  md={12}
+                  md={6}
                   container
                   direction="row"
                   justifyContent="space-evenly"
