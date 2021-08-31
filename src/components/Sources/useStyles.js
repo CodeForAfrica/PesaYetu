@@ -84,10 +84,17 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     letterSpacing: `${typography.pxToRem(0.8)}`,
     fontWeight: "600",
     marginRight: `${typography.pxToRem(16)}`,
+    textTransform: "uppercase",
   },
   link: {
     fontWeight: "600",
     color: palette.primary.main,
+    [breakpoints.up("md")]: {
+      padding: `${typography.pxToRem(8)} 0`,
+    },
+    [breakpoints.up("lg")]: {
+      padding: 0,
+    },
   },
 }));
 
