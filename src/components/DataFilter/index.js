@@ -12,10 +12,9 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     borderBottom: `1px solid ${palette.grey.main}`,
   },
   paginationLabel: {
-    // marginRight: typography.pxToRem(40),
     fontSize: "14px",
   },
-  dataFilter: {
+  order: {
     padding: "0.5rem 0rem",
     [breakpoints.up("lg")]: {
       padding: "0rem",
@@ -61,17 +60,19 @@ const DataFilter = ({
       alignItems="center"
       justify="space-betweeen"
     >
-      <Grid lg={2} className={classes.dataFilter}>
+      <Grid md={2} className={classes.dataFilter}>
         <Typography variant="body1">
           {datasetLabel}: {datatset}
         </Typography>
       </Grid>
       <Grid
         item
+        md={4}
         lg={2}
         container
         alignItems="center"
         direction="row"
+        justifyContent="center"
         className={classes.dataFilter}
       >
         <Typography className={classes.paginationLabel} variant="caption">
@@ -100,11 +101,13 @@ const DataFilter = ({
       </Grid>
       <Grid
         item
+        md={6}
         lg={3}
         container
         direction="row"
         alignItems="center"
-        className={classes.dataFilter}
+        justifyContent="flex-end"
+        className={classes.order}
       >
         <Typography className={classes.paginationLabel} variant="body1">
           {orderLabel}
