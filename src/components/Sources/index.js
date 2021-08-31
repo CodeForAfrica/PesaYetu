@@ -33,6 +33,7 @@ function Sources({ items, filterProps, ...props }) {
             description: classes.description,
             textContent: classes.textContent,
             linkContent: classes.linkContent,
+            link: classes.link,
           }}
         />
       ))}

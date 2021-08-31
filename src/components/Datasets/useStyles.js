@@ -2,9 +2,17 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
-  dataTypes: {},
   sources: {
     padding: `${typography.pxToRem(31)} ${typography.pxToRem(0)}`,
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      alignItems: "flex-start !important",
+    },
+    [breakpoints.up("lg")]: {
+      flexDirection: "row",
+      alignItems: "center !important",
+      padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
+    },
   },
   title: {
     fontSize: typography.pxToRem(16),

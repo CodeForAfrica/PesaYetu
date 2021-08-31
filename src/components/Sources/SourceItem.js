@@ -23,6 +23,7 @@ function SourceItem({
       <Grid
         item
         xs={12}
+        md={6}
         lg={7}
         className={clsx(classes.textContent, className)}
       >
@@ -42,6 +43,7 @@ function SourceItem({
       <Grid
         item
         xs={12}
+        md={6}
         lg={5}
         className={clsx(classes.linkContent, className)}
       >

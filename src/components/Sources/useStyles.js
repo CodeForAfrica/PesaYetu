@@ -11,6 +11,10 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     background: palette.background.default,
     border: `1px solid ${palette.grey.main}`,
     padding: `${typography.pxToRem(31)}`,
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
     [breakpoints.up("lg")]: {
       flexDirection: "row",
       alignItems: "center",
@@ -33,7 +37,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     [breakpoints.up("md")]: {
-      alignItems: "center",
+      alignItems: "flex-start",
     },
     [breakpoints.up("lg")]: {
       flexDirection: "row",
@@ -48,7 +52,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     alignItems: "flex-start",
     [breakpoints.up("md")]: {
       flexDirection: "row",
-      justifyContent: "center",
+      justifyContent: "flex-end",
       alignItems: "center",
     },
     [breakpoints.up("lg")]: {
@@ -63,6 +67,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     [breakpoints.up("md")]: {
       justifyContent: "center",
       alignItems: "center",
+      padding: 0,
     },
   },
   typeContent: {
