@@ -6,22 +6,16 @@ import React, { useState } from "react";
 
 import Input from "./input";
 
-const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     paddingBottom: typography.pxToRem(20),
     borderBottom: `1px solid ${palette.grey.main}`,
   },
   paginationLabel: {
-    fontSize: "14px",
-  },
-  order: {
-    padding: "0.5rem 0rem",
-    [breakpoints.up("lg")]: {
-      padding: "0rem",
-    },
+    fontSize: typography.pxToRem(14),
   },
   caption: {
-    fontSize: "14px",
+    fontSize: typography.pxToRem(14),
   },
   buttonGroup: {},
   button: {
@@ -107,7 +101,6 @@ const DataFilter = ({
         direction="row"
         alignItems="center"
         justifyContent="flex-end"
-        className={classes.order}
       >
         <Typography className={classes.paginationLabel} variant="body1">
           {orderLabel}
