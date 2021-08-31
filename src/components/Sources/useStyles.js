@@ -27,6 +27,10 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   text: {
     color: "#333333",
     padding: `${typography.pxToRem(16)} 0`,
+    [breakpoints.up("md")]: {
+      color: "#333333",
+      padding: `${typography.pxToRem(8)} 0`,
+    },
     [breakpoints.up("lg")]: {
       color: "#212529",
     },
