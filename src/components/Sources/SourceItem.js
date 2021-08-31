@@ -8,18 +8,8 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-function SourceItem({
-  /* title,
-  description,
-  types,
-  href, */
-  items,
-  className,
-  datasetTypes,
-  ...props
-}) {
+function SourceItem({ items, className, datasetTypes, ...props }) {
   const classes = useStyles(props);
-  console.log("items", items);
   return (
     <div>
       {items.map((item) => (
@@ -87,10 +77,6 @@ function SourceItem({
 SourceItem.propTypes = {
   datasetTypes: PropTypes.bool,
   className: PropTypes.string,
-  /*  title: PropTypes.string,
-  description: PropTypes.string,
-  href: PropTypes.string,
-  types: PropTypes.arrayOf({}), */
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -105,10 +91,6 @@ SourceItem.defaultProps = {
   datasetTypes: undefined,
   className: undefined,
   items: undefined,
-  /*  title: undefined,
-  description: undefined,
-  href: undefined,
-  types: undefined, */
 };
 
 export default SourceItem;

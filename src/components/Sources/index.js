@@ -1,4 +1,4 @@
-import { useMediaQuery } from "@material-ui/core";
+import { Hidden, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { chunk } from "lodash";
 import PropTypes from "prop-types";
@@ -31,7 +31,6 @@ const responsive = {
 function Sources({ items, filterProps, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
   const itemsToShow = isTablet ? 6 : 5;
   if (!items?.length) {
@@ -40,8 +39,9 @@ function Sources({ items, filterProps, ...props }) {
   const carouselItems = chunk(items, itemsToShow);
   return (
     <div classesName={classes.root}>
-      {/*  hidden component */}
-      {!isMobile && <DataFilter {...filterProps} />}
+      <Hidden smDown>
+        <DataFilter {...filterProps} />
+      </Hidden>
       <Carousel
         swipeable
         responsive={responsive}
