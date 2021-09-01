@@ -8,7 +8,7 @@ function DatasetsAndDocuments({ items }) {
   const tabItems = items?.map(({ label, children }) => {
     return {
       label,
-      children: <Sources items={children} />,
+      children: <Sources {...children} />,
     };
   });
   return <Tabs items={tabItems} />;
