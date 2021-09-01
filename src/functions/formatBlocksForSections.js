@@ -146,7 +146,7 @@ function format(block) {
     case "acf/featured-stories":
       return formatFeaturedStories(attributes);
     case "lazyblock/explore-other-tools":
-    case "lazyblock/data-visuals":
+    case "lazyblock/data-visualisation-guide":
     case "lazyblock/our-courses":
     case "lazyblock/data-insights":
     case "lazyblock/about-team":
