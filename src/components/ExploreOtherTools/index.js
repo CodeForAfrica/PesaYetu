@@ -29,6 +29,9 @@ const responsive = {
 
 const ExploreOtherTools = ({ title, items, ...props }) => {
   const classes = useStyles(props);
+  if (!items?.length) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <Section>

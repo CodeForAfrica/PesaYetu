@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useRef } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, Pane } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import theme from "@/pesayetu/theme";
@@ -70,13 +70,19 @@ function Map({
         }}
         center={center}
         zoom={zoom}
+        zoomControl
         zoomPosition="bottomright"
         scrollWheelZoom={false}
         touchZoom={false}
         zoomSnap={0.25}
         style={styles}
       >
-        <TileLayer {...tileLayer} />
+        <Pane name="tiles" style={{ zIndex: 200, pointerEvents: "none" }}>
+          <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png" />
+        </Pane>
+        <Pane name="labelsPane" style={{ zIndex: 650, pointerEvents: "none" }}>
+          <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png" />
+        </Pane>
         <GeoJSON
           data={boundary}
           style={geoJSONStyles}
