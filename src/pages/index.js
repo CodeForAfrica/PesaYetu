@@ -23,7 +23,7 @@ export default function Home({ boundary, blocks, ...props }) {
     <Page {...props}>
       <Hero {...heroProps} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
-      <DataVisuals {...blocks?.dataVisuals} />
+      <DataVisuals {...blocks?.dataVisualisationGuide} />
       <StoriesInsights {...blocks?.insightsStories} />
       <DataIndicators {...blocks.dataIndicators} />
       <InsightData {...blocks?.dataInsights} />
@@ -42,7 +42,7 @@ Home.propTypes = {
     insightsStories: PropTypes.shape({}),
     partnersAndNewsletter: PropTypes.shape({}),
     dataInsights: PropTypes.shape({}),
-    dataVisuals: PropTypes.shape({}),
+    dataVisualisationGuide: PropTypes.shape({}),
     dataIndicators: PropTypes.shape({}),
   }),
   footerProps: PropTypes.shape({}),
