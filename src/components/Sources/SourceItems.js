@@ -8,7 +8,7 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-function SourceItem({ items, className, datasetTypes, ...props }) {
+function SourceItems({ items, className, datasetTypes, ...props }) {
   const classes = useStyles(props);
   return (
     <div>
@@ -74,7 +74,7 @@ function SourceItem({ items, className, datasetTypes, ...props }) {
   );
 }
 
-SourceItem.propTypes = {
+SourceItems.propTypes = {
   datasetTypes: PropTypes.bool,
   className: PropTypes.string,
   items: PropTypes.arrayOf(
@@ -87,10 +87,10 @@ SourceItem.propTypes = {
   ),
 };
 
-SourceItem.defaultProps = {
+SourceItems.defaultProps = {
   datasetTypes: undefined,
   className: undefined,
   items: undefined,
 };
 
-export default SourceItem;
+export default SourceItems;

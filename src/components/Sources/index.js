@@ -8,7 +8,7 @@ import Carousel from "react-multi-carousel";
 import useStyles from "./useStyles";
 
 import DataFilter from "@/pesayetu/components/DataFilter";
-import SourceItem from "@/pesayetu/components/Sources/SourceItem";
+import SourceItems from "@/pesayetu/components/Sources/SourceItems";
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
@@ -51,7 +51,7 @@ function Sources({ items, filterProps, ...props }) {
         dotListClass={classes.dots}
       >
         {carouselItems.map((ci) => (
-          <SourceItem
+          <SourceItems
             items={ci}
             datasetTypes={!!ci[0].types}
             key={ci[0].title}

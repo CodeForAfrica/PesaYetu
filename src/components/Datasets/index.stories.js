@@ -5,7 +5,7 @@ import Datasets from ".";
 import { datasetTypeArgs } from "@/pesayetu/config";
 
 export default {
-  title: "Sections/Datasets",
+  title: "Components/Datasets",
   argTypes: {
     items: {
       control: {
