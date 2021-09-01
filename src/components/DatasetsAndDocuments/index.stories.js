@@ -2,9 +2,11 @@ import React from "react";
 
 import DatasetsAndDocuments from ".";
 
+import { datasetTypeArgs, documentsArg } from "@/pesayetu/config";
+
 const items = [
-  { label: "DOCUMENTS & SPEECHES", children: "DOCUMENTS & SPEECHES " },
-  { label: "DATASET", children: "DATASET" },
+  { label: "DOCUMENTS & SPEECHES", children: documentsArg },
+  { label: "DATASET", children: datasetTypeArgs },
 ];
 
 export default {
