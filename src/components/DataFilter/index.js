@@ -13,9 +13,11 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   paginationLabel: {
     fontSize: typography.pxToRem(14),
+    fontWeight: "500",
   },
   caption: {
     fontSize: typography.pxToRem(14),
+    fontWeight: "500",
   },
   buttonGroup: {},
   button: {
