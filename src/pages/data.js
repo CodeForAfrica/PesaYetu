@@ -18,8 +18,8 @@ export default function Data({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <DataSources {...blocks?.dataSource} />
       <DatasetsAndDocuments items={items} />
+      <DataSources {...blocks?.dataSource} />
     </Page>
   );
 }
