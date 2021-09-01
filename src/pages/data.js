@@ -5,20 +5,15 @@ import DatasetsAndDocuments from "@/pesayetu/components/DatasetsAndDocuments";
 import DataSources from "@/pesayetu/components/DataSources";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
-import { datasetTypeArgs, documentsArg } from "@/pesayetu/config";
+import { datasetsAndDocumentsArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
-
-const items = [
-  { label: "DOCUMENTS & SPEECHES", children: documentsArg },
-  { label: "DATASET", children: datasetTypeArgs },
-];
 
 export default function Data({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <DatasetsAndDocuments items={items} />
+      <DatasetsAndDocuments items={datasetsAndDocumentsArgs.items} />
       <DataSources {...blocks?.dataSource} />
     </Page>
   );
