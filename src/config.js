@@ -639,6 +639,13 @@ export const footerArgs = {
   aboutVariant: "subtitle1",
 };
 
+export const datasetsAndDocumentsArgs = {
+  items: [
+    { label: "DOCUMENTS & SPEECHES", children: documentsArg },
+    { label: "DATASET", children: datasetTypeArgs },
+  ],
+};
+
 const config = {
   footerArgs,
   exploreTools,
