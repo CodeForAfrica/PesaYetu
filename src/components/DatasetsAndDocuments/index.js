@@ -33,7 +33,7 @@ function DatasetsAndDocuments({ items, ...props }) {
     };
   });
   return (
-    <div>
+    <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <Tabs items={tabItems} />
       </Section>
