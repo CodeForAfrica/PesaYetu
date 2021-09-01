@@ -10,7 +10,7 @@ const items = [
 ];
 
 export default {
-  title: "Components/DatasetsAndDocuments",
+  title: "Sections/DatasetsAndDocuments",
 };
 
 const Template = ({ ...args }) => <DatasetsAndDocuments {...args} />;
