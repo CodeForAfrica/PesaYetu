@@ -19,6 +19,10 @@ const responsive = {
 const DataVisuals = ({ title, items, ...props }) => {
   const classes = useStyles(props);
 
+  if (!items?.length) {
+    return null;
+  }
+
   return (
     <Section classes={{ root: classes.root }}>
       {title && (
