@@ -1,27 +1,35 @@
-import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
+
+import useStyles from "./useStyles";
 
 import Section from "@/pesayetu/components/Section";
 import Sources from "@/pesayetu/components/Sources";
 import Tabs from "@/pesayetu/components/Tabs";
-
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
-  root: {},
-  section: {
-    marginTop: typography.pxToRem(40),
-    [breakpoints.up("md")]: {
-      marginTop: typography.pxToRem(60),
-    },
-  },
-}));
 
 function DatasetsAndDocuments({ items, ...props }) {
   const classes = useStyles(props);
   const tabItems = items?.map(({ label, children }) => {
     return {
       label,
-      children: <Sources {...children} />,
+      children: (
+        <Sources
+          datasetTypes
+          {...children}
+          classes={
+            label === "DATASET"
+              ? {
+                  title: classes.title,
+                  text: classes.text,
+                  sources: classes.sources,
+                  description: classes.description,
+                  textContent: classes.textContent,
+                  linkContent: classes.linkContent,
+                }
+              : {}
+          }
+        />
+      ),
     };
   });
   return (
