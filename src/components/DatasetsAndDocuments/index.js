@@ -9,7 +9,7 @@ import Tabs from "@/pesayetu/components/Tabs";
 
 function DatasetsAndDocuments({ items, ...props }) {
   const classes = useStyles(props);
-  const tabItems = items?.map(({ label, children }) => {
+  const tabItems = items?.map(({ label, children }, index) => {
     return {
       label,
       children: (
@@ -17,7 +17,7 @@ function DatasetsAndDocuments({ items, ...props }) {
           datasetTypes
           {...children}
           classes={
-            label === "DATASET"
+            index === 1
               ? {
                   title: classes.title,
                   text: classes.text,
