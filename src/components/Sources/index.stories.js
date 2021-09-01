@@ -6,7 +6,7 @@ import Sources from ".";
 import { documentsArg } from "@/pesayetu/config";
 
 export default {
-  title: "Sections/Documents",
+  title: "Sections/Sources",
   argTypes: {
     items: {
       control: {
@@ -16,7 +16,7 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => <Sources {...args} />;
+const Template = ({ ...args }) => <Sources {...args} />;
 
 export const Default = Template.bind({});
 

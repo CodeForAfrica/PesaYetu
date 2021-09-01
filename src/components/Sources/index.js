@@ -1,103 +1,89 @@
-import { RichTypography } from "@commons-ui/core";
-import { Grid } from "@material-ui/core";
-import clsx from "clsx";
+import { Hidden, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import { chunk } from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
+import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
 import DataFilter from "@/pesayetu/components/DataFilter";
-import Link from "@/pesayetu/components/Link";
-import Section from "@/pesayetu/components/Section";
+import SourceItem from "@/pesayetu/components/Sources/SourceItem";
+import "react-multi-carousel/lib/styles.css";
 
-function Sources({ items, className, datasetTypes, filterProps, ...props }) {
+const responsive = {
+  desktop: {
+    breakpoint: {
+      max: 3000,
+      min: 1280,
+    },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1279, min: 768 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 767, min: 0 },
+    items: 1,
+  },
+};
+function Sources({ items, filterProps, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.up("md"));
+  const itemsToShow = isTablet ? 6 : 5;
   if (!items?.length) {
     return null;
   }
+  const carouselItems = chunk(items, itemsToShow);
   return (
-    <Section classes={{ root: classes.root }}>
-      <DataFilter {...filterProps} />
-      <div className={classes.grid}>
-        {items.map((item) => (
-          <div className={classes.sources} key={item.title}>
-            <Grid
-              item
-              xs={12}
-              lg={7}
-              className={clsx(classes.textContent, className)}
-            >
-              <RichTypography
-                variant="body1"
-                className={clsx(classes.text, classes.title, className)}
-              >
-                {item.title}
-              </RichTypography>
-              <RichTypography
-                variant="body1"
-                className={clsx(classes.text, classes.description, className)}
-              >
-                {item.description}
-              </RichTypography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              lg={5}
-              className={clsx(classes.linkContent, className)}
-            >
-              {datasetTypes && (
-                <Grid
-                  item
-                  xs={12}
-                  md={12}
-                  container
-                  direction="row"
-                  justifyContent="space-evenly"
-                  alignItems="center"
-                  className={classes.dataTypes}
-                >
-                  {item.types.map((data) => (
-                    <RichTypography className={classes.typeContent}>
-                      {data.name}
-                    </RichTypography>
-                  ))}
-                </Grid>
-              )}
-              <Link
-                className={classes.link}
-                href={item.href}
-                underline="always"
-                variant="body2"
-              >
-                Read More
-              </Link>
-            </Grid>
-          </div>
+    <div classesName={classes.root}>
+      <Hidden smDown>
+        <DataFilter {...filterProps} />
+      </Hidden>
+      <Carousel
+        swipeable
+        responsive={responsive}
+        arrows={false}
+        renderDotsOutside
+        showDots
+        dotListClass={classes.dots}
+      >
+        {carouselItems.map((ci) => (
+          <SourceItem
+            items={ci}
+            datasetTypes={!!ci[0].types}
+            key={ci[0].title}
+            classes={{
+              title: classes.title,
+              text: classes.text,
+              sources: classes.sources,
+              description: classes.description,
+              textContent: classes.textContent,
+              linkContent: classes.linkContent,
+              link: classes.link,
+            }}
+          />
         ))}
-      </div>
-    </Section>
+      </Carousel>
+    </div>
   );
 }
 
 Sources.propTypes = {
-  datasetTypes: PropTypes.bool,
-  className: PropTypes.string,
   filterProps: PropTypes.shape({}),
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
       href: PropTypes.string,
-      link: PropTypes.string,
       types: PropTypes.arrayOf({}),
     })
   ),
 };
 
 Sources.defaultProps = {
-  datasetTypes: undefined,
-  className: undefined,
   items: undefined,
   filterProps: undefined,
 };

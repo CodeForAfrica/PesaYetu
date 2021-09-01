@@ -2,27 +2,34 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {},
+  sources: {
+    padding: `${typography.pxToRem(31)} ${typography.pxToRem(0)}`,
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      alignItems: "flex-start !important",
+    },
+    [breakpoints.up("lg")]: {
+      flexDirection: "row",
+      alignItems: "center !important",
+      padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
+    },
+  },
   title: {
     fontSize: typography.pxToRem(16),
-    textAlign: "left",
     padding: 0,
     fontWeight: "500",
   },
   description: {
     color: "#707070",
     fontSize: typography.pxToRem(11),
-    textAlign: "left",
     padding: 0,
   },
-  dataTypes: {},
+  text: {
+    padding: "0 !important",
+  },
   textContent: {
-    flexDirection: "column !important",
-    justifyContent: "flex-start !important",
-    alignItems: "center !important",
     [breakpoints.up("md")]: {
-      justifyContent: "center !important",
       flexDirection: "column !important",
-      alignItems: "center !important",
     },
     [breakpoints.up("lg")]: {
       flexDirection: "column !important",
@@ -32,8 +39,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   linkContent: {
     flexDirection: "column! important",
     justifyContent: "center !important",
-    alignItems: "center !important",
-    padding: "2rem! important",
     [breakpoints.up("md")]: {
       flexDirection: "column! important",
     },

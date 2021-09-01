@@ -12,11 +12,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     borderBottom: `1px solid ${palette.grey.main}`,
   },
   paginationLabel: {
-    // marginRight: typography.pxToRem(40),
-    fontSize: "14px",
+    fontSize: typography.pxToRem(14),
   },
   caption: {
-    fontSize: "14px",
+    fontSize: typography.pxToRem(14),
   },
   buttonGroup: {},
   button: {
@@ -55,12 +54,21 @@ const DataFilter = ({
       alignItems="center"
       justify="space-betweeen"
     >
-      <Grid lg={2}>
+      <Grid md={2} className={classes.dataFilter}>
         <Typography variant="body1">
           {datasetLabel}: {datatset}
         </Typography>
       </Grid>
-      <Grid item lg={2} container alignItems="center" direction="row">
+      <Grid
+        item
+        md={4}
+        lg={2}
+        container
+        alignItems="center"
+        direction="row"
+        justifyContent="center"
+        className={classes.dataFilter}
+      >
         <Typography className={classes.paginationLabel} variant="caption">
           {paginationlabel}
         </Typography>
@@ -85,7 +93,15 @@ const DataFilter = ({
           ))}
         </ButtonGroup>
       </Grid>
-      <Grid item lg={3} container direction="row" alignItems="center">
+      <Grid
+        item
+        md={6}
+        lg={3}
+        container
+        direction="row"
+        alignItems="center"
+        justifyContent="flex-end"
+      >
         <Typography className={classes.paginationLabel} variant="body1">
           {orderLabel}
         </Typography>
