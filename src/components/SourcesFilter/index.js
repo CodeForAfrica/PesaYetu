@@ -11,14 +11,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     paddingBottom: typography.pxToRem(20),
     borderBottom: `1px solid ${palette.grey.main}`,
   },
-  paginationLabel: {
-    fontSize: typography.pxToRem(14),
-    fontWeight: "500",
+  orderLabel: {
+    marginRight: typography.pxToRem(40),
   },
-  caption: {
-    fontSize: typography.pxToRem(14),
-    fontWeight: "500",
-  },
+  label: {},
   buttonGroup: {},
   button: {
     "&::after": {
@@ -71,7 +67,7 @@ const SourcesFilter = ({
         justifyContent="center"
         className={classes.sourcesFilter}
       >
-        <Typography className={classes.paginationLabel} variant="caption">
+        <Typography className={classes.label} variant="body2">
           {paginationlabel}
         </Typography>
         <ButtonGroup
@@ -88,7 +84,7 @@ const SourcesFilter = ({
               key={option}
               disabled={selectedPageCount === option}
             >
-              <Typography variant="caption" className={classes.caption}>
+              <Typography variant="body2" className={classes.label}>
                 {option}
               </Typography>
             </Button>
@@ -98,13 +94,13 @@ const SourcesFilter = ({
       <Grid
         item
         md={6}
-        lg={3}
+        lg={4}
         container
         direction="row"
         alignItems="center"
         justifyContent="flex-end"
       >
-        <Typography className={classes.paginationLabel} variant="body1">
+        <Typography className={classes.orderLabel} variant="body2">
           {orderLabel}
         </Typography>
         <Input options={orderOptions} />
