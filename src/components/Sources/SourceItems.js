@@ -14,13 +14,7 @@ function SourceItems({ items, className, datasetTypes, ...props }) {
     <div>
       {items.map((item) => (
         <div className={classes.sources}>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            lg={7}
-            className={clsx(classes.textContent, className)}
-          >
+          <Grid item xs={12} md={6} lg={7} className={classes.textContent}>
             <RichTypography
               variant="body1"
               className={clsx(classes.text, classes.title, className)}
@@ -34,13 +28,7 @@ function SourceItems({ items, className, datasetTypes, ...props }) {
               {item.description}
             </RichTypography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            lg={5}
-            className={clsx(classes.linkContent, className)}
-          >
+          <Grid item xs={12} md={6} lg={5} className={classes.linkContent}>
             {datasetTypes && (
               <Grid
                 item
