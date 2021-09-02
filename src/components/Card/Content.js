@@ -36,20 +36,16 @@ const Content = ({
   }
   return (
     <CardContent className={classes.root}>
-      {title && (
-        <RichTypography variant="h5" {...titleProps} className={classes.title}>
-          {title}
-        </RichTypography>
-      )}
-      {description && (
-        <RichTypography
-          variant="subtitle2"
-          {...descriptionProps}
-          className={classes.description}
-        >
-          {description}
-        </RichTypography>
-      )}
+      <RichTypography variant="h5" {...titleProps} className={classes.title}>
+        {title}
+      </RichTypography>
+      <RichTypography
+        variant="subtitle2"
+        {...descriptionProps}
+        className={classes.description}
+      >
+        {description}
+      </RichTypography>
       {href && (
         <Link
           href={href}
