@@ -11,6 +11,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     },
   },
   story: {
+    marginBottom: typography.pxToRem(60),
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(40),
     },
