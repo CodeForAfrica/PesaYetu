@@ -14,7 +14,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   select: {
     height: "100%",
-    // minWidth: typography.pxToRem(165),
     width: "165px",
     background: palette.background.paper,
     borderStyle: "none",
