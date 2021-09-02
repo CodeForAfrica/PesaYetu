@@ -1,54 +1,89 @@
-import { Typography } from "@material-ui/core";
+import { RichTypography } from "@commons-ui/core";
+import { CardContent } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import useStyles from "./useStyles";
-
 import Link from "@/pesayetu/components/Link";
 
-const Content = ({ title, description, href, ctaText, variant, ...props }) => {
+const useStyles = makeStyles(({ typography }) => ({
+  root: {
+    padding: 0,
+  },
+  title: {},
+  description: {
+    marginTop: typography.pxToRem(20),
+  },
+  link: {
+    display: "inline-flex",
+    marginTop: typography.pxToRem(20),
+  },
+}));
+
+const Content = ({
+  description,
+  descriptionProps,
+  title,
+  titleProps,
+  href,
+  ctaText,
+  linkProps,
+  ...props
+}) => {
   const classes = useStyles(props);
 
+  if (!(title || description || href)) {
+    return null;
+  }
   return (
-    <>
+    <CardContent className={classes.root}>
       {title && (
-        <Typography variant={variant} className={classes.cardTitle}>
+        <RichTypography variant="h5" {...titleProps} className={classes.title}>
           {title}
-        </Typography>
+        </RichTypography>
       )}
       {description && (
-        <Typography variant="subtitle2" className={classes.cardDescription}>
+        <RichTypography
+          variant="subtitle2"
+          {...descriptionProps}
+          className={classes.description}
+        >
           {description}
-        </Typography>
+        </RichTypography>
       )}
       {ctaText && href && (
         <Link
-          className={classes.link}
           href={href}
           underline="always"
           variant="subtitle2"
+          {...linkProps}
+          className={classes.link}
         >
           {ctaText}
         </Link>
       )}
-    </>
+    </CardContent>
   );
 };
 
 Content.propTypes = {
-  title: PropTypes.string,
   description: PropTypes.string,
+  descriptionProps: PropTypes.shape({}),
+  title: PropTypes.string,
+  titleProps: PropTypes.shape({}),
   href: PropTypes.string,
   ctaText: PropTypes.string,
-  variant: PropTypes.string,
+  linkProps: PropTypes.shape({}),
 };
 
 Content.defaultProps = {
-  title: undefined,
   description: undefined,
+  descriptionProps: undefined,
+  title: undefined,
+  titleProps: undefined,
   href: undefined,
   ctaText: undefined,
-  variant: "h5",
+  linkProps: undefined,
 };
 
 export default Content;
