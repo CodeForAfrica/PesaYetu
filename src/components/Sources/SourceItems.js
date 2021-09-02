@@ -17,13 +17,13 @@ function SourceItems({ items, className, datasetTypes, ...props }) {
           <Grid item xs={12} md={6} lg={7} className={classes.textContent}>
             <RichTypography
               variant="body1"
-              className={clsx(classes.text, classes.title, className)}
+              className={clsx(classes.text, classes.title)}
             >
               {item.title}
             </RichTypography>
             <RichTypography
               variant="body1"
-              className={clsx(classes.text, classes.description, className)}
+              className={clsx(classes.text, classes.description)}
             >
               {item.description}
             </RichTypography>
