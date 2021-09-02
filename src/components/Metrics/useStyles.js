@@ -7,39 +7,38 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       padding: `${typography.pxToRem(80)} 0`,
     },
   },
-  metrics: {
-    padding: `${typography.pxToRem(10)} 0`,
-    [breakpoints.up("md")]: {
-      padding: `${typography.pxToRem(80)} 0`,
-    },
+  metric: {
+    marginTop: typography.pxToRem(40),
     [breakpoints.up("lg")]: {
-      height: typography.pxToRem(480),
+      marginTop: typography.pxToRem(80),
     },
   },
   card: {
+    marginTop: typography.pxToRem(20),
     maxWidth: "100%",
     [breakpoints.up("md")]: {
-      maxWidth: typography.pxToRem(350),
+      width: "100%",
     },
     [breakpoints.up("lg")]: {
-      maxWidth: typography.pxToRem(768),
+      marginTop: 0,
+      width: "100%",
     },
   },
   cardMedia: {
-    position: "relative",
     height: typography.pxToRem(215),
     width: typography.pxToRem(350),
     [breakpoints.up("md")]: {
-      height: typography.pxToRem(215),
-      width: typography.pxToRem(350),
+      height: "auto",
+      width: typography.pxToRem(608),
     },
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(415),
       width: typography.pxToRem(768),
     },
   },
+  cardMediaImage: {},
+  titleContainer: {},
   title: {},
-  image: {},
   description: {
     paddingTop: typography.pxToRem(40),
     [breakpoints.up("md")]: {
