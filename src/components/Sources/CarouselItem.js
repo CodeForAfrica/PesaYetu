@@ -1,5 +1,4 @@
-import { RichTypography } from "@commons-ui/core";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -15,18 +14,18 @@ function CarouselItem({ items, className, datasetTypes, ...props }) {
       {items.map((item) => (
         <div className={classes.sources}>
           <Grid item xs={12} md={6} lg={7} className={classes.textContent}>
-            <RichTypography
+            <Typography
               variant="body1"
               className={clsx(classes.text, classes.title)}
             >
               {item.title}
-            </RichTypography>
-            <RichTypography
+            </Typography>
+            <Typography
               variant="body1"
               className={clsx(classes.text, classes.description)}
             >
               {item.description}
-            </RichTypography>
+            </Typography>
           </Grid>
           <Grid item xs={12} md={6} lg={5} className={classes.linkContent}>
             {datasetTypes && (
@@ -41,9 +40,9 @@ function CarouselItem({ items, className, datasetTypes, ...props }) {
                 className={classes.dataTypes}
               >
                 {item.types.map((data) => (
-                  <RichTypography className={classes.typeContent}>
+                  <Typography className={classes.typeContent}>
                     {data.name}
-                  </RichTypography>
+                  </Typography>
                 ))}
               </Grid>
             )}

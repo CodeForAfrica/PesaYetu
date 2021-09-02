@@ -25,35 +25,30 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     padding: `${typography.pxToRem(48)} 0`,
   },
   text: {
-    color: "#333333",
-    padding: `${typography.pxToRem(16)} 0`,
-    [breakpoints.up("md")]: {
-      color: "#333333",
-      padding: `${typography.pxToRem(8)} 0`,
+    marginBottom: typography.pxToRem(20),
+    [breakpoints.up("lg")]: {
+      marginBottom: 0,
     },
+  },
+  title: {
+    color: "#333333",
     [breakpoints.up("lg")]: {
       color: "#212529",
     },
   },
+  description: {},
   textContent: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    [breakpoints.up("md")]: {
-      alignItems: "flex-start",
-    },
+
     [breakpoints.up("lg")]: {
       flexDirection: "row",
       justifyContent: "space-between",
-      alignItems: "flex-start",
     },
   },
   linkContent: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
     [breakpoints.up("md")]: {
       flexDirection: "row",
       justifyContent: "flex-end",
@@ -66,7 +61,6 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   dataTypes: {
     padding: `${typography.pxToRem(16)} 0`,
     direction: "row",
-    justifyContent: "flex-start",
     alignItems: "center",
     [breakpoints.up("md")]: {
       justifyContent: "center",

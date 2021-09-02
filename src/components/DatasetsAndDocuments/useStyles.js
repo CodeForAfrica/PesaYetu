@@ -8,30 +8,16 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       marginTop: typography.pxToRem(60),
     },
   },
-  sources: {
-    padding: `${typography.pxToRem(31)} ${typography.pxToRem(0)}`,
-    [breakpoints.up("md")]: {
-      flexDirection: "row",
-      alignItems: "flex-start",
-    },
-    [breakpoints.up("lg")]: {
-      flexDirection: "row",
-      alignItems: "center",
-      padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
-    },
-  },
-  title: {
-    fontSize: typography.pxToRem(16),
-    padding: 0,
-    fontWeight: "500",
-  },
+  sources: {},
+  title: {},
   description: {
     color: "#707070",
     fontSize: typography.pxToRem(11),
+    fontWeight: 300,
     padding: 0,
   },
   text: {
-    padding: "0",
+    marginBottom: 0,
   },
   textContent: {
     [breakpoints.up("md")]: {
