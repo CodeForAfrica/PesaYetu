@@ -1,4 +1,6 @@
+import { IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import L from "leaflet";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
@@ -13,10 +15,11 @@ import {
 import useSWR from "swr";
 
 import "leaflet/dist/leaflet.css";
-import BarChart from "@/pesayetu/components/Charts/BarChart";
+import { ReactComponent as RichIcon } from "@/pesayetu/assets/icons/rich-data.svg";
+import ExploreDataDialog from "@/pesayetu/components/ExploreDataDialog";
 import fetchAPI from "@/pesayetu/utils/fetchApi";
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     height: "100vh",
     position: "relative",
@@ -26,6 +29,15 @@ const useStyles = makeStyles(({ typography }) => ({
     fontSize: typography.pxToRem(13),
     color: "#2A2A2C",
     textTransform: "capitalize",
+  },
+  button: {
+    position: "absolute",
+    top: 0,
+    zIndex: 800,
+    background: palette.background.default,
+  },
+  dialogOpen: {
+    left: typography.pxToRem(420),
   },
 }));
 
@@ -87,6 +99,16 @@ function Map({
 
   // to test vega chart
   const [population, setPopulation] = useState(populationProp);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenDialog = (e) => {
+    e?.preventDefault();
+    setOpenDialog(true);
+  };
+  const handleCloseDialog = (e) => {
+    e?.preventDefault();
+    setOpenDialog(false);
+  };
 
   const { data } = useSWR(
     `https://staging.wazimap-ng.openup.org.za/api/v1/all_details/profile/8/geography/${geoCode}/?format=json`,
@@ -239,15 +261,14 @@ function Map({
         <ZoomControl position="bottomright" />
       </MapContainer>
       <div
-        style={{
-          position: "absolute",
-          top: 0,
-          zIndex: 800,
-          background: "#fff",
-        }}
+        className={clsx(classes.button, { [classes.dialogOpen]: openDialog })}
       >
-        <BarChart
-          title="this chart"
+        <IconButton onClick={(e) => handleOpenDialog(e)}>
+          <RichIcon />
+        </IconButton>
+        <ExploreDataDialog
+          openDialog={openDialog}
+          handleCloseDialog={handleCloseDialog}
           data={population["Population by Gender"].data}
         />
       </div>
