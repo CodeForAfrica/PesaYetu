@@ -31,7 +31,6 @@ const Content = ({
   ...props
 }) => {
   const classes = useStyles(props);
-
   if (!(title || description || href)) {
     return null;
   }
@@ -51,7 +50,7 @@ const Content = ({
           {description}
         </RichTypography>
       )}
-      {ctaText && href && (
+      {href && (
         <Link
           href={href}
           underline="always"
@@ -82,7 +81,7 @@ Content.defaultProps = {
   title: undefined,
   titleProps: undefined,
   href: undefined,
-  ctaText: undefined,
+  ctaText: "Read me",
   linkProps: undefined,
 };
 

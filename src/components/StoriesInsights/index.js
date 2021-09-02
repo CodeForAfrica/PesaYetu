@@ -5,13 +5,31 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 
-import Content from "./Content";
 import useStyles from "./useStyles";
 
+import Content from "@/pesayetu/components/Card/Content";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
 import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  desktop: {
+    breakpoint: {
+      max: 3000,
+      min: 1280,
+    },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1280, min: 768 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 768, min: 0 },
+    items: 1,
+  },
+};
 
 function StoriesInsights({ overline, title, stories, ...props }) {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
@@ -20,24 +38,6 @@ function StoriesInsights({ overline, title, stories, ...props }) {
   if (!stories?.length) {
     return null;
   }
-
-  const responsive = {
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1280,
-      },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1280, min: 768 },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: { max: 768, min: 0 },
-      items: 1,
-    },
-  };
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
