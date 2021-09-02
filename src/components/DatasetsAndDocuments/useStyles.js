@@ -12,11 +12,11 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     padding: `${typography.pxToRem(31)} ${typography.pxToRem(0)}`,
     [breakpoints.up("md")]: {
       flexDirection: "row",
-      alignItems: "flex-start !important",
+      alignItems: "flex-start",
     },
     [breakpoints.up("lg")]: {
       flexDirection: "row",
-      alignItems: "center !important",
+      alignItems: "center",
       padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
     },
   },
@@ -31,27 +31,23 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     padding: 0,
   },
   text: {
-    padding: "0 !important",
+    padding: "0",
   },
   textContent: {
     [breakpoints.up("md")]: {
-      flexDirection: "column !important",
+      flexDirection: "column",
     },
     [breakpoints.up("lg")]: {
-      flexDirection: "column !important",
-      justifyContent: "flex-start !important",
+      justifyContent: "flex-start",
     },
   },
   linkContent: {
-    flexDirection: "column! important",
-    justifyContent: "center !important",
-    [breakpoints.up("md")]: {
-      flexDirection: "column! important",
-    },
+    flexDirection: "column",
+    justifyContent: "center",
     [breakpoints.up("lg")]: {
-      flexDirection: "row !important",
-      justifyContent: "space-around !important",
-      alignItems: "center !important",
+      flexDirection: "row",
+      justifyContent: "space-around ",
+      alignItems: "center",
     },
   },
 }));
