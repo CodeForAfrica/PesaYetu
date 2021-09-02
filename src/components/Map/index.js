@@ -13,6 +13,7 @@ import {
 import useSWR from "swr";
 
 import "leaflet/dist/leaflet.css";
+import BarChart from "@/pesayetu/components/Charts/BarChart";
 import fetchAPI from "@/pesayetu/utils/fetchApi";
 
 const useStyles = makeStyles(({ typography }) => ({
@@ -72,6 +73,7 @@ function Map({
   styles,
   geometries: geometriesProp,
   geography: geographyProp,
+  population,
   ...props
 }) {
   const classes = useStyles(props);
@@ -229,6 +231,19 @@ function Map({
         </Pane>
         <ZoomControl position="bottomright" />
       </MapContainer>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          zIndex: 800,
+          background: "#fff",
+        }}
+      >
+        <BarChart
+          title="this chart"
+          data={population["Population by Gender"].data}
+        />
+      </div>
     </div>
   );
 }
@@ -256,6 +271,11 @@ Map.propTypes = {
   geography: PropTypes.shape({
     level: PropTypes.string,
   }),
+  population: PropTypes.shape({
+    "Population by Gender": PropTypes.shape({
+      data: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+  }),
 };
 
 Map.defaultProps = {
@@ -269,6 +289,7 @@ Map.defaultProps = {
   },
   geometries: undefined,
   geography: undefined,
+  population: undefined,
 };
 
 export default Map;

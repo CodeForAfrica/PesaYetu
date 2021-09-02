@@ -78,6 +78,9 @@ export async function getStaticProps({ preview, previewData, params }) {
       boundary: props?.menus?.boundary,
       geography,
       geometries,
+      population:
+        r?.profile?.profile_data.Demographics?.subcategories.Population
+          ?.indicators ?? null,
     },
     revalidate,
   };
