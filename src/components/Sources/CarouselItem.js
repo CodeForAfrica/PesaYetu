@@ -8,7 +8,7 @@ import useStyles from "./useStyles";
 
 import Link from "@/pesayetu/components/Link";
 
-function SourceItems({ items, className, datasetTypes, ...props }) {
+function CarouselItem({ items, className, datasetTypes, ...props }) {
   const classes = useStyles(props);
   return (
     <div>
@@ -62,7 +62,7 @@ function SourceItems({ items, className, datasetTypes, ...props }) {
   );
 }
 
-SourceItems.propTypes = {
+CarouselItem.propTypes = {
   datasetTypes: PropTypes.bool,
   className: PropTypes.string,
   items: PropTypes.arrayOf(
@@ -75,10 +75,10 @@ SourceItems.propTypes = {
   ),
 };
 
-SourceItems.defaultProps = {
+CarouselItem.defaultProps = {
   datasetTypes: undefined,
   className: undefined,
   items: undefined,
 };
 
-export default SourceItems;
+export default CarouselItem;

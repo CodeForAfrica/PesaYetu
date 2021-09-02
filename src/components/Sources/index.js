@@ -7,7 +7,7 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import SourceItems from "@/pesayetu/components/Sources/SourceItems";
+import CarouselItem from "@/pesayetu/components/Sources/CarouselItem";
 import SourcesFilter from "@/pesayetu/components/SourcesFilter";
 import "react-multi-carousel/lib/styles.css";
 
@@ -51,7 +51,7 @@ function Sources({ items, filterProps, ...props }) {
         dotListClass={classes.dots}
       >
         {carouselItems.map((ci) => (
-          <SourceItems
+          <CarouselItem
             items={ci}
             datasetTypes={!!ci[0].types}
             key={ci[0].title}
