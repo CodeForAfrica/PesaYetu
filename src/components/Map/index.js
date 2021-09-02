@@ -73,7 +73,7 @@ function Map({
   styles,
   geometries: geometriesProp,
   geography: geographyProp,
-  population,
+  population: populationProp,
   ...props
 }) {
   const classes = useStyles(props);
@@ -84,6 +84,9 @@ function Map({
   // const [ isLoading, setIsLoading ] = useState(false);
   const [geometries, setGeometries] = useState(geometriesProp);
   const [geography, setGeography] = useState(geographyProp);
+
+  // to test vega chart
+  const [population, setPopulation] = useState(populationProp);
 
   const { data } = useSWR(
     `https://staging.wazimap-ng.openup.org.za/api/v1/all_details/profile/8/geography/${geoCode}/?format=json`,
@@ -101,6 +104,10 @@ function Map({
       };
       setGeometries(geom);
       setGeography(g);
+      setPopulation(
+        data?.profile?.profile_data.Demographics?.subcategories.Population
+          ?.indicators ?? null
+      );
     }
   }, [data]);
 

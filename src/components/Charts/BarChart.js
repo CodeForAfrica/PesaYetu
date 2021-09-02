@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Vega } from "react-vega";
-import { Handler } from "vega-tooltip";
 
 function BarChart({ data, title }) {
   const spec = {
     // $schema: 'https://vega.github.io/schema/vega/v5.json',
     width: 400,
-    height: 600,
+    height: 300,
     data: [{ name: "table" }],
     signals: [
       {
@@ -22,105 +21,61 @@ function BarChart({ data, title }) {
     ],
     scales: [
       {
-        name: "yscale",
+        name: "xscale",
         type: "band",
         domain: { data: "table", field: "race" },
-        range: "height",
-        padding: 0.2,
-      },
-      {
-        name: "xscale",
-        type: "linear",
-        domain: { data: "table", field: "count" },
         range: "width",
-        round: true,
-        zero: true,
-        nice: true,
       },
       {
-        name: "color",
-        type: "ordinal",
-        domain: { data: "table", field: "gender" },
-        range: { scheme: "race20" },
+        name: "yscale",
+        domain: { data: "table", field: "count" },
+        nice: true,
+        range: "height",
       },
     ],
 
     axes: [
-      {
-        orient: "left",
-        scale: "yscale",
-        tickSize: 0,
-        labelPadding: 4,
-        zindex: 1,
-      },
       { orient: "bottom", scale: "xscale" },
+      { orient: "left", scale: "yscale" },
     ],
 
     marks: [
       {
-        type: "group",
-
-        from: {
-          facet: {
-            data: "table",
-            name: "facet",
-            groupby: "race",
-          },
-        },
-
+        type: "rect",
+        from: { data: "table" },
         encode: {
           enter: {
-            y: { scale: "yscale", field: "race" },
+            x: { scale: "xscale", field: "race", offset: 1 },
+            width: { scale: "xscale", band: 1, offset: -1 },
+            y: { scale: "yscale", field: "count" },
+            y2: { scale: "yscale", value: 0 },
+          },
+          update: {
+            fill: { value: "steelblue" },
+          },
+          hover: {
+            fill: { value: "red" },
           },
         },
-
-        signals: [{ name: "height", update: "bandwidth('yscale')" }],
-
-        scales: [
-          {
-            name: "pos",
-            type: "band",
-            range: "height",
-            domain: { data: "facet", field: "gender" },
+      },
+      {
+        type: "text",
+        encode: {
+          enter: {
+            align: { value: "center" },
+            baseline: { value: "bottom" },
+            fill: { value: "#333" },
           },
-        ],
-
-        marks: [
-          {
-            name: "bars",
-            from: { data: "facet" },
-            type: "rect",
-            encode: {
-              enter: {
-                y: { scale: "pos", field: "gender" },
-                height: { scale: "pos", band: 1 },
-                x: { scale: "xscale", field: "count" },
-                x2: { scale: "xscale", value: 0 },
-                fill: { scale: "color", field: "gender" },
-              },
-            },
+          update: {
+            x: { scale: "xscale", signal: "tooltip.race", band: 0.5 },
+            y: { scale: "yscale", signal: "tooltip.count", offset: -2 },
+            text: { signal: "tooltip.count" },
+            fillOpacity: [
+              { test: "datum === tooltip", value: 0 },
+              { value: 1 },
+            ],
           },
-          {
-            type: "text",
-            from: { data: "bars" },
-            encode: {
-              enter: {
-                x: { field: "x2", offset: -5 },
-                y: { field: "y", offset: { field: "height", mult: 0.5 } },
-                fill: [
-                  {
-                    test: "contrast('white', datum.fill) > contrast('black', datum.fill)",
-                    value: "white",
-                  },
-                  { value: "black" },
-                ],
-                align: { value: "right" },
-                baseline: { value: "middle" },
-                text: { field: "datum.count" },
-              },
-            },
-          },
-        ],
+        },
       },
     ],
   };
@@ -129,7 +84,6 @@ function BarChart({ data, title }) {
       <Vega
         spec={spec}
         data={{ table: data }}
-        tooltip={new Handler().call}
         actions={{
           export: true,
           source: false,
@@ -140,17 +94,19 @@ function BarChart({ data, title }) {
       />,
       document.getElementById("bar-container")
     );
-  }, []);
+  }, [data]);
 
   return <div id="bar-container" />;
 }
+
 BarChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({})),
   title: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 BarChart.defaultProps = {
-  data: undefined,
   title: undefined,
+  data: undefined,
 };
+
 export default BarChart;
