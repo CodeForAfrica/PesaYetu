@@ -5,6 +5,9 @@ function formatName(name) {
 }
 
 function formatLazyBlockImage(image) {
+  if (!image) {
+    return null;
+  }
   const data = JSON.parse(decodeURIComponent(image)) || null;
   return data?.url;
 }

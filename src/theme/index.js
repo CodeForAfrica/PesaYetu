@@ -285,11 +285,6 @@ deepmerge(
           width: 0,
         },
       },
-      MuiButtonBase: {
-        "&:hover": {
-          backgroundColor: "unset",
-        },
-      },
       text: {
         color: palette.primary.main,
         padding: 0,
@@ -318,6 +313,16 @@ deepmerge(
           marginLeft: pxToRem(10),
           height: pxToRem(23), // Must equal button line-height
           width: pxToRem(30),
+        },
+      },
+    },
+    MuiCardActionArea: {
+      root: {
+        "&:hover $focusHighlight": {
+          opacity: 0,
+        },
+        "&$focusVisible $focusHighlight": {
+          opacity: 0,
         },
       },
     },

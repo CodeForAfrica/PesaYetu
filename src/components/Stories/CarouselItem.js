@@ -4,9 +4,9 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import InsightCard from "@/pesayetu/components/InsightCard";
+import Card from "@/pesayetu/components/Card";
 
-function CarouselItem({ items, category, ...props }) {
+function CarouselItem({ items, variant, ...props }) {
   const classes = useStyles(props);
 
   if (!items?.length) {
@@ -16,10 +16,10 @@ function CarouselItem({ items, category, ...props }) {
     <Grid container className={classes.carouselItem}>
       {items.map((item) => (
         <Grid key={item.slug} item xs={12} md={6} lg={4}>
-          <InsightCard
+          <Card
             key={item.slug}
             {...item}
-            variant={category}
+            variant={variant}
             className={classes.story}
           />
         </Grid>
@@ -34,12 +34,12 @@ CarouselItem.propTypes = {
       slug: PropTypes.string,
     })
   ),
-  category: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 CarouselItem.defaultProps = {
   items: undefined,
-  category: undefined,
+  variant: undefined,
 };
 
 export default CarouselItem;

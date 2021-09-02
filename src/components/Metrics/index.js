@@ -6,11 +6,12 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import DataVisualCard from "@/pesayetu/components/DataVisualCard";
+import Card from "@/pesayetu/components/Card";
 import Section from "@/pesayetu/components/Section";
 
 function Metrics({ items, title, ...props }) {
   const classes = useStyles(props);
+
   if (!items?.length) {
     return null;
   }
@@ -26,11 +27,15 @@ function Metrics({ items, title, ...props }) {
             container
             direction={index % 2 === 0 ? "row" : "row-reverse"}
             justifyContent="space-between"
-            alignItems="flex-start"
-            className={classes.metrics}
+            className={classes.metric}
           >
-            <Grid item xs={12} md={5} lg={3}>
-              <Box container display="flex" alignItems="center">
+            <Grid item xs={12} lg={3}>
+              <Box
+                container
+                display="flex"
+                alignItems="center"
+                className={classes.titleContainer}
+              >
                 <IconButton color="primary" size="small">
                   <Image src={item.icon} width={44} height={44} />
                 </IconButton>
@@ -45,20 +50,17 @@ function Metrics({ items, title, ...props }) {
             <Grid
               item
               xs={12}
-              md={7}
               lg={8}
               container
               direction="row"
               justifyContent="flex-start"
-              alignItems="center"
             >
-              <DataVisualCard
+              <Card
                 {...item.dataVisualProps}
                 classes={{
                   root: classes.card,
-                  cardMedia: classes.cardMedia,
-                  content: classes.content,
-                  image: classes.image,
+                  media: classes.cardMedia,
+                  mediaImage: classes.cardMediaImage,
                 }}
               />
             </Grid>

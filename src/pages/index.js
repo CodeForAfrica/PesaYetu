@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import DataIndicators from "@/pesayetu/components/DataIndicators";
-import DataVisuals from "@/pesayetu/components/DataVisuals";
+import DataVisualisationGuide from "@/pesayetu/components/DataVisualisationGuide";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
@@ -18,7 +18,7 @@ export default function Home({ boundary, blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks.hero} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
-      <DataVisuals {...blocks?.dataVisualisationGuide} />
+      <DataVisualisationGuide {...blocks?.dataVisualisationGuide} />
       <StoriesInsights {...blocks?.insightsStories} />
       <DataIndicators {...blocks.dataIndicators} />
       <InsightData {...blocks?.dataInsights} />
