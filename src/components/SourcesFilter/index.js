@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-const DataFilter = ({
+const SourcesFilter = ({
   datasetLabel,
   datatset,
   paginationlabel,
@@ -56,7 +56,7 @@ const DataFilter = ({
       alignItems="center"
       justify="space-betweeen"
     >
-      <Grid md={2} className={classes.dataFilter}>
+      <Grid md={2} className={classes.sourcesFilter}>
         <Typography variant="body1">
           {datasetLabel}: {datatset}
         </Typography>
@@ -69,7 +69,7 @@ const DataFilter = ({
         alignItems="center"
         direction="row"
         justifyContent="center"
-        className={classes.dataFilter}
+        className={classes.sourcesFilter}
       >
         <Typography className={classes.paginationLabel} variant="caption">
           {paginationlabel}
@@ -113,7 +113,7 @@ const DataFilter = ({
   );
 };
 
-DataFilter.propTypes = {
+SourcesFilter.propTypes = {
   datasetLabel: PropTypes.string,
   datatset: PropTypes.number,
   orderLabel: PropTypes.string,
@@ -122,7 +122,7 @@ DataFilter.propTypes = {
   paginationlabel: PropTypes.string,
 };
 
-DataFilter.defaultProps = {
+SourcesFilter.defaultProps = {
   datasetLabel: undefined,
   datatset: undefined,
   orderLabel: undefined,
@@ -131,4 +131,4 @@ DataFilter.defaultProps = {
   paginationlabel: undefined,
 };
 
-export default DataFilter;
+export default SourcesFilter;

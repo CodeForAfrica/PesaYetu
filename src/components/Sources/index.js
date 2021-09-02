@@ -7,8 +7,8 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import DataFilter from "@/pesayetu/components/DataFilter";
 import SourceItems from "@/pesayetu/components/Sources/SourceItems";
+import SourcesFilter from "@/pesayetu/components/SourcesFilter";
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
@@ -40,7 +40,7 @@ function Sources({ items, filterProps, ...props }) {
   return (
     <div classesName={classes.root}>
       <Hidden smDown>
-        <DataFilter {...filterProps} />
+        <SourcesFilter {...filterProps} />
       </Hidden>
       <Carousel
         swipeable

@@ -1,13 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
 
-import DataFilter from ".";
+import SourcesFilter from ".";
 
 export default {
-  title: "Components/DataFilter",
+  title: "Components/SourcesFilter",
 };
 
-const Template = ({ ...args }) => <DataFilter {...args} />;
+const Template = ({ ...args }) => <SourcesFilter {...args} />;
 
 export const Default = Template.bind({});
 
