@@ -15,7 +15,6 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   card: {
     marginTop: typography.pxToRem(20),
-    maxWidth: "100%",
     [breakpoints.up("md")]: {
       width: "100%",
     },
@@ -25,10 +24,8 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   cardMedia: {
-    height: typography.pxToRem(215),
-    width: typography.pxToRem(350),
     [breakpoints.up("md")]: {
-      height: "auto",
+      height: typography.pxToRem(328.5),
       width: typography.pxToRem(608),
     },
     [breakpoints.up("lg")]: {
