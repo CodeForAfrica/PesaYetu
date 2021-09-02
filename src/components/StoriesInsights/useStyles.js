@@ -107,23 +107,6 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       height: "100%",
     };
   },
-  card: {
-    border: 0,
-    boxShadow: "unset",
-  },
-  cardTitle: {
-    marginBottom: typography.pxToRem(20),
-  },
-  cardDescription: {
-    marginBottom: typography.pxToRem(20),
-    color: palette.text.primary,
-  },
-  cardFocusHighlight: {
-    color: palette.background.paper,
-  },
-  linkText: {
-    fontWeight: "bold",
-  },
 }));
 
 export default useStyles;

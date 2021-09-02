@@ -5,8 +5,8 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import Card from "@/pesayetu/components/Card";
 import Header from "@/pesayetu/components/Header";
-import InsightCard from "@/pesayetu/components/InsightCard";
 import Section from "@/pesayetu/components/Section";
 
 const InsightsData = ({ title, overline, items, ...props }) => {
@@ -31,7 +31,7 @@ const InsightsData = ({ title, overline, items, ...props }) => {
           {itemsToShow.map((item) => {
             return (
               <Grid item lg={4} xs={12} md={6} key={item.href}>
-                <InsightCard {...item} />
+                <Card {...item} />
               </Grid>
             );
           })}

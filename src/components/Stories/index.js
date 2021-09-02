@@ -44,6 +44,7 @@ function Stories({
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
   const itemsToShow = isTablet ? 6 : 3;
+  const variant = category === "insights" ? "embed" : undefined;
 
   // Track all news, including initial news and additionally loaded pages.
   const [allStories, setAllStories] = useState(items);
@@ -76,10 +77,9 @@ function Stories({
   }
 
   const carouselItems = chunk(allStories, itemsToShow);
-
   return (
     <div className={classes.root}>
-      <FeaturedStoryCard {...featuredStoryProps} variant={category} />
+      <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
       <Carousel
         swipeable
         responsive={responsive}
@@ -92,7 +92,7 @@ function Stories({
         }}
       >
         {carouselItems.map((ci) => (
-          <CarouselItem items={ci} category={category} key={ci[0].slug} />
+          <CarouselItem items={ci} variant={variant} key={ci[0].slug} />
         ))}
       </Carousel>
     </div>

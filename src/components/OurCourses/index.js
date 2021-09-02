@@ -6,7 +6,7 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import OurCourseCard from "@/pesayetu/components/InsightCard";
+import Card from "@/pesayetu/components/Card";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
@@ -50,7 +50,7 @@ const OurCourses = ({ title, items, ...props }) => {
           dotListClass={classes.dots}
         >
           {items?.map((item) => (
-            <OurCourseCard key={item.title} {...item} />
+            <Card key={item.title} {...item} />
           ))}
         </Carousel>
       </Section>

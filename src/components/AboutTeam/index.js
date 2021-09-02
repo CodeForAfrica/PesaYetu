@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import AboutTeamCard from "@/pesayetu/components/InsightCard";
+import Card from "@/pesayetu/components/Card";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
@@ -47,15 +47,7 @@ const DataVisuals = ({ title, items, ...props }) => {
           dotListClass={classes.dots}
         >
           {items?.map((item) => (
-            <AboutTeamCard
-              key={item.image}
-              {...item}
-              classes={{
-                root: classes.cardRoot,
-                cardMedia: classes.cardMedia,
-                image: classes.image,
-              }}
-            />
+            <Card {...item} key={item.image} mediaProps={{ square: true }} />
           ))}
         </Carousel>
       </Section>
