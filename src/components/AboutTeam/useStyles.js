@@ -15,22 +15,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       paddingBottom: typography.pxToRem(80),
     },
   },
-  dots: {
-    margin: `0 ${typography.pxToRem(30)}`,
-    paddingTop: `${typography.pxToRem(40)}`,
-    position: "unset",
-    "& button": {
-      borderColor: "#000",
-      height: typography.pxToRem(16),
-      marginRight: typography.pxToRem(12),
-      width: typography.pxToRem(16),
-      background: palette.background.paper,
-    },
-    "& .react-multi-carousel-dot--active button": {
-      borderColor: "#000",
-      background: "#000",
-    },
-  },
 }));
 
 export default useStyles;
