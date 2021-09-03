@@ -10,9 +10,9 @@ import Link from "@/pesayetu/components/Link";
 function CarouselItem({ items, className, datasetTypes, ...props }) {
   const classes = useStyles(props);
   return (
-    <div>
+    <div className={classes.root}>
       {items.map((item) => (
-        <div className={classes.sources}>
+        <Grid container className={classes.sources} key={item.title}>
           <Grid item xs={12} md={6} lg={7} className={classes.textContent}>
             <Typography
               variant="body1"
@@ -40,7 +40,7 @@ function CarouselItem({ items, className, datasetTypes, ...props }) {
                 className={classes.dataTypes}
               >
                 {item.types.map((data) => (
-                  <Typography className={classes.typeContent}>
+                  <Typography className={classes.typeContent} key={data.name}>
                     {data.name}
                   </Typography>
                 ))}
@@ -55,7 +55,7 @@ function CarouselItem({ items, className, datasetTypes, ...props }) {
               Read More
             </Link>
           </Grid>
-        </div>
+        </Grid>
       ))}
     </div>
   );
