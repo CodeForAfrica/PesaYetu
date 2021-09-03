@@ -20,13 +20,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     marginBottom: 0,
   },
   textContent: {
-    [breakpoints.up("md")]: {
-      flexDirection: "column",
-    },
-    [breakpoints.up("lg")]: {
-      flexDirection: "column",
-      justifyContent: "flex-start",
-    },
+    flexDirection: "column !important",
   },
   linkContent: {
     flexDirection: "column",
