@@ -100,11 +100,9 @@ const SourcesFilter = ({
         alignItems="center"
         justifyContent="flex-end"
       >
-        <div>
-          <Typography className={classes.orderLabel} variant="body2">
-            {orderLabel}
-          </Typography>
-        </div>
+        <Typography className={classes.orderLabel} variant="body2">
+          {orderLabel}
+        </Typography>
         <Input options={orderOptions} />
       </Grid>
     </Grid>
