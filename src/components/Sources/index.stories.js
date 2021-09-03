@@ -6,7 +6,7 @@ import Sources from ".";
 import { documentsArg } from "@/pesayetu/config";
 
 export default {
-  title: "Sections/Sources",
+  title: "Components/Sources",
   argTypes: {
     items: {
       control: {
