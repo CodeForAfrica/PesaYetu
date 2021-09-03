@@ -28,6 +28,7 @@ const responsive = {
     items: 1,
   },
 };
+
 function Sources({ items, filterProps, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
