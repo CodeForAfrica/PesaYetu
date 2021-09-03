@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: {},
   formControl: {
     "& .MuiFilledInput-underline": {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   select: {
     height: "100%",
-    width: "165px",
+    width: typography.pxToRem(135),
     background: palette.background.paper,
     borderStyle: "none",
     borderRadius: 2,
@@ -29,6 +29,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     },
     "&::before": {
       display: "none",
+    },
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(165),
     },
   },
   paper: {
