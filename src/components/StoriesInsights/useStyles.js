@@ -23,21 +23,11 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       width: typography.pxToRem(270),
     },
   },
-  dots: {
-    order: 1,
+  dotList: {
+    margin: 0,
     padding: `${typography.pxToRem(40)} 0`,
-    position: "unset",
+    order: 1,
     justifyContent: "flex-start",
-    "& button": {
-      borderColor: palette.divider,
-      height: typography.pxToRem(16),
-      marginRight: typography.pxToRem(12),
-      width: typography.pxToRem(16),
-    },
-    "& .react-multi-carousel-dot--active button": {
-      borderColor: "#A0A0A0",
-      background: "#000",
-    },
     [breakpoints.up("lg")]: {
       padding: `0 0 ${typography.pxToRem(40)} 0`,
     },
