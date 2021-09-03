@@ -2,11 +2,15 @@ import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import useStyles from "./useStyles";
-
 import Card from "@/pesayetu/components/Card";
 import Carousel from "@/pesayetu/components/Carousel";
 import Section from "@/pesayetu/components/Section";
+
+// NOTE(kilemensi) useStyles uses import/definition order to determine how
+//                 classes are ordered.
+//                 see: https://material-ui.com/styles/advanced/#makestyles-withstyles-styled
+// eslint-disable-next-line import/order
+import useStyles from "./useStyles";
 
 const responsive = {
   desktop: {
@@ -14,7 +18,7 @@ const responsive = {
   },
 };
 
-const DataVisuals = ({ title, items, ...props }) => {
+function AboutTeam({ title, items, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -25,7 +29,10 @@ const DataVisuals = ({ title, items, ...props }) => {
             {title}
           </Typography>
         )}
-        <Carousel responsive={responsive}>
+        <Carousel
+          responsive={responsive}
+          classes={{ dotList: classes.dotList }}
+        >
           {items?.map((item) => (
             <Card {...item} key={item.image} mediaProps={{ square: true }} />
           ))}
@@ -33,9 +40,9 @@ const DataVisuals = ({ title, items, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
-DataVisuals.propTypes = {
+AboutTeam.propTypes = {
   title: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -45,9 +52,9 @@ DataVisuals.propTypes = {
   ),
 };
 
-DataVisuals.defaultProps = {
+AboutTeam.defaultProps = {
   title: undefined,
   items: undefined,
 };
 
-export default DataVisuals;
+export default AboutTeam;
