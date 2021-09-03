@@ -368,7 +368,7 @@ export const exploreTools = {
 };
 export const documentsArg = {
   filterProps: {
-    datasetLabel: "Dataset",
+    datasetLabel: "Documents",
     datatset: 65,
     orderLabel: "Order By",
     orderOptions: ["Relevance", "Date", "Municipal"],
