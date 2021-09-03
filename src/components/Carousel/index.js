@@ -26,7 +26,7 @@ const DEFAULT_RESPONSIVE = {
   },
 };
 
-function Carousel({ children, className, dotListClass, responsive, ...props }) {
+function Carousel({ children, className, responsive, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -39,7 +39,7 @@ function Carousel({ children, className, dotListClass, responsive, ...props }) {
       showDots
       ssr
       {...props}
-      dotListClass={clsx(classes.dotList, dotListClass)}
+      dotListClass={classes.dotList}
       className={clsx(classes.root, className)}
     >
       {children}
@@ -50,14 +50,12 @@ function Carousel({ children, className, dotListClass, responsive, ...props }) {
 Carousel.propTypes = {
   children: PropTypes.node,
   className: PropTypes.node,
-  dotListClass: PropTypes.string,
   responsive: PropTypes.shape({}),
 };
 
 Carousel.defaultProps = {
   children: undefined,
   className: undefined,
-  dotListClass: undefined,
   responsive: undefined,
 };
 
