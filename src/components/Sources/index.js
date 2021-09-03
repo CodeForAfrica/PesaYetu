@@ -39,7 +39,7 @@ function Sources({ items, filterProps, ...props }) {
   const carouselItems = chunk(items, itemsToShow);
   return (
     <div classesName={classes.root}>
-      <Hidden smDown>
+      <Hidden smDown implementation="css">
         <SourcesFilter {...filterProps} />
       </Hidden>
       <Carousel
