@@ -32,7 +32,7 @@ function CarouselItem({ items, className, datasetTypes, ...props }) {
               <Grid
                 item
                 xs={12}
-                lg={6}
+                lg={7}
                 container
                 direction="row"
                 justifyContent="flex-start"

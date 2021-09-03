@@ -8,33 +8,50 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       marginTop: typography.pxToRem(60),
     },
   },
-  sources: {},
-  title: {},
+  sources: {
+    padding: `${typography.pxToRem(31)} ${typography.pxToRem(0)}`,
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      alignItems: "flex-start !important",
+    },
+    [breakpoints.up("lg")]: {
+      flexDirection: "row",
+      alignItems: "center !important",
+      padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
+    },
+  },
+  title: {
+    fontSize: typography.pxToRem(16),
+    padding: 0,
+    fontWeight: "500",
+  },
   description: {
     color: "#707070",
     fontSize: typography.pxToRem(11),
-    fontWeight: 300,
     padding: 0,
   },
   text: {
-    marginBottom: 0,
+    padding: "0 !important",
   },
   textContent: {
     [breakpoints.up("md")]: {
-      flexDirection: "column",
+      flexDirection: "column !important",
     },
     [breakpoints.up("lg")]: {
-      flexDirection: "column",
-      justifyContent: "flex-start",
+      flexDirection: "column !important",
+      justifyContent: "flex-start !important",
     },
   },
   linkContent: {
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: "column! important",
+    justifyContent: "center !important",
+    [breakpoints.up("md")]: {
+      flexDirection: "column! important",
+    },
     [breakpoints.up("lg")]: {
-      flexDirection: "row",
-      justifyContent: "space-around ",
-      alignItems: "center",
+      flexDirection: "row !important",
+      justifyContent: "space-around !important",
+      alignItems: "center !important",
     },
   },
 }));
