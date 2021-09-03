@@ -39,7 +39,7 @@ function CarouselItem({ items, className, datasetTypes, ...props }) {
                 alignItems="center"
                 className={classes.dataTypes}
               >
-                {item.types.map((data) => (
+                {item.types?.map((data) => (
                   <Typography className={classes.typeContent} key={data.name}>
                     {data.name}
                   </Typography>

@@ -368,12 +368,12 @@ export const exploreTools = {
 };
 export const documentsArg = {
   filterProps: {
-    datasetLabel: "Dataset",
-    datatset: 65,
+    countLabel: "Dataset",
+    count: 65,
     orderLabel: "Order By",
     orderOptions: ["Relevance", "Date", "Municipal"],
     paginationOptions: [10, 25, 50],
-    paginationlabel: "Show",
+    paginationLabel: "Show",
   },
   items: [
     {
@@ -413,12 +413,12 @@ export const documentsArg = {
 
 export const datasetTypeArgs = {
   filterProps: {
-    datasetLabel: "Dataset",
-    datatset: 65,
+    countLabel: "Dataset",
+    count: 65,
     orderLabel: "Order By",
-    orderOptions: ["Relevance", "Date", "Municipal"],
+    orderOptions: ["Relevance", "Date"],
     paginationOptions: [10, 25, 50],
-    paginationlabel: "Show",
+    paginationLabel: "Show",
   },
   items: [
     {
@@ -641,8 +641,8 @@ export const footerArgs = {
 
 export const datasetsAndDocumentsArgs = {
   items: [
-    { label: "DOCUMENTS & SPEECHES", children: documentsArg },
-    { label: "DATASET", children: datasetTypeArgs },
+    { label: "DOCUMENTS & SPEECHES", ...documentsArg },
+    { label: "DATASET", ...datasetTypeArgs },
   ],
 };
 

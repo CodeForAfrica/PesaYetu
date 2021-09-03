@@ -9,13 +9,14 @@ import Tabs from "@/pesayetu/components/Tabs";
 
 function DatasetsAndDocuments({ items, ...props }) {
   const classes = useStyles(props);
-  const tabItems = items?.map(({ label, children }, index) => {
+  console.log(props);
+  const tabItems = items?.map(({ label, ...rest }, index) => {
     return {
       label,
       children: (
         <Sources
           datasetTypes
-          {...children}
+          {...rest}
           classes={
             index === 1
               ? {

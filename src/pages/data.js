@@ -5,7 +5,6 @@ import DatasetsAndDocuments from "@/pesayetu/components/DatasetsAndDocuments";
 import DataSources from "@/pesayetu/components/DataSources";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
-import { datasetsAndDocumentsArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -13,7 +12,7 @@ export default function Data({ blocks, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <DatasetsAndDocuments items={datasetsAndDocumentsArgs.items} />
+      <DatasetsAndDocuments items={blocks?.documentAndDatasets} />
       <DataSources {...blocks?.dataSource} />
     </Page>
   );
@@ -23,6 +22,7 @@ Data.propTypes = {
   blocks: PropTypes.shape({
     otherHero: PropTypes.shape({}),
     dataSource: PropTypes.shape({}),
+    documentAndDatasets: PropTypes.arrayOf(PropTypes.shape({})),
   }),
 };
 

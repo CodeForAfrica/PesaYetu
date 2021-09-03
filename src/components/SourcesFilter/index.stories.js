@@ -12,10 +12,10 @@ const Template = ({ ...args }) => <SourcesFilter {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  datasetLabel: "Dataset",
-  datatset: 65,
+  countLabel: "Dataset",
+  count: 65,
   orderLabel: "Order By",
   orderOptions: ["Relevance"],
   paginationOptions: [10, 25, 50],
-  paginationlabel: "Show",
+  paginationLabel: "Show",
 };

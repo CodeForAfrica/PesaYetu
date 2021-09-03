@@ -33,9 +33,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
 }));
 
 const SourcesFilter = ({
-  datasetLabel,
-  datatset,
-  paginationlabel,
+  countLabel,
+  count,
+  paginationLabel,
   paginationOptions,
   orderLabel,
   orderOptions,
@@ -43,8 +43,9 @@ const SourcesFilter = ({
 }) => {
   const classes = useStyles(props);
   const [selectedPageCount, setSelectedPageCount] = useState(
-    paginationOptions[0]
+    paginationOptions && paginationOptions[0]
   );
+
   return (
     <Grid
       className={classes.root}
@@ -54,7 +55,7 @@ const SourcesFilter = ({
     >
       <Grid md={2} className={classes.sourcesFilter}>
         <Typography variant="body1">
-          {datasetLabel}: {datatset}
+          {countLabel}: {count}
         </Typography>
       </Grid>
       <Grid
@@ -68,7 +69,7 @@ const SourcesFilter = ({
         className={classes.sourcesFilter}
       >
         <Typography className={classes.label} variant="body2">
-          {paginationlabel}
+          {paginationLabel}
         </Typography>
         <ButtonGroup
           classes={{ root: classes.buttonGroup, groupedTextHorizontal: {} }}
@@ -110,21 +111,21 @@ const SourcesFilter = ({
 };
 
 SourcesFilter.propTypes = {
-  datasetLabel: PropTypes.string,
-  datatset: PropTypes.number,
+  countLabel: PropTypes.string,
+  count: PropTypes.number,
   orderLabel: PropTypes.string,
   orderOptions: PropTypes.arrayOf(PropTypes.shape({})),
   paginationOptions: PropTypes.PropTypes.arrayOf(PropTypes.number),
-  paginationlabel: PropTypes.string,
+  paginationLabel: PropTypes.string,
 };
 
 SourcesFilter.defaultProps = {
-  datasetLabel: undefined,
-  datatset: undefined,
+  countLabel: undefined,
+  count: undefined,
   orderLabel: undefined,
   orderOptions: undefined,
   paginationOptions: undefined,
-  paginationlabel: undefined,
+  paginationLabel: undefined,
 };
 
 export default SourcesFilter;
