@@ -24,6 +24,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       flexDirection: "column",
     },
     [breakpoints.up("lg")]: {
+      flexDirection: "column",
       justifyContent: "flex-start",
     },
   },
