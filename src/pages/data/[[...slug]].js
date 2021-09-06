@@ -6,19 +6,26 @@ import DataSources from "@/pesayetu/components/DataSources";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
+import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function Data({ blocks, ...props }) {
+const postType = "page";
+
+export default function Data({ blocks, activeLabel, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
-      <DatasetsAndDocuments items={blocks?.documentAndDatasets} />
+      <DatasetsAndDocuments
+        activeLabel={activeLabel}
+        items={blocks?.documentAndDatasets}
+      />
       <DataSources {...blocks?.dataSource} />
     </Page>
   );
 }
 
 Data.propTypes = {
+  activeLabel: PropTypes.string,
   blocks: PropTypes.shape({
     otherHero: PropTypes.shape({}),
     dataSource: PropTypes.shape({}),
@@ -27,11 +34,19 @@ Data.propTypes = {
 };
 
 Data.defaultProps = {
+  activeLabel: undefined,
   blocks: undefined,
 };
 
-export async function getStaticProps({ preview, previewData }) {
-  const postType = "page";
+export async function getStaticPaths() {
+  return getPostTypeStaticPaths(postType);
+}
+
+export async function getStaticProps({ params, preview, previewData }) {
+  const {
+    slug: [activeLabel],
+  } = params;
+
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     { slug: "data" },
     postType,
@@ -49,6 +64,7 @@ export async function getStaticProps({ preview, previewData }) {
   return {
     props: {
       ...props,
+      activeLabel,
       blocks,
     },
     revalidate,

@@ -7,11 +7,23 @@ import Section from "@/pesayetu/components/Section";
 import Sources from "@/pesayetu/components/Sources";
 import Tabs from "@/pesayetu/components/Tabs";
 
-function DatasetsAndDocuments({ items, ...props }) {
+function DatasetsAndDocuments({
+  items,
+  activeLabel: activeLabelProp,
+  ...props
+}) {
   const classes = useStyles(props);
-  const tabItems = items?.map(({ label, ...rest }, index) => {
+
+  let activeLabel = activeLabelProp;
+  if (activeLabel !== "documents" || activeLabel !== "dataset") {
+    activeLabel = "documents";
+  }
+
+  const activeTab = items?.map(({ route }) => route)?.indexOf(activeLabel);
+  const tabItems = items?.map(({ label, route, ...rest }, index) => {
     return {
       label,
+      href: `/data/${route}`,
       children: (
         <Sources
           datasetTypes
@@ -35,13 +47,14 @@ function DatasetsAndDocuments({ items, ...props }) {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Tabs items={tabItems} activeTab={0} />
+        <Tabs items={tabItems} activeTab={activeTab} />
       </Section>
     </div>
   );
 }
 
 DatasetsAndDocuments.propTypes = {
+  activeLabel: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -54,6 +67,7 @@ DatasetsAndDocuments.propTypes = {
 };
 
 DatasetsAndDocuments.defaultProps = {
+  activeLabel: "documents",
   items: undefined,
 };
 
