@@ -26,11 +26,13 @@ const DEFAULT_RESPONSIVE = {
   },
 };
 
-function Carousel({ children, className, responsive, ...props }) {
-  const classes = useStyles(props);
+const Carousel = React.forwardRef(function Carousel(props, ref) {
+  const { children, className, responsive, ...other } = props;
+  const classes = useStyles(other);
 
   return (
     <RMCarousel
+      ref={ref}
       draggable
       swipeable
       responsive={deepmerge(DEFAULT_RESPONSIVE, responsive, { clone: true })}
@@ -38,14 +40,14 @@ function Carousel({ children, className, responsive, ...props }) {
       renderDotsOutside
       showDots
       ssr
-      {...props}
+      {...other}
       dotListClass={classes.dotList}
       className={clsx(classes.root, className)}
     >
       {children}
     </RMCarousel>
   );
-}
+});
 
 Carousel.propTypes = {
   children: PropTypes.node,
