@@ -9,7 +9,6 @@ import Tabs from "@/pesayetu/components/Tabs";
 
 function DatasetsAndDocuments({ items, ...props }) {
   const classes = useStyles(props);
-  console.log(props);
   const tabItems = items?.map(({ label, ...rest }, index) => {
     return {
       label,
@@ -36,7 +35,7 @@ function DatasetsAndDocuments({ items, ...props }) {
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Tabs items={tabItems} />
+        <Tabs items={tabItems} activeTab={0} />
       </Section>
     </div>
   );
