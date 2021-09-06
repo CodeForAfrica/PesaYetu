@@ -1,101 +1,80 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 
 const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   root: {
     backgroundColor: palette.background.paper,
-  },
-  section: {
-    overflow: "hidden",
-  },
-  header: {
-    padding: `${typography.pxToRem(40)} 0`,
+    paddingBottom: typography.pxToRem(60),
+    paddingTop: typography.pxToRem(40),
     [breakpoints.up("md")]: {
+      paddingBottom: typography.pxToRem(80),
       paddingTop: typography.pxToRem(80),
     },
     [breakpoints.up("lg")]: {
-      paddingBottom: typography.pxToRem(85),
+      paddingBottom: typography.pxToRem(60),
     },
   },
-  carouselList: {
-    order: 2,
-    width: "100%",
+  section: {},
+  header: {
+    marginBottom: typography.pxToRem(40),
     [breakpoints.up("lg")]: {
-      width: typography.pxToRem(270),
+      marginBottom: typography.pxToRem(85),
     },
   },
-  dotList: {
-    margin: 0,
-    padding: `${typography.pxToRem(40)} 0`,
-    order: 1,
-    justifyContent: "flex-start",
-    [breakpoints.up("lg")]: {
-      padding: `0 0 ${typography.pxToRem(40)} 0`,
-    },
-  },
-  fullWidth: {
-    width: "100vw",
-    position: "relative",
-    overflow: "hidden",
-    boxShadow: "0px 3px 6px #00000029",
+  carousel: {},
+  mediaContainer: {
     backgroundColor: palette.background.default,
+    height: "100%",
+    marginLeft: typography.pxToRem(7.5),
+    marginRight: typography.pxToRem(10),
+    padding: `${typography.pxToRem(20)} 0`,
+    position: "relative",
     [breakpoints.up("md")]: {
-      left: "50%",
-      right: "50%",
-      margin: `0 -50vw`,
+      margin: 0,
+      padding: `${typography.pxToRem(34)} 0`,
     },
     [breakpoints.up("lg")]: {
-      margin: "0 auto",
-      width: "100%",
+      margin: 0,
+      padding: `${typography.pxToRem(30)} 0`,
+    },
+    "&:after": {
+      position: "absolute",
+      bottom: 0,
+      content: "''",
+      boxShadow: `0px 3px 6px ${alpha(palette.common.black, 0.16)}`, // #00000029
       left: 0,
       right: 0,
+      top: 0,
+      [breakpoints.up("lg")]: {
+        // ensure drop-shadow is visible
+        bottom: 3,
+      },
     },
   },
-  chartContainer: ({ currentItemIndex }) => {
-    return {
-      visibility: "hidden",
-      height: 0,
-      opacity: 0,
-      transition: "transform 400ms ease-in-out",
-      overflow: "unset",
-      transform: `translate3d(${-100 * currentItemIndex}vw,0,0)`,
-      [breakpoints.up("md")]: {
-        transform: `translate3d(${typography.pxToRem(
-          -608 * currentItemIndex
-        )},0,0)`,
-      },
-      [breakpoints.down("lg")]: {
-        transform: `translate3d(${typography.pxToRem(
-          -768 * currentItemIndex
-        )},0,0)`,
-      },
-    };
-  },
-  chart: {
-    "& > iframe": {
-      height: "100%",
-    },
+  media: {
     height: typography.pxToRem(400),
+    marginLeft: `-${typography.pxToRem(7.5)}`,
+    padding: 0,
     width: "100%",
-    padding: `0 ${typography.pxToRem(20)}`,
-    margin: "0 auto",
     [breakpoints.up("md")]: {
+      margin: 0,
       height: typography.pxToRem(476),
       width: typography.pxToRem(608),
     },
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(530),
-      width: typography.pxToRem(768),
       padding: `${typography.pxToRem(30)} ${typography.pxToRem(
         33
       )} ${typography.pxToRem(27)}`,
+      width: typography.pxToRem(768),
+    },
+    "& > iframe": {
+      height: "100%",
     },
   },
-  currentChart: () => {
-    return {
-      visibility: "visible",
-      opacity: 1,
-      height: "100%",
-    };
+  content: {
+    marginTop: typography.pxToRem(40),
+    width: "100%",
   },
 }));
 
