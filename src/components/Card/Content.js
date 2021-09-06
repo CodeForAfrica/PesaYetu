@@ -1,6 +1,7 @@
 import { RichTypography } from "@commons-ui/core";
 import { CardContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -9,6 +10,9 @@ import Link from "@/pesayetu/components/Link";
 const useStyles = makeStyles(({ typography }) => ({
   root: {
     padding: 0,
+    "&:last-child": {
+      padding: 0,
+    },
   },
   title: {},
   description: {
@@ -21,6 +25,7 @@ const useStyles = makeStyles(({ typography }) => ({
 }));
 
 const Content = ({
+  className,
   description,
   descriptionProps,
   title,
@@ -34,8 +39,9 @@ const Content = ({
   if (!(title || description || href)) {
     return null;
   }
+
   return (
-    <CardContent className={classes.root}>
+    <CardContent className={clsx(classes.root, className)}>
       <RichTypography variant="h5" {...titleProps} className={classes.title}>
         {title}
       </RichTypography>
@@ -62,6 +68,7 @@ const Content = ({
 };
 
 Content.propTypes = {
+  className: PropTypes.string,
   description: PropTypes.string,
   descriptionProps: PropTypes.shape({}),
   title: PropTypes.string,
@@ -72,6 +79,7 @@ Content.propTypes = {
 };
 
 Content.defaultProps = {
+  className: undefined,
   description: undefined,
   descriptionProps: undefined,
   title: undefined,
