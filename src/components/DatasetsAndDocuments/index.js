@@ -1,11 +1,15 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import useStyles from "./useStyles";
-
 import Section from "@/pesayetu/components/Section";
 import Sources from "@/pesayetu/components/Sources";
 import Tabs from "@/pesayetu/components/Tabs";
+
+// NOTE(kilemensi) useStyles uses import/definition order to determine how
+//                 classes are ordered.
+//                 see: https://material-ui.com/styles/advanced/#makestyles-withstyles-styled
+// eslint-disable-next-line import/order
+import useStyles from "./useStyles";
 
 function DatasetsAndDocuments({ items: sources, activeType, ...props }) {
   const classes = useStyles(props);
