@@ -24,8 +24,8 @@ function DatasetsAndDocuments({ items: sources, activeType, ...props }) {
       href: `/data/${type}`,
       children: (
         <Sources
-          datasetTypes
           {...rest}
+          type={type}
           classes={
             type === "datasets"
               ? {
