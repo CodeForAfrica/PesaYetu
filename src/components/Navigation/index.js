@@ -18,9 +18,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function Navigation({ variant, ...props }) {
+function Navigation({ ...props }) {
   const classes = useStyles(props);
-
+  const { variant } = props;
   return (
     <AppBar color="primary" position="sticky" className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
