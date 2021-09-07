@@ -1,38 +1,36 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography }) => ({
-  root: {},
-  accordionRoot: {
-    border: "1px solid rgba(0, 0, 0, .125)",
-    boxShadow: "none",
-    "&:not(:last-child)": {
-      borderBottom: 0,
-    },
-    "&:before": {
-      display: "none",
-    },
-    "&$expanded": {
-      margin: "auto",
-    },
+const useStyles = makeStyles(({ typography, palette }) => ({
+  root: {
+    textAlign: "right",
+    background: palette.background.paper,
   },
-  accordionExpanded: {},
-  summary: {
-    backgroundColor: "rgba(0, 0, 0, .03)",
-    borderBottom: "1px solid rgba(0, 0, 0, .125)",
-    marginBottom: -1,
-    minHeight: 56,
-    "&$expanded": {
-      minHeight: 56,
-    },
+  label: {
+    marginRight: typography.pxToRem(20),
+    height: typography.pxToRem(38),
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
   },
-  summaryContent: {
-    "&$expanded": {
-      margin: "12px 0",
-    },
+  childLabel: {
+    fontWeight: 300,
   },
-  summaryExpanded: {},
-  details: {
-    padding: typography.pxToRem(2),
+  icon: {
+    marginLeft: typography.pxToRem(20),
+    fill: palette.grey.main,
+    width: typography.pxToRem(19),
+  },
+  tree: {},
+  expanded: {
+    "&> .MuiTreeItem-content": {
+      borderRightColor: palette.primary.main,
+      borderRightWidth: typography.pxToRem(2),
+      borderRightStyle: "Solid",
+      backgroundColor: palette.background.default,
+    },
+    "& $icon": {
+      fill: "#666666",
+    },
   },
 }));
 

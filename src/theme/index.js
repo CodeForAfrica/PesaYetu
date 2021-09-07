@@ -200,6 +200,7 @@ deepmerge(
       margin: `${pxToRem(-0.5)} 0`, // 23 - 24
     },
     caption: {
+      color: "#212529",
       fontSize: pxToRem(12),
       lineHeight: 18 / 12,
       [breakpoints.up("lg")]: {

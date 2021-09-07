@@ -1,62 +1,58 @@
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import { TreeItem, TreeView } from "@material-ui/lab";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
+import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
 import Link from "@/pesayetu/components/Link";
 
 const ExploreDashboardMenu = ({ items, ...props }) => {
   const classes = useStyles(props);
-  const [expanded, setExpanded] = React.useState("panel1");
-
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+  if (!items || !items.length) {
+    return null;
+  }
 
   return (
-    <div>
+    <div className={classes.root}>
       {items.map(({ children, label, path }) => (
         <>
-          <Accordion
-            classes={{
-              root: classes.accordionRoot,
-              expanded: classes.accordionExpanded,
-            }}
-            square
-            expanded={expanded === "panel1"}
-            onChange={handleChange("panel1")}
-          >
-            <AccordionSummary
+          <TreeView>
+            <TreeItem
+              endIcon={1}
+              label={
+                <Link underline="none" href={path}>
+                  <Typography className={classes.label} variant="caption">
+                    {label} <CheckIcon className={classes.icon} />
+                  </Typography>
+                </Link>
+              }
               classes={{
-                root: classes.summary,
-                content: classes.summaryContent,
-                expanded: classes.summaryExpanded,
+                root: classes.tree,
+                expanded: classes.expanded,
               }}
-              aria-controls="panel1d-content"
-              id="panel1d-header"
-            >
-              <Link href={path}>
-                <Typography> {label} </Typography>
-              </Link>
-            </AccordionSummary>
-            <AccordionDetails
-              classes={{
-                root: classes.details,
-              }}
+              nodeId={path}
             >
               {children.map((child) => (
-                <Link href={child.path}>
-                  <Typography> {child.label} </Typography>
-                </Link>
+                <TreeItem
+                  key={child.path}
+                  nodeId={child.path}
+                  label={
+                    <Link underline="none" href={child.path}>
+                      <Typography
+                        className={clsx(classes.label, classes.childLabel)}
+                        variant="caption"
+                      >
+                        {child.label}
+                      </Typography>
+                    </Link>
+                  }
+                />
               ))}
-            </AccordionDetails>
-          </Accordion>
+            </TreeItem>
+          </TreeView>
         </>
       ))}
     </div>
