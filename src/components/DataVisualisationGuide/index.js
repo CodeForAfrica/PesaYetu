@@ -3,24 +3,12 @@ import { Grid, Hidden, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
-import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
+import Carousel from "@/pesayetu/components/Carousel";
 import Section from "@/pesayetu/components/Section";
-import "react-multi-carousel/lib/styles.css";
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1280 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1279, min: 768 },
-    items: 2,
-  },
-};
 
 function DataVisualisationGuide({ title, items, ...props }) {
   const classes = useStyles(props);
@@ -38,14 +26,7 @@ function DataVisualisationGuide({ title, items, ...props }) {
         </RichTypography>
 
         <Hidden smDown implementation="css">
-          <Carousel
-            swipeable
-            responsive={responsive}
-            arrows={false}
-            renderDotsOutside
-            showDots={!isDesktop}
-            dotListClass={classes.dots}
-          >
+          <Carousel showDots={!isDesktop}>
             {items.map((item) => (
               <Card
                 {...item}

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     backgroundColor: "#F8F8F8",
     padding: `${typography.pxToRem(80)} 0`,
@@ -51,21 +51,6 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
         220.61 + (((254 - 216.89) / 2) * 220.61) / 216.89
       ),
       width: typography.pxToRem(356 + (((390 - 350) / 2) * 296) / 350),
-    },
-  },
-  dots: {
-    margin: `0 ${typography.pxToRem(30)}`,
-    paddingTop: `${typography.pxToRem(40)}`,
-    position: "unset",
-    "& button": {
-      borderColor: palette.divider,
-      height: typography.pxToRem(16),
-      marginRight: typography.pxToRem(12),
-      width: typography.pxToRem(16),
-    },
-    "& .react-multi-carousel-dot--active button": {
-      borderColor: "#A0A0A0",
-      background: "#000",
     },
   },
 }));

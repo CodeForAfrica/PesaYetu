@@ -1,88 +1,62 @@
-import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid } from "@material-ui/core";
-import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
-import Carousel from "react-multi-carousel";
+import React, { useRef, useState } from "react";
 
+import CarouselItem from "./CarouselItem";
 import useStyles from "./useStyles";
 
-import Content from "@/pesayetu/components/Card/Content";
+import Carousel from "@/pesayetu/components/Carousel";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
-import "react-multi-carousel/lib/styles.css";
-
 const responsive = {
   desktop: {
-    breakpoint: {
-      max: 3000,
-      min: 1280,
-    },
     items: 1,
   },
   tablet: {
-    breakpoint: { max: 1280, min: 768 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 768, min: 0 },
     items: 1,
   },
 };
 
 function StoriesInsights({ overline, title, stories, ...props }) {
-  const [currentItemIndex, setCurrentItemIndex] = useState(0);
-  const classes = useStyles({ currentItemIndex, ...props });
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const classes = useStyles({ currentSlide, ...props });
+  const carouselRef = useRef(null);
 
   if (!stories?.length) {
     return null;
   }
+  const handleAfterChange = (slide) => {
+    setCurrentSlide(slide);
+  };
+  const handleDotClick = (index) => {
+    carouselRef?.current?.goToSlide(index);
+  };
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <Header overline={overline} className={classes.header}>
           {title}
         </Header>
-        <Grid container>
-          <Grid item lg={8} md={12} container direction="row" wrap="nowrap">
-            <div className={classes.fullWidth}>
-              {stories.map(({ chart, slug }, index) => (
-                <Grid
-                  item
-                  key={slug}
-                  className={clsx(classes.chartContainer, {
-                    [classes.currentChart]: index === currentItemIndex,
-                  })}
-                >
-                  <RichTypography className={classes.chart}>
-                    {chart}
-                  </RichTypography>
-                </Grid>
-              ))}
-            </div>
-          </Grid>
-          <Grid item lg={1} />
-          <Grid item lg={3} md={12} container direction="column">
-            <Carousel
-              swipeable
-              responsive={responsive}
-              arrows={false}
-              renderDotsOutside
-              showDots
-              containerClass={classes.carouselList}
-              dotListClass={classes.dots}
-              beforeChange={(nextSlide) => {
-                setCurrentItemIndex(nextSlide);
-              }}
-            >
-              {stories?.map((story) => (
-                <Content key={story.slug} {...story} />
-              ))}
-            </Carousel>
-          </Grid>
-        </Grid>
       </Section>
+
+      <Carousel
+        ref={carouselRef}
+        responsive={responsive}
+        showDots={false}
+        containerClass={classes.carouselList}
+        beforeChange={handleAfterChange}
+        className={classes.carousel}
+      >
+        {stories.map((story) => (
+          <CarouselItem
+            key={story.slug}
+            activeStep={currentSlide}
+            onClick={handleDotClick}
+            steps={stories.length}
+            story={story}
+          />
+        ))}
+      </Carousel>
     </div>
   );
 }

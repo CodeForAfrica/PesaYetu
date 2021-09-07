@@ -3,35 +3,24 @@ import { useTheme } from "@material-ui/core/styles";
 import { chunk } from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
-import Carousel from "react-multi-carousel";
 
+import CarouselItem from "./CarouselItem";
 import useStyles from "./useStyles";
 
-import CarouselItem from "@/pesayetu/components/Sources/CarouselItem";
+import Carousel from "@/pesayetu/components/Carousel";
 import SourcesFilter from "@/pesayetu/components/SourcesFilter";
-
-import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   desktop: {
-    breakpoint: {
-      max: 3000,
-      min: 1280,
-    },
     items: 1,
   },
   tablet: {
-    breakpoint: { max: 1279, min: 768 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 767, min: 0 },
     items: 1,
   },
 };
 
-function Sources({ items, filterProps, ...props }) {
-  const classes = useStyles(props);
+function Sources({ filterProps, items, type, ...props }) {
+  const classes = useStyles({ ...props, type });
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
   const itemsToShow = isTablet ? 6 : 5;
@@ -45,19 +34,12 @@ function Sources({ items, filterProps, ...props }) {
       <Hidden smDown implementation="css">
         <SourcesFilter {...filterProps} />
       </Hidden>
-      <Carousel
-        swipeable
-        responsive={responsive}
-        arrows={false}
-        renderDotsOutside
-        showDots
-        dotListClass={classes.dots}
-      >
+      <Carousel responsive={responsive} classes={{ dotList: classes.dotList }}>
         {carouselItems.map((ci) => (
           <CarouselItem
-            items={ci}
-            datasetTypes={!!ci[0].types}
             key={ci[0].title}
+            items={ci}
+            type={type}
             classes={{
               title: classes.title,
               text: classes.text,
@@ -86,11 +68,13 @@ Sources.propTypes = {
       types: PropTypes.arrayOf({}),
     })
   ),
+  type: PropTypes.oneOf(["datasets", "documents"]),
 };
 
 Sources.defaultProps = {
   items: undefined,
   filterProps: undefined,
+  type: undefined,
 };
 
 export default Sources;
