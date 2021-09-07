@@ -119,8 +119,6 @@ function DropdownSearch({
     </IconButton>
   );
 
-  console.log(variant);
-
   return (
     <div className={classes.root}>
       <Typography variant="body1" className={classes.label}>
