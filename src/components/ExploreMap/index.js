@@ -71,7 +71,7 @@ const preferredChildrenObj = {
   country: ["county"],
 };
 
-function Map({
+function ExploreMap({
   center,
   zoom,
   styles,
@@ -216,7 +216,7 @@ function Map({
   );
 }
 
-Map.propTypes = {
+ExploreMap.propTypes = {
   center: (props, propName, componentName) => {
     const { [propName]: prop } = props;
     if (!Array.isArray(prop) || prop.length !== 2 || prop.some(Number.isNaN)) {
@@ -241,7 +241,7 @@ Map.propTypes = {
   setGeoCode: PropTypes.func,
 };
 
-Map.defaultProps = {
+ExploreMap.defaultProps = {
   center: undefined,
   zoom: undefined,
   styles: {
@@ -254,4 +254,4 @@ Map.defaultProps = {
   setGeoCode: undefined,
 };
 
-export default Map;
+export default ExploreMap;

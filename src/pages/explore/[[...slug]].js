@@ -3,7 +3,6 @@ import React from "react";
 import ExplorePage from "@/pesayetu/components/ExplorePage";
 import Page from "@/pesayetu/components/Page";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
-import fetchAPI from "@/pesayetu/utils/fetchApi";
 
 export default function Explore(props) {
   return (
@@ -47,9 +46,11 @@ export async function getStaticProps({ preview, previewData, params }) {
 
   const geoCode = slug ? slug.split("-")[1] : "KE";
 
-  const res = await fetchAPI(
+  const r = await fetch(
     `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/${geoCode}/?format=json`
   );
+
+  const res = await r.json();
 
   const geography = res?.profile.geography;
   const geometries = {
@@ -68,7 +69,6 @@ export async function getStaticProps({ preview, previewData, params }) {
     props: {
       ...props,
       variant: "explore",
-      boundary: props?.menus?.boundary,
       geography,
       geometries,
     },

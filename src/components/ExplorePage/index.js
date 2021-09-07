@@ -1,3 +1,4 @@
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
@@ -6,12 +7,17 @@ import useSWR from "swr";
 
 import fetchAPI from "@/pesayetu/utils/fetchApi";
 
-const Map = dynamic(() => import("./Map"), { ssr: false });
+const Map = dynamic(() => import("@/pesayetu/components/ExploreMap"), {
+  ssr: false,
+});
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   root: {
-    height: "100vh",
     position: "relative",
+    height: "calc(100vh - 88px)",
+    [breakpoints.up("lg")]: {
+      height: "calc(100vh - 110px)",
+    },
   },
 }));
 
@@ -28,7 +34,7 @@ function ExplorePage({
 
   const { data } = useSWR(
     shouldFetch
-      ? `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/${geoCode}/?format=json`
+      ? `https://v2.hurumap.org/api/v1/all_details/profile/3/geography/${geoCode}/?format=json`
       : null,
     fetchAPI
   );
@@ -48,31 +54,21 @@ function ExplorePage({
   }, [data]);
   return (
     <div className={classes.root}>
-      <Map
-        center={[0.3051933453207569, 37.908818734483155]}
-        zoom={6}
-        geometries={geometries}
-        geography={geography}
-        setShouldFetch={setShouldFetch}
-        setGeoCode={setGeoCode}
-      />
+      <Hidden smDown>
+        <Map
+          center={[0.3051933453207569, 37.908818734483155]}
+          zoom={6.25}
+          geometries={geometries}
+          geography={geography}
+          setShouldFetch={setShouldFetch}
+          setGeoCode={setGeoCode}
+        />
+      </Hidden>
     </div>
   );
 }
 
 ExplorePage.propTypes = {
-  center: (props, propName, componentName) => {
-    const { [propName]: prop } = props;
-    if (!Array.isArray(prop) || prop.length !== 2 || prop.some(Number.isNaN)) {
-      return new Error(
-        `Invalid prop \`${propName}\` supplied to` +
-          ` \`${componentName}\`. Validation failed.`
-      );
-    }
-    return null;
-  },
-  zoom: PropTypes.number,
-  styles: PropTypes.shape({}),
   geometries: PropTypes.shape({
     parents: PropTypes.shape({}),
     children: PropTypes.shape({}),
@@ -84,12 +80,6 @@ ExplorePage.propTypes = {
 };
 
 ExplorePage.defaultProps = {
-  center: undefined,
-  zoom: undefined,
-  styles: {
-    height: "100%",
-    width: "100%",
-  },
   geometries: undefined,
   geography: undefined,
 };
