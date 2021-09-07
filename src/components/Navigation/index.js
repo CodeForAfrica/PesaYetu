@@ -1,8 +1,10 @@
 import { AppBar, Hidden, Toolbar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 import React from "react";
 
 import DesktopNavigation from "./DesktopNavigation";
+import ExploreNavigation from "./ExploreNavigation";
 import MobileNavigation from "./MobileNavigation";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
@@ -16,17 +18,24 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function Navigation({ ...props }) {
+function Navigation({ variant, ...props }) {
   const classes = useStyles(props);
 
   return (
     <AppBar color="primary" position="sticky" className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
         <Hidden mdDown implementation="css">
-          <DesktopNavigation
-            {...props}
-            classes={{ section: classes.section }}
-          />
+          {variant && variant === "explore" ? (
+            <ExploreNavigation
+              {...props}
+              classes={{ section: classes.section }}
+            />
+          ) : (
+            <DesktopNavigation
+              {...props}
+              classes={{ section: classes.section }}
+            />
+          )}
         </Hidden>
         <Hidden lgUp implementation="css">
           <MobileNavigation {...props} />
@@ -35,5 +44,13 @@ function Navigation({ ...props }) {
     </AppBar>
   );
 }
+
+Navigation.propTypes = {
+  variant: PropTypes.string,
+};
+
+Navigation.defaultProps = {
+  variant: undefined,
+};
 
 export default Navigation;

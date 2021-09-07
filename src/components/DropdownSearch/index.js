@@ -11,8 +11,6 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-import ExploreSearchIcon from "@/pesayetu/assets/icons/search-explore.svg";
-import NavSearchIcon from "@/pesayetu/assets/icons/search-open.svg";
 import SearchIcon from "@/pesayetu/assets/icons/search.svg";
 import Link from "@/pesayetu/components/Link";
 
@@ -65,11 +63,11 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 
 function DropdownSearch({
   href: hrefProp,
-  nav,
   label,
   counties,
   onClick: onClickProp,
-  isExplore,
+  icon: iconProp,
+  variant,
   ...props
 }) {
   const classes = useStyles(props);
@@ -108,7 +106,8 @@ function DropdownSearch({
     }
   };
 
-  const icon = nav && !suggestions?.length ? NavSearchIcon : SearchIcon;
+  const icon =
+    !suggestions?.length || variant === "explore" ? iconProp : SearchIcon;
   const searchIconButton = (
     <IconButton
       color="primary"
@@ -116,12 +115,7 @@ function DropdownSearch({
       size="small"
       className={classes.button}
     >
-      <Image
-        src={isExplore ? ExploreSearchIcon : icon}
-        width={48}
-        height={48}
-        alt="search"
-      />
+      <Image src={icon} width={48} height={48} alt="search" />
     </IconButton>
   );
 
@@ -133,7 +127,7 @@ function DropdownSearch({
       <InputBase
         inputProps={{ "aria-label": "search" }}
         onChange={handleChange}
-        placeholder={isExplore ? label : ""}
+        placeholder={variant === "explore" ? label : ""}
         value={query}
         {...props}
         classes={{
@@ -141,9 +135,9 @@ function DropdownSearch({
           input: classes.input,
           focused: classes.focused,
         }}
-        endAdornment={isExplore ? searchIconButton : null}
+        endAdornment={variant === "explore" ? searchIconButton : null}
       />
-      {!isExplore && searchIconButton}
+      {variant !== "explore" && searchIconButton}
 
       <div className={classes.suggestions}>
         {suggestions?.length > 0 && (
@@ -167,21 +161,21 @@ function DropdownSearch({
 }
 
 DropdownSearch.propTypes = {
-  isExplore: PropTypes.bool,
   label: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  nav: PropTypes.bool,
+  icon: PropTypes.string,
   counties: PropTypes.arrayOf(PropTypes.shape({})),
+  variant: PropTypes.string,
 };
 
 DropdownSearch.defaultProps = {
   label: "Search for a location",
   href: "/explore",
   onClick: undefined,
-  nav: false,
+  icon: SearchIcon,
   counties: undefined,
-  isExplore: false,
+  variant: undefined,
 };
 
 export default DropdownSearch;

@@ -24,7 +24,7 @@ export async function getStaticProps({ preview, previewData }) {
   return {
     props: {
       ...props,
-      isExplore: true,
+      variant: "explore",
     },
     revalidate,
   };
