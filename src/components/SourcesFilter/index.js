@@ -16,19 +16,25 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   label: {},
   buttonGroup: {},
+  buttonGroupGroupedTextHorizontal: {
+    "&:not(:last-child)": {
+      border: "none",
+    },
+  },
   button: {
     "&::after": {
       display: "none",
     },
     color: palette.grey.main,
-    border: "none !important",
     height: "max-content",
     "&:hover, &:focus, &:focus-within": {
       backgroundColor: "transparent",
     },
   },
   selectedOption: {
-    color: `${palette.grey.dark} !important`,
+    "&.Mui-disabled": {
+      color: `${palette.grey.dark}`,
+    },
   },
 }));
 
@@ -72,14 +78,18 @@ const SourcesFilter = ({
           {paginationLabel}
         </Typography>
         <ButtonGroup
-          classes={{ root: classes.buttonGroup, groupedTextHorizontal: {} }}
+          classes={{
+            root: classes.buttonGroup,
+            groupedTextHorizontal: classes.buttonGroupGroupedTextHorizontal,
+          }}
           variant="text"
-          color="primary"
         >
           {paginationOptions?.map((option) => (
             <Button
               className={clsx(classes.button, {
-                [classes.selectedOption]: option === selectedPageCount,
+                [classes.selectedOption]:
+                  console.log("BOOM", { option, selectedPageCount }) ||
+                  option === selectedPageCount,
               })}
               onClick={() => setSelectedPageCount(option)}
               key={option}
