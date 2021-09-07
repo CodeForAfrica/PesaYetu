@@ -18,14 +18,15 @@ const useStyles = makeStyles(() => ({
   link: {},
 }));
 
-function CarouselItem({ items, datasetTypes, ...props }) {
+function CarouselItem({ items, type, ...props }) {
   const classes = useStyles(props);
+  const isDatasets = type === "datasets";
 
   return (
     <div className={classes.root}>
       {items.map((item) => (
         <Grid container className={classes.sources} key={item.title}>
-          <Grid item xs={12} md={6} lg={7} className={classes.textContent}>
+          <Grid item xs={12} lg={7} className={classes.textContent}>
             <Typography
               variant="body1"
               className={clsx(classes.text, classes.title)}
@@ -39,25 +40,24 @@ function CarouselItem({ items, datasetTypes, ...props }) {
               {item.description}
             </Typography>
           </Grid>
-          <Grid item xs={12} md={6} lg={5} className={classes.linkContent}>
-            {datasetTypes && (
+          <Grid item xs={12} lg={5} className={classes.linkContent}>
+            {isDatasets && item.types?.length > 0 ? (
               <Grid
                 item
                 xs={12}
                 lg={7}
                 container
-                direction="row"
                 justifyContent="flex-start"
                 alignItems="center"
                 className={classes.dataTypes}
               >
-                {item.types?.map((data) => (
+                {item.types.map((data) => (
                   <Typography className={classes.typeContent} key={data.name}>
                     {data.name}
                   </Typography>
                 ))}
               </Grid>
-            )}
+            ) : null}
             <Link
               className={classes.link}
               href={item.href}
@@ -74,7 +74,6 @@ function CarouselItem({ items, datasetTypes, ...props }) {
 }
 
 CarouselItem.propTypes = {
-  datasetTypes: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -83,11 +82,12 @@ CarouselItem.propTypes = {
       types: PropTypes.arrayOf({}),
     })
   ),
+  type: PropTypes.oneOf(["datasets", "documents"]),
 };
 
 CarouselItem.defaultProps = {
-  datasetTypes: undefined,
   items: undefined,
+  type: undefined,
 };
 
 export default CarouselItem;
