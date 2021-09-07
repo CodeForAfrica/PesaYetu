@@ -23,6 +23,11 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   tree: {},
   expanded: {
+    "& .MuiCollapse-root": {
+      marginLeft: 0,
+      borderTop: `1px solid ${palette.grey.main}`,
+      borderBottom: `1px solid ${palette.grey.main}`,
+    },
     "&> .MuiTreeItem-content": {
       borderRightColor: palette.primary.main,
       borderRightWidth: typography.pxToRem(2),
