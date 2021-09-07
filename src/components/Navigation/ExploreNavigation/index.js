@@ -74,6 +74,7 @@ function ExploreNavigation({ logoProps, ...props }) {
             <DropdownSearch
               {...props}
               icon={SearchIcon}
+              placeholder="Search for a Location" // TODO: Read from cms
               classes={{
                 inputRoot: classes.searchInputRoot,
                 input: classes.searchInput,

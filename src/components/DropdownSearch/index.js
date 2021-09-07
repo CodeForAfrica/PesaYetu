@@ -67,6 +67,7 @@ function DropdownSearch({
   counties,
   onClick: onClickProp,
   icon: iconProp,
+  placeholder,
   variant,
   ...props
 }) {
@@ -127,7 +128,7 @@ function DropdownSearch({
       <InputBase
         inputProps={{ "aria-label": "search" }}
         onChange={handleChange}
-        placeholder={variant === "explore" ? label : ""}
+        placeholder={placeholder}
         value={query}
         {...props}
         classes={{
@@ -167,6 +168,7 @@ DropdownSearch.propTypes = {
   icon: PropTypes.string,
   counties: PropTypes.arrayOf(PropTypes.shape({})),
   variant: PropTypes.string,
+  placeholder: PropTypes.string,
 };
 
 DropdownSearch.defaultProps = {
@@ -176,6 +178,7 @@ DropdownSearch.defaultProps = {
   icon: SearchIcon,
   counties: undefined,
   variant: undefined,
+  placeholder: undefined,
 };
 
 export default DropdownSearch;
