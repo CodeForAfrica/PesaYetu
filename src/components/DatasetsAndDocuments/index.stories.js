@@ -2,21 +2,25 @@ import React from "react";
 
 import DatasetsAndDocuments from ".";
 
-import { datasetTypeArgs, documentsArg } from "@/pesayetu/config";
-
-const items = [
-  { label: "DOCUMENTS & SPEECHES", children: documentsArg },
-  { label: "DATASET", children: datasetTypeArgs },
-];
+import { datasetsAndDocumentsArgs } from "@/pesayetu/config";
 
 export default {
   title: "Sections/DatasetsAndDocuments",
+  argTypes: {
+    activeType: {
+      control: {
+        type: "select",
+      },
+      options: ["documents", "datasets"],
+    },
+  },
 };
 
-const Template = ({ ...args }) => <DatasetsAndDocuments {...args} />;
+const Template = (args) => <DatasetsAndDocuments {...args} />;
 
 export const Default = Template.bind({});
 
 Default.args = {
-  items,
+  ...datasetsAndDocumentsArgs,
+  activeType: "documents",
 };
