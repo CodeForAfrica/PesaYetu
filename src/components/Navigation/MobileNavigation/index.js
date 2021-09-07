@@ -11,6 +11,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
+import SearchIcon from "@/pesayetu/assets/icons/search-open.svg";
 import MenuCloseIcon from "@/pesayetu/assets/menu_close.svg";
 import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
@@ -263,7 +264,7 @@ function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
                   root: classes.search,
                   inputRoot: classes.searchInput,
                 }}
-                nav
+                icon={SearchIcon}
                 {...props}
               />
             </Menu>
