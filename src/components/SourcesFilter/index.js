@@ -53,7 +53,7 @@ const SourcesFilter = ({
       alignItems="center"
       justify="space-betweeen"
     >
-      <Grid md={2} className={classes.sourcesFilter}>
+      <Grid item md={2} className={classes.sourcesFilter}>
         <Typography variant="body1">
           {countLabel}: {count}
         </Typography>
