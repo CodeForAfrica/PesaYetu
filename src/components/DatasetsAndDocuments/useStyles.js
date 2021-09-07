@@ -11,7 +11,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     },
   },
   sources: {
-    padding: `${typography.pxToRem(31)} ${typography.pxToRem(0)}`,
+    padding: `${typography.pxToRem(31)}`,
     [breakpoints.up("md")]: {
       flexDirection: "row",
       alignItems: "flex-start",
