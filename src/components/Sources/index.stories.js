@@ -2,7 +2,7 @@ import React from "react";
 
 import Sources from ".";
 
-import { documentsArg } from "@/pesayetu/config";
+import { documentsArgs } from "@/pesayetu/config";
 
 export default {
   title: "Components/Sources",
@@ -19,4 +19,4 @@ const Template = ({ ...args }) => <Sources {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = documentsArg;
+Default.args = documentsArgs;
