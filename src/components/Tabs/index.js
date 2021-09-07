@@ -32,7 +32,7 @@ function Tabs({ name: nameProp, items, activeTab, ...props }) {
       <MuiTabs
         value={value}
         onChange={handleChange}
-        aria-label="simple tabs"
+        aria-label={`${name} tabs`}
         classes={{
           root: classes.tabs,
           indicator: classes.indicator,
@@ -62,7 +62,7 @@ function Tabs({ name: nameProp, items, activeTab, ...props }) {
       <Divider className={classes.divider} />
       <div className={classes.tabPanels}>
         {items.map((item, index) => (
-          <TabPanel key={item.label} value={value} index={index}>
+          <TabPanel key={item.label} name={name} value={value} index={index}>
             {item.children}
           </TabPanel>
         ))}
