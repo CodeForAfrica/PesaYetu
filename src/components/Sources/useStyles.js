@@ -12,10 +12,6 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     background: palette.background.default,
     border: `1px solid ${palette.grey.main}`,
     padding: `${typography.pxToRem(31)}`,
-    [breakpoints.up("md")]: {
-      flexDirection: "row",
-      alignItems: "center",
-    },
     [breakpoints.up("lg")]: {
       flexDirection: "row",
       alignItems: "center",
@@ -37,7 +33,14 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       color: "#212529",
     },
   },
-  description: {},
+  description: ({ type }) => ({
+    marginTop: type === "datasets" ? `-${typography.pxToRem(20)}` : undefined,
+    marginBottom: type === "datasets" ? 0 : undefined,
+    [breakpoints.up("lg")]: {
+      marginTop: 0,
+      marginBottom: "revert",
+    },
+  }),
   textContent: {
     display: "flex",
     flexDirection: "column",
@@ -50,22 +53,16 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   linkContent: {
     display: "flex",
     flexDirection: "column",
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       flexDirection: "row",
       justifyContent: "flex-end",
       alignItems: "center",
     },
-    [breakpoints.up("lg")]: {
-      justifyContent: "flex-end",
-    },
   },
   dataTypes: {
     padding: `${typography.pxToRem(16)} 0`,
-    direction: "row",
-    alignItems: "center",
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       justifyContent: "center",
-      alignItems: "center",
       padding: 0,
     },
   },
@@ -91,19 +88,8 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       padding: 0,
     },
   },
-  dots: {
+  dotList: {
     margin: `${typography.pxToRem(16)} ${typography.pxToRem(30)}`,
-    position: "unset",
-    "& button": {
-      borderColor: palette.divider,
-      height: typography.pxToRem(16),
-      marginRight: typography.pxToRem(12),
-      width: typography.pxToRem(16),
-    },
-    "& .react-multi-carousel-dot--active button": {
-      borderColor: "#A0A0A0",
-      background: "#000",
-    },
   },
 }));
 
