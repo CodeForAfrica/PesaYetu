@@ -87,9 +87,7 @@ const SourcesFilter = ({
           {paginationOptions?.map((option) => (
             <Button
               className={clsx(classes.button, {
-                [classes.selectedOption]:
-                  console.log("BOOM", { option, selectedPageCount }) ||
-                  option === selectedPageCount,
+                [classes.selectedOption]: option === selectedPageCount,
               })}
               onClick={() => setSelectedPageCount(option)}
               key={option}
