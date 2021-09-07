@@ -9,7 +9,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       alignItems: "flex-start !important",
     },
     [breakpoints.up("lg")]: {
-      flexDirection: "row",
       alignItems: "center !important",
       padding: `${typography.pxToRem(31)} ${typography.pxToRem(100)}`,
     },
