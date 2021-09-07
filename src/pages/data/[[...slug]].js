@@ -6,17 +6,16 @@ import DataSources from "@/pesayetu/components/DataSources";
 import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
-import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-const postType = "page";
+const types = ["documents", "datasets"];
 
-export default function Data({ blocks, activeLabel, ...props }) {
+export default function Data({ blocks, activeType, ...props }) {
   return (
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
       <DatasetsAndDocuments
-        activeLabel={activeLabel}
+        activeType={activeType}
         items={blocks?.documentAndDatasets}
       />
       <DataSources {...blocks?.dataSource} />
@@ -25,7 +24,7 @@ export default function Data({ blocks, activeLabel, ...props }) {
 }
 
 Data.propTypes = {
-  activeLabel: PropTypes.string,
+  activeType: PropTypes.oneOf(types),
   blocks: PropTypes.shape({
     otherHero: PropTypes.shape({}),
     dataSource: PropTypes.shape({}),
@@ -34,37 +33,39 @@ Data.propTypes = {
 };
 
 Data.defaultProps = {
-  activeLabel: undefined,
+  activeType: undefined,
   blocks: undefined,
 };
 
 export async function getStaticPaths() {
-  return getPostTypeStaticPaths(postType);
+  const paths = types.map((type) => ({ params: { slug: [type] } }));
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params, preview, previewData }) {
   const {
-    slug: [activeLabel],
+    slug: [activeType],
   } = params;
+  if (!types.includes(activeType)) {
+    return { notFound: true };
+  }
 
+  const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     { slug: "data" },
     postType,
     preview,
     previewData
   );
-
   if (notFound) {
-    return {
-      notFound,
-    };
+    return { notFound };
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
   return {
     props: {
       ...props,
-      activeLabel,
+      activeType,
       blocks,
     },
     revalidate,
