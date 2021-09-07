@@ -6,7 +6,7 @@ import DataVisuals from ".";
 import { dataVisuals } from "@/pesayetu/config";
 
 export default {
-  title: "Sections/DataVisuals",
+  title: "Sections/DataVisualisationGuide",
 };
 
 const Template = ({ ...args }) => <DataVisuals {...args} />;

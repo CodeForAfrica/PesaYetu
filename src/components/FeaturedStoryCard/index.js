@@ -5,27 +5,48 @@ import React from "react";
 import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
-import Content from "@/pesayetu/components/InsightCard/Content";
+import Content from "@/pesayetu/components/Card/Content";
 
-function FeaturedStoryCard({ variant, ...props }) {
+function FeaturedStoryCard({
+  chart,
+  ctaText,
+  description,
+  href,
+  image,
+  title,
+  variant,
+  ...props
+}) {
   const classes = useStyles(props);
-  const titleVariant = variant === "news" ? "h4" : "h3";
+  const titleVariant = variant === "embed" ? "h3" : "h4";
+  const mediaProps = { chart, image, href };
+  const contentProps = {
+    ctaText,
+    description,
+    href,
+    title,
+    titleProps: { variant: titleVariant },
+  };
+
   return (
-    <Grid container className={classes.root}>
-      <Grid item xs={12} md={7}>
+    <Grid container justifyContent="space-between" className={classes.root}>
+      <Grid item xs={12} lg={7}>
         <Card
-          {...props}
+          {...mediaProps}
           variant={variant}
-          classes={{ root: classes.card, cardMedia: classes.media }}
+          classes={{
+            root: classes.card,
+            media: classes.media,
+            mediaImage: classes.mediaImage,
+          }}
         />
       </Grid>
-      <Grid item xs={12} md={5} className={classes.content}>
+      <Grid item xs={12} lg={4} className={classes.content}>
         <Content
-          {...props}
-          variant={titleVariant}
+          {...contentProps}
           classes={{
-            cardTitle: classes.title,
-            cardDescription: classes.description,
+            description: classes.description,
+            title: classes.title,
           }}
         />
       </Grid>
