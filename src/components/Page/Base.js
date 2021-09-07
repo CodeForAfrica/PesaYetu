@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { NextSeo } from "next-seo";
 import PropTypes from "prop-types";
 import React from "react";
@@ -18,10 +17,11 @@ function BasePage({ children, menus, ...props }) {
   const { menuProps } = navigation;
   const { logoProps, socialLinks } = navigationArgs;
   const navigationProps = {
+    ...props,
+    ...menus,
     logoProps,
     menuProps,
     socialLinks,
-    ...menus,
   };
 
   return (

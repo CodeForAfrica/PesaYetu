@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import DataIndicators from "@/pesayetu/components/DataIndicators";
-import DataVisuals from "@/pesayetu/components/DataVisuals";
+import DataVisualisationGuide from "@/pesayetu/components/DataVisualisationGuide";
 import ExploreOtherTools from "@/pesayetu/components/ExploreOtherTools";
 import Hero from "@/pesayetu/components/Hero";
 import HowItWorks from "@/pesayetu/components/HowItWorks";
@@ -10,20 +10,15 @@ import InsightData from "@/pesayetu/components/InsightsData";
 import Page from "@/pesayetu/components/Page";
 import Project from "@/pesayetu/components/Project";
 import StoriesInsights from "@/pesayetu/components/StoriesInsights";
-import { searchArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
 export default function Home({ boundary, blocks, ...props }) {
-  const heroProps = {
-    ...blocks?.hero,
-    selectProps: searchArgs?.selectProps,
-  };
   return (
     <Page {...props}>
-      <Hero {...heroProps} boundary={boundary} />
+      <Hero {...blocks.hero} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
-      <DataVisuals {...blocks?.dataVisuals} />
+      <DataVisualisationGuide {...blocks?.dataVisualisationGuide} />
       <StoriesInsights {...blocks?.insightsStories} />
       <DataIndicators {...blocks.dataIndicators} />
       <InsightData {...blocks?.dataInsights} />
@@ -42,7 +37,7 @@ Home.propTypes = {
     insightsStories: PropTypes.shape({}),
     partnersAndNewsletter: PropTypes.shape({}),
     dataInsights: PropTypes.shape({}),
-    dataVisuals: PropTypes.shape({}),
+    dataVisualisationGuide: PropTypes.shape({}),
     dataIndicators: PropTypes.shape({}),
   }),
   footerProps: PropTypes.shape({}),

@@ -1,91 +1,120 @@
-import { RichTypography } from "@commons-ui/core";
-import {
-  CardActionArea,
-  CardContent,
-  Card as MuiCard,
-} from "@material-ui/core";
+import { Card as MuiCard } from "@material-ui/core";
 import clsx from "clsx";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
+import CardActionArea from "./ActionArea";
+import CardContent from "./Content";
+import CardMedia from "./Media";
 import useStyles from "./useStyles";
 
-import Link from "@/pesayetu/components/Link";
+const Card = ({
+  chart,
+  children,
+  className,
+  ctaText,
+  description,
+  descriptionProps,
+  embed,
+  href,
+  image,
+  imageProps,
+  linkProps,
+  media,
+  mediaProps,
+  onClick,
+  title,
+  titleProps,
+  variant,
+  ...props
+}) => {
+  const squareMedia = mediaProps?.square;
+  const classes = useStyles({ ...props, squareMedia });
+  const actionAreaProps = { href, onClick };
+  const contentProps = {
+    ctaText,
+    description,
+    descriptionProps,
+    href,
+    linkProps,
+    title,
+    titleProps,
+  };
 
-const Card = ({ href, children, image, chart, variant, ...props }) => {
-  const classes = useStyles(props);
-  const visual = variant === "news" ? image : chart;
   return (
-    <MuiCard classes={{ root: classes.root }}>
-      {href ? (
-        <CardActionArea
-          component={href ? Link : undefined}
-          href={href}
-          disableRipple
-          underline="none"
-          {...props}
+    <MuiCard elevation={0} square className={clsx(classes.root, className)}>
+      <CardActionArea
+        {...actionAreaProps}
+        classes={{
+          root: classes.actionArea,
+          focusHighlight: classes.actionAreaFocusHighlight,
+          focusVisible: classes.actionAreaFocusVisible,
+        }}
+      >
+        <CardMedia
+          {...mediaProps}
+          chart={chart}
+          embed={embed}
+          image={image}
+          imageProps={imageProps}
+          media={media}
+          variant={variant}
+          classes={{ root: classes.media, image: classes.mediaImage }}
+        />
+        <CardContent
+          {...contentProps}
           classes={{
-            root: classes.cardActionRoot,
-            focusHighlight: classes.focusHighlight,
-            focusVisible: classes.focusVisible,
+            root: classes.content,
+            description: classes.contentDescription,
+            link: classes.contentLink,
+            title: classes.contentTitle,
           }}
-        >
-          <CardContent classes={{ root: classes.content }}>
-            {visual && variant === "news" ? (
-              <div className={classes.cardMedia}>
-                <Image src={visual} layout="fill" className={classes.image} />
-              </div>
-            ) : (
-              <RichTypography
-                className={clsx(classes.cardMedia, classes.insightViz)}
-                component="div"
-              >
-                {visual}
-              </RichTypography>
-            )}
-            {children}
-          </CardContent>
-        </CardActionArea>
-      ) : (
-        <CardContent classes={{ root: classes.content }}>
-          {visual && variant === "news" ? (
-            <div className={classes.cardMedia}>
-              <Image
-                src={visual}
-                layout="fill"
-                className={classes.image}
-                objectFit="cover"
-              />
-            </div>
-          ) : (
-            <RichTypography
-              className={clsx(classes.cardMedia, classes.insightViz)}
-              component="div"
-            >
-              {visual}
-            </RichTypography>
-          )}
-          {children}
-        </CardContent>
-      )}
+        />
+      </CardActionArea>
     </MuiCard>
   );
 };
 
 Card.propTypes = {
+  chart: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  ctaText: PropTypes.string,
+  description: PropTypes.string,
+  descriptionProps: PropTypes.shape({}),
+  embed: PropTypes.string,
   href: PropTypes.string,
   image: PropTypes.string,
-  chart: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(["insights", "news"]),
+  imageProps: PropTypes.shape({}),
+  linkProps: PropTypes.shape({}),
+  media: PropTypes.string,
+  mediaProps: PropTypes.shape({
+    square: PropTypes.bool,
+  }),
+  onClick: PropTypes.func,
+  title: PropTypes.string,
+  titleProps: PropTypes.shape({}),
+  variant: PropTypes.oneOf(["image", "embed"]),
 };
 
 Card.defaultProps = {
+  chart: undefined,
+  children: undefined,
+  className: undefined,
+  ctaText: undefined,
+  embed: undefined,
+  description: undefined,
+  descriptionProps: undefined,
   href: undefined,
   image: undefined,
-  chart: undefined,
-  variant: "news",
+  imageProps: undefined,
+  linkProps: undefined,
+  media: undefined,
+  mediaProps: undefined,
+  onClick: undefined,
+  variant: "image",
+  title: undefined,
+  titleProps: undefined,
 };
 
 export default Card;

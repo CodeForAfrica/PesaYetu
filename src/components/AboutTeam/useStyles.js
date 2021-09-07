@@ -8,15 +8,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       padding: `${typography.pxToRem(80)} 0`,
     },
   },
-  cardRoot: {
-    boxShadow: "none",
-    backgroundColor: "unset",
-  },
-  cardMedia: {
-    height: typography.pxToRem(278),
-    width: typography.pxToRem(278),
-    position: "relative",
-  },
   title: {
     textAlign: "center",
     paddingBottom: typography.pxToRem(40),

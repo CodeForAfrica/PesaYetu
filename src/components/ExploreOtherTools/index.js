@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 
 import useStyles from "./useStyles";
 
-import ExploreCard from "@/pesayetu/components/ExploreCard";
+import Card from "@/pesayetu/components/Card";
 import Section from "@/pesayetu/components/Section";
 import "react-multi-carousel/lib/styles.css";
 
@@ -29,6 +29,10 @@ const responsive = {
 
 const ExploreOtherTools = ({ title, items, ...props }) => {
   const classes = useStyles(props);
+
+  if (!items?.length) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <Section>
@@ -44,8 +48,16 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
           showDots
           dotListClass={classes.dots}
         >
-          {items?.map((item) => (
-            <ExploreCard key={item.title} item={item} />
+          {items.map((item) => (
+            <Card
+              key={item.title}
+              {...item}
+              classes={{
+                root: classes.card,
+                media: classes.cardMedia,
+                contentTitle: classes.cardContentTitle,
+              }}
+            />
           ))}
         </Carousel>
       </Section>

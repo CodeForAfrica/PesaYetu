@@ -20,21 +20,17 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   indicatorsContainer: {
     width: "100%",
     height: typography.pxToRem(672),
-    transition: "width 0.3s linear",
+    transition: "width 0.3s ease-in-out",
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(600),
     },
   },
   slideIn: {
-    width: "calc(100% -250px)",
-    height: typography.pxToRem(750),
     [breakpoints.up("md")]: {
       width: "calc(100% - 355px)",
-      height: typography.pxToRem(672),
     },
     [breakpoints.up("lg")]: {
       width: "calc(100% - 480px)",
-      height: typography.pxToRem(600),
     },
   },
   header: {
@@ -64,7 +60,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   slideInIconContainer: {
     [breakpoints.up("lg")]: {
-      marginLeft: typography.pxToRem(20),
+      marginRight: typography.pxToRem(20),
       "&:last-of-type": {
         marginRight: 0,
       },
@@ -77,20 +73,12 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     },
   },
   slide: {
-    backgroundColor: "#0067A3",
-    color: palette.text.secondary,
-    width: typography.pxToRem(250),
-    height: typography.pxToRem(528),
-    margin: "auto 0",
+    backgroundColor: palette.primary.main,
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "flex-start",
     flexDirection: "column",
-    padding: typography.pxToRem(15),
-    [breakpoints.up("md")]: {
-      width: typography.pxToRem(355),
-      padding: `${typography.pxToRem(50)} ${typography.pxToRem(36)}`,
-    },
+    color: palette.text.secondary,
     [breakpoints.up("lg")]: {
       width: typography.pxToRem(480),
       height: typography.pxToRem(600),
@@ -117,11 +105,41 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
       margin: `${typography.pxToRem(20)} auto 0`,
     },
   },
-  slideInText: {
-    display: "none",
+  backdrop: {
+    maxHeight: typography.pxToRem(844),
+    backgroundColor: "transparent",
+  },
+  dialog: {
+    padding: 0,
+    borderRadius: 0,
+  },
+  dialogPaper: {
+    borderRadius: 0,
+    boxShadow: "none",
+    position: "absolute",
+    backgroundColor: palette.primary.main,
+    right: 0,
+    top: typography.pxToRem(160),
+    overflow: "hidden",
+    margin: "auto 0",
+    height: typography.pxToRem(528),
+    padding: typography.pxToRem(15),
     [breakpoints.up("md")]: {
-      display: "block",
+      width: typography.pxToRem(355),
+      padding: `${typography.pxToRem(50)} ${typography.pxToRem(36)}`,
     },
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(480),
+      height: typography.pxToRem(600),
+      padding: `${typography.pxToRem(76)} ${typography.pxToRem(84)}`,
+    },
+  },
+  content: {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    color: palette.text.secondary,
   },
   title: { color: "inherit" },
   description: { lineHeight: 30 / 16, textAlign: "initial" },

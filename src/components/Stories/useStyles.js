@@ -14,6 +14,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   featuredCardImage: {},
   cardMedia: {},
   story: {
+    marginBottom: typography.pxToRem(60),
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(40),
     },
