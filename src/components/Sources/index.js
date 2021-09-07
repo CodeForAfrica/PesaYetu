@@ -9,6 +9,7 @@ import useStyles from "./useStyles";
 
 import CarouselItem from "@/pesayetu/components/Sources/CarouselItem";
 import SourcesFilter from "@/pesayetu/components/SourcesFilter";
+
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
@@ -34,6 +35,7 @@ function Sources({ items, filterProps, ...props }) {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.up("md"));
   const itemsToShow = isTablet ? 6 : 5;
+
   if (!items?.length) {
     return null;
   }
@@ -61,6 +63,8 @@ function Sources({ items, filterProps, ...props }) {
               text: classes.text,
               sources: classes.sources,
               description: classes.description,
+              dataTypes: classes.dataTypes,
+              typeContent: classes.typeContent,
               textContent: classes.textContent,
               linkContent: classes.linkContent,
               link: classes.link,
