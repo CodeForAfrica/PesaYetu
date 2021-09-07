@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-import NavSearchIcon from "@/pesayetu/assets/icons/search-open.svg";
 import SearchIcon from "@/pesayetu/assets/icons/search.svg";
 import Link from "@/pesayetu/components/Link";
 
@@ -64,10 +63,12 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 
 function DropdownSearch({
   href: hrefProp,
-  nav,
   label,
   counties,
   onClick: onClickProp,
+  icon: iconProp,
+  placeholder,
+  variant,
   ...props
 }) {
   const classes = useStyles(props);
@@ -106,7 +107,18 @@ function DropdownSearch({
     }
   };
 
-  const icon = nav && !suggestions?.length ? NavSearchIcon : SearchIcon;
+  const icon =
+    !suggestions?.length || variant === "explore" ? iconProp : SearchIcon;
+  const searchIconButton = (
+    <IconButton
+      color="primary"
+      onClick={handleSearchClick}
+      size="small"
+      className={classes.button}
+    >
+      <Image src={icon} width={48} height={48} alt="search" />
+    </IconButton>
+  );
 
   return (
     <div className={classes.root}>
@@ -116,6 +128,7 @@ function DropdownSearch({
       <InputBase
         inputProps={{ "aria-label": "search" }}
         onChange={handleChange}
+        placeholder={placeholder}
         value={query}
         {...props}
         classes={{
@@ -123,15 +136,10 @@ function DropdownSearch({
           input: classes.input,
           focused: classes.focused,
         }}
+        endAdornment={variant === "explore" ? searchIconButton : null}
       />
-      <IconButton
-        color="primary"
-        onClick={handleSearchClick}
-        size="small"
-        className={classes.button}
-      >
-        <Image src={icon} width={48} height={48} alt="search" />
-      </IconButton>
+      {variant !== "explore" && searchIconButton}
+
       <div className={classes.suggestions}>
         {suggestions?.length > 0 && (
           <List classes={{ root: classes.selectMenu }}>
@@ -141,7 +149,7 @@ function DropdownSearch({
                 variant="subtitle1"
                 underline="none"
                 onClick={() => handleSelect(code, name)}
-                className={classes.menuItem}
+                classes={{ root: classes.menuItem }}
               >
                 {name.toLowerCase()}
               </ListItem>
@@ -157,16 +165,20 @@ DropdownSearch.propTypes = {
   label: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  nav: PropTypes.bool,
+  icon: PropTypes.string,
   counties: PropTypes.arrayOf(PropTypes.shape({})),
+  variant: PropTypes.string,
+  placeholder: PropTypes.string,
 };
 
 DropdownSearch.defaultProps = {
   label: "Search for a location",
   href: "/explore",
   onClick: undefined,
-  nav: false,
+  icon: SearchIcon,
   counties: undefined,
+  variant: undefined,
+  placeholder: undefined,
 };
 
 export default DropdownSearch;
