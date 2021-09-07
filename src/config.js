@@ -366,9 +366,11 @@ export const exploreTools = {
     },
   ],
 };
-export const documentsArg = {
+
+export const documentsArgs = {
+  type: "documents",
   filterProps: {
-    countLabel: "Dataset",
+    countLabel: "Documents",
     count: 65,
     orderLabel: "Order By",
     orderOptions: ["Relevance", "Date", "Municipal"],
@@ -411,9 +413,10 @@ export const documentsArg = {
   ],
 };
 
-export const datasetTypeArgs = {
+export const datasetsArgs = {
+  type: "datasets",
   filterProps: {
-    countLabel: "Dataset",
+    countLabel: "Datasets",
     count: 65,
     orderLabel: "Order By",
     orderOptions: ["Relevance", "Date"],
@@ -641,8 +644,8 @@ export const footerArgs = {
 
 export const datasetsAndDocumentsArgs = {
   items: [
-    { label: "DOCUMENTS & SPEECHES", ...documentsArg },
-    { label: "DATASET", ...datasetTypeArgs },
+    { label: "DOCUMENTS & SPEECHES", ...documentsArgs },
+    { label: "DATASETS", ...datasetsArgs },
   ],
 };
 
