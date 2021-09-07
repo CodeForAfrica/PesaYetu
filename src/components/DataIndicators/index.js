@@ -1,9 +1,6 @@
-import { RichTypography } from "@commons-ui/core";
 import {
-  ButtonBase,
   ClickAwayListener,
   Grid,
-  Typography,
   Dialog,
   Slide,
   useMediaQuery,
@@ -15,6 +12,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import Icon from "./Icon";
+import IndicatorPanel from "./IndicatorPanel";
 import useStyles from "./useStyles";
 
 import bg from "@/pesayetu/assets/images/Mask Group 8.png";
@@ -35,20 +33,48 @@ function DataIndicators({ items, title, ...props }) {
   if (!items?.length) {
     return null;
   }
-
   const handleIconClick = (index) => {
     setCurrentItemIndex(index);
     setChecked(true);
   };
-
-  const resetItemClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const resetItemClick = () => {
     setChecked(false);
     setCurrentItemIndex(null);
   };
-
   const currentItem = items[currentItemIndex];
+  const panelProps = isDesktop
+    ? {
+        in: checked,
+        mountOnEnter: true,
+        unmountOnExit: true,
+        component: Slide,
+        direction: "left",
+        timeout: 300,
+        classes: {
+          root: classes.slide,
+          content: classes.content,
+          title: classes.title,
+          description: classes.description,
+        },
+      }
+    : {
+        open: checked,
+        onClose: resetItemClick,
+        component: Dialog,
+        BackdropProps: {
+          classes: {
+            root: classes.backdrop,
+          },
+        },
+        TransitionComponent: Transition,
+        classes: {
+          root: classes.dialog,
+          paper: classes.dialogPaper,
+          content: classes.content,
+          title: classes.title,
+          description: classes.description,
+        },
+      };
 
   return (
     <div className={classes.root}>
@@ -84,72 +110,11 @@ function DataIndicators({ items, title, ...props }) {
             </Grid>
           </ClickAwayListener>
         </div>
-        {isDesktop ? (
-          <Slide
-            in={checked}
-            mountOnEnter
-            unmountOnExit
-            className={classes.slide}
-            direction="left"
-            timeout={300}
-          >
-            <ButtonBase
-              disableRipple
-              disableTouchRipple
-              onClick={resetItemClick}
-              className={classes.content}
-            >
-              {currentItem?.title && (
-                <Typography
-                  component="div"
-                  variant="h3"
-                  className={classes.title}
-                >
-                  {currentItem.title}
-                </Typography>
-              )}
-              {currentItem?.description && (
-                <RichTypography component="div" className={classes.description}>
-                  {currentItem.description}
-                </RichTypography>
-              )}
-            </ButtonBase>
-          </Slide>
-        ) : (
-          <Dialog
-            open={checked}
-            onClose={resetItemClick}
-            BackdropProps={{
-              classes: {
-                root: classes.backdrop,
-              },
-            }}
-            TransitionComponent={Transition}
-            classes={{ root: classes.dialog, paper: classes.dialogPaper }}
-          >
-            <ButtonBase
-              disableRipple
-              disableTouchRipple
-              onClick={resetItemClick}
-              className={classes.content}
-            >
-              {currentItem?.title && (
-                <Typography
-                  component="div"
-                  variant="h3"
-                  className={classes.title}
-                >
-                  {currentItem.title}
-                </Typography>
-              )}
-              {currentItem?.description && (
-                <RichTypography component="div" className={classes.description}>
-                  {currentItem.description}
-                </RichTypography>
-              )}
-            </ButtonBase>
-          </Dialog>
-        )}
+        <IndicatorPanel
+          {...panelProps}
+          onClick={resetItemClick}
+          currentItem={currentItem}
+        />
       </div>
     </div>
   );
