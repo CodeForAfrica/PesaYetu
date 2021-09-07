@@ -7,29 +7,23 @@ import Section from "@/pesayetu/components/Section";
 import Sources from "@/pesayetu/components/Sources";
 import Tabs from "@/pesayetu/components/Tabs";
 
-function DatasetsAndDocuments({
-  items,
-  activeLabel: activeLabelProp,
-  ...props
-}) {
+function DatasetsAndDocuments({ items: sources, activeType, ...props }) {
   const classes = useStyles(props);
 
-  let activeLabel = activeLabelProp;
-  if (activeLabel !== "documents" || activeLabel !== "dataset") {
-    activeLabel = "documents";
+  if (!sources?.length) {
+    return null;
   }
-
-  const activeTab = items?.map(({ route }) => route)?.indexOf(activeLabel);
-  const tabItems = items?.map(({ label, route, ...rest }, index) => {
+  const activeTab = sources.findIndex(({ type }) => type === activeType);
+  const items = sources.map(({ label, type, ...rest }) => {
     return {
       label,
-      href: `/data/${route}`,
+      href: `/data/${type}`,
       children: (
         <Sources
           datasetTypes
           {...rest}
           classes={
-            index === 1
+            type === "datasets"
               ? {
                   title: classes.title,
                   text: classes.text,
@@ -38,7 +32,7 @@ function DatasetsAndDocuments({
                   textContent: classes.textContent,
                   linkContent: classes.linkContent,
                 }
-              : {}
+              : undefined
           }
         />
       ),
@@ -47,27 +41,26 @@ function DatasetsAndDocuments({
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
-        <Tabs items={tabItems} activeTab={activeTab} />
+        {/* key is needed to re-render the component when prop changes e.g.
+            via storybook controls */}
+        <Tabs key={activeTab} name="dnd" items={items} activeTab={activeTab} />
       </Section>
     </div>
   );
 }
 
 DatasetsAndDocuments.propTypes = {
-  activeLabel: PropTypes.string,
+  activeType: PropTypes.oneOf(["datasets", "documents"]),
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      children: PropTypes.shape({
-        filterProps: PropTypes.shape({}),
-        items: PropTypes.string,
-      }),
+      type: PropTypes.string,
     })
   ),
 };
 
 DatasetsAndDocuments.defaultProps = {
-  activeLabel: "documents",
+  activeType: undefined,
   items: undefined,
 };
 
