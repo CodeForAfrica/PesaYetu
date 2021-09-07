@@ -1,14 +1,26 @@
 import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import useStyles from "./useStyles";
-
 import Link from "@/pesayetu/components/Link";
 
-function CarouselItem({ items, className, datasetTypes, ...props }) {
+const useStyles = makeStyles(() => ({
+  root: {},
+  sources: {},
+  textContent: {},
+  title: {},
+  description: {},
+  linkContent: {},
+  dataTypes: {},
+  typeContent: {},
+  link: {},
+}));
+
+function CarouselItem({ items, datasetTypes, ...props }) {
   const classes = useStyles(props);
+
   return (
     <div className={classes.root}>
       {items.map((item) => (
@@ -63,7 +75,6 @@ function CarouselItem({ items, className, datasetTypes, ...props }) {
 
 CarouselItem.propTypes = {
   datasetTypes: PropTypes.bool,
-  className: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -76,7 +87,6 @@ CarouselItem.propTypes = {
 
 CarouselItem.defaultProps = {
   datasetTypes: undefined,
-  className: undefined,
   items: undefined,
 };
 
