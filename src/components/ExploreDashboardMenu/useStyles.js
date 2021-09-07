@@ -4,6 +4,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     textAlign: "right",
     background: palette.background.paper,
+    height: "100vh",
   },
   label: {
     marginRight: typography.pxToRem(20),
