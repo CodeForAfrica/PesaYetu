@@ -18,15 +18,15 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function Navigation({ ...props }) {
+function Navigation({ variant, ...props }) {
   const classes = useStyles(props);
-  const { variant } = props;
   return (
     <AppBar color="primary" position="sticky" className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
         <Hidden mdDown implementation="css">
           {variant && variant === "explore" ? (
             <ExploreNavigation
+              variant="explore"
               {...props}
               classes={{ section: classes.section }}
             />
