@@ -18,9 +18,9 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     background: palette.background.paper,
     borderStyle: "none",
     borderRadius: 2,
-    paddingLeft: 24,
-    paddingBottom: 15,
-    paddingTop: 15,
+    paddingLeft: typography.pxToRem(24),
+    paddingBottom: typography.pxToRem(15),
+    paddingTop: typography.pxToRem(15),
     fontSize: typography.caption.fontSize,
     "&:focus": {
       borderRadius: 2,
