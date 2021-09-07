@@ -48,7 +48,7 @@ function StoriesPage({
     <div className={classes.root}>
       <Hero {...hero} />
       <Section classes={{ root: classes.section }}>
-        <Tabs activeTab={activeTab} items={tabItems} />
+        <Tabs name="stories" activeTab={activeTab} items={tabItems} />
       </Section>
     </div>
   );

@@ -23,6 +23,11 @@ module.exports = {
         destination: "/stories/news",
         permanent: true,
       },
+      {
+        source: "/data",
+        destination: "/data/documents",
+        permanent: true,
+      },
     ];
   },
 };
