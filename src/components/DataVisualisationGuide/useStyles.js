@@ -1,17 +1,17 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
-  root: {},
-  title: {
+  root: {
     padding: `${typography.pxToRem(40)} 0`,
-    [breakpoints.only("md")]: {
-      paddingTop: typography.pxToRem(80),
-    },
   },
-  section: {
-    paddingBottom: typography.pxToRem(40),
-    [breakpoints.only("md")]: {
-      paddingBottom: typography.pxToRem(80),
+  section: {},
+  title: {},
+  card: {
+    marginTop: typography.pxToRem(40),
+  },
+  cardContentDescription: {
+    "& .bold": {
+      fontWeight: "bold",
     },
   },
   container: {
