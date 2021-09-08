@@ -3,7 +3,7 @@ import React from "react";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 
 export default {
-  title: "Hurumap/TreeView",
+  title: "Components/HURUmap/TreeView",
   argTypes: {},
 };
 
