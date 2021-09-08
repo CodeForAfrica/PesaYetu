@@ -1,6 +1,6 @@
 import React from "react";
 
-import TreeView from "@/pesayetu/components/HURUap/TreeView";
+import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 
 export default {
   title: "Hurumap/TreeView",
