@@ -15,7 +15,7 @@ Default.args = {
   items: [
     {
       label: "Overview",
-      path: "",
+      path: "1",
       children: [
         { path: "", label: "Population" },
         { path: "", label: "Political" },
@@ -24,7 +24,7 @@ Default.args = {
     },
     {
       label: "Revenue",
-      path: "",
+      path: "2",
       children: [
         { path: "", label: "Population" },
         { path: "", label: "Political" },

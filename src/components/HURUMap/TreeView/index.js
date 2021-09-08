@@ -3,14 +3,15 @@ import TreeItem from "@material-ui/lab/TreeItem";
 import MuiTreeView from "@material-ui/lab/TreeView";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
 import Link from "@/pesayetu/components/Link";
 
-const TreeView = ({ items, ...props }) => {
+const TreeView = ({ items, expanded: expandedProps, ...props }) => {
+  const [expanded, setExpanded] = useState(expandedProps);
   const classes = useStyles(props);
   if (!items || !items.length) {
     return null;
@@ -18,10 +19,10 @@ const TreeView = ({ items, ...props }) => {
 
   return (
     <div className={classes.root}>
-      {items.map(({ children, label, path }) => (
-        <MuiTreeView>
+      <MuiTreeView expanded={[expanded]}>
+        {items.map(({ children, label, path }) => (
           <TreeItem
-            endIcon={1}
+            onClick={() => setExpanded(path)}
             label={
               <Link underline="none" href={path}>
                 <Typography className={classes.label} variant="caption">
@@ -52,18 +53,20 @@ const TreeView = ({ items, ...props }) => {
               />
             ))}
           </TreeItem>
-        </MuiTreeView>
-      ))}
+        ))}
+      </MuiTreeView>
     </div>
   );
 };
 
 TreeView.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
+  expanded: PropTypes.string,
 };
 
 TreeView.defaultProps = {
   items: undefined,
+  expanded: undefined,
 };
 
 export default TreeView;
