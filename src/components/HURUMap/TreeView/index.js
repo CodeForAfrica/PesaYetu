@@ -1,5 +1,5 @@
 import { Typography } from "@material-ui/core";
-import { TreeItem, TreeView } from "@material-ui/lab";
+import { TreeItem, Treeviw as MuiTreeView } from "@material-ui/lab";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -9,7 +9,7 @@ import useStyles from "./useStyles";
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
 import Link from "@/pesayetu/components/Link";
 
-const ExploreDashboardMenu = ({ items, ...props }) => {
+const TreeView = ({ items, ...props }) => {
   const classes = useStyles(props);
   if (!items || !items.length) {
     return null;
@@ -19,7 +19,7 @@ const ExploreDashboardMenu = ({ items, ...props }) => {
     <div className={classes.root}>
       {items.map(({ children, label, path }) => (
         <>
-          <TreeView>
+          <MuiTreeView>
             <TreeItem
               endIcon={1}
               label={
@@ -52,19 +52,19 @@ const ExploreDashboardMenu = ({ items, ...props }) => {
                 />
               ))}
             </TreeItem>
-          </TreeView>
+          </MuiTreeView>
         </>
       ))}
     </div>
   );
 };
 
-ExploreDashboardMenu.propTypes = {
+TreeView.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-ExploreDashboardMenu.defaultProps = {
+TreeView.defaultProps = {
   items: undefined,
 };
 
-export default ExploreDashboardMenu;
+export default TreeView;

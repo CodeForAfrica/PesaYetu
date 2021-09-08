@@ -1,13 +1,13 @@
 import React from "react";
 
-import ExploreDashboardMenu from "@/pesayetu/components/ExploreDashboardMenu";
+import TreeView from "@/pesayetu/components/HURUMap/TreeView";
 
 export default {
-  title: "Components/ExploreDashboardMenu",
+  title: "Hurumap/TreeView",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <ExploreDashboardMenu {...args} />;
+const Template = ({ ...args }) => <TreeView {...args} />;
 
 export const Default = Template.bind({});
 
