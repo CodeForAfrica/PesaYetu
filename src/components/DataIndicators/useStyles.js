@@ -11,6 +11,10 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   },
   section: {
     display: "flex",
+    overflow: "hidden",
+    [breakpoints.up("lg")]: {
+      position: "relative",
+    },
   },
   background: {
     position: "absolute",
@@ -20,7 +24,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
   indicatorsContainer: {
     width: "100%",
     height: typography.pxToRem(672),
-    transition: "width 0.3s ease-in-out",
+    transition: "width 0.3s ease-out",
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(600),
     },
@@ -49,6 +53,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     marginBottom: typography.pxToRem(16),
     display: "flex",
     justifyContent: "center",
+    transition: "margin-right 0.3s ease-out",
     [breakpoints.up("lg")]: {
       display: "initial",
       width: "auto",
@@ -73,6 +78,9 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     },
   },
   slide: {
+    position: "absolute",
+    right: 0,
+    top: 0,
     backgroundColor: palette.primary.main,
     display: "flex",
     justifyContent: "flex-start",
@@ -127,11 +135,6 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
     [breakpoints.up("md")]: {
       width: typography.pxToRem(355),
       padding: `${typography.pxToRem(50)} ${typography.pxToRem(36)}`,
-    },
-    [breakpoints.up("lg")]: {
-      width: typography.pxToRem(480),
-      height: typography.pxToRem(600),
-      padding: `${typography.pxToRem(76)} ${typography.pxToRem(84)}`,
     },
   },
   content: {

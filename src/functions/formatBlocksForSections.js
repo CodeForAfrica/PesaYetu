@@ -140,9 +140,46 @@ function formatFeaturedStories(attributes) {
 
   return { news: formattedNews, insights: formattedInsights };
 }
+function formatTypes(typesString) {
+  return typesString.split("\n").map((item) => {
+    const [name = null, link = null] = item.split(",");
+    return { name, link };
+  });
+}
+function formatDocumentAndDataSet(
+  {
+    countLabel,
+    count,
+    orderLabel,
+    orderOptions,
+    paginationOptions,
+    paginationLabel,
+    ...attributes
+  },
+  innerBlocks
+) {
+  return innerBlocks.map(({ attributes: { items: itemsString, ...rest } }) => {
+    const formattedItems = JSON.parse(decodeURIComponent(itemsString)) || null;
+    const items = formattedItems.map(({ types: typesString, ...item }) => {
+      if (typesString) {
+        return { types: formatTypes(typesString), ...item };
+      }
+      return item;
+    });
+    const filterProps = {
+      countLabel,
+      count,
+      orderLabel,
+      paginationOptions: paginationOptions?.split(",").map(Number) || [],
+      orderOptions: orderOptions?.split(",") || [],
+      paginationLabel,
+    };
+    return { items, filterProps, ...attributes, ...rest };
+  });
+}
 
 function format(block) {
-  const { attributes, name } = block;
+  const { attributes, name, innerBlocks } = block;
   switch (name) {
     case "acf/insights-stories":
       return formatInsightsStories(attributes);
@@ -175,6 +212,8 @@ function format(block) {
       };
     case "lazyblock/data-indicators":
       return formatDataIndicators(attributes);
+    case "lazyblock/document-and-datasets":
+      return formatDocumentAndDataSet(attributes, innerBlocks);
     case "lazyblock/hero":
     case "lazyblock/about-hero":
     case "lazyblock/how-it-works":

@@ -91,9 +91,7 @@ const theme = createTheme({
     body1: {
       fontFamily: FONT_FAMILY,
     },
-    body2: {
-      fontFamily: FONT_FAMILY,
-    },
+    body2: buildVariant(500),
     button: buildVariant(600),
     caption: {
       fontFamily: FONT_FAMILY,
