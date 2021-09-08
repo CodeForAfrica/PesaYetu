@@ -22,33 +22,34 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
       <MuiTreeView expanded={[expanded]}>
         {items.map(({ children, label, path }) => (
           <TreeItem
+            key={path}
+            nodeId={path}
             onClick={() => setExpanded(path)}
             label={
-              <Link underline="none" href={path}>
-                <Typography className={classes.label} variant="caption">
+              <Typography className={classes.label} variant="caption">
+                <Link underline="none" href={path}>
                   {label} <CheckIcon className={classes.icon} />
-                </Typography>
-              </Link>
+                </Link>
+              </Typography>
             }
             classes={{
               root: classes.tree,
               expanded: classes.expanded,
             }}
-            nodeId={path}
           >
             {children.map((child) => (
               <TreeItem
                 key={child.path}
                 nodeId={child.path}
                 label={
-                  <Link underline="none" href={child.path}>
-                    <Typography
-                      className={clsx(classes.label, classes.childLabel)}
-                      variant="caption"
-                    >
+                  <Typography
+                    className={clsx(classes.label, classes.childLabel)}
+                    variant="caption"
+                  >
+                    <Link underline="none" href={child.path}>
                       {child.label}
-                    </Typography>
-                  </Link>
+                    </Link>
+                  </Typography>
                 }
               />
             ))}
