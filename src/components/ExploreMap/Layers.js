@@ -23,6 +23,7 @@ const geoStyles = {
     },
     out: {
       fillColor: "#334FE50D",
+      fillOpacity: 1,
       color: "#666666",
       weight: 1,
     },
@@ -65,20 +66,20 @@ const Layers = ({
       .openTooltip();
 
     layer.setStyle(
-      feature.properties?.selected
+      feature?.properties?.selected
         ? geoStyles.selected.out
         : geoStyles.hoverOnly.out
     );
     layer.on("mouseover", () => {
       layer.setStyle(
-        feature.properties.selected
+        feature?.properties?.selected
           ? geoStyles.selected.over
           : geoStyles.hoverOnly.over
       );
     });
     layer.on("mouseout", () => {
       layer.setStyle(
-        feature.properties.selected
+        feature?.properties?.selected
           ? geoStyles.selected.out
           : geoStyles.hoverOnly.out
       );
