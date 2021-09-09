@@ -34,7 +34,7 @@ function ExplorePage({
 
   const { data } = useSWR(
     shouldFetch
-      ? `https://v2.hurumap.org/api/v1/all_details/profile/3/geography/${geoCode}/?format=json`
+      ? `https://ng.hurumap.org/api/v1/all_details/profile/1/geography/${geoCode}/?format=json`
       : null,
     fetchAPI
   );

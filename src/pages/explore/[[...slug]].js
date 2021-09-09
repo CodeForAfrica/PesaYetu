@@ -14,7 +14,7 @@ export default function Explore(props) {
 
 export async function getStaticPaths() {
   const res = await fetch(
-    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
+    `${process.env.WAZIMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
   const result = await res.json();
   const paths = result?.children?.county?.features?.map(
@@ -47,7 +47,7 @@ export async function getStaticProps({ preview, previewData, params }) {
   const geoCode = slug ? slug.split("-")[1] : "KE";
 
   const r = await fetch(
-    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/${geoCode}/?format=json`
+    `${process.env.WAZIMAP_API_URL}all_details/profile/1/geography/${geoCode}/?format=json`
   );
 
   const res = await r.json();

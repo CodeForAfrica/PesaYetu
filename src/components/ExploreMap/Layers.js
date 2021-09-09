@@ -98,7 +98,7 @@ const Layers = ({
         layer.clearLayers();
         const featuredGeo = new L.GeoJSON(selectedBoundary, { onEachFeature });
         layer.addLayer(featuredGeo);
-        map.fitBounds(layer.getBounds().pad(0.5), {
+        map.fitBounds(layer.getBounds(), {
           animate: true,
           duration: 0.5, // in seconds
         });
