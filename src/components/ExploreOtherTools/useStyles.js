@@ -11,6 +11,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     marginBottom: typography.pxToRem(40),
   },
   card: {},
+  cardContent: {
+    color: "#212529",
+  },
   cardContentTitle: {
     marginTop: typography.pxToRem(20),
   },

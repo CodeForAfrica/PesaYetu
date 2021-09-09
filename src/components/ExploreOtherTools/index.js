@@ -29,6 +29,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
               classes={{
                 root: classes.card,
                 media: classes.cardMedia,
+                content: classes.cardContent,
                 contentTitle: classes.cardContentTitle,
               }}
             />

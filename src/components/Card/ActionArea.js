@@ -22,6 +22,7 @@ function ActionArea({ href, children, onClick, ...props }) {
   return (
     <CardActionArea
       component={href ? Link : undefined}
+      color="textPrimary"
       underline="none"
       {...props}
       href={href}
@@ -49,4 +50,4 @@ ActionArea.defaultProps = {
   onClick: undefined,
 };
 
-export default CardActionArea;
+export default ActionArea;
