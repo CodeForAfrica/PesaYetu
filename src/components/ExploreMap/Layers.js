@@ -107,8 +107,6 @@ const Layers = ({
     }
   }, [groupRef, selectedBoundary]);
 
-  console.log(parentsGeometries);
-
   return (
     <>
       <LayerGroup>
