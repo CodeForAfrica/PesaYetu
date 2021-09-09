@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
-import fetchAPI from "@/pesayetu/utils/fetchApi";
+import fetcher from "@/pesayetu/utils/fetcher";
 
 const Map = dynamic(() => import("@/pesayetu/components/ExploreMap"), {
   ssr: false,
@@ -36,7 +36,7 @@ function ExplorePage({
     shouldFetch
       ? `https://ng.hurumap.org/api/v1/all_details/profile/1/geography/${geoCode}/?format=json`
       : null,
-    fetchAPI
+    fetcher
   );
 
   useEffect(() => {

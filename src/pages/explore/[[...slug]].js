@@ -3,6 +3,7 @@ import React from "react";
 import ExplorePage from "@/pesayetu/components/ExplorePage";
 import Page from "@/pesayetu/components/Page";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
+import fetcher from "@/pesayetu/utils/fetcher";
 
 export default function Explore(props) {
   return (
@@ -13,10 +14,9 @@ export default function Explore(props) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(
+  const result = await fetcher(
     `https://ng.hurumap.org/api/v1/all_details/profile/1/geography/KE/?format=json`
   );
-  const result = await res.json();
   const paths = result?.children?.county?.features?.map(
     ({ properties: { code, level } }) => {
       const s = `${level}-${code}`;
@@ -46,11 +46,9 @@ export async function getStaticProps({ preview, previewData, params }) {
 
   const geoCode = slug ? slug.split("-")[1] : "KE";
 
-  const r = await fetch(
+  const res = await fetcher(
     `https://ng.hurumap.org/api/v1/all_details/profile/1/geography/${geoCode}/?format=json`
   );
-
-  const res = await r.json();
 
   const geography = res?.profile.geography;
   const geometries = {
