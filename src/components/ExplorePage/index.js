@@ -41,12 +41,12 @@ function ExplorePage({
 
   useEffect(() => {
     if (data) {
-      const g = data?.profile.geography;
+      const g = data.profile.geography;
       const geom = {
-        boundary: data?.boundary,
-        children: data?.children, // Dictionary keyed by child type
-        parents: data?.parent_layers ?? [], // Array of parent geographies
-        themes: data?.themes ?? [],
+        boundary: data.boundary,
+        children: data.children, // Dictionary keyed by child type
+        parents: data.parent_layers ?? [], // Array of parent geographies
+        themes: data.themes ?? [],
       };
       setGeometries(geom);
       setGeography(g);
