@@ -17,9 +17,7 @@ function ExploreMap({ center, zoom, styles, geometries, geography, ...props }) {
     const preferredChildren = preferredChildrenObj[level];
     if (!preferredChildren) return null;
 
-    const availableLevels = preferredChildren.filter(
-      (l) => geoms.children[l] !== undefined
-    );
+    const availableLevels = preferredChildren.filter((l) => geoms.children[l]);
 
     if (availableLevels.length > 0) {
       const preferredLevel = availableLevels[0];
