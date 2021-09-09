@@ -65,7 +65,7 @@ const Layers = ({
       .openTooltip();
 
     layer.setStyle(
-      feature.properties.selected
+      feature.properties?.selected
         ? geoStyles.selected.out
         : geoStyles.hoverOnly.out
     );
@@ -106,14 +106,14 @@ const Layers = ({
     }
   }, [groupRef, selectedBoundary]);
 
+  console.log(parentsGeometries);
+
   return (
     <>
       <LayerGroup>
-        <GeoJSON
-          data={parentsGeometries}
-          styles={() => geoStyles.hoverOnly.out}
-          onEachFeature={onEachFeature}
-        />
+        {parentsGeometries?.map((g) => (
+          <GeoJSON data={g} onEachFeature={onEachFeature} />
+        ))}
       </LayerGroup>
       <FeatureGroup ref={groupRef}>
         <GeoJSON data={selectedBoundary} onEachFeature={onEachFeature} />
@@ -123,7 +123,7 @@ const Layers = ({
 };
 
 Layers.propTypes = {
-  parentsGeometries: PropTypes.shape({}),
+  parentsGeometries: PropTypes.arrayOf(PropTypes.shape({})),
   selectedBoundary: PropTypes.shape({}),
   setGeoCode: PropTypes.func,
   setShouldFetch: PropTypes.func,
