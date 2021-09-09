@@ -3,32 +3,21 @@ import { useTheme } from "@material-ui/core/styles";
 import { chunk } from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import Carousel from "react-multi-carousel";
 import useSWR from "swr";
 
 import CarouselItem from "./CarouselItem";
 import useStyles from "./useStyles";
 
+import Carousel from "@/pesayetu/components/Carousel";
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
 import fetchAPI from "@/pesayetu/utils/fetchApi";
 import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
 
-import "react-multi-carousel/lib/styles.css";
-
 const responsive = {
   desktop: {
-    breakpoint: {
-      max: 3000,
-      min: 1280,
-    },
     items: 1,
   },
   tablet: {
-    breakpoint: { max: 1279, min: 768 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 767, min: 0 },
     items: 1,
   },
 };
@@ -81,12 +70,7 @@ function Stories({
     <div className={classes.root}>
       <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
       <Carousel
-        swipeable
         responsive={responsive}
-        arrows={false}
-        renderDotsOutside
-        showDots
-        dotListClass={classes.dots}
         beforeChange={(nextSlide) => {
           setNextItemIndex(nextSlide);
         }}

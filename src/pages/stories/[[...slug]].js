@@ -105,9 +105,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview, previewData }) {
-  const {
-    slug: [activeCategory],
-  } = params;
+  const [activeCategory] = params?.slug || [];
   const categories = await getCategories();
 
   let items = [];
@@ -141,7 +139,7 @@ export async function getStaticProps({ params, preview, previewData }) {
       notFound: true,
     };
   }
-  const blocks = formatBlocksForSections(props?.post?.blocks);
+  const blocks = formatBlocksForSections(props?.post?.blocks || []);
 
   const relatedPosts =
     formatStoryPosts(
@@ -153,7 +151,7 @@ export async function getStaticProps({ params, preview, previewData }) {
     props: {
       ...props,
       blocks,
-      activeCategory,
+      activeCategory: activeCategory ?? null,
       items,
       relatedPosts: relatedPosts.slice(0, 3),
     },

@@ -115,7 +115,7 @@ function Menu({ links, children, socialLinks, ...props }) {
       {links.map((item, index) => (
         <Grid item key={item.label} className={classes.menu}>
           <Button
-            component={index !== 0 ? Link : Button}
+            component={Link}
             color={index !== 0 ? "default" : "primary"}
             variant={index !== 0 ? "text" : "contained"}
             size="large"
