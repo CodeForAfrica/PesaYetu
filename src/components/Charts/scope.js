@@ -188,7 +188,7 @@ export default function configureBarchart(data, metadata, config) {
             x2: { scale: "xscale", value: 0 },
             tooltip: {
               signal:
-                "{'percentage': format(datum.percentage, numberFormat.percentage), 'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
             },
           },
           hover: {
