@@ -34,6 +34,7 @@ function Map({
   boundary,
   styles,
   geoJSONStyles,
+  setHoverGeo,
   ...props
 }) {
   const classes = useStyles(props);
@@ -43,18 +44,15 @@ function Map({
 
   const onEachFeature = (feature, layer) => {
     if (featuredCountiesCode?.includes(feature.properties.code)) {
-      layer
-        .bindTooltip(feature.properties.name.toString(), {
-          className: classes.tooltip,
-        })
-        .openTooltip();
       layer.on("mouseover", () => {
+        setHoverGeo(feature.properties.name.toLowerCase());
         layer.setStyle({
           fillColor: theme.palette.primary.main,
           fillOpacity: 0.5,
         });
       });
       layer.on("mouseout", () => {
+        setHoverGeo(null);
         layer.setStyle({
           opacity: 1,
           fillColor: theme.palette.background.default,
@@ -106,6 +104,7 @@ Map.propTypes = {
   styles: PropTypes.shape({}),
   boundary: PropTypes.shape({}),
   geoJSONStyles: PropTypes.shape({}),
+  setHoverGeo: PropTypes.func,
 };
 
 Map.defaultProps = {
@@ -123,6 +122,7 @@ Map.defaultProps = {
     opacity: 1,
     fillColor: "#fff",
   },
+  setHoverGeo: undefined,
 };
 
 export default Map;
