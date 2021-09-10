@@ -1,5 +1,6 @@
 import filterMenusByLocation from "@/pesayetu/functions/menus/filterMenusByLocation";
 import menuLocations from "@/pesayetu/lib/wordpress/_config/menuLocations";
+import fetchJson from "@/pesayetu/utils/fetchJson";
 
 /**
  * Get menu data from WPGraphQL.
@@ -16,10 +17,10 @@ export default async function getMenus(menus, locations = menuLocations) {
   // Filter returned menus by specific menu location.
   const filteredMenus = filterMenusByLocation(menus?.nodes, locations);
 
-  const res = await fetch(
+  const res = await fetchJson(
     `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
-  const { children } = await res.json();
+  const { children } = res;
 
   filteredMenus.counties = children?.county?.features?.map(
     ({ properties }) => properties

@@ -2,9 +2,8 @@ import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
 import Page from "@/pesayetu/components/Page";
-import { tileLayers } from "@/pesayetu/config";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
-import fetcher from "@/pesayetu/utils/fetcher";
+import fetchJson from "@/pesayetu/utils/fetchJson";
 
 export default function Explore(props) {
   return (
@@ -15,7 +14,7 @@ export default function Explore(props) {
 }
 
 export async function getStaticPaths() {
-  const result = await fetcher(
+  const result = await fetchJson(
     `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
   const featuredCountiesCode =
@@ -50,7 +49,7 @@ export async function getStaticProps({ preview, previewData, params }) {
   const geoCode = slug ? slug.split("-")[1] : "KE";
   const apiUri = process.env.HURUMAP_API_URL;
 
-  const res = await fetcher(
+  const res = await fetchJson(
     `${apiUri}all_details/profile/1/geography/${geoCode}/?format=json`
   );
 
@@ -74,7 +73,6 @@ export async function getStaticProps({ preview, previewData, params }) {
       geography,
       geometries,
       apiUri,
-      tileLayers,
     },
     revalidate,
   };
