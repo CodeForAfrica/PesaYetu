@@ -2,12 +2,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, GeoJSON } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     position: "relative",
     height: typography.pxToRem(299),
@@ -17,6 +17,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       height: typography.pxToRem(471),
       marginTop: typography.pxToRem(42),
       width: typography.pxToRem(371),
+    },
+    "& .leaflet-container": {
+      background: palette.background.default,
     },
   },
   tooltip: {
@@ -29,7 +32,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
 
 function Map({
   center,
-  tileLayer,
   zoom,
   boundary,
   styles,
@@ -44,6 +46,10 @@ function Map({
 
   const onEachFeature = (feature, layer) => {
     if (featuredCountiesCode?.includes(feature.properties.code)) {
+      layer.setStyle({
+        weight: 1.5,
+        dashArray: 0,
+      });
       layer.on("mouseover", () => {
         setHoverGeo(feature.properties.name.toLowerCase());
         layer.setStyle({
@@ -77,7 +83,6 @@ function Map({
         zoomSnap={0.25}
         style={styles}
       >
-        <TileLayer {...tileLayer} />
         <GeoJSON
           data={boundary}
           style={geoJSONStyles}
@@ -99,7 +104,6 @@ Map.propTypes = {
     }
     return null;
   },
-  tileLayer: PropTypes.shape({}),
   zoom: PropTypes.number,
   styles: PropTypes.shape({}),
   boundary: PropTypes.shape({}),
@@ -110,7 +114,6 @@ Map.propTypes = {
 Map.defaultProps = {
   boundary: undefined,
   center: undefined,
-  tileLayer: undefined,
   zoom: undefined,
   styles: {
     height: "100%",
@@ -121,6 +124,7 @@ Map.defaultProps = {
     weight: 1,
     opacity: 1,
     fillColor: "#fff",
+    dashArray: "2",
   },
   setHoverGeo: undefined,
 };

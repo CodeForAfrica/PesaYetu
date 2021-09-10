@@ -649,19 +649,6 @@ export const datasetsAndDocumentsArgs = {
   ],
 };
 
-export const tileLayers = [
-  {
-    url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png",
-    pane: "tiles",
-    zIndex: 200,
-  },
-  {
-    url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png",
-    pane: "labels",
-    zIndex: 650,
-  },
-];
-
 const config = {
   footerArgs,
   exploreTools,
