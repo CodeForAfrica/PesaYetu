@@ -72,7 +72,11 @@ function Map({ center, zoom, styles, geometries, geography, ...props }) {
       style={styles}
     >
       {tileLayers?.map(({ pane, url, zIndex }) => (
-        <Pane name={pane} style={{ zIndex, pointerEvents: "none" }}>
+        <Pane
+          index={pane}
+          name={pane}
+          style={{ zIndex, pointerEvents: "none" }}
+        >
           <TileLayer url={url} />
         </Pane>
       ))}
