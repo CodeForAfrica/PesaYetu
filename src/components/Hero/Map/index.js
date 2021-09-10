@@ -5,7 +5,6 @@ import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
-import { featuredCountiesCode } from "@/pesayetu/config";
 import theme from "@/pesayetu/theme";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
@@ -39,9 +38,11 @@ function Map({
 }) {
   const classes = useStyles(props);
   const router = useRouter();
+  const featuredCountiesCode =
+    process.env.NEXT_PUBLIC_FEATURED_COUNTIES?.split(",");
 
   const onEachFeature = (feature, layer) => {
-    if (featuredCountiesCode.includes(feature.properties.code)) {
+    if (featuredCountiesCode?.includes(feature.properties.code)) {
       layer
         .bindTooltip(feature.properties.name.toString(), {
           className: classes.tooltip,
