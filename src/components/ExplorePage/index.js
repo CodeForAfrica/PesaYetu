@@ -91,6 +91,7 @@ function ExplorePage({
           geography={geography}
           setShouldFetch={setShouldFetch}
           setGeoCode={setGeoCode}
+          {...props}
         />
       </Hidden>
     </div>

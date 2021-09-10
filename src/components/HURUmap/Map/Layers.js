@@ -59,15 +59,13 @@ const Layers = ({
   parentsGeometries,
   setGeoCode,
   setShouldFetch,
+  featuredCounties,
   ...props
 }) => {
   const map = useMap();
   const router = useRouter();
   const groupRef = useRef();
   const classes = useStyles(props);
-
-  const featuredCountiesCode =
-    process.env.NEXT_PUBLIC_FEATURED_COUNTIES?.split(",");
 
   const popUpContent = (level, name) =>
     ReactDOMServer.renderToStaticMarkup(
@@ -79,7 +77,7 @@ const Layers = ({
     );
 
   const onEachFeature = (feature, layer) => {
-    if (!featuredCountiesCode?.includes(feature.properties.code)) {
+    if (!featuredCounties?.includes(feature.properties.code)) {
       layer.setStyle(geoStyles.inactive);
     } else {
       layer
@@ -149,6 +147,7 @@ Layers.propTypes = {
   selectedBoundary: PropTypes.shape({}),
   setGeoCode: PropTypes.func,
   setShouldFetch: PropTypes.func,
+  featuredCounties: PropTypes.arrayOf(PropTypes.string),
 };
 
 Layers.defaultProps = {
@@ -156,6 +155,7 @@ Layers.defaultProps = {
   selectedBoundary: undefined,
   setGeoCode: undefined,
   setShouldFetch: undefined,
+  featuredCounties: undefined,
 };
 
 export default Layers;

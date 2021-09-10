@@ -2,6 +2,7 @@ import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
 import Page from "@/pesayetu/components/Page";
+import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import fetchJson from "@/pesayetu/utils/fetchJson";
 
@@ -17,18 +18,16 @@ export async function getStaticPaths() {
   const result = await fetchJson(
     `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
-  const featuredCountiesCode =
-    process.env.NEXT_PUBLIC_FEATURED_COUNTIES.split(",");
-  const paths = result?.children?.county?.features
-    ?.filter(({ properties: { code } }) => featuredCountiesCode?.includes(code))
-    ?.map(({ properties: { code, level } }) => {
+  const paths = result?.children?.county?.features?.map(
+    ({ properties: { code, level } }) => {
       const s = `${level}-${code}`;
       return {
         params: {
           slug: [s],
         },
       };
-    });
+    }
+  );
 
   return {
     paths: [{ params: { slug: [] } }, ...paths],
@@ -46,9 +45,17 @@ export async function getStaticProps({ preview, previewData, params }) {
     previewData
   );
 
-  const geoCode = slug ? slug.split("-")[1] : "KE";
-  const apiUri = process.env.HURUMAP_API_URL;
+  const blocks = formatBlocksForSections(props?.post?.blocks);
+  const featuredCounties = blocks?.featuredCounties?.counties?.split(",") || [];
 
+  const geoCode = slug ? slug.split("-")[1] : "KE";
+  if (notFound || !featuredCounties.includes(geoCode)) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const apiUri = process.env.HURUMAP_API_URL;
   const res = await fetchJson(
     `${apiUri}all_details/profile/1/geography/${geoCode}/?format=json`
   );
@@ -60,11 +67,6 @@ export async function getStaticProps({ preview, previewData, params }) {
     parents: res?.parent_layers ?? [], // Array of parent geographies
     themes: res?.themes ?? [],
   };
-  if (notFound) {
-    return {
-      notFound,
-    };
-  }
 
   return {
     props: {
@@ -72,6 +74,7 @@ export async function getStaticProps({ preview, previewData, params }) {
       variant: "explore",
       geography,
       geometries,
+      featuredCounties,
       apiUri,
     },
     revalidate,
