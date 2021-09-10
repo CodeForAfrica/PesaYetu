@@ -1,9 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
+import useRouter from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
+import { featuredCountiesCode } from "@/pesayetu/config";
 import theme from "@/pesayetu/theme";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
@@ -36,30 +38,33 @@ function Map({
   ...props
 }) {
   const classes = useStyles(props);
+  const router = useRouter();
 
   const onEachFeature = (feature, layer) => {
-    layer
-      .bindTooltip(feature.properties.name.toString(), {
-        className: classes.tooltip,
-      })
-      .openTooltip();
-    layer.on("mouseover", () => {
-      layer.setStyle({
-        fillColor: theme.palette.primary.main,
-        fillOpacity: 0.5,
+    if (featuredCountiesCode.includes(feature.properties.code)) {
+      layer
+        .bindTooltip(feature.properties.name.toString(), {
+          className: classes.tooltip,
+        })
+        .openTooltip();
+      layer.on("mouseover", () => {
+        layer.setStyle({
+          fillColor: theme.palette.primary.main,
+          fillOpacity: 0.5,
+        });
       });
-    });
-    layer.on("mouseout", () => {
-      layer.setStyle({
-        opacity: 1,
-        fillColor: theme.palette.background.default,
+      layer.on("mouseout", () => {
+        layer.setStyle({
+          opacity: 1,
+          fillColor: theme.palette.background.default,
+        });
       });
-    });
-    layer.on("click", () => {
-      // get the the code for each county,
-      // and redirect to its explore page
-      // window.alert(feature.properties.code);
-    });
+      layer.on("click", () => {
+        router.push(
+          `/explore/${feature.properties.level}-${feature.properties.code}`
+        );
+      });
+    }
   };
 
   return (
