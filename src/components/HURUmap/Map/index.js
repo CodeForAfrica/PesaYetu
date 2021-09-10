@@ -4,15 +4,21 @@ import { MapContainer, ZoomControl, TileLayer, Pane } from "react-leaflet";
 
 import Layers from "./Layers";
 
-import { tileLayers } from "@/pesayetu/config";
-
 import "leaflet/dist/leaflet.css";
 
 const preferredChildrenObj = {
   country: ["county"],
 };
 
-function Map({ center, zoom, styles, geometries, geography, ...props }) {
+function Map({
+  center,
+  zoom,
+  styles,
+  geometries,
+  geography,
+  tileLayers,
+  ...props
+}) {
   const [selectedBoundary, setSelectedBoundary] = useState(null);
 
   const getSelectedBoundary = (level, geoms) => {
@@ -104,7 +110,7 @@ Map.propTypes = {
   zoom: PropTypes.number,
   styles: PropTypes.shape({}),
   geometries: PropTypes.shape({
-    parents: PropTypes.shape({}),
+    parents: PropTypes.arrayOf(PropTypes.shape({})),
     children: PropTypes.shape({}),
     boundary: PropTypes.arrayOf(PropTypes.shape({})),
   }),
@@ -113,6 +119,7 @@ Map.propTypes = {
   }),
   setShouldFetch: PropTypes.func,
   setGeoCode: PropTypes.func,
+  tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 Map.defaultProps = {
@@ -126,6 +133,7 @@ Map.defaultProps = {
   geography: undefined,
   setShouldFetch: undefined,
   setGeoCode: undefined,
+  tileLayers: undefined,
 };
 
 export default Map;

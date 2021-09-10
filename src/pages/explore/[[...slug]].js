@@ -2,6 +2,7 @@ import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
 import Page from "@/pesayetu/components/Page";
+import { tileLayers } from "@/pesayetu/config";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import fetcher from "@/pesayetu/utils/fetcher";
 
@@ -73,6 +74,7 @@ export async function getStaticProps({ preview, previewData, params }) {
       geography,
       geometries,
       apiUri,
+      tileLayers,
     },
     revalidate,
   };
