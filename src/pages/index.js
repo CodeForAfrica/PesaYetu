@@ -12,6 +12,7 @@ import Project from "@/pesayetu/components/Project";
 import StoriesInsights from "@/pesayetu/components/StoriesInsights";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
+import fetchJson from "@/pesayetu/utils/fetchJson";
 
 export default function Home({ boundary, blocks, ...props }) {
   return (
@@ -64,10 +65,10 @@ export async function getStaticProps({ preview, previewData }) {
     };
   }
 
-  const res = await fetch(
-    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
+  const res = await fetchJson(
+    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
-  const { children } = await res.json();
+  const { children } = res;
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
   return {

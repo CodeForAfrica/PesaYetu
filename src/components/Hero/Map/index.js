@@ -1,12 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, GeoJSON } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     position: "relative",
     height: typography.pxToRem(299),
@@ -16,6 +17,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       height: typography.pxToRem(471),
       marginTop: typography.pxToRem(42),
       width: typography.pxToRem(371),
+    },
+    "& .leaflet-container": {
+      background: palette.background.default,
     },
   },
   tooltip: {
@@ -28,38 +32,43 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
 
 function Map({
   center,
-  tileLayer,
   zoom,
   boundary,
   styles,
   geoJSONStyles,
+  setHoverGeo,
+  featuredCounties,
   ...props
 }) {
   const classes = useStyles(props);
+  const router = useRouter();
 
   const onEachFeature = (feature, layer) => {
-    layer
-      .bindTooltip(feature.properties.name.toString(), {
-        className: classes.tooltip,
-      })
-      .openTooltip();
-    layer.on("mouseover", () => {
+    if (featuredCounties?.split(",")?.includes(feature.properties.code)) {
       layer.setStyle({
-        fillColor: theme.palette.primary.main,
-        fillOpacity: 0.5,
+        weight: 1.5,
+        dashArray: 0,
       });
-    });
-    layer.on("mouseout", () => {
-      layer.setStyle({
-        opacity: 1,
-        fillColor: theme.palette.background.default,
+      layer.on("mouseover", () => {
+        setHoverGeo(feature.properties.name.toLowerCase());
+        layer.setStyle({
+          fillColor: theme.palette.primary.main,
+          fillOpacity: 0.5,
+        });
       });
-    });
-    layer.on("click", () => {
-      // get the the code for each county,
-      // and redirect to its explore page
-      // window.alert(feature.properties.code);
-    });
+      layer.on("mouseout", () => {
+        setHoverGeo(null);
+        layer.setStyle({
+          opacity: 1,
+          fillColor: theme.palette.background.default,
+        });
+      });
+      layer.on("click", () => {
+        router.push(
+          `/explore/${feature.properties.level}-${feature.properties.code}`
+        );
+      });
+    }
   };
 
   return (
@@ -73,7 +82,6 @@ function Map({
         zoomSnap={0.25}
         style={styles}
       >
-        <TileLayer {...tileLayer} />
         <GeoJSON
           data={boundary}
           style={geoJSONStyles}
@@ -95,17 +103,17 @@ Map.propTypes = {
     }
     return null;
   },
-  tileLayer: PropTypes.shape({}),
   zoom: PropTypes.number,
   styles: PropTypes.shape({}),
   boundary: PropTypes.shape({}),
   geoJSONStyles: PropTypes.shape({}),
+  setHoverGeo: PropTypes.func,
+  featuredCounties: PropTypes.string,
 };
 
 Map.defaultProps = {
   boundary: undefined,
   center: undefined,
-  tileLayer: undefined,
   zoom: undefined,
   styles: {
     height: "100%",
@@ -116,7 +124,10 @@ Map.defaultProps = {
     weight: 1,
     opacity: 1,
     fillColor: "#fff",
+    dashArray: "2",
   },
+  setHoverGeo: undefined,
+  featuredCounties: undefined,
 };
 
 export default Map;
