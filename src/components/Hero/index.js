@@ -3,7 +3,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import heroBg from "@/pesayetu/assets/images/map-lines.png";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
@@ -70,12 +70,22 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   dropdownTitle: {
     color: palette.text.hint,
   },
+  geoName: {
+    lineHeight: 23 / 18,
+    lineSpacing: typography.pxToRem(0.9),
+    fontWeight: "normal",
+    textTransform: "capitalize",
+    display: "flex",
+    justifyContent: "flex-end",
+  },
 }));
 
 function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
+
+  const [hoverGeo, setHoverGeo] = useState(null);
 
   const zoom = isUpLg ? 6 : 5.25;
   const counties = boundary?.features?.map(({ properties }) => properties);
@@ -117,8 +127,14 @@ function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
                   url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
                 }}
                 boundary={boundary}
+                setHoverGeo={setHoverGeo}
                 {...props}
               />
+              {hoverGeo && (
+                <Typography variant="h6" className={classes.geoName}>
+                  {hoverGeo}
+                </Typography>
+              )}
             </Grid>
           </Hidden>
         </Grid>
