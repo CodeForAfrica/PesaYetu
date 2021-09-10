@@ -7,7 +7,7 @@ import useSWR from "swr";
 
 import fetcher from "@/pesayetu/utils/fetcher";
 
-const Map = dynamic(() => import("@/pesayetu/components/ExploreMap"), {
+const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
   ssr: false,
 });
 
@@ -34,7 +34,7 @@ function ExplorePage({
 
   const { data } = useSWR(
     shouldFetch
-      ? `https://ng.hurumap.org/api/v1/all_details/profile/1/geography/${geoCode}/?format=json`
+      ? `${process.env.HURUMAP_API_URL}/all_details/profile/1/geography/${geoCode}/?format=json`
       : null,
     fetcher
   );

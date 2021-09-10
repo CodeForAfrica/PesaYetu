@@ -15,14 +15,20 @@ const useStyles = makeStyles(({ typography }) => ({
 }));
 
 const geoStyles = {
+  inactive: {
+    fillColor: "#334FE50D",
+    fillOpacity: 1,
+    color: "#666666",
+    weight: 1,
+  },
   hoverOnly: {
     over: {
-      fillColor: "#DFDFDF",
+      fillColor: "#7DB2D3",
       fillOpacity: 1,
       color: "#666666",
     },
     out: {
-      fillColor: "#334FE50D",
+      fillColor: "#DFDFDF",
       fillOpacity: 1,
       color: "#666666",
       weight: 1,
@@ -31,7 +37,7 @@ const geoStyles = {
   selected: {
     over: {
       color: "#666666",
-      fillColor: "#DFDFDF",
+      fillColor: "#7DB2D3",
       opacity: 1,
     },
     out: {
@@ -58,52 +64,56 @@ const Layers = ({
   const router = useRouter();
   const groupRef = useRef();
 
+  const featuredCountiesCode =
+    process.env.NEXT_PUBLIC_FEATURED_COUNTIES?.split(",");
   const onEachFeature = (feature, layer) => {
-    layer
-      .bindTooltip(feature.properties.name.toString(), {
-        className: classes.tooltip,
-      })
-      .openTooltip();
+    if (!featuredCountiesCode?.includes(feature.properties.code)) {
+      layer.setStyle(geoStyles.inactive);
+    } else {
+      layer
+        .bindTooltip(feature.properties.name.toString(), {
+          className: classes.tooltip,
+        })
+        .openTooltip();
 
-    layer.setStyle(
-      feature?.properties?.selected
-        ? geoStyles.selected.out
-        : geoStyles.hoverOnly.out
-    );
-    layer.on("mouseover", () => {
-      layer.setStyle(
-        feature?.properties?.selected
-          ? geoStyles.selected.over
-          : geoStyles.hoverOnly.over
-      );
-    });
-    layer.on("mouseout", () => {
       layer.setStyle(
         feature?.properties?.selected
           ? geoStyles.selected.out
           : geoStyles.hoverOnly.out
       );
-    });
-    layer.on("click", () => {
-      setGeoCode(feature.properties.code);
-      setShouldFetch(true);
-      const href = `/explore/${feature.properties.level}-${feature.properties.code}`;
-      router.push(href, href, { shallow: true });
-    });
+      layer.on("mouseover", () => {
+        layer.setStyle(
+          feature?.properties?.selected
+            ? geoStyles.selected.over
+            : geoStyles.hoverOnly.over
+        );
+      });
+      layer.on("mouseout", () => {
+        layer.setStyle(
+          feature?.properties?.selected
+            ? geoStyles.selected.out
+            : geoStyles.hoverOnly.out
+        );
+      });
+      layer.on("click", () => {
+        setGeoCode(feature.properties.code);
+        setShouldFetch(true);
+        const href = `/explore/${feature.properties.level}-${feature.properties.code}`;
+        router.push(href, href, { shallow: true });
+      });
+    }
   };
 
   useEffect(() => {
-    if (groupRef.current) {
-      const layer = groupRef.current;
-      if (layer) {
-        layer.clearLayers();
-        const featuredGeo = new L.GeoJSON(selectedBoundary, { onEachFeature });
-        layer.addLayer(featuredGeo);
-        map.fitBounds(layer.getBounds(), {
-          animate: true,
-          duration: 0.5, // in seconds
-        });
-      }
+    const layer = groupRef.current;
+    if (layer) {
+      layer.clearLayers();
+      const featuredGeo = new L.GeoJSON(selectedBoundary, { onEachFeature });
+      layer.addLayer(featuredGeo);
+      map.fitBounds(layer.getBounds(), {
+        animate: true,
+        duration: 0.5, // in seconds
+      });
     }
   }, [groupRef, selectedBoundary]);
 

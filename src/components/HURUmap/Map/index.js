@@ -4,13 +4,15 @@ import { MapContainer, ZoomControl, TileLayer, Pane } from "react-leaflet";
 
 import Layers from "./Layers";
 
+import { tileLayers } from "@/pesayetu/config";
+
 import "leaflet/dist/leaflet.css";
 
 const preferredChildrenObj = {
   country: ["county"],
 };
 
-function ExploreMap({ center, zoom, styles, geometries, geography, ...props }) {
+function Map({ center, zoom, styles, geometries, geography, ...props }) {
   const [selectedBoundary, setSelectedBoundary] = useState(null);
 
   const getSelectedBoundary = (level, geoms) => {
@@ -69,12 +71,11 @@ function ExploreMap({ center, zoom, styles, geometries, geography, ...props }) {
       zoomSnap={0.25}
       style={styles}
     >
-      <Pane name="tiles" style={{ zIndex: 200, pointerEvents: "none" }}>
-        <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png" />
-      </Pane>
-      <Pane name="labelsPane" style={{ zIndex: 650, pointerEvents: "none" }}>
-        <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png" />
-      </Pane>
+      {tileLayers?.map(({ pane, url, zIndex }) => (
+        <Pane name={pane} style={{ zIndex, pointerEvents: "none" }}>
+          <TileLayer url={url} />
+        </Pane>
+      ))}
       <ZoomControl position="bottomright" />
       <Layers
         selectedBoundary={selectedBoundary}
@@ -85,7 +86,7 @@ function ExploreMap({ center, zoom, styles, geometries, geography, ...props }) {
   );
 }
 
-ExploreMap.propTypes = {
+Map.propTypes = {
   center: (props, propName, componentName) => {
     const { [propName]: prop } = props;
     if (!Array.isArray(prop) || prop.length !== 2 || prop.some(Number.isNaN)) {
@@ -110,7 +111,7 @@ ExploreMap.propTypes = {
   setGeoCode: PropTypes.func,
 };
 
-ExploreMap.defaultProps = {
+Map.defaultProps = {
   center: undefined,
   zoom: undefined,
   styles: {
@@ -123,4 +124,4 @@ ExploreMap.defaultProps = {
   setGeoCode: undefined,
 };
 
-export default ExploreMap;
+export default Map;
