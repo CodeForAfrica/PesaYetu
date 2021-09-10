@@ -1,3 +1,4 @@
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { MapContainer, ZoomControl, TileLayer, Pane } from "react-leaflet";
@@ -5,6 +6,39 @@ import { MapContainer, ZoomControl, TileLayer, Pane } from "react-leaflet";
 import Layers from "./Layers";
 
 import "leaflet/dist/leaflet.css";
+
+const useStyles = makeStyles(({ palette, typography }) => ({
+  map: {
+    "& .tooltipPop": {
+      background: palette.background.default,
+      boxShadow: "0px 3px 6px #00000029",
+      height: typography.pxToRem(36),
+      width: typography.pxToRem(88),
+      "& .level": {
+        fontWeight: "bold",
+        color: palette.text.secondary,
+        background: palette.primary.main,
+        textTransform: "upperCase",
+        fontSize: typography.pxToRem(7),
+        marginTop: typography.pxToRem(-15),
+        borderRadius: typography.pxToRem(4),
+        paddingTop: typography.pxToRem(2),
+        width: typography.pxToRem(62),
+        height: typography.pxToRem(17),
+        margin: "0 auto",
+        display: "flex",
+        justifyContent: "center",
+      },
+      "& .name": {
+        textAlign: "center",
+        fontSize: typography.pxToRem(9),
+        fontWeight: "bold",
+        textTransform: "capitalize",
+        marginTop: typography.pxToRem(5),
+      },
+    },
+  },
+}));
 
 const preferredChildrenObj = {
   country: ["county"],
@@ -19,6 +53,7 @@ function Map({
   tileLayers,
   ...props
 }) {
+  const classes = useStyles(props);
   const [selectedBoundary, setSelectedBoundary] = useState(null);
 
   const getSelectedBoundary = (level, geoms) => {
@@ -76,6 +111,7 @@ function Map({
       touchZoom={false}
       zoomSnap={0.25}
       style={styles}
+      className={classes.map}
     >
       {tileLayers?.map(({ pane, url, zIndex }) => (
         <Pane

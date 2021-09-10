@@ -1,18 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
 import L from "leaflet";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useEffect, useRef } from "react";
 import { useMap, LayerGroup, FeatureGroup, GeoJSON } from "react-leaflet";
-
-const useStyles = makeStyles(({ typography }) => ({
-  tooltip: {
-    fontFamily: typography.body1.fontFamily,
-    fontSize: typography.pxToRem(13),
-    color: "#2A2A2C",
-    textTransform: "capitalize",
-  },
-}));
 
 const geoStyles = {
   inactive: {
@@ -57,23 +47,26 @@ const Layers = ({
   parentsGeometries,
   setGeoCode,
   setShouldFetch,
-  ...props
 }) => {
-  const classes = useStyles(props);
   const map = useMap();
   const router = useRouter();
   const groupRef = useRef();
 
   const featuredCountiesCode =
     process.env.NEXT_PUBLIC_FEATURED_COUNTIES?.split(",");
+
+  const popUpContent = (level, name) =>
+    `<div class='tooltip'><div class='level'>${level}</div> <div class='name'>${name.toLowerCase()}</div></div>`;
+
   const onEachFeature = (feature, layer) => {
     if (!featuredCountiesCode?.includes(feature.properties.code)) {
       layer.setStyle(geoStyles.inactive);
     } else {
       layer
-        .bindTooltip(feature.properties.name.toString(), {
-          className: classes.tooltip,
-        })
+        .bindTooltip(
+          popUpContent(feature.properties.level, feature.properties.name),
+          { direction: "top", opacity: 1, className: "tooltipPop" }
+        )
         .openTooltip();
 
       layer.setStyle(
