@@ -17,7 +17,7 @@ export default async function getMenus(menus, locations = menuLocations) {
   const filteredMenus = filterMenusByLocation(menus?.nodes, locations);
 
   const res = await fetch(
-    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
+    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
   const { children } = await res.json();
 

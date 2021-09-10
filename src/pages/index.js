@@ -65,7 +65,7 @@ export async function getStaticProps({ preview, previewData }) {
   }
 
   const res = await fetch(
-    `${process.env.WAZIMAP_API_URL}all_details/profile/3/geography/KE/?format=json`
+    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
   const { children } = await res.json();
 

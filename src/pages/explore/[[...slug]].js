@@ -15,7 +15,7 @@ export default function Explore(props) {
 
 export async function getStaticPaths() {
   const result = await fetcher(
-    `https://ng.hurumap.org/api/v1/all_details/profile/1/geography/KE/?format=json`
+    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
   const paths = result?.children?.county?.features?.map(
     ({ properties: { code, level } }) => {
@@ -30,7 +30,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: "blocking",
   };
 }
 
@@ -47,7 +46,7 @@ export async function getStaticProps({ preview, previewData, params }) {
   const geoCode = slug ? slug.split("-")[1] : "KE";
 
   const res = await fetcher(
-    `https://ng.hurumap.org/api/v1/all_details/profile/1/geography/${geoCode}/?format=json`
+    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/${geoCode}/?format=json`
   );
 
   const geography = res?.profile.geography;
