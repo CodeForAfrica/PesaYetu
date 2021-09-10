@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ typography }) => ({
 
 const geoStyles = {
   inactive: {
-    fillColor: "#334FE50D",
+    fillColor: "#f8f8f8",
     fillOpacity: 1,
     color: "#666666",
     weight: 1,

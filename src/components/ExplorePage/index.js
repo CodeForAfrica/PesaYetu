@@ -33,8 +33,6 @@ function ExplorePage({
   const [geography, setGeography] = useState(geographyProp);
   const [shouldFetch, setShouldFetch] = useState(false);
 
-  console.log(apiUri);
-
   const { data } = useSWR(
     shouldFetch
       ? `${apiUri}all_details/profile/1/geography/${geoCode}/?format=json`
