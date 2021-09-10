@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import L from "leaflet";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
@@ -7,6 +7,7 @@ import ReactDOMServer from "react-dom/server";
 import { useMap, LayerGroup, FeatureGroup, GeoJSON } from "react-leaflet";
 
 import LocationTag from "@/pesayetu/components/HURUmap/LocationTag";
+import theme from "@/pesayetu/theme";
 
 const useStyles = makeStyles(() => ({
   locationtag: {
@@ -69,11 +70,13 @@ const Layers = ({
 
   const popUpContent = (level, name) =>
     ReactDOMServer.renderToStaticMarkup(
-      <LocationTag
-        level={level}
-        name={name.toLowerCase()}
-        classes={{ root: classes.locationtag }}
-      />
+      <ThemeProvider theme={theme}>
+        <LocationTag
+          level={level}
+          name={name.toLowerCase()}
+          classes={{ root: classes.locationtag }}
+        />
+      </ThemeProvider>
     );
 
   const onEachFeature = (feature, layer) => {
