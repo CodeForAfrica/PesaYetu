@@ -37,15 +37,14 @@ function Map({
   styles,
   geoJSONStyles,
   setHoverGeo,
+  featuredCounties,
   ...props
 }) {
   const classes = useStyles(props);
   const router = useRouter();
-  const featuredCountiesCode =
-    process.env.NEXT_PUBLIC_FEATURED_COUNTIES?.split(",");
 
   const onEachFeature = (feature, layer) => {
-    if (featuredCountiesCode?.includes(feature.properties.code)) {
+    if (featuredCounties?.split(",")?.includes(feature.properties.code)) {
       layer.setStyle({
         weight: 1.5,
         dashArray: 0,
@@ -109,6 +108,7 @@ Map.propTypes = {
   boundary: PropTypes.shape({}),
   geoJSONStyles: PropTypes.shape({}),
   setHoverGeo: PropTypes.func,
+  featuredCounties: PropTypes.string,
 };
 
 Map.defaultProps = {
@@ -127,6 +127,7 @@ Map.defaultProps = {
     dashArray: "2",
   },
   setHoverGeo: undefined,
+  featuredCounties: undefined,
 };
 
 export default Map;
