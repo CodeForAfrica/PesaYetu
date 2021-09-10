@@ -108,7 +108,7 @@ const Layers = ({
         duration: 0.5, // in seconds
       });
     }
-  }, [groupRef, selectedBoundary]);
+  }, [groupRef, selectedBoundary, map, onEachFeature]);
 
   return (
     <>
