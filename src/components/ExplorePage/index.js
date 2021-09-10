@@ -24,6 +24,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
 function ExplorePage({
   geometries: geometriesProp,
   geography: geographyProp,
+  apiUri,
   ...props
 }) {
   const classes = useStyles(props);
@@ -32,9 +33,11 @@ function ExplorePage({
   const [geography, setGeography] = useState(geographyProp);
   const [shouldFetch, setShouldFetch] = useState(false);
 
+  console.log(apiUri);
+
   const { data } = useSWR(
     shouldFetch
-      ? `${process.env.HURUMAP_API_URL}/all_details/profile/1/geography/${geoCode}/?format=json`
+      ? `${apiUri}all_details/profile/1/geography/${geoCode}/?format=json`
       : null,
     fetcher
   );
@@ -77,11 +80,13 @@ ExplorePage.propTypes = {
   geography: PropTypes.shape({
     level: PropTypes.string,
   }),
+  apiUri: PropTypes.string,
 };
 
 ExplorePage.defaultProps = {
   geometries: undefined,
   geography: undefined,
+  apiUri: undefined,
 };
 
 export default ExplorePage;

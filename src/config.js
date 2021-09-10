@@ -652,12 +652,12 @@ export const datasetsAndDocumentsArgs = {
 export const tileLayers = [
   {
     url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png",
-    pane: "tilePane",
+    pane: "tiles",
     zIndex: 200,
   },
   {
     url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}.png",
-    pane: "labelsPanel",
+    pane: "labels",
     zIndex: 650,
   },
 ];

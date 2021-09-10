@@ -17,19 +17,22 @@ export async function getStaticPaths() {
   const result = await fetcher(
     `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
-  const paths = result?.children?.county?.features?.map(
-    ({ properties: { code, level } }) => {
+  const featuredCountiesCode =
+    process.env.NEXT_PUBLIC_FEATURED_COUNTIES.split(",");
+  const paths = result?.children?.county?.features
+    ?.filter(({ properties: { code } }) => featuredCountiesCode?.includes(code))
+    ?.map(({ properties: { code, level } }) => {
       const s = `${level}-${code}`;
       return {
         params: {
           slug: [s],
         },
       };
-    }
-  );
+    });
 
   return {
     paths,
+    fallback: false,
   };
 }
 
@@ -44,9 +47,10 @@ export async function getStaticProps({ preview, previewData, params }) {
   );
 
   const geoCode = slug ? slug.split("-")[1] : "KE";
+  const apiUri = process.env.HURUMAP_API_URL;
 
   const res = await fetcher(
-    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/${geoCode}/?format=json`
+    `${apiUri}all_details/profile/1/geography/${geoCode}/?format=json`
   );
 
   const geography = res?.profile.geography;
@@ -68,6 +72,7 @@ export async function getStaticProps({ preview, previewData, params }) {
       variant: "explore",
       geography,
       geometries,
+      apiUri,
     },
     revalidate,
   };
