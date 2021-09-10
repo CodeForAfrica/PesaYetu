@@ -82,7 +82,7 @@ function Map({
         },
       };
     } else {
-      // else its a featurecollection
+      // else its a FeatureCollection
       const selectedBoundaryFeatures = selectedBound?.features?.map((f) => {
         return {
           ...f,
