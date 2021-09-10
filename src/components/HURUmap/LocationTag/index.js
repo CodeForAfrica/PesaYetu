@@ -15,8 +15,8 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
   level: {
     fontWeight: "bold",
-    color: palette.text.secondary,
-    background: palette.primary.main,
+    color: "#fff",
+    background: "#0067A3",
     textTransform: "upperCase",
     fontSize: typography.pxToRem(7),
     borderRadius: typography.pxToRem(4),

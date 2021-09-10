@@ -1,8 +1,20 @@
+import { makeStyles } from "@material-ui/core/styles";
 import L from "leaflet";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useEffect, useRef } from "react";
+import ReactDOMServer from "react-dom/server";
 import { useMap, LayerGroup, FeatureGroup, GeoJSON } from "react-leaflet";
+
+import LocationTag from "@/pesayetu/components/HURUmap/LocationTag";
+
+const useStyles = makeStyles(() => ({
+  locationtag: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+  },
+}));
 
 const geoStyles = {
   inactive: {
@@ -47,16 +59,24 @@ const Layers = ({
   parentsGeometries,
   setGeoCode,
   setShouldFetch,
+  ...props
 }) => {
   const map = useMap();
   const router = useRouter();
   const groupRef = useRef();
+  const classes = useStyles(props);
 
   const featuredCountiesCode =
     process.env.NEXT_PUBLIC_FEATURED_COUNTIES?.split(",");
 
   const popUpContent = (level, name) =>
-    `<div class='tooltip'><div class='level'>${level}</div> <div class='name'>${name.toLowerCase()}</div></div>`;
+    ReactDOMServer.renderToStaticMarkup(
+      <LocationTag
+        level={level}
+        name={name.toLowerCase()}
+        classes={{ root: classes.locationtag }}
+      />
+    );
 
   const onEachFeature = (feature, layer) => {
     if (!featuredCountiesCode?.includes(feature.properties.code)) {
@@ -65,7 +85,7 @@ const Layers = ({
       layer
         .bindTooltip(
           popUpContent(feature.properties.level, feature.properties.name),
-          { direction: "top", opacity: 1, className: "tooltipPop" }
+          { direction: "top", opacity: 1, className: "tooltip" }
         )
         .openTooltip();
 

@@ -7,35 +7,12 @@ import Layers from "./Layers";
 
 import "leaflet/dist/leaflet.css";
 
-const useStyles = makeStyles(({ palette, typography }) => ({
+const useStyles = makeStyles(({ typography }) => ({
   map: {
-    "& .tooltipPop": {
-      background: palette.background.default,
-      boxShadow: "0px 3px 6px #00000029",
-      height: typography.pxToRem(36),
+    "& .tooltip": {
+      height: typography.pxToRem(38),
       width: typography.pxToRem(88),
-      "& .level": {
-        fontWeight: "bold",
-        color: palette.text.secondary,
-        background: palette.primary.main,
-        textTransform: "upperCase",
-        fontSize: typography.pxToRem(7),
-        marginTop: typography.pxToRem(-15),
-        borderRadius: typography.pxToRem(4),
-        paddingTop: typography.pxToRem(2),
-        width: typography.pxToRem(62),
-        height: typography.pxToRem(17),
-        margin: "0 auto",
-        display: "flex",
-        justifyContent: "center",
-      },
-      "& .name": {
-        textAlign: "center",
-        fontSize: typography.pxToRem(9),
-        fontWeight: "bold",
-        textTransform: "capitalize",
-        marginTop: typography.pxToRem(5),
-      },
+      position: "relative",
     },
   },
 }));
