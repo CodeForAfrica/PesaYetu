@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import useRouter from "next/router";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
