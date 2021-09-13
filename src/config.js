@@ -659,6 +659,13 @@ export const tour = {
       title: "BROWSE THE CHARTS",
       image: screenshot1,
     },
+    {
+      selector: ".makeStyles-help-21",
+      description:
+        "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
+      title: "BROWSE THE CHARTS",
+      image: screenshot1,
+    },
   ],
 };
 
