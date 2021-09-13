@@ -7,8 +7,13 @@ export default {
   argTypes: {},
 };
 
-const Template = () => <Metrics />;
+const Template = ({ ...args }) => <Metrics {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  color: "Primary",
+  percentage: "11%",
+  description: "Voter registration %",
+  bottomDescription: "10.1% National Average",
+};
