@@ -11,13 +11,15 @@ const Tour = ({ items, ...props }) => {
   const classes = useStyles(props);
   const [open, setOpen] = React.useState(true);
   const [selected, setSelected] = React.useState();
+  const [step, setStep] = React.useState(0);
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleSelectedChange = (selector) => {
+  const handleSelectedChange = (selector, currentStep) => {
     setSelected(selector);
+    setStep(currentStep);
   };
 
   return (
@@ -30,6 +32,7 @@ const Tour = ({ items, ...props }) => {
         showCloseButton={false}
         className={classes.tourReact}
         steps={items}
+        goToStep={step}
         isOpen={open}
         onRequestClose={handleClose}
       >

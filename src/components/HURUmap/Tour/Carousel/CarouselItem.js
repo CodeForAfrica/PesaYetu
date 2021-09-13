@@ -21,8 +21,9 @@ function CarouselItem({
 }) {
   const classes = useStyles(props);
   useEffect(() => {
-    onSelectedChange(selector);
+    onSelectedChange(selector, activeStep);
   }, [selector]);
+
   return (
     <div className={classes.root}>
       <Grid
