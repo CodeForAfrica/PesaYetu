@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     backgroundColor: palette.background.paper,
-    width: typography.pxToRem(374),
+    maxWidth: typography.pxToRem(374),
     padding: `${typography.pxToRem(10)} ${typography.pxToRem(
       20
     )} ${typography.pxToRem(14)} ${typography.pxToRem(20)}`,
