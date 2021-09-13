@@ -17,7 +17,7 @@ const items = [
   },
 ];
 
-const tagItems = [
+const tags = [
   {
     tag: "Country",
     label: "South Africa",
@@ -32,7 +32,7 @@ const tagItems = [
   },
   {
     tag: "Municipality",
-    label: "Free state westham",
+    label: "Pretoria",
   },
 ];
 
@@ -44,7 +44,7 @@ export default {
         type: "array",
       },
     },
-    tagItems: {
+    tags: {
       control: {
         type: "array",
       },
@@ -57,6 +57,6 @@ const Template = ({ ...args }) => <MapStatisticsTable {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  tagItems,
+  tags,
   items,
 };

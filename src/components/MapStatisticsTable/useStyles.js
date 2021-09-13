@@ -1,9 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
-  root: {
-    // position: "absolute",
-    width: "100%",
+  paper: {
+    position: "absolute",
+    width: "900px",
     top: "16px",
     bottom: "auto",
     zIndex: 999,
