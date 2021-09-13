@@ -29,22 +29,26 @@ function CarouselItem({
         justifyContent="space-between"
         alignItems="center"
       >
-        <Typography
-          id={`carousel-title-${activeStep - 1}`}
-          className={classes.title}
-          variant="h4"
-        >
-          {title}
-        </Typography>
-        {onClose && (
-          <IconButton
-            aria-label="close"
-            className={classes.closeButton}
-            onClick={onClose}
+        <Grid item>
+          <Typography
+            id={`carousel-title-${activeStep - 1}`}
+            className={classes.title}
+            variant="h4"
           >
-            <CloseIcon />
-          </IconButton>
-        )}
+            {title}
+          </Typography>
+        </Grid>
+        <Grid item>
+          {onClose && (
+            <IconButton
+              aria-label="close"
+              className={classes.closeButton}
+              onClick={onClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          )}
+        </Grid>
       </Grid>
       <Grid container justifyContent="space-between">
         <Grid item xs={12} md={5} container wrap="nowrap">
