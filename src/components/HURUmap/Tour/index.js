@@ -3,9 +3,8 @@ import React from "react";
 import ReactTour from "reactour";
 
 import TourCarousel from "./Carousel";
+import Line from "./Line";
 import useStyles from "./useStyles";
-
-import Line from "@/pesayetu/components/HURUmap/Tour/Line";
 
 const Tour = ({ items, handleTooltipClose, ...props }) => {
   const classes = useStyles(props);
