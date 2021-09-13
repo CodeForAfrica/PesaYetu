@@ -5,15 +5,15 @@ import MapStatisticsTable from ".";
 const items = [
   {
     name: "YOUTH",
-    number: 40,
+    number: 39.5,
   },
   {
     name: "ATTENDED SCHOOL",
-    number: 40,
+    number: 20.5,
   },
   {
     name: "POPULATION BY AGE",
-    number: 40,
+    number: 30.5,
   },
 ];
 

@@ -14,11 +14,11 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     alignSelf: "center",
     borderRadius: "4px",
-    backgroundColor: "hsla(0,0%,100%,.63)",
+    backgroundColor: "rgb(255, 255, 255, 0.2)",
     boxShadow: "0 0 0 -1px rgb(0 0 0 / 20%), 0 1px 6px -2px rgb(0 0 0 / 30%)",
     transition: "all .4s ease",
     "&:hover": {
-      backgroundColor: "hsla(0,0%,100%,.63)",
+      backgroundColor: "rgb(255, 255, 255, 1)",
     },
   },
   locationTags: {
