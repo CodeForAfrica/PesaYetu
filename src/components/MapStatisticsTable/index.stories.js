@@ -4,15 +4,15 @@ import MapStatisticsTable from ".";
 
 const items = [
   {
-    name: "csv",
+    name: "YOUTH",
     number: 40,
   },
   {
-    name: "xls",
+    name: "ATTENDED SCHOOL",
     number: 40,
   },
   {
-    name: "json",
+    name: "POPULATION BY AGE",
     number: 40,
   },
 ];

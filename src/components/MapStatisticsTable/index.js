@@ -18,18 +18,28 @@ function MapStatisticsTable({ items, tagProps, ...props }) {
         justifyContent="center"
         className={classes.locationTags}
       >
-        <Grid item xs={12}>
+        <Grid
+          container
+          item
+          xs={12}
+          justifyContent="center"
+          alignItems="center"
+        >
           <Tag {...tagProps} />
         </Grid>
       </Grid>
       <Grid container direction="row" className={classes.locationInfo}>
         {items.map((item, index) => (
-          <Grid item xs={4} className={index === 1 ? classes.middleItem : null}>
-            <Typography variant="body1" className={classes.title}>
+          <Grid
+            item
+            xs={4}
+            className={index === 1 ? classes.middleItem : classes.item}
+          >
+            <Typography variant="body1" className={classes.name}>
               {item.name}
             </Typography>
-            <Typography variant="body2" className={classes.title}>
-              {item.number}
+            <Typography variant="body1" className={classes.number}>
+              {item.number}%
             </Typography>
           </Grid>
         ))}

@@ -7,7 +7,6 @@ const useStyles = makeStyles(({ typography }) => ({
   root: {
     flex: "0 auto",
     position: "relative",
-    width: "100%",
     height: typography.pxToRem(32),
     margin: typography.pxToRem(4),
     padding: `${typography.pxToRem(3)} ${typography.pxToRem(
@@ -18,6 +17,7 @@ const useStyles = makeStyles(({ typography }) => ({
     backgroundColor: "#707070",
     boxShadow: "0 2px 7px -4px #000",
     transition: "all .2s ease",
+    width: "11rem",
   },
   locationTagType: {
     flex: "0 0 auto",
