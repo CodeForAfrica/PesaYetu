@@ -4,10 +4,10 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Tooltipicon from "./ToolTipIcon";
 import useStyles from "./useStyles";
 
 import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/Component 108 – 5.svg";
-import Tooltipicon from "@/pesayetu/assets/icons/ToolTipIcon";
 
 function CarouselItem({
   activeStep,
