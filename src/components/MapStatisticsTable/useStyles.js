@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
+  root: {},
   paper: {
     position: "absolute",
     width: "600px",
@@ -9,7 +10,6 @@ const useStyles = makeStyles(() => ({
     zIndex: 999,
     display: "flex",
     padding: "8px",
-    height: "10rem",
     flexDirection: "column",
     alignItems: "center",
     alignSelf: "center",
@@ -18,6 +18,12 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#FFFFFFE6",
     boxShadow: "0px 3px 6px #00000029",
     transition: "all .4s ease",
+    [breakpoints.up("md")]: {
+      left: "5rem",
+    },
+    [breakpoints.up("lg")]: {
+      left: "40rem",
+    },
   },
   locationTags: {
     padding: "0.3rem 0rem",
