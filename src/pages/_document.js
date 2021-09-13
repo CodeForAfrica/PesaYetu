@@ -9,6 +9,14 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* Used in page headers */}
+          <link
+            rel="preload"
+            href="/fonts/poppins-v15-latin-900.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
         </Head>
