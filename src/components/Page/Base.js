@@ -40,7 +40,7 @@ function BasePage({ children, menus, variant, ...props }) {
         <Tour handleTooltipClose={handleTooltipClose} {...tour} />
       )}
       <Navigation
-        handleTooltipOpen={handleTooltipOpen}
+        onOpenHelp={handleTooltipOpen}
         {...navigationProps}
         variant={variant}
       />
