@@ -9,18 +9,14 @@ import Line from "@/pesayetu/components/HURUmap/Tour/Line";
 
 const Tour = ({ items, handleTooltipClose, ...props }) => {
   const classes = useStyles(props);
-  const [selected, setSelected] = React.useState();
   const [step, setStep] = React.useState(0);
 
   const handleClose = () => {
     handleTooltipClose(false);
   };
-
-  const handleSelectedChange = (selector, currentStep) => {
-    setSelected(selector);
+  const handleSelectedChange = (currentStep) => {
     setStep(currentStep);
   };
-
   return (
     <div className={classes.root}>
       <ReactTour
@@ -41,13 +37,20 @@ const Tour = ({ items, handleTooltipClose, ...props }) => {
           slides={items}
         />
       </ReactTour>
-      <Line firstSelector="#carousel-title" secondSelector={selected} />
+      <Line
+        firstSelector="#carousel-title"
+        secondSelector={items[step].selector}
+      />
     </div>
   );
 };
 
 Tour.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({})),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      selector: PropTypes.string,
+    })
+  ),
   handleTooltipClose: PropTypes.func,
 };
 

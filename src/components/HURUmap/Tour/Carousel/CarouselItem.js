@@ -2,7 +2,7 @@ import RichTypography from "@commons-ui/core/RichTypography";
 import { Grid, Typography, IconButton } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 
 import useStyles from "./useStyles";
 
@@ -20,9 +20,6 @@ function CarouselItem({
   ...props
 }) {
   const classes = useStyles(props);
-  useEffect(() => {
-    onSelectedChange(selector, activeStep);
-  }, [selector]);
 
   return (
     <div className={classes.root}>

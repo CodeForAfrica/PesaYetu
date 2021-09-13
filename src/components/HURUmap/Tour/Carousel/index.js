@@ -15,7 +15,7 @@ const responsive = {
   },
 };
 
-function TourCarousel({ slides, ...props }) {
+function TourCarousel({ slides, onSelectedChange, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -23,6 +23,9 @@ function TourCarousel({ slides, ...props }) {
       classes={{ itemClass: classes.itemClass }}
       className={classes.carousel}
       responsive={responsive}
+      afterChange={(previousSlide, { currentSlide }) => {
+        onSelectedChange(currentSlide);
+      }}
       showDots
     >
       {slides.map((slide, index) => (
@@ -44,10 +47,12 @@ TourCarousel.propTypes = {
       description: PropTypes.string,
     })
   ),
+  onSelectedChange: PropTypes.func,
 };
 
 TourCarousel.defaultProps = {
   slides: undefined,
+  onSelectedChange: undefined,
 };
 
 export default TourCarousel;
