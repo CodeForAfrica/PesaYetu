@@ -7,14 +7,13 @@ import useStyles from "./useStyles";
 
 import Line from "@/pesayetu/components/HURUmap/Tour/Line";
 
-const Tour = ({ items, ...props }) => {
+const Tour = ({ items, handleTooltipClose, ...props }) => {
   const classes = useStyles(props);
-  const [open, setOpen] = React.useState(true);
   const [selected, setSelected] = React.useState();
   const [step, setStep] = React.useState(0);
 
   const handleClose = () => {
-    setOpen(false);
+    handleTooltipClose(false);
   };
 
   const handleSelectedChange = (selector, currentStep) => {
@@ -33,7 +32,7 @@ const Tour = ({ items, ...props }) => {
         className={classes.tourReact}
         steps={items}
         goToStep={step}
-        isOpen={open}
+        isOpen
         onRequestClose={handleClose}
       >
         <TourCarousel
@@ -49,10 +48,12 @@ const Tour = ({ items, ...props }) => {
 
 Tour.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
+  handleTooltipClose: PropTypes.func,
 };
 
 Tour.defaultProps = {
   items: undefined,
+  handleTooltipClose: undefined,
 };
 
 export default Tour;

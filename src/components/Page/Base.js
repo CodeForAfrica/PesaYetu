@@ -31,9 +31,14 @@ function BasePage({ children, menus, variant, ...props }) {
   const handleTooltipOpen = () => {
     setIsTooltipOpened(true);
   };
+  const handleTooltipClose = () => {
+    setIsTooltipOpened(false);
+  };
   return (
     <>
-      {isTooltipOpened && <Tour {...tour} />}
+      {isTooltipOpened && (
+        <Tour handleTooltipClose={handleTooltipClose} {...tour} />
+      )}
       <Navigation
         handleTooltipOpen={handleTooltipOpen}
         {...navigationProps}
