@@ -17,10 +17,34 @@ const items = [
   },
 ];
 
+const tagItems = [
+  {
+    tag: "Country",
+    label: "South Africa",
+  },
+  {
+    tag: "Province",
+    label: "Free State",
+  },
+  {
+    tag: "District",
+    label: "Free state westham",
+  },
+  {
+    tag: "Municipality",
+    label: "Free state westham",
+  },
+];
+
 export default {
   title: "Components/MapStatisticsTable",
   argTypes: {
     items: {
+      control: {
+        type: "array",
+      },
+    },
+    tagItems: {
       control: {
         type: "array",
       },
@@ -33,9 +57,6 @@ const Template = ({ ...args }) => <MapStatisticsTable {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  tagProps: {
-    tag: "Country",
-    label: "South Africa",
-  },
+  tagItems,
   items,
 };
