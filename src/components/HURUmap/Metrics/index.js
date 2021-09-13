@@ -4,7 +4,13 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const Metrics = ({ percentage, description, color, bottomDescription }) => {
+const Metrics = ({
+  percentage,
+  description,
+  color,
+  bottomDescription,
+  value,
+}) => {
   const classes = useStyles();
 
   return (
@@ -16,7 +22,7 @@ const Metrics = ({ percentage, description, color, bottomDescription }) => {
         </div>
         <LinearProgress
           className={classes.progressBar}
-          value={10}
+          value={value}
           color={color}
           variant="buffer"
         />
@@ -33,6 +39,7 @@ Metrics.propTypes = {
   description: PropTypes.string,
   color: PropTypes.string,
   bottomDescription: PropTypes.string,
+  value: PropTypes.number,
 };
 
 Metrics.defaultProps = {
@@ -40,6 +47,7 @@ Metrics.defaultProps = {
   description: undefined,
   color: undefined,
   bottomDescription: undefined,
+  value: undefined,
 };
 
 export default Metrics;

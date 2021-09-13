@@ -16,4 +16,5 @@ Default.args = {
   percentage: "11%",
   description: "Voter registration %",
   bottomDescription: "10.1% National Average",
+  value: 10,
 };
