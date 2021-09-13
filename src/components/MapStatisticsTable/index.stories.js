@@ -20,19 +20,11 @@ const items = [
 const tags = [
   {
     tag: "Country",
-    label: "South Africa",
+    label: "Kenya",
   },
   {
-    tag: "Province",
-    label: "Free State",
-  },
-  {
-    tag: "District",
-    label: "Free state westham",
-  },
-  {
-    tag: "Municipality",
-    label: "Pretoria",
+    tag: "County",
+    label: "Isiolo",
   },
 ];
 

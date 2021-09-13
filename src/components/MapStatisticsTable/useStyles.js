@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(() => ({
   paper: {
     position: "absolute",
-    width: "900px",
+    width: "600px",
     top: "16px",
     bottom: "auto",
     zIndex: 999,
@@ -13,13 +13,11 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     alignItems: "center",
     alignSelf: "center",
-    borderRadius: "4px",
-    backgroundColor: "rgb(255, 255, 255, 0.2)",
-    boxShadow: "0 0 0 -1px rgb(0 0 0 / 20%), 0 1px 6px -2px rgb(0 0 0 / 30%)",
+    borderRadius: "5px",
+    opacity: 1,
+    backgroundColor: "#FFFFFFE6",
+    boxShadow: "0px 3px 6px #00000029",
     transition: "all .4s ease",
-    "&:hover": {
-      backgroundColor: "rgb(255, 255, 255, 1)",
-    },
   },
   locationTags: {
     padding: "0.3rem 0rem",
@@ -34,20 +32,24 @@ const useStyles = makeStyles(() => ({
   },
   name: {
     alignSelf: "stretch",
-    color: "#666",
-    fontSize: "0.6em",
+    fontSize: "10px",
+    fontWeight: 300,
     lineHeight: "100%",
     textAlign: "center",
     letterSpacing: "1px",
     textTransform: "uppercase",
     paddingTop: "1rem",
+    color: "#333333",
+    opacity: 1,
   },
   number: {
     textTransform: "uppercase",
     alignSelf: "stretch",
-    fontSize: "1.2rem",
     fontWeight: 500,
     textAlign: "center",
+    fontSize: "14px",
+    color: "#333333",
+    opacity: 1,
   },
 }));
 
