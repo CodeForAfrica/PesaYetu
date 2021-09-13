@@ -1,9 +1,12 @@
 import { Typography, Grid, Paper } from "@material-ui/core";
+import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-function MapStatisticsTable({ ...props }) {
+import Tag from "@/pesayetu/components/Tag";
+
+function MapStatisticsTable({ items, tagProps, ...props }) {
   const classes = useStyles(props);
   return (
     <Paper className={classes.root}>
@@ -16,41 +19,38 @@ function MapStatisticsTable({ ...props }) {
         className={classes.locationTags}
       >
         <Grid item xs={12}>
-          <Typography variant="h4" className={classes.title}>
-            This is where the tag goes
-          </Typography>
+          <Tag {...tagProps} />
         </Grid>
       </Grid>
       <Grid container direction="row" className={classes.locationInfo}>
-        <Grid item xs={4}>
-          <Typography variant="body1" className={classes.title}>
-            label one
-          </Typography>
-          <Typography variant="body2" className={classes.title}>
-            stats one
-          </Typography>
-        </Grid>
-
-        <Grid item xs={4} className={classes.middleItem}>
-          <Typography variant="body1" className={classes.title}>
-            label two
-          </Typography>
-          <Typography variant="body2" className={classes.title}>
-            stats two
-          </Typography>
-        </Grid>
-
-        <Grid item xs={4}>
-          <Typography variant="body1" className={classes.title}>
-            label three
-          </Typography>
-          <Typography variant="body2" className={classes.title}>
-            stats three
-          </Typography>
-        </Grid>
+        {items.map((item, index) => (
+          <Grid item xs={4} className={index === 1 ? classes.middleItem : null}>
+            <Typography variant="body1" className={classes.title}>
+              {item.name}
+            </Typography>
+            <Typography variant="body2" className={classes.title}>
+              {item.number}
+            </Typography>
+          </Grid>
+        ))}
       </Grid>
     </Paper>
   );
 }
+
+MapStatisticsTable.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  tagProps: PropTypes.shape({}),
+};
+
+MapStatisticsTable.defaultProps = {
+  items: undefined,
+  tagProps: undefined,
+};
 
 export default MapStatisticsTable;
