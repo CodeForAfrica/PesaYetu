@@ -6,7 +6,7 @@ import useStyles from "./useStyles";
 
 import Tag from "@/pesayetu/components/Tag";
 
-function MapStatisticsTable({ items, tagProps, ...props }) {
+function MapStatisticsTable({ items, tagitems, ...props }) {
   const classes = useStyles(props);
   return (
     <Paper className={classes.root}>
@@ -25,7 +25,9 @@ function MapStatisticsTable({ items, tagProps, ...props }) {
           justifyContent="center"
           alignItems="center"
         >
-          <Tag {...tagProps} />
+          {tagitems.map((item) => (
+            <Tag tag={item.tag} label={item.label} />
+          ))}
         </Grid>
       </Grid>
       <Grid container direction="row" className={classes.locationInfo}>
@@ -55,12 +57,17 @@ MapStatisticsTable.propTypes = {
       number: PropTypes.string,
     })
   ),
-  tagProps: PropTypes.shape({}),
+  tagitems: PropTypes.arrayOf(
+    PropTypes.shape({
+      tag: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
 };
 
 MapStatisticsTable.defaultProps = {
   items: undefined,
-  tagProps: undefined,
+  tagitems: undefined,
 };
 
 export default MapStatisticsTable;
