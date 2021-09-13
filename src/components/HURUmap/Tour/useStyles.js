@@ -14,6 +14,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   lineContainer: {
     position: "fixed",
     zIndex: 9999999,
+    pointerEvents: "none",
   },
   line: {
     strokeWidth: typography.pxToRem(1),
