@@ -31,7 +31,7 @@ function Line({ firstSelector, secondSelector, ...props }) {
           });
         }
       }
-    }, 200);
+    }, 700); // wait for component to render before drawing line
 
     return () => clearTimeout(timer);
   }, [firstSelector, secondSelector]);
