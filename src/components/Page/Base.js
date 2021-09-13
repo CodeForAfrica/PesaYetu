@@ -30,7 +30,7 @@ function BasePage({ children, menus, variant, ...props }) {
 
   return (
     <>
-      <Tour {...tour} />
+      {variant === "explore" && <Tour {...tour} />}
       <Navigation {...navigationProps} variant={variant} />
       <NextSeo {...props} />
       {children}
