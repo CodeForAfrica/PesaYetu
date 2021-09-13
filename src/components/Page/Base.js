@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -8,6 +9,9 @@ import { navigationArgs } from "@/pesayetu/config";
 import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 
+const Tour = dynamic(() => import("@/pesayetu/components/HURUmap/Tour"), {
+  ssr: false,
+});
 /**
  * Base page that can be used to build all other pages.
  */
@@ -26,6 +30,7 @@ function BasePage({ children, menus, ...props }) {
 
   return (
     <>
+      <Tour />
       <Navigation {...navigationProps} />
       <NextSeo {...props} />
       {children}
