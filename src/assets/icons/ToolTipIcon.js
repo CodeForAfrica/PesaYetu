@@ -12,6 +12,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     fill: palette.text.secondary,
     fontSize: typography.pxToRem(30),
     fontWeight: 600,
+    fontFamily: typography.fontFamily,
   },
   c: {
     stroke: "none",
