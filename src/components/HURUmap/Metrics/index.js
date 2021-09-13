@@ -9,8 +9,10 @@ const Metric = () => {
   return (
     <>
       <div className={classes.root}>
-        <Typography variant="h2">11%</Typography>
-        <Typography>Voter registration %</Typography>
+        <Typography variant="h3">11%</Typography>
+        <div className={classes.description}>
+          <Typography variant="caption">Voter registration %</Typography>
+        </div>
         <LinearProgress
           className={classes.progressBar}
           value={10}
@@ -18,7 +20,9 @@ const Metric = () => {
           variant="buffer"
         />
       </div>
-      <Typography>10.1% National Average</Typography>
+      <Typography variant="caption" className={classes.bottomDescription}>
+        10.1% National Average
+      </Typography>
     </>
   );
 };

@@ -1,11 +1,24 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
-    backgroundColor: "#F8F8F8",
+    backgroundColor: palette.background.paper,
+    width: typography.pxToRem(374),
+    padding: `${typography.pxToRem(10)} ${typography.pxToRem(
+      20
+    )} ${typography.pxToRem(14)} ${typography.pxToRem(20)}`,
   },
   progressBar: {
-    backgroundColor: "#DFDFDF",
+    "& .MuiLinearProgress-colorPrimary, .MuiLinearProgress-colorSecondary": {
+      backgroundColor: palette.grey.main,
+    },
+  },
+  description: {
+    marginBottom: typography.pxToRem(8),
+  },
+  bottomDescription: {
+    padding: `${typography.pxToRem(6)} 0 0 ${typography.pxToRem(20)}`,
+    color: "#666666",
   },
 }));
 
