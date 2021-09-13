@@ -3,6 +3,7 @@ import { deepmerge } from "@material-ui/utils";
 
 import chevronrightDark from "@/pesayetu/assets/icons/Group 997-dark.svg";
 import chevronright from "@/pesayetu/assets/icons/Group 997.svg";
+import hoverIcon from "@/pesayetu/assets/icons/hover-icon.png";
 
 const FONT_FAMILY = '"Poppins", "sans-serif"';
 
@@ -220,6 +221,13 @@ deepmerge(
 deepmerge(
   overrides,
   {
+    MuiCssBaseline: {
+      "@global": {
+        ".leaflet-interactive": {
+          cursor: `url(${hoverIcon.src}), pointer !important`,
+        },
+      },
+    },
     MuiButton: {
       root: {
         textDecoration: "none !important",

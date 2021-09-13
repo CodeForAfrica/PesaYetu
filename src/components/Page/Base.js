@@ -15,7 +15,7 @@ const Tour = dynamic(() => import("@/pesayetu/components/HURUmap/Tour"), {
 /**
  * Base page that can be used to build all other pages.
  */
-function BasePage({ children, menus, ...props }) {
+function BasePage({ children, menus, variant, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
   const { menuProps } = navigation;
@@ -31,10 +31,10 @@ function BasePage({ children, menus, ...props }) {
   return (
     <>
       <Tour {...tour} />
-      <Navigation {...navigationProps} />
+      <Navigation {...navigationProps} variant={variant} />
       <NextSeo {...props} />
       {children}
-      <Footer {...footerProps} />
+      {variant !== "explore" && <Footer {...footerProps} />}
     </>
   );
 }
@@ -48,11 +48,13 @@ BasePage.propTypes = {
     footerMenu: PropTypes.arrayOf(PropTypes.shape({})),
     primaryMenu: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  variant: PropTypes.string,
 };
 
 BasePage.defaultProps = {
   children: undefined,
   menus: undefined,
+  variant: undefined,
 };
 
 export default BasePage;
