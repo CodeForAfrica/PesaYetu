@@ -24,6 +24,7 @@ import LewisChalo from "@/pesayetu/assets/images/Lewis-Chalo.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
 import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
 import Piero from "@/pesayetu/assets/images/Piero.png";
+import screenshot1 from "@/pesayetu/assets/images/Screenshot 2021-06-14 at 12.51.45@2x.png";
 import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
 import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
 import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
@@ -646,6 +647,18 @@ export const datasetsAndDocumentsArgs = {
   items: [
     { label: "DOCUMENTS & SPEECHES", ...documentsArgs },
     { label: "DATASETS", ...datasetsArgs },
+  ],
+};
+
+export const tour = {
+  items: [
+    {
+      selector: ".makeStyles-help-21",
+      description:
+        "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
+      title: "BROWSE THE CHARTS",
+      image: screenshot1,
+    },
   ],
 };
 

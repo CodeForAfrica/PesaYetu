@@ -5,7 +5,7 @@ import React from "react";
 
 import Footer from "@/pesayetu/components/Footer";
 import Navigation from "@/pesayetu/components/Navigation";
-import { navigationArgs } from "@/pesayetu/config";
+import { navigationArgs, tour } from "@/pesayetu/config";
 import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 
@@ -30,7 +30,7 @@ function BasePage({ children, menus, ...props }) {
 
   return (
     <>
-      <Tour />
+      <Tour {...tour} />
       <Navigation {...navigationProps} />
       <NextSeo {...props} />
       {children}

@@ -52,15 +52,7 @@ Tour.propTypes = {
 };
 
 Tour.defaultProps = {
-  items: [
-    {
-      selector: ".makeStyles-help-21",
-      description: "Sdsdsd",
-      title: "Sdsdsd",
-      image:
-        "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/09/Group-4780-1.svg",
-    },
-  ],
+  items: undefined,
 };
 
 export default Tour;
