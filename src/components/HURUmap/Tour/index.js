@@ -38,7 +38,7 @@ const Tour = ({ items, handleTooltipClose, ...props }) => {
         />
       </ReactTour>
       <Line
-        firstSelector="#carousel-title"
+        firstSelector={`#carousel-title-${step}`}
         secondSelector={items[step].selector}
       />
     </div>

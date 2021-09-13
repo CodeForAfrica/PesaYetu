@@ -29,7 +29,11 @@ function CarouselItem({
         justifyContent="space-between"
         alignItems="center"
       >
-        <Typography id="carousel-title" className={classes.title} variant="h4">
+        <Typography
+          id={`carousel-title-${activeStep - 1}`}
+          className={classes.title}
+          variant="h4"
+        >
           {title}
         </Typography>
         {onClose && (
