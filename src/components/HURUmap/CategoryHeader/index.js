@@ -1,29 +1,39 @@
 import { Typography, Grid } from "@material-ui/core";
 import Image from "next/image";
+import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-import Group4658 from "@/pesayetu/assets/icons/Group 4658-white.svg";
-
-const CategoryHeader = () => {
+const CategoryHeader = ({ heading, description, image }) => {
   const classes = useStyles();
   return (
     <div>
       <Grid container>
         <div className={classes.image}>
-          <Image src={Group4658} layout="fill" />
+          <Image src={image} layout="fill" />
         </div>
         <Typography variant="h3" className={classes.heading}>
-          Overview
+          {heading}
         </Typography>
       </Grid>
       <Typography variant="body2" className={classes.description}>
-        Population, Political, Land Use Type, Agriculture, Industries & Trade,
-        Health Access, Education And Literacy
+        {description}
       </Typography>
     </div>
   );
+};
+
+CategoryHeader.propTypes = {
+  heading: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+};
+
+CategoryHeader.defaultProps = {
+  heading: undefined,
+  description: undefined,
+  image: undefined,
 };
 
 export default CategoryHeader;
