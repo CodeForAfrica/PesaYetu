@@ -183,7 +183,7 @@ export default function configureBarchart(data, metadata, config) {
             x: { scale: "xscale", field: { signal: "datatype[Units]" } },
           },
           update: {
-            fill: { value: "rgb(57, 173, 132)" },
+            fill: { value: "#0067A3" },
             x: { scale: "xscale", field: { signal: "datatype[Units]" } },
             x2: { scale: "xscale", value: 0 },
             tooltip: {
@@ -191,9 +191,9 @@ export default function configureBarchart(data, metadata, config) {
                 "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
             },
           },
-          hover: {
-            fill: { value: "rgb(57, 173, 132, 0.7)" },
-          },
+          // hover: {
+          //   fill: { value: "rgb(57, 173, 132, 0.7)" },
+          // },
         },
       },
       {
@@ -203,7 +203,7 @@ export default function configureBarchart(data, metadata, config) {
           enter: {
             align: { value: "left" },
             baseline: { value: "middle" },
-            fill: { value: "grey" },
+            fill: { value: "#707070" },
             fontSize: { value: 10 },
           },
           update: {
