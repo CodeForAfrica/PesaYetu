@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import Footer from "@/pesayetu/components/Footer";
 import Navigation from "@/pesayetu/components/Navigation";
@@ -27,11 +27,18 @@ function BasePage({ children, menus, variant, ...props }) {
     menuProps,
     socialLinks,
   };
-
+  const [isTooltipOpened, setIsTooltipOpened] = useState(false);
+  const handleTooltipOpen = () => {
+    setIsTooltipOpened(true);
+  };
   return (
     <>
-      {variant === "explore" && <Tour {...tour} />}
-      <Navigation {...navigationProps} variant={variant} />
+      {isTooltipOpened && <Tour {...tour} />}
+      <Navigation
+        handleTooltipOpen={handleTooltipOpen}
+        {...navigationProps}
+        variant={variant}
+      />
       <NextSeo {...props} />
       {children}
       {variant !== "explore" && <Footer {...footerProps} />}

@@ -51,10 +51,10 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function ExploreNavigation({ logoProps, ...props }) {
+function ExploreNavigation({ logoProps, handleTooltipOpen, ...props }) {
   const classes = useStyles(props);
   const openTooltip = () => {
-    // tooltip
+    handleTooltipOpen();
   };
   return (
     <div className={classes.root}>
@@ -101,10 +101,12 @@ function ExploreNavigation({ logoProps, ...props }) {
 
 ExploreNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
+  handleTooltipOpen: PropTypes.func,
 };
 
 ExploreNavigation.defaultProps = {
   logoProps: undefined,
+  handleTooltipOpen: undefined,
 };
 
 export default ExploreNavigation;
