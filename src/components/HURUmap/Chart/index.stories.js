@@ -4,7 +4,7 @@ import React from "react";
 import Chart from ".";
 
 export default {
-  title: "Components/HURUCharts",
+  title: "Components/HURUmap/Chart",
 };
 
 const Template = ({ ...args }) => <Chart {...args} />;
