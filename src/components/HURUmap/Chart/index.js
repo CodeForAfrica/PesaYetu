@@ -10,8 +10,9 @@ import renderChart from "./renderChart";
 import Share from "./Share";
 
 import { ReactComponent as InfoIcon } from "@/pesayetu/assets/icons/chart-info.svg";
+import Link from "@/pesayetu/components/Link";
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
   description: {
     fontSize: typography.pxToRem(11),
@@ -21,11 +22,31 @@ const useStyles = makeStyles(({ typography }) => ({
       20
     )} ${typography.pxToRem(31)} ${typography.pxToRem(16)}`,
   },
+  sourceDiv: {
+    margin: `${typography.pxToRem(20)} 0`,
+  },
+  source: {
+    fontSize: typography.pxToRem(13),
+    lineHeight: 20 / 13,
+    color: "#666666",
+    display: "inline-flex",
+  },
+  link: {
+    color: palette.text.primary,
+    fontSize: typography.pxToRem(13),
+    lineHeight: 20 / 13,
+    fontFamily: typography.body1.fontFamily,
+  },
 }));
 
 function Chart({ indicator, title, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
+
+  const {
+    description,
+    metadata: { source, url },
+  } = indicator;
 
   const actions = [
     {
@@ -33,7 +54,7 @@ function Chart({ indicator, title, ...props }) {
       header: "Learn More",
       children: (
         <RichTypography className={classes.description}>
-          {indicator.description}
+          {description}
         </RichTypography>
       ),
       icon: <InfoIcon />,
@@ -76,6 +97,14 @@ function Chart({ indicator, title, ...props }) {
         </Grid>
       </Grid>
       <div id="chart-container" />
+      {url && source && (
+        <div className={classes.sourceDiv}>
+          <Typography className={classes.source}>Source:&nbsp;</Typography>
+          <Link underline="always" href={url} className={classes.link}>
+            {source}
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
@@ -83,6 +112,10 @@ function Chart({ indicator, title, ...props }) {
 Chart.propTypes = {
   indicator: PropTypes.shape({
     description: PropTypes.string,
+    metadata: PropTypes.shape({
+      source: PropTypes.string,
+      url: PropTypes.string,
+    }),
   }),
   title: PropTypes.string,
 };
