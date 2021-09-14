@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
-import MapStatisticsTable from "@/pesayetu/components/HURUmap/MapStatisticsTable";
+import MapLocationTags from "@/pesayetu/components/HURUmap/MapLocationTags";
 import fetchJson from "@/pesayetu/utils/fetchJson";
 
 const items = [
@@ -111,7 +111,7 @@ function ExplorePage({
   return (
     <div className={classes.root}>
       <Hidden smDown>
-        <MapStatisticsTable tags={tags} items={items} />
+        <MapLocationTags tags={tags} items={items} />
         <Map
           center={[0.3051933453207569, 37.908818734483155]}
           zoom={6.25}

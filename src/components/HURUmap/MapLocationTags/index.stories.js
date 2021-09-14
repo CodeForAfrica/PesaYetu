@@ -1,6 +1,6 @@
 import React from "react";
 
-import MapStatisticsTable from ".";
+import MapLocationTags from ".";
 
 const items = [
   {
@@ -29,7 +29,7 @@ const tags = [
 ];
 
 export default {
-  title: "Components/HURUmap/MapStatisticsTable",
+  title: "Components/HURUmap/MapLocationTags",
   argTypes: {
     items: {
       control: {
@@ -44,7 +44,7 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <MapStatisticsTable {...args} />;
+const Template = ({ ...args }) => <MapLocationTags {...args} />;
 
 export const Default = Template.bind({});
 

@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 import LocationTag from "@/pesayetu/components/HURUmap/LocationTag";
 import Section from "@/pesayetu/components/Section";
 
-function MapStatisticsTable({ items, tags, ...props }) {
+function MapLocationTags({ items, tags, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
@@ -63,7 +63,7 @@ function MapStatisticsTable({ items, tags, ...props }) {
   );
 }
 
-MapStatisticsTable.propTypes = {
+MapLocationTags.propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       level: PropTypes.string,
@@ -78,9 +78,9 @@ MapStatisticsTable.propTypes = {
   ),
 };
 
-MapStatisticsTable.defaultProps = {
+MapLocationTags.defaultProps = {
   items: undefined,
   tags: undefined,
 };
 
-export default MapStatisticsTable;
+export default MapLocationTags;
