@@ -4,18 +4,19 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const Metrics = ({ percentage, description, color, summary }) => {
+const ProfileKeyMetric = ({ percentage, description, color, summary }) => {
   const classes = useStyles();
 
   return (
-    <>
-      <div className={classes.root}>
+    <div className={classes.root}>
+      <div className={classes.dataSection}>
         <Typography variant="h3">{`${percentage}%`}</Typography>
-        <div className={classes.description}>
-          <Typography variant="caption" className={classes.text}>
-            {description}
-          </Typography>
-        </div>
+        <Typography
+          variant="caption"
+          className={`${classes.text} ${classes.description}`}
+        >
+          {description}
+        </Typography>
         <LinearProgress
           className={classes.progressBar}
           value={percentage}
@@ -29,22 +30,22 @@ const Metrics = ({ percentage, description, color, summary }) => {
       >
         {summary}
       </Typography>
-    </>
+    </div>
   );
 };
 
-Metrics.propTypes = {
+ProfileKeyMetric.propTypes = {
   percentage: PropTypes.string,
   description: PropTypes.string,
   color: PropTypes.string,
   summary: PropTypes.string,
 };
 
-Metrics.defaultProps = {
+ProfileKeyMetric.defaultProps = {
   percentage: undefined,
   description: undefined,
   color: undefined,
   summary: undefined,
 };
 
-export default Metrics;
+export default ProfileKeyMetric;

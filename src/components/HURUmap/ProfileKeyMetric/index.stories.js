@@ -1,13 +1,13 @@
 import React from "react";
 
-import Metrics from "@/pesayetu/components/HURUmap/Metrics";
+import ProfileKeyMetric from "@/pesayetu/components/HURUmap/ProfileKeyMetric";
 
 export default {
-  title: "Components/HURUmap/Metrics",
+  title: "Components/HURUmap/ProfileKeyMetric",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <Metrics {...args} />;
+const Template = ({ ...args }) => <ProfileKeyMetric {...args} />;
 
 export const Default = Template.bind({});
 
