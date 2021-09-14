@@ -1,18 +1,16 @@
 import { NextSeo } from "next-seo";
-import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 import Footer from "@/pesayetu/components/Footer";
 import Navigation from "@/pesayetu/components/Navigation";
-import { navigationArgs, tour } from "@/pesayetu/config";
+import { navigationArgs } from "@/pesayetu/config";
 import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 
 /**
  * Base page that can be used to build all other pages.
  */
-let Tour;
 function BasePage({ children, menus, variant, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
@@ -25,28 +23,10 @@ function BasePage({ children, menus, variant, ...props }) {
     menuProps,
     socialLinks,
   };
-  const [isTooltipOpened, setIsTooltipOpened] = useState(false);
-  const handleTooltipOpen = () => {
-    setIsTooltipOpened(true);
-  };
-  const handleTooltipClose = () => {
-    setIsTooltipOpened(false);
-  };
-  if (variant === "explore") {
-    Tour = dynamic(() => import("@/pesayetu/components/HURUmap/Tour"), {
-      ssr: false,
-    });
-  }
+
   return (
     <>
-      {isTooltipOpened && (
-        <Tour onTooltipClose={handleTooltipClose} {...tour} />
-      )}
-      <Navigation
-        onOpenHelp={handleTooltipOpen}
-        {...navigationProps}
-        variant={variant}
-      />
+      <Navigation {...navigationProps} variant={variant} />
       <NextSeo {...props} />
       {children}
       {variant !== "explore" && <Footer {...footerProps} />}
