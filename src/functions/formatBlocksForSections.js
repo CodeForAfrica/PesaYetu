@@ -212,6 +212,8 @@ function format(block) {
       };
     case "lazyblock/data-indicators":
       return formatDataIndicators(attributes);
+    case "lazyblock/tooltip-banner":
+      return formatLazyBlockIteratorContentWithImage(attributes, "image");
     case "lazyblock/document-and-datasets":
       return formatDocumentAndDataSet(attributes, innerBlocks);
     case "lazyblock/hero":
