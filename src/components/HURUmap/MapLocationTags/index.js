@@ -9,6 +9,13 @@ import Section from "@/pesayetu/components/Section";
 
 function MapLocationTags({ items, tags, ...props }) {
   const classes = useStyles(props);
+
+  if (!items?.length) {
+    return null;
+  }
+  if (!tags?.length) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>

@@ -6,33 +6,8 @@ import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
 import MapLocationTags from "@/pesayetu/components/HURUmap/MapLocationTags";
+import { items, tags } from "@/pesayetu/config";
 import fetchJson from "@/pesayetu/utils/fetchJson";
-
-const items = [
-  {
-    label: "YOUTH",
-    number: 39.5,
-  },
-  {
-    label: "ATTENDED SCHOOL",
-    number: 20.5,
-  },
-  {
-    label: "POPULATION BY AGE",
-    number: 30.5,
-  },
-];
-
-const tags = [
-  {
-    level: "Country",
-    name: "Kenya",
-  },
-  {
-    level: "County",
-    name: "Isiolo",
-  },
-];
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
   ssr: false,

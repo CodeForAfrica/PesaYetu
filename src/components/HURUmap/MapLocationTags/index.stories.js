@@ -2,31 +2,7 @@ import React from "react";
 
 import MapLocationTags from ".";
 
-const items = [
-  {
-    label: "YOUTH",
-    number: 39.5,
-  },
-  {
-    label: "ATTENDED SCHOOL",
-    number: 20.5,
-  },
-  {
-    label: "POPULATION BY AGE",
-    number: 30.5,
-  },
-];
-
-const tags = [
-  {
-    level: "Country",
-    name: "Kenya",
-  },
-  {
-    level: "County",
-    name: "Isiolo",
-  },
-];
+import { items, tags } from "@/pesayetu/config";
 
 export default {
   title: "Components/HURUmap/MapLocationTags",
