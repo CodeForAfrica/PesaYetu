@@ -16,7 +16,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   description: {
     marginBottom: typography.pxToRem(8),
   },
-  bottomDescription: {
+  text: {
+    fontSize: typography.pxToRem(11),
+  },
+  summary: {
     padding: `${typography.pxToRem(6)} 0 0 ${typography.pxToRem(20)}`,
     color: "#666666",
   },

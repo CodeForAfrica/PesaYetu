@@ -4,31 +4,30 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const Metrics = ({
-  percentage,
-  description,
-  color,
-  bottomDescription,
-  value,
-}) => {
+const Metrics = ({ percentage, description, color, summary }) => {
   const classes = useStyles();
 
   return (
     <>
       <div className={classes.root}>
-        <Typography variant="h3">{percentage}</Typography>
+        <Typography variant="h3">{`${percentage}%`}</Typography>
         <div className={classes.description}>
-          <Typography variant="caption">{description}</Typography>
+          <Typography variant="caption" className={classes.text}>
+            {description}
+          </Typography>
         </div>
         <LinearProgress
           className={classes.progressBar}
-          value={value}
+          value={percentage}
           color={color}
           variant="buffer"
         />
       </div>
-      <Typography variant="caption" className={classes.bottomDescription}>
-        {bottomDescription}
+      <Typography
+        variant="caption"
+        className={`${classes.summary} ${classes.text}`}
+      >
+        {summary}
       </Typography>
     </>
   );
@@ -38,16 +37,14 @@ Metrics.propTypes = {
   percentage: PropTypes.string,
   description: PropTypes.string,
   color: PropTypes.string,
-  bottomDescription: PropTypes.string,
-  value: PropTypes.number,
+  summary: PropTypes.string,
 };
 
 Metrics.defaultProps = {
   percentage: undefined,
   description: undefined,
   color: undefined,
-  bottomDescription: undefined,
-  value: undefined,
+  summary: undefined,
 };
 
 export default Metrics;
