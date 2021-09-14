@@ -5,7 +5,34 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
+import MapStatisticsTable from "@/pesayetu/components/MapStatisticsTable";
 import fetchJson from "@/pesayetu/utils/fetchJson";
+
+const tags = [
+  {
+    tag: "Country",
+    label: "Kenya",
+  },
+  {
+    tag: "County",
+    label: "Isiolo",
+  },
+];
+
+const items = [
+  {
+    name: "YOUTH",
+    number: 39.5,
+  },
+  {
+    name: "ATTENDED SCHOOL",
+    number: 20.5,
+  },
+  {
+    name: "POPULATION BY AGE",
+    number: 30.5,
+  },
+];
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
   ssr: false,
@@ -83,6 +110,7 @@ function ExplorePage({
   }, [data]);
   return (
     <div className={classes.root}>
+      <MapStatisticsTable tags={tags} items={items} />
       <Hidden smDown>
         <Map
           center={[0.3051933453207569, 37.908818734483155]}
