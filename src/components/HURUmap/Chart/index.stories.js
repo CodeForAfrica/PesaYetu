@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
 
-import Chart from ".";
+import Chart from "@/pesayetu/components/HURUmap/Chart";
 
 export default {
   title: "Components/HURUmap/Chart",
@@ -12,10 +12,11 @@ const Template = ({ ...args }) => <Chart {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  title: "Population by Age Group",
   indicator: {
     id: 203,
     description:
-      '<p>does</p>\r\n<p>it</p>\r\n<p>work</p>\r\n<ul>\r\n<li>here</li>\r\n<li>this</li>\r\n<li>time?</li>\r\n</ul>\r\n<p><a href="https://example.com/indicator" target="_blank" rel="noopener">test link</a></p>',
+      "Lorem ipsum dolor sit amet consectetur adipiscing elit habitasse iaculis litora, placerat scelerisque class penatibus purus eget quis sapien id vitae, proin odio velit facilisis volutpat cum luctus curae integer. Ornare dignissim montes donec nostra dui.",
     choropleth_method: "subindicator",
     last_updated_at: "2021-08-04T10:41:20.292118Z",
     metadata: {
