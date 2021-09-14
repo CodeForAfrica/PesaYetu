@@ -10,26 +10,32 @@ const ProfileKeyMetric = ({ percentage, description, color, summary }) => {
   return (
     <div className={classes.root}>
       <div className={classes.dataSection}>
-        <Typography variant="h3">{`${percentage}%`}</Typography>
+        {percentage && <Typography variant="h3">{`${percentage}%`}</Typography>}
+        {description && (
+          <Typography
+            variant="caption"
+            className={`${classes.text} ${classes.description}`}
+          >
+            {description}
+          </Typography>
+        )}
+        {percentage && (
+          <LinearProgress
+            className={classes.progressBar}
+            value={percentage}
+            color={color}
+            variant="buffer"
+          />
+        )}
+      </div>
+      {summary && (
         <Typography
           variant="caption"
-          className={`${classes.text} ${classes.description}`}
+          className={`${classes.summary} ${classes.text}`}
         >
-          {description}
+          {summary}
         </Typography>
-        <LinearProgress
-          className={classes.progressBar}
-          value={percentage}
-          color={color}
-          variant="buffer"
-        />
-      </div>
-      <Typography
-        variant="caption"
-        className={`${classes.summary} ${classes.text}`}
-      >
-        {summary}
-      </Typography>
+      )}
     </div>
   );
 };
