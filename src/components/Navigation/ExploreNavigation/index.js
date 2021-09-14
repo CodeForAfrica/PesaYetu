@@ -1,12 +1,18 @@
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import SearchIcon from "@/pesayetu/assets/icons/search-explore.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Logo from "@/pesayetu/components/Logo";
 import Section from "@/pesayetu/components/Section";
+import { tour } from "@/pesayetu/config";
+
+const Tour = dynamic(() => import("@/pesayetu/components/HURUmap/Tour"), {
+  ssr: false,
+});
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {},
@@ -51,10 +57,15 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function ExploreNavigation({ logoProps, onOpenHelp, ...props }) {
+function ExploreNavigation({ logoProps, ...props }) {
   const classes = useStyles(props);
-  const openTooltip = () => {
-    onOpenHelp();
+
+  const [isTooltipOpened, setIsTooltipOpened] = useState(false);
+  const handleTooltipOpen = () => {
+    setIsTooltipOpened(true);
+  };
+  const handleTooltipClose = () => {
+    setIsTooltipOpened(false);
   };
   return (
     <div className={classes.root}>
@@ -85,7 +96,7 @@ function ExploreNavigation({ logoProps, onOpenHelp, ...props }) {
             />
             <Typography
               component="div"
-              onClick={openTooltip}
+              onClick={handleTooltipOpen}
               variant="h3"
               className={classes.help}
             >
@@ -95,6 +106,9 @@ function ExploreNavigation({ logoProps, onOpenHelp, ...props }) {
           <Grid />
         </Grid>
       </Section>
+      {isTooltipOpened && (
+        <Tour onTooltipClose={handleTooltipClose} {...tour} />
+      )}
     </div>
   );
 }

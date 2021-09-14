@@ -6,12 +6,12 @@ import TourCarousel from "./Carousel";
 import Line from "./Line";
 import useStyles from "./useStyles";
 
-const Tour = ({ items, handleTooltipClose, ...props }) => {
+const Tour = ({ items, onTooltipClose, ...props }) => {
   const classes = useStyles(props);
   const [step, setStep] = React.useState(0);
 
   const handleClose = () => {
-    handleTooltipClose(false);
+    onTooltipClose(false);
   };
   const handleSelectedChange = (currentStep) => {
     setStep(currentStep);
@@ -50,12 +50,12 @@ Tour.propTypes = {
       selector: PropTypes.string,
     })
   ),
-  handleTooltipClose: PropTypes.func,
+  onTooltipClose: PropTypes.func,
 };
 
 Tour.defaultProps = {
   items: undefined,
-  handleTooltipClose: undefined,
+  onTooltipClose: undefined,
 };
 
 export default Tour;
