@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography }) => ({
   root: {
     paddingLeft: typography.pxToRem(34),
-    paddingTop: typography.pxToRem(49),
+    paddingTop: typography.pxToRem(25),
     paddingRight: typography.pxToRem(39),
     width: typography.pxToRem(964),
   },

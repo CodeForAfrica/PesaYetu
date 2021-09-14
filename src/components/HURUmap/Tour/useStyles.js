@@ -10,6 +10,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     top: "50% !important",
     left: "50% !important",
     transform: "translate(-50%, -50%) !important",
+    paddingBottom: `${typography.pxToRem(48.62)} !important`,
   },
   lineContainer: {
     position: "fixed",
