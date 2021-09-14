@@ -1,4 +1,6 @@
-import { Button } from "@material-ui/core";
+import ToggleButton from "@material-ui/lab/ToggleButton";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -10,16 +12,28 @@ const TreeView = ({ items, ...props }) => {
   if (!items || !items.length) {
     return null;
   }
-  const handleClick = (item) => {
-    setSelected(item);
+  const handleChange = (event, href) => {
+    setSelected(href);
   };
   return (
     <div className={classes.root}>
-      {items.map(({ label, path }) => (
-        <Button selected={selected} href={path} onClick={handleClick}>
-          {label}
-        </Button>
-      ))}
+      <ToggleButtonGroup
+        orientation="vertical"
+        value={selected}
+        exclusive
+        onChange={handleChange}
+      >
+        {items.map(({ href, icon }) => (
+          <ToggleButton
+            className={classes.button}
+            classes={{ selected: classes.selected }}
+            value={href}
+            href={href}
+          >
+            <Image src={icon} width={27} height={27} />
+          </ToggleButton>
+        ))}
+      </ToggleButtonGroup>
     </div>
   );
 };
@@ -28,7 +42,7 @@ TreeView.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      path: PropTypes.string,
+      href: PropTypes.string,
     })
   ),
 };
