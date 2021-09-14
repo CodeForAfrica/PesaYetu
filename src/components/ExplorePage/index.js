@@ -5,32 +5,32 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
-import MapStatisticsTable from "@/pesayetu/components/MapStatisticsTable";
+import MapStatisticsTable from "@/pesayetu/components/HURUmap/MapStatisticsTable";
 import fetchJson from "@/pesayetu/utils/fetchJson";
-
-const tags = [
-  {
-    tag: "Country",
-    label: "Kenya",
-  },
-  {
-    tag: "County",
-    label: "Isiolo",
-  },
-];
 
 const items = [
   {
-    name: "YOUTH",
+    label: "YOUTH",
     number: 39.5,
   },
   {
-    name: "ATTENDED SCHOOL",
+    label: "ATTENDED SCHOOL",
     number: 20.5,
   },
   {
-    name: "POPULATION BY AGE",
+    label: "POPULATION BY AGE",
     number: 30.5,
+  },
+];
+
+const tags = [
+  {
+    level: "Country",
+    name: "Kenya",
+  },
+  {
+    level: "County",
+    name: "Isiolo",
   },
 ];
 
@@ -110,8 +110,8 @@ function ExplorePage({
   }, [data]);
   return (
     <div className={classes.root}>
-      <MapStatisticsTable tags={tags} items={items} />
       <Hidden smDown>
+        <MapStatisticsTable tags={tags} items={items} />
         <Map
           center={[0.3051933453207569, 37.908818734483155]}
           zoom={6.25}

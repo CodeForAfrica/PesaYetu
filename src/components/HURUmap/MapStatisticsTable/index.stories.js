@@ -4,32 +4,32 @@ import MapStatisticsTable from ".";
 
 const items = [
   {
-    name: "YOUTH",
+    label: "YOUTH",
     number: 39.5,
   },
   {
-    name: "ATTENDED SCHOOL",
+    label: "ATTENDED SCHOOL",
     number: 20.5,
   },
   {
-    name: "POPULATION BY AGE",
+    label: "POPULATION BY AGE",
     number: 30.5,
   },
 ];
 
 const tags = [
   {
-    tag: "Country",
-    label: "Kenya",
+    level: "Country",
+    name: "Kenya",
   },
   {
-    tag: "County",
-    label: "Isiolo",
+    level: "County",
+    name: "Isiolo",
   },
 ];
 
 export default {
-  title: "Components/MapStatisticsTable",
+  title: "Components/HURUmap/MapStatisticsTable",
   argTypes: {
     items: {
       control: {

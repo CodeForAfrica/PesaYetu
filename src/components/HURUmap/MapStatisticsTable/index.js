@@ -4,8 +4,8 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import LocationTag from "@/pesayetu/components/HURUmap/LocationTag";
 import Section from "@/pesayetu/components/Section";
-import Tag from "@/pesayetu/components/Tag";
 
 function MapStatisticsTable({ items, tags, ...props }) {
   const classes = useStyles(props);
@@ -29,7 +29,15 @@ function MapStatisticsTable({ items, tags, ...props }) {
               alignItems="center"
             >
               {tags.map((tag) => (
-                <Tag tag={tag.tag} label={tag.label} />
+                <LocationTag
+                  level={tag.level}
+                  name={tag.name}
+                  classes={{
+                    root: classes.locationTag,
+                    level: classes.level,
+                    name: classes.name,
+                  }}
+                />
               ))}
             </Grid>
           </Grid>
@@ -40,8 +48,8 @@ function MapStatisticsTable({ items, tags, ...props }) {
                 xs={4}
                 className={index === 1 ? classes.middleItem : classes.item}
               >
-                <Typography variant="body1" className={classes.name}>
-                  {item.name}
+                <Typography variant="body1" className={classes.label}>
+                  {item.label}
                 </Typography>
                 <Typography variant="body1" className={classes.number}>
                   {item.number}%
@@ -56,16 +64,16 @@ function MapStatisticsTable({ items, tags, ...props }) {
 }
 
 MapStatisticsTable.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      number: PropTypes.number,
-    })
-  ),
   tags: PropTypes.arrayOf(
     PropTypes.shape({
-      tag: PropTypes.string,
+      level: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
       label: PropTypes.string,
+      number: PropTypes.number,
     })
   ),
 };
