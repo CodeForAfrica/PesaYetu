@@ -1,4 +1,5 @@
 import { Typography, LinearProgress } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -14,7 +15,7 @@ const ProfileKeyMetric = ({ percentage, description, color, summary }) => {
         {description && (
           <Typography
             variant="caption"
-            className={`${classes.text} ${classes.description}`}
+            className={clsx(classes.text, classes.description)}
           >
             {description}
           </Typography>
@@ -31,7 +32,7 @@ const ProfileKeyMetric = ({ percentage, description, color, summary }) => {
       {summary && (
         <Typography
           variant="caption"
-          className={`${classes.summary} ${classes.text}`}
+          className={clsx(classes.summary, classes.text)}
         >
           {summary}
         </Typography>
