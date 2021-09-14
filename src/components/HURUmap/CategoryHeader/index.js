@@ -9,7 +9,7 @@ const CategoryHeader = ({ heading, description, image }) => {
   const classes = useStyles();
   return (
     <div>
-      <Grid container>
+      <Grid container alignItems="center">
         <div className={classes.image}>
           <Image src={image} layout="fill" />
         </div>
