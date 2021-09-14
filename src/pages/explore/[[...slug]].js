@@ -1,18 +1,38 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
+import TourProvider from "@/pesayetu/components/HURUmap/Tour";
+import Connector from "@/pesayetu/components/HURUmap/Tour/Connector";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import fetchJson from "@/pesayetu/utils/fetchJson";
 
 export default function Explore(props) {
+  const {
+    blocks: { tooltipBanner },
+  } = props;
   return (
-    <Page {...props}>
-      <ExplorePage {...props} />
-    </Page>
+    <TourProvider {...tooltipBanner}>
+      <Connector />
+      <Page {...props}>
+        <ExplorePage {...props} />
+      </Page>
+    </TourProvider>
   );
 }
+Explore.propTypes = {
+  blocks: PropTypes.shape({
+    tooltipBanner: PropTypes.shape({
+      items: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+  }),
+};
+
+Explore.defaultProps = {
+  blocks: undefined,
+};
 
 export async function getStaticPaths() {
   const result = await fetchJson(
@@ -76,6 +96,7 @@ export async function getStaticProps({ preview, previewData, params }) {
       geometries,
       featuredCounties,
       apiUri,
+      blocks,
     },
     revalidate,
   };
