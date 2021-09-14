@@ -14,6 +14,9 @@ const useStyles = makeStyles(({ typography }) => ({
     left: "50% !important",
     transform: "translate(-50%, -50%) !important",
     paddingBottom: `${typography.pxToRem(48.62)} !important`,
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
   },
 }));
 
@@ -25,6 +28,7 @@ export default function Tour({ children, items }) {
       className={classes.tour}
       showPrevNextButtons={false}
       showBagde={false}
+      showCloseButton={false}
       steps={items.map((item, index) => ({
         selector: item.selector,
         content: <ToolTipItem activeStep={index + 1} {...item} />,
