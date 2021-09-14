@@ -4,14 +4,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     width: typography.pxToRem(964),
   },
-  tourReact: {
-    width: `${typography.pxToRem(1000)}`,
-    maxWidth: "100vw  !important",
-    top: "50% !important",
-    left: "50% !important",
-    transform: "translate(-50%, -50%) !important",
-    paddingBottom: `${typography.pxToRem(48.62)} !important`,
-  },
+
   lineContainer: {
     position: "fixed",
     zIndex: 9999999,
