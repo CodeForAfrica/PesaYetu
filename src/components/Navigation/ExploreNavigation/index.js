@@ -20,6 +20,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     marginLeft: typography.pxToRem(20),
     width: typography.pxToRem(48),
     height: typography.pxToRem(48),
+    cursor: "pointer",
   },
   searchLabel: {
     display: "none",
@@ -88,6 +89,7 @@ function ExploreNavigation({ logoProps, onOpenHelp, ...props }) {
             />
             <Typography
               component="div"
+              id="nav-help"
               onClick={openTooltip}
               variant="h3"
               className={classes.help}
