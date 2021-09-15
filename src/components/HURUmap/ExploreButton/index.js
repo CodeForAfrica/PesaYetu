@@ -12,7 +12,7 @@ const TreeView = ({ items, ...props }) => {
   if (!items || !items.length) {
     return null;
   }
-  const handleChange = (event, href) => {
+  const handleChange = (_, href) => {
     setSelected(href);
   };
   return (
@@ -24,12 +24,7 @@ const TreeView = ({ items, ...props }) => {
         onChange={handleChange}
       >
         {items.map(({ href, icon }) => (
-          <ToggleButton
-            className={classes.button}
-            classes={{ selected: classes.selected }}
-            value={href}
-            href={href}
-          >
+          <ToggleButton className={classes.button} value={href} href={href}>
             <Image src={icon} width={27} height={27} />
           </ToggleButton>
         ))}

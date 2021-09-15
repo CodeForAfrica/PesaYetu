@@ -7,11 +7,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     boxShadow: `0px 3px 6px #00000029`,
     marginBottom: typography.pxToRem(10),
     border: 0,
+    "&.Mui-selected": {
+      backgroundColor: palette.background.default,
+    },
   },
-  selected: {
-    backgroundColor: palette.background.default,
-  },
-
   icon: {},
   selectedIcon: {},
 }));
