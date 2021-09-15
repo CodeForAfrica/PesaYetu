@@ -11,7 +11,7 @@ import Share from "./Share";
 
 import { ReactComponent as DownloadIcon } from "@/pesayetu/assets/icons/Component 1.svg";
 import { ReactComponent as ShareIcon } from "@/pesayetu/assets/icons/Component 27.svg";
-import { ReactComponent as InfoIcon } from "@/pesayetu/assets/icons/Component 85 – 2.svg";
+import { ReactComponent as InfoIcon } from "@/pesayetu/assets/icons/Component852.svg";
 import Link from "@/pesayetu/components/Link";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
