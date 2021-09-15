@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {},
-  heading: {
+  title: {
     fontSize: typography.pxToRem(28),
   },
   image: {
