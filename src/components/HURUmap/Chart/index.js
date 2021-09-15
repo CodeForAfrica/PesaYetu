@@ -39,6 +39,12 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     lineHeight: 20 / 13,
     fontFamily: typography.body1.fontFamily,
   },
+  action: {
+    marginRight: typography.pxToRem(14),
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+  },
 }));
 
 function Chart({ indicator, title, ...props }) {
@@ -93,7 +99,7 @@ function Chart({ indicator, title, ...props }) {
         </Grid>
         <Grid item xs={12} md={4} container justifyContent="flex-end">
           {actions.map((act) => (
-            <Grid item key={act.id}>
+            <Grid item key={act.id} className={classes.action}>
               <Action {...act} />
             </Grid>
           ))}

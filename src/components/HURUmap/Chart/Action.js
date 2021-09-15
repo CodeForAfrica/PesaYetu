@@ -37,6 +37,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     lineHeight: 17 / 11,
     color: "#666666",
   },
+  button: {
+    padding: 0,
+  },
 }));
 
 function Action({ children, header, icon, id, ...props }) {
@@ -53,7 +56,11 @@ function Action({ children, header, icon, id, ...props }) {
 
   return (
     <div className={classes.root}>
-      <IconButton onClick={handleClick} aria-describedby={`aria-${id}`}>
+      <IconButton
+        onClick={handleClick}
+        aria-describedby={`aria-${id}`}
+        className={classes.button}
+      >
         {icon}
       </IconButton>
       <Popper

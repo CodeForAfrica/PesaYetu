@@ -191,9 +191,6 @@ export default function configureBarchart(data, metadata, config) {
                 "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
             },
           },
-          // hover: {
-          //   fill: { value: "rgb(57, 173, 132, 0.7)" },
-          // },
         },
       },
       {
