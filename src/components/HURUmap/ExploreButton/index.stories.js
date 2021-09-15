@@ -19,17 +19,17 @@ Default.args = {
   items: [
     {
       label: "Overview",
-      href: "1",
+      href: "#1",
       icon: pinIcon,
     },
     {
       label: "Overview",
-      href: "2",
+      href: "#2",
       icon: locationIcon,
     },
     {
       label: "Overview",
-      href: "3",
+      href: "#3",
       icon: pinBlack,
     },
   ],
