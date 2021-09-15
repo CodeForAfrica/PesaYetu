@@ -16,7 +16,9 @@ const RichDataHeader = () => {
   return (
     <div className={classes.root}>
       <Grid container justifyContent="space-between">
-        <Typography>Isiolo</Typography>
+        <Typography variant="h3" className={classes.title}>
+          Isiolo
+        </Typography>
         <Typography>Print Icon</Typography>
       </Grid>
       <Typography>COUNTY IN KENYA</Typography>
