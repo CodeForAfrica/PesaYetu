@@ -6,9 +6,12 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
+import Image from "next/image";
 import React from "react";
 
 import useStyles from "./useStyles";
+
+import Print from "@/pesayetu/assets/icons/print.svg";
 
 const RichDataHeader = () => {
   const classes = useStyles();
@@ -19,10 +22,12 @@ const RichDataHeader = () => {
         <Typography variant="h3" className={classes.title}>
           Isiolo
         </Typography>
-        <Typography>Print Icon</Typography>
+        <div className={classes.image}>
+          <Image src={Print} layout="fill" />
+        </div>
       </Grid>
-      <Typography>COUNTY IN KENYA</Typography>
-      <hr />
+      <Typography className={classes.description}>A COUNTY IN KENYA</Typography>
+      <hr className={classes.underline} />
       <Grid container>
         <Typography>pin icon</Typography>
         <FormControl className={classes.formControl}>
@@ -34,7 +39,7 @@ const RichDataHeader = () => {
           </Select>
         </FormControl>
       </Grid>
-      <hr />
+      <hr className={classes.underline} />
     </div>
   );
 };
