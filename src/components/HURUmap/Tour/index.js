@@ -17,6 +17,7 @@ const useStyles = makeStyles(({ typography }) => ({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
+    "--reactour-accent": "#1C2030",
   },
 }));
 
@@ -29,6 +30,7 @@ export default function Tour({ children, items }) {
       showPrevNextButtons={false}
       showBagde={false}
       showCloseButton={false}
+      accentColor="#fff"
       steps={items.map((item, index) => ({
         selector: item.selector,
         content: <ToolTipItem activeStep={index + 1} {...item} />,
