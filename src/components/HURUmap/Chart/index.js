@@ -9,7 +9,9 @@ import Download from "./Download";
 import renderChart from "./renderChart";
 import Share from "./Share";
 
-import { ReactComponent as InfoIcon } from "@/pesayetu/assets/icons/chart-info.svg";
+import { ReactComponent as DownloadIcon } from "@/pesayetu/assets/icons/Component 1.svg";
+import { ReactComponent as ShareIcon } from "@/pesayetu/assets/icons/Component 27.svg";
+import { ReactComponent as InfoIcon } from "@/pesayetu/assets/icons/Component 85 – 2.svg";
 import Link from "@/pesayetu/components/Link";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
@@ -46,6 +48,7 @@ function Chart({ indicator, title, ...props }) {
   const {
     description,
     metadata: { source, url },
+    // chart_configuration: { defaultType, disableToggle }
   } = indicator;
 
   const actions = [
@@ -63,13 +66,13 @@ function Chart({ indicator, title, ...props }) {
       id: "act-download",
       header: "Chart value as:",
       children: <Download title={title} view={view?.view} />,
-      icon: <InfoIcon />,
+      icon: <DownloadIcon />,
     },
     {
       id: "act-share",
       header: "Share chart via:",
       children: <Share title={title} specs={view?.spec} />,
-      icon: <InfoIcon />,
+      icon: <ShareIcon />,
     },
   ];
   useEffect(() => {
@@ -88,7 +91,7 @@ function Chart({ indicator, title, ...props }) {
         <Grid item xs={12} md={8}>
           <Typography variant="h6">{title}</Typography>
         </Grid>
-        <Grid item xs={12} md={4} container>
+        <Grid item xs={12} md={4} container justifyContent="flex-end">
           {actions.map((act) => (
             <Grid item key={act.id}>
               <Action {...act} />

@@ -36,6 +36,7 @@
     "next": "^11.1.0",
     "next-images": "^1.8.1",
     "next-seo": "^4.26.0",
+    "papaparse": "^5.3.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -51,7 +52,8 @@
     "vega-tooltip": "^0.27.0",
     "video.js": "^7.14.3",
     "videojs-youtube": "^2.6.1",
-    "webpack": "^5.0.0"
+    "webpack": "^5.0.0",
+    "xlsx": "^0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
