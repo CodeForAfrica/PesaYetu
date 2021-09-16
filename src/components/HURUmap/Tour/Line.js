@@ -30,10 +30,12 @@ function Line({ firstSelector, secondSelector, ...props }) {
       }
     }
   }, [firstSelector, secondSelector]);
+
   return (
     <div className={classes.lineContainer}>
+      {console.log("rendered with ", start, end)}
       <svg className={classes.line} height="100vh" width="100vw">
-        <line {...start} {...end} id="line" />
+        <line x1={start.x1} y1={start.y1} y2={end.y2} x2={end.x2} id="line" />
         <circle cx={end.x2} cy={end.y2} r="10" stroke="white" />
       </svg>
     </div>
