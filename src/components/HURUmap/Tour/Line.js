@@ -8,32 +8,27 @@ function Line({ firstSelector, secondSelector, ...props }) {
   const [start, setStart] = useState({});
   const [end, setEnd] = useState({});
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const firstElement = document
-        .querySelector(firstSelector)
-        ?.getBoundingClientRect();
-      const secondElement = document
-        .querySelector(secondSelector)
-        ?.getBoundingClientRect();
-
-      if (firstElement && secondElement) {
-        if (firstElement.left < secondElement.left) {
-          setStart({
-            x1: firstElement?.left + firstElement?.width,
-            y1: firstElement?.top,
-          });
-          setEnd({ x2: secondElement?.left, y2: secondElement.top });
-        } else {
-          setStart({ x1: firstElement?.left, y1: firstElement?.top });
-          setEnd({
-            x2: secondElement?.left + secondElement?.width,
-            y2: secondElement.top,
-          });
-        }
+    const firstElement = document
+      .querySelector(firstSelector)
+      ?.getBoundingClientRect();
+    const secondElement = document
+      .querySelector(secondSelector)
+      ?.getBoundingClientRect();
+    if (firstElement && secondElement) {
+      if (firstElement.left < secondElement.left) {
+        setStart({
+          x1: firstElement?.left + firstElement?.width,
+          y1: firstElement?.top,
+        });
+        setEnd({ x2: secondElement?.left, y2: secondElement.top });
+      } else {
+        setStart({ x1: firstElement?.left, y1: firstElement?.top });
+        setEnd({
+          x2: secondElement?.left + secondElement?.width,
+          y2: secondElement.top,
+        });
       }
-    }, 700); // wait for component to render before drawing line
-
-    return () => clearTimeout(timer);
+    }
   }, [firstSelector, secondSelector]);
   return (
     <div className={classes.lineContainer}>

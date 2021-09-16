@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { TourProvider } from "@reactour/tour";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import Connector from "@/pesayetu/components/HURUmap/Tour/Connector";
 import ToolTipItem from "@/pesayetu/components/HURUmap/Tour/ToolTipItem";
@@ -21,9 +21,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     borderRadius: typography.pxToRem(10),
     "--reactour-accent": "#1C2030",
   },
-  highlightedMask: {
-    height: 0,
-  },
   mask: {
     color: "#666666 !important",
     opacity: "0.5 !important",
@@ -32,12 +29,20 @@ const useStyles = makeStyles(({ typography, palette }) => ({
 
 export default function Tour({ children, items }) {
   const classes = useStyles();
+  const [isOpened, setIsOpened] = useState(false);
+
+  const setTourOpened = () => {
+    setIsOpened(true);
+  };
+
   return (
     <TourProvider
+      padding={{ mask: 0 }}
       position="center"
       className={classes.tour}
       showPrevNextButtons={false}
       showBagde={false}
+      afterOpen={setTourOpened}
       showCloseButton={false}
       accentColor="#fff"
       maskClassName={classes.mask}
@@ -47,8 +52,8 @@ export default function Tour({ children, items }) {
         content: <ToolTipItem activeStep={index + 1} {...item} />,
       }))}
     >
-      <Connector />
       {children}
+      {isOpened && <Connector />}
     </TourProvider>
   );
 }
