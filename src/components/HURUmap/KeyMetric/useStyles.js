@@ -15,14 +15,14 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       backgroundColor: palette.grey.main,
     },
   },
-  description: {
+  title: {
     display: "block",
     marginBottom: typography.pxToRem(8),
   },
   text: {
     fontSize: typography.pxToRem(11),
   },
-  summary: {
+  description: {
     padding: `${typography.pxToRem(6)} 0 0 ${typography.pxToRem(20)}`,
     color: "#666666",
   },
