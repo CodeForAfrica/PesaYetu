@@ -3,7 +3,7 @@ import React from "react";
 
 import Line from "./Line";
 
-const Tour = () => {
+const Tutorial = () => {
   const { isOpen, currentStep, steps } = useTour();
   if (!isOpen) {
     return null;
@@ -16,4 +16,4 @@ const Tour = () => {
   );
 };
 
-export default Tour;
+export default Tutorial;

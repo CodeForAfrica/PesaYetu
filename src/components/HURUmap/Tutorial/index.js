@@ -3,8 +3,8 @@ import { TourProvider } from "@reactour/tour";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import Connector from "@/pesayetu/components/HURUmap/Tour/Connector";
-import ToolTipItem from "@/pesayetu/components/HURUmap/Tour/ToolTipItem";
+import Connector from "@/pesayetu/components/HURUmap/Tutorial/Connector";
+import ToolTipItem from "@/pesayetu/components/HURUmap/Tutorial/ToolTipItem";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   tour: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-export default function Tour({ children, items }) {
+export default function Tutorial({ children, items }) {
   const classes = useStyles();
   const [isOpened, setIsOpened] = useState(false);
 
@@ -57,12 +57,12 @@ export default function Tour({ children, items }) {
     </TourProvider>
   );
 }
-Tour.propTypes = {
+Tutorial.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
   children: PropTypes.node,
 };
 
-Tour.defaultProps = {
+Tutorial.defaultProps = {
   items: undefined,
   children: undefined,
 };

@@ -1,14 +1,14 @@
 import React from "react";
 
-import Tour from "@/pesayetu/components/HURUmap/Tour";
+import Tutorial from "@/pesayetu/components/HURUmap/Tutorial";
 import { tour } from "@/pesayetu/config";
 
 export default {
-  title: "Components/HURUmap/Tour",
+  title: "Components/HURUmap/Tutorial",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <Tour {...args} />;
+const Template = ({ ...args }) => <Tutorial {...args} />;
 
 export const Default = Template.bind({});
 

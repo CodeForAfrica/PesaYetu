@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
-import TourProvider from "@/pesayetu/components/HURUmap/Tour";
-import Connector from "@/pesayetu/components/HURUmap/Tour/Connector";
+import TourProvider from "@/pesayetu/components/HURUmap/Tutorial";
+import Connector from "@/pesayetu/components/HURUmap/Tutorial/Connector";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
