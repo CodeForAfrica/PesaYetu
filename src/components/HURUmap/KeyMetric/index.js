@@ -5,7 +5,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const KeyMetric = ({ formattedValue, title, color, description }) => {
+const KeyMetric = ({ formattedValue, value, title, color, description }) => {
   const classes = useStyles();
 
   if (!(formattedValue && title)) {
@@ -15,7 +15,7 @@ const KeyMetric = ({ formattedValue, title, color, description }) => {
   return (
     <div className={classes.root}>
       <div className={classes.dataSection}>
-        <Typography variant="h3">{formattedValue}</Typography>
+        <Typography variant="h3">{formattedValue || value}</Typography>
         <Typography
           variant="caption"
           className={clsx(classes.text, classes.title)}
@@ -24,7 +24,7 @@ const KeyMetric = ({ formattedValue, title, color, description }) => {
         </Typography>
         <LinearProgress
           className={classes.progressBar}
-          value={formattedValue}
+          value={value}
           color={color}
           variant="buffer"
         />
@@ -41,6 +41,7 @@ const KeyMetric = ({ formattedValue, title, color, description }) => {
 
 KeyMetric.propTypes = {
   formattedValue: PropTypes.string,
+  value: PropTypes.number,
   title: PropTypes.string,
   color: PropTypes.string,
   description: PropTypes.string,
@@ -48,6 +49,7 @@ KeyMetric.propTypes = {
 
 KeyMetric.defaultProps = {
   formattedValue: undefined,
+  value: undefined,
   title: undefined,
   color: undefined,
   description: undefined,

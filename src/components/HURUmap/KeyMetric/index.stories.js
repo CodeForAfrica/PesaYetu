@@ -14,6 +14,7 @@ export const Default = Template.bind({});
 Default.args = {
   color: "Primary",
   formattedValue: "11%",
+  value: 11,
   title: "Voter registration %",
   description: "10.1% National Average",
 };
