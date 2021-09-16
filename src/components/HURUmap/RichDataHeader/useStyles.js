@@ -32,8 +32,16 @@ const useStyles = makeStyles(({ typography }) => ({
     // border: "solid 1px #F0F0F0",
     boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
   },
+  inputLabel: {
+    position: "inherit",
+    "&.MuiInputLabel-formControl": {
+      transform: "inherit",
+    },
+  },
   label: {
-    color: "black",
+    fontSize: typography.pxToRem(10),
+    fontWeight: "700",
+    color: "#666666",
   },
 
   underline: {
@@ -41,6 +49,10 @@ const useStyles = makeStyles(({ typography }) => ({
   },
   formControl: {
     marginLeft: typography.pxToRem(14),
+
+    // "&.MuiInput-formControl": {
+    //   marginTop: "0 !important",
+    // },
   },
 }));
 

@@ -37,8 +37,10 @@ const RichDataHeader = () => {
           </div>
         </Button>
         <FormControl className={classes.formControl}>
-          <InputLabel id="temp-id" className={classes.label}>
-            PIN AND COMPARE
+          <InputLabel id="temp-id" className={classes.inputLabel}>
+            <Typography variant="caption" className={classes.label}>
+              PIN AND COMPARE
+            </Typography>
           </InputLabel>
           <Select labelId="temp-id" id="simple-select">
             <MenuItem value={10}>Ten</MenuItem>
