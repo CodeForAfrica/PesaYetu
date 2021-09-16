@@ -31,13 +31,15 @@ const RichDataHeader = () => {
       <Typography className={classes.description}>A COUNTY IN KENYA</Typography>
       <hr className={classes.underline} />
       <Grid container>
-        <Button>
+        <Button variant="contained" className={classes.button}>
           <div className={classes.pin}>
             <Image src={Pin} layout="fill" />
           </div>
         </Button>
         <FormControl className={classes.formControl}>
-          <InputLabel id="temp-id">Age</InputLabel>
+          <InputLabel id="temp-id" className={classes.label}>
+            PIN AND COMPARE
+          </InputLabel>
           <Select labelId="temp-id" id="simple-select">
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
