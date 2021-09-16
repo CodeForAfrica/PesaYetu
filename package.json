@@ -44,7 +44,6 @@
     "react-multi-carousel": "^2.6.3",
     "react-share": "^4.4.0",
     "simplebar-react": "^2.1.0",
-    "styled-components": "^5.3.1",
     "swr": "^1.0.0",
     "video.js": "^7.14.3",
     "videojs-youtube": "^2.6.1",
