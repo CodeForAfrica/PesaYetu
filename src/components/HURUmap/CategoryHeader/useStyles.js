@@ -5,14 +5,12 @@ const useStyles = makeStyles(({ typography }) => ({
   title: {
     fontSize: typography.pxToRem(28),
   },
-  image: {
+  icon: {
     position: "relative",
     height: typography.pxToRem(55.5),
     width: typography.pxToRem(55.5),
   },
-  description: {
-    fontWeight: "400",
-  },
+  description: {},
 }));
 
 export default useStyles;

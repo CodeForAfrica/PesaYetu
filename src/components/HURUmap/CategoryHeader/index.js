@@ -1,31 +1,30 @@
 import { Typography, Grid } from "@material-ui/core";
-import Image from "next/image";
+import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-const CategoryHeader = ({ title, description, image }) => {
+const CategoryHeader = ({ title, description, icon }) => {
   const classes = useStyles();
+
+  if (!title) {
+    return null;
+  }
+
   return (
-    <div>
+    <div className={classes.root}>
       <Grid container alignItems="center">
-        {image && (
-          <div className={classes.image}>
-            <Image src={image} layout="fill" />
-          </div>
-        )}
-        {title && (
-          <Typography variant="h3" className={classes.title}>
-            {title}
-          </Typography>
-        )}
-      </Grid>
-      {description && (
-        <Typography variant="body2" className={classes.description}>
-          {description}
+        <div className={classes.icon}>
+          <Icon src={icon} layout="fill" />
+        </div>
+        <Typography variant="h3" className={classes.title}>
+          {title}
         </Typography>
-      )}
+      </Grid>
+      <Typography variant="body2" className={classes.description}>
+        {description}
+      </Typography>
     </div>
   );
 };
@@ -33,13 +32,13 @@ const CategoryHeader = ({ title, description, image }) => {
 CategoryHeader.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  image: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 CategoryHeader.defaultProps = {
   title: undefined,
   description: undefined,
-  image: undefined,
+  icon: undefined,
 };
 
 export default CategoryHeader;

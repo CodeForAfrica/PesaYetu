@@ -13,7 +13,7 @@ const Template = ({ ...args }) => <CategoryHeader {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  image: Group4658, // using data indicator icon, has margins
+  icon: Group4658, // using data indicator icon, has margins
   title: "Overview",
   description:
     "Population, Political, Land Use Type, Agriculture, Industries & Trade, Health Access, Education And Literacy",
