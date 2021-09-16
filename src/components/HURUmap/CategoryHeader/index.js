@@ -1,4 +1,4 @@
-import { Typography, Grid } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -14,14 +14,12 @@ const CategoryHeader = ({ title, description, icon }) => {
 
   return (
     <div className={classes.root}>
-      <Grid container alignItems="center">
+      <Typography variant="h3" className={classes.title}>
         <div className={classes.icon}>
           <Icon src={icon} layout="fill" />
         </div>
-        <Typography variant="h3" className={classes.title}>
-          {title}
-        </Typography>
-      </Grid>
+        {title}
+      </Typography>
       <Typography variant="body2" className={classes.description}>
         {description}
       </Typography>

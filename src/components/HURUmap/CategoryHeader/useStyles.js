@@ -4,6 +4,8 @@ const useStyles = makeStyles(({ typography }) => ({
   root: {},
   title: {
     fontSize: typography.pxToRem(28),
+    display: "flex",
+    alignItems: "center",
   },
   icon: {
     position: "relative",
