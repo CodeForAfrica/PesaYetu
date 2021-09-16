@@ -11,6 +11,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import Pin from "@/pesayetu/assets/icons/pin.svg";
 import Print from "@/pesayetu/assets/icons/print.svg";
 
 const RichDataHeader = () => {
@@ -29,7 +30,9 @@ const RichDataHeader = () => {
       <Typography className={classes.description}>A COUNTY IN KENYA</Typography>
       <hr className={classes.underline} />
       <Grid container>
-        <Typography>pin icon</Typography>
+        <div className={classes.pin}>
+          <Image src={Pin} layout="fill" />
+        </div>
         <FormControl className={classes.formControl}>
           <InputLabel id="temp-id">Age</InputLabel>
           <Select labelId="temp-id" id="simple-select">
