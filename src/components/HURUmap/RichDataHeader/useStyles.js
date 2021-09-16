@@ -19,14 +19,17 @@ const useStyles = makeStyles(({ typography }) => ({
     height: typography.pxToRem(44),
     width: typography.pxToRem(44),
     border: "solid 1px #F0F0F0",
+    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
     backgroundColor: "#F0F0F0",
     "& img": {
       padding: `${typography.pxToRem(8)} !important `,
     },
   },
-
   underline: {
     border: "solid 1px #F0F0F0",
+  },
+  formControl: {
+    marginLeft: typography.pxToRem(14),
   },
 }));
 

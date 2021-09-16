@@ -5,6 +5,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Button,
 } from "@material-ui/core";
 import Image from "next/image";
 import React from "react";
@@ -30,9 +31,11 @@ const RichDataHeader = () => {
       <Typography className={classes.description}>A COUNTY IN KENYA</Typography>
       <hr className={classes.underline} />
       <Grid container>
-        <div className={classes.pin}>
-          <Image src={Pin} layout="fill" />
-        </div>
+        <Button>
+          <div className={classes.pin}>
+            <Image src={Pin} layout="fill" />
+          </div>
+        </Button>
         <FormControl className={classes.formControl}>
           <InputLabel id="temp-id">Age</InputLabel>
           <Select labelId="temp-id" id="simple-select">
