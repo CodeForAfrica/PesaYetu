@@ -7,12 +7,14 @@ const useStyles = makeStyles(({ typography }) => ({
     display: "flex",
     alignItems: "center",
   },
-  icon: {
-    position: "relative",
-    height: typography.pxToRem(55.5),
-    width: typography.pxToRem(55.5),
-  },
+
   description: {},
+  svgIcon: {
+    "&.MuiSvgIcon-root": {
+      width: typography.pxToRem(44),
+      height: typography.pxToRem(44),
+    },
+  },
 }));
 
 export default useStyles;
