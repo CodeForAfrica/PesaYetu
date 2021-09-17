@@ -10,9 +10,6 @@ const useStyles = makeStyles(({ typography }) => ({
   header: {
     marginBottom: typography.pxToRem(48),
   },
-  itemClass: {},
-  carousel: {},
-  section: {},
   description: {
     marginLeft: typography.pxToRem(16),
     width: typography.pxToRem(278),
