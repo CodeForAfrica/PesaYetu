@@ -1,11 +1,10 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Typography, IconButton } from "@material-ui/core";
+import { Grid, Typography, IconButton, Avatar } from "@material-ui/core";
 import { useTour } from "@reactour/tour";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import TutorialIcon from "./TutorialIcon";
 import useStyles from "./useStyles";
 
 import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/Component 108 – 5.svg";
@@ -49,7 +48,11 @@ function TutorialStep({ description, title, image, selector, ...props }) {
       <Grid container justifyContent="space-between">
         <Grid item xs={12} md={5} container wrap="nowrap">
           <Grid item>
-            <TutorialIcon number={currentStep} />
+            <Avatar className={classes.currentStep}>
+              <Typography color="textSecondary" variant="h3">
+                {currentStep + 1}
+              </Typography>
+            </Avatar>
           </Grid>
           <Grid item xs={8}>
             <RichTypography className={classes.description}>
