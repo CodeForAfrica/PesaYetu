@@ -4,7 +4,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     width: typography.pxToRem(964),
   },
-
   lineContainer: {
     position: "fixed",
     top: 0,

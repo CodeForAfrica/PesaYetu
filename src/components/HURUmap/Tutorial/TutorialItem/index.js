@@ -25,52 +25,50 @@ function TutorialItem({
   };
 
   return (
-    <>
-      <div className={classes.root}>
-        <Grid
-          className={classes.header}
-          container
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Grid item>
-            <Typography
-              id={`tutorial-title-${activeStep - 1}`}
-              className={classes.title}
-              variant="h4"
+    <div className={classes.root}>
+      <Grid
+        className={classes.header}
+        container
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid item>
+          <Typography
+            id={`tutorial-title-${activeStep - 1}`}
+            className={classes.title}
+            variant="h4"
+          >
+            {title}
+          </Typography>
+        </Grid>
+        <Grid item>
+          {handleClose && (
+            <IconButton
+              aria-label="close"
+              className={classes.closeButton}
+              onClick={handleClose}
             >
-              {title}
-            </Typography>
-          </Grid>
+              <CloseIcon />
+            </IconButton>
+          )}
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="space-between">
+        <Grid item xs={12} md={5} container wrap="nowrap">
           <Grid item>
-            {handleClose && (
-              <IconButton
-                aria-label="close"
-                className={classes.closeButton}
-                onClick={handleClose}
-              >
-                <CloseIcon />
-              </IconButton>
-            )}
+            <TutorialIcon number={activeStep} />
+          </Grid>
+          <Grid item xs={8}>
+            <RichTypography className={classes.description}>
+              {description}
+            </RichTypography>
           </Grid>
         </Grid>
-        <Grid container justifyContent="space-between">
-          <Grid item xs={12} md={5} container wrap="nowrap">
-            <Grid item>
-              <TutorialIcon number={activeStep} />
-            </Grid>
-            <Grid item xs={8}>
-              <RichTypography className={classes.description}>
-                {description}
-              </RichTypography>
-            </Grid>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Image width={376} height={325} src={image} />
-          </Grid>
+        <Grid item xs={12} md={6}>
+          <Image width={376} height={325} src={image} />
         </Grid>
-      </div>
-    </>
+      </Grid>
+    </div>
   );
 }
 
