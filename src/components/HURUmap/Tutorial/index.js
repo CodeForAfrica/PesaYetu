@@ -41,6 +41,14 @@ export default function Tutorial({ children, items }) {
   return (
     <TourProvider
       padding={{ mask: 0 }}
+      styles={{
+        dot: (base) => ({
+          ...base,
+          width: 16,
+          height: 16,
+          border: "2px solid #1C2030",
+        }),
+      }}
       position="center"
       className={classes.tour}
       showPrevNextButtons={false}
