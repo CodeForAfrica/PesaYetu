@@ -42,10 +42,20 @@ const useStyles = makeStyles(({ typography }) => ({
     fontSize: typography.pxToRem(10),
     fontWeight: "700",
     color: "#666666",
+    marginBottom: typography.pxToRem(3),
   },
 
   underline: {
     border: "solid 1px #F0F0F0",
+  },
+  select: {
+    backgroundColor: "#F8F8F8",
+    marginTop: "0 !important",
+    minWidth: typography.pxToRem(200),
+  },
+  placeholder: {
+    marginLeft: typography.pxToRem(15),
+    color: "#959696",
   },
   formControl: {
     marginLeft: typography.pxToRem(14),

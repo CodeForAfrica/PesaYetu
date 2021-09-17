@@ -28,7 +28,9 @@ const RichDataHeader = () => {
           <Image src={Print} layout="fill" />
         </div>
       </Grid>
-      <Typography className={classes.description}>A COUNTY IN KENYA</Typography>
+      <Typography variant="subtitle2" className={classes.description}>
+        A COUNTY IN KENYA
+      </Typography>
       <hr className={classes.underline} />
       <Grid container>
         <Button variant="contained" className={classes.button}>
@@ -42,8 +44,17 @@ const RichDataHeader = () => {
               PIN AND COMPARE
             </Typography>
           </InputLabel>
-          <Select labelId="temp-id" id="simple-select">
-            <MenuItem value={10}>Ten</MenuItem>
+          <Select
+            labelId="temp-id"
+            id="simple-select"
+            className={classes.select}
+            value={2}
+          >
+            <MenuItem value={2} className={classes.currentItem}>
+              <Typography variant="caption" className={classes.placeholder}>
+                Select location
+              </Typography>
+            </MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
