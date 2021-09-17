@@ -651,6 +651,11 @@ export const datasetsAndDocumentsArgs = {
 };
 
 export const tour = {
+  sampleElements: [
+    `<button id= "location-search">Location Search </button>`,
+    `<button id= "nav-help">Help </button>`,
+  ],
+  defaultOpen: true,
   items: [
     {
       selector: "#location-search",

@@ -27,9 +27,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-export default function Tutorial({ children, items }) {
+export default function Tutorial({ children, defaultOpen, items }) {
   const classes = useStyles();
-  const [isOpened, setIsOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState(defaultOpen);
 
   const setTourOpened = () => {
     setIsOpened(true);
@@ -53,6 +53,7 @@ export default function Tutorial({ children, items }) {
       className={classes.tour}
       showPrevNextButtons={false}
       showBagde={false}
+      defaultOpen={defaultOpen}
       afterOpen={setTourOpened}
       beforeClose={setTourClosed}
       showCloseButton={false}
@@ -72,9 +73,11 @@ export default function Tutorial({ children, items }) {
 Tutorial.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
   children: PropTypes.node,
+  defaultOpen: PropTypes.bool,
 };
 
 Tutorial.defaultProps = {
   items: undefined,
   children: undefined,
+  defaultOpen: false,
 };
