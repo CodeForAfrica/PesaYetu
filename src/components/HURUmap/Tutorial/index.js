@@ -34,6 +34,9 @@ export default function Tutorial({ children, items }) {
   const setTourOpened = () => {
     setIsOpened(true);
   };
+  const setTourClosed = () => {
+    setIsOpened(false);
+  };
 
   return (
     <TourProvider
@@ -43,6 +46,7 @@ export default function Tutorial({ children, items }) {
       showPrevNextButtons={false}
       showBagde={false}
       afterOpen={setTourOpened}
+      beforeClose={setTourClosed}
       showCloseButton={false}
       accentColor="#fff"
       maskClassName={classes.mask}
