@@ -22,6 +22,7 @@ const useStyles = makeStyles(({ typography }) => ({
   button: {
     height: typography.pxToRem(44),
     width: typography.pxToRem(44),
+    minWidth: typography.pxToRem(44),
     backgroundColor: "#F0F0F0",
     boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
   },
@@ -39,6 +40,12 @@ const useStyles = makeStyles(({ typography }) => ({
   },
   underline: {
     border: "solid 1px #F0F0F0",
+  },
+  svgIconButton: {
+    "&.MuiSvgIcon-root": {
+      width: typography.pxToRem(27),
+      height: typography.pxToRem(27),
+    },
   },
   svgIcon: {
     "&.MuiSvgIcon-root": {

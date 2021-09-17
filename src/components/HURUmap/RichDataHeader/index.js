@@ -8,12 +8,11 @@ import {
   Button,
   SvgIcon,
 } from "@material-ui/core";
-import Image from "next/image";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-import Pin from "@/pesayetu/assets/icons/pin.svg";
+import { ReactComponent as Pin } from "@/pesayetu/assets/icons/pin.svg";
 import { ReactComponent as Print } from "@/pesayetu/assets/icons/print.svg";
 
 const RichDataHeader = () => {
@@ -33,9 +32,7 @@ const RichDataHeader = () => {
       <hr className={classes.underline} />
       <Grid container>
         <Button variant="contained" className={classes.button}>
-          <div className={classes.pin}>
-            <Image src={Pin} layout="fill" />
-          </div>
+          <SvgIcon component={Pin} className={classes.svgIconButton} />
         </Button>
         <FormControl className={classes.formControl}>
           <InputLabel id="temp-id" className={classes.inputLabel}>
