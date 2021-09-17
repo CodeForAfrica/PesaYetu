@@ -5,8 +5,8 @@ import useStyles from "./useStyles";
 
 function Line({ firstSelector, secondSelector, ...props }) {
   const classes = useStyles(props);
-  const [start, setStart] = useState({});
-  const [end, setEnd] = useState({});
+  const [start, setStart] = useState();
+  const [end, setEnd] = useState();
   useEffect(() => {
     const firstElement = document
       .querySelector(firstSelector)
@@ -14,6 +14,7 @@ function Line({ firstSelector, secondSelector, ...props }) {
     const secondElement = document
       .querySelector(secondSelector)
       ?.getBoundingClientRect();
+    console.log(firstElement, secondElement);
     if (firstElement && secondElement) {
       if (firstElement.left < secondElement.left) {
         setStart({
@@ -30,12 +31,14 @@ function Line({ firstSelector, secondSelector, ...props }) {
       }
     }
   }, [firstSelector, secondSelector]);
-
+  if (!start || !end) {
+    return null;
+  }
   return (
     <div className={classes.lineContainer}>
-      {console.log("rendered with ", start, end)}
+      {console.log("rendered with ", firstSelector, secondSelector)}
       <svg className={classes.line} height="100vh" width="100vw">
-        <line x1={start.x1} y1={start.y1} y2={end.y2} x2={end.x2} id="line" />
+        <line {...start} {...end} id="line" />
         <circle cx={end.x2} cy={end.y2} r="10" stroke="white" />
       </svg>
     </div>
