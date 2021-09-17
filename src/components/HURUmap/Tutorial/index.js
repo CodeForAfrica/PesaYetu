@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import Connector from "@/pesayetu/components/HURUmap/Tutorial/Connector";
-import TutorialItem from "@/pesayetu/components/HURUmap/Tutorial/TutorialItem";
+import TutorialStep from "@/pesayetu/components/HURUmap/Tutorial/TutorialStep";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   tour: {
@@ -53,7 +53,7 @@ export default function Tutorial({ children, items }) {
       highlightedMaskClassName={classes.highlightedMask}
       steps={items.map((item, index) => ({
         selector: item.selector,
-        content: <TutorialItem activeStep={index + 1} {...item} />,
+        content: <TutorialStep activeStep={index} {...item} />,
       }))}
     >
       {children}

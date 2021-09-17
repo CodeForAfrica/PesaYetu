@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
-import TourProvider from "@/pesayetu/components/HURUmap/Tutorial";
-import Connector from "@/pesayetu/components/HURUmap/Tutorial/Connector";
+import Tutorial from "@/pesayetu/components/HURUmap/Tutorial";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
@@ -14,12 +13,11 @@ export default function Explore(props) {
     blocks: { tutorial },
   } = props;
   return (
-    <TourProvider {...tutorial}>
-      <Connector />
+    <Tutorial {...tutorial}>
       <Page {...props}>
         <ExplorePage {...props} />
       </Page>
-    </TourProvider>
+    </Tutorial>
   );
 }
 Explore.propTypes = {

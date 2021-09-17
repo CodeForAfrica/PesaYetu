@@ -10,16 +10,9 @@ import useStyles from "./useStyles";
 
 import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/Component 108 – 5.svg";
 
-function TutorialItem({
-  activeStep,
-  description,
-  title,
-  image,
-  selector,
-  ...props
-}) {
+function TutorialStep({ description, title, image, selector, ...props }) {
   const classes = useStyles(props);
-  const { setIsOpen } = useTour();
+  const { setIsOpen, currentStep } = useTour();
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -34,7 +27,7 @@ function TutorialItem({
       >
         <Grid item>
           <Typography
-            id={`tutorial-title-${activeStep - 1}`}
+            id={`tutorial-title-${currentStep}`}
             className={classes.title}
             variant="h4"
           >
@@ -56,7 +49,7 @@ function TutorialItem({
       <Grid container justifyContent="space-between">
         <Grid item xs={12} md={5} container wrap="nowrap">
           <Grid item>
-            <TutorialIcon number={activeStep} />
+            <TutorialIcon number={currentStep} />
           </Grid>
           <Grid item xs={8}>
             <RichTypography className={classes.description}>
@@ -72,8 +65,7 @@ function TutorialItem({
   );
 }
 
-TutorialItem.propTypes = {
-  activeStep: PropTypes.string,
+TutorialStep.propTypes = {
   description: PropTypes.func,
   image: PropTypes.number,
   onClose: PropTypes.func,
@@ -81,8 +73,7 @@ TutorialItem.propTypes = {
   selector: PropTypes.string,
 };
 
-TutorialItem.defaultProps = {
-  activeStep: PropTypes.string,
+TutorialStep.defaultProps = {
   description: undefined,
   image: undefined,
   onClose: undefined,
@@ -90,4 +81,4 @@ TutorialItem.defaultProps = {
   selector: undefined,
 };
 
-export default TutorialItem;
+export default TutorialStep;
