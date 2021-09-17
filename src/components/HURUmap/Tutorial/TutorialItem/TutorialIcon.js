@@ -22,7 +22,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function TooltipIcon({ number, ...props }) {
+function TutorialIcon({ number, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -56,12 +56,12 @@ function TooltipIcon({ number, ...props }) {
   );
 }
 
-TooltipIcon.propTypes = {
+TutorialIcon.propTypes = {
   number: PropTypes.string || PropTypes.number,
 };
 
-TooltipIcon.defaultProps = {
+TutorialIcon.defaultProps = {
   number: undefined,
 };
 
-export default TooltipIcon;
+export default TutorialIcon;

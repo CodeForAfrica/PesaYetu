@@ -10,7 +10,7 @@ const Tutorial = () => {
   }
   return (
     <Line
-      firstSelector={`#carousel-title-${currentStep}`}
+      firstSelector={`#tutorial-title-${currentStep}`}
       secondSelector={steps[currentStep].selector}
     />
   );

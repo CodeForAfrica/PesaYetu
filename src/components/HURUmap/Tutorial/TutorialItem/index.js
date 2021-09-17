@@ -5,12 +5,12 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Tooltipicon from "./ToolTipIcon";
+import TutorialIcon from "./TutorialIcon";
 import useStyles from "./useStyles";
 
 import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/Component 108 – 5.svg";
 
-function CarouselItem({
+function TutorialItem({
   activeStep,
   description,
   title,
@@ -35,7 +35,7 @@ function CarouselItem({
         >
           <Grid item>
             <Typography
-              id={`carousel-title-${activeStep - 1}`}
+              id={`tutorial-title-${activeStep - 1}`}
               className={classes.title}
               variant="h4"
             >
@@ -57,7 +57,7 @@ function CarouselItem({
         <Grid container justifyContent="space-between">
           <Grid item xs={12} md={5} container wrap="nowrap">
             <Grid item>
-              <Tooltipicon number={activeStep} />
+              <TutorialIcon number={activeStep} />
             </Grid>
             <Grid item xs={8}>
               <RichTypography className={classes.description}>
@@ -74,7 +74,7 @@ function CarouselItem({
   );
 }
 
-CarouselItem.propTypes = {
+TutorialItem.propTypes = {
   activeStep: PropTypes.string,
   description: PropTypes.func,
   image: PropTypes.number,
@@ -83,7 +83,7 @@ CarouselItem.propTypes = {
   selector: PropTypes.string,
 };
 
-CarouselItem.defaultProps = {
+TutorialItem.defaultProps = {
   activeStep: PropTypes.string,
   description: undefined,
   image: undefined,
@@ -92,4 +92,4 @@ CarouselItem.defaultProps = {
   selector: undefined,
 };
 
-export default CarouselItem;
+export default TutorialItem;
