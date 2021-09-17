@@ -48,7 +48,7 @@ function Line({ firstSelector, secondSelector, ...props }) {
         width="100vw"
       >
         <line {...start} {...end} id="line" />
-        <circle cx={end.x2} cy={end.y2} r="10" stroke="white" />
+        <circle cx={end.x2} cy={end.y2} r="9" strokeWidth={2} stroke="white" />
       </svg>
     </div>
   );
