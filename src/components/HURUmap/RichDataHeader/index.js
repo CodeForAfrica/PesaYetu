@@ -8,40 +8,41 @@ import {
   Button,
   SvgIcon,
 } from "@material-ui/core";
+import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-import { ReactComponent as Pin } from "@/pesayetu/assets/icons/pin.svg";
-import { ReactComponent as Print } from "@/pesayetu/assets/icons/print.svg";
-
-const RichDataHeader = () => {
+const RichDataHeader = ({ title, description, label, pinIcon, printIcon }) => {
   const classes = useStyles();
 
+  if (!(title && description)) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <Grid container justifyContent="space-between">
         <Typography variant="h3" className={classes.title}>
-          Isiolo
+          {title}
         </Typography>
-        <SvgIcon component={Print} className={classes.svgIcon} />
+        <SvgIcon component={printIcon} className={classes.svgIcon} />
       </Grid>
       <Typography variant="subtitle2" className={classes.description}>
-        A COUNTY IN KENYA
+        {description}
       </Typography>
       <hr className={classes.underline} />
       <Grid container>
         <Button variant="contained" className={classes.button}>
-          <SvgIcon component={Pin} className={classes.svgIconButton} />
+          <SvgIcon component={pinIcon} className={classes.svgIconButton} />
         </Button>
         <FormControl className={classes.formControl}>
           <InputLabel id="temp-id" className={classes.inputLabel}>
             <Typography variant="caption" className={classes.label}>
-              PIN AND COMPARE
+              {label}
             </Typography>
           </InputLabel>
           <Select
-            labelId="temp-id"
+            labelId="select-id"
             id="simple-select"
             className={classes.select}
             value={2}
@@ -59,6 +60,22 @@ const RichDataHeader = () => {
       <hr className={classes.underline} />
     </div>
   );
+};
+
+RichDataHeader.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  label: PropTypes.string,
+  pinIcon: PropTypes.string,
+  printIcon: PropTypes.string,
+};
+
+RichDataHeader.defaultProps = {
+  title: undefined,
+  description: undefined,
+  label: undefined,
+  printIcon: undefined,
+  pinIcon: undefined,
 };
 
 export default RichDataHeader;

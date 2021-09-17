@@ -38,6 +38,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     fontWeight: "700",
     color: "#666666",
     marginBottom: typography.pxToRem(3),
+    textTransform: "uppercase",
   },
   underline: {
     border: `solid 1px ${palette.divider}`,
