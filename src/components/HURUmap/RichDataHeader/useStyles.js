@@ -37,9 +37,17 @@ const useStyles = makeStyles(({ typography }) => ({
     color: "#666666",
     marginBottom: typography.pxToRem(3),
   },
-
   underline: {
     border: "solid 1px #F0F0F0",
+  },
+  svgIcon: {
+    "&.MuiSvgIcon-root": {
+      width: typography.pxToRem(44),
+      height: typography.pxToRem(44),
+      backgroundColor: "#F0F0F0",
+      borderRadius: "50%",
+      padding: typography.pxToRem(11),
+    },
   },
   select: {
     backgroundColor: "#F8F8F8",

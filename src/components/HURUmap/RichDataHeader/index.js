@@ -6,6 +6,7 @@ import {
   Select,
   MenuItem,
   Button,
+  SvgIcon,
 } from "@material-ui/core";
 import Image from "next/image";
 import React from "react";
@@ -13,7 +14,7 @@ import React from "react";
 import useStyles from "./useStyles";
 
 import Pin from "@/pesayetu/assets/icons/pin.svg";
-import Print from "@/pesayetu/assets/icons/print.svg";
+import { ReactComponent as Print } from "@/pesayetu/assets/icons/print.svg";
 
 const RichDataHeader = () => {
   const classes = useStyles();
@@ -24,9 +25,7 @@ const RichDataHeader = () => {
         <Typography variant="h3" className={classes.title}>
           Isiolo
         </Typography>
-        <div className={classes.image}>
-          <Image src={Print} layout="fill" />
-        </div>
+        <SvgIcon component={Print} className={classes.svgIcon} />
       </Grid>
       <Typography variant="subtitle2" className={classes.description}>
         A COUNTY IN KENYA
