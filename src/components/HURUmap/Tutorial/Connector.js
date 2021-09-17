@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import Line from "./Line";
 
-const Tutorial = () => {
+const Connector = () => {
   const { isOpen, currentStep, steps } = useTour();
   const [start, setStart] = useState();
   const [end, setEnd] = useState();
@@ -34,14 +34,11 @@ const Tutorial = () => {
     }
   }, [currentStep, steps]);
 
-  if (!isOpen) {
+  if (!(isOpen && start && end)) {
     return null;
   }
 
-  if (!start || !end) {
-    return null;
-  }
-  return <Line start={start} end={end} />;
+  return <Line {...start} {...end} />;
 };
 
-export default Tutorial;
+export default Connector;
