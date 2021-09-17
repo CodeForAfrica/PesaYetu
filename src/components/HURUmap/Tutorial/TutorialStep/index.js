@@ -34,8 +34,8 @@ function TutorialStep({ description, title, image, selector, ...props }) {
             {title}
           </Typography>
         </Grid>
-        <Grid item>
-          {handleClose && (
+        {handleClose && (
+          <Grid item>
             <IconButton
               aria-label="close"
               className={classes.closeButton}
@@ -43,8 +43,8 @@ function TutorialStep({ description, title, image, selector, ...props }) {
             >
               <CloseIcon />
             </IconButton>
-          )}
-        </Grid>
+          </Grid>
+        )}
       </Grid>
       <Grid container justifyContent="space-between">
         <Grid item xs={12} md={5} container wrap="nowrap">
