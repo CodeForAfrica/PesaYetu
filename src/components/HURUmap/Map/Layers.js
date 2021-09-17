@@ -68,22 +68,22 @@ const Layers = ({
   const groupRef = useRef();
   const classes = useStyles(props);
 
-  const popUpContent = (level, name) =>
-    ReactDOMServer.renderToStaticMarkup(
-      <ThemeProvider theme={theme}>
-        <LocationTag
-          level={level}
-          name={name.toLowerCase()}
-          classes={{ root: classes.locationtag }}
-        />
-      </ThemeProvider>
-    );
-
   const onEachFeature = useCallback(
     (feature, layer) => {
       if (!featuredCounties?.includes(feature.properties.code)) {
         layer.setStyle(geoStyles.inactive);
       } else {
+        const popUpContent = (level, name) =>
+          ReactDOMServer.renderToStaticMarkup(
+            <ThemeProvider theme={theme}>
+              <LocationTag
+                level={level}
+                name={name.toLowerCase()}
+                classes={{ root: classes.locationtag }}
+              />
+            </ThemeProvider>
+          );
+
         layer
           .bindTooltip(
             popUpContent(feature.properties.level, feature.properties.name),
@@ -118,7 +118,7 @@ const Layers = ({
         });
       }
     },
-    [setGeoCode, setShouldFetch, featuredCounties]
+    [featuredCounties, classes.locationtag, setGeoCode, setShouldFetch, router]
   );
 
   useEffect(() => {
