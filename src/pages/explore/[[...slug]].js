@@ -11,10 +11,10 @@ import fetchJson from "@/pesayetu/utils/fetchJson";
 
 export default function Explore(props) {
   const {
-    blocks: { tooltipBanner },
+    blocks: { tutorial },
   } = props;
   return (
-    <TourProvider {...tooltipBanner}>
+    <TourProvider {...tutorial}>
       <Connector />
       <Page {...props}>
         <ExplorePage {...props} />
@@ -24,7 +24,7 @@ export default function Explore(props) {
 }
 Explore.propTypes = {
   blocks: PropTypes.shape({
-    tooltipBanner: PropTypes.shape({
+    tutorial: PropTypes.shape({
       items: PropTypes.arrayOf(PropTypes.shape({})),
     }),
   }),
