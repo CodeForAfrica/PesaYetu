@@ -18,18 +18,11 @@ const useStyles = makeStyles(({ typography }) => ({
     position: "relative",
     height: typography.pxToRem(44),
     width: typography.pxToRem(44),
-    // border: "solid 1px #F0F0F0",
-    // boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-    // backgroundColor: "#F0F0F0",
-    // "& img": {
-    //   padding: `${typography.pxToRem(8)} !important `,
-    // },
   },
   button: {
     height: typography.pxToRem(44),
     width: typography.pxToRem(44),
     backgroundColor: "#F0F0F0",
-    // border: "solid 1px #F0F0F0",
     boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
   },
   inputLabel: {
@@ -52,6 +45,17 @@ const useStyles = makeStyles(({ typography }) => ({
     backgroundColor: "#F8F8F8",
     marginTop: "0 !important",
     minWidth: typography.pxToRem(200),
+    "&.MuiPopover-paper": {
+      top: typography.pxToRem(171),
+    },
+    "&.MuiInput-underline": {
+      "&::before": {
+        borderBottom: 0,
+      },
+      "&::after": {
+        borderBottom: 0,
+      },
+    },
   },
   placeholder: {
     marginLeft: typography.pxToRem(15),
@@ -59,10 +63,6 @@ const useStyles = makeStyles(({ typography }) => ({
   },
   formControl: {
     marginLeft: typography.pxToRem(14),
-
-    // "&.MuiInput-formControl": {
-    //   marginTop: "0 !important",
-    // },
   },
 }));
 
