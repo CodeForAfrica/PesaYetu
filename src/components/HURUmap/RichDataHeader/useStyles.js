@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
   title: {
     borderBottom: "solid 5px #0067A3",
@@ -20,10 +20,11 @@ const useStyles = makeStyles(({ typography }) => ({
     width: typography.pxToRem(44),
   },
   button: {
+    marginTop: typography.pxToRem(7),
     height: typography.pxToRem(44),
     width: typography.pxToRem(44),
     minWidth: typography.pxToRem(44),
-    backgroundColor: "#F0F0F0",
+    backgroundColor: palette.grey.light,
     boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
   },
   inputLabel: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles(({ typography }) => ({
     marginBottom: typography.pxToRem(3),
   },
   underline: {
-    border: "solid 1px #F0F0F0",
+    border: `solid 1px ${palette.divider}`,
   },
   svgIconButton: {
     "&.MuiSvgIcon-root": {
@@ -51,13 +52,13 @@ const useStyles = makeStyles(({ typography }) => ({
     "&.MuiSvgIcon-root": {
       width: typography.pxToRem(44),
       height: typography.pxToRem(44),
-      backgroundColor: "#F0F0F0",
+      backgroundColor: palette.grey.light,
       borderRadius: "50%",
       padding: typography.pxToRem(11),
     },
   },
   select: {
-    backgroundColor: "#F8F8F8",
+    backgroundColor: palette.background.paper,
     marginTop: "0 !important",
     minWidth: typography.pxToRem(200),
     "&.MuiPopover-paper": {
