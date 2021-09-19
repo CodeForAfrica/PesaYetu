@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
-const TreeView = ({ items, ...props }) => {
+const PanelButtonGroup = ({ items, ...props }) => {
   const [selected, setSelected] = useState();
   const classes = useStyles(props);
   if (!items || !items.length) {
@@ -33,7 +33,7 @@ const TreeView = ({ items, ...props }) => {
   );
 };
 
-TreeView.propTypes = {
+PanelButtonGroup.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -42,8 +42,8 @@ TreeView.propTypes = {
   ),
 };
 
-TreeView.defaultProps = {
+PanelButtonGroup.defaultProps = {
   items: undefined,
 };
 
-export default TreeView;
+export default PanelButtonGroup;

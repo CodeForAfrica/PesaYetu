@@ -1,17 +1,17 @@
 import React from "react";
 
-import ExploreButton from ".";
+import PanelButtonGroup from ".";
 
 import pinIcon from "@/pesayetu/assets/Component122.svg";
 import pinBlack from "@/pesayetu/assets/icons/office-push-pin.svg";
 import locationIcon from "@/pesayetu/assets/icons/pin.svg";
 
 export default {
-  title: "Components/HURUmap/ExploreButton",
+  title: "Components/HURUmap/PanelButtonGroup",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <ExploreButton {...args} />;
+const Template = ({ ...args }) => <PanelButtonGroup {...args} />;
 
 export const Default = Template.bind({});
 
