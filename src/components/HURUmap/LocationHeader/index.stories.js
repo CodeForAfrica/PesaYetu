@@ -1,14 +1,14 @@
 import React from "react";
 
 import { ReactComponent as Print } from "@/pesayetu/assets/icons/print.svg";
-import LocationaHeader from "@/pesayetu/components/HURUmap/LocationHeader";
+import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 
 export default {
   title: "Components/HURUmap/LocationHeader",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <LocationaHeader {...args} />;
+const Template = ({ ...args }) => <LocationHeader {...args} />;
 
 export const Default = Template.bind({});
 
