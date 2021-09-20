@@ -1,30 +1,17 @@
 import React from "react";
 
-import MapLocationTags from ".";
+import Location from ".";
 
-import { items, tags } from "@/pesayetu/config";
+import { hurumapArgs } from "@/pesayetu/config";
+
+const { location } = hurumapArgs;
 
 export default {
-  title: "Components/HURUmap/MapLocationTags",
-  argTypes: {
-    items: {
-      control: {
-        type: "array",
-      },
-    },
-    tags: {
-      control: {
-        type: "array",
-      },
-    },
-  },
+  title: "Components/HURUmap/Location",
 };
 
-const Template = ({ ...args }) => <MapLocationTags {...args} />;
+const Template = (args) => <Location {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {
-  tags,
-  items,
-};
+Default.args = location;
