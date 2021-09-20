@@ -1,93 +1,94 @@
-import { Typography, Grid, Paper } from "@material-ui/core";
+import { Box } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
+import LocationHighlight from "@/pesayetu/components/HURUmap/LocationHighlight";
 import LocationTag from "@/pesayetu/components/HURUmap/LocationTag";
-import Section from "@/pesayetu/components/Section";
 
-function MapLocationTags({ items, tags, ...props }) {
+function Location({ className, highlights, isLoading, tags, ...props }) {
   const classes = useStyles(props);
 
-  if (!items?.length) {
-    return null;
-  }
   if (!tags?.length) {
     return null;
   }
   return (
-    <div className={classes.root}>
-      <Section classes={{ root: classes.section }}>
-        <Paper className={classes.paper}>
-          <Grid
-            container
-            item
-            xs={12}
-            alignItems="center"
-            justifyContent="center"
-            className={classes.locationTags}
-          >
-            <Grid
-              container
-              item
-              xs={12}
-              justifyContent="center"
-              alignItems="center"
-            >
-              {tags.map((tag) => (
-                <LocationTag
-                  level={tag.level}
-                  name={tag.name}
-                  classes={{
-                    root: classes.locationTag,
-                    level: classes.level,
-                    name: classes.name,
-                  }}
-                />
-              ))}
-            </Grid>
-          </Grid>
-          <Grid container direction="row" className={classes.locationInfo}>
-            {items.map((item, index) => (
-              <Grid
-                item
-                xs={4}
-                className={index === 1 ? classes.middleItem : classes.item}
-              >
-                <Typography variant="body1" className={classes.label}>
-                  {item.label}
-                </Typography>
-                <Typography variant="body1" className={classes.number}>
-                  {item.number}%
-                </Typography>
-              </Grid>
-            ))}
-          </Grid>
-        </Paper>
-      </Section>
-    </div>
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      className={clsx(classes.root, className)}
+    >
+      <Box
+        display="flex"
+        flexWrap="nowrap"
+        justifyContent="center"
+        className={classes.tags}
+      >
+        {tags.map((tag, index) => (
+          <LocationTag
+            key={`${tag.level}-${tag.name}`}
+            isLoading={isLoading}
+            {...tag}
+            active={index === tags.length - 1}
+            variant="highlight"
+            classes={{
+              root: classes.tag,
+              level: classes.tagLevel,
+              name: classes.tagName,
+            }}
+          />
+        ))}
+      </Box>
+      {highlights?.length > 0 ? (
+        <Box
+          display="flex"
+          flexWrap="nowrap"
+          justifyContent="center"
+          className={classes.highlights}
+        >
+          {highlights.map((highlight) => (
+            <LocationHighlight
+              key={highlight.title}
+              isLoading={isLoading}
+              {...highlight}
+              classes={{
+                root: classes.highlight,
+                title: classes.highlightTitle,
+                value: classes.highlightValue,
+              }}
+            />
+          ))}
+        </Box>
+      ) : null}
+    </Box>
   );
 }
 
-MapLocationTags.propTypes = {
+Location.propTypes = {
+  className: PropTypes.string,
+  highlights: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      number: PropTypes.number,
+    })
+  ),
+  isLoading: PropTypes.bool,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       level: PropTypes.string,
       name: PropTypes.string,
     })
   ),
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string,
-      number: PropTypes.number,
-    })
-  ),
 };
 
-MapLocationTags.defaultProps = {
-  items: undefined,
+Location.defaultProps = {
+  className: undefined,
+  highlights: undefined,
+  isLoading: undefined,
   tags: undefined,
 };
 
-export default MapLocationTags;
+export default Location;
