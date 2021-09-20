@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { MapContainer, ZoomControl, TileLayer, Pane } from "react-leaflet";
@@ -8,7 +9,7 @@ import Layers from "./Layers";
 import "leaflet/dist/leaflet.css";
 
 const useStyles = makeStyles(({ typography }) => ({
-  map: {
+  root: {
     "& .tooltip": {
       height: typography.pxToRem(38),
       width: typography.pxToRem(88),
@@ -23,6 +24,7 @@ const preferredChildrenObj = {
 
 function Map({
   center,
+  className,
   zoom,
   styles,
   geometries,
@@ -88,7 +90,7 @@ function Map({
       touchZoom={false}
       zoomSnap={0.25}
       style={styles}
-      className={classes.map}
+      className={clsx(classes.root, className)}
     >
       {tileLayers?.map(({ pane, url, zIndex }) => (
         <Pane
@@ -120,6 +122,7 @@ Map.propTypes = {
     }
     return null;
   },
+  className: PropTypes.string,
   zoom: PropTypes.number,
   styles: PropTypes.shape({}),
   geometries: PropTypes.shape({
@@ -137,6 +140,7 @@ Map.propTypes = {
 
 Map.defaultProps = {
   center: undefined,
+  className: undefined,
   zoom: undefined,
   styles: {
     height: "100%",
