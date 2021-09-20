@@ -7,7 +7,6 @@ const useStyles = makeStyles(({ typography }) => ({
     display: "flex",
     alignItems: "center",
   },
-
   description: {},
   svgIcon: {
     "&.MuiSvgIcon-root": {
