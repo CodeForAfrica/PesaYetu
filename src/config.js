@@ -599,59 +599,6 @@ export const aboutTeam = {
   ],
 };
 
-export const items = [
-  {
-    label: "YOUTH",
-    number: 39.5,
-  },
-  {
-    label: "ATTENDED SCHOOL",
-    number: 20.5,
-  },
-  {
-    label: "POPULATION BY AGE",
-    number: 30.5,
-  },
-];
-
-export const tags = [
-  {
-    level: "Country",
-    name: "Kenya",
-  },
-  {
-    level: "County",
-    name: "Isiolo",
-  },
-];
-
-export const mapLocationArgs = {
-  items: [
-    {
-      label: "YOUTH",
-      number: 39.5,
-    },
-    {
-      label: "ATTENDED SCHOOL",
-      number: 20.5,
-    },
-    {
-      label: "POPULATION BY AGE",
-      number: 30.5,
-    },
-  ],
-  tags: [
-    {
-      level: "Country",
-      name: "Kenya",
-    },
-    {
-      level: "County",
-      name: "Isiolo",
-    },
-  ],
-};
-
 export const metrics = {
   title: "Our Metrics",
   items: [
@@ -700,6 +647,40 @@ export const datasetsAndDocumentsArgs = {
     { label: "DOCUMENTS & SPEECHES", ...documentsArgs },
     { label: "DATASETS", ...datasetsArgs },
   ],
+};
+
+export const hurumapArgs = {
+  location: {
+    highlights: [
+      {
+        title: "Population",
+        value: 280002,
+        formattedValue: "280,002",
+      },
+      {
+        title: "Statistics Two",
+        value: 30.5,
+        formattedValue: "30.5%",
+      },
+      {
+        title: "Statistics Three",
+        value: 280002,
+      },
+    ],
+    isLoading: false,
+    tags: [
+      {
+        href: "/explore",
+        level: "Country",
+        name: "Kenya",
+      },
+      {
+        href: "/explore/county-11",
+        level: "County",
+        name: "Isiolo",
+      },
+    ],
+  },
 };
 
 const config = {
