@@ -2,7 +2,7 @@ import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import L from "leaflet";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useMap, LayerGroup, FeatureGroup, GeoJSON } from "react-leaflet";
 
@@ -68,55 +68,58 @@ const Layers = ({
   const groupRef = useRef();
   const classes = useStyles(props);
 
-  const popUpContent = (level, name) =>
-    ReactDOMServer.renderToStaticMarkup(
-      <ThemeProvider theme={theme}>
-        <LocationTag
-          level={level}
-          name={name.toLowerCase()}
-          classes={{ root: classes.locationtag }}
-        />
-      </ThemeProvider>
-    );
+  const onEachFeature = useCallback(
+    (feature, layer) => {
+      if (!featuredCounties?.includes(feature.properties.code)) {
+        layer.setStyle(geoStyles.inactive);
+      } else {
+        const popUpContent = (level, name) =>
+          ReactDOMServer.renderToStaticMarkup(
+            <ThemeProvider theme={theme}>
+              <LocationTag
+                level={level}
+                name={name.toLowerCase()}
+                classes={{ root: classes.locationtag }}
+              />
+            </ThemeProvider>
+          );
 
-  const onEachFeature = (feature, layer) => {
-    if (!featuredCounties?.includes(feature.properties.code)) {
-      layer.setStyle(geoStyles.inactive);
-    } else {
-      layer
-        .bindTooltip(
-          popUpContent(feature.properties.level, feature.properties.name),
-          { direction: "top", opacity: 1, className: "tooltip" }
-        )
-        .openTooltip();
+        layer
+          .bindTooltip(
+            popUpContent(feature.properties.level, feature.properties.name),
+            { direction: "top", opacity: 1, className: "tooltip" }
+          )
+          .openTooltip();
 
-      layer.setStyle(
-        feature?.properties?.selected
-          ? geoStyles.selected.out
-          : geoStyles.hoverOnly.out
-      );
-      layer.on("mouseover", () => {
-        layer.setStyle(
-          feature?.properties?.selected
-            ? geoStyles.selected.over
-            : geoStyles.hoverOnly.over
-        );
-      });
-      layer.on("mouseout", () => {
         layer.setStyle(
           feature?.properties?.selected
             ? geoStyles.selected.out
             : geoStyles.hoverOnly.out
         );
-      });
-      layer.on("click", () => {
-        setGeoCode(feature.properties.code);
-        setShouldFetch(true);
-        const href = `/explore/${feature.properties.level}-${feature.properties.code}`;
-        router.push(href, href, { shallow: true });
-      });
-    }
-  };
+        layer.on("mouseover", () => {
+          layer.setStyle(
+            feature?.properties?.selected
+              ? geoStyles.selected.over
+              : geoStyles.hoverOnly.over
+          );
+        });
+        layer.on("mouseout", () => {
+          layer.setStyle(
+            feature?.properties?.selected
+              ? geoStyles.selected.out
+              : geoStyles.hoverOnly.out
+          );
+        });
+        layer.on("click", () => {
+          setGeoCode(feature.properties.code);
+          setShouldFetch(true);
+          const href = `/explore/${feature.properties.level}-${feature.properties.code}`;
+          router.push(href, href, { shallow: true });
+        });
+      }
+    },
+    [featuredCounties, classes.locationtag, setGeoCode, setShouldFetch, router]
+  );
 
   useEffect(() => {
     const layer = groupRef.current;
