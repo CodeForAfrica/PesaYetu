@@ -1,3 +1,4 @@
+import { RichTypography } from "@commons-ui/core";
 import { Typography, SvgIcon } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
@@ -20,9 +21,9 @@ const CategoryHeader = ({ title, description, icon }) => {
         />
         {title}
       </Typography>
-      <Typography variant="body2" className={classes.description}>
+      <RichTypography variant="body2" className={classes.description}>
         {description}
-      </Typography>
+      </RichTypography>
     </div>
   );
 };
