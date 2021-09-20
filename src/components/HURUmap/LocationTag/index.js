@@ -1,63 +1,121 @@
-import { Typography } from "@material-ui/core";
+import { Box, LinearProgress, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Link from "@/pesayetu/components/Link";
+
 const useStyles = makeStyles(({ palette, typography }) => ({
-  root: {
-    background: palette.background.default,
-    boxShadow: "0px 3px 6px #00000029",
-    height: typography.pxToRem(36),
-    width: typography.pxToRem(88),
-    borderRadius: typography.pxToRem(4),
-    position: "relative",
-    display: "flex",
+  root: ({ active, variant }) => {
+    let color = palette.text.primary;
+    let backgroundColor = palette.background.default;
+    if (variant === "highlight") {
+      const value = active ? 1.0 : 0.8;
+      color = palette.text.secondary;
+      backgroundColor = alpha("#1C2030", value); // #1C2030CC
+    }
+    return {
+      backgroundColor,
+      borderRadius: typography.pxToRem(4),
+      boxShadow: "0px 3px 6px #00000029",
+      color,
+      height: typography.pxToRem(36),
+      position: "relative",
+      minWidth: typography.pxToRem(88),
+    };
   },
   level: {
-    fontWeight: "bold",
-    color: palette.text.secondary,
-    background: palette.primary.main,
-    textTransform: "upperCase",
-    fontSize: typography.pxToRem(7),
     borderRadius: typography.pxToRem(4),
-    paddingTop: typography.pxToRem(2),
-    width: typography.pxToRem(62),
-    height: typography.pxToRem(17),
-    margin: "0 auto",
-    display: "flex",
-    justifyContent: "center",
     position: "absolute",
     top: typography.pxToRem(-8),
-    left: typography.pxToRem(13),
+  },
+  levelLoaded: {
+    background: palette.primary.main,
+    color: palette.text.secondary,
+    fontWeight: "bold",
+    fontSize: typography.pxToRem(7),
+    letterSpacing: "0.56px",
+    lineHeight: 10 / 7,
+    padding: `${typography.pxToRem(4)} ${typography.pxToRem(12)}`,
+    textAlign: "center",
+    textTransform: "uppercase",
+  },
+  levelLoading: {
+    height: typography.pxToRem(18),
+    width: typography.pxToRem(56),
   },
   name: {
     fontSize: typography.pxToRem(9),
     fontWeight: "bold",
-    textTransform: "capitalize",
+    lineHeight: 13 / 9,
     margin: "auto",
+    textTransform: "capitalize",
   },
 }));
 
-function LocationTag({ level, name, ...props }) {
+function LocationTag({
+  className,
+  href,
+  isLoading,
+  level,
+  name: nameProp,
+  ...props
+}) {
   const classes = useStyles(props);
+
+  if (!(isLoading || (nameProp && level))) {
+    return null;
+  }
+  const name = isLoading ? "…" : nameProp;
+  const component = href ? Link : undefined;
+  const underline = href ? "none" : undefined;
   return (
-    <div className={classes.root}>
-      <Typography component="div" className={classes.level}>
-        {level}
+    <Box
+      component={component}
+      href={href}
+      underline={underline}
+      display="inline-flex"
+      flexDirection="column"
+      alignItems="center"
+      className={clsx(classes.root, className)}
+    >
+      {isLoading ? (
+        <LinearProgress className={clsx(classes.level, classes.levelLoading)} />
+      ) : (
+        <Typography
+          component="h6"
+          className={clsx(classes.level, classes.levelLoaded)}
+        >
+          {level}
+        </Typography>
+      )}
+      <Typography component="span" className={classes.name}>
+        {name}
       </Typography>
-      <Typography className={classes.name}>{name}</Typography>
-    </div>
+    </Box>
   );
 }
 
 LocationTag.propTypes = {
+  active: PropTypes.bool,
+  className: PropTypes.string,
+  href: PropTypes.string,
+  isLoading: PropTypes.bool,
   level: PropTypes.string,
   name: PropTypes.string,
+  variant: PropTypes.oneOf(["default", "highlight"]),
 };
 
 LocationTag.defaultProps = {
+  active: true,
+  className: undefined,
+  href: undefined,
+  isLoading: undefined,
   level: undefined,
   name: undefined,
+  variant: "default",
 };
 
 export default LocationTag;
