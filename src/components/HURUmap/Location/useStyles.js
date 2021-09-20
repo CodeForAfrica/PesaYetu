@@ -1,90 +1,37 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {},
-  paper: {
-    position: "absolute",
-    width: typography.pxToRem(600),
-    top: typography.pxToRem(16),
-    padding: typography.pxToRem(8),
-    marginLeft: "auto",
-    marginRight: "auto",
-    bottom: "auto",
-    zIndex: 999,
-    opacity: 1,
-    left: 0,
-    right: 0,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
+const useStyles = makeStyles(({ palette, typography }) => ({
+  root: {
+    background: alpha("#FFFFFF", 0.9), // #FFFFFFE6
     borderRadius: typography.pxToRem(5),
-    backgroundColor: "#FFFFFFE6",
-    boxShadow: "0px 3px 6px #00000029",
-    transition: "all .4s ease",
+    bottom: "auto",
+    boxShadow: `0px 3px 6px ${alpha("#000000", 0.16)}`, // #00000029
+    padding: `${typography.pxToRem(4.12)} ${typography.pxToRem(
+      19
+    )} ${typography.pxToRem(12)} ${typography.pxToRem(21)}`,
+    width: typography.pxToRem(600),
   },
-  level: {
-    fontSize: typography.pxToRem(6),
-    color: "#fff",
-    textAlign: "center",
-    textDecoration: "none",
+  tag: {
+    "&:not(:first-of-type)": {
+      marginLeft: typography.pxToRem(10),
+    },
   },
-  name: {
-    fontSize: typography.pxToRem(9),
-    color: palette.background.default,
-    textAlign: "center",
-    textDecoration: "none",
-    textTransform: "capitalize",
-    letterSpacing: "0.72px",
-    paddingTop: "0.5rem",
+  tagLevel: {},
+  tagName: {},
+  highlights: {
+    borderTop: `1px solid ${palette.grey.main}`,
+    marginTop: 4.5,
+    width: "100%",
   },
-  locationTag: {
-    flex: "0 auto",
-    position: "relative",
-    height: typography.pxToRem(32),
-    margin: typography.pxToRem(4),
-    border: "1px solid transparent",
-    borderRadius: typography.pxToRem(3),
-    backgroundColor: "#707070",
-    transition: "all .2s ease",
-    width: typography.pxToRem(88),
-    boxShadow: "0px 3px 6px #00000029",
-    opacity: 1,
+  highlight: {
+    paddingTop: 4.5,
+    "&:not(:first-of-type)": {
+      borderLeft: `1px solid ${palette.grey.main}`,
+    },
   },
-
-  locationTags: {
-    padding: `${typography.pxToRem(4.8)} 0`,
-  },
-  locationInfo: {
-    margin: `0 ${typography.pxToRem(64)}`,
-    borderTop: "1px solid rgba(0,0,0,.15)",
-  },
-  middleItem: {
-    borderRight: "1px solid rgba(0,0,0,.15)",
-    borderLeft: "1px solid rgba(0,0,0,.15)",
-  },
-  label: {
-    alignSelf: "stretch",
-    fontSize: typography.pxToRem(10),
-    fontWeight: 300,
-    lineHeight: "100%",
-    textAlign: "center",
-    letterSpacing: "1px",
-    textTransform: "uppercase",
-    paddingTop: typography.pxToRem(16),
-    color: palette.text.primary,
-    opacity: 1,
-  },
-  number: {
-    textTransform: "uppercase",
-    alignSelf: "stretch",
-    fontWeight: 500,
-    textAlign: "center",
-    fontSize: typography.pxToRem(14),
-    color: palette.text.primary,
-    opacity: 1,
-  },
+  highlightTitle: {},
+  highlightValue: {},
 }));
 
 export default useStyles;
