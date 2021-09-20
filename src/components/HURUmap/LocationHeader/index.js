@@ -4,7 +4,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const RichDataHeader = ({ title, type, parent, printIcon }) => {
+const LocationHeader = ({ title, type, parent, printIcon }) => {
   const classes = useStyles();
 
   if (!(title && parent)) {
@@ -26,18 +26,18 @@ const RichDataHeader = ({ title, type, parent, printIcon }) => {
   );
 };
 
-RichDataHeader.propTypes = {
+LocationHeader.propTypes = {
   title: PropTypes.string,
   type: PropTypes.string,
   parent: PropTypes.string,
   printIcon: PropTypes.string,
 };
 
-RichDataHeader.defaultProps = {
+LocationHeader.defaultProps = {
   title: undefined,
   type: undefined,
   parent: undefined,
   printIcon: undefined,
 };
 
-export default RichDataHeader;
+export default LocationHeader;
