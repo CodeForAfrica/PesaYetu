@@ -1,6 +1,5 @@
 import React from "react";
 
-import { ReactComponent as Pin } from "@/pesayetu/assets/icons/pin.svg";
 import { ReactComponent as Print } from "@/pesayetu/assets/icons/print.svg";
 import RichDataHeader from "@/pesayetu/components/HURUmap/RichDataHeader";
 
@@ -15,8 +14,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   title: "Isiolo",
-  description: "A County in Kenya",
-  label: "Pin and Compare",
+  type: "County",
+  parent: "Kenya",
   printIcon: Print,
-  pinIcon: Pin,
 };
