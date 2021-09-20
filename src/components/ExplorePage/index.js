@@ -105,7 +105,7 @@ function ExplorePage({
       setGeography(g);
     }
   }, [data]);
-  const isLoading = !data && !error;
+  const isLoading = shouldFetch && !(data || error);
   return (
     <div className={classes.root}>
       <Map
