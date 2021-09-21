@@ -4,8 +4,6 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import ShareBar from "@/pesayetu/components/ShareBar";
-
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {},
   header: {
@@ -47,6 +45,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
       border: `2px solid ${palette.grey.main}`,
     },
   },
+  code: {
+    background: palette.background.paper,
+  },
 }));
 
 function Share({ title, specs, ...props }) {
@@ -72,22 +73,14 @@ function Share({ title, specs, ...props }) {
   `;
   return (
     <Grid container className={classes.root}>
-      <ShareBar
-        socialLinks={[
-          { name: "facebook", alt: "facebook" },
-          { name: "twitter", alt: "twitter" },
-          { name: "linkedin", alt: "linkedin" },
-          { name: "share", alt: "share" },
-          { name: "email", alt: "email" },
-          { name: "code", alt: "code" },
-        ]}
-        title={title}
-      />
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
-        <TextField value={code} />
+        <TextField
+          value={code}
+          InputProps={{ classes: { input: clsx(classes.code, classes.text) } }}
+        />
       </Grid>
     </Grid>
   );
