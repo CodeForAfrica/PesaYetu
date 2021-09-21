@@ -37,11 +37,11 @@ function CarouselItem({ items, type, ...props }) {
               variant="body1"
               className={clsx(classes.text, classes.description)}
             >
-              {item.description}
+              {isDatasets ? item.date : item.description}
             </Typography>
           </Grid>
           <Grid item xs={12} lg={5} className={classes.linkContent}>
-            {isDatasets && item.types?.length > 0 ? (
+            {isDatasets ? (
               <Grid
                 item
                 xs={12}
@@ -51,11 +51,17 @@ function CarouselItem({ items, type, ...props }) {
                 alignItems="center"
                 className={classes.dataTypes}
               >
-                {item.types.map((data) => (
-                  <Typography className={classes.typeContent} key={data.name}>
-                    {data.name}
+                {item?.types?.map(({ href, name }) => (
+                  <Typography
+                    component={href ? Link : undefined}
+                    href={href || undefined}
+                    underline={href ? "none" : undefined}
+                    className={classes.typeContent}
+                    key={name}
+                  >
+                    {name}
                   </Typography>
-                ))}
+                )) ?? null}
               </Grid>
             ) : null}
             <Link
