@@ -1,4 +1,5 @@
-import fetchJson from "@/pesayetu/utils/fetchJson";
+import fetchJson from "./fetchJson";
+import formatNumericalValue from "./formatNumericalValue";
 
 async function fetchProfile(apiUri, geoCode) {
   // HURUmap codes are uppercased in the API
@@ -13,9 +14,10 @@ async function fetchProfile(apiUri, geoCode) {
     overview,
     geography,
   } = json.profile;
-  const highlights = originalHighlights.map(({ name, value }) => ({
-    title: name,
-    value,
+  const highlights = originalHighlights.map(({ label, ...other }) => ({
+    ...other,
+    formattedValue: formatNumericalValue(other),
+    title: label,
   }));
   const tags = geography.parents
     .concat(geography)
