@@ -128,7 +128,7 @@ Map.propTypes = {
   geometries: PropTypes.shape({
     parents: PropTypes.arrayOf(PropTypes.shape({})),
     children: PropTypes.shape({}),
-    boundary: PropTypes.arrayOf(PropTypes.shape({})),
+    boundary: PropTypes.shape({}),
   }),
   geography: PropTypes.shape({
     level: PropTypes.string,

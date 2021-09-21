@@ -142,7 +142,11 @@ const Layers = ({
     <>
       <LayerGroup>
         {parentsGeometries?.map((g) => (
-          <GeoJSON data={g} onEachFeature={onEachFeature} />
+          <GeoJSON
+            key={g.features[0].properties.name}
+            data={g}
+            onEachFeature={onEachFeature}
+          />
         ))}
       </LayerGroup>
       <FeatureGroup ref={groupRef}>

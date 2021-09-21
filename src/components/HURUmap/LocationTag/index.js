@@ -54,6 +54,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 }));
 
 function LocationTag({
+  active,
   className,
   classes: classesProp,
   code,
@@ -61,9 +62,15 @@ function LocationTag({
   level,
   name: nameProp,
   onClick,
+  variant,
   ...props
 }) {
-  const classes = useStyles({ classes: classesProp, ...props });
+  const classes = useStyles({
+    active,
+    classes: classesProp,
+    variant,
+    ...props,
+  });
 
   if (!(isLoading || (nameProp && level))) {
     return null;
