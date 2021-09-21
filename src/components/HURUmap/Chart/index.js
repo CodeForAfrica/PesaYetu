@@ -32,24 +32,27 @@ function Chart({ indicator, title, ...props }) {
   const [view, setView] = useState(null);
 
   const {
+    id,
     description,
     metadata: { source, url },
   } = indicator;
 
+  const containerId = `chart-container-${id}`;
+
   useEffect(() => {
     async function plotChart(data) {
-      const result = await renderChart("#chart-container", data);
+      const result = await renderChart(`#${containerId}`, data);
       setView(result);
     }
     if (indicator) {
       plotChart(indicator);
     }
-  }, [indicator]);
+  }, [indicator, containerId]);
 
   return (
     <div className={classes.root}>
       <IndicatorTitle title={title} description={description} view={view} />
-      <div id="chart-container" />
+      <div id={containerId} />
       {url && source && (
         <div className={classes.sourceDiv}>
           <Typography className={classes.source}>Source:&nbsp;</Typography>
@@ -64,6 +67,7 @@ function Chart({ indicator, title, ...props }) {
 
 Chart.propTypes = {
   indicator: PropTypes.shape({
+    id: PropTypes.string,
     description: PropTypes.string,
     metadata: PropTypes.shape({
       source: PropTypes.string,
