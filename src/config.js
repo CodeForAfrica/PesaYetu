@@ -707,6 +707,14 @@ export const hurumapArgs = {
   },
 };
 
+export const hurumap = {
+  formatting: {
+    decimal: ",.1f",
+    integer: ",.2d",
+    percentage: ".1%",
+  },
+};
+
 const config = {
   footerArgs,
   exploreTools,
