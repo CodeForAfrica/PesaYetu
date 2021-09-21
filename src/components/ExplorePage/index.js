@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 
 import Location from "@/pesayetu/components/HURUmap/Location";
-import { hurumapArgs } from "@/pesayetu/config";
-import fetchJson from "@/pesayetu/utils/fetchJson";
+import Link from "@/pesayetu/components/Link";
+import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
   ssr: false,
@@ -72,40 +72,37 @@ const useStyles = makeStyles(
   })
 );
 
-function ExplorePage({
-  geometries: geometriesProp,
-  geography: geographyProp,
-  apiUri,
-  ...props
-}) {
+function ExplorePage({ profile: profileProp, apiUri, ...props }) {
   const classes = useStyles(props);
   const [geoCode, setGeoCode] = useState(null);
-  const [geometries, setGeometries] = useState(geometriesProp);
-  const [geography, setGeography] = useState(geographyProp);
-  const [shouldFetch, setShouldFetch] = useState(false);
-  const { location: locationArgs } = hurumapArgs;
-
-  const { data, error } = useSWR(
-    shouldFetch
-      ? `${apiUri}all_details/profile/1/geography/${geoCode}/?format=json`
-      : null,
-    fetchJson
-  );
-
+  const handleCodeChange = (_, { code }) => {
+    setGeoCode(code);
+  };
+  // Add UI props to tags
+  const extendTags = useCallback(({ tags: originalTags, ...other }) => {
+    const tags = originalTags.map(({ code, ...otherTags }) => ({
+      ...otherTags,
+      code,
+      component: Link,
+      href: `/explore/${code.toLowerCase()}`,
+      onClick: handleCodeChange,
+      shallow: true,
+      underline: "none",
+    }));
+    return { ...other, tags };
+  }, []);
+  const [profile, setProfile] = useState(extendTags(profileProp));
+  const fetcher = (code) => fetchProfile(apiUri, code);
+  const { data, error } = useSWR(geoCode || null, fetcher);
   useEffect(() => {
     if (data) {
-      const g = data.profile.geography;
-      const geom = {
-        boundary: data.boundary,
-        children: data.children, // Dictionary keyed by child type
-        parents: data.parent_layers ?? [], // Array of parent geographies
-        themes: data.themes ?? [],
-      };
-      setGeometries(geom);
-      setGeography(g);
+      setProfile(extendTags(data));
     }
-  }, [data]);
-  const isLoading = shouldFetch && !(data || error);
+  }, [data, extendTags]);
+
+  const isLoading = geoCode && !(data || error);
+  const { geography, geometries, highlights, tags } = profile;
+
   return (
     <div className={classes.root}>
       <Map
@@ -113,14 +110,14 @@ function ExplorePage({
         zoom={6.25}
         geometries={geometries}
         geography={geography}
-        setShouldFetch={setShouldFetch}
-        setGeoCode={setGeoCode}
+        onClick={handleCodeChange}
         {...props}
         className={classes.map}
       />
       <Location
-        {...locationArgs}
+        highlights={highlights}
         isLoading={isLoading}
+        tags={tags}
         className={classes.location}
       />
     </div>
@@ -128,21 +125,18 @@ function ExplorePage({
 }
 
 ExplorePage.propTypes = {
-  geometries: PropTypes.shape({
-    parents: PropTypes.shape({}),
-    children: PropTypes.shape({}),
-    boundary: PropTypes.arrayOf(PropTypes.shape({})),
-  }),
-  geography: PropTypes.shape({
-    level: PropTypes.string,
-  }),
   apiUri: PropTypes.string,
+  profile: PropTypes.shape({
+    geography: PropTypes.shape({}),
+    geometries: PropTypes.shape({}),
+    highlights: PropTypes.arrayOf(PropTypes.shape({})),
+    tags: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
 };
 
 ExplorePage.defaultProps = {
-  geometries: undefined,
-  geography: undefined,
   apiUri: undefined,
+  profile: undefined,
 };
 
 export default ExplorePage;
