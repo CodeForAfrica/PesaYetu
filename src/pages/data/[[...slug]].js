@@ -7,6 +7,7 @@ import Hero from "@/pesayetu/components/OtherHero";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
+import fetchOpenAfricaDatasets from "@/pesayetu/utils/fetchOpenAfricaDatasets";
 
 const types = ["documents", "datasets"];
 
@@ -62,6 +63,22 @@ export async function getStaticProps({ params, preview, previewData }) {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
+  blocks.documentAndDatasets =
+    (await Promise.all(
+      blocks?.documentAndDatasets?.map(
+        async ({ type, items: originalItems, ...others }) => {
+          let items = originalItems;
+          if (type === "datasets") {
+            // A single url can contain multiple datasets & hence the need
+            // for flat(1)
+            items = (
+              await Promise.all(items.map(fetchOpenAfricaDatasets))
+            ).flat(1);
+          }
+          return { ...others, type, items };
+        }
+      )
+    )) || null;
   return {
     props: {
       ...props,
