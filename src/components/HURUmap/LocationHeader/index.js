@@ -4,7 +4,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const LocationHeader = ({ title, type, parent, printIcon }) => {
+const LocationHeader = ({ level, parent, title, icon }) => {
   const classes = useStyles();
 
   if (!(title && parent)) {
@@ -16,10 +16,10 @@ const LocationHeader = ({ title, type, parent, printIcon }) => {
         <Typography variant="h3" className={classes.title}>
           {title}
         </Typography>
-        <SvgIcon component={printIcon} className={classes.svgIcon} />
+        <SvgIcon component={icon} className={classes.svgIcon} />
       </Grid>
       <Typography variant="subtitle2" className={classes.description}>
-        {`A ${type} in ${parent}`}
+        {`A ${level} in ${parent}`}
       </Typography>
       <hr className={classes.underline} />
     </div>
@@ -28,16 +28,16 @@ const LocationHeader = ({ title, type, parent, printIcon }) => {
 
 LocationHeader.propTypes = {
   title: PropTypes.string,
-  type: PropTypes.string,
+  level: PropTypes.string,
   parent: PropTypes.string,
-  printIcon: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 LocationHeader.defaultProps = {
   title: undefined,
-  type: undefined,
+  level: undefined,
   parent: undefined,
-  printIcon: undefined,
+  icon: undefined,
 };
 
 export default LocationHeader;

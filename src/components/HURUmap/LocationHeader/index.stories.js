@@ -14,7 +14,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   title: "Isiolo",
-  type: "County",
+  level: "County",
   parent: "Kenya",
-  printIcon: Print,
+  icon: Print,
 };
