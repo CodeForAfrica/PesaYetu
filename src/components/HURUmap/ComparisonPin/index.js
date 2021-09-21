@@ -16,7 +16,7 @@ import useStyles from "./useStyles";
 const ComparisonPin = ({ pinIcon, label }) => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <Grid container>
         <Button variant="contained" className={classes.button}>
           <SvgIcon component={pinIcon} className={classes.svgIconButton} />

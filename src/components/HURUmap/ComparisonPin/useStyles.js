@@ -17,6 +17,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   inputLabel: {
     position: "inherit",
+    marginBottom: typography.pxToRem(3),
     "&.MuiInputLabel-formControl": {
       transform: "inherit",
     },
@@ -25,7 +26,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     fontSize: typography.pxToRem(10),
     fontWeight: "700",
     color: "#666666",
-    marginBottom: typography.pxToRem(3),
     textTransform: "uppercase",
   },
   underline: {
