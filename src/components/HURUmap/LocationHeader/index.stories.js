@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReactComponent as Print } from "@/pesayetu/assets/icons/print.svg";
+import Print from "@/pesayetu/assets/icons/print.svg";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 
 export default {
