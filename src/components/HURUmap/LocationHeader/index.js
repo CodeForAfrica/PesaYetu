@@ -1,4 +1,4 @@
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, Button } from "@material-ui/core";
 import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -18,9 +18,11 @@ const LocationHeader = ({ level, parent, title, icon }) => {
           {title}
         </Typography>
         {/* <SvgIcon component={icon} className={classes.svgIcon} /> */}
-        <div className={classes.icon}>
-          <Icon src={icon} layout="fill" />
-        </div>
+        <Button variant="contained" className={classes.button}>
+          <div className={classes.icon}>
+            <Icon src={icon} layout="fill" />
+          </div>
+        </Button>
       </Grid>
       <Typography variant="subtitle2" className={classes.description}>
         {`A ${level} in ${parent}`}

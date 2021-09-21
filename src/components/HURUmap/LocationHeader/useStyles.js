@@ -11,11 +11,19 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   icon: {
     position: "relative",
-    height: typography.pxToRem(21),
+    height: typography.pxToRem(20),
     width: typography.pxToRem(20),
   },
   underline: {
     border: `solid 1px ${palette.divider}`,
+  },
+  button: {
+    borderRadius: "50%",
+    backgroundColor: palette.grey.light,
+    width: typography.pxToRem(44),
+    height: typography.pxToRem(44),
+    minWidth: typography.pxToRem(44),
+    boxShadow: "none",
   },
   svgIcon: {
     "&.MuiSvgIcon-root": {
