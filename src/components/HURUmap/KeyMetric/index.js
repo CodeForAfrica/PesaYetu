@@ -5,16 +5,23 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const KeyMetric = ({ formattedValue, value, title, color, description }) => {
-  const classes = useStyles();
+const KeyMetric = ({
+  className,
+  formattedValue,
+  value,
+  title,
+  color,
+  description,
+  ...props
+}) => {
+  const classes = useStyles(props);
 
   if (!(value && title)) {
     return null;
   }
-
   return (
-    <div className={classes.root}>
-      <div className={classes.dataSection}>
+    <div className={clsx(classes.root, className)}>
+      <div className={classes.metric}>
         <Typography variant="h3">{formattedValue || value}</Typography>
         <Typography
           variant="caption"
@@ -23,16 +30,19 @@ const KeyMetric = ({ formattedValue, value, title, color, description }) => {
           {title}
         </Typography>
         <LinearProgress
-          className={classes.progressBar}
+          classes={{
+            root: classes.progressBar,
+            determinate: classes.progressBarDeterminate,
+          }}
           value={value}
           color={color}
-          variant="buffer"
+          variant="determinate"
         />
       </div>
       {description && (
         <Typography
           variant="caption"
-          className={clsx(classes.description, classes.text)}
+          className={clsx(classes.text, classes.description)}
         >
           {description}
         </Typography>
@@ -42,19 +52,21 @@ const KeyMetric = ({ formattedValue, value, title, color, description }) => {
 };
 
 KeyMetric.propTypes = {
-  formattedValue: PropTypes.string,
-  value: PropTypes.number,
-  title: PropTypes.string,
+  className: PropTypes.string,
   color: PropTypes.string,
   description: PropTypes.string,
+  formattedValue: PropTypes.string,
+  title: PropTypes.string,
+  value: PropTypes.number,
 };
 
 KeyMetric.defaultProps = {
-  formattedValue: undefined,
-  value: undefined,
-  title: undefined,
+  className: undefined,
   color: undefined,
   description: undefined,
+  formattedValue: undefined,
+  title: undefined,
+  value: undefined,
 };
 
 export default KeyMetric;

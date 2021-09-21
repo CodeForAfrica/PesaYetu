@@ -19,13 +19,18 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: "/stories",
-        destination: "/stories/news",
+        source: "/data",
+        destination: "/data/documents",
         permanent: true,
       },
       {
-        source: "/data",
-        destination: "/data/documents",
+        source: "/explore",
+        destination: "/explore/ke",
+        permanent: true,
+      },
+      {
+        source: "/stories",
+        destination: "/stories/news",
         permanent: true,
       },
     ];

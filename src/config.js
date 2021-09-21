@@ -650,28 +650,61 @@ export const datasetsAndDocumentsArgs = {
   ],
 };
 
-export const tour = {
-  sampleElements: [
-    `<button id= "location-search">Location Search </button>`,
-    `<button id= "nav-help">Help </button>`,
-  ],
-  defaultOpen: true,
-  items: [
-    {
-      selector: "#location-search",
-      description:
-        "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
-      title: "BROWSE THE CHARTS",
-      image: screenshot1,
-    },
-    {
-      selector: "#nav-help",
-      description:
-        "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
-      title: "BROWSE THE CHARTS",
-      image: screenshot1,
-    },
-  ],
+export const hurumapArgs = {
+  location: {
+    highlights: [
+      {
+        title: "Population",
+        value: 280002,
+        formattedValue: "280,002",
+      },
+      {
+        title: "Statistics Two",
+        value: 30.5,
+        formattedValue: "30.5%",
+      },
+      {
+        title: "Statistics Three",
+        value: 280002,
+      },
+    ],
+    isLoading: false,
+    tags: [
+      {
+        href: "/explore",
+        level: "Country",
+        name: "Kenya",
+      },
+      {
+        href: "/explore/county-11",
+        level: "County",
+        name: "Isiolo",
+      },
+    ],
+  },
+  tutorial: {
+    sampleElements: [
+      `<button id= "location-search">Location Search </button>`,
+      `<button id= "nav-help">Help </button>`,
+    ],
+    defaultOpen: true,
+    items: [
+      {
+        selector: "#location-search",
+        description:
+          "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
+        title: "BROWSE THE CHARTS",
+        image: screenshot1,
+      },
+      {
+        selector: "#nav-help",
+        description:
+          "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
+        title: "BROWSE THE CHARTS",
+        image: screenshot1,
+      },
+    ],
+  },
 };
 
 const config = {
