@@ -1,5 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { Typography, SvgIcon } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -14,11 +15,9 @@ const CategoryHeader = ({ title, description, icon }) => {
   return (
     <div className={classes.root}>
       <Typography variant="h3" className={classes.title}>
-        <SvgIcon
-          className={classes.svgIcon}
-          component={icon}
-          viewBox="0 0 130 130"
-        />
+        <div className={classes.icon}>
+          <Icon src={icon} layout="fill" />
+        </div>
         {title}
       </Typography>
       <RichTypography variant="body2" className={classes.description}>

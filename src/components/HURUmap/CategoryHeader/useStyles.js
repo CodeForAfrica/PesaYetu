@@ -8,11 +8,10 @@ const useStyles = makeStyles(({ typography }) => ({
     alignItems: "center",
   },
   description: {},
-  svgIcon: {
-    "&.MuiSvgIcon-root": {
-      width: typography.pxToRem(44),
-      height: typography.pxToRem(44),
-    },
+  icon: {
+    position: "relative",
+    height: typography.pxToRem(55.5),
+    width: typography.pxToRem(55.5),
   },
 }));
 

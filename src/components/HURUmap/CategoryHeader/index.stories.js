@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReactComponent as Group4658 } from "@/pesayetu/assets/icons/Group 4658-white.svg";
+import Group4658 from "@/pesayetu/assets/icons/Group 4658-white.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 
 export default {
