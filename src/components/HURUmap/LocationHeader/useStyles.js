@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   icon: {
     position: "relative",
     height: typography.pxToRem(20),
-    width: typography.pxToRem(20),
+    minWidth: typography.pxToRem(20),
   },
   underline: {
     border: `solid 1px ${palette.divider}`,

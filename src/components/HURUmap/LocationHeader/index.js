@@ -5,8 +5,8 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const LocationHeader = ({ level, parent, title, icon }) => {
-  const classes = useStyles();
+const LocationHeader = ({ level, parent, title, icon, ...props }) => {
+  const classes = useStyles(props);
 
   if (!(title && parent)) {
     return null;
@@ -17,7 +17,6 @@ const LocationHeader = ({ level, parent, title, icon }) => {
         <Typography variant="h3" className={classes.title}>
           {title}
         </Typography>
-        {/* <SvgIcon component={icon} className={classes.svgIcon} /> */}
         <Button variant="contained" className={classes.button}>
           <div className={classes.icon}>
             <Icon src={icon} layout="fill" />
