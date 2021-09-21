@@ -50,7 +50,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function Share({ title, specs, ...props }) {
+function Share({ title, spec, ...props }) {
   const classes = useStyles(props);
 
   const code = `<!DOCTYPE html>
@@ -65,7 +65,7 @@ function Share({ title, specs, ...props }) {
       <div id="vis"></div>
   
       <script type="text/javascript">
-        var yourVlSpec = ${JSON.stringify(specs)} ;
+        var yourVlSpec = ${JSON.stringify(spec)} ;
         vegaEmbed('#vis', yourVlSpec);
       </script>
     </body>
@@ -88,12 +88,12 @@ function Share({ title, specs, ...props }) {
 
 Share.propTypes = {
   title: PropTypes.string,
-  specs: PropTypes.shape({}),
+  spec: PropTypes.shape({}),
 };
 
 Share.defaultProps = {
   title: undefined,
-  specs: undefined,
+  spec: undefined,
 };
 
 export default Share;
