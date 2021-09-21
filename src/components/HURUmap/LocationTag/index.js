@@ -5,8 +5,6 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Link from "@/pesayetu/components/Link";
-
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: ({ active, variant }) => {
     let color = palette.text.primary;
@@ -57,25 +55,29 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 
 function LocationTag({
   className,
-  href,
+  classes: classesProp,
+  code,
   isLoading,
   level,
   name: nameProp,
+  onClick,
   ...props
 }) {
-  const classes = useStyles(props);
+  const classes = useStyles({ classes: classesProp, ...props });
 
   if (!(isLoading || (nameProp && level))) {
     return null;
   }
+  const handleClick = (e) => {
+    if (onClick && !isLoading) {
+      onClick(e, { code, level, name: nameProp });
+    }
+  };
   const name = isLoading ? "…" : nameProp;
-  const component = href ? Link : undefined;
-  const underline = href ? "none" : undefined;
   return (
     <Box
-      component={component}
-      href={href}
-      underline={underline}
+      {...props}
+      onClick={handleClick}
       display="inline-flex"
       flexDirection="column"
       alignItems="center"
@@ -100,21 +102,31 @@ function LocationTag({
 
 LocationTag.propTypes = {
   active: PropTypes.bool,
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    level: PropTypes.string,
+    levelLoaded: PropTypes.string,
+    levelLoading: PropTypes.string,
+    name: PropTypes.string,
+  }),
   className: PropTypes.string,
-  href: PropTypes.string,
+  code: PropTypes.string,
   isLoading: PropTypes.bool,
   level: PropTypes.string,
   name: PropTypes.string,
+  onClick: PropTypes.func,
   variant: PropTypes.oneOf(["default", "highlight"]),
 };
 
 LocationTag.defaultProps = {
   active: true,
+  classes: undefined,
   className: undefined,
-  href: undefined,
+  code: undefined,
   isLoading: undefined,
   level: undefined,
   name: undefined,
+  onClick: undefined,
   variant: "default",
 };
 
