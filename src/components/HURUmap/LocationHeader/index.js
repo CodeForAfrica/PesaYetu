@@ -8,7 +8,7 @@ import useStyles from "./useStyles";
 const LocationHeader = ({ level, parent, title, icon, ...props }) => {
   const classes = useStyles(props);
 
-  if (!(title && parent)) {
+  if (!title) {
     return null;
   }
   return (
@@ -23,9 +23,11 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
           </div>
         </Button>
       </Grid>
-      <Typography variant="subtitle2" className={classes.description}>
-        {`A ${level} in ${parent}`}
-      </Typography>
+      {parent && (
+        <Typography variant="subtitle2" className={classes.description}>
+          {`A ${level} in ${parent}`}
+        </Typography>
+      )}
     </div>
   );
 };
