@@ -7,8 +7,12 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
   title: {
     textTransform: "uppercase",
+    borderBottom: `solid 1px ${palette.divider}`,
+    paddingBottom: typography.pxToRem(20),
   },
-  description: {},
+  description: {
+    marginTop: typography.pxToRem(20),
+  },
 }));
 
 export default useStyles;
