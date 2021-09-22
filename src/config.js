@@ -369,65 +369,63 @@ export const exploreTools = {
 };
 
 export const documentsArgs = {
-  type: "documents",
   filterProps: {
-    countLabel: "Documents",
+    countLabel: "Count",
     count: 65,
     orderLabel: "Order By",
-    orderOptions: ["Relevance", "Date", "Municipal"],
+    orderOptions: ["Most recently updated", "Least recently updated"],
     paginationOptions: [10, 25, 50],
     paginationLabel: "Show",
   },
   items: [
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2020",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2021",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2019",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2020",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
-      ctaText: "Read More",
+      date: "2017",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
-      ctaText: "Read More",
+      date: "2018",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
   ],
+  type: "documents",
 };
 
 export const datasetsArgs = {
-  type: "datasets",
+  ctaText: "View",
   filterProps: {
-    countLabel: "Datasets",
+    countLabel: "Count",
     count: 65,
     orderLabel: "Order By",
-    orderOptions: ["Relevance", "Date"],
+    orderOptions: ["Most recently updated", "Least recently updated"],
     paginationOptions: [10, 25, 50],
     paginationLabel: "Show",
   },
   items: [
     {
       title: "Health facilities in Africa",
-      date: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-20",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -446,7 +444,7 @@ export const datasetsArgs = {
     },
     {
       title: "Health facilities in Africa",
-      date: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-16",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -465,7 +463,7 @@ export const datasetsArgs = {
     },
     {
       title: "Health facilities in Africa",
-      date: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-17",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -484,7 +482,7 @@ export const datasetsArgs = {
     },
     {
       title: "Health facilities in Africa",
-      date: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-19",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -503,7 +501,7 @@ export const datasetsArgs = {
     },
     {
       title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-18",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -522,7 +520,7 @@ export const datasetsArgs = {
     },
     {
       title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-13",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -540,6 +538,7 @@ export const datasetsArgs = {
       ],
     },
   ],
+  type: "datasets",
 };
 
 export const dataVisuals = {
@@ -643,7 +642,7 @@ export const footerArgs = {
   aboutVariant: "subtitle1",
 };
 
-export const datasetsAndDocumentsArgs = {
+export const documentsAndDatasetsArgs = {
   items: [
     { label: "DOCUMENTS & SPEECHES", ...documentsArgs },
     { label: "DATASETS", ...datasetsArgs },
