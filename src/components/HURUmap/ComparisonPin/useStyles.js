@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
-  pin: {
+  icon: {
     position: "relative",
     height: typography.pxToRem(44),
     width: typography.pxToRem(44),

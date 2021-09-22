@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReactComponent as Pin } from "@/pesayetu/assets/icons/pin.svg";
+import Pin from "@/pesayetu/assets/icons/pin.svg";
 import ComparisonPin from "@/pesayetu/components/HURUmap/ComparisonPin";
 
 export default {
@@ -14,5 +14,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   label: "Pin and compare",
-  pinIcon: Pin,
+  icon: Pin,
 };

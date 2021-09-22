@@ -1,25 +1,27 @@
 import {
   Typography,
   Grid,
-  SvgIcon,
   Button,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
 } from "@material-ui/core";
+import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-const ComparisonPin = ({ pinIcon, label }) => {
+const ComparisonPin = ({ icon, label }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container>
         <Button variant="contained" className={classes.button}>
-          <SvgIcon component={pinIcon} className={classes.svgIconButton} />
+          <div className={classes.icon}>
+            <Icon src={icon} layout="fill" />
+          </div>
         </Button>
         <FormControl className={classes.formControl}>
           <InputLabel id="temp-id" className={classes.inputLabel}>
@@ -50,12 +52,12 @@ const ComparisonPin = ({ pinIcon, label }) => {
 
 ComparisonPin.propTypes = {
   label: PropTypes.string,
-  pinIcon: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 ComparisonPin.defaultProps = {
   label: undefined,
-  pinIcon: undefined,
+  icon: undefined,
 };
 
 export default ComparisonPin;
