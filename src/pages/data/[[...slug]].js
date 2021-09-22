@@ -8,6 +8,7 @@ import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import fetchOpenAfricaDatasets from "@/pesayetu/utils/fetchOpenAfricaDatasets";
+import fetchSourceAfricaDocuments from "@/pesayetu/utils/fetchSourceAfricaDocuments";
 
 const types = ["documents", "datasets"];
 
@@ -17,7 +18,7 @@ export default function Data({ blocks, activeType, ...props }) {
       <Hero {...blocks?.otherHero} />
       <DatasetsAndDocuments
         activeType={activeType}
-        items={blocks?.documentAndDatasets}
+        items={blocks?.documentsAndDatasets}
       />
       <DataSources {...blocks?.dataSource} />
     </Page>
@@ -29,7 +30,7 @@ Data.propTypes = {
   blocks: PropTypes.shape({
     otherHero: PropTypes.shape({}),
     dataSource: PropTypes.shape({}),
-    documentAndDatasets: PropTypes.arrayOf(PropTypes.shape({})),
+    documentsAndDatasets: PropTypes.arrayOf(PropTypes.shape({})),
   }),
 };
 
@@ -63,18 +64,20 @@ export async function getStaticProps({ params, preview, previewData }) {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  blocks.documentAndDatasets =
+  blocks.documentsAndDatasets =
     (await Promise.all(
-      blocks?.documentAndDatasets?.map(
+      blocks?.documentsAndDatasets?.map(
         async ({ type, items: originalItems, ...others }) => {
           let items = originalItems;
           if (type === "datasets") {
-            // A single url can contain multiple datasets & hence the need
-            // for flat(1)
-            items = (
-              await Promise.all(items.map(fetchOpenAfricaDatasets))
-            ).flat(1);
+            items = await Promise.all(items.map(fetchOpenAfricaDatasets));
+          } else if (type === "documents") {
+            items = await Promise.all(items.map(fetchSourceAfricaDocuments));
           }
+          // A single url can contain multiple datasets/documents & hence the
+          // need for flat(1)
+          items = items.flat(1);
+
           return { ...others, type, items };
         }
       )
