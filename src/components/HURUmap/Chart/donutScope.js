@@ -23,10 +23,6 @@ export default function configureDonutchart(data, metadata, config) {
 
   const { primary_group: primaryGroup } = metadata;
 
-  //   const { signals: filterSignals, filters } = createFiltersForGroups(
-  //     metadata.groups
-  //   );
-
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
     description: "A basic donut chart example.",
@@ -161,15 +157,6 @@ export default function configureDonutchart(data, metadata, config) {
         padding: { value: 10 },
         encode: {
           symbols: { enter: { fillOpacity: { value: 1 } } },
-          legend: {
-            //   update: {
-            //     // x: {
-            //     //   signal: (width / 2) + if(selected && selected[primaryGroup] == datum[primaryGroup], if(width >= height, height, width) / 2 * 1.1 * 0.8, if(width >= height, height, width) / 2 * 0.8)",
-            //     //   offset: 20
-            //     // },
-            //     y: {signal: (height / 2), offset: -50}
-            //   }
-          },
         },
       },
     ],
