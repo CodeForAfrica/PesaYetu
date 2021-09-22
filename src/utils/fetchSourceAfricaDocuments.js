@@ -25,7 +25,7 @@ async function extractDocuments(results) {
   });
 }
 
-async function fetchSourceAfricaDatasets(source) {
+async function fetchSourceAfricaDocuments(source) {
   const { href } = source;
   try {
     const url = new URL(href);
@@ -61,4 +61,4 @@ async function fetchSourceAfricaDatasets(source) {
   return { ...others, date: formatDate(date) };
 }
 
-export default fetchSourceAfricaDatasets;
+export default fetchSourceAfricaDocuments;
