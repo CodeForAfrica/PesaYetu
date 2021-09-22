@@ -31,28 +31,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   underline: {
     border: `solid 1px ${palette.divider}`,
   },
-  svgIconButton: {
-    "&.MuiSvgIcon-root": {
-      width: typography.pxToRem(27),
-      height: typography.pxToRem(27),
-    },
-  },
-  svgIcon: {
-    "&.MuiSvgIcon-root": {
-      width: typography.pxToRem(44),
-      height: typography.pxToRem(44),
-      backgroundColor: palette.grey.light,
-      borderRadius: "50%",
-      padding: typography.pxToRem(11),
-    },
-  },
   select: {
     backgroundColor: palette.background.paper,
     marginTop: "0 !important",
     minWidth: typography.pxToRem(200),
-    "&.MuiPopover-paper": {
-      top: typography.pxToRem(171),
-    },
     "&.MuiInput-underline": {
       "&::before": {
         borderBottom: 0,

@@ -34,6 +34,13 @@ const ComparisonPin = ({ icon, label }) => {
             id="simple-select"
             className={classes.select}
             value={2}
+            MenuProps={{
+              anchorOrigin: {
+                vertical: "bottom",
+                horizontal: "left",
+              },
+              getContentAnchorEl: null,
+            }}
           >
             <MenuItem value={2} className={classes.currentItem}>
               <Typography variant="caption" className={classes.placeholder}>
