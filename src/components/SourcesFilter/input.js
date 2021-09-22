@@ -55,7 +55,6 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
 
 function Input({ label, options, selected, onChange, ...props }) {
   const classes = useStyles(props);
-
   const handleChange = (event) => {
     if (onChange) {
       onChange(event);
