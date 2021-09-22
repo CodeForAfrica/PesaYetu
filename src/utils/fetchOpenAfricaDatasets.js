@@ -3,6 +3,14 @@ import fetchJson from "./fetchJson";
 const DATASET_API_PATH = "/api/3/action/package_show?id=";
 const GROUP_API_PATH = "/api/3/action/package_search?fq=groups:";
 
+function formatDate(date) {
+  try {
+    return `Updated: ${new Date(date).toISOString().substr(0, 10)}`;
+  } catch (e) {
+    return date || null;
+  }
+}
+
 async function extractDatasets(origin, results) {
   return results.map((result) => {
     const {
@@ -16,7 +24,7 @@ async function extractDatasets(origin, results) {
       name: format,
     }));
     return {
-      date: `Updated: ${new Date(updatedAt).toISOString().substr(0, 10)}`,
+      date: formatDate(updatedAt),
       description,
       href: `${origin}/dataset/${name}`,
       title,
@@ -60,7 +68,8 @@ async function fetchOpenAfricaDatasets(source) {
     /* We'll return original source */
   }
 
-  return source;
+  const { date, ...others } = source;
+  return { ...others, date: formatDate(date) };
 }
 
 export default fetchOpenAfricaDatasets;
