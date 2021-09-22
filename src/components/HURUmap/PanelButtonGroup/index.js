@@ -30,9 +30,14 @@ function PanelButtonGroup({
         exclusive
         onChange={handleChange}
       >
-        {items.map(({ currentValue, icon }) => (
-          <ToggleButton className={classes.button} value={currentValue}>
-            <Image src={icon} width={27} height={27} />
+        {items.map((buttonProps) => (
+          <ToggleButton className={classes.button} {...buttonProps}>
+            <Image
+              className={classes.icon}
+              src={buttonProps.icon}
+              width={27}
+              height={27}
+            />
           </ToggleButton>
         ))}
       </ToggleButtonGroup>

@@ -16,21 +16,26 @@ const Template = ({ ...args }) => <PanelButtonGroup {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  value: "#1",
   items: [
     {
       label: "Overview",
-      href: "#1",
+      value: "#1",
       icon: pinIcon,
+      color: "primary",
     },
     {
       label: "Overview",
-      href: "#2",
+      value: "#2",
       icon: locationIcon,
+      color: "primary",
     },
     {
       label: "Overview",
-      href: "#3",
+      value: "#3",
       icon: pinBlack,
+      color: "secondary",
+      disabled: true,
     },
   ],
 };
