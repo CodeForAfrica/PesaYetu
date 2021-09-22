@@ -142,11 +142,11 @@ function formatFeaturedStories(attributes) {
 }
 function formatTypes(typesString) {
   return typesString.split("\n").map((item) => {
-    const [name = null, link = null] = item.split(",");
-    return { name, link };
+    const [name = null, href = null] = item.split(",").map((i) => i.trim());
+    return { name, href };
   });
 }
-function formatDocumentAndDataSet(
+function formatDocumentsAndDataSets(
   {
     countLabel,
     count,
@@ -171,7 +171,11 @@ function formatDocumentAndDataSet(
       count,
       orderLabel,
       paginationOptions: paginationOptions?.split(",").map(Number) || [],
-      orderOptions: orderOptions?.split(",") || [],
+      orderOptions:
+        orderOptions
+          ?.split(",")
+          .map((o) => o.trim())
+          .filter((o) => o) || [],
       paginationLabel,
     };
     return { items, filterProps, ...attributes, ...rest };
@@ -214,8 +218,8 @@ function format(block) {
       return formatDataIndicators(attributes);
     case "lazyblock/tutorial":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
-    case "lazyblock/document-and-datasets":
-      return formatDocumentAndDataSet(attributes, innerBlocks);
+    case "lazyblock/documents-and-datasets":
+      return formatDocumentsAndDataSets(attributes, innerBlocks);
     case "lazyblock/hero":
     case "lazyblock/about-hero":
     case "lazyblock/how-it-works":
