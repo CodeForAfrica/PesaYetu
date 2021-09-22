@@ -26,7 +26,6 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
       <Typography variant="subtitle2" className={classes.description}>
         {`A ${level} in ${parent}`}
       </Typography>
-      <hr className={classes.underline} />
     </div>
   );
 };

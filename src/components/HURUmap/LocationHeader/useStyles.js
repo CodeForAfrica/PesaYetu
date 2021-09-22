@@ -8,14 +8,13 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   description: {
     marginTop: typography.pxToRem(20),
     textTransform: "uppercase",
+    borderBottom: `solid 1px ${palette.divider}`,
+    paddingBottom: typography.pxToRem(10),
   },
   icon: {
     position: "relative",
     height: typography.pxToRem(20),
     minWidth: typography.pxToRem(20),
-  },
-  underline: {
-    border: `solid 1px ${palette.divider}`,
   },
   button: {
     borderRadius: "50%",
