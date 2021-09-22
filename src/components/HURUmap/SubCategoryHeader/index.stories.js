@@ -1,13 +1,13 @@
 import React from "react";
 
-import SubCategoryHeader from "@/pesayetu/components/HURUmap/SubCategoryHeader";
+import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 
 export default {
-  title: "Components/HURUmap/SubCategoryHeader",
+  title: "Components/HURUmap/SubcategoryHeader",
   argTypes: {},
 };
 
-const Template = (args) => <SubCategoryHeader {...args} />;
+const Template = (args) => <SubcategoryHeader {...args} />;
 
 export const Default = Template.bind({});
 

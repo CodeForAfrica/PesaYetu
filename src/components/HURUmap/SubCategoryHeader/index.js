@@ -1,11 +1,28 @@
 import { RichTypography } from "@commons-ui/core";
 import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import useStyles from "./useStyles";
+const useStyles = makeStyles(({ palette, typography }) => ({
+  root: {
+    borderBottom: `solid 1px ${palette.divider}`,
+    paddingBottom: typography.pxToRem(20),
+  },
+  title: {
+    textTransform: "uppercase",
+    borderBottom: `solid 1px ${palette.divider}`,
+    paddingBottom: typography.pxToRem(20),
+    fontWeight: "400",
+    fontColor: "#1c2030",
+    letterSpacing: typography.pxToRem(2),
+  },
+  description: {
+    marginTop: typography.pxToRem(20),
+  },
+}));
 
-const SubCategoryHeader = ({ title, description, ...props }) => {
+const SubcategoryHeader = ({ title, description, ...props }) => {
   const classes = useStyles(props);
 
   if (!title) {
@@ -23,14 +40,14 @@ const SubCategoryHeader = ({ title, description, ...props }) => {
   );
 };
 
-SubCategoryHeader.propTypes = {
+SubcategoryHeader.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
 };
 
-SubCategoryHeader.defaultProps = {
+SubcategoryHeader.defaultProps = {
   title: undefined,
   description: undefined,
 };
 
-export default SubCategoryHeader;
+export default SubcategoryHeader;
