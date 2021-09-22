@@ -8,9 +8,8 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function configureBarchart(data, metadata, config) {
+export default function configureBarChart(data, metadata, config) {
   const {
-    groupField,
     xTicks,
     defaultType,
     types: {
@@ -21,6 +20,7 @@ export default function configureBarchart(data, metadata, config) {
         maxX: percentageMaxX,
       },
     },
+    stacked_field: stackedField,
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
@@ -53,7 +53,7 @@ export default function configureBarchart(data, metadata, config) {
             ops: ["sum"],
             as: ["count"],
             fields: ["count"],
-            groupby: { signal: "groups" },
+            groupby: [stackedField, primaryGroup],
           },
           {
             type: "joinaggregate",
@@ -105,10 +105,6 @@ export default function configureBarchart(data, metadata, config) {
       {
         name: "mainGroup",
         value: primaryGroup,
-      },
-      {
-        name: "groupField",
-        value: groupField,
       },
       {
         name: "numberFormat",
@@ -164,11 +160,11 @@ export default function configureBarchart(data, metadata, config) {
       {
         name: "color",
         type: "ordinal",
+        range: "category",
         domain: {
           data: "data_formatted",
-          field: { signal: "datatype[Units]" },
+          field: stackedField,
         },
-        range: { scheme: "category20" },
       },
     ],
 
@@ -195,44 +191,14 @@ export default function configureBarchart(data, metadata, config) {
             y: { scale: "yscale", field: { signal: "mainGroup" } },
             height: { scale: "yscale", band: 1 },
             x: { scale: "xscale", field: { signal: "datatype[Units]" } },
+            fill: { scale: "color", field: stackedField },
           },
           update: {
-            fill: { value: "#0067A3" },
             x: { scale: "xscale", field: { signal: "datatype[Units]" } },
             x2: { scale: "xscale", value: 0 },
             tooltip: {
               signal:
                 "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-            },
-          },
-          // hover: {
-          //   fill: { value: "rgb(57, 173, 132, 0.7)" },
-          // },
-        },
-      },
-      {
-        type: "text",
-        from: { data: "data_formatted" },
-        encode: {
-          enter: {
-            align: { value: "left" },
-            baseline: { value: "middle" },
-            fill: { value: "#707070" },
-            fontSize: { value: 10 },
-          },
-          update: {
-            text: {
-              signal: "format(datum[datatype[Units]],numberFormat[Units])",
-            },
-            x: {
-              scale: "xscale",
-              field: { signal: "datatype[Units]" },
-              offset: 5,
-            },
-            y: {
-              scale: "yscale",
-              field: { signal: "mainGroup" },
-              band: 0.5,
             },
           },
         },

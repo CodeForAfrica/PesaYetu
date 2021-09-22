@@ -138,6 +138,8 @@ Default.args = {
     content_type: "indicator",
     dataset_content_type: "quantitative",
     chart_configuration: {
+      chart_type: "stacked",
+      stacked_field: "gender",
       types: {
         Value: {
           formatting: ",.0f",

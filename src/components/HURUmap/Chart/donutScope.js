@@ -1,5 +1,5 @@
 // import { xAxis, xScale } from "./properties";
-// import { createFiltersForGroups } from "./utils";
+import { createFiltersForGroups } from "./utils";
 
 const PERCENTAGE_TYPE = "percentage";
 const VALUE_TYPE = "value";
@@ -8,7 +8,7 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function configureDonutchart(data, metadata, config) {
+export default function configureDonutChart(data, metadata, config) {
   const {
     defaultType,
     types: {
@@ -23,6 +23,8 @@ export default function configureDonutchart(data, metadata, config) {
 
   const { primary_group: primaryGroup } = metadata;
 
+  const { filters } = createFiltersForGroups(metadata.groups);
+
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
     description: "A basic donut chart example.",
@@ -31,36 +33,6 @@ export default function configureDonutchart(data, metadata, config) {
     autosize: "none",
 
     signals: [
-      {
-        name: "startAngle",
-        value: 0,
-        bind: { input: "range", min: 0, max: 6.29, step: 0.01 },
-      },
-      {
-        name: "endAngle",
-        value: 6.29,
-        bind: { input: "range", min: 0, max: 6.29, step: 0.01 },
-      },
-      {
-        name: "padAngle",
-        value: 0,
-        bind: { input: "range", min: 0, max: 0.1 },
-      },
-      {
-        name: "innerRadius",
-        value: 60,
-        bind: { input: "range", min: 0, max: 90, step: 1 },
-      },
-      {
-        name: "cornerRadius",
-        value: 0,
-        bind: { input: "range", min: 0, max: 10, step: 0.5 },
-      },
-      {
-        name: "sort",
-        value: false,
-        bind: { input: "checkbox" },
-      },
       {
         name: "selected",
         value: "",
@@ -104,15 +76,7 @@ export default function configureDonutchart(data, metadata, config) {
       {
         name: "table",
         values: data,
-        transform: [
-          {
-            type: "pie",
-            field: "count",
-            startAngle: { signal: "startAngle" },
-            endAngle: { signal: "endAngle" },
-            sort: { signal: "sort" },
-          },
-        ],
+        transform: [...filters],
       },
       {
         name: "data_formatted",
@@ -154,6 +118,7 @@ export default function configureDonutchart(data, metadata, config) {
         fill: "color",
         title: "Legends",
         orient: "none",
+        symbolType: "circle",
         padding: { value: 10 },
         encode: {
           symbols: { enter: { fillOpacity: { value: 1 } } },
