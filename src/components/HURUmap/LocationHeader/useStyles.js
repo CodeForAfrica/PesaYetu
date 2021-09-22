@@ -2,8 +2,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
+  titleContent: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
   title: {
-    borderBottom: "solid 5px #0067A3",
+    borderBottom: `solid 5px ${palette.primary.main}`,
   },
   description: {
     marginTop: typography.pxToRem(20),
@@ -23,15 +27,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     height: typography.pxToRem(44),
     minWidth: typography.pxToRem(44),
     boxShadow: "none",
-  },
-  svgIcon: {
-    "&.MuiSvgIcon-root": {
-      width: typography.pxToRem(44),
-      height: typography.pxToRem(44),
-      backgroundColor: palette.grey.light,
-      borderRadius: "50%",
-      padding: typography.pxToRem(11),
-    },
   },
 }));
 

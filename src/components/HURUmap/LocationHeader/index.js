@@ -1,4 +1,4 @@
-import { Typography, Grid, Button } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -13,7 +13,7 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
   }
   return (
     <div className={classes.root}>
-      <Grid container justifyContent="space-between">
+      <div className={classes.titleContent}>
         <Typography variant="h3" className={classes.title}>
           {title}
         </Typography>
@@ -22,7 +22,7 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
             <Icon src={icon} layout="fill" />
           </div>
         </Button>
-      </Grid>
+      </div>
       {parent && (
         <Typography variant="subtitle2" className={classes.description}>
           {`A ${level} in ${parent}`}
