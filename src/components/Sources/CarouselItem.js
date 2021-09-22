@@ -18,29 +18,39 @@ const useStyles = makeStyles(() => ({
   link: {},
 }));
 
-function CarouselItem({ items, type, ...props }) {
+function CarouselItem({ ctaText, items, type, ...props }) {
   const classes = useStyles(props);
   const isDatasets = type === "datasets";
 
   return (
     <div className={classes.root}>
       {items.map((item) => (
-        <Grid container className={classes.sources} key={item.title}>
-          <Grid item xs={12} lg={7} className={classes.textContent}>
+        <Grid key={item.title} container className={classes.sources}>
+          <Grid
+            item
+            xs={12}
+            lg={isDatasets ? 7 : 10}
+            className={classes.textContent}
+          >
             <Typography
               variant="body1"
               className={clsx(classes.text, classes.title)}
             >
-              {item.title}
+              {isDatasets ? item.title : item.date}
             </Typography>
             <Typography
               variant="body1"
               className={clsx(classes.text, classes.description)}
             >
-              {isDatasets ? item.date : item.description}
+              {isDatasets ? item.date : item.title}
             </Typography>
           </Grid>
-          <Grid item xs={12} lg={5} className={classes.linkContent}>
+          <Grid
+            item
+            xs={12}
+            lg={isDatasets ? 5 : 2}
+            className={classes.linkContent}
+          >
             {isDatasets ? (
               <Grid
                 item
@@ -70,7 +80,7 @@ function CarouselItem({ items, type, ...props }) {
               underline="always"
               variant="body2"
             >
-              Read More
+              {ctaText}
             </Link>
           </Grid>
         </Grid>
@@ -80,6 +90,7 @@ function CarouselItem({ items, type, ...props }) {
 }
 
 CarouselItem.propTypes = {
+  ctaText: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -92,6 +103,7 @@ CarouselItem.propTypes = {
 };
 
 CarouselItem.defaultProps = {
+  ctaText: "Read More",
   items: undefined,
   type: undefined,
 };
