@@ -2,36 +2,43 @@ import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 import useStyles from "./useStyles";
 
-const PanelButtonGroup = ({ items, ...props }) => {
-  const [selected, setSelected] = useState();
+function PanelButtonGroup({
+  items,
+  value,
+  handleChange: handleChangeProps,
+  ...props
+}) {
   const classes = useStyles(props);
-  if (!items || !items.length) {
+
+  const handleChange = (_, selected) => {
+    handleChangeProps(selected);
+  };
+
+  if (!items?.length) {
     return null;
   }
-  const handleChange = (_, href) => {
-    setSelected(href);
-  };
+
   return (
     <div className={classes.root}>
       <ToggleButtonGroup
         orientation="vertical"
-        value={selected}
+        value={value}
         exclusive
         onChange={handleChange}
       >
-        {items.map(({ href, icon }) => (
-          <ToggleButton className={classes.button} value={href} href={href}>
+        {items.map(({ currentValue, icon }) => (
+          <ToggleButton className={classes.button} value={currentValue}>
             <Image src={icon} width={27} height={27} />
           </ToggleButton>
         ))}
       </ToggleButtonGroup>
     </div>
   );
-};
+}
 
 PanelButtonGroup.propTypes = {
   items: PropTypes.arrayOf(
@@ -40,10 +47,14 @@ PanelButtonGroup.propTypes = {
       href: PropTypes.string,
     })
   ),
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
 };
 
 PanelButtonGroup.defaultProps = {
   items: undefined,
+  value: undefined,
+  handleChange: undefined,
 };
 
 export default PanelButtonGroup;
