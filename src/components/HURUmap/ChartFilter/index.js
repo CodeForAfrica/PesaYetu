@@ -26,6 +26,9 @@ const ChartFiler = ({ label, ...props }) => {
           className={classes.select}
           value={2}
           MenuProps={{
+            classes: {
+              list: classes.list,
+            },
             anchorOrigin: {
               vertical: "bottom",
               horizontal: "left",
@@ -38,8 +41,6 @@ const ChartFiler = ({ label, ...props }) => {
               All values
             </Typography>
           </MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </FormControl>
     </div>

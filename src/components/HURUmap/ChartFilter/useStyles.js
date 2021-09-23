@@ -15,6 +15,18 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     color: "#666666",
     textTransform: "uppercase",
   },
+  list: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    "& li": {
+      fontWeight: 200,
+      paddingTop: 12,
+      paddingBottom: 12,
+    },
+    "& li.Mui-selected": {
+      fontWeight: "bold",
+    },
+  },
   select: {
     backgroundColor: palette.background.paper,
     marginTop: "0 !important",
