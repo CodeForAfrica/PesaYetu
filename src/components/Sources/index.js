@@ -55,6 +55,7 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
       <Hidden smDown implementation="css">
         <SourcesFilter
           {...filterProps}
+          count={items.length}
           onPageSize={setPageSize}
           onSort={handleSort}
           pageSize={pageSize}
@@ -64,7 +65,7 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
       <Carousel
         responsive={responsive}
         showDots={sortedItems.length > itemsToShow}
-        classes={{ dotList: classes.dotList }}
+        classes={{ dotList: classes.carouselDotList }}
       >
         {carouselItems.map((ci) => (
           <CarouselItem
@@ -73,15 +74,13 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
             items={ci}
             type={type}
             classes={{
-              title: classes.title,
+              root: classes.carouselItem,
+              source: classes.source,
               text: classes.text,
-              sources: classes.sources,
-              description: classes.description,
-              dataTypes: classes.dataTypes,
-              typeContent: classes.typeContent,
-              textContent: classes.textContent,
-              linkContent: classes.linkContent,
-              link: classes.link,
+              title: classes.title,
+              date: classes.date,
+              resourceType: classes.resourceType,
+              cta: classes.cta,
             }}
           />
         ))}
