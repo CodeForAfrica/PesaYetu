@@ -111,8 +111,8 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
         geometries={geometries}
         geography={geography}
         onClick={handleCodeChange}
-        className={classes.map}
         {...props}
+        className={classes.map}
       />
       <Location
         highlights={highlights}
