@@ -21,6 +21,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       "& $icon": {
         filter: "none",
       },
+      "&:hover": {
+        backgroundColor: palette.background.default,
+      },
     },
     "&.Mui-disabled": {
       backgroundColor: palette.grey.light,
