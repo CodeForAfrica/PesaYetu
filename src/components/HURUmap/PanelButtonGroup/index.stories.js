@@ -2,10 +2,10 @@ import React from "react";
 
 import PanelButtonGroup from ".";
 
-import pinIcon from "@/pesayetu/assets/Component122.svg";
-import mapIcon from "@/pesayetu/assets/icons/kenya.svg";
-import locationIcon from "@/pesayetu/assets/icons/location-pin.svg";
-import pinBlack from "@/pesayetu/assets/icons/office-push-pin.svg";
+import pinIcon from "@/pesayetu/assets/icons/Component 95 – 2.svg";
+import pinBlack from "@/pesayetu/assets/icons/Component 96 – 12.svg";
+import locationIcon from "@/pesayetu/assets/icons/Component 97 – 2.svg";
+import mapIcon from "@/pesayetu/assets/icons/Component 98 – 2.svg";
 
 export default {
   title: "Components/HURUmap/PanelButtonGroup",

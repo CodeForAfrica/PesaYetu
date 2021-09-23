@@ -3,11 +3,12 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
   icon: {
-    width: typography.pxToRem(27),
-    height: typography.pxToRem(27),
+    width: typography.pxToRem(44),
+    height: typography.pxToRem(44),
   },
   button: {
     backgroundColor: palette.grey.light,
+    padding: 0,
     boxShadow: `0px 3px 6px #00000029`,
     marginBottom: typography.pxToRem(10),
     borderRadius: " 0px 2px 2px 0px",
@@ -34,6 +35,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       backgroundColor: palette.background.default,
     },
   },
+  buttonGroup: {},
 }));
 
 export default useStyles;

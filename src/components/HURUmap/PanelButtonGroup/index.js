@@ -21,7 +21,6 @@ function PanelButtonGroup({
   if (!items?.length) {
     return null;
   }
-
   return (
     <div className={classes.root}>
       <ToggleButtonGroup
@@ -29,15 +28,11 @@ function PanelButtonGroup({
         value={value}
         exclusive
         onChange={handleChange}
+        className={classes.buttonGroup}
       >
-        {items.map((buttonProps) => (
-          <ToggleButton className={classes.button} {...buttonProps}>
-            <Image
-              className={classes.icon}
-              src={buttonProps.icon}
-              width={27}
-              height={27}
-            />
+        {items.map(({ icon, ...buttonProps }) => (
+          <ToggleButton {...buttonProps} className={classes.button}>
+            <Image className={classes.icon} src={icon} width={44} height={44} />
           </ToggleButton>
         ))}
       </ToggleButtonGroup>
