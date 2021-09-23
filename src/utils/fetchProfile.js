@@ -6,6 +6,9 @@ async function fetchProfile(apiUri, geoCode) {
   const json = await fetchJson(
     `${apiUri}all_details/profile/1/geography/${geoCode.toUpperCase()}/?format=json`
   );
+  const { configuration } = await fetchJson(
+    `${process.env.HURUMAP_API_URL}profile_by_url/?format=json`
+  );
   const { boundary, children, parent_layers: parents, themes } = json;
   const geometries = { boundary, children, parents, themes };
   const {
@@ -27,7 +30,16 @@ async function fetchProfile(apiUri, geoCode) {
       name,
     }));
 
-  return { data, geography, geometries, highlights, tags, overview };
+  return {
+    data,
+    geography,
+    geometries,
+    highlights,
+    tags,
+    overview,
+    preferredChildren: configuration?.preferred_children,
+    featuredGeographies: configuration?.featured_geographies,
+  };
 }
 
 export default fetchProfile;
