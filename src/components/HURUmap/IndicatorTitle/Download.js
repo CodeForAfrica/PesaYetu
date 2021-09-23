@@ -86,7 +86,6 @@ function Download({ title, view: viewProp, setChartValue, ...props }) {
       href = `data:text/json;charset=utf-8,${encodeURIComponent(
         JSON.stringify(data)
       )}`;
-      console.log(href);
     } else if (fileType === "csv") {
       href = `data:text/csv;charset=utf-8,${Papa.unparse(data)}`;
     } else {
