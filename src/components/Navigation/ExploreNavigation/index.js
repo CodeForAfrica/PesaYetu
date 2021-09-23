@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useTour } from "@reactour/tour";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -19,6 +20,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     marginLeft: typography.pxToRem(20),
     width: typography.pxToRem(48),
     height: typography.pxToRem(48),
+    cursor: "pointer",
   },
   searchLabel: {
     display: "none",
@@ -51,10 +53,18 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function ExploreNavigation({ logoProps, ...props }) {
+function ExploreNavigation({
+  logoProps,
+  menuProps,
+  onOpenHelp,
+  socialLinks,
+  ...props
+}) {
   const classes = useStyles(props);
+  const { setIsOpen } = useTour();
+
   const openTooltip = () => {
-    // tooltip
+    setIsOpen(true);
   };
   return (
     <div className={classes.root}>
@@ -85,6 +95,7 @@ function ExploreNavigation({ logoProps, ...props }) {
             />
             <Typography
               component="div"
+              id="nav-help"
               onClick={openTooltip}
               variant="h3"
               className={classes.help}
@@ -101,10 +112,16 @@ function ExploreNavigation({ logoProps, ...props }) {
 
 ExploreNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
+  menuProps: PropTypes.arrayOf(PropTypes.shape({})),
+  onOpenHelp: PropTypes.func,
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ExploreNavigation.defaultProps = {
   logoProps: undefined,
+  menuProps: undefined,
+  onOpenHelp: undefined,
+  socialLinks: undefined,
 };
 
 export default ExploreNavigation;

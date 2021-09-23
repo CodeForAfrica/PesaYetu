@@ -24,6 +24,7 @@ import LewisChalo from "@/pesayetu/assets/images/Lewis-Chalo.png";
 import unsplashThree from "@/pesayetu/assets/images/marita-kavelashvili-unsplash.png";
 import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
 import Piero from "@/pesayetu/assets/images/Piero.png";
+import screenshot1 from "@/pesayetu/assets/images/Screenshot 2021-06-14 at 12.51.45@2x.png";
 import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
 import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
 import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
@@ -368,65 +369,139 @@ export const exploreTools = {
 };
 
 export const documentsArgs = {
-  type: "documents",
   filterProps: {
-    countLabel: "Documents",
+    countLabel: "Count",
     count: 65,
     orderLabel: "Order By",
-    orderOptions: ["Relevance", "Date", "Municipal"],
+    orderOptions: ["Most recently updated", "Least recently updated"],
     paginationOptions: [10, 25, 50],
     paginationLabel: "Show",
   },
   items: [
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2020",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2021",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2019",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
+      date: "2020",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
-      ctaText: "Read More",
+      date: "2017",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
     {
-      title: "2021",
-      description: "The County Integrated Development Plan (CIDP) in Kenya",
-      ctaText: "Read More",
+      date: "2018",
       href: "https://courses.academy.africa/courses/data-visualization/",
+      title: "The County Integrated Development Plan (CIDP) in Kenya",
     },
   ],
+  type: "documents",
 };
 
 export const datasetsArgs = {
-  type: "datasets",
+  ctaText: "View",
   filterProps: {
-    countLabel: "Datasets",
+    countLabel: "Count",
     count: 65,
     orderLabel: "Order By",
-    orderOptions: ["Relevance", "Date"],
+    orderOptions: ["Most recently updated", "Least recently updated"],
     paginationOptions: [10, 25, 50],
     paginationLabel: "Show",
   },
   items: [
     {
       title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-20",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
+    },
+    {
+      title: "Health facilities in Africa",
+      date: "Updated: 2020-04-16",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
+    },
+    {
+      title: "Health facilities in Africa",
+      date: "Updated: 2020-04-17",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
+    },
+    {
+      title: "Health facilities in Africa",
+      date: "Updated: 2020-04-19",
+      href: "https://courses.academy.africa/courses/data-visualization/",
+      types: [
+        {
+          name: "csv",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "xls",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+        {
+          name: "json",
+          href: "https://courses.academy.africa/courses/data-visualization/",
+        },
+      ],
+    },
+    {
+      title: "Health facilities in Africa",
+      date: "Updated: 2020-04-18",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -445,83 +520,7 @@ export const datasetsArgs = {
     },
     {
       title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
-      href: "https://courses.academy.africa/courses/data-visualization/",
-      types: [
-        {
-          name: "csv",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "xls",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "json",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-      ],
-    },
-    {
-      title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
-      href: "https://courses.academy.africa/courses/data-visualization/",
-      types: [
-        {
-          name: "csv",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "xls",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "json",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-      ],
-    },
-    {
-      title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
-      href: "https://courses.academy.africa/courses/data-visualization/",
-      types: [
-        {
-          name: "csv",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "xls",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "json",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-      ],
-    },
-    {
-      title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
-      href: "https://courses.academy.africa/courses/data-visualization/",
-      types: [
-        {
-          name: "csv",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "xls",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-        {
-          name: "json",
-          link: "https://courses.academy.africa/courses/data-visualization/",
-        },
-      ],
-    },
-    {
-      title: "Health facilities in Africa",
-      description: "Updated: 20/04/2020",
+      date: "Updated: 2020-04-13",
       href: "https://courses.academy.africa/courses/data-visualization/",
       types: [
         {
@@ -539,6 +538,7 @@ export const datasetsArgs = {
       ],
     },
   ],
+  type: "datasets",
 };
 
 export const dataVisuals = {
@@ -642,11 +642,76 @@ export const footerArgs = {
   aboutVariant: "subtitle1",
 };
 
-export const datasetsAndDocumentsArgs = {
+export const documentsAndDatasetsArgs = {
   items: [
     { label: "DOCUMENTS & SPEECHES", ...documentsArgs },
     { label: "DATASETS", ...datasetsArgs },
   ],
+};
+
+export const hurumapArgs = {
+  location: {
+    highlights: [
+      {
+        title: "Population",
+        value: 280002,
+        formattedValue: "280,002",
+      },
+      {
+        title: "Statistics Two",
+        value: 30.5,
+        formattedValue: "30.5%",
+      },
+      {
+        title: "Statistics Three",
+        value: 280002,
+      },
+    ],
+    isLoading: false,
+    tags: [
+      {
+        href: "/explore",
+        level: "Country",
+        name: "Kenya",
+      },
+      {
+        href: "/explore/county-11",
+        level: "County",
+        name: "Isiolo",
+      },
+    ],
+  },
+  tutorial: {
+    sampleElements: [
+      `<button id= "location-search">Location Search </button>`,
+      `<button id= "nav-help">Help </button>`,
+    ],
+    defaultOpen: true,
+    items: [
+      {
+        selector: "#location-search",
+        description:
+          "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
+        title: "BROWSE THE CHARTS",
+        image: screenshot1,
+      },
+      {
+        selector: "#nav-help",
+        description:
+          "<p>Now that your location is selected you can open the Rich Data dashboard, using the button on the left.</p> <p>Browse the charts by scrolling the data dashboard. You can share and download the data using the buttons by the side of each chart.</p>",
+        title: "BROWSE THE CHARTS",
+        image: screenshot1,
+      },
+    ],
+  },
+};
+
+export const hurumap = {
+  formatting: {
+    decimal: ",.1f",
+    integer: ",.2d",
+    percentage: ".1%",
+  },
 };
 
 const config = {

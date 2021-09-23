@@ -1,81 +1,106 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
+import Tutorial from "@/pesayetu/components/HURUmap/Tutorial";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
-import fetchJson from "@/pesayetu/utils/fetchJson";
+import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 export default function Explore(props) {
+  const {
+    blocks: { tutorial },
+  } = props;
   return (
-    <Page {...props}>
-      <ExplorePage {...props} />
-    </Page>
+    <Tutorial {...tutorial}>
+      <Page {...props}>
+        <ExplorePage {...props} />
+      </Page>
+    </Tutorial>
+  );
+}
+Explore.propTypes = {
+  blocks: PropTypes.shape({
+    tutorial: PropTypes.shape({
+      items: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+  }),
+};
+
+Explore.defaultProps = {
+  blocks: undefined,
+};
+
+const postType = "page";
+
+function extractLocationCodes(props) {
+  return (
+    formatBlocksForSections(props?.post?.blocks)
+      ?.featuredCounties?.counties?.split(",")
+      ?.map((s) => s.trim().toLowerCase())
+      ?.filter((l) => l) ?? []
   );
 }
 
 export async function getStaticPaths() {
-  const result = await fetchJson(
-    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
-  );
-  const paths = result?.children?.county?.features?.map(
-    ({ properties: { code, level } }) => {
-      const s = `${level}-${code}`;
-      return {
-        params: {
-          slug: [s],
-        },
-      };
-    }
-  );
+  const { props } = await getPostTypeStaticProps({ slug: "explore" }, postType);
+  const paths = extractLocationCodes(props).map((locationCode) => ({
+    params: { slug: [locationCode] },
+  }));
 
   return {
-    paths: [{ params: { slug: [] } }, ...paths],
-    fallback: false,
+    paths,
+    // since we'll only do redirect for new paths, blocking seem appropriate
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ preview, previewData, params }) {
-  const [slug] = params?.slug ?? [];
-  const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
     { slug: "explore" },
     postType,
     preview,
     previewData
   );
+  if (notFound) {
+    return {
+      notFound,
+    };
+  }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const featuredCounties = blocks?.featuredCounties?.counties?.split(",") || [];
-
-  const geoCode = slug ? slug.split("-")[1] : "KE";
-  if (notFound || !featuredCounties.includes(geoCode)) {
+  const locationCodes = extractLocationCodes(props);
+  const [originalCode] = params?.slug || ["ke"];
+  const code = originalCode.toLowerCase();
+  if (!locationCodes.includes(code)) {
     return {
       notFound: true,
     };
   }
 
-  const apiUri = process.env.HURUMAP_API_URL;
-  const res = await fetchJson(
-    `${apiUri}all_details/profile/1/geography/${geoCode}/?format=json`
-  );
+  // Allow for case-insensitive code orhuman-reaable location names
+  // appended to code e.g. ke/kenya,  47/nairobi
+  if (code !== originalCode || params?.slug?.length > 1) {
+    return {
+      redirect: {
+        destination: `/explore/${code}`,
+        permanent: true,
+      },
+    };
+  }
 
-  const geography = res?.profile.geography;
-  const geometries = {
-    boundary: res?.boundary,
-    children: res?.children, // Dictionary keyed by child type
-    parents: res?.parent_layers ?? [], // Array of parent geographies
-    themes: res?.themes ?? [],
-  };
+  const apiUri = process.env.HURUMAP_API_URL;
+  const profile = await fetchProfile(apiUri, code);
 
   return {
     props: {
       ...props,
-      variant: "explore",
-      geography,
-      geometries,
-      featuredCounties,
       apiUri,
+      blocks,
+      locationCodes,
+      profile,
+      variant: "explore",
     },
     revalidate,
   };

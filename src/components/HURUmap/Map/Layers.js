@@ -2,7 +2,7 @@ import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import L from "leaflet";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useMap, LayerGroup, FeatureGroup, GeoJSON } from "react-leaflet";
 
@@ -58,9 +58,8 @@ const geoStyles = {
 const Layers = ({
   selectedBoundary,
   parentsGeometries,
-  setGeoCode,
-  setShouldFetch,
-  featuredCounties,
+  onClick,
+  locationCodes,
   ...props
 }) => {
   const map = useMap();
@@ -68,55 +67,63 @@ const Layers = ({
   const groupRef = useRef();
   const classes = useStyles(props);
 
-  const popUpContent = (level, name) =>
-    ReactDOMServer.renderToStaticMarkup(
-      <ThemeProvider theme={theme}>
-        <LocationTag
-          level={level}
-          name={name.toLowerCase()}
-          classes={{ root: classes.locationtag }}
-        />
-      </ThemeProvider>
-    );
+  const onEachFeature = useCallback(
+    (feature, layer) => {
+      if (!locationCodes?.includes(feature.properties.code)) {
+        layer.setStyle(geoStyles.inactive);
+      } else {
+        const popUpContent = (level, name) =>
+          ReactDOMServer.renderToStaticMarkup(
+            <ThemeProvider theme={theme}>
+              <LocationTag
+                level={level}
+                name={name.toLowerCase()}
+                classes={{ root: classes.locationtag }}
+              />
+            </ThemeProvider>
+          );
 
-  const onEachFeature = (feature, layer) => {
-    if (!featuredCounties?.includes(feature.properties.code)) {
-      layer.setStyle(geoStyles.inactive);
-    } else {
-      layer
-        .bindTooltip(
-          popUpContent(feature.properties.level, feature.properties.name),
-          { direction: "top", opacity: 1, className: "tooltip" }
-        )
-        .openTooltip();
+        layer
+          .bindTooltip(
+            popUpContent(feature.properties.level, feature.properties.name),
+            { direction: "top", opacity: 1, className: "tooltip" }
+          )
+          .openTooltip();
 
-      layer.setStyle(
-        feature?.properties?.selected
-          ? geoStyles.selected.out
-          : geoStyles.hoverOnly.out
-      );
-      layer.on("mouseover", () => {
-        layer.setStyle(
-          feature?.properties?.selected
-            ? geoStyles.selected.over
-            : geoStyles.hoverOnly.over
-        );
-      });
-      layer.on("mouseout", () => {
         layer.setStyle(
           feature?.properties?.selected
             ? geoStyles.selected.out
             : geoStyles.hoverOnly.out
         );
-      });
-      layer.on("click", () => {
-        setGeoCode(feature.properties.code);
-        setShouldFetch(true);
-        const href = `/explore/${feature.properties.level}-${feature.properties.code}`;
-        router.push(href, href, { shallow: true });
-      });
-    }
-  };
+        layer.on("mouseover", () => {
+          layer.setStyle(
+            feature?.properties?.selected
+              ? geoStyles.selected.over
+              : geoStyles.hoverOnly.over
+          );
+        });
+        layer.on("mouseout", () => {
+          layer.setStyle(
+            feature?.properties?.selected
+              ? geoStyles.selected.out
+              : geoStyles.hoverOnly.out
+          );
+        });
+        layer.on("click", (e) => {
+          const href = `/explore/${feature.properties.code.toLowerCase()}`;
+          router.push(href, href, { shallow: !!onClick });
+          if (onClick) {
+            onClick(e, {
+              code: feature.properties.code,
+              level: feature.properties.level,
+              name: feature.properties.name,
+            });
+          }
+        });
+      }
+    },
+    [classes.locationtag, locationCodes, onClick, router]
+  );
 
   useEffect(() => {
     const layer = groupRef.current;
@@ -135,7 +142,11 @@ const Layers = ({
     <>
       <LayerGroup>
         {parentsGeometries?.map((g) => (
-          <GeoJSON data={g} onEachFeature={onEachFeature} />
+          <GeoJSON
+            key={g.features[0].properties.name}
+            data={g}
+            onEachFeature={onEachFeature}
+          />
         ))}
       </LayerGroup>
       <FeatureGroup ref={groupRef}>
@@ -148,17 +159,15 @@ const Layers = ({
 Layers.propTypes = {
   parentsGeometries: PropTypes.arrayOf(PropTypes.shape({})),
   selectedBoundary: PropTypes.shape({}),
-  setGeoCode: PropTypes.func,
-  setShouldFetch: PropTypes.func,
-  featuredCounties: PropTypes.arrayOf(PropTypes.string),
+  onClick: PropTypes.func,
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Layers.defaultProps = {
   parentsGeometries: undefined,
   selectedBoundary: undefined,
-  setGeoCode: undefined,
-  setShouldFetch: undefined,
-  featuredCounties: undefined,
+  onClick: undefined,
+  locationCodes: undefined,
 };
 
 export default Layers;

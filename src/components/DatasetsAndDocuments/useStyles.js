@@ -30,12 +30,13 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     color: "#707070",
     fontSize: typography.pxToRem(11),
     padding: 0,
+    marginLeft: 0,
   },
   text: {
     padding: 0,
   },
   textContent: {
-    flexDirection: "column ",
+    flexDirection: "column",
   },
   linkContent: {
     flexDirection: "column",

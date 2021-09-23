@@ -37,17 +37,16 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     marginTop: type === "datasets" ? `-${typography.pxToRem(20)}` : undefined,
     marginBottom: type === "datasets" ? 0 : undefined,
     [breakpoints.up("lg")]: {
-      marginTop: 0,
       marginBottom: "revert",
+      marginLeft: typography.pxToRem(64),
+      marginTop: 0,
     },
   }),
   textContent: {
     display: "flex",
     flexDirection: "column",
-
     [breakpoints.up("lg")]: {
       flexDirection: "row",
-      justifyContent: "space-between",
     },
   },
   linkContent: {

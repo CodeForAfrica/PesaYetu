@@ -3,8 +3,8 @@ import React from "react";
 import PanelButtonGroup from ".";
 
 import pinIcon from "@/pesayetu/assets/Component122.svg";
+import locationIcon from "@/pesayetu/assets/icons/location-pin.svg";
 import pinBlack from "@/pesayetu/assets/icons/office-push-pin.svg";
-import locationIcon from "@/pesayetu/assets/icons/pin.svg";
 
 export default {
   title: "Components/HURUmap/PanelButtonGroup",

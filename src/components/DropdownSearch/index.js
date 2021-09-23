@@ -121,7 +121,7 @@ function DropdownSearch({
   );
 
   return (
-    <div className={classes.root}>
+    <div id="location-search" className={classes.root}>
       <Typography variant="body1" className={classes.label}>
         {label}
       </Typography>
