@@ -80,6 +80,14 @@ export default function BarChartScope(data, metadata, config) {
     ],
     signals: [
       {
+        name: "tooltip",
+        value: {},
+        on: [
+          { events: "rect:mouseover", update: "datum" },
+          { events: "rect:mouseout", update: "{}" },
+        ],
+      },
+      {
         name: "groups",
         value: [primaryGroup],
       },

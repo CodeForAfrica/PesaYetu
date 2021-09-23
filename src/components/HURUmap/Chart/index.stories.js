@@ -11,55 +11,6 @@ const Template = ({ ...args }) => <Chart {...args} />;
 
 export const Default = Template.bind({});
 
-// Default.args = {
-//   title: "Youth status",
-//   chartType: "bar",
-//   indicator: {
-//     id: 98,
-//     description: "An indicator showing whether an individual is in the age group 15 - 35",
-//     choropleth_method: "subindicator",
-//     last_updated_at: "2021-03-04T08:22:16.959409Z",
-//     metadata: {
-//       source: "StatsSA Census 2011",
-//       description: "",
-//       url: null,
-//       licence: {
-//         name: "creative commons",
-//         url: null
-//       },
-//       primary_group: "youth status",
-//       groups: [
-//         {
-//           subindicators: ["Non-youth", "Youth"],
-//           dataset: 105,
-//           name: "youth status",
-//           can_aggregate: true,
-//           can_filter: true
-//         }
-//       ]
-//     },
-//     content_type: "indicator",
-//     dataset_content_type: "quantitative",
-//     chart_configuration: {
-//       types: {
-//         Value: {"formatting": ",.0f"},
-//         Percentage: {"maxX": 1, "minX": 0}
-//       },
-//       xTicks: 5
-//     },
-//     data: [
-//       {
-//         count: 227281.47424043773,
-//         "youth status": "Youth"
-//       },
-//       {
-//         count: 393571.7879684536,
-//         "youth status": "Non-youth"
-//       }
-//     ],
-//   }
-// }
-
 Default.args = {
   title: "Population by Age Group",
   indicator: {

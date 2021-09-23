@@ -1,9 +1,10 @@
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Vega } from "react-vega";
 
-import renderChart from "./renderChart";
+import configureScope from "./configureScope";
 
 import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
 import Link from "@/pesayetu/components/Link";
@@ -31,28 +32,35 @@ function Chart({ indicator, title, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
 
+  const handleHover = (...args) => {
+    console.log(args);
+  };
+
+  const signalListeners = { tooltip: handleHover };
+
   const {
-    id,
     description,
     metadata: { source, url },
   } = indicator;
 
-  const containerId = `chart-container-${id}`;
+  const spec = configureScope(indicator);
 
-  useEffect(() => {
-    async function plotChart(data) {
-      const result = await renderChart(`#${containerId}`, data);
-      setView(result);
-    }
-    if (indicator) {
-      plotChart(indicator);
-    }
-  }, [indicator, containerId]);
+  console.log(view);
 
   return (
     <div className={classes.root}>
-      <IndicatorTitle title={title} description={description} view={view} />
-      <div id={containerId} />
+      <IndicatorTitle
+        title={title}
+        description={description}
+        view={view}
+        spec={spec}
+      />
+      <Vega
+        spec={spec}
+        signalListeners={signalListeners}
+        actions={false}
+        onNewView={(v) => setView(v)}
+      />
       {url && source && (
         <div className={classes.source}>
           <Typography className={classes.sourceTitle}>Source:&nbsp;</Typography>
@@ -67,7 +75,6 @@ function Chart({ indicator, title, ...props }) {
 
 Chart.propTypes = {
   indicator: PropTypes.shape({
-    id: PropTypes.string,
     description: PropTypes.string,
     metadata: PropTypes.shape({
       source: PropTypes.string,

@@ -1,10 +1,8 @@
-import embed from "vega-embed";
-
 import BarChartScope from "./BarChartScope";
 import DonutChartScope from "./donutChartScope";
 import StackedChartScope from "./stackedChartScope";
 
-export default function renderChart(container, indicator) {
+export default function configureScope(indicator) {
   const configuration = indicator?.chart_configuration;
 
   let vegaSpec;
@@ -29,5 +27,5 @@ export default function renderChart(container, indicator) {
     );
   }
 
-  return embed(container, vegaSpec, { renderer: "svg", actions: false });
+  return vegaSpec;
 }

@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function IndicatorTitle({ description, title, view, ...props }) {
+function IndicatorTitle({ description, title, ...props }) {
   const classes = useStyles(props);
 
   const actions = [
@@ -53,13 +53,13 @@ function IndicatorTitle({ description, title, view, ...props }) {
     {
       id: "act-download",
       header: "Chart value as:",
-      children: <Download title={title} view={view?.view} />,
+      children: <Download title={title} {...props} />,
       icon: <DownloadIcon />,
     },
     {
       id: "act-share",
       header: "Share chart via:",
-      children: <Share title={title} spec={view?.spec} />,
+      children: <Share title={title} {...props} />,
       icon: <ShareIcon />,
     },
   ];
@@ -85,16 +85,11 @@ function IndicatorTitle({ description, title, view, ...props }) {
 IndicatorTitle.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
-  view: PropTypes.shape({
-    view: PropTypes.shape({}),
-    spec: PropTypes.shape({}),
-  }),
 };
 
 IndicatorTitle.defaultProps = {
   description: undefined,
   title: undefined,
-  view: undefined,
 };
 
 export default IndicatorTitle;
