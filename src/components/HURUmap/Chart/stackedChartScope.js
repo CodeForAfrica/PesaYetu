@@ -8,7 +8,7 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function configureBarChart(data, metadata, config) {
+export default function StackedChartScope(data, metadata, config) {
   const {
     xTicks,
     defaultType,

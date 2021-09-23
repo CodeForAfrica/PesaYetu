@@ -1,8 +1,8 @@
 import embed from "vega-embed";
 
-import configureDonutChart from "./donutScope";
-import configureBarChart from "./scope";
-import configureStackedBarChart from "./stackedBarScope";
+import BarChartScope from "./BarChartScope";
+import DonutChartScope from "./donutChartScope";
+import StackedChartScope from "./stackedChartScope";
 
 export default function renderChart(container, indicator) {
   const configuration = indicator?.chart_configuration;
@@ -10,19 +10,19 @@ export default function renderChart(container, indicator) {
   let vegaSpec;
 
   if (configuration?.chart_type === "donut") {
-    vegaSpec = configureDonutChart(
+    vegaSpec = DonutChartScope(
       indicator?.data,
       indicator?.metadata,
       configuration
     );
   } else if (configuration?.chart_type === "stacked") {
-    vegaSpec = configureStackedBarChart(
+    vegaSpec = StackedChartScope(
       indicator?.data,
       indicator?.metadata,
       configuration
     );
   } else {
-    vegaSpec = configureBarChart(
+    vegaSpec = BarChartScope(
       indicator?.data,
       indicator?.metadata,
       configuration

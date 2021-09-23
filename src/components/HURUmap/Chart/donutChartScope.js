@@ -8,7 +8,7 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function configureDonutChart(data, metadata, config) {
+export default function DonutChartScope(data, metadata, config) {
   const {
     defaultType,
     types: {
