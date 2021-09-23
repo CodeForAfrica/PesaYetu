@@ -82,11 +82,12 @@ function Download({ title, view: viewProp, setChartValue, ...props }) {
     const fileName = `${title}.${fileType}`;
     let href;
 
-    if (type === "json") {
+    if (fileType === "json") {
       href = `data:text/json;charset=utf-8,${encodeURIComponent(
         JSON.stringify(data)
       )}`;
-    } else if (type === "csv") {
+      console.log(href);
+    } else if (fileType === "csv") {
       href = `data:text/csv;charset=utf-8,${Papa.unparse(data)}`;
     } else {
       const table = XLSX.utils.json_to_sheet(data);
