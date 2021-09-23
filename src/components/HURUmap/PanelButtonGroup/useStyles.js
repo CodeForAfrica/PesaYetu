@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
-
   icon: {
     width: typography.pxToRem(27),
     height: typography.pxToRem(27),
