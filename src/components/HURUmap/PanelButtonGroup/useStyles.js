@@ -29,6 +29,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       },
     },
     "&:hover": {
+      "& $icon": {
+        filter: "none",
+      },
       backgroundColor: palette.background.default,
     },
   },

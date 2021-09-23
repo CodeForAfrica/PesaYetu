@@ -27,14 +27,14 @@ Default.args = {
     {
       label: "Overview",
       value: "#2",
-      icon: locationIcon,
-      color: "primary",
+      icon: pinBlack,
+      color: "secondary",
     },
     {
       label: "Overview",
       value: "#3",
-      icon: pinBlack,
-      color: "secondary",
+      icon: locationIcon,
+      color: "primary",
       disabled: true,
     },
   ],
