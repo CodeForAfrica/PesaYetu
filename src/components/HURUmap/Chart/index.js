@@ -10,16 +10,16 @@ import Link from "@/pesayetu/components/Link";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
-  sourceDiv: {
+  source: {
     margin: `${typography.pxToRem(20)} 0`,
   },
-  source: {
+  sourceTitle: {
     fontSize: typography.pxToRem(13),
     lineHeight: 20 / 13,
     color: "#666666",
     display: "inline-flex",
   },
-  link: {
+  sourceLink: {
     color: palette.text.primary,
     fontSize: typography.pxToRem(13),
     lineHeight: 20 / 13,
@@ -54,9 +54,9 @@ function Chart({ indicator, title, ...props }) {
       <IndicatorTitle title={title} description={description} view={view} />
       <div id={containerId} />
       {url && source && (
-        <div className={classes.sourceDiv}>
-          <Typography className={classes.source}>Source:&nbsp;</Typography>
-          <Link underline="always" href={url} className={classes.link}>
+        <div className={classes.source}>
+          <Typography className={classes.sourceTitle}>Source:&nbsp;</Typography>
+          <Link underline="always" href={url} className={classes.sourceLink}>
             {source}
           </Link>
         </div>
