@@ -27,14 +27,7 @@ async function fetchProfile(apiUri, geoCode) {
       name,
     }));
 
-  return {
-    data,
-    geography,
-    geometries,
-    highlights,
-    tags,
-    overview,
-  };
+  return { data, geography, geometries, highlights, tags, overview };
 }
 
 export default fetchProfile;
