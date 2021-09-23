@@ -6,6 +6,7 @@ import Tutorial from "@/pesayetu/components/HURUmap/Tutorial";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
+import fetchJson from "@/pesayetu/utils/fetchJson";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 export default function Explore(props) {
@@ -93,6 +94,10 @@ export async function getStaticProps({ preview, previewData, params }) {
   const apiUri = process.env.HURUMAP_API_URL;
   const profile = await fetchProfile(apiUri, code);
 
+  const { configuration } = await fetchJson(
+    `${apiUri}profile_by_url/?format=json`
+  );
+
   return {
     props: {
       ...props,
@@ -101,6 +106,8 @@ export async function getStaticProps({ preview, previewData, params }) {
       locationCodes,
       profile,
       variant: "explore",
+      preferredChildren: configuration?.preferred_children,
+      featuredGeographies: configuration?.featured_geographies,
     },
     revalidate,
   };

@@ -33,20 +33,23 @@ function Map({
   const classes = useStyles(props);
   const [selectedBoundary, setSelectedBoundary] = useState(null);
 
-  const getSelectedBoundary = useCallback((level, geoms) => {
-    const preferredLevelChildren = preferredChildren[level];
-    if (!preferredLevelChildren) return null;
+  const getSelectedBoundary = useCallback(
+    (level, geoms) => {
+      const preferredLevelChildren = preferredChildren[level];
+      if (!preferredLevelChildren) return null;
 
-    const availableLevels = preferredLevelChildren.filter(
-      (l) => geoms.children[l]
-    );
+      const availableLevels = preferredLevelChildren.filter(
+        (l) => geoms.children[l]
+      );
 
-    if (availableLevels.length > 0) {
-      const preferredLevel = availableLevels[0];
-      return geoms.children[preferredLevel];
-    }
-    return null;
-  }, []);
+      if (availableLevels.length > 0) {
+        const preferredLevel = availableLevels[0];
+        return geoms.children[preferredLevel];
+      }
+      return null;
+    },
+    [preferredChildren]
+  );
 
   useEffect(() => {
     let selectedBound =
