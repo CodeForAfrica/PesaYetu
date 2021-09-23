@@ -5,6 +5,7 @@ import {
   ButtonBase,
   Typography,
   IconButton,
+  ClickAwayListener,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
@@ -71,14 +72,16 @@ function Action({ children, header, icon, id, ...props }) {
         transition
       >
         {({ TransitionProps }) => (
-          <Fade {...TransitionProps}>
-            <Paper className={classes.paper}>
-              <ButtonBase onClick={handleClose} className={classes.header}>
-                <Typography className={classes.title}>{header}</Typography>
-                <CloseIcon />
-              </ButtonBase>
-              {children}
-            </Paper>
+          <Fade {...TransitionProps} timeout={350}>
+            <ClickAwayListener onClickAway={handleClose}>
+              <Paper className={classes.paper}>
+                <ButtonBase onClick={handleClose} className={classes.header}>
+                  <Typography className={classes.title}>{header}</Typography>
+                  <CloseIcon />
+                </ButtonBase>
+                {children}
+              </Paper>
+            </ClickAwayListener>
           </Fade>
         )}
       </Popper>
