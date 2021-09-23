@@ -31,6 +31,12 @@ const useStyles = makeStyles(({ typography, palette }) => ({
         opacity: 0.2,
       },
     },
+    "&.MuiToggleButtonGroup-groupedVertical:not(:last-child)": {
+      borderRadius: " 0px 2px 2px 0px",
+    },
+    "&.MuiToggleButtonGroup-groupedVertical:not(:first-child)": {
+      borderRadius: " 0px 2px 2px 0px",
+    },
     "&:hover": {
       "& $icon": {
         filter: "none",
