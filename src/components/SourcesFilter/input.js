@@ -1,7 +1,9 @@
-import { MenuItem, FormControl, Select } from "@material-ui/core";
+import { FormControl, MenuItem, Select, SvgIcon } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
+
+import { ReactComponent as ExpandMore } from "@/pesayetu/assets/icons/expand_more.svg";
 
 const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: {},
@@ -53,6 +55,10 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   },
 }));
 
+function ExpandMoreIcon(props) {
+  return <SvgIcon {...props} component={ExpandMore} />;
+}
+
 function Input({ label, options, selected, onChange, ...props }) {
   const classes = useStyles(props);
   const handleChange = (event) => {
@@ -64,10 +70,11 @@ function Input({ label, options, selected, onChange, ...props }) {
   return (
     <FormControl variant="filled" size="small" className={classes.formControl}>
       <Select
-        classes={{ root: classes.select }}
-        value={selected}
         displayEmpty
+        disableUnderline
         onChange={handleChange}
+        value={selected}
+        IconComponent={ExpandMoreIcon}
         MenuProps={{
           classes: {
             paper: classes.paper,
@@ -83,6 +90,7 @@ function Input({ label, options, selected, onChange, ...props }) {
           },
           getContentAnchorEl: null,
         }}
+        classes={{ root: classes.select }}
       >
         {options?.length &&
           options.map((option) => (
