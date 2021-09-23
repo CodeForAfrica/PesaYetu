@@ -101,16 +101,15 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
   }, [data, extendTags]);
 
   const isLoading = geoCode && !(data || error);
-  const { geography, geometries, highlights, tags } = profile;
+  const { highlights, tags } = profile;
 
   return (
     <div className={classes.root}>
       <Map
         center={[0.3051933453207569, 37.908818734483155]}
         zoom={6.25}
-        geometries={geometries}
-        geography={geography}
         onClick={handleCodeChange}
+        {...profile}
         {...props}
         className={classes.map}
       />

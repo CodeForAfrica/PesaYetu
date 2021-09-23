@@ -68,7 +68,6 @@ export async function getStaticProps({ preview, previewData }) {
   const res = await fetchJson(
     `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
   );
-
   const { children } = res;
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
@@ -76,7 +75,6 @@ export async function getStaticProps({ preview, previewData }) {
   const { configuration } = await fetchJson(
     `${process.env.HURUMAP_API_URL}profile_by_url/?format=json`
   );
-
   const featuredCounties = configuration?.featured_geographies?.county;
 
   return {
