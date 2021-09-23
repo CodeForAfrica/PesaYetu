@@ -3,6 +3,7 @@ import React from "react";
 import PanelButtonGroup from ".";
 
 import pinIcon from "@/pesayetu/assets/Component122.svg";
+import mapIcon from "@/pesayetu/assets/icons/kenya.svg";
 import locationIcon from "@/pesayetu/assets/icons/location-pin.svg";
 import pinBlack from "@/pesayetu/assets/icons/office-push-pin.svg";
 
@@ -22,19 +23,22 @@ Default.args = {
       label: "Overview",
       value: "#1",
       icon: pinIcon,
-      color: "primary",
     },
     {
       label: "Overview",
       value: "#2",
       icon: pinBlack,
-      color: "secondary",
     },
     {
       label: "Overview",
       value: "#3",
       icon: locationIcon,
-      color: "primary",
+      disabled: true,
+    },
+    {
+      label: "Overview",
+      value: "#4",
+      icon: mapIcon,
       disabled: true,
     },
   ],
