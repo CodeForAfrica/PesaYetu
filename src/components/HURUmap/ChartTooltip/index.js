@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function ChartTooltip({ label, value, percentValue, group, ...props }) {
+function ChartTooltip({ title, value, formattedValue, group, ...props }) {
   const classes = useStyles(props);
   return (
     <Grid container className={classes.root}>
@@ -47,11 +47,11 @@ function ChartTooltip({ label, value, percentValue, group, ...props }) {
       )}
       <Grid item className={classes.content}>
         <Typography variant="body2" component="div" className={classes.text}>
-          {label}
+          {title}
         </Typography>
-        {percentValue && (
+        {formattedValue && (
           <Typography variant="body2" component="div" className={classes.text}>
-            {percentValue}
+            {formattedValue}
           </Typography>
         )}
         <Typography variant="body2" component="div" className={classes.text}>
@@ -63,17 +63,17 @@ function ChartTooltip({ label, value, percentValue, group, ...props }) {
 }
 
 ChartTooltip.propTypes = {
-  label: PropTypes.string,
+  title: PropTypes.string,
   value: PropTypes.string,
-  percentValue: PropTypes.string,
+  formattedValue: PropTypes.string,
   group: PropTypes.string,
   groupColor: PropTypes.string,
 };
 
 ChartTooltip.defaultProps = {
-  label: undefined,
+  title: undefined,
   value: undefined,
-  percentValue: undefined,
+  formattedValue: undefined,
   group: undefined,
   groupColor: undefined,
 };
