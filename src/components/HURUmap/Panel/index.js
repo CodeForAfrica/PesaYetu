@@ -1,5 +1,4 @@
 import { Drawer, Box } from "@material-ui/core";
-import clsx from "clsx";
 import Proptypes from "prop-types";
 import React from "react";
 
@@ -23,6 +22,7 @@ function Panel({ children, ...props }) {
     <Box className={classes.root} sx={{ display: "flex" }}>
       <Drawer
         PaperProps={{ ref: paperRef }}
+        classes={{ paper: classes.paper }}
         variant="persistent"
         anchor="left"
         open={!!value}
@@ -37,17 +37,13 @@ function Panel({ children, ...props }) {
             {item.children}
           </TabPanel>
         ))}
+        <PanelButtonGroup
+          classes={{ root: classes.panelButtons }}
+          onChange={handleChange}
+          {...panelArgs}
+          value={value}
+        />
       </Drawer>
-      <PanelButtonGroup
-        classes={{
-          root: clsx({
-            [classes.shift]: !!value,
-          }),
-        }}
-        onChange={handleChange}
-        {...panelArgs}
-        value={value}
-      />
     </Box>
   );
 }
