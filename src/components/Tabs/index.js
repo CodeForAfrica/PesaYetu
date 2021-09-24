@@ -62,7 +62,7 @@ function Tabs({ name: nameProp, items, activeTab, ...props }) {
       <Divider className={classes.divider} />
       <div className={classes.tabPanels}>
         {items.map((item, index) => (
-          <TabPanel key={item.label} name={name} value={value} index={index}>
+          <TabPanel key={item.label} name={name} selected={value} value={index}>
             {item.children}
           </TabPanel>
         ))}
