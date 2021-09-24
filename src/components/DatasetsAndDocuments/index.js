@@ -22,24 +22,7 @@ function DatasetsAndDocuments({ items: sources, activeType, ...props }) {
     return {
       label,
       href: `/data/${type}`,
-      children: (
-        <Sources
-          {...rest}
-          type={type}
-          classes={
-            type === "datasets"
-              ? {
-                  title: classes.title,
-                  text: classes.text,
-                  sources: classes.sources,
-                  description: classes.description,
-                  textContent: classes.textContent,
-                  linkContent: classes.linkContent,
-                }
-              : undefined
-          }
-        />
-      ),
+      children: <Sources {...rest} type={type} />,
     };
   });
   return (

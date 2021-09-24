@@ -195,6 +195,7 @@ deepmerge(
         lineHeight: 25 / 16, // font 18 body1
       },
     },
+    // P2,
     body2: {
       fontSize: pxToRem(14),
       lineHeight: 24 / 14, // font body2 P2

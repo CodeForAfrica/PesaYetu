@@ -2,7 +2,9 @@ import { RichTypography } from "@commons-ui/core";
 import React from "react";
 
 import Tutorial from "@/pesayetu/components/HURUmap/Tutorial";
-import { tour } from "@/pesayetu/config";
+import { hurumapArgs } from "@/pesayetu/config";
+
+const { tutorial } = hurumapArgs;
 
 export default {
   title: "Components/HURUmap/Tutorial",
@@ -20,4 +22,4 @@ const Template = ({ sampleElements, ...args }) => (
 
 export const Default = Template.bind({});
 
-Default.args = tour;
+Default.args = tutorial;

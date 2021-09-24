@@ -64,9 +64,7 @@ function Map({
         });
       });
       layer.on("click", () => {
-        router.push(
-          `/explore/${feature.properties.level}-${feature.properties.code}`
-        );
+        router.push(`/explore/${feature.properties.code.toLowerCase()}`);
       });
     }
   };

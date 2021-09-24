@@ -2,14 +2,13 @@ import { Grid, Typography, ButtonGroup, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 import Input from "./input";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     paddingBottom: typography.pxToRem(20),
-    borderBottom: `1px solid ${palette.grey.main}`,
   },
   orderLabel: {
     marginRight: typography.pxToRem(40),
@@ -41,16 +40,22 @@ const useStyles = makeStyles(({ typography, palette }) => ({
 const SourcesFilter = ({
   countLabel,
   count,
-  paginationLabel,
-  paginationOptions,
+  onPageSize,
+  onSort,
   orderLabel,
   orderOptions,
+  pageSize,
+  paginationLabel,
+  paginationOptions,
+  sortOrder,
   ...props
 }) => {
   const classes = useStyles(props);
-  const [selectedPageCount, setSelectedPageCount] = useState(
-    paginationOptions && paginationOptions[0]
-  );
+  const handleClick = (option) => {
+    if (onPageSize) {
+      onPageSize(option);
+    }
+  };
 
   return (
     <Grid
@@ -87,11 +92,11 @@ const SourcesFilter = ({
           {paginationOptions?.map((option) => (
             <Button
               className={clsx(classes.button, {
-                [classes.selectedOption]: option === selectedPageCount,
+                [classes.selectedOption]: option === pageSize,
               })}
-              onClick={() => setSelectedPageCount(option)}
+              onClick={() => handleClick(option)}
               key={option}
-              disabled={selectedPageCount === option}
+              disabled={option === pageSize}
             >
               <Typography variant="body2" className={classes.label}>
                 {option}
@@ -112,7 +117,7 @@ const SourcesFilter = ({
         <Typography className={classes.orderLabel} variant="body2">
           {orderLabel}
         </Typography>
-        <Input options={orderOptions} />
+        <Input onChange={onSort} options={orderOptions} selected={sortOrder} />
       </Grid>
     </Grid>
   );
@@ -121,19 +126,27 @@ const SourcesFilter = ({
 SourcesFilter.propTypes = {
   countLabel: PropTypes.string,
   count: PropTypes.number,
+  onPageSize: PropTypes.func,
+  onSort: PropTypes.func,
   orderLabel: PropTypes.string,
   orderOptions: PropTypes.arrayOf(PropTypes.shape({})),
+  pageSize: PropTypes.number,
   paginationOptions: PropTypes.PropTypes.arrayOf(PropTypes.number),
   paginationLabel: PropTypes.string,
+  sortOrder: PropTypes.string,
 };
 
 SourcesFilter.defaultProps = {
   countLabel: undefined,
   count: undefined,
+  onPageSize: undefined,
+  onSort: undefined,
   orderLabel: undefined,
   orderOptions: undefined,
+  pageSize: undefined,
   paginationOptions: undefined,
   paginationLabel: undefined,
+  sortOrder: undefined,
 };
 
 export default SourcesFilter;

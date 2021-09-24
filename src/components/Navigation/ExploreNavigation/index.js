@@ -53,7 +53,13 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function ExploreNavigation({ logoProps, onOpenHelp, ...props }) {
+function ExploreNavigation({
+  logoProps,
+  menuProps,
+  onOpenHelp,
+  socialLinks,
+  ...props
+}) {
   const classes = useStyles(props);
   const { setIsOpen } = useTour();
 
@@ -106,12 +112,16 @@ function ExploreNavigation({ logoProps, onOpenHelp, ...props }) {
 
 ExploreNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
+  menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   onOpenHelp: PropTypes.func,
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ExploreNavigation.defaultProps = {
   logoProps: undefined,
+  menuProps: undefined,
   onOpenHelp: undefined,
+  socialLinks: undefined,
 };
 
 export default ExploreNavigation;
