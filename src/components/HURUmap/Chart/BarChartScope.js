@@ -1,5 +1,7 @@
-import { xAxis, xScale } from "./properties";
+import { xAxis, xScale, defaultConfig } from "./properties";
 import { createFiltersForGroups } from "./utils";
+
+import theme from "@/pesayetu/theme";
 
 const PERCENTAGE_TYPE = "percentage";
 const VALUE_TYPE = "value";
@@ -37,6 +39,7 @@ export default function BarChartScope(data, metadata, config) {
     description: "A",
     width: 800,
     padding: { left: 5, top: 5, right: 30, bottom: 5 },
+    config: defaultConfig,
     data: [
       {
         name: "table",
@@ -191,39 +194,12 @@ export default function BarChartScope(data, metadata, config) {
             x: { scale: "xscale", field: { signal: "datatype[Units]" } },
           },
           update: {
-            fill: { value: "#0067A3" },
+            fill: { value: theme.palette.primary.main },
             x: { scale: "xscale", field: { signal: "datatype[Units]" } },
             x2: { scale: "xscale", value: 0 },
             tooltip: {
               signal:
                 "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-            },
-          },
-        },
-      },
-      {
-        type: "text",
-        from: { data: "data_formatted" },
-        encode: {
-          enter: {
-            align: { value: "left" },
-            baseline: { value: "middle" },
-            fill: { value: "#707070" },
-            fontSize: { value: 10 },
-          },
-          update: {
-            text: {
-              signal: "format(datum[datatype[Units]],numberFormat[Units])",
-            },
-            x: {
-              scale: "xscale",
-              field: { signal: "datatype[Units]" },
-              offset: 5,
-            },
-            y: {
-              scale: "yscale",
-              field: { signal: "mainGroup" },
-              band: 0.5,
             },
           },
         },

@@ -1,6 +1,6 @@
 import BarChartScope from "./BarChartScope";
-import DonutChartScope from "./donutChartScope";
-import StackedChartScope from "./stackedChartScope";
+import DonutChartScope from "./DonutChartScope";
+import StackedChartScope from "./StackedChartScope";
 
 export default function configureScope(indicator) {
   const configuration = indicator?.chart_configuration;

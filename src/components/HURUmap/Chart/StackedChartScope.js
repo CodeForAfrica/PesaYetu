@@ -1,5 +1,7 @@
-import { xAxis, xScale } from "./properties";
+import { defaultConfig, xAxis } from "./properties";
 import { createFiltersForGroups } from "./utils";
+
+import theme from "@/pesayetu/theme";
 
 const PERCENTAGE_TYPE = "percentage";
 const VALUE_TYPE = "value";
@@ -38,6 +40,7 @@ export default function StackedChartScope(data, metadata, config) {
     description: "A",
     width: 800,
     padding: { left: 5, top: 5, right: 30, bottom: 5 },
+    config: defaultConfig,
     data: [
       {
         name: "table",
@@ -53,13 +56,18 @@ export default function StackedChartScope(data, metadata, config) {
             ops: ["sum"],
             as: ["count"],
             fields: ["count"],
-            groupby: [stackedField, primaryGroup],
+            groupby: { signal: "groups" },
           },
           {
             type: "joinaggregate",
             as: ["TotalCount"],
             ops: ["sum"],
             fields: ["count"],
+          },
+          {
+            type: "stack",
+            groupby: [primaryGroup],
+            field: "count",
           },
           {
             type: "formula",
@@ -81,8 +89,16 @@ export default function StackedChartScope(data, metadata, config) {
     ],
     signals: [
       {
+        name: "tooltip",
+        value: {},
+        on: [
+          { events: "rect:mouseover", update: "datum" },
+          { events: "rect:mouseout", update: "{}" },
+        ],
+      },
+      {
         name: "groups",
-        value: [primaryGroup],
+        value: [primaryGroup, stackedField],
       },
       {
         name: "barvalue",
@@ -105,6 +121,10 @@ export default function StackedChartScope(data, metadata, config) {
       {
         name: "mainGroup",
         value: primaryGroup,
+      },
+      {
+        name: "stackedField",
+        value: stackedField,
       },
       {
         name: "numberFormat",
@@ -154,9 +174,19 @@ export default function StackedChartScope(data, metadata, config) {
         type: "band",
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
         range: { step: { signal: "y_step" } },
-        padding: 0.1,
+        padding: 0.15,
       },
-      xScale,
+      {
+        name: "xscale",
+        type: "linear",
+        domain: { data: "data_formatted", field: "y1" },
+        domainMin: { signal: "domainMin" },
+        domainMax: { signal: "domainMax" },
+        range: [0, { signal: "width" }],
+        zero: true,
+        clamp: true,
+        nice: true,
+      },
       {
         name: "color",
         type: "ordinal",
@@ -180,6 +210,29 @@ export default function StackedChartScope(data, metadata, config) {
       },
       xAxis,
     ],
+    legends: [
+      {
+        fill: "color",
+        orient: "top",
+        direction: "horizontal",
+        strokeColor: "transparent",
+        labelFont: theme.typography.fontFamily,
+        encode: {
+          labels: {
+            interactive: true,
+            update: {
+              fontSize: { value: 11 },
+              fill: { value: theme.palette.chart.text },
+            },
+          },
+          symbols: {
+            update: {
+              stroke: { value: "transparent" },
+            },
+          },
+        },
+      },
+    ],
 
     marks: [
       {
@@ -190,15 +243,17 @@ export default function StackedChartScope(data, metadata, config) {
           enter: {
             y: { scale: "yscale", field: { signal: "mainGroup" } },
             height: { scale: "yscale", band: 1 },
-            x: { scale: "xscale", field: { signal: "datatype[Units]" } },
+            x: { scale: "xscale", field: "y0" },
+            x2: { scale: "xscale", field: "y1" },
             fill: { scale: "color", field: stackedField },
           },
           update: {
-            x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-            x2: { scale: "xscale", value: 0 },
+            fillOpacity: { value: 1 },
+            x: { scale: "xscale", field: "y0" },
+            x2: { scale: "xscale", field: "y1" },
             tooltip: {
               signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'stack': datum[stackedField]}",
             },
           },
         },

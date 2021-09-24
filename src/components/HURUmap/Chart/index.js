@@ -32,20 +32,12 @@ function Chart({ indicator, title, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
 
-  const handleHover = (...args) => {
-    console.log(args);
-  };
-
-  const signalListeners = { tooltip: handleHover };
-
   const {
     description,
     metadata: { source, url },
   } = indicator;
 
   const spec = configureScope(indicator);
-
-  console.log(view);
 
   return (
     <div className={classes.root}>
@@ -55,12 +47,7 @@ function Chart({ indicator, title, ...props }) {
         view={view}
         spec={spec}
       />
-      <Vega
-        spec={spec}
-        signalListeners={signalListeners}
-        actions={false}
-        onNewView={(v) => setView(v)}
-      />
+      <Vega spec={spec} actions={false} onNewView={(v) => setView(v)} />
       {url && source && (
         <div className={classes.source}>
           <Typography className={classes.sourceTitle}>Source:&nbsp;</Typography>

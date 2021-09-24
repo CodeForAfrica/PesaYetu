@@ -1,3 +1,5 @@
+import theme from "@/pesayetu/theme";
+
 export const xScale = {
   name: "xscale",
   type: "linear",
@@ -20,4 +22,18 @@ export const xAxis = {
   gridOpacity: 0.5,
   labelOpacity: 0.5,
   labelPadding: 6,
+};
+
+export const defaultConfig = {
+  axis: {
+    labelColor: theme.palette.chart.text,
+    labelFont: theme.typography.fontFamily,
+    labelFontSize: 11,
+  },
+  axisBottom: {
+    domainColor: "transparent",
+  },
+  range: {
+    category: theme.palette.chart.category,
+  },
 };
