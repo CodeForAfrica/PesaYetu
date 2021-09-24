@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography }) => ({
   root: {
     display: "flex",
-    position: "relative",
+    position: "fixed",
     width: "max-content",
   },
   paper: {
