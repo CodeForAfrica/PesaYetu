@@ -1,5 +1,6 @@
 import { Typography, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -18,6 +19,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   text: {
     marginRight: typography.pxToRem(12.5),
     maxWidth: typography.pxToRem(148),
+  },
+  value: {
+    fontWeight: 600,
   },
   content: {
     display: "flex",
@@ -54,7 +58,11 @@ function ChartTooltip({ title, value, formattedValue, group, ...props }) {
             {formattedValue}
           </Typography>
         )}
-        <Typography variant="body2" component="div" className={classes.text}>
+        <Typography
+          variant="body2"
+          component="div"
+          className={clsx(classes.value, classes.text)}
+        >
           {value}
         </Typography>
       </Grid>

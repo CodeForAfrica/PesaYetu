@@ -57,9 +57,9 @@ function Share({ title, spec, ...props }) {
   <html>
     <head>
       <title>${title}</title>
-      <script src="https://cdn.jsdelivr.net/npm/vega@5.10.1"></script>
-      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.10.1"></script>
-      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.5.2"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega@5.10"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.10"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.5"></script>
     </head>
     <body>
       <div id="vis"></div>
