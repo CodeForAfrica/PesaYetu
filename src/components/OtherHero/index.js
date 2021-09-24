@@ -83,7 +83,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("md")]: {
       position: "relative",
       height: "100%",
-      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.5)`,
+      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/6)`,
     },
     [breakpoints.up("lg")]: {
       position: "relative",
