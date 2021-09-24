@@ -67,18 +67,28 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     width: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     backgroundImage: ({ image }) => `url("${image}")`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     position: "absolute",
+    [breakpoints.up("lg")]: {
+      "& > div:nth-of-type(1)": {
+        paddingRight: "20rem",
+      },
+    },
   },
   rightBackgroundWrapper: {
     height: typography.pxToRem(391),
     [breakpoints.up("md")]: {
       position: "relative",
       height: "100%",
-      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/6)`,
+      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.5)`,
+    },
+    [breakpoints.up("lg")]: {
+      position: "relative",
+      height: "100%",
+      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.1)`,
     },
   },
   accentImage: {
