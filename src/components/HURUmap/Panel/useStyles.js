@@ -1,7 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography }) => ({
-  root: {},
+  root: {
+    display: "flex",
+    position: "relative",
+    width: "max-content",
+  },
   paper: {
     background: "transparent",
     border: "none",
