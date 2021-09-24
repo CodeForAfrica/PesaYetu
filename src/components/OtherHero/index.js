@@ -59,6 +59,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       height: typography.pxToRem(390),
     },
   },
+  rightBackgroundWrapperRoot: {
+    maxHeight: "100%",
+  },
   rightBackground: {
     height: "100%",
     width: "100%",
@@ -122,7 +125,12 @@ function OtherHero({
           <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            className={classes.rightBackgroundWrapperRoot}
+          >
             <div className={classes.rightBackgroundWrapper}>
               <div className={classes.rightBackground}>
                 <Image
