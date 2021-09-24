@@ -1,9 +1,12 @@
+import { Hidden } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import ExplorePage from "@/pesayetu/components/ExplorePage";
+import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Tutorial from "@/pesayetu/components/HURUmap/Tutorial";
 import Page from "@/pesayetu/components/Page";
+import { panelArgs } from "@/pesayetu/config";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
@@ -15,6 +18,9 @@ export default function Explore(props) {
   return (
     <Tutorial {...tutorial}>
       <Page {...props}>
+        <Hidden smDown>
+          <Panel {...panelArgs} />
+        </Hidden>
         <ExplorePage {...props} />
       </Page>
     </Tutorial>

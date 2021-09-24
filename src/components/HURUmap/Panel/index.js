@@ -6,9 +6,8 @@ import useStyles from "./useStyles";
 
 import PanelButtonGroup from "@/pesayetu/components/HURUmap/PanelButtonGroup";
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
-import { panelArgs } from "@/pesayetu/config";
 
-function Panel({ children, ...props }) {
+function Panel({ items, ...props }) {
   const [value, setValue] = React.useState();
   const paperRef = React.useRef();
 
@@ -27,7 +26,7 @@ function Panel({ children, ...props }) {
         anchor="left"
         open={!!value}
       >
-        {panelArgs.items.map((item) => (
+        {items.map((item) => (
           <TabPanel
             key={item.value}
             name={item.value}
@@ -40,7 +39,7 @@ function Panel({ children, ...props }) {
         <PanelButtonGroup
           classes={{ root: classes.panelButtons }}
           onChange={handleChange}
-          {...panelArgs}
+          items={items}
           value={value}
         />
       </Drawer>
@@ -49,11 +48,16 @@ function Panel({ children, ...props }) {
 }
 
 Panel.propTypes = {
-  children: Proptypes.node,
+  items: Proptypes.arrayOf(
+    Proptypes.shape({
+      value: Proptypes.string,
+      children: Proptypes.node,
+    })
+  ),
 };
 
 Panel.defaultProps = {
-  children: undefined,
+  items: undefined,
 };
 
 export default Panel;
