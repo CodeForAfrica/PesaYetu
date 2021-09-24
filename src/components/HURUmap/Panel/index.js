@@ -18,7 +18,12 @@ function Panel({ items, ...props }) {
   const drawerWidth = paperRef.current?.clientWidth;
   const classes = useStyles({ ...props, drawerWidth });
   return (
-    <Box className={classes.root}>
+    <Box
+      position="absolute"
+      width="max-content"
+      display="flex"
+      className={classes.root}
+    >
       <Drawer
         PaperProps={{ ref: paperRef }}
         classes={{ paper: classes.paper }}
