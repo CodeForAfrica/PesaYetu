@@ -35,18 +35,23 @@ Explore.defaultProps = {
 
 const postType = "page";
 
-function extractLocationCodes(props) {
-  return (
-    formatBlocksForSections(props?.post?.blocks)
-      ?.featuredCounties?.counties?.split(",")
-      ?.map((s) => s.trim().toLowerCase())
-      ?.filter((l) => l) ?? []
+async function profileConfigurations() {
+  const apiUri = process.env.HURUMAP_API_URL;
+  const { configuration } = await fetchJson(
+    `${apiUri}profile_by_url/?format=json`
   );
+
+  const locationCodes =
+    Object.keys(configuration?.featured_geographies)?.reduce((acc, v) => {
+      return acc.concat(configuration?.featured_geographies[v]);
+    }, []) || [];
+
+  return { locationCodes, preferredChildren: configuration.preferred_children };
 }
 
 export async function getStaticPaths() {
-  const { props } = await getPostTypeStaticProps({ slug: "explore" }, postType);
-  const paths = extractLocationCodes(props).map((locationCode) => ({
+  const { locationCodes } = await profileConfigurations();
+  const paths = locationCodes.map((locationCode) => ({
     params: { slug: [locationCode] },
   }));
 
@@ -71,7 +76,7 @@ export async function getStaticProps({ preview, previewData, params }) {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const locationCodes = extractLocationCodes(props);
+  const { locationCodes, preferredChildren } = await profileConfigurations();
   const [originalCode] = params?.slug || ["ke"];
   const code = originalCode.toLowerCase();
   if (!locationCodes.includes(code)) {
@@ -94,10 +99,6 @@ export async function getStaticProps({ preview, previewData, params }) {
   const apiUri = process.env.HURUMAP_API_URL;
   const profile = await fetchProfile(apiUri, code);
 
-  const { configuration } = await fetchJson(
-    `${apiUri}profile_by_url/?format=json`
-  );
-
   return {
     props: {
       ...props,
@@ -106,8 +107,7 @@ export async function getStaticProps({ preview, previewData, params }) {
       locationCodes,
       profile,
       variant: "explore",
-      preferredChildren: configuration?.preferred_children,
-      featuredGeographies: configuration?.featured_geographies,
+      preferredChildren,
     },
     revalidate,
   };

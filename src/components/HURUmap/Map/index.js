@@ -27,7 +27,7 @@ function Map({
   geography,
   tileLayers,
   preferredChildren,
-  featuredGeographies,
+  locationCodes,
   ...props
 }) {
   const classes = useStyles(props);
@@ -35,15 +35,11 @@ function Map({
 
   const getSelectedBoundary = useCallback(
     (level, geoms) => {
-      const preferredLevelChildren = preferredChildren[level];
-      if (!preferredLevelChildren) return null;
+      const preferredChildrenPerLevel = preferredChildren[level];
+      const preferredLevel =
+        preferredChildrenPerLevel?.find((l) => geoms.children[l]) ?? null;
 
-      const availableLevels = preferredLevelChildren.filter(
-        (l) => geoms.children[l]
-      );
-
-      if (availableLevels.length > 0) {
-        const preferredLevel = availableLevels[0];
+      if (preferredLevel) {
         return geoms.children[preferredLevel];
       }
       return null;
@@ -82,10 +78,6 @@ function Map({
     }
     setSelectedBoundary(selectedBound);
   }, [geometries, geography, getSelectedBoundary]);
-
-  const locationCodes = Object.keys(featuredGeographies).reduce((acc, v) => {
-    return acc.concat(featuredGeographies[v]);
-  }, []);
 
   return (
     <MapContainer
@@ -145,7 +137,7 @@ Map.propTypes = {
   setGeoCode: PropTypes.func,
   tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
   preferredChildren: PropTypes.shape({}),
-  featuredGeographies: PropTypes.shape({}),
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Map.defaultProps = {
@@ -162,7 +154,7 @@ Map.defaultProps = {
   setGeoCode: undefined,
   tileLayers: undefined,
   preferredChildren: undefined,
-  featuredGeographies: undefined,
+  locationCodes: undefined,
 };
 
 export default Map;
