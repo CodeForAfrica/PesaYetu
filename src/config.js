@@ -1,5 +1,9 @@
 import richDataIcon from "@/pesayetu/assets/Component121.svg";
 import pinIcon from "@/pesayetu/assets/Component122.svg";
+import panelPinIcon from "@/pesayetu/assets/icons/Component 95 – 2.svg";
+import pinBlack from "@/pesayetu/assets/icons/Component 96 – 12.svg";
+import locationIcon from "@/pesayetu/assets/icons/Component 97 – 2.svg";
+import mapIcon from "@/pesayetu/assets/icons/Component 98 – 2.svg";
 import Group4646 from "@/pesayetu/assets/icons/Group 4646-white.svg";
 import developmentHover from "@/pesayetu/assets/icons/Group 4646.svg";
 import Group4656 from "@/pesayetu/assets/icons/Group 4656-white.svg";
@@ -646,6 +650,36 @@ export const documentsAndDatasetsArgs = {
   items: [
     { label: "DOCUMENTS & SPEECHES", ...documentsArgs },
     { label: "DATASETS", ...datasetsArgs },
+  ],
+};
+
+export const panelArgs = {
+  items: [
+    {
+      label: "Overview",
+      value: "#1",
+      icon: panelPinIcon,
+      children: "1",
+    },
+    {
+      label: "Overview",
+      value: "#2",
+      icon: pinBlack,
+      children: "2",
+    },
+    {
+      label: "Overview",
+      value: "#3",
+      icon: locationIcon,
+      disabled: true,
+      children: "4",
+    },
+    {
+      label: "Overview",
+      value: "#4",
+      icon: mapIcon,
+      disabled: true,
+    },
   ],
 };
 
