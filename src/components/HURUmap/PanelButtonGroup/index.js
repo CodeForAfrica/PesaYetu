@@ -6,16 +6,10 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-function PanelButtonGroup({
-  items,
-  value,
-  handleChange: handleChangeProps,
-  ...props
-}) {
+function PanelButtonGroup({ items, value, onChange, ...props }) {
   const classes = useStyles(props);
-
   const handleChange = (_, selected) => {
-    handleChangeProps(selected);
+    onChange(selected);
   };
 
   if (!items?.length) {
@@ -48,13 +42,13 @@ PanelButtonGroup.propTypes = {
     })
   ),
   value: PropTypes.string,
-  handleChange: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 PanelButtonGroup.defaultProps = {
   items: undefined,
   value: undefined,
-  handleChange: undefined,
+  onChange: undefined,
 };
 
 export default PanelButtonGroup;
