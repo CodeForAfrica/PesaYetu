@@ -9,7 +9,6 @@ import Input from "./input";
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     paddingBottom: typography.pxToRem(20),
-    borderBottom: `1px solid ${palette.grey.main}`,
   },
   orderLabel: {
     marginRight: typography.pxToRem(40),
