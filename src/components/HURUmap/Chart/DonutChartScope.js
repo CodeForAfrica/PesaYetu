@@ -34,11 +34,6 @@ export default function DonutChartScope(data, metadata, config) {
 
     signals: [
       {
-        name: "selected",
-        value: "",
-        on: [{ events: "mouseover", update: "datum" }],
-      },
-      {
         name: "Units",
         value: graphValueTypes[defaultType],
       },
@@ -115,9 +110,7 @@ export default function DonutChartScope(data, metadata, config) {
     ],
     legends: [
       {
-        fill: "color",
-        title: "Legends",
-        orient: "none",
+        orient: "right",
         symbolType: "circle",
         padding: { value: 10 },
         encode: {
