@@ -1,21 +1,22 @@
 import { Typography, Button } from "@material-ui/core";
-import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-const LocationHeader = ({ level, parent, title, icon, ...props }) => {
+import Icon from "@/pesayetu/components/Image";
+
+const LocationHeader = ({ level, parent, name, icon, ...props }) => {
   const classes = useStyles(props);
 
-  if (!title) {
+  if (!name) {
     return null;
   }
   return (
     <div className={classes.root}>
       <div className={classes.titleContent}>
         <Typography variant="h3" className={classes.title}>
-          {title}
+          {name}
         </Typography>
         <Button variant="contained" className={classes.button}>
           <div className={classes.icon}>
@@ -33,14 +34,14 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
 };
 
 LocationHeader.propTypes = {
-  title: PropTypes.string,
+  name: PropTypes.string,
   level: PropTypes.string,
   parent: PropTypes.string,
   icon: PropTypes.string,
 };
 
 LocationHeader.defaultProps = {
-  title: undefined,
+  name: undefined,
   level: undefined,
   parent: undefined,
   icon: undefined,
