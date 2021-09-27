@@ -10,6 +10,7 @@ import MobileNavigation from "./MobileNavigation";
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     backgroundColor: palette.background.default,
+    zIndex: 2000,
   },
   section: {},
   toolbar: {
