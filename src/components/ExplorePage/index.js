@@ -1,3 +1,4 @@
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
@@ -5,7 +6,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 
 import Location from "@/pesayetu/components/HURUmap/Location";
+import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Link from "@/pesayetu/components/Link";
+import { panelArgs } from "@/pesayetu/config";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
@@ -105,6 +108,9 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
 
   return (
     <div className={classes.root}>
+      <Hidden smDown>
+        <Panel {...panelArgs} />
+      </Hidden>
       <Map
         center={[0.3051933453207569, 37.908818734483155]}
         zoom={6.25}
