@@ -1,4 +1,11 @@
-import { FormControl, MenuItem, Select, SvgIcon } from "@material-ui/core";
+import {
+  FormControl,
+  MenuItem,
+  Select,
+  SvgIcon,
+  InputLabel,
+  Typography,
+} from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -20,6 +27,13 @@ function Input({ label, options, selected, onChange, ...props }) {
 
   return (
     <FormControl variant="filled" size="small" className={classes.formControl}>
+      {label && (
+        <InputLabel id="temp-id" className={classes.inputLabel}>
+          <Typography variant="caption" className={classes.label}>
+            {label}
+          </Typography>
+        </InputLabel>
+      )}
       <Select
         displayEmpty
         disableUnderline

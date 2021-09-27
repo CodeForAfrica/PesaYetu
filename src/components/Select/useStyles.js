@@ -48,6 +48,19 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
       fontWeight: "bold",
     },
   },
+  inputLabel: {
+    position: "inherit",
+    marginBottom: typography.pxToRem(3),
+    "&.MuiInputLabel-formControl": {
+      transform: "inherit",
+    },
+  },
+  label: {
+    fontSize: typography.pxToRem(10),
+    fontWeight: "700",
+    color: "#666666",
+    textTransform: "uppercase",
+  },
 }));
 
 export default useStyles;

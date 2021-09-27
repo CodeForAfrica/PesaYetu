@@ -1,7 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   root: {},
+  test: {
+    width: typography.pxToRem(156),
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(200),
+    },
+  },
   inputLabel: {
     position: "inherit",
     marginBottom: typography.pxToRem(3),
