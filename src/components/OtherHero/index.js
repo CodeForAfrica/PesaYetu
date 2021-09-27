@@ -83,7 +83,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("md")]: {
       position: "relative",
       height: "100%",
-      marginLeft: `calc((-90vw + ${breakpoints.values.md}px)/4)`,
+      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.5)`, // get width 1/4 of current width, then shift by a margin of 0.5.This ensures the image isn't centered.
     },
   },
   accentImage: {
