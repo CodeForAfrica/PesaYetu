@@ -23,6 +23,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   value: {
     fontWeight: 600,
   },
+  item: {
+    fontSize: typography.pxToRem(11),
+  },
   content: {
     display: "flex",
     alignItems: "center",
@@ -32,21 +35,21 @@ const useStyles = makeStyles(({ palette, typography }) => ({
       width: typography.pxToRem(10),
       height: typography.pxToRem(10),
       border: `1px solid ${palette.background.default}`,
-      background: props.groupColor,
+      background: props.itemColor,
       borderRadius: "100%",
       marginRight: typography.pxToRem(7),
     };
   },
 }));
 
-function ChartTooltip({ title, value, formattedValue, group, ...props }) {
+function ChartTooltip({ title, value, formattedValue, item, ...props }) {
   const classes = useStyles(props);
   return (
     <Grid container className={classes.root}>
-      {group && (
+      {item && (
         <Grid item className={classes.content}>
           <div className={classes.circle} />
-          <Typography>{group}</Typography>
+          <Typography className={classes.item}>{item}</Typography>
         </Grid>
       )}
       <Grid item className={classes.content}>
@@ -74,16 +77,16 @@ ChartTooltip.propTypes = {
   title: PropTypes.string,
   value: PropTypes.string,
   formattedValue: PropTypes.string,
-  group: PropTypes.string,
-  groupColor: PropTypes.string,
+  item: PropTypes.string,
+  itemColor: PropTypes.string,
 };
 
 ChartTooltip.defaultProps = {
   title: undefined,
   value: undefined,
   formattedValue: undefined,
-  group: undefined,
-  groupColor: undefined,
+  item: undefined,
+  itemColor: undefined,
 };
 
 export default ChartTooltip;

@@ -1,16 +1,22 @@
 import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import ReactDOMServer from "react-dom/server";
 import { Vega } from "react-vega";
 
 import configureScope from "./configureScope";
+import { calculateTooltipPosition } from "./utils";
 
+import ChartTooltip from "@/pesayetu/components/HURUmap/ChartTooltip";
 import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
 import Link from "@/pesayetu/components/Link";
+import theme from "@/pesayetu/theme";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {},
+  root: {
+    position: "relative",
+  },
   source: {
     margin: `${typography.pxToRem(20)} 0`,
   },
@@ -31,29 +37,70 @@ const useStyles = makeStyles(({ typography, palette }) => ({
 function Chart({ indicator, title, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
+  const [updateView, setUpdateView] = useState(false);
+
+  const handleNewView = (v) => {
+    if (!updateView) {
+      setView(v);
+      setUpdateView(true);
+    }
+  };
 
   const {
+    id,
     description,
     metadata: { source, url },
+    chart_configuration: { disableToggle, defaultType },
   } = indicator;
 
   const spec = configureScope(indicator);
 
-  // const handler = (_, event, item, value) => {
+  const handler = (_, event, item, value) => {
+    let el = document.getElementsByClassName(`${id}-charttooltip`)[0];
+    if (!el) {
+      el = document.createElement("div");
+      el.classList.add(`${id}-charttooltip`);
+      document.body.appendChild(el);
+    }
 
-  //   console.log(item);
-  //   console.log(_)
+    const tooltipContainer = document.fullscreenElement || document.body;
+    tooltipContainer.appendChild(el);
+    // hide tooltip for null objects, undefined
+    if (!value) {
+      el.remove();
+      return;
+    }
+    el.innerHTML = ReactDOMServer.renderToString(
+      <ThemeProvider theme={theme}>
+        <ChartTooltip
+          title={value.group}
+          value={value.count}
+          formattedValue={
+            defaultType.toLowerCase() === "percentage" || !disableToggle
+              ? value.percentage
+              : undefined
+          }
+          item={value?.stack}
+          itemColor={item?.fill}
+        />
+      </ThemeProvider>
+    );
 
-  // }
-
-  console.log("Hi");
-
-  // const tooltipHandler = () => {
-
-  // }
+    el.classList.add("visible");
+    const { x, y } = calculateTooltipPosition(
+      event,
+      el.getBoundingClientRect(),
+      0,
+      10
+    );
+    el.setAttribute(
+      "style",
+      `top: ${y}px; left: ${x}px; z-index: 999; position: absolute`
+    );
+  };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id={`${id}-chart`}>
       <IndicatorTitle
         title={title}
         description={description}
@@ -63,10 +110,8 @@ function Chart({ indicator, title, ...props }) {
       <Vega
         spec={spec}
         actions={false}
-        onNewView={(v) => {
-          setView(v);
-          return v;
-        }}
+        tooltip={handler}
+        onNewView={handleNewView}
       />
       {url && source && (
         <div className={classes.source}>
@@ -82,6 +127,11 @@ function Chart({ indicator, title, ...props }) {
 
 Chart.propTypes = {
   indicator: PropTypes.shape({
+    id: PropTypes.number,
+    chart_configuration: PropTypes.shape({
+      disableToggle: PropTypes.bool,
+      defaultType: PropTypes.string,
+    }),
     description: PropTypes.string,
     metadata: PropTypes.shape({
       source: PropTypes.string,

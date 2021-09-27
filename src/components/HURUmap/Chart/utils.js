@@ -29,3 +29,23 @@ export const createFiltersForGroups = (groups) => {
     filters: Array.from(filters.values()),
   };
 };
+
+export const calculateTooltipPosition = (
+  event,
+  tooltipBox,
+  offsetX,
+  offsetY
+) => {
+  let x = event.pageX + offsetX;
+  if (x + tooltipBox.width > window.innerWidth) {
+    x = +event.pageX - offsetX - tooltipBox.width;
+  }
+  let y = event.pageY + offsetY;
+  if (y < window.innerHeight) {
+    y = window.innerHeight + offsetY;
+  }
+  if (y + tooltipBox.height > window.innerHeight) {
+    y = +event.pageY - offsetY - tooltipBox.height;
+  }
+  return { x, y };
+};
