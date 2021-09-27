@@ -74,7 +74,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     position: "absolute",
     [breakpoints.up("lg")]: {
       "& > div:nth-of-type(1)": {
-        paddingRight: "15rem",
+        paddingRight: typography.pxToRem(240),
       },
     },
   },
