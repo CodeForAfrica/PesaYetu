@@ -6,6 +6,9 @@ import useStyles from "./useStyles";
 function TabPanel({ children, value, name, selected, ...props }) {
   const classes = useStyles(props);
 
+  if (selected !== value) {
+    return null;
+  }
   return (
     <div
       role="tabpanel"
@@ -15,7 +18,7 @@ function TabPanel({ children, value, name, selected, ...props }) {
       {...props}
       className={classes.tabPanel}
     >
-      {selected === value && children}
+      {children}
     </div>
   );
 }
