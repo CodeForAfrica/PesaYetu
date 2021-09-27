@@ -1,4 +1,4 @@
-import { Drawer, Box } from "@material-ui/core";
+import { Drawer } from "@material-ui/core";
 import Proptypes from "prop-types";
 import React from "react";
 
@@ -7,7 +7,6 @@ import useStyles from "./useStyles";
 import PanelButtonGroup from "@/pesayetu/components/HURUmap/PanelButtonGroup";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
-import { treeViewArgs } from "@/pesayetu/config";
 
 function Panel({ items, ...props }) {
   const [value, setValue] = React.useState();
@@ -44,40 +43,33 @@ function Panel({ items, ...props }) {
   };
 
   return (
-    <Box
-      position="absolute"
-      width="max-content"
-      display="flex"
-      className={classes.root}
+    <Drawer
+      PaperProps={{ ref: paperRef }}
+      classes={{ root: classes.root, paper: classes.paper }}
+      variant="persistent"
+      anchor="left"
+      open={!!value}
     >
-      <Drawer
-        PaperProps={{ ref: paperRef }}
-        classes={{ paper: classes.paper }}
-        variant="persistent"
-        anchor="left"
-        open={!!value}
-      >
-        {items.map((item) => (
-          <TabPanel
-            key={item.value}
-            name={item.value}
-            selected={item.value}
-            value={value}
-            classes={{ tabPanel: classes.tabPanel }}
-          >
-            <TreeView classes={{ root: classes.treeView }} {...treeViewArgs} />
-            {item.children}
-          </TabPanel>
-        ))}
-        <PanelButtonGroup
-          classes={{ root: classes.panelButtons }}
-          onChange={handleChange}
-          items={items}
+      {items.map((item) => (
+        <TabPanel
+          key={item.value}
+          name={item.value}
+          selected={item.value}
           value={value}
-          pins={pins}
-        />
-      </Drawer>
-    </Box>
+          classes={{ tabPanel: classes.tabPanel }}
+        >
+          <TreeView classes={{ root: classes.treeView }} {...item.tree} />
+          <div>{item.children}</div>
+        </TabPanel>
+      ))}
+      <PanelButtonGroup
+        classes={{ root: classes.panelButtons }}
+        onChange={handleChange}
+        items={items}
+        value={value}
+        pins={pins}
+      />
+    </Drawer>
   );
 }
 
@@ -86,6 +78,7 @@ Panel.propTypes = {
     Proptypes.shape({
       value: Proptypes.string,
       children: Proptypes.node,
+      tree: Proptypes.shape({}),
     })
   ),
 };
