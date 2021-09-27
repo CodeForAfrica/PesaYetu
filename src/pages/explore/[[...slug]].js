@@ -66,6 +66,7 @@ export async function getStaticProps({ preview, previewData, params }) {
     await fetchProfileConfigurations();
   const [originalCode] = params?.slug || ["ke"];
   const code = originalCode.toLowerCase();
+
   if (!locationCodes.includes(code)) {
     return {
       notFound: true,
