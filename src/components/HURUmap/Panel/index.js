@@ -2,10 +2,10 @@ import { Drawer } from "@material-ui/core";
 import Proptypes from "prop-types";
 import React from "react";
 
+import PanelItem from "./PanelItem";
 import useStyles from "./useStyles";
 
 import PanelButtonGroup from "@/pesayetu/components/HURUmap/PanelButtonGroup";
-import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
 
 function Panel({ items, ...props }) {
@@ -19,6 +19,9 @@ function Panel({ items, ...props }) {
     const found = items.find((item) => item.value === current);
     return !!found?.pin;
   };
+  if (!items?.length) {
+    return null;
+  }
 
   function addOrRemovePin(array, pin) {
     const newArray = [...array];
@@ -58,8 +61,7 @@ function Panel({ items, ...props }) {
           value={value}
           classes={{ tabPanel: classes.tabPanel }}
         >
-          <TreeView classes={{ root: classes.treeView }} {...item.tree} />
-          <div>{item.children}</div>
+          <PanelItem item={item} {...props} />
         </TabPanel>
       ))}
       <PanelButtonGroup

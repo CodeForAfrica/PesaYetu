@@ -28,9 +28,15 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     display: "flex",
   },
   treeView: {
-    width: typography.pxToRem(205),
+    width: typography.pxToRem(300),
     minHeight: "100%",
     paddingTop: typography.pxToRem(76),
+    flexShrink: 0,
+  },
+  panelMain: {
+    paddingTop: typography.pxToRem(67.7),
+    paddingLeft: typography.pxToRem(17),
+    paddingRight: typography.pxToRem(17),
   },
 }));
 

@@ -13,21 +13,21 @@ import Link from "@/pesayetu/components/Link";
 const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   const [expanded, setExpanded] = useState(expandedProps);
   const classes = useStyles(props);
-  if (!items || !items.length) {
+  if (!items) {
     return null;
   }
 
   return (
     <div className={classes.root}>
       <MuiTreeView expanded={[expanded]}>
-        {items.map(({ children, label, path }) => (
+        {Object.keys(items).map((label) => (
           <TreeItem
-            key={path}
-            nodeId={path}
-            onClick={() => setExpanded(path)}
+            key={label}
+            nodeId={label}
+            onClick={() => setExpanded(label)}
             label={
               <Typography className={classes.label} variant="caption">
-                <Link underline="none" href={path}>
+                <Link underline="none" href={label}>
                   {label} <CheckIcon className={classes.icon} />
                 </Link>
               </Typography>
@@ -37,7 +37,7 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
               expanded: classes.expanded,
             }}
           >
-            {children.map((child) => (
+            {Object.keys(items[label]?.subcategories).map((child) => (
               <TreeItem
                 key={child.path}
                 nodeId={child.path}
@@ -47,7 +47,7 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
                     variant="caption"
                   >
                     <Link underline="none" href={child.path}>
-                      {child.label}
+                      {child}
                     </Link>
                   </Typography>
                 }
@@ -61,7 +61,11 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
 };
 
 TreeView.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({})),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      subcategories: PropTypes.shape({}),
+    })
+  ),
   expanded: PropTypes.string,
 };
 
