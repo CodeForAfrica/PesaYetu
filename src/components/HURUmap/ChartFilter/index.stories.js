@@ -13,5 +13,6 @@ export const Default = Template.bind({});
 
 Default.args = {
   label: "Select a value",
-  options: ["Swahili", "Kikuyu", "Luhya"],
+  selected: "All Values",
+  options: ["Swahili", "Kikuyu", "Luhya", "All Values"],
 };

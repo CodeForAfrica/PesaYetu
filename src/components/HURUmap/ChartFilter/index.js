@@ -12,7 +12,7 @@ import useStyles from "./useStyles";
 
 import Input from "@/pesayetu/components/Select";
 
-const ChartFiler = ({ label, options, ...props }) => {
+const ChartFiler = ({ label, options, selected, ...props }) => {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
@@ -20,7 +20,7 @@ const ChartFiler = ({ label, options, ...props }) => {
         label={label}
         classes={{ select: classes.test }}
         options={options}
-        // selected="All values"
+        selected={selected}
       />
     </div>
   );
@@ -28,11 +28,13 @@ const ChartFiler = ({ label, options, ...props }) => {
 
 ChartFiler.propTypes = {
   label: PropTypes.string,
+  selected: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ChartFiler.defaultProps = {
   label: undefined,
+  selected: undefined,
   options: undefined,
 };
 
