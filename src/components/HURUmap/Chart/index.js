@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Vega } from "react-vega";
-import { Handler } from "vega-tooltip";
 
 import configureScope from "./configureScope";
 
@@ -40,6 +39,15 @@ function Chart({ indicator, title, ...props }) {
 
   const spec = configureScope(indicator);
 
+  // const handler = (_, event, item, value) => {
+
+  //   console.log(item);
+  //   console.log(_)
+
+  // }
+
+  console.log("Hi");
+
   // const tooltipHandler = () => {
 
   // }
@@ -54,9 +62,11 @@ function Chart({ indicator, title, ...props }) {
       />
       <Vega
         spec={spec}
-        tooltip={new Handler().call}
         actions={false}
-        onNewView={(v) => setView(v)}
+        onNewView={(v) => {
+          setView(v);
+          return v;
+        }}
       />
       {url && source && (
         <div className={classes.source}>
