@@ -7,6 +7,7 @@ import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
+import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurations";
 
 export default function Explore(props) {
   const {
@@ -34,18 +35,9 @@ Explore.defaultProps = {
 
 const postType = "page";
 
-function extractLocationCodes(props) {
-  return (
-    formatBlocksForSections(props?.post?.blocks)
-      ?.featuredCounties?.counties?.split(",")
-      ?.map((s) => s.trim().toLowerCase())
-      ?.filter((l) => l) ?? []
-  );
-}
-
 export async function getStaticPaths() {
-  const { props } = await getPostTypeStaticProps({ slug: "explore" }, postType);
-  const paths = extractLocationCodes(props).map((locationCode) => ({
+  const { locationCodes } = await fetchProfileConfigurations();
+  const paths = locationCodes.map((locationCode) => ({
     params: { slug: [locationCode] },
   }));
 
@@ -70,9 +62,11 @@ export async function getStaticProps({ preview, previewData, params }) {
   }
 
   const blocks = formatBlocksForSections(props?.post?.blocks);
-  const locationCodes = extractLocationCodes(props);
+  const { locationCodes, preferredChildren } =
+    await fetchProfileConfigurations();
   const [originalCode] = params?.slug || ["ke"];
   const code = originalCode.toLowerCase();
+
   if (!locationCodes.includes(code)) {
     return {
       notFound: true,
@@ -101,6 +95,7 @@ export async function getStaticProps({ preview, previewData, params }) {
       locationCodes,
       profile,
       variant: "explore",
+      preferredChildren,
     },
     revalidate,
   };
