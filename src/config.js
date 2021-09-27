@@ -678,31 +678,27 @@ export const treeViewArgs = {
 export const panelArgs = {
   items: [
     {
-      label: "Overview",
-      value: "#1",
+      value: "rich-data",
       icon: panelPinIcon,
       children: "1",
       tree: treeViewArgs,
     },
     {
-      label: "Overview",
-      value: "#2",
+      value: "pin",
       icon: pinBlack,
       children: "2",
       pin: true,
       tree: treeViewArgs,
     },
     {
-      label: "Overview",
-      value: "#3",
+      value: "point-maper",
       icon: locationIcon,
       disabled: true,
       children: "4",
       tree: treeViewArgs,
     },
     {
-      label: "Overview",
-      value: "#4",
+      value: "data-mapper",
       icon: mapIcon,
       disabled: true,
       tree: treeViewArgs,
