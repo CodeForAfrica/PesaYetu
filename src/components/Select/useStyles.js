@@ -52,7 +52,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     position: "inherit",
     marginBottom: typography.pxToRem(3),
     "&.MuiInputLabel-formControl": {
-      transform: "inherit",
+      transform: "inherit !important", // prevent label from moving. Temporary
     },
   },
   label: {
