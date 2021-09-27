@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { MapContainer, ZoomControl, TileLayer, Pane } from "react-leaflet";
 
 import Layers from "./Layers";
@@ -18,10 +18,6 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-const preferredChildrenObj = {
-  country: ["county"],
-};
-
 function Map({
   center,
   className,
@@ -30,23 +26,26 @@ function Map({
   geometries,
   geography,
   tileLayers,
+  preferredChildren,
+  locationCodes,
   ...props
 }) {
   const classes = useStyles(props);
   const [selectedBoundary, setSelectedBoundary] = useState(null);
 
-  const getSelectedBoundary = (level, geoms) => {
-    const preferredChildren = preferredChildrenObj[level];
-    if (!preferredChildren) return null;
+  const getSelectedBoundary = useCallback(
+    (level, geoms) => {
+      const preferredChildrenPerLevel = preferredChildren[level];
+      const preferredLevel =
+        preferredChildrenPerLevel?.find((l) => geoms.children[l]) ?? null;
 
-    const availableLevels = preferredChildren.filter((l) => geoms.children[l]);
-
-    if (availableLevels.length > 0) {
-      const preferredLevel = availableLevels[0];
-      return geoms.children[preferredLevel];
-    }
-    return null;
-  };
+      if (preferredLevel) {
+        return geoms.children[preferredLevel];
+      }
+      return null;
+    },
+    [preferredChildren]
+  );
 
   useEffect(() => {
     let selectedBound =
@@ -78,7 +77,7 @@ function Map({
       };
     }
     setSelectedBoundary(selectedBound);
-  }, [geometries, geography]);
+  }, [geometries, geography, getSelectedBoundary]);
 
   return (
     <MapContainer
@@ -103,9 +102,10 @@ function Map({
       ))}
       <ZoomControl position="bottomright" />
       <Layers
+        {...props}
         selectedBoundary={selectedBoundary}
         parentsGeometries={geometries.parents}
-        {...props}
+        locationCodes={locationCodes}
       />
     </MapContainer>
   );
@@ -136,6 +136,8 @@ Map.propTypes = {
   setShouldFetch: PropTypes.func,
   setGeoCode: PropTypes.func,
   tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
+  preferredChildren: PropTypes.shape({}),
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Map.defaultProps = {
@@ -151,6 +153,8 @@ Map.defaultProps = {
   setShouldFetch: undefined,
   setGeoCode: undefined,
   tileLayers: undefined,
+  preferredChildren: undefined,
+  locationCodes: undefined,
 };
 
 export default Map;
