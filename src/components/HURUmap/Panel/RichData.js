@@ -5,6 +5,7 @@ import useStyles from "./useStyles";
 
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
+import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 
 function RichData(props) {
@@ -17,8 +18,12 @@ function RichData(props) {
         <LocationHeader {...geography} />
         {Object.keys(data).map((label) => (
           <div key={label}>
+            <CategoryHeader
+              title={label}
+              description={data[label]?.description}
+            />
             {Object.keys(data[label]?.subcategories).map((child) => (
-              <CategoryHeader
+              <SubcategoryHeader
                 title={child}
                 description={data[label]?.subcategories[child].description}
               />
