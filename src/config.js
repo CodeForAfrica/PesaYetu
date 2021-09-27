@@ -682,6 +682,7 @@ export const panelArgs = {
       value: "#1",
       icon: panelPinIcon,
       children: "1",
+      tree: treeViewArgs,
     },
     {
       label: "Overview",
@@ -689,6 +690,7 @@ export const panelArgs = {
       icon: pinBlack,
       children: "2",
       pin: true,
+      tree: treeViewArgs,
     },
     {
       label: "Overview",
@@ -696,12 +698,14 @@ export const panelArgs = {
       icon: locationIcon,
       disabled: true,
       children: "4",
+      tree: treeViewArgs,
     },
     {
       label: "Overview",
       value: "#4",
       icon: mapIcon,
       disabled: true,
+      tree: treeViewArgs,
     },
   ],
 };
