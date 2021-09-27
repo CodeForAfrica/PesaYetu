@@ -653,6 +653,28 @@ export const documentsAndDatasetsArgs = {
   ],
 };
 
+export const treeViewArgs = {
+  items: [
+    {
+      label: "Overview",
+      path: "#1",
+      children: [
+        { path: "", label: "Population" },
+        { path: "", label: "Political" },
+        { path: "", label: "Land Use" },
+      ],
+    },
+    {
+      label: "Revenue",
+      path: "#2",
+      children: [
+        { path: "", label: "Population" },
+        { path: "", label: "Political" },
+        { path: "", label: "Land Use" },
+      ],
+    },
+  ],
+};
 export const panelArgs = {
   items: [
     {
@@ -666,6 +688,7 @@ export const panelArgs = {
       value: "#2",
       icon: pinBlack,
       children: "2",
+      pin: true,
     },
     {
       label: "Overview",
