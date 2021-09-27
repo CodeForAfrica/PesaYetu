@@ -74,7 +74,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     position: "absolute",
     [breakpoints.up("lg")]: {
       "& > div:nth-of-type(1)": {
-        paddingRight: "18rem",
+        paddingRight: "15rem",
       },
     },
   },
@@ -83,7 +83,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("md")]: {
       position: "relative",
       height: "100%",
-      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.2)`,
+      marginLeft: `calc((-90vw + ${breakpoints.values.md}px)/4)`,
     },
   },
   accentImage: {
