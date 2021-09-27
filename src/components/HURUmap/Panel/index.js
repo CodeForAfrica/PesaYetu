@@ -5,18 +5,44 @@ import React from "react";
 import useStyles from "./useStyles";
 
 import PanelButtonGroup from "@/pesayetu/components/HURUmap/PanelButtonGroup";
+import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
+import { treeViewArgs } from "@/pesayetu/config";
 
 function Panel({ items, ...props }) {
   const [value, setValue] = React.useState();
+  const [pins, setPins] = React.useState([]);
   const paperRef = React.useRef();
+  const drawerWidth = paperRef.current?.clientWidth;
+  const classes = useStyles({ ...props, drawerWidth });
+
+  const isPin = (current) => {
+    const found = items.find((item) => item.value === current);
+    return !!found?.pin;
+  };
+
+  function addOrRemovePin(array, pin) {
+    const newArray = [...array];
+    const index = newArray.indexOf(pin);
+    if (index === -1) {
+      newArray.push(pin);
+    } else {
+      newArray.splice(index, 1);
+    }
+    return newArray;
+  }
 
   const handleChange = (nextValue) => {
+    if (isPin(nextValue)) {
+      setPins(addOrRemovePin(pins, nextValue));
+    }
+    if (!nextValue) {
+      setPins([]);
+    }
+
     setValue(nextValue);
   };
 
-  const drawerWidth = paperRef.current?.clientWidth;
-  const classes = useStyles({ ...props, drawerWidth });
   return (
     <Box
       position="absolute"
@@ -37,7 +63,9 @@ function Panel({ items, ...props }) {
             name={item.value}
             selected={item.value}
             value={value}
+            classes={{ tabPanel: classes.tabPanel }}
           >
+            <TreeView classes={{ root: classes.treeView }} {...treeViewArgs} />
             {item.children}
           </TabPanel>
         ))}
@@ -46,6 +74,7 @@ function Panel({ items, ...props }) {
           onChange={handleChange}
           items={items}
           value={value}
+          pins={pins}
         />
       </Drawer>
     </Box>
