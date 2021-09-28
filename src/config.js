@@ -654,26 +654,98 @@ export const documentsAndDatasetsArgs = {
 };
 
 export const treeViewArgs = {
-  items: [
-    {
-      label: "Overview",
-      path: "#1",
-      children: [
-        { path: "", label: "Population" },
-        { path: "", label: "Political" },
-        { path: "", label: "Land Use" },
-      ],
+  items: {
+    Demographics: {
+      description: "",
+      subcategories: {
+        Population: {
+          description: "",
+        },
+        "Youth status": {
+          description: "",
+        },
+        "Youth population by age group": {
+          description: "",
+        },
+        Migration: {
+          description: "",
+        },
+        "South African Citizenship": {
+          description: "",
+        },
+        Language: {
+          description: "",
+        },
+        "Province of birth": {
+          description: "",
+        },
+      },
     },
-    {
-      label: "Revenue",
-      path: "#2",
-      children: [
-        { path: "", label: "Population" },
-        { path: "", label: "Political" },
-        { path: "", label: "Land Use" },
-      ],
+    Education: {
+      description: "",
+      subcategories: {
+        "Progress through school": {
+          description: "",
+        },
+        "Highest education level": {
+          description: "",
+        },
+        "Educational attendance": {
+          description: "",
+        },
+      },
     },
-  ],
+    "Economic Opportunities": {
+      description: "",
+      subcategories: {
+        Employment: {
+          description: "",
+        },
+        "NEET Status": {
+          description: "",
+        },
+      },
+    },
+    "Living Environment": {
+      description: "",
+      subcategories: {
+        "Basic services": {
+          description: "",
+        },
+        "Dwelling type": {
+          description: "",
+        },
+        Overcrowding: {
+          description: "",
+        },
+        "Internet access": {
+          description: "",
+        },
+        "Live with parents": {
+          description: "",
+        },
+      },
+    },
+    "Youth Poverty": {
+      description: "",
+      subcategories: {
+        "Multidimensional poverty": {
+          description: "",
+        },
+        "Income poverty": {
+          description: "",
+        },
+      },
+    },
+    "Health and Wellness": {
+      description: "",
+      subcategories: {
+        Childbearing: {
+          description: "",
+        },
+      },
+    },
+  },
 };
 export const panelArgs = {
   items: [
