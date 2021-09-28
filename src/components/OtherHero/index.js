@@ -73,9 +73,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     backgroundRepeat: "no-repeat",
     position: "absolute",
     [breakpoints.up("lg")]: {
-      "& > div:nth-of-type(1)": {
+      /* "& > div:nth-of-type(1)": {
         paddingRight: typography.pxToRem(240),
-      },
+      }, */
     },
   },
   rightBackgroundWrapper: {
@@ -143,8 +143,13 @@ function OtherHero({
         </Grid>
       </div>
       <Section classes={{ root: classes.section }}>
-        <Grid container>
-          <Grid item xs={12} md={6}>
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Grid item xs={12} md={6} lg={4}>
             <div className={classes.textContainer}>
               <Header
                 overline={overline}
@@ -159,15 +164,18 @@ function OtherHero({
               </Header>
             </div>
           </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <Image
+              width={400}
+              height={400}
+              layout="intrinsic"
+              className={classes.accentImage}
+              src={accentImage}
+              alt=""
+            />
+          </Grid>
         </Grid>
-        <Image
-          width={400}
-          height={400}
-          layout="intrinsic"
-          className={classes.accentImage}
-          src={accentImage}
-          alt=""
-        />
       </Section>
     </div>
   );
