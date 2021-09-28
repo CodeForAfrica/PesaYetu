@@ -137,11 +137,6 @@ export default function DonutChartScope(data, metadata, config) {
             endAngle: { signal: "endAngle" },
             sort: { signal: "sort" },
           },
-          {
-            type: "formula",
-            expr: "format(datum.percentage, numberFormat.percentage)",
-            as: "percentGroupText",
-          },
         ],
       },
     ],
@@ -160,7 +155,6 @@ export default function DonutChartScope(data, metadata, config) {
         encode: {
           labels: {
             interactive: true,
-            text: { scale: "legend_labels", field: "percentGroupText" },
             update: {
               fontSize: { value: 11 },
               fill: { value: theme.palette.chart.text },
