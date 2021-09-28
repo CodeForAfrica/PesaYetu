@@ -9,6 +9,7 @@ import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
+import Section from "@/pesayetu/components/Section";
 
 export function formatData(data) {
   return Object.keys(data).map((label) => {
@@ -34,7 +35,7 @@ function RichData(props) {
   return (
     <>
       <TreeView classes={{ root: classes.treeView }} items={items} />
-      <div className={classes.panelMain}>
+      <Section className={classes.panelMain}>
         <LocationHeader icon={Print} title={geography.name} {...geography} />
         {items.map((item) => (
           <div key={item.title}>
@@ -51,7 +52,7 @@ function RichData(props) {
             ))}
           </div>
         ))}
-      </div>
+      </Section>
     </>
   );
 }

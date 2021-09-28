@@ -7,7 +7,7 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     height: "90vh",
   },
   drawerOpen: {
-    width: typography.pxToRem(1049),
+    minWidth: typography.pxToRem(1049),
     transition: transitions.create("width", {
       easing: transitions.easing.sharp,
       duration: transitions.duration.enteringScreen,
@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     width: typography.pxToRem(44),
   },
   tabPanel: {
-    width: typography.pxToRem(1005),
+    width: `calc(100% - ${typography.pxToRem(44)})`,
     height: "100%",
     background: palette.background.default,
     overflow: "hidden",
@@ -50,6 +50,7 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     paddingTop: typography.pxToRem(67.7),
     paddingLeft: typography.pxToRem(17),
     paddingRight: typography.pxToRem(17),
+    scrollingBehaviour: "smooth",
     overflowY: "scroll",
     "&::-webkit-scrollbar": {
       width: 0 /* Remove scrollbar space */,
