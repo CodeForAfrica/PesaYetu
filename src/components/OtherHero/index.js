@@ -124,35 +124,34 @@ function OtherHero({
   }
   return (
     <div className={classes.root}>
-      <Image objectFit="cover" src={mapLines} layout="fill" />
-      <Section classes={{ root: classes.section }}>
-        <div className={classes.backgroundGrid}>
-          <Grid container>
-            <Grid item xs={12} md={6}>
-              <div className={classes.leftBackground} />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              md={6}
-              className={classes.rightBackgroundWrapperRoot}
-            >
-              <div className={classes.rightBackgroundWrapper}>
-                <div className={classes.rightBackground}>
-                  <Image
-                    width={400}
-                    height={400}
-                    layout="intrinsic"
-                    className={classes.accentImage}
-                    src={accentImage}
-                    alt=""
-                  />
-                </div>
-              </div>
-            </Grid>
+      <div className={classes.backgroundGrid}>
+        <Image objectFit="cover" src={mapLines} layout="fill" />
+        <Grid container>
+          <Grid item xs={12} md={6}>
+            <div className={classes.leftBackground} />
           </Grid>
-        </div>
-
+          <Grid
+            item
+            xs={12}
+            md={6}
+            className={classes.rightBackgroundWrapperRoot}
+          >
+            <div className={classes.rightBackgroundWrapper}>
+              <div className={classes.rightBackground}>
+                <Image
+                  width={400}
+                  height={400}
+                  layout="intrinsic"
+                  className={classes.accentImage}
+                  src={accentImage}
+                  alt=""
+                />
+              </div>
+            </div>
+          </Grid>
+        </Grid>
+      </div>
+      <Section classes={{ root: classes.section }}>
         <Grid container>
           <Grid item xs={12} md={6} lg={4}>
             <div className={classes.textContainer}>
