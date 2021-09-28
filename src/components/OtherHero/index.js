@@ -137,23 +137,14 @@ function OtherHero({
             className={classes.rightBackgroundWrapperRoot}
           >
             <div className={classes.rightBackgroundWrapper}>
-              <div className={classes.rightBackground}>
-                <Image
-                  width={400}
-                  height={400}
-                  layout="intrinsic"
-                  className={classes.accentImage}
-                  src={accentImage}
-                  alt=""
-                />
-              </div>
+              <div className={classes.rightBackground} />
             </div>
           </Grid>
         </Grid>
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6}>
             <div className={classes.textContainer}>
               <Header
                 overline={overline}
@@ -169,6 +160,14 @@ function OtherHero({
             </div>
           </Grid>
         </Grid>
+        <Image
+          width={400}
+          height={400}
+          layout="intrinsic"
+          className={classes.accentImage}
+          src={accentImage}
+          alt=""
+        />
       </Section>
     </div>
   );
