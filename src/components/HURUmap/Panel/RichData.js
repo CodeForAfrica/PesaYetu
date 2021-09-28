@@ -4,6 +4,7 @@ import React from "react";
 import useStyles from "./useStyles";
 
 import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
+import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
@@ -34,7 +35,7 @@ function RichData(props) {
     <>
       <TreeView classes={{ root: classes.treeView }} items={items} />
       <div className={classes.panelMain}>
-        <LocationHeader title={geography.name} {...geography} />
+        <LocationHeader icon={Print} title={geography.name} {...geography} />
         {items.map((item) => (
           <div key={item.title}>
             <CategoryHeader
