@@ -61,9 +61,6 @@ function Input({ label, options, selected, onChange, ...props }) {
         }}
         classes={{ root: classes.select }}
       >
-        <MenuItem disabled value="">
-          <em>{selected}</em>
-        </MenuItem>
         {options?.length &&
           options.map((option) => (
             <MenuItem key={option} value={option}>
