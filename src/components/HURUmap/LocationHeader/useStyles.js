@@ -1,7 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {},
+  root: {
+    marginBottom: typography.pxToRem(10),
+  },
   titleContent: {
     display: "flex",
     justifyContent: "space-between",
