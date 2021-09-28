@@ -9,25 +9,43 @@ import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 
+export function formatData(data) {
+  return Object.keys(data).map((label) => {
+    return {
+      title: label,
+      icon: data[label].icon ?? defaultIcon,
+      description: data[label].description,
+      children: Object.keys(data[label]?.subcategories).map((child) => {
+        return {
+          title: child,
+          description: data[label]?.subcategories[child].description,
+        };
+      }),
+    };
+  });
+}
+
 function RichData(props) {
   const { geography, data } = props;
   const classes = useStyles(props);
+  const items = formatData(data);
+
   return (
     <>
-      <TreeView classes={{ root: classes.treeView }} items={data} />
+      <TreeView classes={{ root: classes.treeView }} items={items} />
       <div className={classes.panelMain}>
         <LocationHeader title={geography.name} {...geography} />
-        {Object.keys(data).map((label) => (
-          <div key={label}>
+        {items.map((item) => (
+          <div key={item.title}>
             <CategoryHeader
-              icon={defaultIcon}
-              title={label}
-              description={data[label]?.description}
+              icon={item.icon}
+              title={item.title}
+              description={item?.description}
             />
-            {Object.keys(data[label]?.subcategories).map((child) => (
+            {item.children.map((child) => (
               <SubcategoryHeader
-                title={child}
-                description={data[label]?.subcategories[child].description}
+                title={child.title}
+                description={child?.description}
               />
             ))}
           </div>

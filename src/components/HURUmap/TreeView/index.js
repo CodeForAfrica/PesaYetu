@@ -14,22 +14,22 @@ import slugify from "@/pesayetu/utils/slugify";
 const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   const [expanded, setExpanded] = useState(expandedProps);
   const classes = useStyles(props);
-  if (!items) {
+  if (!items?.length) {
     return null;
   }
 
   return (
     <div className={classes.root}>
       <MuiTreeView expanded={[expanded]}>
-        {Object.keys(items).map((label) => (
+        {items.map((item) => (
           <TreeItem
-            key={label}
-            nodeId={label}
-            onClick={() => setExpanded(label)}
+            key={item.title}
+            nodeId={item.title}
+            onClick={() => setExpanded(item.title)}
             label={
               <Typography className={classes.label} variant="caption">
-                <Link underline="none" href={`#${slugify(label)}`}>
-                  {label} <CheckIcon className={classes.icon} />
+                <Link underline="none" href={`#${slugify(item.title)}`}>
+                  {item.title} <CheckIcon className={classes.icon} />
                 </Link>
               </Typography>
             }
@@ -38,17 +38,17 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
               expanded: classes.expanded,
             }}
           >
-            {Object.keys(items[label]?.subcategories).map((child) => (
+            {item.children.map((child) => (
               <TreeItem
-                key={child}
-                nodeId={child}
+                key={child.title}
+                nodeId={child.title}
                 label={
                   <Typography
                     className={clsx(classes.label, classes.childLabel)}
                     variant="caption"
                   >
-                    <Link underline="none" href={`#${slugify(child)}`}>
-                      {child}
+                    <Link underline="none" href={`#${slugify(child.title)}`}>
+                      {child.title}
                     </Link>
                   </Typography>
                 }
@@ -64,7 +64,7 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
 TreeView.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      subcategories: PropTypes.shape({}),
+      children: PropTypes.shape({}),
     })
   ),
   expanded: PropTypes.string,
