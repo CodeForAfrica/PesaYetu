@@ -704,147 +704,145 @@ export const panelArgs = {
       tree: treeViewArgs,
     },
   ],
-  profile: {
-    logo: {
-      image:
-        "https://wazimap-ng.s3.amazonaws.com/logos/youthexplorer.png?AWSAccessKeyId=AKIAYIFP5EK2I6PADW2R&Signature=63W%2F43NSETtdv3a9ZgTSfNh9%2FHA%3D&Expires=1632748980",
-      url: "https://youthexplorer.org.za",
-    },
-    geography: {
-      name: "Calvinia SP",
-      code: "366005003",
-      level: "subplace",
-      version: "2011 Boundaries",
-      parents: [
-        {
-          name: "South Africa",
-          code: "ZA",
-          level: "country",
-          version: "2011 Boundaries",
-        },
-        {
-          name: "Northern Cape",
-          code: "NC",
-          level: "province",
-          version: "2011 Boundaries",
-        },
-        {
-          name: "Namakwa",
-          code: "DC6",
-          level: "district",
-          version: "2011 Boundaries",
-        },
-        {
-          name: "Hantam",
-          code: "NC065",
-          level: "municipality",
-          version: "2011 Boundaries",
-        },
-        {
-          name: "Calvinia",
-          code: "366005",
-          level: "mainplace",
-          version: "2011 Boundaries",
-        },
-      ],
-    },
-    profile_data: {
-      Demographics: {
-        description: "",
-        subcategories: {
-          Population: {
-            description: "",
-          },
-          "Youth status": {
-            description: "",
-          },
-          "Youth population by age group": {
-            description: "",
-          },
-          Migration: {
-            description: "",
-          },
-          "South African Citizenship": {
-            description: "",
-          },
-          Language: {
-            description: "",
-          },
-          "Province of birth": {
-            description: "",
-          },
-        },
+  logo: {
+    image:
+      "https://wazimap-ng.s3.amazonaws.com/logos/youthexplorer.png?AWSAccessKeyId=AKIAYIFP5EK2I6PADW2R&Signature=63W%2F43NSETtdv3a9ZgTSfNh9%2FHA%3D&Expires=1632748980",
+    url: "https://youthexplorer.org.za",
+  },
+  geography: {
+    name: "Calvinia SP",
+    code: "366005003",
+    level: "subplace",
+    version: "2011 Boundaries",
+    parents: [
+      {
+        name: "South Africa",
+        code: "ZA",
+        level: "country",
+        version: "2011 Boundaries",
       },
-      Education: {
-        description: "",
-        subcategories: {
-          "Progress through school": {
-            description: "",
-          },
-          "Highest education level": {
-            description: "",
-          },
-          "Educational attendance": {
-            description: "",
-          },
-        },
+      {
+        name: "Northern Cape",
+        code: "NC",
+        level: "province",
+        version: "2011 Boundaries",
       },
-      "Economic Opportunities": {
-        description: "",
-        subcategories: {
-          Employment: {
-            description: "",
-          },
-          "NEET Status": {
-            description: "",
-          },
-        },
+      {
+        name: "Namakwa",
+        code: "DC6",
+        level: "district",
+        version: "2011 Boundaries",
       },
-      "Living Environment": {
-        description: "",
-        subcategories: {
-          "Basic services": {
-            description: "",
-          },
-          "Dwelling type": {
-            description: "",
-          },
-          Overcrowding: {
-            description: "",
-          },
-          "Internet access": {
-            description: "",
-          },
-          "Live with parents": {
-            description: "",
-          },
-        },
+      {
+        name: "Hantam",
+        code: "NC065",
+        level: "municipality",
+        version: "2011 Boundaries",
       },
-      "Youth Poverty": {
-        description: "",
-        subcategories: {
-          "Multidimensional poverty": {
-            description: "",
-          },
-          "Income poverty": {
-            description: "",
-          },
-        },
+      {
+        name: "Calvinia",
+        code: "366005",
+        level: "mainplace",
+        version: "2011 Boundaries",
       },
-      "Health and Wellness": {
-        description: "",
-        subcategories: {
-          Childbearing: {
-            description: "",
-          },
-        },
-      },
-    },
-    highlights: [],
-    overview: {
-      name: "Youth Explorer",
+    ],
+  },
+  data: {
+    Demographics: {
       description: "",
+      subcategories: {
+        Population: {
+          description: "",
+        },
+        "Youth status": {
+          description: "",
+        },
+        "Youth population by age group": {
+          description: "",
+        },
+        Migration: {
+          description: "",
+        },
+        "South African Citizenship": {
+          description: "",
+        },
+        Language: {
+          description: "",
+        },
+        "Province of birth": {
+          description: "",
+        },
+      },
     },
+    Education: {
+      description: "",
+      subcategories: {
+        "Progress through school": {
+          description: "",
+        },
+        "Highest education level": {
+          description: "",
+        },
+        "Educational attendance": {
+          description: "",
+        },
+      },
+    },
+    "Economic Opportunities": {
+      description: "",
+      subcategories: {
+        Employment: {
+          description: "",
+        },
+        "NEET Status": {
+          description: "",
+        },
+      },
+    },
+    "Living Environment": {
+      description: "",
+      subcategories: {
+        "Basic services": {
+          description: "",
+        },
+        "Dwelling type": {
+          description: "",
+        },
+        Overcrowding: {
+          description: "",
+        },
+        "Internet access": {
+          description: "",
+        },
+        "Live with parents": {
+          description: "",
+        },
+      },
+    },
+    "Youth Poverty": {
+      description: "",
+      subcategories: {
+        "Multidimensional poverty": {
+          description: "",
+        },
+        "Income poverty": {
+          description: "",
+        },
+      },
+    },
+    "Health and Wellness": {
+      description: "",
+      subcategories: {
+        Childbearing: {
+          description: "",
+        },
+      },
+    },
+  },
+  highlights: [],
+  overview: {
+    name: "Youth Explorer",
+    description: "",
   },
 };
 
