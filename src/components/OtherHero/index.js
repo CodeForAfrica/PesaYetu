@@ -15,9 +15,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     backgroundPosition: "50% 100%",
     minHeight: "min-content",
     position: "relative",
-    // paddingBottom: typography.pxToRem(43),
-    [breakpoints.up("md")]: {
-      // paddingBottom: typography.pxToRem(98),
+    paddingBottom: typography.pxToRem(43),
+    [breakpoints.up("lg")]: {
+      paddingBottom: typography.pxToRem(98),
     },
   },
   textContainer: {
@@ -72,11 +72,6 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     position: "absolute",
-    [breakpoints.up("lg")]: {
-      /* "& > div:nth-of-type(1)": {
-        paddingRight: typography.pxToRem(240),
-      }, */
-    },
   },
   rightBackgroundWrapper: {
     height: typography.pxToRem(391),
@@ -173,7 +168,6 @@ function OtherHero({
               </Header>
             </div>
           </Grid>
-
           <Grid item xs={12} md={6} lg={4} className={classes.rightImageGrid}>
             <Image
               width={400}
