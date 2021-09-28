@@ -32,8 +32,8 @@ const SubcategoryHeader = ({ title, description, ...props }) => {
     return null;
   }
   return (
-    <div className={classes.root}>
-      <Typography id={slugify(title)} variant="h5" className={classes.title}>
+    <div id={slugify(title)} className={classes.root}>
+      <Typography variant="h5" className={classes.title}>
         {title}
       </Typography>
       <RichTypography variant="body2" className={classes.description}>

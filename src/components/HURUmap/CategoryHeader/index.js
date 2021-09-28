@@ -15,8 +15,8 @@ const CategoryHeader = ({ title, description, icon }) => {
     return null;
   }
   return (
-    <div className={classes.root}>
-      <Typography id={slugify(title)} variant="h3" className={classes.title}>
+    <div id={slugify(title)} className={classes.root}>
+      <Typography variant="h3" className={classes.title}>
         {icon && (
           <div className={classes.icon}>
             <Image src={icon} layout="fill" />
