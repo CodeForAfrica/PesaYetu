@@ -18,7 +18,7 @@ const ChartFiler = ({ label, options, selected, ...props }) => {
     <div className={classes.root}>
       <Input
         label={label}
-        classes={{ select: classes.test }}
+        classes={{ select: classes.select }}
         options={options}
         selected={selected}
       />
