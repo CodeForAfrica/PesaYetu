@@ -24,7 +24,8 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   tabPanel: {
     width: "100%",
     background: palette.background.default,
-    minHeight: "90vh",
+    height: "90vh",
+    overflow: "hidden",
     display: "flex",
   },
   treeView: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     paddingTop: typography.pxToRem(67.7),
     paddingLeft: typography.pxToRem(17),
     paddingRight: typography.pxToRem(17),
+    overflowY: "scroll",
   },
 }));
 
