@@ -15,9 +15,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     backgroundPosition: "50% 100%",
     minHeight: "min-content",
     position: "relative",
-    paddingBottom: typography.pxToRem(43),
+    // paddingBottom: typography.pxToRem(43),
     [breakpoints.up("md")]: {
-      paddingBottom: typography.pxToRem(98),
+      // paddingBottom: typography.pxToRem(98),
     },
   },
   textContainer: {
@@ -84,6 +84,15 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       position: "relative",
       height: "100%",
       marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.5)`, // get width 1/4 of current width, then shift by a margin of 0.5.This ensures the image isn't centered.
+    },
+  },
+  rightImageGrid: {
+    paddingTop: "3rem",
+    position: "absolute",
+    top: "-1rem",
+    [breakpoints.up("md")]: {
+      position: "relative",
+      top: 0,
     },
   },
   accentImage: {
@@ -165,7 +174,7 @@ function OtherHero({
             </div>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={4} className={classes.rightImageGrid}>
             <Image
               width={400}
               height={400}
