@@ -3,6 +3,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
@@ -19,6 +20,7 @@ function RichData(props) {
         {Object.keys(data).map((label) => (
           <div key={label}>
             <CategoryHeader
+              icon={defaultIcon}
               title={label}
               description={data[label]?.description}
             />
