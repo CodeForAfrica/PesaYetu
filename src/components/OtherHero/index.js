@@ -78,7 +78,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("md")]: {
       position: "relative",
       height: "100%",
-      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.5)`, // get width 1/4 of current width, then shift by a margin of 0.5.This ensures the image isn't centered.
+      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.4)`, // get width 1/4 of current width, then shift by a margin of 0.4.This ensures the image isn't centered.
     },
   },
   rightImageGrid: {
@@ -154,7 +154,7 @@ function OtherHero({
           justifyContent="space-between"
           alignItems="center"
         >
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={5}>
             <div className={classes.textContainer}>
               <Header
                 overline={overline}
