@@ -1,30 +1,42 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette, transitions }) => ({
   root: {
-    width: typography.pxToRem(1005),
     position: "absolute",
     display: "flex",
+    height: "90vh",
+  },
+  drawerOpen: {
+    width: typography.pxToRem(1049),
+    transition: transitions.create("width", {
+      easing: transitions.easing.sharp,
+      duration: transitions.duration.enteringScreen,
+    }),
+  },
+  drawerClose: {
+    transition: transitions.create("width", {
+      easing: transitions.easing.sharp,
+      duration: transitions.duration.leavingScreen,
+    }),
+    overflowX: "hidden",
+    width: typography.pxToRem(44),
   },
   paper: {
     background: "transparent",
     border: "none",
-    visibility: "visible !important",
     overflow: "visible",
-    position: "relative",
-    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    position: "unset",
   },
   panelButtons: {
-    position: "absolute",
-    right: 0,
-    top: typography.pxToRem(113),
-    transform: `translateX(${typography.pxToRem(44)})`,
+    marginTop: typography.pxToRem(113),
     width: typography.pxToRem(44),
   },
   tabPanel: {
-    width: "100%",
+    width: typography.pxToRem(1005),
+    height: "100%",
     background: palette.background.default,
-    height: "90vh",
     overflow: "hidden",
     display: "flex",
   },

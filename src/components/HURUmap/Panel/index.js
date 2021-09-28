@@ -1,4 +1,5 @@
 import { Drawer } from "@material-ui/core";
+import clsx from "clsx";
 import Proptypes from "prop-types";
 import React from "react";
 
@@ -48,8 +49,14 @@ function Panel({ items, ...props }) {
   return (
     <Drawer
       PaperProps={{ ref: paperRef }}
-      classes={{ root: classes.root, paper: classes.paper }}
-      variant="persistent"
+      classes={{
+        root: clsx(classes.root, {
+          [classes.drawerOpen]: !!value,
+          [classes.drawerClose]: !value,
+        }),
+        paper: classes.paper,
+      }}
+      variant="permanent"
       anchor="left"
       open={!!value}
     >
