@@ -55,17 +55,26 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     },
   },
   inputLabel: {
-    position: "inherit",
-    marginBottom: typography.pxToRem(3),
+    marginTop: typography.pxToRem(15),
+    // position: "inherit",
+    // marginBottom: typography.pxToRem(3),
     "&.MuiInputLabel-formControl": {
       transform: "inherit !important", // prevent label from moving. Temporary
     },
   },
   label: {
+    // fontSize: typography.pxToRem(10),
+    // fontWeight: "700",
+    // color: "#666666",
+    // textTransform: "uppercase",
+  },
+  helper: {
     fontSize: typography.pxToRem(10),
     fontWeight: "700",
     color: "#666666",
     textTransform: "uppercase",
+    marginLeft: 0,
+    marginBottom: typography.pxToRem(5),
   },
 }));
 

@@ -1,5 +1,6 @@
 import {
   FormControl,
+  FormHelperText,
   MenuItem,
   Select,
   SvgIcon,
@@ -27,18 +28,21 @@ function Input({ label, options, selected, onChange, ...props }) {
 
   return (
     <FormControl variant="filled" size="small" className={classes.formControl}>
+      <FormHelperText className={classes.helper}>Select a value</FormHelperText>
       {label && (
-        <InputLabel id="temp-id" className={classes.inputLabel}>
+        <InputLabel htmlFor="temp-id" className={classes.inputLabel}>
           <Typography variant="caption" className={classes.label}>
             {label}
           </Typography>
         </InputLabel>
       )}
       <Select
+        labelId="temp-id"
         displayEmpty
         disableUnderline
         onChange={handleChange}
-        value={selected}
+        // label={selected}
+        // value={selected}
         IconComponent={ExpandMoreIcon}
         MenuProps={{
           classes: {
@@ -57,6 +61,9 @@ function Input({ label, options, selected, onChange, ...props }) {
         }}
         classes={{ root: classes.select }}
       >
+        <MenuItem disabled value="">
+          <em>{selected}</em>
+        </MenuItem>
         {options?.length &&
           options.map((option) => (
             <MenuItem key={option} value={option}>
