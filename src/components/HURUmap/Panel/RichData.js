@@ -16,7 +16,7 @@ function RichData(props) {
     <>
       <TreeView classes={{ root: classes.treeView }} items={data} />
       <div className={classes.panelMain}>
-        <LocationHeader {...geography} />
+        <LocationHeader title={geography.name} {...geography} />
         {Object.keys(data).map((label) => (
           <div key={label}>
             <CategoryHeader
@@ -41,7 +41,9 @@ RichData.propTypes = {
   data: PropTypes.shape({
     subcategories: PropTypes.shape({}),
   }),
-  geography: PropTypes.shape({}),
+  geography: PropTypes.shape({
+    name: PropTypes.string,
+  }),
   geometries: PropTypes.shape({}),
   highlights: PropTypes.shape({}),
   tags: PropTypes.shape({}),

@@ -6,17 +6,17 @@ import useStyles from "./useStyles";
 
 import Icon from "@/pesayetu/components/Image";
 
-const LocationHeader = ({ level, parent, name, icon, ...props }) => {
+const LocationHeader = ({ level, parent, title, icon, ...props }) => {
   const classes = useStyles(props);
 
-  if (!name) {
+  if (!title) {
     return null;
   }
   return (
     <div className={classes.root}>
       <div className={classes.titleContent}>
         <Typography variant="h3" className={classes.title}>
-          {name}
+          {title}
         </Typography>
         <Button variant="contained" className={classes.button}>
           <div className={classes.icon}>
@@ -34,14 +34,14 @@ const LocationHeader = ({ level, parent, name, icon, ...props }) => {
 };
 
 LocationHeader.propTypes = {
-  name: PropTypes.string,
+  title: PropTypes.string,
   level: PropTypes.string,
   parent: PropTypes.string,
   icon: PropTypes.string,
 };
 
 LocationHeader.defaultProps = {
-  name: undefined,
+  title: undefined,
   level: undefined,
   parent: undefined,
   icon: undefined,
