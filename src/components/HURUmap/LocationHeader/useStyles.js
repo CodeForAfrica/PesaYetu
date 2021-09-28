@@ -2,7 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
+    paddingBottom: typography.pxToRem(10),
     marginBottom: typography.pxToRem(10),
+    borderBottom: `solid 1px ${palette.divider}`,
   },
   titleContent: {
     display: "flex",
