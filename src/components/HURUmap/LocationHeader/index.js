@@ -4,7 +4,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import Icon from "@/pesayetu/components/Image";
+import Image from "@/pesayetu/components/Image";
 
 const LocationHeader = ({ level, parent, title, icon, ...props }) => {
   const classes = useStyles(props);
@@ -20,7 +20,7 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
         </Typography>
         <Button variant="contained" className={classes.button}>
           <div className={classes.icon}>
-            <Icon src={icon} layout="fill" />
+            <Image src={icon} layout="fill" />
           </div>
         </Button>
       </div>

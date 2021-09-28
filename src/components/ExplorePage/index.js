@@ -108,7 +108,7 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Hidden smDown>
+      <Hidden mdDown implementation="css">
         <Panel {...panelArgs} {...profileProp} />
       </Hidden>
       <Map
