@@ -21,6 +21,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     "& a": {
       display: "flex",
       alignItems: "center",
+      color: typography.caption.color,
     },
   },
   childLabel: {
