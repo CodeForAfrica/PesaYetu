@@ -82,11 +82,12 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
   rightImageGrid: {
-    paddingTop: "3rem",
+    paddingTop: 0,
     position: "absolute",
-    top: "-1rem",
+    top: typography.pxToRem(-16),
     [breakpoints.up("md")]: {
       position: "relative",
+      paddingTop: typography.pxToRem(48),
       top: 0,
     },
   },
