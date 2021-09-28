@@ -34,13 +34,17 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   paper: {
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
+    backgroundColor: "#F8F8F8",
+    marginTop: typography.pxToRem(5),
+    borderRadius: "none",
+    boxShadow: "none",
   },
 
   list: {
     paddingTop: 0,
     paddingBottom: 0,
     "& li": {
-      fontWeight: 200,
+      fontWeight: 400,
       paddingTop: 12,
       paddingBottom: 12,
     },
