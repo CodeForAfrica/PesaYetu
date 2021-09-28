@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
+import slugify from "@/pesayetu/utils/slugify";
+
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     paddingBottom: typography.pxToRem(20),
@@ -31,7 +33,7 @@ const SubcategoryHeader = ({ title, description, ...props }) => {
   }
   return (
     <div className={classes.root}>
-      <Typography variant="h5" className={classes.title}>
+      <Typography id={slugify(title)} variant="h5" className={classes.title}>
         {title}
       </Typography>
       <RichTypography variant="body2" className={classes.description}>

@@ -9,6 +9,7 @@ import useStyles from "./useStyles";
 
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
 import Link from "@/pesayetu/components/Link";
+import slugify from "@/pesayetu/utils/slugify";
 
 const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   const [expanded, setExpanded] = useState(expandedProps);
@@ -27,7 +28,7 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
             onClick={() => setExpanded(label)}
             label={
               <Typography className={classes.label} variant="caption">
-                <Link underline="none" href={label}>
+                <Link underline="none" href={`#${slugify(label)}`}>
                   {label} <CheckIcon className={classes.icon} />
                 </Link>
               </Typography>
@@ -39,14 +40,14 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
           >
             {Object.keys(items[label]?.subcategories).map((child) => (
               <TreeItem
-                key={child.path}
-                nodeId={child.path}
+                key={child}
+                nodeId={child}
                 label={
                   <Typography
                     className={clsx(classes.label, classes.childLabel)}
                     variant="caption"
                   >
-                    <Link underline="none" href={child.path}>
+                    <Link underline="none" href={`#${slugify(child)}`}>
                       {child}
                     </Link>
                   </Typography>
