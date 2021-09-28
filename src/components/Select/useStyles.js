@@ -36,8 +36,10 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     borderBottomRightRadius: 4,
     backgroundColor: "#F8F8F8",
     marginTop: typography.pxToRem(5),
-    borderRadius: "none",
     boxShadow: "none",
+    "&.MuiPaper-rounded": {
+      borderRadius: "0",
+    },
   },
 
   list: {
