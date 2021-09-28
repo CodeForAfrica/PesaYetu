@@ -17,6 +17,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     fontWeight: "400",
     fontColor: "#1c2030",
     letterSpacing: typography.pxToRem(2),
+    scrollMarginTop: typography.pxToRem(10),
   },
   description: {
     marginTop: typography.pxToRem(20),
@@ -32,8 +33,8 @@ const SubcategoryHeader = ({ title, description, ...props }) => {
     return null;
   }
   return (
-    <div id={slugify(title)} className={classes.root}>
-      <Typography variant="h5" className={classes.title}>
+    <div className={classes.root}>
+      <Typography id={slugify(title)} variant="h5" className={classes.title}>
         {title}
       </Typography>
       <RichTypography variant="body2" className={classes.description}>

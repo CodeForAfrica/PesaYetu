@@ -6,6 +6,7 @@ const useStyles = makeStyles(({ typography }) => ({
     fontSize: typography.pxToRem(28),
     display: "flex",
     alignItems: "center",
+    scrollMarginTop: typography.pxToRem(10),
   },
   description: {},
   icon: {
