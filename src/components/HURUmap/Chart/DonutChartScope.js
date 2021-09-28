@@ -1,5 +1,6 @@
-// import { xAxis, xScale } from "./properties";
-import { createFiltersForGroups } from "./utils";
+import { defaultConfig } from "./properties";
+
+import theme from "@/pesayetu/theme";
 
 const PERCENTAGE_TYPE = "percentage";
 const VALUE_TYPE = "value";
@@ -22,17 +23,18 @@ export default function DonutChartScope(data, metadata, config) {
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
-
-  const { filters } = createFiltersForGroups(metadata.groups);
-
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
     description: "A basic donut chart example.",
-    width: 200,
+    width: 400,
     height: 200,
     autosize: "none",
-
+    config: defaultConfig,
     signals: [
+      {
+        name: "groups",
+        value: [primaryGroup],
+      },
       {
         name: "Units",
         value: graphValueTypes[defaultType],
@@ -65,13 +67,36 @@ export default function DonutChartScope(data, metadata, config) {
         name: "valueMinX",
         value: valueMinX !== "default" ? valueMinX : undefined,
       },
+      {
+        name: "startAngle",
+        value: 0,
+      },
+      {
+        name: "endAngle",
+        value: 6.29,
+      },
+      {
+        name: "padAngle",
+        value: 0,
+      },
+      {
+        name: "innerRadius",
+        value: 60,
+      },
+      {
+        name: "cornerRadius",
+        value: 0,
+      },
+      {
+        name: "sort",
+        value: false,
+      },
     ],
 
     data: [
       {
         name: "table",
         values: data,
-        transform: [...filters],
       },
       {
         name: "data_formatted",
@@ -105,44 +130,84 @@ export default function DonutChartScope(data, metadata, config) {
             field: "count",
             signal: "value_extent",
           },
+          {
+            type: "pie",
+            field: "percentage",
+            startAngle: { signal: "startAngle" },
+            endAngle: { signal: "endAngle" },
+            sort: { signal: "sort" },
+          },
+          {
+            type: "formula",
+            expr: "format(datum.percentage, numberFormat.percentage)",
+            as: "percentGroupText",
+          },
         ],
       },
     ],
     legends: [
       {
-        orient: "right",
+        fill: "color",
+        stroke: "color",
+        orient: "none",
         symbolType: "circle",
-        padding: { value: 10 },
+        direction: "vertical",
+        labelFont: theme.typography.fontFamily,
+        legendX: 240,
+        legendY: 40,
+        labelOffset: 12,
+        rowPadding: 8,
         encode: {
-          symbols: { enter: { fillOpacity: { value: 1 } } },
+          labels: {
+            interactive: true,
+            text: { scale: "legend_labels", field: "percentGroupText" },
+            update: {
+              fontSize: { value: 11 },
+              fill: { value: theme.palette.chart.text },
+            },
+          },
+          symbols: {
+            enter: {
+              fillOpacity: {
+                value: "1",
+              },
+            },
+          },
         },
       },
     ],
 
     scales: [
       {
+        name: "legend_labels",
+        type: "linear",
+        domain: { data: "data_formatted", field: "percentage" },
+      },
+      {
         name: "color",
         type: "ordinal",
-        domain: { data: "table", field: { signal: "mainGroup" } },
-        range: { scheme: "category20" },
+        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        range: "category",
       },
     ],
 
     marks: [
       {
         type: "arc",
-        from: { data: "table" },
+        from: { data: "data_formatted" },
         encode: {
           enter: {
             fill: { scale: "color", field: { signal: "mainGroup" } },
-            x: { signal: "width / 2" },
+            x: { signal: "width / 4" },
             y: { signal: "height / 2" },
           },
           update: {
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-            },
+            startAngle: { field: "startAngle" },
+            endAngle: { field: "endAngle" },
+            padAngle: { signal: "padAngle" },
+            innerRadius: { signal: "innerRadius" },
+            outerRadius: { signal: "width / 4" },
+            cornerRadius: { signal: "cornerRadius" },
           },
         },
       },

@@ -18,7 +18,7 @@ const buildVariant = (
   textTransform,
 });
 
-const CHART_PRIMARY_COLOR_SCHEME = ["#0067A3", "#7DB2D3", "#DFDFDF"];
+const CHART_PRIMARY_COLOR_SCHEME = ["#0067A3", "#7DB2D3", "#DFDFDF", "#666666"];
 
 const theme = createTheme({
   breakpoints: {
