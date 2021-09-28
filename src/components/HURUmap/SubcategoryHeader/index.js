@@ -8,21 +8,23 @@ import slugify from "@/pesayetu/utils/slugify";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
-    paddingBottom: typography.pxToRem(20),
+    borderBottom: `solid 1px ${palette.divider}`,
   },
   title: {
     textTransform: "uppercase",
-    borderBottom: `solid 1px ${palette.divider}`,
+    padding: typography.pxToRem(10),
     paddingBottom: typography.pxToRem(20),
+    paddingTop: typography.pxToRem(20),
     fontWeight: "400",
     fontColor: "#1c2030",
     letterSpacing: typography.pxToRem(2),
     scrollMarginTop: typography.pxToRem(10),
   },
   description: {
-    marginTop: typography.pxToRem(20),
     paddingBottom: typography.pxToRem(20),
-    borderBottom: `solid 1px ${palette.divider}`,
+    "& p": {
+      margin: 0,
+    },
   },
 }));
 
@@ -37,9 +39,11 @@ const SubcategoryHeader = ({ title, description, ...props }) => {
       <Typography id={slugify(title)} variant="h5" className={classes.title}>
         {title}
       </Typography>
-      <RichTypography variant="body2" className={classes.description}>
-        {description}
-      </RichTypography>
+      {description && (
+        <RichTypography variant="body2" className={classes.description}>
+          {description}
+        </RichTypography>
+      )}
     </div>
   );
 };

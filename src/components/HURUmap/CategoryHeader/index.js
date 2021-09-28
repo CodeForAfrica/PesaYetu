@@ -24,9 +24,11 @@ const CategoryHeader = ({ title, description, icon }) => {
         )}
         {title}
       </Typography>
-      <RichTypography variant="body2" className={classes.description}>
-        {description}
-      </RichTypography>
+      {description && (
+        <RichTypography variant="body2" className={classes.description}>
+          {description}
+        </RichTypography>
+      )}
     </div>
   );
 };

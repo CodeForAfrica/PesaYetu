@@ -51,6 +51,10 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     paddingLeft: typography.pxToRem(17),
     paddingRight: typography.pxToRem(17),
     overflowY: "scroll",
+    "&::-webkit-scrollbar": {
+      width: 0 /* Remove scrollbar space */,
+      background: "transparent" /* Optional: just make scrollbar invisible */,
+    },
   },
 }));
 
