@@ -5,8 +5,9 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import heroBg from "@/pesayetu/assets/images/map-lines.png";
+// import heroBg from "@/pesayetu/assets/images/map-lines.png";
 // import heroBg from "@/pesayetu/assets/images/map-lines.jpg";
+import heroBg from "@/pesayetu/assets/images/Mask Group 8.jpg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
