@@ -49,4 +49,12 @@ export const commonSignal = [
     name: "cursor",
     value: `url("${hoverIcon}"), pointer`,
   },
+  {
+    name: "x_step",
+    value: 40,
+  },
+  {
+    name: "y_step",
+    value: 30,
+  },
 ];

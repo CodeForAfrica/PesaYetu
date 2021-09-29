@@ -154,32 +154,27 @@ export default function VerticalStackedChartScope(data, metadata, config) {
         update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
       },
       {
-        name: "y_step",
-        value: 30,
-      },
-      {
         name: "height",
-        update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
+        value: 310,
       },
       ...filterSignals,
     ],
     scales: [
       {
-        name: "yscale",
+        name: "xscale",
         type: "band",
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
-        range: { step: { signal: "y_step" } },
+        range: { step: { signal: "x_step" } },
         padding: 0.15,
       },
       {
-        name: "xscale",
+        name: "yscale",
         type: "linear",
         domain: { data: "data_formatted", field: "y1" },
-        domainMin: { signal: "domainMin" },
-        domainMax: { signal: "domainMax" },
-        range: [0, { signal: "width" }],
+        // domainMin: { signal: "domainMin" },
+        // domainMax: { signal: "domainMax" },
+        range: [{ signal: "height" }, 0],
         zero: true,
-        clamp: true,
         nice: true,
       },
       {
@@ -192,17 +187,25 @@ export default function VerticalStackedChartScope(data, metadata, config) {
         },
       },
     ],
-
     axes: [
       {
         orient: "left",
         scale: "yscale",
         domainOpacity: 0.5,
         tickSize: 0,
+        grid: true,
         labelPadding: 6,
         zindex: 1,
+        format: { signal: "numberFormat[Units]" },
       },
-      xAxis,
+      {
+        orient: "bottom",
+        scale: "xscale",
+        bandPosition: 0,
+        domainOpacity: 0.5,
+        tickSize: 0,
+        labels: false,
+      },
     ],
     legends: [
       {
@@ -216,7 +219,7 @@ export default function VerticalStackedChartScope(data, metadata, config) {
             interactive: true,
             update: {
               fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text },
+              fill: { value: theme.palette.chart.text.primary },
             },
           },
           symbols: {
@@ -227,7 +230,6 @@ export default function VerticalStackedChartScope(data, metadata, config) {
         },
       },
     ],
-
     marks: [
       {
         name: "bars",
@@ -235,16 +237,14 @@ export default function VerticalStackedChartScope(data, metadata, config) {
         type: "rect",
         encode: {
           enter: {
-            y: { scale: "yscale", field: { signal: "mainGroup" } },
-            height: { scale: "yscale", band: 1 },
-            x: { scale: "xscale", field: "y0" },
-            x2: { scale: "xscale", field: "y1" },
+            x: { scale: "xscale", field: { signal: "mainGroup" } },
+            width: { scale: "xscale", band: 1 },
+            y: { scale: "yscale", field: "y0" },
+            y2: { scale: "yscale", field: "y1" },
             fill: { scale: "color", field: stackedField },
           },
           update: {
             fillOpacity: { value: 1 },
-            x: { scale: "xscale", field: "y0" },
-            x2: { scale: "xscale", field: "y1" },
             tooltip: {
               signal:
                 "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'stack': datum[stackedField]}",

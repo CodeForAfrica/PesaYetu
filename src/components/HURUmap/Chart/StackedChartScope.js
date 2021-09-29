@@ -154,10 +154,6 @@ export default function StackedChartScope(data, metadata, config) {
         update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
       },
       {
-        name: "y_step",
-        value: 30,
-      },
-      {
         name: "height",
         update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
       },
@@ -216,7 +212,7 @@ export default function StackedChartScope(data, metadata, config) {
             interactive: true,
             update: {
               fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text },
+              fill: { value: theme.palette.chart.text.primary },
             },
           },
           symbols: {

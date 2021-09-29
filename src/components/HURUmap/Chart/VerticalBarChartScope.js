@@ -152,10 +152,6 @@ export default function VerticalBarChartScope(data, metadata, config) {
         update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
       },
       {
-        name: "x_step",
-        value: 40,
-      },
-      {
         name: "height",
         value: 310,
       },
@@ -168,7 +164,6 @@ export default function VerticalBarChartScope(data, metadata, config) {
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
         range: { step: { signal: "x_step" } },
         padding: 0.15,
-        round: true,
       },
       {
         name: "yscale",
@@ -178,7 +173,6 @@ export default function VerticalBarChartScope(data, metadata, config) {
           field: { signal: "datatype[Units]" },
         },
         range: [{ signal: "height" }, 0],
-        clamp: true,
         nice: true,
       },
     ],
