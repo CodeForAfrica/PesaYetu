@@ -1,4 +1,4 @@
-import { xAxis, xScale, defaultConfig } from "./properties";
+import { xAxis, xScale, defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -37,9 +37,11 @@ export default function BarChartScope(data, metadata, config) {
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
     description: "A",
-    width: 800,
-    padding: { left: 5, top: 5, right: 30, bottom: 5 },
     config: defaultConfig,
+    autosize: { type: "fit-x", contains: "padding" },
+    padding: 5,
+    width: { signal: "width" },
+    height: { signal: "height" },
     data: [
       {
         name: "table",
@@ -82,14 +84,7 @@ export default function BarChartScope(data, metadata, config) {
       },
     ],
     signals: [
-      {
-        name: "tooltip",
-        value: {},
-        on: [
-          { events: "rect:mouseover", update: "datum" },
-          { events: "rect:mouseout", update: "{}" },
-        ],
-      },
+      ...commonSignal,
       {
         name: "groups",
         value: [primaryGroup],
@@ -174,7 +169,6 @@ export default function BarChartScope(data, metadata, config) {
         orient: "left",
         scale: "yscale",
         domainOpacity: 0.5,
-        labelOpacity: 0.5,
         tickSize: 0,
         labelPadding: 6,
         zindex: 1,

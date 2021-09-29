@@ -53,8 +53,8 @@ const theme = createTheme({
       hint: "#1C2031",
     },
     chart: {
-      text: "#707070",
-      category: CHART_PRIMARY_COLOR_SCHEME,
+      text: { primary: "#707070" },
+      primary: CHART_PRIMARY_COLOR_SCHEME,
     },
     divider: "#F0F0F0",
   },

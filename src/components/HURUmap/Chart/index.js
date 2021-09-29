@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -13,9 +13,19 @@ import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
 import Link from "@/pesayetu/components/Link";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     position: "relative",
+    width: typography.pxToRem(350),
+    [breakpoints.up("md")]: {
+      width: typography.pxToRem(600),
+    },
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(766),
+    },
+  },
+  chart: {
+    width: "100%",
   },
   source: {
     margin: `${typography.pxToRem(20)} 0`,
@@ -39,6 +49,8 @@ function Chart({ indicator, title, ...props }) {
   const [view, setView] = useState(null);
   const [updateView, setUpdateView] = useState(false);
 
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const handleNewView = (v) => {
     if (!updateView) {
       setView(v);
@@ -53,7 +65,7 @@ function Chart({ indicator, title, ...props }) {
     chart_configuration: { disableToggle, defaultType },
   } = indicator;
 
-  const spec = configureScope(indicator);
+  const spec = configureScope(indicator, isMobile);
 
   const handler = (_, event, item, value) => {
     let el = document.getElementsByClassName(`${id}-charttooltip`)[0];
@@ -112,6 +124,7 @@ function Chart({ indicator, title, ...props }) {
         actions={false}
         tooltip={handler}
         onNewView={handleNewView}
+        className={classes.chart}
       />
       {url && source && (
         <div className={classes.source}>

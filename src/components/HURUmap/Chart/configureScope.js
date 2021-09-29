@@ -1,8 +1,10 @@
 import BarChartScope from "./BarChartScope";
 import DonutChartScope from "./DonutChartScope";
 import StackedChartScope from "./StackedChartScope";
+import VerticalBarChartScope from "./VerticalBarChartScope";
+import VerticalStackedChartScope from "./VerticalStackedChartScope";
 
-export default function configureScope(indicator) {
+export default function configureScope(indicator, isMobile) {
   const configuration = indicator?.chart_configuration;
 
   let vegaSpec;
@@ -14,7 +16,21 @@ export default function configureScope(indicator) {
       configuration
     );
   } else if (configuration?.chart_type === "stacked") {
-    vegaSpec = StackedChartScope(
+    if (isMobile) {
+      vegaSpec = VerticalStackedChartScope(
+        indicator?.data,
+        indicator?.metadata,
+        configuration
+      );
+    } else {
+      vegaSpec = StackedChartScope(
+        indicator?.data,
+        indicator?.metadata,
+        configuration
+      );
+    }
+  } else if (isMobile) {
+    vegaSpec = VerticalBarChartScope(
       indicator?.data,
       indicator?.metadata,
       configuration

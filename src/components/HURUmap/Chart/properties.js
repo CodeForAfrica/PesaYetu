@@ -1,3 +1,4 @@
+import hoverIcon from "@/pesayetu/assets/icons/Component1375.png";
 import theme from "@/pesayetu/theme";
 
 export const xScale = {
@@ -19,21 +20,33 @@ export const xAxis = {
   tickSize: 0,
   format: { signal: "numberFormat[Units]" },
   grid: true,
-  gridOpacity: 0.5,
-  labelOpacity: 0.5,
   labelPadding: 6,
 };
 
 export const defaultConfig = {
   axis: {
-    labelColor: theme.palette.chart.text,
+    labelColor: theme.palette.chart.text.primary,
     labelFont: theme.typography.fontFamily,
     labelFontSize: 11,
+    gridColor: theme.palette.chart.text.primary,
+    gridOpacity: 0.2,
   },
   axisBottom: {
     domainColor: "transparent",
   },
   range: {
-    category: theme.palette.chart.category,
+    category: theme.palette.chart.primary,
   },
 };
+
+export const commonSignal = [
+  {
+    name: "width",
+    value: "containerSize()[0]",
+    on: [{ events: "window:resize", update: "containerSize()[0]" }],
+  },
+  {
+    name: "cursor",
+    value: `url("${hoverIcon}"), pointer`,
+  },
+];

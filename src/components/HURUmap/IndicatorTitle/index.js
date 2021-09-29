@@ -12,7 +12,7 @@ import { ReactComponent as DownloadIcon } from "@/pesayetu/assets/icons/Componen
 import { ReactComponent as ShareIcon } from "@/pesayetu/assets/icons/Component 27.svg";
 import { ReactComponent as InfoIcon } from "@/pesayetu/assets/icons/Component852.svg";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {},
   description: {
     fontSize: typography.pxToRem(11),
@@ -32,6 +32,15 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     marginRight: typography.pxToRem(14),
     "&:last-of-type": {
       marginRight: 0,
+    },
+  },
+  buttons: {
+    justifyContent: "flex-start",
+    marginTop: typography.pxToRem(20),
+    marginBottom: typography.pxToRem(20),
+    [breakpoints.up("md")]: {
+      justifyContent: "flex-end",
+      margin: 0,
     },
   },
 }));
@@ -70,7 +79,7 @@ function IndicatorTitle({ description, title, ...props }) {
         <Grid item xs={12} md={8}>
           <Typography variant="h6">{title}</Typography>
         </Grid>
-        <Grid item xs={12} md={4} container justifyContent="flex-end">
+        <Grid item xs={12} md={4} container className={classes.buttons}>
           {actions.map((act) => (
             <Grid item key={act.id} className={classes.action}>
               <Action {...act} />

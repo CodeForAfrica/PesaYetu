@@ -1,4 +1,4 @@
-import { commonSignal, defaultConfig } from "./properties";
+import { xAxis, defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -10,8 +10,9 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function DonutChartScope(data, metadata, config) {
+export default function VerticalBarChartScope(data, metadata, config) {
   const {
+    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -25,17 +26,22 @@ export default function DonutChartScope(data, metadata, config) {
 
   const { primary_group: primaryGroup } = metadata;
 
+  if (xTicks) {
+    xAxis.tickCount = xTicks;
+  }
+
   const { signals: filterSignals, filters } = createFiltersForGroups(
     metadata.groups
   );
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
-    description: "A basic donut chart example.",
-    width: 400,
-    height: 200,
-    autosize: "none",
+    description: "A",
     config: defaultConfig,
+    autosize: { type: "fit-x", contains: "padding" },
+    padding: 5,
+    width: { signal: "width" },
+    height: 310,
     data: [
       {
         name: "table",
@@ -74,25 +80,40 @@ export default function DonutChartScope(data, metadata, config) {
             field: "count",
             signal: "value_extent",
           },
-          {
-            type: "pie",
-            field: "percentage",
-            startAngle: { signal: "startAngle" },
-            endAngle: { signal: "endAngle" },
-            sort: { signal: "sort" },
-          },
         ],
       },
     ],
     signals: [
       ...commonSignal,
       {
+        name: "tooltip",
+        value: {},
+        on: [
+          { events: "rect:mouseover", update: "datum" },
+          { events: "rect:mouseout", update: "{}" },
+        ],
+      },
+      {
         name: "groups",
         value: [primaryGroup],
       },
       {
+        name: "barvalue",
+        value: "datum",
+      },
+      {
         name: "Units",
         value: graphValueTypes[defaultType],
+      },
+      {
+        name: "applyFilter",
+        value: false,
+      },
+      {
+        name: "filterIndicator",
+      },
+      {
+        name: "filterValue",
       },
       {
         name: "mainGroup",
@@ -123,94 +144,83 @@ export default function DonutChartScope(data, metadata, config) {
         value: valueMinX !== "default" ? valueMinX : undefined,
       },
       {
-        name: "startAngle",
-        value: 0,
+        name: "domainMin",
+        update: "Units === 'percentage' ? percentageMinX : valueMinX",
       },
       {
-        name: "endAngle",
-        value: 6.29,
+        name: "domainMax",
+        update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
       },
       {
-        name: "padAngle",
-        value: 0,
+        name: "x_step",
+        value: 40,
       },
       {
-        name: "innerRadius",
-        value: 60,
-      },
-      {
-        name: "cornerRadius",
-        value: 0,
-      },
-      {
-        name: "sort",
-        value: false,
+        name: "height",
+        value: 310,
       },
       ...filterSignals,
     ],
-
-    legends: [
-      {
-        fill: "color",
-        stroke: "color",
-        orient: "none",
-        symbolType: "circle",
-        direction: "vertical",
-        labelFont: theme.typography.fontFamily,
-        legendX: 240,
-        legendY: 40,
-        labelOffset: 12,
-        rowPadding: 8,
-        encode: {
-          labels: {
-            interactive: true,
-            update: {
-              fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text },
-            },
-          },
-          symbols: {
-            enter: {
-              fillOpacity: {
-                value: "1",
-              },
-            },
-          },
-        },
-      },
-    ],
-
     scales: [
       {
-        name: "color",
-        type: "ordinal",
-        range: "category",
+        name: "xscale",
+        type: "band",
+        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        range: { step: { signal: "x_step" } },
+        padding: 0.15,
+        round: true,
       },
       {
-        name: "legend_labels",
+        name: "yscale",
         type: "linear",
-        domain: { data: "data_formatted", field: "percentage" },
-        range: "category",
+        domain: {
+          data: "data_formatted",
+          field: { signal: "datatype[Units]" },
+        },
+        range: [{ signal: "height" }, 0],
+        clamp: true,
+        nice: true,
+      },
+    ],
+    axes: [
+      {
+        orient: "left",
+        scale: "yscale",
+        domainOpacity: 0.5,
+        tickSize: 0,
+        grid: true,
+        labelPadding: 6,
+        zindex: 1,
+        format: { signal: "numberFormat[Units]" },
+      },
+      {
+        orient: "bottom",
+        scale: "xscale",
+        bandPosition: 0,
+        domainOpacity: 0.5,
+        tickSize: 0,
+        labels: false,
       },
     ],
 
     marks: [
       {
-        type: "arc",
+        name: "bars",
         from: { data: "data_formatted" },
+        type: "rect",
         encode: {
           enter: {
-            fill: { scale: "color", field: { signal: "mainGroup" } },
-            x: { signal: "width / 4" },
-            y: { signal: "height / 2" },
+            x: { scale: "xscale", field: { signal: "mainGroup" } },
+            width: { scale: "xscale", band: 1 },
+            y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+            y2: { scale: "yscale", value: 0 },
           },
           update: {
-            startAngle: { field: "startAngle" },
-            endAngle: { field: "endAngle" },
-            padAngle: { signal: "padAngle" },
-            innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "width / 4" },
-            cornerRadius: { signal: "cornerRadius" },
+            fill: { value: theme.palette.primary.main },
+            tooltip: {
+              signal:
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+            },
           },
         },
       },

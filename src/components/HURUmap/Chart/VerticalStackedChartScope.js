@@ -1,4 +1,4 @@
-import { commonSignal, defaultConfig } from "./properties";
+import { defaultConfig, xAxis, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -10,8 +10,9 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function DonutChartScope(data, metadata, config) {
+export default function VerticalStackedChartScope(data, metadata, config) {
   const {
+    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -21,9 +22,14 @@ export default function DonutChartScope(data, metadata, config) {
         maxX: percentageMaxX,
       },
     },
+    stacked_field: stackedField,
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
+
+  if (xTicks) {
+    xAxis.tickCount = xTicks;
+  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(
     metadata.groups
@@ -31,10 +37,11 @@ export default function DonutChartScope(data, metadata, config) {
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
-    description: "A basic donut chart example.",
-    width: 400,
-    height: 200,
-    autosize: "none",
+    description: "A",
+    autosize: { type: "fit-x", contains: "padding" },
+    padding: 5,
+    width: { signal: "width" },
+    height: { signal: "height" },
     config: defaultConfig,
     data: [
       {
@@ -60,6 +67,11 @@ export default function DonutChartScope(data, metadata, config) {
             fields: ["count"],
           },
           {
+            type: "stack",
+            groupby: [primaryGroup],
+            field: "count",
+          },
+          {
             type: "formula",
             expr: "datum.count/datum.TotalCount",
             as: "percentage",
@@ -74,13 +86,6 @@ export default function DonutChartScope(data, metadata, config) {
             field: "count",
             signal: "value_extent",
           },
-          {
-            type: "pie",
-            field: "percentage",
-            startAngle: { signal: "startAngle" },
-            endAngle: { signal: "endAngle" },
-            sort: { signal: "sort" },
-          },
         ],
       },
     ],
@@ -88,15 +93,33 @@ export default function DonutChartScope(data, metadata, config) {
       ...commonSignal,
       {
         name: "groups",
-        value: [primaryGroup],
+        value: [primaryGroup, stackedField],
+      },
+      {
+        name: "barvalue",
+        value: "datum",
       },
       {
         name: "Units",
         value: graphValueTypes[defaultType],
       },
       {
+        name: "applyFilter",
+        value: false,
+      },
+      {
+        name: "filterIndicator",
+      },
+      {
+        name: "filterValue",
+      },
+      {
         name: "mainGroup",
         value: primaryGroup,
+      },
+      {
+        name: "stackedField",
+        value: stackedField,
       },
       {
         name: "numberFormat",
@@ -123,44 +146,71 @@ export default function DonutChartScope(data, metadata, config) {
         value: valueMinX !== "default" ? valueMinX : undefined,
       },
       {
-        name: "startAngle",
-        value: 0,
+        name: "domainMin",
+        update: "Units === 'percentage' ? percentageMinX : valueMinX",
       },
       {
-        name: "endAngle",
-        value: 6.29,
+        name: "domainMax",
+        update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
       },
       {
-        name: "padAngle",
-        value: 0,
+        name: "y_step",
+        value: 30,
       },
       {
-        name: "innerRadius",
-        value: 60,
-      },
-      {
-        name: "cornerRadius",
-        value: 0,
-      },
-      {
-        name: "sort",
-        value: false,
+        name: "height",
+        update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
       },
       ...filterSignals,
     ],
+    scales: [
+      {
+        name: "yscale",
+        type: "band",
+        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        range: { step: { signal: "y_step" } },
+        padding: 0.15,
+      },
+      {
+        name: "xscale",
+        type: "linear",
+        domain: { data: "data_formatted", field: "y1" },
+        domainMin: { signal: "domainMin" },
+        domainMax: { signal: "domainMax" },
+        range: [0, { signal: "width" }],
+        zero: true,
+        clamp: true,
+        nice: true,
+      },
+      {
+        name: "color",
+        type: "ordinal",
+        range: "category",
+        domain: {
+          data: "data_formatted",
+          field: stackedField,
+        },
+      },
+    ],
 
+    axes: [
+      {
+        orient: "left",
+        scale: "yscale",
+        domainOpacity: 0.5,
+        tickSize: 0,
+        labelPadding: 6,
+        zindex: 1,
+      },
+      xAxis,
+    ],
     legends: [
       {
         fill: "color",
-        stroke: "color",
-        orient: "none",
-        symbolType: "circle",
-        direction: "vertical",
+        orient: "top",
+        direction: "horizontal",
+        strokeColor: "transparent",
         labelFont: theme.typography.fontFamily,
-        legendX: 240,
-        legendY: 40,
-        labelOffset: 12,
-        rowPadding: 8,
         encode: {
           labels: {
             interactive: true,
@@ -170,47 +220,35 @@ export default function DonutChartScope(data, metadata, config) {
             },
           },
           symbols: {
-            enter: {
-              fillOpacity: {
-                value: "1",
-              },
+            update: {
+              stroke: { value: "transparent" },
             },
           },
         },
       },
     ],
 
-    scales: [
-      {
-        name: "color",
-        type: "ordinal",
-        range: "category",
-      },
-      {
-        name: "legend_labels",
-        type: "linear",
-        domain: { data: "data_formatted", field: "percentage" },
-        range: "category",
-      },
-    ],
-
     marks: [
       {
-        type: "arc",
+        name: "bars",
         from: { data: "data_formatted" },
+        type: "rect",
         encode: {
           enter: {
-            fill: { scale: "color", field: { signal: "mainGroup" } },
-            x: { signal: "width / 4" },
-            y: { signal: "height / 2" },
+            y: { scale: "yscale", field: { signal: "mainGroup" } },
+            height: { scale: "yscale", band: 1 },
+            x: { scale: "xscale", field: "y0" },
+            x2: { scale: "xscale", field: "y1" },
+            fill: { scale: "color", field: stackedField },
           },
           update: {
-            startAngle: { field: "startAngle" },
-            endAngle: { field: "endAngle" },
-            padAngle: { signal: "padAngle" },
-            innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "width / 4" },
-            cornerRadius: { signal: "cornerRadius" },
+            fillOpacity: { value: 1 },
+            x: { scale: "xscale", field: "y0" },
+            x2: { scale: "xscale", field: "y1" },
+            tooltip: {
+              signal:
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'stack': datum[stackedField]}",
+            },
           },
         },
       },
