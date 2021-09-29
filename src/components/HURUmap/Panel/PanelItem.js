@@ -8,7 +8,6 @@ function PanelItem({ item, ...props }) {
   switch (key) {
     case "rich-data":
       return <RichData {...props} />;
-
     default:
       return null;
   }
