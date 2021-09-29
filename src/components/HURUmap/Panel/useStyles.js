@@ -56,7 +56,7 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     paddingTop: typography.pxToRem(67.7),
     paddingLeft: typography.pxToRem(17),
     paddingRight: typography.pxToRem(17),
-    scrollingBehaviour: "smooth",
+    scrollBehavior: "smooth",
     overflowY: "scroll",
     scrollbarWidth: "none",
     "&::-webkit-scrollbar": {
