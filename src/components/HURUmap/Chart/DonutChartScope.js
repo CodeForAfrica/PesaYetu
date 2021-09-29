@@ -1,4 +1,4 @@
-import { commonSignal, defaultConfig } from "./properties";
+import { defaultConfig } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -85,7 +85,6 @@ export default function DonutChartScope(data, metadata, config) {
       },
     ],
     signals: [
-      ...commonSignal,
       {
         name: "groups",
         value: [primaryGroup],
@@ -166,13 +165,13 @@ export default function DonutChartScope(data, metadata, config) {
             interactive: true,
             update: {
               fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text },
+              fill: { value: theme.palette.chart.text.primary },
             },
           },
           symbols: {
             enter: {
               fillOpacity: {
-                value: "1",
+                value: 1,
               },
             },
           },
