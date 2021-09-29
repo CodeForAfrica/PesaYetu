@@ -9,7 +9,6 @@ import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
-import Section from "@/pesayetu/components/Section";
 
 export function formatData(data) {
   return Object.keys(data).map((label) => {
@@ -36,24 +35,22 @@ function RichData(props) {
     <>
       <TreeView classes={{ root: classes.treeView }} items={items} />
       <div className={classes.panelMain}>
-        <Section className={classes.section}>
-          <LocationHeader icon={Print} title={geography.name} {...geography} />
-          {items.map((item) => (
-            <div key={item.title}>
-              <CategoryHeader
-                icon={item.icon}
-                title={item.title}
-                description={item?.description}
+        <LocationHeader icon={Print} title={geography.name} {...geography} />
+        {items.map((item) => (
+          <div key={item.title}>
+            <CategoryHeader
+              icon={item.icon}
+              title={item.title}
+              description={item?.description}
+            />
+            {item.children.map((child) => (
+              <SubcategoryHeader
+                title={child.title}
+                description={child?.description}
               />
-              {item.children.map((child) => (
-                <SubcategoryHeader
-                  title={child.title}
-                  description={child?.description}
-                />
-              ))}
-            </div>
-          ))}
-        </Section>
+            ))}
+          </div>
+        ))}
       </div>
     </>
   );
