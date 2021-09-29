@@ -4,7 +4,7 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
   root: {
     position: "absolute",
     display: "flex",
-    height: "90vh",
+    height: "calc(100vh - 110px)",
   },
   section: {
     maxWidth: "100%",
