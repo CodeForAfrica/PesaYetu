@@ -7,7 +7,7 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     height: "90vh",
   },
   section: {
-    width: "100%",
+    maxWidth: "100%",
   },
   drawerOpen: {
     minWidth: typography.pxToRem(1049),
