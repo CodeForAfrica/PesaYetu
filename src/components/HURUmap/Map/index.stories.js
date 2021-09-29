@@ -35,6 +35,11 @@ export default {
         type: "object",
       },
     },
+    preferredChildren: {
+      control: {
+        type: "object",
+      },
+    },
   },
 };
 
@@ -45,6 +50,7 @@ export const Default = Template.bind({});
 Default.args = {
   center: [0.3051933453207569, 37.908818734483155],
   zoom: 6.25,
+  preferredChildren: { county: ["subcounty"], country: ["county"] },
   geography: {
     level: "county",
   },
