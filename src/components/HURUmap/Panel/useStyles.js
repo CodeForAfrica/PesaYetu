@@ -6,8 +6,10 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     display: "flex",
     height: "90vh",
   },
+  section: {},
   drawerOpen: {
     minWidth: typography.pxToRem(1049),
+    width: `calc(56vw + ${typography.pxToRem(344)})`,
     transition: transitions.create("width", {
       easing: transitions.easing.sharp,
       duration: transitions.duration.enteringScreen,
@@ -28,6 +30,7 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     display: "flex",
     flexDirection: "row",
     position: "unset",
+    width: "100%",
   },
   panelButtons: {
     marginTop: typography.pxToRem(113),

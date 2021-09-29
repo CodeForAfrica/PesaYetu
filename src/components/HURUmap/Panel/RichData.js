@@ -35,24 +35,26 @@ function RichData(props) {
   return (
     <>
       <TreeView classes={{ root: classes.treeView }} items={items} />
-      <Section className={classes.panelMain}>
-        <LocationHeader icon={Print} title={geography.name} {...geography} />
-        {items.map((item) => (
-          <div key={item.title}>
-            <CategoryHeader
-              icon={item.icon}
-              title={item.title}
-              description={item?.description}
-            />
-            {item.children.map((child) => (
-              <SubcategoryHeader
-                title={child.title}
-                description={child?.description}
+      <div className={classes.panelMain}>
+        <Section className={classes.section}>
+          <LocationHeader icon={Print} title={geography.name} {...geography} />
+          {items.map((item) => (
+            <div key={item.title}>
+              <CategoryHeader
+                icon={item.icon}
+                title={item.title}
+                description={item?.description}
               />
-            ))}
-          </div>
-        ))}
-      </Section>
+              {item.children.map((child) => (
+                <SubcategoryHeader
+                  title={child.title}
+                  description={child?.description}
+                />
+              ))}
+            </div>
+          ))}
+        </Section>
+      </div>
     </>
   );
 }
