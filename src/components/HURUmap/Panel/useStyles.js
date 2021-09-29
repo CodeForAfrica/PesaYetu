@@ -6,7 +6,9 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     display: "flex",
     height: "90vh",
   },
-  section: {},
+  section: {
+    width: "100%",
+  },
   drawerOpen: {
     minWidth: typography.pxToRem(1049),
     width: `calc(56vw + ${typography.pxToRem(344)})`,
@@ -50,11 +52,13 @@ const useStyles = makeStyles(({ typography, palette, transitions }) => ({
     flexShrink: 0,
   },
   panelMain: {
+    width: "100%",
     paddingTop: typography.pxToRem(67.7),
     paddingLeft: typography.pxToRem(17),
     paddingRight: typography.pxToRem(17),
     scrollingBehaviour: "smooth",
     overflowY: "scroll",
+    scrollbarWidth: "none",
     "&::-webkit-scrollbar": {
       width: 0 /* Remove scrollbar space */,
       background: "transparent" /* Optional: just make scrollbar invisible */,
