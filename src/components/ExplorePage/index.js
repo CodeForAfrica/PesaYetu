@@ -107,26 +107,28 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
   const { geography, geometries, highlights, tags } = profile;
 
   return (
-    <div className={classes.root}>
+    <>
       <Hidden mdDown implementation="css">
         <Panel {...panelArgs} {...profile} />
       </Hidden>
-      <Map
-        center={[0.3051933453207569, 37.908818734483155]}
-        zoom={6.25}
-        geometries={geometries}
-        geography={geography}
-        onClick={handleCodeChange}
-        {...props}
-        className={classes.map}
-      />
-      <Location
-        highlights={highlights}
-        isLoading={isLoading}
-        tags={tags}
-        className={classes.location}
-      />
-    </div>
+      <div className={classes.root}>
+        <Map
+          center={[0.3051933453207569, 37.908818734483155]}
+          zoom={6.25}
+          geometries={geometries}
+          geography={geography}
+          onClick={handleCodeChange}
+          {...props}
+          className={classes.map}
+        />
+        <Location
+          highlights={highlights}
+          isLoading={isLoading}
+          tags={tags}
+          className={classes.location}
+        />
+      </div>
+    </>
   );
 }
 
