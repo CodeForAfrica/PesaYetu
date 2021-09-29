@@ -22,6 +22,10 @@ const useStyles = makeStyles(
       height: "calc(100vh - 88px)",
       [breakpoints.up("lg")]: {
         height: "calc(100vh - 110px)",
+        position: "fixed",
+        left: 0,
+        right: 0,
+        top: 110,
       },
       "& .tooltipPop": {
         background: palette.background.default,

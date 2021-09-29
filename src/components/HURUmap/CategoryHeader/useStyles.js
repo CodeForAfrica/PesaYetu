@@ -8,7 +8,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     fontSize: typography.pxToRem(28),
     display: "flex",
     alignItems: "center",
-    scrollMarginTop: typography.pxToRem(10),
+    scrollMarginTop: typography.pxToRem(110),
     paddingTop: typography.pxToRem(40),
     paddingBottom: typography.pxToRem(20),
   },

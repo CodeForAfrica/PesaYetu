@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     fontWeight: "400",
     fontColor: "#1c2030",
     letterSpacing: typography.pxToRem(2),
-    scrollMarginTop: typography.pxToRem(10),
+    scrollMarginTop: typography.pxToRem(110),
   },
   description: {
     paddingBottom: typography.pxToRem(20),

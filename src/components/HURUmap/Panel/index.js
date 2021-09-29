@@ -72,7 +72,11 @@ function Panel({ items, ...props }) {
         </TabPanel>
       ))}
       <PanelButtonGroup
-        classes={{ root: classes.panelButtons }}
+        classes={{
+          root: clsx(classes.panelButtons, {
+            [classes.panelButtonsOpen]: !!value,
+          }),
+        }}
         onChange={handleChange}
         items={items}
         value={value}
