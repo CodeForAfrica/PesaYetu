@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -13,14 +14,23 @@ export default function Explore(props) {
   const {
     blocks: { tutorial },
   } = props;
+  const {
+    query: { showTutorial },
+  } = useRouter();
+
   return (
-    <Tutorial {...tutorial}>
+    <Tutorial
+      key={showTutorial}
+      {...tutorial}
+      defaultOpen={Number.parseInt(showTutorial, 10) === 1}
+    >
       <Page {...props}>
         <ExplorePage {...props} />
       </Page>
     </Tutorial>
   );
 }
+
 Explore.propTypes = {
   blocks: PropTypes.shape({
     tutorial: PropTypes.shape({

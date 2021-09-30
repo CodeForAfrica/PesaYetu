@@ -1,15 +1,15 @@
 import React from "react";
 
-import PanelButtonGroup from ".";
+import Panel from ".";
 
 import { panelArgs } from "@/pesayetu/config";
 
 export default {
-  title: "Components/HURUmap/PanelButtonGroup",
+  title: "Components/HURUmap/Panel",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <PanelButtonGroup {...args} />;
+const Template = ({ ...args }) => <Panel {...args} />;
 
 export const Default = Template.bind({});
 

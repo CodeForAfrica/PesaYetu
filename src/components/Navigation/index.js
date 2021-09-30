@@ -7,9 +7,10 @@ import DesktopNavigation from "./DesktopNavigation";
 import ExploreNavigation from "./ExploreNavigation";
 import MobileNavigation from "./MobileNavigation";
 
-const useStyles = makeStyles(({ palette, typography }) => ({
+const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
   root: {
     backgroundColor: palette.background.default,
+    zIndex: zIndex.modal,
   },
   section: {},
   toolbar: {

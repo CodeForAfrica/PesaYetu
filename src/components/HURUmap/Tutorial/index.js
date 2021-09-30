@@ -27,8 +27,8 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-export default function Tutorial({ children, defaultOpen, items }) {
-  const classes = useStyles();
+function Tutorial({ children, defaultOpen, items, ...props }) {
+  const classes = useStyles(props);
   const [isOpened, setIsOpened] = useState(defaultOpen);
 
   const setTourOpened = () => {
@@ -70,6 +70,7 @@ export default function Tutorial({ children, defaultOpen, items }) {
     </TourProvider>
   );
 }
+
 Tutorial.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
   children: PropTypes.node,
@@ -81,3 +82,5 @@ Tutorial.defaultProps = {
   children: undefined,
   defaultOpen: false,
 };
+
+export default Tutorial;

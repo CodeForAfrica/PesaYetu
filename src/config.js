@@ -1,5 +1,9 @@
 import richDataIcon from "@/pesayetu/assets/Component121.svg";
 import pinIcon from "@/pesayetu/assets/Component122.svg";
+import panelPinIcon from "@/pesayetu/assets/icons/Component 95 – 2.svg";
+import pinBlack from "@/pesayetu/assets/icons/Component 96 – 12.svg";
+import locationIcon from "@/pesayetu/assets/icons/Component 97 – 2.svg";
+import mapIcon from "@/pesayetu/assets/icons/Component 98 – 2.svg";
 import Group4646 from "@/pesayetu/assets/icons/Group 4646-white.svg";
 import developmentHover from "@/pesayetu/assets/icons/Group 4646.svg";
 import Group4656 from "@/pesayetu/assets/icons/Group 4656-white.svg";
@@ -647,6 +651,255 @@ export const documentsAndDatasetsArgs = {
     { label: "DOCUMENTS & SPEECHES", ...documentsArgs },
     { label: "DATASETS", ...datasetsArgs },
   ],
+};
+
+export const treeViewArgs = {
+  items: [
+    {
+      title: "Overview",
+      icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3e%3cdefs%3e%3cstyle%3e.a%7bfill:%23fff;%7d.b%7bfill:none;%7d.c%7bfill:%230067a3;%7d%3c/style%3e%3c/defs%3e%3cg transform='translate(23388 15259)'%3e%3ccircle class='a' cx='70' cy='70' r='70' transform='translate(-23388 -15259)'/%3e%3cg transform='translate(-23359 -15230)'%3e%3crect class='b' width='82' height='82'/%3e%3cg transform='translate(0.962 17.938)'%3e%3cpath class='c' d='M79.494,30.078C78.776,29.114,61.651,6.5,40.029,6.5S1.284,29.114.563,30.078l-.571.766.571.766c.72.963,17.843,23.578,39.465,23.578S78.776,32.573,79.494,31.61l.571-.766ZM40.029,52.625c-18.168,0-33.61-17.832-36.805-21.781C6.419,26.895,21.86,9.062,40.029,9.062S73.641,26.895,76.834,30.844C73.641,34.793,58.2,52.625,40.029,52.625Z' transform='translate(0.008 -6.5)'/%3e%3cpath class='c' d='M25.772,9.5A16.656,16.656,0,1,0,42.428,26.156,16.675,16.675,0,0,0,25.772,9.5Zm0,30.75A14.094,14.094,0,1,1,39.866,26.156,14.109,14.109,0,0,1,25.772,40.25Z' transform='translate(14.264 -1.813)'/%3e%3cpath class='c' d='M19.522,13.5a6.406,6.406,0,1,0,6.406,6.406A6.414,6.414,0,0,0,19.522,13.5Zm0,10.25a3.844,3.844,0,1,1,3.844-3.844A3.848,3.848,0,0,1,19.522,23.75Z' transform='translate(20.514 4.438)'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e",
+      description:
+        "<p>Population, Political, Land Use Type, Agriculture, Industries &amp; Trade, Health Access, Education And Literacy</p>",
+      children: [
+        {
+          title: "Population",
+          description: "",
+        },
+        {
+          title: "Political",
+          description: "",
+        },
+        {
+          title: "Agriculture",
+          description: "",
+        },
+        {
+          title: "Health Access",
+          description: "",
+        },
+        {
+          title: "Education & Literacy",
+          description: "",
+        },
+      ],
+    },
+    {
+      title: "Revenue",
+      icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3e%3cdefs%3e%3cstyle%3e.a%7bfill:%23fff;%7d.b%7bfill:none;%7d.c%7bfill:%230067a3;%7d%3c/style%3e%3c/defs%3e%3cg transform='translate(23388 15259)'%3e%3ccircle class='a' cx='70' cy='70' r='70' transform='translate(-23388 -15259)'/%3e%3cg transform='translate(-23359 -15230)'%3e%3crect class='b' width='82' height='82'/%3e%3cg transform='translate(0.962 17.938)'%3e%3cpath class='c' d='M79.494,30.078C78.776,29.114,61.651,6.5,40.029,6.5S1.284,29.114.563,30.078l-.571.766.571.766c.72.963,17.843,23.578,39.465,23.578S78.776,32.573,79.494,31.61l.571-.766ZM40.029,52.625c-18.168,0-33.61-17.832-36.805-21.781C6.419,26.895,21.86,9.062,40.029,9.062S73.641,26.895,76.834,30.844C73.641,34.793,58.2,52.625,40.029,52.625Z' transform='translate(0.008 -6.5)'/%3e%3cpath class='c' d='M25.772,9.5A16.656,16.656,0,1,0,42.428,26.156,16.675,16.675,0,0,0,25.772,9.5Zm0,30.75A14.094,14.094,0,1,1,39.866,26.156,14.109,14.109,0,0,1,25.772,40.25Z' transform='translate(14.264 -1.813)'/%3e%3cpath class='c' d='M19.522,13.5a6.406,6.406,0,1,0,6.406,6.406A6.414,6.414,0,0,0,19.522,13.5Zm0,10.25a3.844,3.844,0,1,1,3.844-3.844A3.848,3.848,0,0,1,19.522,23.75Z' transform='translate(20.514 4.438)'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e",
+      description:
+        "<p>Dolor aliquam dolor dolor aliquam aliquam aliquam quisquam. Eius quisquam porro est magnam consectetur. Neque numquam magnam numquam sed neque adipisci etincidunt. Dolor aliquam dolor dolor aliquam aliquam aliquam quisquam.</p>",
+      children: [
+        {
+          title: "Resource Mobilisation",
+          description: "",
+        },
+      ],
+    },
+    {
+      title: "General County Information",
+      icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3e%3cdefs%3e%3cstyle%3e.a%7bfill:%23fff;%7d.b%7bfill:none;%7d.c%7bfill:%230067a3;%7d%3c/style%3e%3c/defs%3e%3cg transform='translate(23388 15259)'%3e%3ccircle class='a' cx='70' cy='70' r='70' transform='translate(-23388 -15259)'/%3e%3cg transform='translate(-23359 -15230)'%3e%3crect class='b' width='82' height='82'/%3e%3cg transform='translate(0.962 17.938)'%3e%3cpath class='c' d='M79.494,30.078C78.776,29.114,61.651,6.5,40.029,6.5S1.284,29.114.563,30.078l-.571.766.571.766c.72.963,17.843,23.578,39.465,23.578S78.776,32.573,79.494,31.61l.571-.766ZM40.029,52.625c-18.168,0-33.61-17.832-36.805-21.781C6.419,26.895,21.86,9.062,40.029,9.062S73.641,26.895,76.834,30.844C73.641,34.793,58.2,52.625,40.029,52.625Z' transform='translate(0.008 -6.5)'/%3e%3cpath class='c' d='M25.772,9.5A16.656,16.656,0,1,0,42.428,26.156,16.675,16.675,0,0,0,25.772,9.5Zm0,30.75A14.094,14.094,0,1,1,39.866,26.156,14.109,14.109,0,0,1,25.772,40.25Z' transform='translate(14.264 -1.813)'/%3e%3cpath class='c' d='M19.522,13.5a6.406,6.406,0,1,0,6.406,6.406A6.414,6.414,0,0,0,19.522,13.5Zm0,10.25a3.844,3.844,0,1,1,3.844-3.844A3.848,3.848,0,0,1,19.522,23.75Z' transform='translate(20.514 4.438)'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e",
+      description:
+        "<p>Dolor aliquam dolor dolor aliquam aliquam aliquam quisquam. Eius quisquam porro est magnam consectetur. Neque numquam magnam numquam sed neque adipisci etincidunt.</p>",
+      children: [
+        {
+          title: "Employment",
+          description:
+            "<p>Employment Etincidunt velit porro modi. Porro ut ut adipisci ipsum neque dolor. Neque quaerat quiquia porro ipsum etincidunt etincidunt ipsum.</p>",
+        },
+        {
+          title: "Land",
+          description: "",
+        },
+        {
+          title: "Trade and Industry",
+          description: "",
+        },
+      ],
+    },
+    {
+      title: "Monitoring and Evaluation Framework",
+      icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3e%3cdefs%3e%3cstyle%3e.a%7bfill:%23fff;%7d.b%7bfill:none;%7d.c%7bfill:%230067a3;%7d%3c/style%3e%3c/defs%3e%3cg transform='translate(23388 15259)'%3e%3ccircle class='a' cx='70' cy='70' r='70' transform='translate(-23388 -15259)'/%3e%3cg transform='translate(-23359 -15230)'%3e%3crect class='b' width='82' height='82'/%3e%3cg transform='translate(0.962 17.938)'%3e%3cpath class='c' d='M79.494,30.078C78.776,29.114,61.651,6.5,40.029,6.5S1.284,29.114.563,30.078l-.571.766.571.766c.72.963,17.843,23.578,39.465,23.578S78.776,32.573,79.494,31.61l.571-.766ZM40.029,52.625c-18.168,0-33.61-17.832-36.805-21.781C6.419,26.895,21.86,9.062,40.029,9.062S73.641,26.895,76.834,30.844C73.641,34.793,58.2,52.625,40.029,52.625Z' transform='translate(0.008 -6.5)'/%3e%3cpath class='c' d='M25.772,9.5A16.656,16.656,0,1,0,42.428,26.156,16.675,16.675,0,0,0,25.772,9.5Zm0,30.75A14.094,14.094,0,1,1,39.866,26.156,14.109,14.109,0,0,1,25.772,40.25Z' transform='translate(14.264 -1.813)'/%3e%3cpath class='c' d='M19.522,13.5a6.406,6.406,0,1,0,6.406,6.406A6.414,6.414,0,0,0,19.522,13.5Zm0,10.25a3.844,3.844,0,1,1,3.844-3.844A3.848,3.848,0,0,1,19.522,23.75Z' transform='translate(20.514 4.438)'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e",
+      description:
+        "<p>Monitoring Etincidunt est sed labore numquam. Tempora quisquam amet est ipsum eius magnam dolore. Eius dolorem numquam est. Ipsum non etincidunt magnam. Dolorem dolor velit numquam. Sed est quaerat ut adipisci quaerat quaerat quaerat. Etincidunt sit sed voluptatem. Velit aliquam amet numquam consectetur. Quaerat quaerat non quisquam adipisci dolore.</p>",
+      children: [
+        {
+          title: "Agriculture, Rural and Urban Development",
+          description:
+            "<p>Sub olorem dolore est sit amet adipisci. Magnam porro voluptatem consectetur non modi. Modi numquam dolor tempora. Magnam dolore tempora amet magnam est porro. Quiquia eius aliquam quisquam adipisci neque tempora. Eius aliquam labore ut tempora quisquam. Modi quiquia amet voluptatem numquam. Porro labore quaerat labore porro sit quaerat consectetur. Ipsum consectetur tempora magnam etincidunt sit ut.</p>",
+        },
+      ],
+    },
+  ],
+};
+export const panelArgs = {
+  items: [
+    {
+      value: "rich-data",
+      icon: panelPinIcon,
+      children: "1",
+      tree: treeViewArgs,
+    },
+    {
+      value: "pin",
+      icon: pinBlack,
+      children: "2",
+      pin: true,
+      tree: treeViewArgs,
+    },
+    {
+      value: "point-maper",
+      icon: locationIcon,
+      disabled: true,
+      children: "4",
+      tree: treeViewArgs,
+    },
+    {
+      value: "data-mapper",
+      icon: mapIcon,
+      disabled: true,
+      tree: treeViewArgs,
+    },
+  ],
+  logo: {
+    image:
+      "https://wazimap-ng.s3.amazonaws.com/logos/youthexplorer.png?AWSAccessKeyId=AKIAYIFP5EK2I6PADW2R&Signature=63W%2F43NSETtdv3a9ZgTSfNh9%2FHA%3D&Expires=1632748980",
+    url: "https://youthexplorer.org.za",
+  },
+  geography: {
+    name: "Calvinia SP",
+    code: "366005003",
+    level: "subplace",
+    version: "2011 Boundaries",
+    parents: [
+      {
+        name: "South Africa",
+        code: "ZA",
+        level: "country",
+        version: "2011 Boundaries",
+      },
+      {
+        name: "Northern Cape",
+        code: "NC",
+        level: "province",
+        version: "2011 Boundaries",
+      },
+      {
+        name: "Namakwa",
+        code: "DC6",
+        level: "district",
+        version: "2011 Boundaries",
+      },
+      {
+        name: "Hantam",
+        code: "NC065",
+        level: "municipality",
+        version: "2011 Boundaries",
+      },
+      {
+        name: "Calvinia",
+        code: "366005",
+        level: "mainplace",
+        version: "2011 Boundaries",
+      },
+    ],
+  },
+  data: {
+    Demographics: {
+      description: "",
+      subcategories: {
+        Population: {
+          description: "",
+        },
+        "Youth status": {
+          description: "",
+        },
+        "Youth population by age group": {
+          description: "",
+        },
+        Migration: {
+          description: "",
+        },
+        "South African Citizenship": {
+          description: "",
+        },
+        Language: {
+          description: "",
+        },
+        "Province of birth": {
+          description: "",
+        },
+      },
+    },
+    Education: {
+      description: "",
+      subcategories: {
+        "Progress through school": {
+          description: "",
+        },
+        "Highest education level": {
+          description: "",
+        },
+        "Educational attendance": {
+          description: "",
+        },
+      },
+    },
+    "Economic Opportunities": {
+      description: "",
+      subcategories: {
+        Employment: {
+          description: "",
+        },
+        "NEET Status": {
+          description: "",
+        },
+      },
+    },
+    "Living Environment": {
+      description: "",
+      subcategories: {
+        "Basic services": {
+          description: "",
+        },
+        "Dwelling type": {
+          description: "",
+        },
+        Overcrowding: {
+          description: "",
+        },
+        "Internet access": {
+          description: "",
+        },
+        "Live with parents": {
+          description: "",
+        },
+      },
+    },
+    "Youth Poverty": {
+      description: "",
+      subcategories: {
+        "Multidimensional poverty": {
+          description: "",
+        },
+        "Income poverty": {
+          description: "",
+        },
+      },
+    },
+    "Health and Wellness": {
+      description: "",
+      subcategories: {
+        Childbearing: {
+          description: "",
+        },
+      },
+    },
+  },
+  highlights: [],
+  overview: {
+    name: "Youth Explorer",
+    description: "",
+  },
 };
 
 export const hurumapArgs = {
