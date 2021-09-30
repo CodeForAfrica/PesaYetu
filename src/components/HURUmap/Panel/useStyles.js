@@ -57,7 +57,7 @@ const useStyles = makeStyles(
       position: "fixed",
       left: 0,
     },
-    panelMain: {
+    profile: {
       marginLeft: `calc((100vw - ${widths.values.lg}px)/2)`,
       width: typography.pxToRem(800),
       paddingTop: typography.pxToRem(67.7),

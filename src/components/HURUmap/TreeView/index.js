@@ -16,12 +16,12 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   if (!items?.length) {
     return null;
   }
-  const handleClick = (title, expand) => {
+  const handleClick = (event) => {
     document
-      .getElementById(slugify(title))
+      .getElementById(slugify(event.target.dataset.title))
       .scrollIntoView({ behavior: "smooth" });
-    if (expand) {
-      setExpanded(title);
+    if (event.target.dataset.expand) {
+      setExpanded(event.target.dataset.title);
     }
   };
 
@@ -32,9 +32,14 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
           <TreeItem
             key={item.title}
             nodeId={item.title}
-            onClick={() => handleClick(item.title, true)}
             label={
-              <Typography className={classes.label} variant="caption">
+              <Typography
+                onClick={handleClick}
+                data-title={item.title}
+                data-expand
+                className={classes.label}
+                variant="caption"
+              >
                 {item.title} <CheckIcon className={classes.icon} />
               </Typography>
             }
@@ -47,9 +52,10 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
               <TreeItem
                 key={child.title}
                 nodeId={child.title}
-                onClick={() => handleClick(child.title)}
                 label={
                   <Typography
+                    data-title={child.title}
+                    onClick={handleClick}
                     className={clsx(classes.label, classes.childLabel)}
                     variant="caption"
                   >
