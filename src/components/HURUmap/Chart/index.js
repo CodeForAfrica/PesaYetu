@@ -13,16 +13,10 @@ import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
 import Link from "@/pesayetu/components/Link";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     position: "relative",
-    width: typography.pxToRem(350),
-    [breakpoints.up("md")]: {
-      width: typography.pxToRem(600),
-    },
-    [breakpoints.up("lg")]: {
-      width: typography.pxToRem(766),
-    },
+    width: "100%",
   },
   chart: {
     width: "100%",
