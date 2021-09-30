@@ -4,7 +4,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
+import mapLines from "@/pesayetu/assets/images/Mask Group -1.jpg";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 import useProgressiveImage from "@/pesayetu/utils/useProgressiveImage";
@@ -30,15 +30,19 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       paddingTop: typography.pxToRem(129.94),
     },
   },
-  overline: {},
+  overline: {
+    position: "relative",
+  },
   title: {
     marginBottom: typography.pxToRem(35.5),
+    position: "relative",
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(20),
     },
   },
   subtitle: {
     marginRight: 0,
+    position: "relative",
   },
   backgroundGrid: {
     width: "100%",
