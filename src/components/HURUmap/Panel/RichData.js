@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 
 import useStyles from "./useStyles";
 
@@ -20,6 +20,15 @@ function formatData(data) {
         return {
           title: child,
           description: data[label]?.subcategories[child].description,
+          children: Object.keys(
+            data[label]?.subcategories[child]?.indicators ?? []
+          ).map((indicator) => {
+            return {
+              title: indicator,
+              indicator:
+                data[label]?.subcategories[child]?.indicators[indicator],
+            };
+          }),
         };
       }),
     };
@@ -44,11 +53,12 @@ function RichData(props) {
               description={item?.description}
             />
             {item.children.map((child) => (
-              <SubcategoryHeader
-                key={child.title}
-                title={child.title}
-                description={child?.description}
-              />
+              <Fragment key={child.title}>
+                <SubcategoryHeader
+                  title={child.title}
+                  description={child?.description}
+                />
+              </Fragment>
             ))}
           </div>
         ))}
