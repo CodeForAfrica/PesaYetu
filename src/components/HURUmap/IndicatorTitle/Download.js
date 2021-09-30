@@ -173,7 +173,7 @@ Download.propTypes = {
   title: PropTypes.string,
   view: PropTypes.shape({
     toImageURL: PropTypes.func,
-    data: PropTypes.shape({}),
+    data: PropTypes.func,
   }),
   setChartValue: PropTypes.func,
 };

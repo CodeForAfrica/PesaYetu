@@ -53,24 +53,30 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 function Share({ title, spec, ...props }) {
   const classes = useStyles(props);
 
-  const code = `<!DOCTYPE html>
+  const code = `<iframe sandbox="allow-popups allow-scripts allow-forms allow-same-origin"
+  style="height:100%; width: 100%" srcdoc="<!DOCTYPE html>
   <html>
     <head>
       <title>${title}</title>
-      <script src="https://cdn.jsdelivr.net/npm/vega@5.10"></script>
-      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.10"></script>
-      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.5"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
     </head>
     <body>
-      <div id="vis"></div>
+      <div id="vis" style="position: fixed;"></div>
   
       <script type="text/javascript">
-        var yourVlSpec = ${JSON.stringify(spec)} ;
-        vegaEmbed('#vis', yourVlSpec);
+        const spec = ${JSON.stringify(spec)} ;
+        const view = new vega.View(view.parse(spec), {
+          renderer: "canvas",
+          container: "#vis",
+          hover: true,
+        });
       </script>
     </body>
-  </html>
+  </html>" scrolling="no"></iframe>
   `;
+  console.log(code);
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
