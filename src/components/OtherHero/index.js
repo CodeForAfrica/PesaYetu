@@ -32,7 +32,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       paddingTop: typography.pxToRem(129.94),
     },
   },
-  overline: {},
+  overline: {
+    position: "relative",
+  },
   title: {
     marginBottom: typography.pxToRem(35.5),
     position: "relative",
