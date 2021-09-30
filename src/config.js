@@ -649,6 +649,12 @@ export const documentsAndDatasetsArgs = {
   ],
 };
 
+export const mainLogos = {
+  drawer: { url: "/", title: "logo", src: "logoOne" },
+  mobile: { url: "/", title: "logo", src: "logotwo" },
+  desktop: { url: "/", title: "logo", src: "logothree" },
+};
+
 export const hurumapArgs = {
   location: {
     highlights: [
