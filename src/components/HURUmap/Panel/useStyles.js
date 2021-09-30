@@ -5,7 +5,6 @@ const useStyles = makeStyles(
     root: {
       display: "flex",
       height: "100%",
-      scrollBehavior: "smooth",
     },
     drawerOpen: {
       minWidth: typography.pxToRem(1049),
@@ -39,7 +38,7 @@ const useStyles = makeStyles(
       left: 0,
     },
     panelButtonsOpen: {
-      left: `calc((100vw - ${widths.values.lg}px)/2 + 754px)`,
+      left: `max(calc((100vw - ${widths.values.lg}px)/2 + 754px),1054px)`,
     },
     tabPanel: {
       width: `calc(100% - ${typography.pxToRem(44)})`,
@@ -58,8 +57,9 @@ const useStyles = makeStyles(
       left: 0,
     },
     profile: {
-      marginLeft: `calc((100vw - ${widths.values.lg}px)/2)`,
+      marginLeft: `max(calc((100vw - 1160px)/2), 300px)`,
       width: typography.pxToRem(800),
+      minHeight: "100%",
       paddingTop: typography.pxToRem(67.7),
       paddingLeft: typography.pxToRem(17),
       paddingRight: typography.pxToRem(17),
