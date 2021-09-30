@@ -35,12 +35,14 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   overline: {},
   title: {
     marginBottom: typography.pxToRem(35.5),
+    position: "relative",
     [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(20),
     },
   },
   subtitle: {
     marginRight: 0,
+    position: "relative",
   },
   backgroundGrid: {
     width: "100%",
