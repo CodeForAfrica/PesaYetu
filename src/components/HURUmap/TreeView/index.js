@@ -19,7 +19,7 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   const handleClick = (title, expand) => {
     document
       .getElementById(slugify(title))
-      .scrollIntoView({ behaviour: "smooth" });
+      .scrollIntoView({ behavior: "smooth" });
     if (expand) {
       setExpanded(title);
     }
@@ -47,7 +47,7 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
               <TreeItem
                 key={child.title}
                 nodeId={child.title}
-                onClick={() => handleClick(item.title)}
+                onClick={() => handleClick(child.title)}
                 label={
                   <Typography
                     className={clsx(classes.label, classes.childLabel)}
