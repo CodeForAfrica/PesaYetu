@@ -1,18 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(
-  ({ typography, palette, breakpoints, transitions, widths, zIndex }) => ({
+  ({ typography, palette, transitions, widths, zIndex }) => ({
     root: {
       display: "flex",
       height: "100%",
       scrollBehavior: "smooth",
-    },
-    [breakpoints.up("lg")]: {
-      "@global": {
-        html: {
-          scrollBehavior: "smooth",
-        },
-      },
     },
     drawerOpen: {
       minWidth: typography.pxToRem(1049),

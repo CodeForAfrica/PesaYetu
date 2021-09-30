@@ -8,7 +8,6 @@ import React, { useState } from "react";
 import useStyles from "./useStyles";
 
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
-import Link from "@/pesayetu/components/Link";
 import slugify from "@/pesayetu/utils/slugify";
 
 const TreeView = ({ items, expanded: expandedProps, ...props }) => {
@@ -17,6 +16,14 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   if (!items?.length) {
     return null;
   }
+  const handleClick = (title, expand) => {
+    document
+      .getElementById(slugify(title))
+      .scrollIntoView({ behaviour: "smooth" });
+    if (expand) {
+      setExpanded(title);
+    }
+  };
 
   return (
     <div className={classes.root}>
@@ -25,12 +32,10 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
           <TreeItem
             key={item.title}
             nodeId={item.title}
-            onClick={() => setExpanded(item.title)}
+            onClick={() => handleClick(item.title, true)}
             label={
               <Typography className={classes.label} variant="caption">
-                <Link underline="none" href={`#${slugify(item.title)}`}>
-                  {item.title} <CheckIcon className={classes.icon} />
-                </Link>
+                {item.title} <CheckIcon className={classes.icon} />
               </Typography>
             }
             classes={{
@@ -42,14 +47,13 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
               <TreeItem
                 key={child.title}
                 nodeId={child.title}
+                onClick={() => handleClick(item.title)}
                 label={
                   <Typography
                     className={clsx(classes.label, classes.childLabel)}
                     variant="caption"
                   >
-                    <Link underline="none" href={`#${slugify(child.title)}`}>
-                      {child.title}
-                    </Link>
+                    {child.title}
                   </Typography>
                 }
               />
