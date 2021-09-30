@@ -4,7 +4,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Input from "@/pesayetu/components/Select";
+import Input from "@/pesayetu/components/Input";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
