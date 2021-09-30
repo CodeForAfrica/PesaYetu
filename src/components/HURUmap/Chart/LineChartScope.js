@@ -205,9 +205,8 @@ export default function LineChartScope(data, metadata, config) {
         encode: {
           enter: {
             x: { scale: "xscale", field: { signal: "mainGroup" } },
-            width: { scale: "xscale", band: 1 },
+            stroke: { scale: "color", field: { signal: "datatype[Units]" } },
             y: { scale: "yscale", field: { signal: "datatype[Units]" } },
-            y2: { scale: "yscale", value: 0 },
           },
           update: {
             fill: { value: theme.palette.primary.main },

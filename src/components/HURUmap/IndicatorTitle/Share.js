@@ -50,33 +50,15 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function Share({ title, spec, ...props }) {
+function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);
 
-  const code = `<iframe sandbox="allow-popups allow-scripts allow-forms allow-same-origin"
-  style="height:100%; width: 100%" srcdoc="<!DOCTYPE html>
-  <html>
-    <head>
-      <title>${title}</title>
-      <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-    </head>
-    <body>
-      <div id="vis" style="position: fixed;"></div>
-  
-      <script type="text/javascript">
-        const spec = ${JSON.stringify(spec)} ;
-        const view = new vega.View(view.parse(spec), {
-          renderer: "canvas",
-          container: "#vis",
-          hover: true,
-        });
-      </script>
-    </body>
-  </html>" scrolling="no"></iframe>
+  const code = `<iframe style="height:100%; width: 100%"
+  src="${
+    process.env.NEXT_PUBLIC_APP_URL
+  }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe>
   `;
-  console.log(code);
+
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
@@ -94,12 +76,14 @@ function Share({ title, spec, ...props }) {
 
 Share.propTypes = {
   title: PropTypes.string,
-  spec: PropTypes.shape({}),
+  geoCode: PropTypes.string,
+  indicatorId: PropTypes.number,
 };
 
 Share.defaultProps = {
   title: undefined,
-  spec: undefined,
+  geoCode: undefined,
+  indicatorId: undefined,
 };
 
 export default Share;
