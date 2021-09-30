@@ -11,7 +11,6 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import visualsImg from "@/pesayetu/assets/images/Component1236.svg";
-// import howItWorksBg from "@/pesayetu/assets/images/sat-mtKenya@2x.png";
 import howItWorksBg from "@/pesayetu/assets/images/sat-mtKenya-9.jpg";
 import Player from "@/pesayetu/components/HowItWorks/Player";
 import useStyles from "@/pesayetu/components/HowItWorks/useStyles";

@@ -4,9 +4,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-// import mapLines from "@/pesayetu/assets/images/Mask Group 8@2x.png";
 import mapLines from "@/pesayetu/assets/images/Mask Group -1.jpg";
-// import mapLines from "@/pesayetu/assets/images/Mask Group 8.jpg";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 import useProgressiveImage from "@/pesayetu/utils/useProgressiveImage";
