@@ -30,19 +30,21 @@ function Input({ label, options, selected, onChange, ...props }) {
     <FormControl variant="filled" size="small" className={classes.formControl}>
       <FormHelperText className={classes.helper}>Select a value</FormHelperText>
       {label && (
-        <InputLabel htmlFor="temp-id" className={classes.inputLabel}>
+        <InputLabel
+          htmlFor={label ? `${label}-${Date.now()}` : ""}
+          className={classes.inputLabel}
+        >
           <Typography variant="caption" className={classes.label}>
             {label}
           </Typography>
         </InputLabel>
       )}
       <Select
-        labelId="temp-id"
+        labelId={label ? `${label}-${Date.now()}` : ""}
         displayEmpty
         disableUnderline
         onChange={handleChange}
-        // label={selected}
-        value={selected}
+        value={selected || ""}
         IconComponent={ExpandMoreIcon}
         MenuProps={{
           classes: {

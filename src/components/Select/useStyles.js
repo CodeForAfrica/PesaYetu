@@ -58,10 +58,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     marginTop: typography.pxToRem(15),
   },
   label: {
-    // fontSize: typography.pxToRem(10),
-    // fontWeight: "700",
     color: "#959696",
-    // textTransform: "uppercase",
   },
   helper: {
     fontSize: typography.pxToRem(10),
