@@ -13,6 +13,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   title: "Population by Age Group",
+  geoCode: "KE",
   indicator: {
     id: 203,
     description:
