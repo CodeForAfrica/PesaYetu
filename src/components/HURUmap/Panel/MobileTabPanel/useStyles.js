@@ -9,25 +9,19 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
   indicator: { display: "none" },
   tabs: {
     paddingTop: typography.pxToRem(16),
-    paddingBottom: typography.pxToRem(31),
+    paddingBottom: typography.pxToRem(16),
     paddingLeft: typography.pxToRem(20),
     backgroundColor: palette.background.paper,
     zIndex: zIndex.appBar,
     position: "sticky",
   },
-
-  tabSelected: {
-    color: palette.background.default,
-    backgroundColor: "#666666",
-    "&:hover, &:focus, &$selected": {
-      color: palette.background.default,
-      backgroundColor: "#666666",
-    },
+  tabPanels: {
+    marginTop: 0,
   },
-
   profile: {
     marginLeft: typography.pxToRem(20),
     marginRight: typography.pxToRem(20),
+    marginTop: typography.pxToRem(20),
   },
   footer: {
     padding: `${typography.pxToRem(58)} ${typography.pxToRem(100)} `,
@@ -52,8 +46,17 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
     padding: `${typography.pxToRem(6)} ${typography.pxToRem(20)}`,
     height: typography.pxToRem(29),
     maxWidth: "unset",
+    textTransform: "unset",
     "&:last-of-type": {
       marginRight: 0,
+    },
+  },
+  tabSelected: {
+    color: palette.background.default,
+    backgroundColor: "#666666",
+    "&:hover, &:focus, &$selected": {
+      color: palette.background.default,
+      backgroundColor: "#666666",
     },
   },
 }));
