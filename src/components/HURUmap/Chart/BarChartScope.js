@@ -155,7 +155,7 @@ export default function BarChartScope(data, metadata, config) {
         type: "band",
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
         range: { step: { signal: "y_step" } },
-        padding: 0.1,
+        padding: 0.15,
       },
       xScale,
     ],

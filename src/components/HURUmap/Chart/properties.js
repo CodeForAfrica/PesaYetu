@@ -55,6 +55,6 @@ export const commonSignal = [
   },
   {
     name: "y_step",
-    value: 30,
+    value: 35,
   },
 ];

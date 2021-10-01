@@ -89,7 +89,7 @@ Default.args = {
     content_type: "indicator",
     dataset_content_type: "quantitative",
     chart_configuration: {
-      chart_type: "stacked",
+      chart_type: "bar",
       stacked_field: "gender",
       types: {
         Value: {
