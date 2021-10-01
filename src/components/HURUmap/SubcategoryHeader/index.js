@@ -9,6 +9,7 @@ import slugify from "@/pesayetu/utils/slugify";
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     borderBottom: `solid 1px ${palette.divider}`,
+    borderTop: `solid 1px ${palette.divider}`,
   },
   title: {
     textTransform: "uppercase",
