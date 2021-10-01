@@ -12,12 +12,17 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: palette.grey.light,
+    position: "fixed",
+    left: 0,
+    right: 0,
+    top: 140,
   },
   paper: {
     width: "100%",
     left: "0 !important",
     right: 0,
     maxWidth: "unset",
+    borderRadius: 0,
   },
 }));
 
@@ -36,7 +41,7 @@ function MobileSubCategoryTitle() {
   const open = Boolean(anchorEl);
 
   return (
-    <div>
+    <div className={classes.root}>
       <Typography className={classes.caretContainer} onClick={handleClick}>
         <Caret />
       </Typography>

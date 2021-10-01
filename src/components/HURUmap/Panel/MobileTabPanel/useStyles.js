@@ -13,8 +13,8 @@ const useStyles = makeStyles(
       paddingBottom: typography.pxToRem(16),
       paddingLeft: typography.pxToRem(20),
       backgroundColor: palette.background.paper,
-      zIndex: zIndex.drawer,
-      position: "sticky",
+      zIndex: zIndex.snackbar,
+      position: "fixed",
       [breakpoints.up("md")]: {
         paddingLeft: typography.pxToRem(62),
       },
@@ -25,7 +25,7 @@ const useStyles = makeStyles(
     profile: {
       marginLeft: typography.pxToRem(20),
       marginRight: typography.pxToRem(20),
-      marginTop: typography.pxToRem(20),
+      marginTop: typography.pxToRem(80),
       [breakpoints.up("md")]: {
         paddingLeft: typography.pxToRem(80),
         marginRight: typography.pxToRem(80),
