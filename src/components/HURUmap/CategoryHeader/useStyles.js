@@ -20,8 +20,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   icon: {
     position: "relative",
-    height: typography.pxToRem(55.5),
-    width: typography.pxToRem(55.5),
+    height: typography.pxToRem(32),
+    width: typography.pxToRem(32),
+    marginRight: typography.pxToRem(10),
   },
 }));
 
