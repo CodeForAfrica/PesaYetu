@@ -37,6 +37,7 @@
     "lodash": "^4.17.21",
     "next": "^11.1.0",
     "next-images": "^1.8.1",
+    "next-s3-upload": "^0.1.7",
     "next-seo": "^4.26.0",
     "papaparse": "^5.3.1",
     "prop-types": "^15.7.2",
