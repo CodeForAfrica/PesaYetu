@@ -85,7 +85,11 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     marginTop: typography.pxToRem(32),
     position: "absolute",
     top: typography.pxToRem(-16),
-    [breakpoints.up("md")]: {
+    [breakpoints.only("md")]: {
+      position: "relative",
+      top: 0,
+    },
+    [breakpoints.up("lg")]: {
       position: "relative",
       paddingTop: typography.pxToRem(48),
       top: 0,
@@ -95,6 +99,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     width: typography.pxToRem(262),
     padding: `${typography.pxToRem(66)} !important`,
     height: "auto",
+    [breakpoints.only("md")]: {
+      padding: `${typography.pxToRem(15)} !important`,
+    },
     [breakpoints.up("lg")]: {
       width: typography.pxToRem(400),
       padding: `0 !important`,
