@@ -18,6 +18,8 @@ const buildVariant = (
   textTransform,
 });
 
+const CHART_PRIMARY_COLOR_SCHEME = ["#0067A3", "#7DB2D3", "#DFDFDF", "#666666"];
+
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -49,6 +51,10 @@ const theme = createTheme({
       primary: "#333333",
       secondary: "#FFFFFF",
       hint: "#1C2031",
+    },
+    chart: {
+      text: { primary: "#707070" },
+      primary: CHART_PRIMARY_COLOR_SCHEME,
     },
     divider: "#F0F0F0",
   },
