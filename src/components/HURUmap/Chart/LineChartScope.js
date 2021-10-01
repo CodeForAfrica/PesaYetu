@@ -1,8 +1,6 @@
 import { xAxis, defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
-import theme from "@/pesayetu/theme";
-
 const PERCENTAGE_TYPE = "percentage";
 const VALUE_TYPE = "value";
 const graphValueTypes = {
@@ -94,6 +92,10 @@ export default function LineChartScope(data, metadata, config) {
         ],
       },
       {
+        name: "interpolate",
+        value: "linear",
+      },
+      {
         name: "groups",
         value: [primaryGroup],
       },
@@ -160,10 +162,9 @@ export default function LineChartScope(data, metadata, config) {
     scales: [
       {
         name: "xscale",
-        type: "band",
+        type: "point",
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
-        range: { step: { signal: "x_step" } },
-        padding: 0.15,
+        range: [15, { signal: "width" }],
       },
       {
         name: "yscale",
@@ -174,15 +175,23 @@ export default function LineChartScope(data, metadata, config) {
         },
         range: [{ signal: "height" }, 0],
         nice: true,
+        zero: true,
+        clamp: true,
+      },
+      {
+        name: "color",
+        type: "ordinal",
+        range: "category",
+        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
       },
     ],
     axes: [
       {
         orient: "left",
         scale: "yscale",
+        domain: false,
         domainOpacity: 0.5,
         tickSize: 0,
-        grid: true,
         labelPadding: 6,
         zindex: 1,
         format: { signal: "numberFormat[Units]" },
@@ -193,7 +202,8 @@ export default function LineChartScope(data, metadata, config) {
         bandPosition: 0,
         domainOpacity: 0.5,
         tickSize: 0,
-        labels: false,
+        grid: true,
+        labelPadding: 6,
       },
     ],
 
@@ -205,11 +215,13 @@ export default function LineChartScope(data, metadata, config) {
         encode: {
           enter: {
             x: { scale: "xscale", field: { signal: "mainGroup" } },
-            stroke: { scale: "color", field: { signal: "datatype[Units]" } },
+            stroke: { scale: "color", field: { signal: "mainGroup" } },
             y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+            strokeWidth: { value: 2 },
           },
           update: {
-            fill: { value: theme.palette.primary.main },
+            interpolate: { signal: "interpolate" },
+            strokeOpacity: { value: 1 },
             tooltip: {
               signal:
                 "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
