@@ -13,7 +13,10 @@ import { ReactComponent as ShareIcon } from "@/pesayetu/assets/icons/Component 2
 import { ReactComponent as InfoIcon } from "@/pesayetu/assets/icons/Component852.svg";
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
-  root: {},
+  root: {
+    paddingTop: typography.pxToRem(24),
+    paddingBottom: typography.pxToRem(25),
+  },
   description: {
     fontSize: typography.pxToRem(11),
     lineHeight: 17 / 11,
