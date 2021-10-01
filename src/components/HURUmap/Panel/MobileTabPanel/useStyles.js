@@ -18,8 +18,10 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
     backgroundColor: "#666666",
     "&:hover, &:focus, &$selected": {
       color: palette.background.default,
+      backgroundColor: "#666666",
     },
   },
+
   profile: {
     marginLeft: typography.pxToRem(20),
     marginRight: typography.pxToRem(20),
