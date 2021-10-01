@@ -17,6 +17,7 @@ export const createFiltersForGroups = (groups) => {
     });
     signals.set(keyName, { name: `${keyName}Filter`, value: false });
     signals.set(`${keyName}Value`, { name: `${keyName}FilterValue` });
+    console.log(keyName);
   });
   return {
     signals: Array.from(signals.values()),

@@ -32,8 +32,8 @@ export default function DonutChartScope(data, metadata, config) {
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
     description: "A basic donut chart example.",
-    width: 400,
-    height: 200,
+    width: 360,
+    height: 180,
     autosize: "none",
     config: defaultConfig,
     data: [
@@ -135,7 +135,7 @@ export default function DonutChartScope(data, metadata, config) {
       },
       {
         name: "innerRadius",
-        value: 60,
+        value: 55,
       },
       {
         name: "cornerRadius",

@@ -102,7 +102,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
     );
     el.setAttribute(
       "style",
-      `top: ${y}px; left: ${x}px; z-index: 999; position: absolute`
+      `top: ${y}px; left: ${x}px; z-index: 1230; position: absolute`
     );
   };
 
@@ -121,7 +121,6 @@ function Chart({ indicator, title, geoCode, ...props }) {
       />
       <Vega
         spec={spec}
-        renderer="svg"
         actions={false}
         tooltip={handler}
         onNewView={handleNewView}
