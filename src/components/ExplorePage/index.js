@@ -6,7 +6,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 
 import Location from "@/pesayetu/components/HURUmap/Location";
-import MobileTabPanel from "@/pesayetu/components/HURUmap/MobileTabPanel";
 import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Link from "@/pesayetu/components/Link";
 import { panelArgs } from "@/pesayetu/config";
@@ -116,11 +115,12 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
 
   return (
     <>
-      <Hidden lgUp implementation="css">
-        <MobileTabPanel classes={{ tabs: classes.mobileTabs }} {...profile} />
-      </Hidden>
+      <Panel
+        classes={{ tabs: classes.mobileTabs }}
+        {...panelArgs}
+        {...profile}
+      />
       <Hidden mdDown implementation="css">
-        <Panel {...panelArgs} {...profile} />
         <div className={classes.root}>
           <Map
             center={[0.3051933453207569, 37.908818734483155]}

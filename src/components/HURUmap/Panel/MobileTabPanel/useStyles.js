@@ -12,22 +12,7 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
     zIndex: zIndex.appBar,
     position: "sticky",
   },
-  tab: {
-    color: "#212529",
-    backgroundColor: palette.background.default,
-    fontWeight: 500,
-    fontSize: typography.pxToRem(12),
-    letterSpacing: typography.pxToRem(1.6),
-    lineHeight: 30 / 12,
-    marginRight: typography.pxToRem(20),
-    padding: `${typography.pxToRem(6)} ${typography.pxToRem(20)}`,
-    textTransform: "unset",
-    height: typography.pxToRem(29),
-    maxWidth: "unset",
-    "&:last-of-type": {
-      marginRight: 0,
-    },
-  },
+
   tabSelected: {
     color: palette.background.default,
     backgroundColor: "#666666",
@@ -50,6 +35,21 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
   },
   footerIcon: {
     marginRight: typography.pxToRem(20),
+  },
+  tab: {
+    color: "#212529",
+    backgroundColor: palette.background.default,
+    fontWeight: 500,
+    fontSize: typography.pxToRem(12),
+    letterSpacing: typography.pxToRem(1.6),
+    lineHeight: 30 / 12,
+    marginRight: typography.pxToRem(20),
+    padding: `${typography.pxToRem(6)} ${typography.pxToRem(20)}`,
+    height: typography.pxToRem(29),
+    maxWidth: "unset",
+    "&:last-of-type": {
+      marginRight: 0,
+    },
   },
 }));
 
