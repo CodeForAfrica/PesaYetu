@@ -46,7 +46,7 @@ function Input({ label, helperText, options, selected, onChange, ...props }) {
         displayEmpty
         disableUnderline
         onChange={handleChange}
-        value={selected || ""}
+        defaultValue={selected || ""}
         IconComponent={ExpandMoreIcon}
         MenuProps={{
           classes: {

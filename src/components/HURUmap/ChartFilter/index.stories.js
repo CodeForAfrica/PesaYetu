@@ -12,6 +12,7 @@ const Template = (args) => <ChartFilter {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  helperText: "select a value:",
   selected: "All Values",
   options: ["Swahili", "Kikuyu", "Luhya", "All Values"],
 };
