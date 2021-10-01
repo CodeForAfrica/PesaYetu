@@ -3,35 +3,38 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-function TabPanel({ children, index, name, value, ...props }) {
+function TabPanel({ children, value, name, selected, ...props }) {
   const classes = useStyles(props);
 
+  if (selected !== value) {
+    return null;
+  }
   return (
     <div
       role="tabpanel"
-      hidden={value !== index}
-      id={`${name}-tabpanel-${index}`}
-      aria-labelledby={`${name}-tab-${index}`}
+      hidden={selected !== value}
+      id={`${name}-tabpanel-${value}`}
+      aria-labelledby={`${name}-tab-${value}`}
       {...props}
       className={classes.tabPanel}
     >
-      {value === index && children}
+      {children}
     </div>
   );
 }
 
 TabPanel.propTypes = {
   children: PropTypes.node,
-  index: PropTypes.number,
-  name: PropTypes.string,
   value: PropTypes.number,
+  name: PropTypes.string,
+  selected: PropTypes.number,
 };
 
 TabPanel.defaultProps = {
   children: undefined,
-  index: undefined,
-  name: undefined,
   value: undefined,
+  name: undefined,
+  selected: undefined,
 };
 
 export default TabPanel;

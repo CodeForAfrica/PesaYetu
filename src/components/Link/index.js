@@ -12,6 +12,7 @@ import site from "@/pesayetu/utils/site";
 const NextComposed = forwardRef(function NextComposed(props, ref) {
   const {
     as,
+    component,
     href,
     locale,
     passHref,
@@ -21,7 +22,7 @@ const NextComposed = forwardRef(function NextComposed(props, ref) {
     shallow,
     ...other
   } = props;
-
+  const Component = component || "a";
   return (
     <NextLink
       href={href}
@@ -33,13 +34,14 @@ const NextComposed = forwardRef(function NextComposed(props, ref) {
       shallow={shallow}
       locale={locale}
     >
-      <a ref={ref} {...other} />
+      <Component ref={ref} {...other} />
     </NextLink>
   );
 });
 
 NextComposed.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  component: PropTypes.elementType,
   href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   locale: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   passHref: PropTypes.bool,
@@ -51,6 +53,7 @@ NextComposed.propTypes = {
 
 NextComposed.defaultProps = {
   as: undefined,
+  component: undefined,
   href: undefined,
   locale: undefined,
   passHref: undefined,
@@ -92,7 +95,7 @@ const Link = forwardRef(function Link(props, ref) {
 
   const isRelative =
     typeof formattedHref === "string" &&
-    formattedHref.indexOf("/") === 0 &&
+    (formattedHref.indexOf("/") === 0 || formattedHref.indexOf("#") === 0) &&
     formattedHref.indexOf("//") !== 0;
 
   if (!isRelative) {

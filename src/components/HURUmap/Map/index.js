@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { MapContainer, ZoomControl, TileLayer, Pane } from "react-leaflet";
 
 import Layers from "./Layers";
@@ -8,7 +9,7 @@ import Layers from "./Layers";
 import "leaflet/dist/leaflet.css";
 
 const useStyles = makeStyles(({ typography }) => ({
-  map: {
+  root: {
     "& .tooltip": {
       height: typography.pxToRem(38),
       width: typography.pxToRem(88),
@@ -17,34 +18,34 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-const preferredChildrenObj = {
-  country: ["county"],
-};
-
 function Map({
   center,
+  className,
   zoom,
   styles,
   geometries,
   geography,
   tileLayers,
+  preferredChildren,
+  locationCodes,
   ...props
 }) {
   const classes = useStyles(props);
   const [selectedBoundary, setSelectedBoundary] = useState(null);
 
-  const getSelectedBoundary = (level, geoms) => {
-    const preferredChildren = preferredChildrenObj[level];
-    if (!preferredChildren) return null;
+  const getSelectedBoundary = useCallback(
+    (level, geoms) => {
+      const preferredChildrenPerLevel = preferredChildren[level];
+      const preferredLevel =
+        preferredChildrenPerLevel?.find((l) => geoms.children[l]) ?? null;
 
-    const availableLevels = preferredChildren.filter((l) => geoms.children[l]);
-
-    if (availableLevels.length > 0) {
-      const preferredLevel = availableLevels[0];
-      return geoms.children[preferredLevel];
-    }
-    return null;
-  };
+      if (preferredLevel) {
+        return geoms.children[preferredLevel];
+      }
+      return null;
+    },
+    [preferredChildren]
+  );
 
   useEffect(() => {
     let selectedBound =
@@ -76,7 +77,7 @@ function Map({
       };
     }
     setSelectedBoundary(selectedBound);
-  }, [geometries, geography]);
+  }, [geometries, geography, getSelectedBoundary]);
 
   return (
     <MapContainer
@@ -88,7 +89,7 @@ function Map({
       touchZoom={false}
       zoomSnap={0.25}
       style={styles}
-      className={classes.map}
+      className={clsx(classes.root, className)}
     >
       {tileLayers?.map(({ pane, url, zIndex }) => (
         <Pane
@@ -101,9 +102,10 @@ function Map({
       ))}
       <ZoomControl position="bottomright" />
       <Layers
+        {...props}
         selectedBoundary={selectedBoundary}
         parentsGeometries={geometries.parents}
-        {...props}
+        locationCodes={locationCodes}
       />
     </MapContainer>
   );
@@ -120,12 +122,13 @@ Map.propTypes = {
     }
     return null;
   },
+  className: PropTypes.string,
   zoom: PropTypes.number,
   styles: PropTypes.shape({}),
   geometries: PropTypes.shape({
     parents: PropTypes.arrayOf(PropTypes.shape({})),
     children: PropTypes.shape({}),
-    boundary: PropTypes.arrayOf(PropTypes.shape({})),
+    boundary: PropTypes.shape({}),
   }),
   geography: PropTypes.shape({
     level: PropTypes.string,
@@ -133,10 +136,13 @@ Map.propTypes = {
   setShouldFetch: PropTypes.func,
   setGeoCode: PropTypes.func,
   tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
+  preferredChildren: PropTypes.shape({}),
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Map.defaultProps = {
   center: undefined,
+  className: undefined,
   zoom: undefined,
   styles: {
     height: "100%",
@@ -147,6 +153,8 @@ Map.defaultProps = {
   setShouldFetch: undefined,
   setGeoCode: undefined,
   tileLayers: undefined,
+  preferredChildren: undefined,
+  locationCodes: undefined,
 };
 
 export default Map;

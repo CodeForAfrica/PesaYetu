@@ -4,6 +4,13 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     textAlign: "right",
     background: palette.background.paper,
+    "& .MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label":
+      {
+        backgroundColor: "unset",
+      },
+    "& .MuiTreeItem-iconContainer": {
+      width: 0,
+    },
   },
   label: {
     marginRight: typography.pxToRem(20),
@@ -11,6 +18,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
+    fontWeight: 500,
   },
   childLabel: {
     fontWeight: 300,

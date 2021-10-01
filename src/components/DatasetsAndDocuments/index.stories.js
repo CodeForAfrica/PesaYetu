@@ -2,7 +2,7 @@ import React from "react";
 
 import DatasetsAndDocuments from ".";
 
-import { datasetsAndDocumentsArgs } from "@/pesayetu/config";
+import { documentsAndDatasetsArgs } from "@/pesayetu/config";
 
 export default {
   title: "Sections/DatasetsAndDocuments",
@@ -21,6 +21,6 @@ const Template = (args) => <DatasetsAndDocuments {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  ...datasetsAndDocumentsArgs,
+  ...documentsAndDatasetsArgs,
   activeType: "documents",
 };

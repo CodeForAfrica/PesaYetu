@@ -58,9 +58,8 @@ const geoStyles = {
 const Layers = ({
   selectedBoundary,
   parentsGeometries,
-  setGeoCode,
-  setShouldFetch,
-  featuredCounties,
+  onClick,
+  locationCodes,
   ...props
 }) => {
   const map = useMap();
@@ -70,7 +69,7 @@ const Layers = ({
 
   const onEachFeature = useCallback(
     (feature, layer) => {
-      if (!featuredCounties?.includes(feature.properties.code)) {
+      if (!locationCodes?.includes(feature.properties.code)) {
         layer.setStyle(geoStyles.inactive);
       } else {
         const popUpContent = (level, name) =>
@@ -110,15 +109,20 @@ const Layers = ({
               : geoStyles.hoverOnly.out
           );
         });
-        layer.on("click", () => {
-          setGeoCode(feature.properties.code);
-          setShouldFetch(true);
-          const href = `/explore/${feature.properties.level}-${feature.properties.code}`;
-          router.push(href, href, { shallow: true });
+        layer.on("click", (e) => {
+          const href = `/explore/${feature.properties.code.toLowerCase()}`;
+          router.push(href, href, { shallow: !!onClick });
+          if (onClick) {
+            onClick(e, {
+              code: feature.properties.code,
+              level: feature.properties.level,
+              name: feature.properties.name,
+            });
+          }
         });
       }
     },
-    [featuredCounties, classes.locationtag, setGeoCode, setShouldFetch, router]
+    [classes.locationtag, locationCodes, onClick, router]
   );
 
   useEffect(() => {
@@ -138,7 +142,11 @@ const Layers = ({
     <>
       <LayerGroup>
         {parentsGeometries?.map((g) => (
-          <GeoJSON data={g} onEachFeature={onEachFeature} />
+          <GeoJSON
+            key={g.features[0].properties.name}
+            data={g}
+            onEachFeature={onEachFeature}
+          />
         ))}
       </LayerGroup>
       <FeatureGroup ref={groupRef}>
@@ -151,17 +159,15 @@ const Layers = ({
 Layers.propTypes = {
   parentsGeometries: PropTypes.arrayOf(PropTypes.shape({})),
   selectedBoundary: PropTypes.shape({}),
-  setGeoCode: PropTypes.func,
-  setShouldFetch: PropTypes.func,
-  featuredCounties: PropTypes.arrayOf(PropTypes.string),
+  onClick: PropTypes.func,
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Layers.defaultProps = {
   parentsGeometries: undefined,
   selectedBoundary: undefined,
-  setGeoCode: undefined,
-  setShouldFetch: undefined,
-  featuredCounties: undefined,
+  onClick: undefined,
+  locationCodes: undefined,
 };
 
 export default Layers;

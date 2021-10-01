@@ -1,43 +1,50 @@
-import { Typography, Grid, SvgIcon } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-const LocationHeader = ({ title, type, parent, printIcon }) => {
-  const classes = useStyles();
+import Image from "@/pesayetu/components/Image";
 
-  if (!(title && parent)) {
+const LocationHeader = ({ level, parent, title, icon, ...props }) => {
+  const classes = useStyles(props);
+
+  if (!title) {
     return null;
   }
   return (
     <div className={classes.root}>
-      <Grid container justifyContent="space-between">
+      <div className={classes.titleContent}>
         <Typography variant="h3" className={classes.title}>
           {title}
         </Typography>
-        <SvgIcon component={printIcon} className={classes.svgIcon} />
-      </Grid>
-      <Typography variant="subtitle2" className={classes.description}>
-        {`A ${type} in ${parent}`}
-      </Typography>
-      <hr className={classes.underline} />
+        <Button variant="contained" className={classes.button}>
+          <div className={classes.icon}>
+            <Image src={icon} layout="fill" />
+          </div>
+        </Button>
+      </div>
+      {parent && (
+        <Typography variant="subtitle2" className={classes.description}>
+          {`A ${level} in ${parent}`}
+        </Typography>
+      )}
     </div>
   );
 };
 
 LocationHeader.propTypes = {
   title: PropTypes.string,
-  type: PropTypes.string,
+  level: PropTypes.string,
   parent: PropTypes.string,
-  printIcon: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 LocationHeader.defaultProps = {
   title: undefined,
-  type: undefined,
+  level: undefined,
   parent: undefined,
-  printIcon: undefined,
+  icon: undefined,
 };
 
 export default LocationHeader;

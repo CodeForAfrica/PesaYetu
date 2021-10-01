@@ -9,10 +9,10 @@ import Section from "@/pesayetu/components/Section";
 
 const Summary = ({ content, title, subtitle, ...props }) => {
   const classes = useStyles(props);
+
   if (!content) {
     return null;
   }
-
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>

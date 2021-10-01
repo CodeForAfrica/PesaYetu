@@ -1,13 +1,12 @@
 import React from "react";
 
-import ProfileKeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
+import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 
 export default {
   title: "Components/HURUmap/KeyMetric",
-  argTypes: {},
 };
 
-const Template = ({ ...args }) => <ProfileKeyMetric {...args} />;
+const Template = ({ ...args }) => <KeyMetric {...args} />;
 
 export const Default = Template.bind({});
 
