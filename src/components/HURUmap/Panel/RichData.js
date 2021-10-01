@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 
 import useStyles from "./useStyles";
 
-import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
+import defaultIcon from "@/pesayetu/assets/icons/Component 86 – 12.svg";
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
