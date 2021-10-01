@@ -1,3 +1,4 @@
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
@@ -5,7 +6,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 
 import Location from "@/pesayetu/components/HURUmap/Location";
+import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Link from "@/pesayetu/components/Link";
+import { panelArgs } from "@/pesayetu/config";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
@@ -19,6 +22,10 @@ const useStyles = makeStyles(
       height: "calc(100vh - 88px)",
       [breakpoints.up("lg")]: {
         height: "calc(100vh - 110px)",
+        position: "fixed",
+        left: 0,
+        right: 0,
+        top: 110,
       },
       "& .tooltipPop": {
         background: palette.background.default,
@@ -104,23 +111,28 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
   const { geography, geometries, highlights, tags } = profile;
 
   return (
-    <div className={classes.root}>
-      <Map
-        center={[0.3051933453207569, 37.908818734483155]}
-        zoom={6.25}
-        geometries={geometries}
-        geography={geography}
-        onClick={handleCodeChange}
-        {...props}
-        className={classes.map}
-      />
-      <Location
-        highlights={highlights}
-        isLoading={isLoading}
-        tags={tags}
-        className={classes.location}
-      />
-    </div>
+    <>
+      <Hidden mdDown implementation="css">
+        <Panel {...panelArgs} {...profile} />
+      </Hidden>
+      <div className={classes.root}>
+        <Map
+          center={[0.3051933453207569, 37.908818734483155]}
+          zoom={6.25}
+          geometries={geometries}
+          geography={geography}
+          onClick={handleCodeChange}
+          {...props}
+          className={classes.map}
+        />
+        <Location
+          highlights={highlights}
+          isLoading={isLoading}
+          tags={tags}
+          className={classes.location}
+        />
+      </div>
+    </>
   );
 }
 

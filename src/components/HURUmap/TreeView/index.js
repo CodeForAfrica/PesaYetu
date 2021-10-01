@@ -8,28 +8,39 @@ import React, { useState } from "react";
 import useStyles from "./useStyles";
 
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
-import Link from "@/pesayetu/components/Link";
+import slugify from "@/pesayetu/utils/slugify";
 
 const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   const [expanded, setExpanded] = useState(expandedProps);
   const classes = useStyles(props);
-  if (!items || !items.length) {
+  if (!items?.length) {
     return null;
   }
+  const handleClick = (event) => {
+    document
+      .getElementById(slugify(event.target.dataset.title))
+      .scrollIntoView({ behavior: "smooth" });
+    if (event.target.dataset.expand) {
+      setExpanded(event.target.dataset.title);
+    }
+  };
 
   return (
     <div className={classes.root}>
       <MuiTreeView expanded={[expanded]}>
-        {items.map(({ children, label, path }) => (
+        {items.map((item) => (
           <TreeItem
-            key={path}
-            nodeId={path}
-            onClick={() => setExpanded(path)}
+            key={item.title}
+            nodeId={item.title}
             label={
-              <Typography className={classes.label} variant="caption">
-                <Link underline="none" href={path}>
-                  {label} <CheckIcon className={classes.icon} />
-                </Link>
+              <Typography
+                onClick={handleClick}
+                data-title={item.title}
+                data-expand
+                className={classes.label}
+                variant="caption"
+              >
+                {item.title} <CheckIcon className={classes.icon} />
               </Typography>
             }
             classes={{
@@ -37,18 +48,18 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
               expanded: classes.expanded,
             }}
           >
-            {children.map((child) => (
+            {item.children.map((child) => (
               <TreeItem
-                key={child.path}
-                nodeId={child.path}
+                key={child.title}
+                nodeId={child.title}
                 label={
                   <Typography
+                    data-title={child.title}
+                    onClick={handleClick}
                     className={clsx(classes.label, classes.childLabel)}
                     variant="caption"
                   >
-                    <Link underline="none" href={child.path}>
-                      {child.label}
-                    </Link>
+                    {child.title}
                   </Typography>
                 }
               />
@@ -61,7 +72,11 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
 };
 
 TreeView.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({})),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      children: PropTypes.shape({}),
+    })
+  ),
   expanded: PropTypes.string,
 };
 

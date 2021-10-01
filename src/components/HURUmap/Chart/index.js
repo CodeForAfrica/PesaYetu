@@ -13,16 +13,10 @@ import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
 import Link from "@/pesayetu/components/Link";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     position: "relative",
-    width: typography.pxToRem(350),
-    [breakpoints.up("md")]: {
-      width: typography.pxToRem(600),
-    },
-    [breakpoints.up("lg")]: {
-      width: typography.pxToRem(766),
-    },
+    width: "100%",
   },
   chart: {
     width: "100%",
@@ -44,7 +38,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
 }));
 
-function Chart({ indicator, title, ...props }) {
+function Chart({ indicator, title, geoCode, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
   const [updateView, setUpdateView] = useState(false);
@@ -66,12 +60,13 @@ function Chart({ indicator, title, ...props }) {
   } = indicator;
 
   const spec = configureScope(indicator, isMobile);
+  const className = `charttooltip-${id}-${geoCode}`;
 
   const handler = (_, event, item, value) => {
-    let el = document.getElementsByClassName(`${id}-charttooltip`)[0];
+    let el = document.getElementsByClassName(className)[0];
     if (!el) {
       el = document.createElement("div");
-      el.classList.add(`${id}-charttooltip`);
+      el.classList.add(className);
       document.body.appendChild(el);
     }
 
@@ -110,14 +105,14 @@ function Chart({ indicator, title, ...props }) {
       `top: ${y}px; left: ${x}px; z-index: 999; position: absolute`
     );
   };
-
   return (
-    <div className={classes.root} id={`${id}-chart`}>
+    <div className={classes.root} id={`chart-${id}-${geoCode}`}>
       <IndicatorTitle
         title={title}
         description={description}
         view={view}
-        spec={spec}
+        geoCode={geoCode}
+        indicatorId={id}
       />
       <Vega
         spec={spec}
@@ -152,11 +147,13 @@ Chart.propTypes = {
     }),
   }),
   title: PropTypes.string,
+  geoCode: PropTypes.string,
 };
 
 Chart.defaultProps = {
   indicator: undefined,
   title: undefined,
+  geoCode: undefined,
 };
 
 export default Chart;

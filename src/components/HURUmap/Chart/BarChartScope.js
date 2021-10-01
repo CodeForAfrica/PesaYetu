@@ -144,10 +144,6 @@ export default function BarChartScope(data, metadata, config) {
         update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
       },
       {
-        name: "y_step",
-        value: 30,
-      },
-      {
         name: "height",
         update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
       },

@@ -42,12 +42,12 @@ export const defaultConfig = {
 export const commonSignal = [
   {
     name: "width",
-    value: "containerSize()[0]",
+    update: "containerSize()[0]",
     on: [{ events: "window:resize", update: "containerSize()[0]" }],
   },
   {
     name: "cursor",
-    value: `url("${hoverIcon}"), pointer`,
+    value: `url("${hoverIcon.src}"), pointer`,
   },
   {
     name: "x_step",
