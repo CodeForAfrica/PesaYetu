@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 
 import Location from "@/pesayetu/components/HURUmap/Location";
+import MobileTabPanel from "@/pesayetu/components/HURUmap/MobileTabPanel";
 import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Link from "@/pesayetu/components/Link";
 import { panelArgs } from "@/pesayetu/config";
@@ -76,6 +77,9 @@ const useStyles = makeStyles(
         zIndex: zIndex.appBar,
       },
     },
+    mobileTabs: {
+      top: 80,
+    },
   })
 );
 
@@ -112,26 +116,29 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
 
   return (
     <>
+      <Hidden lgUp implementation="css">
+        <MobileTabPanel classes={{ tabs: classes.mobileTabs }} {...profile} />
+      </Hidden>
       <Hidden mdDown implementation="css">
         <Panel {...panelArgs} {...profile} />
+        <div className={classes.root}>
+          <Map
+            center={[0.3051933453207569, 37.908818734483155]}
+            zoom={6.25}
+            geometries={geometries}
+            geography={geography}
+            onClick={handleCodeChange}
+            {...props}
+            className={classes.map}
+          />
+          <Location
+            highlights={highlights}
+            isLoading={isLoading}
+            tags={tags}
+            className={classes.location}
+          />
+        </div>
       </Hidden>
-      <div className={classes.root}>
-        <Map
-          center={[0.3051933453207569, 37.908818734483155]}
-          zoom={6.25}
-          geometries={geometries}
-          geography={geography}
-          onClick={handleCodeChange}
-          {...props}
-          className={classes.map}
-        />
-        <Location
-          highlights={highlights}
-          isLoading={isLoading}
-          tags={tags}
-          className={classes.location}
-        />
-      </div>
     </>
   );
 }
