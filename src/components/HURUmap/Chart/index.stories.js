@@ -110,7 +110,7 @@ Default.args = {
         ],
       },
       defaultType: "Value",
-      disableToggle: true,
+      disableToggle: false,
     },
 
     data: [

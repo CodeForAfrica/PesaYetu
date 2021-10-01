@@ -38,9 +38,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function Chart({ indicator, title, geoCode, ...props }) {
+function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
+  const [indicator, setIndicator] = useState(indicatorProp);
   const [shouldUpdateView, setShouldUpdateView] = useState(true);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -55,15 +56,20 @@ function Chart({ indicator, title, geoCode, ...props }) {
   const [chartValue, setChartValue] = useState(defaultType || "Value");
   const handleNewView = (v) => {
     if (shouldUpdateView) {
-      v.signal("Units", chartValue.toLowerCase()).run();
       setView(v);
       setShouldUpdateView(false);
     }
   };
 
-  const handleChartValueChange = (v) => {
-    setChartValue(v);
-    setShouldUpdateView(true);
+  const handleChartValueChange = (value) => {
+    setChartValue(value);
+    setIndicator({
+      ...indicator,
+      chart_configuration: {
+        ...indicator.chart_configuration,
+        defaultType: value,
+      },
+    });
   };
 
   const spec = configureScope(indicator, isMobile);
