@@ -116,6 +116,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
       />
       <Vega
         spec={spec}
+        renderer="svg"
         actions={false}
         tooltip={handler}
         onNewView={handleNewView}
