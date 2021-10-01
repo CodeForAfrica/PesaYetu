@@ -105,6 +105,11 @@ function Chart({ indicator, title, geoCode, ...props }) {
       `top: ${y}px; left: ${x}px; z-index: 999; position: absolute`
     );
   };
+
+  if (!indicator?.data) {
+    return null;
+  }
+
   return (
     <div className={classes.root} id={`chart-${id}-${geoCode}`}>
       <IndicatorTitle
@@ -146,6 +151,7 @@ Chart.propTypes = {
       source: PropTypes.string,
       url: PropTypes.string,
     }),
+    data: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   title: PropTypes.string,
   geoCode: PropTypes.string,
