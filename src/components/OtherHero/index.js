@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     minHeight: "min-content",
     position: "relative",
     paddingBottom: typography.pxToRem(43),
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       paddingBottom: typography.pxToRem(98),
     },
   },
@@ -63,12 +63,15 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       height: typography.pxToRem(390),
     },
   },
+  rightBackgroundWrapperRoot: {
+    maxHeight: "100%",
+  },
   rightBackground: {
     height: "100%",
     width: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     backgroundImage: ({ image }) => `url("${image}")`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -79,13 +82,31 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("md")]: {
       position: "relative",
       height: "100%",
-      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/6)`,
+      marginLeft: `calc((-100vw + ${breakpoints.values.md}px)/4.4)`, // get width 1/4 of current width, then shift by a margin of 0.4.This ensures the image isn't centered.
+    },
+  },
+  rightImageGrid: {
+    marginTop: typography.pxToRem(32),
+    position: "absolute",
+    top: typography.pxToRem(-16),
+    [breakpoints.only("md")]: {
+      position: "relative",
+      paddingLeft: typography.pxToRem(24),
+      top: 0,
+    },
+    [breakpoints.up("lg")]: {
+      position: "relative",
+      paddingTop: typography.pxToRem(48),
+      top: 0,
     },
   },
   accentImage: {
     width: typography.pxToRem(262),
     padding: `${typography.pxToRem(66)} !important`,
     height: "auto",
+    [breakpoints.only("md")]: {
+      padding: `${typography.pxToRem(10)} !important`,
+    },
     [breakpoints.up("lg")]: {
       width: typography.pxToRem(400),
       padding: `0 !important`,
@@ -126,25 +147,26 @@ function OtherHero({
           <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            className={classes.rightBackgroundWrapperRoot}
+          >
             <div className={classes.rightBackgroundWrapper}>
-              <div className={classes.rightBackground}>
-                <Image
-                  width={400}
-                  height={400}
-                  layout="intrinsic"
-                  className={classes.accentImage}
-                  src={accentImage}
-                  alt=""
-                />
-              </div>
+              <div className={classes.rightBackground} />
             </div>
           </Grid>
         </Grid>
       </div>
       <Section classes={{ root: classes.section }}>
-        <Grid container>
-          <Grid item xs={12} md={6} lg={4}>
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Grid item xs={12} md={6} lg={5}>
             <div className={classes.textContainer}>
               <Header
                 overline={overline}
@@ -158,6 +180,16 @@ function OtherHero({
                 {title}
               </Header>
             </div>
+          </Grid>
+          <Grid item xs={12} md={6} lg={4} className={classes.rightImageGrid}>
+            <Image
+              width={400}
+              height={400}
+              layout="intrinsic"
+              className={classes.accentImage}
+              src={accentImage}
+              alt=""
+            />
           </Grid>
         </Grid>
       </Section>
