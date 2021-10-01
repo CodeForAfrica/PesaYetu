@@ -13,7 +13,7 @@ const useStyles = makeStyles(
       paddingBottom: typography.pxToRem(16),
       paddingLeft: typography.pxToRem(20),
       backgroundColor: palette.background.paper,
-      zIndex: zIndex.appBar,
+      zIndex: zIndex.drawer,
       position: "sticky",
       [breakpoints.up("md")]: {
         paddingLeft: typography.pxToRem(62),

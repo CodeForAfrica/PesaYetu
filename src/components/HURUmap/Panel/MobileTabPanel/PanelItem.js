@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import MobileSubCategoryTitle from "./MobileSubCategoryTitle";
 import useStyles from "./useStyles";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
@@ -12,15 +13,18 @@ function RichData(props) {
   const classes = useStyles(props);
 
   return (
-    <div className={classes.profile}>
-      <LocationHeader
-        classes={{ root: classes.locationRoot }}
-        icon={Print}
-        title={geography.name}
-        {...geography}
-      />
-      <CategorySection category={item} />
-    </div>
+    <>
+      <MobileSubCategoryTitle />
+      <div className={classes.profile}>
+        <LocationHeader
+          classes={{ root: classes.locationRoot }}
+          icon={Print}
+          title={geography.name}
+          {...geography}
+        />
+        <CategorySection category={item} />
+      </div>
+    </>
   );
 }
 
