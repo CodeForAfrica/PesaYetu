@@ -5,6 +5,7 @@ import React from "react";
 import useStyles from "./useStyles";
 
 import Image from "@/pesayetu/components/Image";
+import slugify from "@/pesayetu/utils/slugify";
 
 const LocationHeader = ({ level, parent, title, icon, ...props }) => {
   const classes = useStyles(props);
@@ -13,7 +14,7 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
     return null;
   }
   return (
-    <div className={classes.root}>
+    <div id={slugify(title)} className={classes.root}>
       <div className={classes.titleContent}>
         <Typography variant="h3" className={classes.title}>
           {title}

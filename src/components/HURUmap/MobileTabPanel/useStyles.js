@@ -8,10 +8,9 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
     paddingTop: typography.pxToRem(16),
     paddingBottom: typography.pxToRem(31),
     paddingLeft: typography.pxToRem(20),
-    backgroundColor: "#F8F8F8",
+    backgroundColor: palette.background.paper,
     zIndex: zIndex.appBar,
     position: "sticky",
-    top: 0,
   },
   tab: {
     color: "#212529",
@@ -23,6 +22,8 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
     marginRight: typography.pxToRem(20),
     padding: `${typography.pxToRem(6)} ${typography.pxToRem(20)}`,
     textTransform: "unset",
+    height: typography.pxToRem(29),
+    maxWidth: "unset",
     "&:last-of-type": {
       marginRight: 0,
     },
@@ -36,6 +37,18 @@ const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
   },
   profile: {
     marginLeft: typography.pxToRem(20),
+    marginRight: typography.pxToRem(20),
+  },
+  footer: {
+    padding: `${typography.pxToRem(58)} ${typography.pxToRem(100)} `,
+    backgroundColor: palette.background.paper,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    color: "#666666",
+  },
+  footerIcon: {
     marginRight: typography.pxToRem(20),
   },
 }));
