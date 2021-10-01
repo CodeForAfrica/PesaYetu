@@ -65,7 +65,11 @@ export async function getStaticProps({ params: { geoCode, chartId } }) {
     `${apiUri}profile/1/geography/${geoCode.toUpperCase()}/indicator/${chartId}/?format=json`
   );
 
-  if (!indicator && JSON.stringify(indicator) === "{}") {
+  if (
+    !indicator ||
+    JSON.stringify(indicator) === "{}" ||
+    Object.keys(indicator)?.length === 0
+  ) {
     return {
       notFound: true,
     };
@@ -73,23 +77,25 @@ export async function getStaticProps({ params: { geoCode, chartId } }) {
 
   return {
     props: {
-      title: indicator?.profile_indicator_label,
+      title: indicator?.profile_indicator_label ?? null,
       indicator: {
         ...indicator,
-        chart_configuration: indicator?.indicator_chart_configuration,
-        id: indicator?.profile_indicator_id,
+        chart_configuration: indicator?.indicator_chart_configuration ?? null,
+        id: indicator?.profile_indicator_id ?? null,
         metadata: {
-          source: indicator?.metadata_source,
-          url: indicator?.metadata_url,
-          primary_group: indicator?.primary_group[0],
-          groups: Object.keys(indicator?.data[0])
+          source: indicator?.metadata_source ?? null,
+          url: indicator?.metadata_url ?? null,
+          primary_group: indicator?.primary_group?.length
+            ? indicator?.primary_group[0]
+            : null,
+          groups: Object.keys(indicator?.data?.length ? indicator?.data[0] : {})
             .filter((g) => g !== "count")
             ?.map((g) => {
               return { name: g };
             }),
         },
       },
-      geoCode: indicator?.geography_code,
+      geoCode: indicator?.geography_code ?? null,
     },
     revalidate: 60 * 5,
   };
