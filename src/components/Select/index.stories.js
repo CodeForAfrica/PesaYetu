@@ -1,12 +1,12 @@
 import React from "react";
 
-import Input from ".";
+import Select from ".";
 
 export default {
-  title: "Components/Input",
+  title: "Components/Select",
 };
 
-const Template = ({ ...args }) => <Input {...args} />;
+const Template = () => <Select />;
 
 export const Default = Template.bind({});
 

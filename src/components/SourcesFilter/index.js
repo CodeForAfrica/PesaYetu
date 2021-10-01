@@ -4,7 +4,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Input from "@/pesayetu/components/Input";
+import Select from "@/pesayetu/components/Select";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
@@ -117,7 +117,7 @@ const SourcesFilter = ({
         <Typography className={classes.orderLabel} variant="body2">
           {orderLabel}
         </Typography>
-        <Input onChange={onSort} options={orderOptions} selected={sortOrder} />
+        <Select onChange={onSort} options={orderOptions} selected={sortOrder} />
       </Grid>
     </Grid>
   );

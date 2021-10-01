@@ -3,13 +3,13 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import Input from "@/pesayetu/components/Input";
+import Select from "@/pesayetu/components/Select";
 
 const ChartFilter = ({ label, options, selected, ...props }) => {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
-      <Input
+      <Select
         helperText="select a value"
         label={label}
         classes={{ select: classes.select }}
