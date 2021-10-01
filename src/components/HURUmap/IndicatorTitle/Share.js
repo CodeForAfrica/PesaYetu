@@ -1,54 +1,9 @@
 import { Grid, TextField, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(({ palette, typography }) => ({
-  root: {},
-  header: {
-    background: palette.background.paper,
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: typography.pxToRem(16),
-  },
-  layout: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: typography.pxToRem(16),
-    border: `1px solid ${palette.grey.light}`,
-  },
-  row: {
-    height: typography.pxToRem(36),
-  },
-  cell: {
-    borderRight: `1px solid ${palette.background.paper}`,
-    "&:last-of-type": {
-      borderRight: 0,
-    },
-  },
-  text: {
-    fontSize: typography.pxToRem(11),
-    lineHeight: 17 / 11,
-    color: "#666666",
-  },
-  button: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRight: `1px solid ${palette.background.paper}`,
-    "&:last-of-type": {
-      borderRight: 0,
-    },
-    "&:hover": {
-      background: palette.background.paper,
-      border: `2px solid ${palette.grey.main}`,
-    },
-  },
-  code: {
-    background: palette.background.paper,
-  },
-}));
+import useStyles from "./useStyles";
 
 function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);

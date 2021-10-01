@@ -41,16 +41,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
 function Chart({ indicator, title, geoCode, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
-  const [updateView, setUpdateView] = useState(false);
+  const [shouldUpdateView, setShouldUpdateView] = useState(true);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const handleNewView = (v) => {
-    if (!updateView) {
-      setView(v);
-      setUpdateView(true);
-    }
-  };
 
   const {
     id,
@@ -58,6 +51,20 @@ function Chart({ indicator, title, geoCode, ...props }) {
     metadata: { source, url },
     chart_configuration: { disableToggle, defaultType },
   } = indicator;
+
+  const [chartValue, setChartValue] = useState(defaultType || "Value");
+  const handleNewView = (v) => {
+    if (shouldUpdateView) {
+      v.signal("Units", chartValue.toLowerCase()).run();
+      setView(v);
+      setShouldUpdateView(false);
+    }
+  };
+
+  const handleChartValueChange = (v) => {
+    setChartValue(v);
+    setShouldUpdateView(true);
+  };
 
   const spec = configureScope(indicator, isMobile);
   const className = `charttooltip-${id}-${geoCode}`;
@@ -118,6 +125,9 @@ function Chart({ indicator, title, geoCode, ...props }) {
         view={view}
         geoCode={geoCode}
         indicatorId={id}
+        disableToggle={disableToggle}
+        chartValue={chartValue}
+        handleChartValueChange={handleChartValueChange}
       />
       <Vega
         spec={spec}

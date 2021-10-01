@@ -1,58 +1,23 @@
 import { ButtonBase, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Papa from "papaparse";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import XLSX from "xlsx";
 
-const useStyles = makeStyles(({ palette, typography }) => ({
-  root: {},
-  header: {
-    background: palette.background.paper,
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: typography.pxToRem(16),
-  },
-  layout: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: typography.pxToRem(16),
-    border: `1px solid ${palette.grey.light}`,
-  },
-  row: {
-    height: typography.pxToRem(36),
-  },
-  cell: {
-    borderRight: `1px solid ${palette.background.paper}`,
-    "&:last-of-type": {
-      borderRight: 0,
-    },
-  },
-  text: {
-    fontSize: typography.pxToRem(11),
-    lineHeight: 17 / 11,
-    color: "#666666",
-  },
-  button: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRight: `1px solid ${palette.background.paper}`,
-    "&:last-of-type": {
-      borderRight: 0,
-    },
-    "&:hover": {
-      background: palette.background.paper,
-      border: `2px solid ${palette.grey.main}`,
-    },
-  },
-}));
+import useStyles from "./useStyles";
 
-function Download({ title, view: viewProp, setChartValue, ...props }) {
+function Download({
+  title,
+  view: viewProp,
+  chartValue,
+  handleChartValueChange,
+  disableToggle,
+  ...props
+}) {
   const classes = useStyles(props);
-
   const [view, setView] = useState(null);
+
   useEffect(() => {
     setView(viewProp);
   }, [viewProp]);
@@ -108,21 +73,33 @@ function Download({ title, view: viewProp, setChartValue, ...props }) {
 
   return (
     <Grid container className={classes.root}>
-      <Grid item container xs={12} className={classes.row}>
-        {["Percentage", "Value"].map((v) => (
-          <Grid item xs={6} index={v} className={classes.button}>
-            <ButtonBase
-              className={clsx(classes.text)}
-              onClick={() => setChartValue(v)}
-            >
-              {v}
-            </ButtonBase>
+      {!disableToggle && (
+        <>
+          <Grid item container xs={12} className={classes.row}>
+            {["Percentage", "Value"].map((v) => (
+              <Grid
+                item
+                xs={6}
+                index={v}
+                className={clsx(classes.button, {
+                  [classes.activeButton]: chartValue === v,
+                })}
+              >
+                <ButtonBase
+                  className={classes.text}
+                  onClick={() => handleChartValueChange(v)}
+                  disabled={disableToggle}
+                >
+                  {v}
+                </ButtonBase>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-      <Grid item xs={12} className={clsx(classes.row, classes.header)}>
-        <Typography className={classes.text}>Download chart as:</Typography>
-      </Grid>
+          <Grid item xs={12} className={clsx(classes.row, classes.header)}>
+            <Typography className={classes.text}>Download chart as:</Typography>
+          </Grid>
+        </>
+      )}
       <Grid item container className={classes.row}>
         {["PNG", "SVG"].map((p) => (
           <Grid item xs={6} index={p} className={classes.button}>
@@ -141,10 +118,7 @@ function Download({ title, view: viewProp, setChartValue, ...props }) {
       <Grid item container className={classes.row}>
         {["Layout1", "Layout2"].map((p) => (
           <Grid item xs={6} index={p} className={classes.button}>
-            <ButtonBase
-              className={classes.text}
-              onClick={() => setChartValue(p)}
-            >
+            <ButtonBase className={classes.text} onClick={() => {}}>
               {p}
             </ButtonBase>
           </Grid>
@@ -175,13 +149,17 @@ Download.propTypes = {
     toImageURL: PropTypes.func,
     data: PropTypes.func,
   }),
-  setChartValue: PropTypes.func,
+  disableToggle: PropTypes.bool,
+  chartValue: PropTypes.oneOf(["Value", "Percentage"]),
+  handleChartValueChange: PropTypes.func,
 };
 
 Download.defaultProps = {
   title: undefined,
   view: undefined,
-  setChartValue: undefined,
+  disableToggle: undefined,
+  chartValue: undefined,
+  handleChartValueChange: undefined,
 };
 
 export default Download;

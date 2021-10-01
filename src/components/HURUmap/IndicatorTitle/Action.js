@@ -13,8 +13,11 @@ import React, { useState } from "react";
 
 import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/action-close.svg";
 
-const useStyles = makeStyles(({ palette, typography }) => ({
+const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
   root: {},
+  popper: {
+    zIndex: zIndex.drawer,
+  },
   paper: {
     background: palette.background.default,
     border: `1px solid ${palette.grey.light}`,
@@ -68,7 +71,7 @@ function Action({ children, header, icon, id, ...props }) {
         open={Boolean(anchorEl)}
         placement="bottom-end"
         anchorEl={anchorEl}
-        className={classes.root}
+        className={classes.popper}
         transition
       >
         {({ TransitionProps }) => (

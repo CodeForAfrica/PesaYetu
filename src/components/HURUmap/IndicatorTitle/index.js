@@ -48,11 +48,11 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
 }));
 
-function IndicatorTitle({ description, title, ...props }) {
+function IndicatorTitle({ description, title, disableToggle, ...props }) {
   const classes = useStyles(props);
 
   const actions = [
-    {
+    description && {
       id: "act-description",
       header: "Learn More",
       children: (
@@ -64,8 +64,10 @@ function IndicatorTitle({ description, title, ...props }) {
     },
     {
       id: "act-download",
-      header: "Chart value as:",
-      children: <Download title={title} {...props} />,
+      header: disableToggle ? "Download chart as" : "Chart value as:",
+      children: (
+        <Download title={title} {...props} disableToggle={disableToggle} />
+      ),
       icon: <DownloadIcon />,
     },
     {
@@ -97,11 +99,13 @@ function IndicatorTitle({ description, title, ...props }) {
 IndicatorTitle.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
+  disableToggle: PropTypes.bool,
 };
 
 IndicatorTitle.defaultProps = {
   description: undefined,
   title: undefined,
+  disableToggle: undefined,
 };
 
 export default IndicatorTitle;
