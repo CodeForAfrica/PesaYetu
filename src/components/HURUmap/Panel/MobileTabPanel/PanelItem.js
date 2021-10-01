@@ -13,7 +13,12 @@ function RichData(props) {
 
   return (
     <div className={classes.profile}>
-      <LocationHeader icon={Print} title={geography.name} {...geography} />
+      <LocationHeader
+        classes={{ root: classes.locationRoot }}
+        icon={Print}
+        title={geography.name}
+        {...geography}
+      />
       <CategorySection category={item} />
     </div>
   );

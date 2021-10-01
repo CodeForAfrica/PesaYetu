@@ -2,6 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette, zIndex }) => ({
   root: {},
+  locationRoot: {
+    scrollMargin: typography.pxToRem(200),
+  },
   divider: { display: "none" },
   indicator: { display: "none" },
   tabs: {
