@@ -38,7 +38,7 @@ const useStyles = makeStyles(
       left: 0,
     },
     panelButtonsOpen: {
-      left: `max(calc((100vw - ${widths.values.lg}px)/2 + 754px),1054px)`,
+      left: `max(calc((100vw - ${widths.values.lg}px)/2 + 833px),1054px)`,
     },
     tabPanel: {
       width: `calc(100% - ${typography.pxToRem(44)})`,
@@ -47,7 +47,7 @@ const useStyles = makeStyles(
       display: "flex",
     },
     treeView: {
-      width: `calc((100vw - ${widths.values.lg}px)/2)`,
+      width: `calc((100vw - ${widths.values.lg}px)/2 + 79px)`,
       minWidth: typography.pxToRem(300),
       paddingTop: typography.pxToRem(76),
       flexShrink: 0,
@@ -57,7 +57,7 @@ const useStyles = makeStyles(
       left: 0,
     },
     profile: {
-      marginLeft: `max(calc((100vw - 1160px)/2), 300px)`,
+      marginLeft: `max(calc((100vw - 1160px)/2 + 79px), 300px)`,
       width: typography.pxToRem(800),
       minHeight: "100%",
       paddingTop: typography.pxToRem(67.7),

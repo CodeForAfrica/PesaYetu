@@ -1,14 +1,19 @@
+import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 
 import useStyles from "./useStyles";
 
-import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
+import defaultIcon from "@/pesayetu/assets/icons/Component 86 – 12.svg";
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
+
+const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
+  ssr: false,
+});
 
 function formatData(data) {
   return Object.keys(data).map((label) => {
@@ -20,6 +25,15 @@ function formatData(data) {
         return {
           title: child,
           description: data[label]?.subcategories[child].description,
+          children: Object.keys(
+            data[label]?.subcategories[child]?.indicators ?? []
+          ).map((indicator) => {
+            return {
+              title: indicator,
+              indicator:
+                data[label]?.subcategories[child]?.indicators[indicator],
+            };
+          }),
         };
       }),
     };
@@ -44,11 +58,15 @@ function RichData(props) {
               description={item?.description}
             />
             {item.children.map((child) => (
-              <SubcategoryHeader
-                key={child.title}
-                title={child.title}
-                description={child?.description}
-              />
+              <Fragment key={child.title}>
+                <SubcategoryHeader
+                  title={child.title}
+                  description={child?.description}
+                />
+                {child.children.map((indicator) => (
+                  <Chart {...indicator} geoCode={geography.code} />
+                ))}
+              </Fragment>
             ))}
           </div>
         ))}
@@ -63,6 +81,7 @@ RichData.propTypes = {
   }),
   geography: PropTypes.shape({
     name: PropTypes.string,
+    code: PropTypes.string,
   }),
   geometries: PropTypes.shape({}),
   highlights: PropTypes.shape({}),
