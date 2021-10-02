@@ -14,7 +14,7 @@ function RichData(props) {
 
   return (
     <>
-      <MobileSubCategoryTitle />
+      <MobileSubCategoryTitle items={item.children} />
       <div className={classes.profile}>
         <LocationHeader
           classes={{ root: classes.locationRoot }}
