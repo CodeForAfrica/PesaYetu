@@ -14,7 +14,8 @@ import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 function BasePage({ children, menus, variant, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
-  const { menuProps } = navigation;
+  const { menuProps, mobileLogoProps, drawerLogoProps, desktopLogoProps } =
+    navigation;
   const { logoProps, socialLinks } = navigationArgs;
   const navigationProps = {
     ...props,
@@ -22,6 +23,9 @@ function BasePage({ children, menus, variant, ...props }) {
     logoProps,
     menuProps,
     socialLinks,
+    desktopLogoProps,
+    mobileLogoProps,
+    drawerLogoProps,
   };
 
   return (
