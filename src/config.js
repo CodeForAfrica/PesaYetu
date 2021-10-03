@@ -177,6 +177,21 @@ export const navigationArgs = {
       label: "facebook",
     },
   ],
+  desktopLogoProps: {
+    alt: "Code for Africa desktop logo",
+    href: "https://codeforafrica.org",
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Component-61-–-1.svg",
+  },
+  mobileLogoProps: {
+    alt: "Code for Africa mobile logo",
+    href: "https://codeforafrica.org",
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Screenshot-2021-10-01-at-14.32.36.png",
+  },
+  drawerLogoProps: {
+    alt: "Code for Africa drawer logo",
+    href: "https://codeforafrica.org",
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Screenshot-2021-10-01-at-14.33.03.png",
+  },
 };
 
 export const ourCourses = {

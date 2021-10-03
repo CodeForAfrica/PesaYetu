@@ -1,3 +1,5 @@
+import A from "@commons-ui/core/A";
+import LogoButton from "@commons-ui/core/LogoButton";
 import {
   Grid,
   Slide,
@@ -15,7 +17,6 @@ import SearchIcon from "@/pesayetu/assets/icons/search-open.svg";
 import MenuCloseIcon from "@/pesayetu/assets/menu_close.svg";
 import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
-import Logo from "@/pesayetu/components/Logo";
 import Menu from "@/pesayetu/components/Menu";
 import Section from "@/pesayetu/components/Section";
 
@@ -167,7 +168,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" timeout={1000} ref={ref} {...props} />;
 });
 
-function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
+function MobileNavigation({
+  logoProps,
+  menuProps,
+  mobileLogoProps,
+  drawerLogoProps,
+  socialLinks,
+  ...props
+}) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
 
@@ -183,7 +191,11 @@ function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
     <Section classes={{ root: classes.section }}>
       <div className={classes.root}>
         <Grid item xs={10} md={11}>
-          <Logo {...logoProps} />
+          <LogoButton
+            {...mobileLogoProps}
+            component={A}
+            classes={{ root: classes.root }}
+          />
         </Grid>
         <Grid item xs={2} md={1}>
           <IconButton
@@ -221,13 +233,10 @@ function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
               className={classes.logoSection}
             >
               <Grid item xs={11}>
-                <Logo
-                  {...logoProps}
-                  classes={{
-                    firstTitle: classes.firstTitle,
-                    secondTitle: classes.secondTitle,
-                    subtitle: classes.subtitle,
-                  }}
+                <LogoButton
+                  {...drawerLogoProps}
+                  component={A}
+                  classes={{ root: classes.root }}
                 />
               </Grid>
               <Grid item xs={1}>
@@ -279,11 +288,23 @@ MobileNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
+  drawerLogoProps: PropTypes.shape({
+    alt: PropTypes.string,
+    href: PropTypes.string,
+    src: PropTypes.string,
+  }),
+  mobileLogoProps: PropTypes.shape({
+    alt: PropTypes.string,
+    href: PropTypes.string,
+    src: PropTypes.string,
+  }),
 };
 
 MobileNavigation.defaultProps = {
   logoProps: undefined,
   menuProps: undefined,
   socialLinks: undefined,
+  drawerLogoProps: undefined,
+  mobileLogoProps: undefined,
 };
 export default MobileNavigation;
