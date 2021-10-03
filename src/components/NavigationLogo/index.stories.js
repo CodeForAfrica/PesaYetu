@@ -2,12 +2,15 @@ import React from "react";
 
 import NavigationLogo from ".";
 
-import desktopLogo from "@/pesayetu/assets/logos/Component 61 – 1@2x.png";
-
-const logoArgs = {
-  alt: "Code for Africa",
+const desktopArgs = {
+  alt: "Code for Africa desktop",
   href: "https://codeforafrica.org",
-  src: desktopLogo,
+  src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Component-61-–-1.svg",
+};
+const mobileArgs = {
+  alt: "Code for Africa mobile",
+  href: "https://codeforafrica.org",
+  src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Screenshot-2021-10-01-at-14.32.36.png",
 };
 
 export default {
@@ -27,5 +30,6 @@ Default.parameters = {
 };
 
 Default.args = {
-  logoArgs,
+  desktopArgs,
+  mobileArgs,
 };
