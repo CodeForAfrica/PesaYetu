@@ -13,6 +13,7 @@ const Template = ({ ...args }) => <ComparisonPin {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  label: "Pin and compare",
+  helperText: "Pin and compare",
+  label: "Select a location",
   icon: Pin,
 };
