@@ -1,6 +1,6 @@
 import React from "react";
 
-import Pin from "@/pesayetu/assets/icons/pin.svg";
+import Pin from "@/pesayetu/assets/icons/Component 96 – 12.svg";
 import ComparisonPin from "@/pesayetu/components/HURUmap/ComparisonPin";
 
 export default {
@@ -16,4 +16,5 @@ Default.args = {
   helperText: "Pin and compare",
   label: "Select a location",
   icon: Pin,
+  options: ["Municipality", "Municipality", "Municipality"],
 };

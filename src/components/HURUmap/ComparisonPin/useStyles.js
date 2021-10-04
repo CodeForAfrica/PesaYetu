@@ -2,9 +2,19 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
+  iconSelected: {
+    "& img": {
+      filter: "none",
+    },
+  },
+  icon: {
+    "& img": {
+      filter: "brightness(0)",
+    },
+  },
   button: {
     marginRight: typography.pxToRem(10),
-    marginTop: typography.pxToRem(7),
+    marginTop: typography.pxToRem(12),
     height: typography.pxToRem(44),
     width: typography.pxToRem(44),
     minWidth: typography.pxToRem(44),
