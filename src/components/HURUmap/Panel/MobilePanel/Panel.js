@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import MobileSubCategoryTitle from "./MobileSubCategoryTitle";
+import SubcategoryList from "./SubcategoryList";
 
 import Profile from "@/pesayetu/components/HURUmap/Panel/Profile";
 
@@ -10,7 +10,7 @@ function RichData(props) {
 
   return (
     <>
-      <MobileSubCategoryTitle items={item.children} />
+      <SubcategoryList items={item.children} />
       <Profile categories={[item]} geography={geography} />
     </>
   );

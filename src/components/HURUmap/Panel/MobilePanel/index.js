@@ -1,27 +1,25 @@
 import { Typography } from "@material-ui/core";
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 import React from "react";
 
-import PanelItem from "./PanelItem";
+import Panel from "./Panel";
 import useStyles from "./useStyles";
 
 import { ReactComponent as TopIcon } from "@/pesayetu/assets/icons/Component 130 – 1.svg";
 import Tabs from "@/pesayetu/components/Tabs";
-import formatData from "@/pesayetu/utils/formatProfileDataIntoArray";
 import slugify from "@/pesayetu/utils/slugify";
 
-function MobileTabPanel({ data, geography, activeType, ...props }) {
-  const items = formatData(data);
+function MobileTabPanel({ dataItems, geography, activeType, ...props }) {
   const classes = useStyles(props);
   const activeTab = Math.max(
-    items.findIndex(({ title }) => title === activeType),
+    dataItems.findIndex(({ title }) => title === activeType),
     0
   );
-  const formatedItems = items.map((item) => {
+  const formatedItems = dataItems.map((item) => {
     return {
       label: item.title,
       href: `#${item.title}`,
-      children: <PanelItem item={item} geography={geography} {...props} />,
+      children: <Panel item={item} geography={geography} {...props} />,
     };
   });
   const scrollToTop = () => {
@@ -52,15 +50,15 @@ function MobileTabPanel({ data, geography, activeType, ...props }) {
 }
 
 MobileTabPanel.propTypes = {
-  data: Proptypes.shape({}),
-  geography: Proptypes.shape({
-    name: Proptypes.string,
+  dataItems: PropTypes.arrayOf(PropTypes.shape({})),
+  geography: PropTypes.shape({
+    name: PropTypes.string,
   }),
-  activeType: Proptypes.string,
+  activeType: PropTypes.string,
 };
 
 MobileTabPanel.defaultProps = {
-  data: undefined,
+  dataItems: undefined,
   geography: undefined,
   activeType: undefined,
 };

@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function MobileSubCategoryTitle({ items }) {
+function SubcategoryList({ items }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -105,12 +105,12 @@ function MobileSubCategoryTitle({ items }) {
     </div>
   );
 }
-MobileSubCategoryTitle.propTypes = {
+SubcategoryList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-MobileSubCategoryTitle.defaultProps = {
+SubcategoryList.defaultProps = {
   items: undefined,
 };
 
-export default MobileSubCategoryTitle;
+export default SubcategoryList;

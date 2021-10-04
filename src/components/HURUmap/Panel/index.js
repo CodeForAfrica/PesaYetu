@@ -1,22 +1,31 @@
 import { Hidden } from "@material-ui/core";
+import PropTypes from "prop-types";
 import React from "react";
 
-import DeskTopPanel from "./DesktopPanel";
-import MobileTabPanel from "./MobileTabPanel";
+import DesktopPanel from "./DesktopPanel";
+import formatData from "./formatProfileDataIntoArray";
+import MobilePanel from "./MobilePanel";
 
-function Panel(props) {
+function Panel({ data, ...props }) {
+  const items = formatData(data);
+
   return (
     <>
       <Hidden lgUp implementation="css">
-        <MobileTabPanel {...props} />
+        <MobilePanel dataItems={items} {...props} />
       </Hidden>
       <Hidden mdDown implementation="css">
-        <DeskTopPanel {...props} />
+        <DesktopPanel dataItems={items} {...props} />
       </Hidden>
     </>
   );
 }
 
-Panel.propTypes = {};
+Panel.propTypes = {
+  data: PropTypes.shape({}),
+};
 
+Panel.defaultProps = {
+  data: undefined,
+};
 export default Panel;

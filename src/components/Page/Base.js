@@ -35,7 +35,7 @@ function BasePage({ children, menus, variant, ...props }) {
       <Navigation {...navigationProps} variant={variant} />
       <NextSeo {...props} />
       {children}
-      {(variant !== "explore" || !isDesktop) && <Footer {...footerProps} />}
+      {!(variant === "explore" && isDesktop) && <Footer {...footerProps} />}
     </>
   );
 }

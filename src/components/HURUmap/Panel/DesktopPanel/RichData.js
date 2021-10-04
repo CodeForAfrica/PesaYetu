@@ -5,25 +5,21 @@ import useStyles from "./useStyles";
 
 import Profile from "@/pesayetu/components/HURUmap/Panel/Profile";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
-import formatData from "@/pesayetu/utils/formatProfileDataIntoArray";
 
 function RichData(props) {
-  const { geography, data } = props;
+  const { geography, dataItems } = props;
   const classes = useStyles(props);
-  const items = formatData(data);
 
   return (
     <>
-      <TreeView classes={{ root: classes.treeView }} items={items} />
-      <Profile categories={items} geography={geography} />
+      <TreeView classes={{ root: classes.treeView }} items={dataItems} />
+      <Profile categories={dataItems} geography={geography} />
     </>
   );
 }
 
 RichData.propTypes = {
-  data: PropTypes.shape({
-    subcategories: PropTypes.shape({}),
-  }),
+  dataItems: PropTypes.arrayOf(PropTypes.shape({})),
   geography: PropTypes.shape({
     name: PropTypes.string,
     code: PropTypes.string,
@@ -34,7 +30,7 @@ RichData.propTypes = {
 };
 
 RichData.defaultProps = {
-  data: undefined,
+  dataItems: undefined,
   geography: undefined,
   geometries: undefined,
   highlights: undefined,
