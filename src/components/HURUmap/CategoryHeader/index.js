@@ -1,10 +1,12 @@
 import { RichTypography } from "@commons-ui/core";
 import { Typography } from "@material-ui/core";
-import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
+
+import Image from "@/pesayetu/components/Image";
+import slugify from "@/pesayetu/utils/slugify";
 
 const CategoryHeader = ({ title, description, icon }) => {
   const classes = useStyles();
@@ -14,10 +16,12 @@ const CategoryHeader = ({ title, description, icon }) => {
   }
   return (
     <div className={classes.root}>
-      <Typography variant="h3" className={classes.title}>
-        <div className={classes.icon}>
-          <Icon src={icon} layout="fill" />
-        </div>
+      <Typography id={slugify(title)} variant="h3" className={classes.title}>
+        {icon && (
+          <div className={classes.icon}>
+            <Image src={icon} layout="fill" />
+          </div>
+        )}
         {title}
       </Typography>
       <RichTypography variant="body2" className={classes.description}>

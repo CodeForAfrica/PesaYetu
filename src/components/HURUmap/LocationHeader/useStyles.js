@@ -1,16 +1,18 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {},
+  root: {
+    borderBottom: `solid 1px ${palette.divider}`,
+  },
   titleContent: {
     display: "flex",
     justifyContent: "space-between",
   },
   title: {
     borderBottom: `solid 5px ${palette.primary.main}`,
+    marginBottom: typography.pxToRem(20),
   },
   description: {
-    marginTop: typography.pxToRem(20),
     textTransform: "uppercase",
     borderBottom: `solid 1px ${palette.divider}`,
     paddingBottom: typography.pxToRem(10),

@@ -1,9 +1,10 @@
 import { Typography, Button } from "@material-ui/core";
-import Icon from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
+
+import Image from "@/pesayetu/components/Image";
 
 const LocationHeader = ({ level, parent, title, icon, ...props }) => {
   const classes = useStyles(props);
@@ -19,7 +20,7 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
         </Typography>
         <Button variant="contained" className={classes.button}>
           <div className={classes.icon}>
-            <Icon src={icon} layout="fill" />
+            <Image src={icon} layout="fill" />
           </div>
         </Button>
       </div>

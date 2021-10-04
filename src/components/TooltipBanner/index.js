@@ -1,38 +1,52 @@
-import { Typography, Button, Divider } from "@material-ui/core";
+import { Button, Divider, Hidden, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Link from "@/pesayetu/components/Link";
+import Section from "@/pesayetu/components/Section";
+
 const useStyles = makeStyles(({ typography }) => ({
-  root: {},
-  tagline: {
-    margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(20)}`,
+  root: {
+    margin: `${typography.pxToRem(40)} 0 ${typography.pxToRem(70)}`,
   },
   divider: {
     height: typography.pxToRem(2),
+  },
+  tagline: {
+    marginTop: typography.pxToRem(40),
+  },
+  cta: {
+    marginTop: typography.pxToRem(20),
   },
 }));
 
 function TooltipBanner({ tagline, ctaText, ...props }) {
   const classes = useStyles(props);
-  const handleClick = (event) => {
-    event.preventDefault();
-    // open toolbox
-  };
+
   return (
-    <div className={classes.root}>
-      <Divider className={classes.divider} />
-      {tagline && (
-        <Typography variant="h5" className={classes.tagline}>
-          {tagline}
-        </Typography>
-      )}
-      {ctaText && (
-        <Button variant="text" onClick={handleClick}>
-          {ctaText}
-        </Button>
-      )}
-    </div>
+    <Hidden mdDown implementation="css">
+      <div className={classes.root}>
+        <Section className={classes.section}>
+          <Divider className={classes.divider} />
+          {tagline && (
+            <Typography variant="h5" className={classes.tagline}>
+              {tagline}
+            </Typography>
+          )}
+          {ctaText && (
+            <Button
+              variant="text"
+              component={Link}
+              href="/explore?showTutorial=1"
+              className={classes.cta}
+            >
+              {ctaText}
+            </Button>
+          )}
+        </Section>
+      </div>
+    </Hidden>
   );
 }
 

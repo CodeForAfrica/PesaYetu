@@ -10,6 +10,7 @@ import Project from "@/pesayetu/components/Project";
 import StartLearning from "@/pesayetu/components/StartLearning";
 import Summary from "@/pesayetu/components/Summary";
 import SupportingPartners from "@/pesayetu/components/SupportingPartners";
+import TooltipBanner from "@/pesayetu/components/TooltipBanner";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
@@ -18,6 +19,7 @@ export default function Home({ blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.otherHero} />
       <Metrics {...blocks?.metrics} />
+      <TooltipBanner {...blocks?.tooltipBanner} />
       <Summary {...blocks?.summary} />
       <AboutProject {...blocks?.aboutProject} />
       <StartLearning {...blocks?.startLearning} />
@@ -31,13 +33,14 @@ export default function Home({ blocks, ...props }) {
 Home.propTypes = {
   blocks: PropTypes.shape({
     aboutProject: PropTypes.shape({}),
-    otherHero: PropTypes.shape({}),
     metrics: PropTypes.shape({}),
+    otherHero: PropTypes.shape({}),
     ourCourses: PropTypes.shape({}),
-    startLearning: PropTypes.shape({}),
-    supportingPartners: PropTypes.shape({}),
     partnersAndNewsletter: PropTypes.shape({}),
+    startLearning: PropTypes.shape({}),
     summary: PropTypes.shape({}),
+    supportingPartners: PropTypes.shape({}),
+    tooltipBanner: PropTypes.shape({}),
   }),
 };
 

@@ -95,7 +95,7 @@ const Link = forwardRef(function Link(props, ref) {
 
   const isRelative =
     typeof formattedHref === "string" &&
-    formattedHref.indexOf("/") === 0 &&
+    (formattedHref.indexOf("/") === 0 || formattedHref.indexOf("#") === 0) &&
     formattedHref.indexOf("//") !== 0;
 
   if (!isRelative) {
