@@ -22,7 +22,7 @@ function RichData(props) {
           title={geography.name}
           {...geography}
         />
-        <CategorySection category={item} />
+        <CategorySection geography={geography} category={item} />
       </div>
     </>
   );
