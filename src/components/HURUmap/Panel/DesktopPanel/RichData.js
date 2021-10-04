@@ -3,9 +3,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import Print from "@/pesayetu/assets/icons/print.svg";
-import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
-import CategorySection from "@/pesayetu/components/HURUmap/Panel/CategorySection";
+import Profile from "@/pesayetu/components/HURUmap/Panel/Profile";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 import formatData from "@/pesayetu/utils/formatProfileDataIntoArray";
 
@@ -17,16 +15,7 @@ function RichData(props) {
   return (
     <>
       <TreeView classes={{ root: classes.treeView }} items={items} />
-      <div className={classes.profile}>
-        <LocationHeader icon={Print} title={geography.name} {...geography} />
-        {items.map((item) => (
-          <CategorySection
-            key={item.title}
-            geography={geography}
-            category={item}
-          />
-        ))}
-      </div>
+      <Profile categories={items} geography={geography} />
     </>
   );
 }

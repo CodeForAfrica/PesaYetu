@@ -23,15 +23,6 @@ const useStyles = makeStyles(
     tabPanels: {
       marginTop: 0,
     },
-    profile: {
-      marginLeft: typography.pxToRem(20),
-      marginRight: typography.pxToRem(20),
-      marginTop: typography.pxToRem(80),
-      [breakpoints.up("md")]: {
-        paddingLeft: typography.pxToRem(80),
-        marginRight: typography.pxToRem(80),
-      },
-    },
     footer: {
       padding: `${typography.pxToRem(58)} ${typography.pxToRem(100)} `,
       backgroundColor: palette.background.paper,

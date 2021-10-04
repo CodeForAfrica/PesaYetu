@@ -2,28 +2,16 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import MobileSubCategoryTitle from "./MobileSubCategoryTitle";
-import useStyles from "./useStyles";
 
-import Print from "@/pesayetu/assets/icons/print.svg";
-import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
-import CategorySection from "@/pesayetu/components/HURUmap/Panel/CategorySection";
+import Profile from "@/pesayetu/components/HURUmap/Panel/Profile";
 
 function RichData(props) {
   const { geography, item } = props;
-  const classes = useStyles(props);
 
   return (
     <>
       <MobileSubCategoryTitle items={item.children} />
-      <div className={classes.profile}>
-        <LocationHeader
-          classes={{ root: classes.locationRoot }}
-          icon={Print}
-          title={geography.name}
-          {...geography}
-        />
-        <CategorySection geography={geography} category={item} />
-      </div>
+      <Profile categories={[item]} geography={geography} />
     </>
   );
 }
