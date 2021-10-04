@@ -1,7 +1,8 @@
+/* eslint-disable no-param-reassign */
 import RichTypography from "@commons-ui/core/RichTypography";
 import { Grid, Hidden } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
 import CarouselDots from "./CarouselDots";
 import useStyles from "./useStyles";
@@ -11,6 +12,15 @@ import Section from "@/pesayetu/components/Section";
 
 function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
   const classes = useStyles(props);
+
+  useEffect(() => {
+    const frames = document.querySelectorAll("iframe");
+    frames?.forEach((frame) => {
+      frame.onload = () => {
+        frame.style.height = `${frame.contentWindow.document.body.scrollHeight}px`;
+      };
+    });
+  }, []);
 
   return (
     <>

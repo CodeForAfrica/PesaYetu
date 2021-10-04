@@ -54,7 +54,6 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
   media: {
-    height: typography.pxToRem(400),
     marginLeft: `-${typography.pxToRem(7.5)}`,
     padding: 0,
     width: "100%",

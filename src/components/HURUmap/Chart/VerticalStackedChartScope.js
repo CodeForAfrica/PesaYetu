@@ -69,7 +69,7 @@ export default function VerticalStackedChartScope(data, metadata, config) {
           {
             type: "stack",
             groupby: [primaryGroup],
-            field: "count",
+            field: { signal: "datatype[Units]" },
           },
           {
             type: "formula",
