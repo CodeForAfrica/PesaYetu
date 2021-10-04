@@ -59,7 +59,6 @@ export async function getStaticProps({ params: { geoCode, chartId } }) {
         },
       },
       geoCode: indicator?.geography_code ?? null,
-      embed: true,
     },
     revalidate: 60 * 5,
   };
