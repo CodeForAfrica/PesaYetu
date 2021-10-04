@@ -185,12 +185,12 @@ export const navigationArgs = {
   mobileLogoProps: {
     alt: "Code for Africa mobile logo",
     href: "https://codeforafrica.org",
-    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Screenshot-2021-10-01-at-14.32.36.png",
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Group-4188@2x.png",
   },
   drawerLogoProps: {
     alt: "Code for Africa drawer logo",
     href: "https://codeforafrica.org",
-    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Screenshot-2021-10-01-at-14.33.03.png",
+    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Group-4188@2x-1.png",
   },
 };
 

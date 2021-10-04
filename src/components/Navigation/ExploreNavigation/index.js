@@ -13,6 +13,7 @@ import Section from "@/pesayetu/components/Section";
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {},
   section: {},
+  logoButton: {},
   help: {
     color: "#666666",
     textAlign: "center",
@@ -77,11 +78,10 @@ function ExploreNavigation({
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
           <Grid item xs={3}>
-            {/*  <Logo {...logoProps} /> */}
             <LogoButton
               {...logoArgs}
               component={A}
-              classes={{ root: classes.root }}
+              classes={{ logoButton: classes.logoButton }}
             />
           </Grid>
           <Grid

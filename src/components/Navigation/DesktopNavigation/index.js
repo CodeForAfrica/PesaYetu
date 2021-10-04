@@ -10,6 +10,7 @@ import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(() => ({
   root: {},
+  logoButton: {},
   section: {},
 }));
 
@@ -34,7 +35,7 @@ function DesktopNavigation({
             <LogoButton
               {...logoArgs}
               component={A}
-              classes={{ root: classes.root }}
+              classes={{ logoButton: classes.logoButton }}
             />
           </Grid>
           <Grid

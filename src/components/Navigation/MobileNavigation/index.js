@@ -27,6 +27,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  logoButton: {},
   section: {
     paddingRight: typography.pxToRem(20),
     paddingLeft: typography.pxToRem(17),
@@ -194,7 +195,7 @@ function MobileNavigation({
           <LogoButton
             {...mobileLogoProps}
             component={A}
-            classes={{ root: classes.root }}
+            classes={{ logoButton: classes.logoButton }}
           />
         </Grid>
         <Grid item xs={2} md={1}>
@@ -236,7 +237,7 @@ function MobileNavigation({
                 <LogoButton
                   {...drawerLogoProps}
                   component={A}
-                  classes={{ root: classes.root }}
+                  classes={{ logoButton: classes.logoButton }}
                 />
               </Grid>
               <Grid item xs={1}>
