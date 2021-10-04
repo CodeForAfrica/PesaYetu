@@ -27,7 +27,13 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  logoButton: {},
+  closeButtonSection: {
+    display: "flex",
+    alignItems: "center",
+  },
+  logoButton: {
+    width: typography.pxToRem(254),
+  },
   section: {
     paddingRight: typography.pxToRem(20),
     paddingLeft: typography.pxToRem(17),
@@ -96,8 +102,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   closeButton: {
     color: palette.background.main,
-    width: 48,
-    paddingLeft: typography.pxToRem(12),
+    width: 60,
     "&:hover": {
       background: "none",
     },
@@ -191,14 +196,14 @@ function MobileNavigation({
   return (
     <Section classes={{ root: classes.section }}>
       <div className={classes.root}>
-        <Grid item xs={10} md={11}>
+        <Grid item xs={10}>
           <LogoButton
             {...mobileLogoProps}
             component={A}
-            classes={{ logoButton: classes.logoButton }}
+            classes={{ image: classes.logoButton }}
           />
         </Grid>
-        <Grid item xs={2} md={1}>
+        <Grid item xs={2}>
           <IconButton
             aria-label="Open drawer"
             edge="start"
@@ -229,18 +234,20 @@ function MobileNavigation({
           <DialogActions className={classes.dialogActions}>
             <Grid
               container
+              item
+              xs={12}
               direction="row"
               ustifyContent="space-between"
               className={classes.logoSection}
             >
-              <Grid item xs={11}>
+              <Grid item xs={10}>
                 <LogoButton
                   {...drawerLogoProps}
                   component={A}
-                  classes={{ logoButton: classes.logoButton }}
+                  classes={{ image: classes.logoButton }}
                 />
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2} className={classes.closeButtonSection}>
                 <IconButton
                   aria-label="Close drawer"
                   edge="end"
@@ -248,12 +255,7 @@ function MobileNavigation({
                   onClick={handleClose}
                   className={classes.closeButton}
                 >
-                  <Image
-                    src={MenuCloseIcon}
-                    width={48}
-                    height={48}
-                    className={classes.close}
-                  />
+                  <Image src={MenuCloseIcon} width={48} height={48} />
                 </IconButton>
               </Grid>
             </Grid>
