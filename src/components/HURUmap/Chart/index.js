@@ -1,7 +1,7 @@
 import { Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import { Vega } from "react-vega";
 
@@ -38,10 +38,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
+function Chart({ indicator, title, geoCode, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
-  const [indicator, setIndicator] = useState(indicatorProp);
+  const [spec, setSpec] = useState(null);
   const [shouldUpdateView, setShouldUpdateView] = useState(true);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -63,16 +63,15 @@ function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
 
   const handleChartValueChange = (value) => {
     setChartValue(value);
-    setIndicator({
-      ...indicator,
-      chart_configuration: {
-        ...indicator.chart_configuration,
-        defaultType: value,
-      },
-    });
+    const valueChangesView = view.signal("Units", value.toLowerCase()).run();
+    console.log(valueChangesView);
   };
 
-  const spec = configureScope(indicator, isMobile);
+  useEffect(() => {
+    const newSpec = configureScope(indicator, isMobile);
+    setSpec(newSpec);
+  }, [indicator, isMobile]);
+
   const className = `charttooltip-${id}-${geoCode}`;
 
   const handler = (_, event, item, value) => {
