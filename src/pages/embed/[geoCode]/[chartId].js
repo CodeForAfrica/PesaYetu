@@ -1,4 +1,3 @@
-import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import React from "react";
 
@@ -10,17 +9,10 @@ const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
 });
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: "100% !important",
-  },
-}));
-
 export default function Embed(props) {
-  const classes = useStyles();
   return (
     <div>
-      <Chart {...props} classes={{ root: classes.root }} />
+      <Chart {...props} />
     </div>
   );
 }
@@ -96,6 +88,7 @@ export async function getStaticProps({ params: { geoCode, chartId } }) {
         },
       },
       geoCode: indicator?.geography_code ?? null,
+      embed: true,
     },
     revalidate: 60 * 5,
   };

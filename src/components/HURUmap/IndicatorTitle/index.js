@@ -1,6 +1,7 @@
 import { RichTypography } from "@commons-ui/core";
 import { Typography, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -46,9 +47,19 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
       margin: 0,
     },
   },
+  embedButtons: {
+    justifyContent: "flex-end",
+    margin: 0,
+  },
 }));
 
-function IndicatorTitle({ description, title, disableToggle, ...props }) {
+function IndicatorTitle({
+  description,
+  title,
+  disableToggle,
+  embed,
+  ...props
+}) {
   const classes = useStyles(props);
 
   const actions = [
@@ -80,11 +91,17 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container justifyContent="space-between">
-        <Grid item xs={12} md={8}>
+      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid item xs={embed ? 7 : 12} md={8}>
           <Typography variant="h6">{title}</Typography>
         </Grid>
-        <Grid item xs={12} md={4} container className={classes.buttons}>
+        <Grid
+          item
+          xs={embed ? 5 : 12}
+          md={4}
+          container
+          className={clsx(classes.buttons, { [classes.embedButtons]: embed })}
+        >
           {actions.map((act) => (
             <Grid item key={act.id} className={classes.action}>
               <Action {...act} />
@@ -100,12 +117,14 @@ IndicatorTitle.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   disableToggle: PropTypes.bool,
+  embed: PropTypes.bool,
 };
 
 IndicatorTitle.defaultProps = {
   description: undefined,
   title: undefined,
   disableToggle: undefined,
+  embed: undefined,
 };
 
 export default IndicatorTitle;

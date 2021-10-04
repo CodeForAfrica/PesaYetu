@@ -38,7 +38,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
+function Chart({ indicator: indicatorProp, title, geoCode, embed, ...props }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
   const [indicator, setIndicator] = useState(indicatorProp);
@@ -72,7 +72,7 @@ function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
     });
   };
 
-  const spec = configureScope(indicator, isMobile);
+  const spec = configureScope(indicator, isMobile && !embed);
   const className = `charttooltip-${id}-${geoCode}`;
 
   const handler = (_, event, item, value) => {
@@ -134,6 +134,7 @@ function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
         disableToggle={disableToggle}
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
+        embed={embed}
       />
       <Vega
         spec={spec}
@@ -170,12 +171,14 @@ Chart.propTypes = {
   }),
   title: PropTypes.string,
   geoCode: PropTypes.string,
+  embed: PropTypes.bool,
 };
 
 Chart.defaultProps = {
   indicator: undefined,
   title: undefined,
   geoCode: undefined,
+  embed: undefined,
 };
 
 export default Chart;

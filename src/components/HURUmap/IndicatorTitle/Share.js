@@ -8,7 +8,7 @@ import useStyles from "./useStyles";
 function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);
 
-  const code = `<iframe style="height:100%; width: 100%"
+  const code = `<iframe frameBorder="0" style="height:100%; width: 100%"
   src="${
     process.env.NEXT_PUBLIC_APP_URL
   }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe>
