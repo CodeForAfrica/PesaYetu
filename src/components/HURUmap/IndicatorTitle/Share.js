@@ -8,10 +8,17 @@ import useStyles from "./useStyles";
 function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);
 
-  const code = `<iframe frameBorder="0" style="width: 100%"
+  const code = `<div style="position: relative;
+  overflow: hidden;
+  padding-top: 56.25%"><iframe style="position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;" 
   src="${
     process.env.NEXT_PUBLIC_APP_URL
-  }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe>
+  }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div>
   `;
 
   return (

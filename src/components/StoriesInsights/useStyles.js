@@ -59,11 +59,11 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     width: "100%",
     [breakpoints.up("md")]: {
       margin: 0,
-      height: typography.pxToRem(476),
+      height: typography.pxToRem(476 - 48),
       width: typography.pxToRem(608),
     },
     [breakpoints.up("lg")]: {
-      height: typography.pxToRem(530),
+      height: typography.pxToRem(530 - 37),
       width: typography.pxToRem(768),
     },
     "& > iframe": {
