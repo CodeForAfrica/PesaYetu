@@ -14,6 +14,7 @@ const useStyles = makeStyles(
       paddingLeft: typography.pxToRem(20),
       backgroundColor: palette.background.paper,
       zIndex: zIndex.snackbar,
+      width: "100%",
       position: "fixed",
       [breakpoints.up("md")]: {
         paddingLeft: typography.pxToRem(62),
