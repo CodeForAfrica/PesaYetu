@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React from "react";
 
 import useStyles from "./useStyles";
 
@@ -20,9 +20,11 @@ function RichData(props) {
       <div className={classes.profile}>
         <LocationHeader icon={Print} title={geography.name} {...geography} />
         {items.map((item) => (
-          <Fragment key={item.title}>
-            <CategorySection geography={geography} category={item} />
-          </Fragment>
+          <CategorySection
+            key={item.title}
+            geography={geography}
+            category={item}
+          />
         ))}
       </div>
     </>

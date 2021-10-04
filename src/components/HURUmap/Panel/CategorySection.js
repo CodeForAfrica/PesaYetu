@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React from "react";
 
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
@@ -18,17 +18,15 @@ function CategorySection({ category, geography }) {
         description={category?.description}
       />
       {category.children.map((child) => (
-        <Fragment key={child.title}>
-          <SubcategoryHeader
-            key={child.title}
-            title={child.title}
-            description={child?.description}
-          >
-            {child.children.map((indicator) => (
-              <Chart {...indicator} geoCode={geography.code} />
-            ))}
-          </SubcategoryHeader>
-        </Fragment>
+        <SubcategoryHeader
+          key={child.title}
+          title={child.title}
+          description={child?.description}
+        >
+          {child.children.map((indicator) => (
+            <Chart {...indicator} geoCode={geography.code} />
+          ))}
+        </SubcategoryHeader>
       ))}
     </>
   );
