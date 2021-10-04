@@ -1,39 +1,45 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import PropTypes from "prop-types";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import videojs from "video.js";
 import "videojs-youtube";
 import "video.js/dist/video-js.css";
 
-import videoImg from "@/pesayetu/assets/images/Group 4702.svg";
+import poster from "@/pesayetu/assets/images/Group 4702.svg";
 
 function Player({ videoSrc, videoType }) {
-  const [videoEl, setVideoEl] = useState(null);
-  const onVideo = useCallback((el) => {
-    setVideoEl(el);
-  }, []);
+  const videoRef = React.useRef(null);
+  const playerRef = React.useRef(null);
 
   useEffect(() => {
-    if (videoEl == null) return null;
-    const player = videojs(videoEl);
+    if (!playerRef.current) {
+      const videoElement = videoRef.current;
+      if (!videoElement) return;
+
+      const options = {
+        autoplay: false,
+        controls: true,
+        poster,
+        preload: "auto",
+        sources: [{ src: videoSrc, type: videoType }],
+      };
+      playerRef.current = videojs(videoElement, options);
+    }
+  }, [videoSrc, videoType]);
+
+  // Dispose the Video.js player when the functional component unmounts
+  useEffect(() => {
     return () => {
-      player.dispose();
+      if (playerRef.current) {
+        playerRef.current.dispose();
+        playerRef.current = null;
+      }
     };
-  }, [videoEl]);
+  }, []);
 
   return (
     <div data-vjs-player>
-      <video
-        ref={onVideo}
-        className="video-js vjs-default-skin hide"
-        playsInline
-        controls
-        preload="auto"
-        poster={videoImg}
-        data-setup={{}}
-      >
-        <source src={videoSrc} type={videoType} />
-      </video>
+      <video ref={videoRef} className="video-js vjs-default-skin hide" />
     </div>
   );
 }
