@@ -1,9 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {
-    borderBottom: `solid 1px ${palette.divider}`,
-  },
+const useStyles = makeStyles(({ typography }) => ({
+  root: {},
   title: {
     fontSize: typography.pxToRem(28),
     display: "flex",
@@ -20,8 +18,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   icon: {
     position: "relative",
-    height: typography.pxToRem(55.5),
-    width: typography.pxToRem(55.5),
+    height: typography.pxToRem(32),
+    width: typography.pxToRem(32),
+    marginRight: typography.pxToRem(10),
   },
 }));
 

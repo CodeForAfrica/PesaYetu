@@ -1,6 +1,6 @@
 import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
 
-export default function formatProfileDataIntoArray(data) {
+export default function formatData(data) {
   return Object.keys(data).map((label) => {
     return {
       title: label,
@@ -10,6 +10,15 @@ export default function formatProfileDataIntoArray(data) {
         return {
           title: child,
           description: data[label]?.subcategories[child].description,
+          children: Object.keys(
+            data[label]?.subcategories[child]?.indicators ?? []
+          ).map((indicator) => {
+            return {
+              title: indicator,
+              indicator:
+                data[label]?.subcategories[child]?.indicators[indicator],
+            };
+          }),
         };
       }),
     };

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 
 import useStyles from "./useStyles";
 
@@ -20,9 +20,9 @@ function RichData(props) {
       <div className={classes.profile}>
         <LocationHeader icon={Print} title={geography.name} {...geography} />
         {items.map((item) => (
-          <div key={item.title}>
-            <CategorySection category={item} />
-          </div>
+          <Fragment key={item.title}>
+            <CategorySection geography={geography} category={item} />
+          </Fragment>
         ))}
       </div>
     </>
@@ -35,6 +35,7 @@ RichData.propTypes = {
   }),
   geography: PropTypes.shape({
     name: PropTypes.string,
+    code: PropTypes.string,
   }),
   geometries: PropTypes.shape({}),
   highlights: PropTypes.shape({}),
