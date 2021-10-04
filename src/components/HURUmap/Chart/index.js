@@ -1,9 +1,9 @@
 import { Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import ReactDOMServer from "react-dom/server";
-import { Vega } from "react-vega";
+import embed from "vega-embed";
 
 import configureScope from "./configureScope";
 import { calculateTooltipPosition } from "./utils";
@@ -40,9 +40,8 @@ const useStyles = makeStyles(({ typography, palette }) => ({
 
 function Chart({ indicator, title, geoCode, ...props }) {
   const classes = useStyles(props);
+  const chartRef = useRef();
   const [view, setView] = useState(null);
-  const [spec, setSpec] = useState(null);
-  const [shouldUpdateView, setShouldUpdateView] = useState(true);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -54,69 +53,75 @@ function Chart({ indicator, title, geoCode, ...props }) {
   } = indicator;
 
   const [chartValue, setChartValue] = useState(defaultType || "Value");
-  const handleNewView = (v) => {
-    if (shouldUpdateView) {
-      setView(v);
-      setShouldUpdateView(false);
-    }
-  };
 
   const handleChartValueChange = (value) => {
     setChartValue(value);
-    const valueChangesView = view.signal("Units", value.toLowerCase()).run();
-    console.log(valueChangesView);
+    view.signal("Units", value.toLowerCase()).run();
   };
+
+  const handler = useCallback(
+    (_, event, item, value) => {
+      const className = `charttooltip-${id}-${geoCode}`;
+      let el = document.getElementsByClassName(className)[0];
+      if (!el) {
+        el = document.createElement("div");
+        el.classList.add(className);
+        document.body.appendChild(el);
+      }
+
+      const tooltipContainer = document.fullscreenElement || document.body;
+      tooltipContainer.appendChild(el);
+      // hide tooltip for null objects, undefined
+      if (!value) {
+        el.remove();
+        return;
+      }
+      el.innerHTML = ReactDOMServer.renderToString(
+        <ThemeProvider theme={theme}>
+          <ChartTooltip
+            title={value.group}
+            value={value.count}
+            formattedValue={
+              defaultType.toLowerCase() === "percentage" || !disableToggle
+                ? value.percentage
+                : undefined
+            }
+            item={value?.stack}
+            itemColor={item?.fill}
+          />
+        </ThemeProvider>
+      );
+
+      el.classList.add("visible");
+      const { x, y } = calculateTooltipPosition(
+        event,
+        el.getBoundingClientRect(),
+        0,
+        10
+      );
+      el.setAttribute(
+        "style",
+        `top: ${y}px; left: ${x}px; z-index: 1230; position: absolute`
+      );
+    },
+    [id, geoCode, theme]
+  );
 
   useEffect(() => {
-    const newSpec = configureScope(indicator, isMobile);
-    setSpec(newSpec);
-  }, [indicator, isMobile]);
+    async function renderChart() {
+      const spec = configureScope(indicator, isMobile);
+      if (chartRef?.current) {
+        const newView = await embed(chartRef.current, spec, {
+          renderer: "svg",
+          actions: false,
+          tooltip: handler,
+        });
 
-  const className = `charttooltip-${id}-${geoCode}`;
-
-  const handler = (_, event, item, value) => {
-    let el = document.getElementsByClassName(className)[0];
-    if (!el) {
-      el = document.createElement("div");
-      el.classList.add(className);
-      document.body.appendChild(el);
+        setView(newView.view);
+      }
     }
-
-    const tooltipContainer = document.fullscreenElement || document.body;
-    tooltipContainer.appendChild(el);
-    // hide tooltip for null objects, undefined
-    if (!value) {
-      el.remove();
-      return;
-    }
-    el.innerHTML = ReactDOMServer.renderToString(
-      <ThemeProvider theme={theme}>
-        <ChartTooltip
-          title={value.group}
-          value={value.count}
-          formattedValue={
-            defaultType.toLowerCase() === "percentage" || !disableToggle
-              ? value.percentage
-              : undefined
-          }
-          item={value?.stack}
-          itemColor={item?.fill}
-        />
-      </ThemeProvider>
-    );
-
-    el.classList.add("visible");
-    const { x, y } = calculateTooltipPosition(
-      event,
-      el.getBoundingClientRect(),
-      0,
-      10
-    );
-    el.setAttribute(
-      "style",
-      `top: ${y}px; left: ${x}px; z-index: 1230; position: absolute`
-    );
-  };
+    renderChart();
+  }, [indicator, isMobile, handler]);
 
   if (!indicator?.data) {
     return null;
@@ -134,13 +139,8 @@ function Chart({ indicator, title, geoCode, ...props }) {
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
       />
-      <Vega
-        spec={spec}
-        actions={false}
-        tooltip={handler}
-        onNewView={handleNewView}
-        className={classes.chart}
-      />
+      <div ref={chartRef} className={classes.chart} />
+
       {url && source && (
         <div className={classes.source}>
           <Typography className={classes.sourceTitle}>Source:&nbsp;</Typography>
