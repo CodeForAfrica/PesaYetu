@@ -10,7 +10,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 
   const code = `<div style="position: relative;
   overflow: hidden;
-  padding-top: 56.25%"><iframe style="position: absolute;
+  padding-top: 170%"><iframe style="position: absolute;
   top: 0;
   left: 0;
   width: 100%;
