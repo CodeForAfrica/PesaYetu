@@ -2,8 +2,6 @@ import dynamic from "next/dynamic";
 import React from "react";
 
 import fetchJson from "@/pesayetu/utils/fetchJson";
-import fetchProfile from "@/pesayetu/utils/fetchProfile";
-import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurations";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
@@ -18,35 +16,8 @@ export default function Embed(props) {
 }
 
 export async function getStaticPaths() {
-  const apiUri = process.env.HURUMAP_API_URL;
-  const { locationCodes } = await fetchProfileConfigurations();
-  const { data } = await fetchProfile(apiUri, "KE");
-
-  const subcategories = Object.values(data)?.map((l) => l.subcategories);
-  const profileIndicators = subcategories.reduce((acc, subcat) => {
-    const indicatorIds = Object.values(subcat).reduce((b, m) => {
-      let mIndicatorIds = [];
-      if (m?.indicators) {
-        mIndicatorIds = Object.values(m.indicators).map(({ id }) => id);
-      }
-      return b.concat(mIndicatorIds);
-    }, []);
-
-    return acc.concat(indicatorIds);
-  }, []);
-
-  const paths = locationCodes.reduce((acc, locationCode) => {
-    return acc.concat(
-      profileIndicators.map((pi) => {
-        return {
-          params: { geoCode: locationCode.toString(), chartId: pi.toString() },
-        };
-      })
-    );
-  }, []);
-
   return {
-    paths,
+    paths: [],
     fallback: "blocking",
   };
 }
