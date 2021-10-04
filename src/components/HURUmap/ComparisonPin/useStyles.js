@@ -2,12 +2,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {},
-  iconSelected: {
+  icontrue: {
     "& img": {
       filter: "none",
     },
   },
-  icon: {
+  iconfalse: {
     "& img": {
       filter: "brightness(0)",
     },

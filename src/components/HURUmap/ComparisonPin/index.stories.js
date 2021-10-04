@@ -16,5 +16,5 @@ Default.args = {
   helperText: "Pin and compare",
   label: "Select a location",
   icon: Pin,
-  options: ["Municipality", "Municipality", "Municipality"],
+  options: ["Municipality", "Municipality One", "Municipality Two"],
 };

@@ -18,7 +18,16 @@ function ExpandMoreIcon(props) {
   return <SvgIcon {...props} component={ExpandMore} />;
 }
 
-function Input({ label, helperText, options, selected, onChange, ...props }) {
+function Input({
+  label,
+  helperText,
+  options,
+  selected,
+  onChange,
+  onOpen,
+  onClose,
+  ...props
+}) {
   const classes = useStyles(props);
   const handleChange = (event) => {
     if (onChange) {
@@ -46,6 +55,8 @@ function Input({ label, helperText, options, selected, onChange, ...props }) {
         displayEmpty
         disableUnderline
         onChange={handleChange}
+        onOpen={onOpen}
+        onClose={onClose}
         defaultValue={selected || ""}
         IconComponent={ExpandMoreIcon}
         MenuProps={{
@@ -82,12 +93,16 @@ Input.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   selected: PropTypes.string,
   onChange: PropTypes.string,
+  onOpen: PropTypes.string,
+  onClose: PropTypes.string,
 };
 
 Input.defaultProps = {
   helperText: undefined,
   selected: undefined,
   onChange: undefined,
+  onOpen: undefined,
+  onClose: undefined,
 };
 
 export default Input;
