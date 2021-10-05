@@ -1,14 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
-import dynamic from "next/dynamic";
 import React from "react";
 
+import Chart from "@/pesayetu/components/HURUmap/Chart";
 import fetchJson from "@/pesayetu/utils/fetchJson";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
 import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurations";
-
-const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
-  ssr: false,
-});
 
 const useStyles = makeStyles(() => ({
   root: {

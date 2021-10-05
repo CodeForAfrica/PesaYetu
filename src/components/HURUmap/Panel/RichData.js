@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 
@@ -7,13 +6,10 @@ import useStyles from "./useStyles";
 import defaultIcon from "@/pesayetu/assets/icons/Component 86 – 12.svg";
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
+import Chart from "@/pesayetu/components/HURUmap/Chart";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
-
-const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
-  ssr: false,
-});
 
 function formatData(data) {
   return Object.keys(data).map((label) => {
