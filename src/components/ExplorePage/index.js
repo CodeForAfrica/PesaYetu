@@ -81,7 +81,7 @@ const useStyles = makeStyles(
   })
 );
 
-function ExplorePage({ profile: profileProp, panel, apiUri, ...props }) {
+function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
   const classes = useStyles(props);
   const [geoCode, setGeoCode] = useState(null);
   const handleCodeChange = (_, { code }) => {
@@ -114,7 +114,11 @@ function ExplorePage({ profile: profileProp, panel, apiUri, ...props }) {
 
   return (
     <>
-      <Panel classes={{ tabs: classes.mobileTabs }} {...panel} {...profile} />
+      <Panel
+        classes={{ tabs: classes.mobileTabs }}
+        {...panelProps}
+        {...profile}
+      />
       <Hidden mdDown implementation="css">
         <div className={classes.root}>
           <Map
@@ -140,7 +144,7 @@ function ExplorePage({ profile: profileProp, panel, apiUri, ...props }) {
 
 ExplorePage.propTypes = {
   apiUri: PropTypes.string,
-  panel: PropTypes.shape({}),
+  panelProps: PropTypes.shape({}),
   profile: PropTypes.shape({
     geography: PropTypes.shape({}),
     geometries: PropTypes.shape({}),
@@ -151,7 +155,7 @@ ExplorePage.propTypes = {
 
 ExplorePage.defaultProps = {
   apiUri: undefined,
-  panel: undefined,
+  panelProps: undefined,
   profile: undefined,
 };
 
