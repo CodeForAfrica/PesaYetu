@@ -16,6 +16,9 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 
   return (
     <Grid container className={classes.root}>
+      <Grid item>
+        <Typography className={classes.text}>Social media bar</Typography>
+      </Grid>
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>
