@@ -8,7 +8,13 @@ import useStyles from "./useStyles";
 import { ReactComponent as TopIcon } from "@/pesayetu/assets/icons/Component 130 – 1.svg";
 import Tabs from "@/pesayetu/components/Tabs";
 
-function MobilePanel({ items, geography, activeType, ...props }) {
+function MobilePanel({
+  scrollToTopLabel,
+  items,
+  geography,
+  activeType,
+  ...props
+}) {
   const classes = useStyles(props);
   const activeTab = Math.max(
     items.findIndex(({ title }) => title === activeType),
@@ -40,7 +46,8 @@ function MobilePanel({ items, geography, activeType, ...props }) {
         onClick={scrollToTop}
         className={classes.footer}
       >
-        <TopIcon className={classes.footerIcon} /> BACK TO TOP
+        <TopIcon className={classes.footerIcon} />
+        {scrollToTopLabel}
       </Button>
     </div>
   );
@@ -52,12 +59,14 @@ MobilePanel.propTypes = {
     name: PropTypes.string,
   }),
   activeType: PropTypes.string,
+  scrollToTopLabel: PropTypes.string,
 };
 
 MobilePanel.defaultProps = {
   items: undefined,
   geography: undefined,
   activeType: undefined,
+  scrollToTopLabel: undefined,
 };
 
 export default MobilePanel;

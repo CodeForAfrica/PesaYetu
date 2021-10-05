@@ -8,7 +8,6 @@ import useSWR from "swr";
 import Location from "@/pesayetu/components/HURUmap/Location";
 import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Link from "@/pesayetu/components/Link";
-import { panelArgs } from "@/pesayetu/config";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
@@ -82,7 +81,7 @@ const useStyles = makeStyles(
   })
 );
 
-function ExplorePage({ profile: profileProp, apiUri, ...props }) {
+function ExplorePage({ profile: profileProp, panel, apiUri, ...props }) {
   const classes = useStyles(props);
   const [geoCode, setGeoCode] = useState(null);
   const handleCodeChange = (_, { code }) => {
@@ -115,11 +114,7 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
 
   return (
     <>
-      <Panel
-        classes={{ tabs: classes.mobileTabs }}
-        {...panelArgs}
-        {...profile}
-      />
+      <Panel classes={{ tabs: classes.mobileTabs }} {...panel} {...profile} />
       <Hidden mdDown implementation="css">
         <div className={classes.root}>
           <Map
