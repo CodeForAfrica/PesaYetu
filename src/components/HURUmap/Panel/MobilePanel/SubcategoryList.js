@@ -20,6 +20,12 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     left: 0,
     right: 0,
     top: 140,
+    "&:active,&:hover, &:focus, &:focus-within": {
+      backgroundColor: palette.grey.light,
+    },
+    "&:after": {
+      display: "none",
+    },
   },
   paper: {
     width: "100%",
@@ -38,6 +44,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     marginBottom: typography.pxToRem(10),
     display: "block",
     cursor: "pointer",
+    color: typography.caption.color,
   },
   notSelected: {
     opacity: 0.2,
@@ -91,6 +98,7 @@ function SubcategoryList({ items }) {
       >
         {items.map(({ title }, index) => (
           <Link
+            underline="none"
             href={`#${slugify(title)}`}
             onClick={handleSelect}
             data-index={index}
