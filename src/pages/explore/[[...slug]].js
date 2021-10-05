@@ -25,7 +25,7 @@ export default function Explore(props) {
       defaultOpen={Number.parseInt(showTutorial, 10) === 1}
     >
       <Page {...props}>
-        <ExplorePage panel={panel} {...props} />
+        <ExplorePage panelProps={panel} {...props} />
       </Page>
     </Tutorial>
   );
@@ -94,7 +94,6 @@ export async function getStaticProps({ preview, previewData, params }) {
       },
     };
   }
-
   const apiUri = process.env.HURUMAP_API_URL;
   const profile = await fetchProfile(apiUri, code);
 
