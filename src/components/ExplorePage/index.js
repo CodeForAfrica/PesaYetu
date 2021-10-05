@@ -140,6 +140,7 @@ function ExplorePage({ profile: profileProp, panel, apiUri, ...props }) {
 
 ExplorePage.propTypes = {
   apiUri: PropTypes.string,
+  panel: PropTypes.shape({}),
   profile: PropTypes.shape({
     geography: PropTypes.shape({}),
     geometries: PropTypes.shape({}),
@@ -150,6 +151,7 @@ ExplorePage.propTypes = {
 
 ExplorePage.defaultProps = {
   apiUri: undefined,
+  panel: undefined,
   profile: undefined,
 };
 
