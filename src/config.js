@@ -732,7 +732,7 @@ export const treeViewArgs = {
   ],
 };
 export const panelArgs = {
-  items: [
+  buttons: [
     {
       value: "rich-data",
       icon: panelPinIcon,

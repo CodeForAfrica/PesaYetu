@@ -1,10 +1,11 @@
-import { Popover, Typography } from "@material-ui/core";
+import { Popover, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { ReactComponent as Caret } from "@/pesayetu/assets/icons/caret.svg";
+import Link from "@/pesayetu/components/Link";
 import slugify from "@/pesayetu/utils/slugify";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
@@ -71,9 +72,9 @@ function SubcategoryList({ items }) {
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.caretContainer} onClick={handleCaretClick}>
+      <Button className={classes.caretContainer} onClick={handleCaretClick}>
         <Caret />
-      </Typography>
+      </Button>
       <Popover
         classes={{ paper: classes.paper }}
         open={open}
@@ -89,7 +90,8 @@ function SubcategoryList({ items }) {
         }}
       >
         {items.map(({ title }, index) => (
-          <Typography
+          <Link
+            href={`#${slugify(title)}`}
             onClick={handleSelect}
             data-index={index}
             data-title={title}
@@ -99,7 +101,7 @@ function SubcategoryList({ items }) {
             })}
           >
             {title}
-          </Typography>
+          </Link>
         ))}
       </Popover>
     </div>

@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -7,15 +7,14 @@ import useStyles from "./useStyles";
 
 import { ReactComponent as TopIcon } from "@/pesayetu/assets/icons/Component 130 – 1.svg";
 import Tabs from "@/pesayetu/components/Tabs";
-import slugify from "@/pesayetu/utils/slugify";
 
-function MobileTabPanel({ dataItems, geography, activeType, ...props }) {
+function MobilePanel({ items, geography, activeType, ...props }) {
   const classes = useStyles(props);
   const activeTab = Math.max(
-    dataItems.findIndex(({ title }) => title === activeType),
+    items.findIndex(({ title }) => title === activeType),
     0
   );
-  const formatedItems = dataItems.map((item) => {
+  const formatedItems = items.map((item) => {
     return {
       label: item.title,
       href: `#${item.title}`,
@@ -23,9 +22,7 @@ function MobileTabPanel({ dataItems, geography, activeType, ...props }) {
     };
   });
   const scrollToTop = () => {
-    document
-      .getElementById(slugify(geography.name))
-      .scrollIntoView({ behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
     <div className={classes.root}>
@@ -38,29 +35,29 @@ function MobileTabPanel({ dataItems, geography, activeType, ...props }) {
         items={formatedItems}
         activeTab={activeTab}
       />
-      <Typography
+      <Button
         href={`#${geography.name}`}
         onClick={scrollToTop}
         className={classes.footer}
       >
         <TopIcon className={classes.footerIcon} /> BACK TO TOP
-      </Typography>
+      </Button>
     </div>
   );
 }
 
-MobileTabPanel.propTypes = {
-  dataItems: PropTypes.arrayOf(PropTypes.shape({})),
+MobilePanel.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({})),
   geography: PropTypes.shape({
     name: PropTypes.string,
   }),
   activeType: PropTypes.string,
 };
 
-MobileTabPanel.defaultProps = {
-  dataItems: undefined,
+MobilePanel.defaultProps = {
+  items: undefined,
   geography: undefined,
   activeType: undefined,
 };
 
-export default MobileTabPanel;
+export default MobilePanel;

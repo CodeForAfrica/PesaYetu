@@ -9,7 +9,7 @@ import useStyles from "./useStyles";
 import PanelButtonGroup from "@/pesayetu/components/HURUmap/PanelButtonGroup";
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
 
-function Panel({ items, ...props }) {
+function DesktopPanel({ buttons, ...props }) {
   const [value, setValue] = React.useState();
   const [pins, setPins] = React.useState([]);
   const paperRef = React.useRef();
@@ -17,10 +17,10 @@ function Panel({ items, ...props }) {
   const classes = useStyles({ ...props, drawerWidth });
 
   const isPin = (current) => {
-    const found = items.find((item) => item.value === current);
+    const found = buttons.find((item) => item.value === current);
     return !!found?.pin;
   };
-  if (!items?.length) {
+  if (!buttons?.length) {
     return null;
   }
 
@@ -60,7 +60,7 @@ function Panel({ items, ...props }) {
       anchor="left"
       open={!!value}
     >
-      {items.map((item) => (
+      {buttons.map((item) => (
         <TabPanel
           key={item.value}
           name={item.value}
@@ -78,7 +78,7 @@ function Panel({ items, ...props }) {
           }),
         }}
         onChange={handleChange}
-        items={items}
+        items={buttons}
         value={value}
         pins={pins}
       />
@@ -86,8 +86,8 @@ function Panel({ items, ...props }) {
   );
 }
 
-Panel.propTypes = {
-  items: Proptypes.arrayOf(
+DesktopPanel.propTypes = {
+  buttons: Proptypes.arrayOf(
     Proptypes.shape({
       value: Proptypes.string,
       children: Proptypes.node,
@@ -96,8 +96,8 @@ Panel.propTypes = {
   ),
 };
 
-Panel.defaultProps = {
-  items: undefined,
+DesktopPanel.defaultProps = {
+  buttons: undefined,
 };
 
-export default Panel;
+export default DesktopPanel;

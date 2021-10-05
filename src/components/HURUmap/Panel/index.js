@@ -12,10 +12,10 @@ function Panel({ data, ...props }) {
   return (
     <>
       <Hidden lgUp implementation="css">
-        <MobilePanel dataItems={items} {...props} />
+        <MobilePanel items={items} {...props} />
       </Hidden>
       <Hidden mdDown implementation="css">
-        <DesktopPanel dataItems={items} {...props} />
+        <DesktopPanel items={items} {...props} />
       </Hidden>
     </>
   );

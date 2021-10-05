@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
@@ -33,6 +33,7 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
     },
   },
 }));
+
 function Profile({ categories, geography, ...props }) {
   const classes = useStyles(props);
 
@@ -40,7 +41,7 @@ function Profile({ categories, geography, ...props }) {
     <div className={classes.profile}>
       <LocationHeader icon={Print} title={geography.name} {...geography} />
       {categories.map((category) => (
-        <>
+        <Fragment key={category.tite}>
           <CategoryHeader
             icon={category.icon}
             title={category.title}
@@ -57,7 +58,7 @@ function Profile({ categories, geography, ...props }) {
               ))}
             </SubcategoryHeader>
           ))}
-        </>
+        </Fragment>
       ))}
     </div>
   );
