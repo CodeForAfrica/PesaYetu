@@ -1,14 +1,16 @@
-import { Grid } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
 import useStyles from "./useStyles";
 
+import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/action-close.svg";
 import Select from "@/pesayetu/components/Select";
 
 function ChartFilter({
   groups,
   defaultFilter,
+  updateAvailableGroups,
   attributeText,
   valueText,
   ...props
@@ -49,6 +51,7 @@ function ChartFilter({
   const onValueChange = (e) => {
     if (e?.target?.value) {
       setSelectedValue(e.target.value);
+      updateAvailableGroups("remove", selectedAttribute);
     }
   };
 
@@ -83,6 +86,15 @@ function ChartFilter({
             />
           </Grid>
         )}
+        {!defaultFilter && (
+          <Grid item>
+            <IconButton
+              onClick={() => updateAvailableGroups("add", selectedAttribute)}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Grid>
+        )}
       </Grid>
     </div>
   );
@@ -100,6 +112,7 @@ ChartFilter.propTypes = {
     value: PropTypes.string,
   }),
   view: PropTypes.shape({}),
+  updateAvailableGroups: PropTypes.func,
   attributeText: PropTypes.string,
   valueText: PropTypes.string,
 };
@@ -108,6 +121,7 @@ ChartFilter.defaultProps = {
   defaultFilter: undefined,
   groups: undefined,
   view: undefined,
+  updateAvailableGroups: undefined,
   attributeText: "Filter by attribute:",
   valueText: "Select a value:",
 };

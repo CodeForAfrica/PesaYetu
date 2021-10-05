@@ -30,12 +30,29 @@ function Filters({
     }
   }, [defaultFilters, availableGroupsProps]);
 
+  const updateAvailableGroups = (variant, attribute) => {
+    if (variant === "add") {
+      const attributeGroup = availableGroupsProps.find(
+        ({ name }) => name === attribute
+      );
+      setAvailableGroups([attributeGroup, ...availableGroups]);
+    } else {
+      const filteredGroup = availableGroups.filter(
+        ({ name }) => name !== attribute
+      );
+      setAvailableGroups(filteredGroup);
+    }
+  };
+
   return (
     <div className={classes.root}>
       {defaultFilters?.map((df) => (
         <ChartFilter groups={availableGroupsProps} defaultFilter={df} />
       ))}
-      <ChartFilter groups={availableGroups} />
+      <ChartFilter
+        groups={availableGroups}
+        updateAvailableGroups={updateAvailableGroups}
+      />
     </div>
   );
 }
