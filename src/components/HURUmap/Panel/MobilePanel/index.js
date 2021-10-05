@@ -2,7 +2,7 @@ import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Panel from "./Panel";
+import RichData from "./RichData";
 import useStyles from "./useStyles";
 
 import { ReactComponent as TopIcon } from "@/pesayetu/assets/icons/Component 130 – 1.svg";
@@ -24,7 +24,7 @@ function MobilePanel({
     return {
       label: item.title,
       href: `#${item.title}`,
-      children: <Panel item={item} geography={geography} {...props} />,
+      children: <RichData item={item} geography={geography} {...props} />,
     };
   });
   const scrollToTop = () => {
