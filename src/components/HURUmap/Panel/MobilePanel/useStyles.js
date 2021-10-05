@@ -31,10 +31,14 @@ const useStyles = makeStyles(
       justifyContent: "center",
       cursor: "pointer",
       color: "#666666",
+      textTransform: "uppercase",
       "&:after": {
         display: "none",
       },
-      textTransform: "uppercase",
+      "&:hover": {
+        backgroundColor: palette.background.paper,
+        fontWeight: "normal",
+      },
     },
     footerIcon: {
       marginRight: typography.pxToRem(20),
