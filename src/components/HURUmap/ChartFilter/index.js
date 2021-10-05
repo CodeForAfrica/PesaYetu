@@ -4,13 +4,15 @@ import React, { useEffect, useState } from "react";
 
 import useStyles from "./useStyles";
 
-import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/action-close.svg";
+import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/Component1081.svg";
 import Select from "@/pesayetu/components/Select";
 
 function ChartFilter({
   groups,
   defaultFilter,
-  updateAvailableGroups,
+  onSelectValue,
+  deleteFilter,
+  index,
   attributeText,
   valueText,
   ...props
@@ -51,7 +53,14 @@ function ChartFilter({
   const onValueChange = (e) => {
     if (e?.target?.value) {
       setSelectedValue(e.target.value);
-      updateAvailableGroups("remove", selectedAttribute);
+      onSelectValue(selectedAttribute, e.target.value);
+    }
+  };
+
+  const removeFilter = (e) => {
+    e.preventDefault();
+    if (deleteFilter) {
+      deleteFilter(selectedAttribute, index);
     }
   };
 
@@ -61,7 +70,7 @@ function ChartFilter({
 
   return (
     <div className={classes.root}>
-      <Grid container>
+      <Grid container alignItems="flex-end">
         {attributeOptions?.length > 0 && (
           <Grid item className={classes.grid}>
             <Select
@@ -86,12 +95,10 @@ function ChartFilter({
             />
           </Grid>
         )}
-        {!defaultFilter && (
+        {!defaultFilter && index !== 0 && (
           <Grid item>
-            <IconButton
-              onClick={() => updateAvailableGroups("add", selectedAttribute)}
-            >
-              <CloseIcon />
+            <IconButton className={classes.button} onClick={removeFilter}>
+              <CloseIcon className={classes.icon} />
             </IconButton>
           </Grid>
         )}
@@ -111,8 +118,9 @@ ChartFilter.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
   }),
-  view: PropTypes.shape({}),
-  updateAvailableGroups: PropTypes.func,
+  onSelectValue: PropTypes.func,
+  deleteFilter: PropTypes.func,
+  index: PropTypes.number,
   attributeText: PropTypes.string,
   valueText: PropTypes.string,
 };
@@ -120,8 +128,9 @@ ChartFilter.propTypes = {
 ChartFilter.defaultProps = {
   defaultFilter: undefined,
   groups: undefined,
-  view: undefined,
-  updateAvailableGroups: undefined,
+  onSelectValue: undefined,
+  deleteFilter: undefined,
+  index: undefined,
   attributeText: "Filter by attribute:",
   valueText: "Select a value:",
 };

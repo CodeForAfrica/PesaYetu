@@ -13,6 +13,7 @@ import ChartTooltip from "@/pesayetu/components/HURUmap/ChartTooltip";
 import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
 import Link from "@/pesayetu/components/Link";
 import theme from "@/pesayetu/theme";
+import slugify from "@/pesayetu/utils/slugify";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
@@ -124,6 +125,13 @@ function Chart({ indicator, title, geoCode, ...props }) {
     renderChart();
   }, [indicator, isMobile, handler]);
 
+  // apply default filter if defined
+  if (filter?.default && view) {
+    const filterName = slugify(filter.default?.name);
+    view.signal(`${filterName}Filter`, true);
+    view.signal(`${filterName}FilterValue`, filter.default?.value);
+  }
+
   if (!indicator?.data) {
     return null;
   }
@@ -142,8 +150,13 @@ function Chart({ indicator, title, geoCode, ...props }) {
       />
       {!isMobile && (
         <Filters
-          availableGroups={groups?.filter(({ name }) => name !== primaryGroup)}
+          filterGroups={groups
+            ?.filter(({ name }) => name !== primaryGroup)
+            .map((g) => {
+              return { ...g, slug: slugify(g?.name) };
+            })}
           defaultFilters={filter?.default ?? undefined}
+          view={view}
         />
       )}
       <div ref={chartRef} className={classes.chart} />

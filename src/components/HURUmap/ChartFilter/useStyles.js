@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
     paddingBottom: typography.pxToRem(10),
   },
@@ -8,6 +8,17 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     [breakpoints.up("md")]: {
       marginRight: typography.pxToRem(10),
     },
+  },
+  button: {
+    padding: 0,
+    background: palette.background.paper,
+    "& :hover": {
+      background: palette.background.paper,
+    },
+  },
+  icon: {
+    height: typography.pxToRem(38),
+    width: typography.pxToRem(38),
   },
   select: {
     width: typography.pxToRem(165),
