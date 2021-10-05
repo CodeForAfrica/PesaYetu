@@ -18,7 +18,15 @@ function ExpandMoreIcon(props) {
   return <SvgIcon {...props} component={ExpandMore} />;
 }
 
-function Input({ label, helperText, options, selected, onChange, ...props }) {
+function Input({
+  label,
+  helperText,
+  options,
+  selected,
+  onChange,
+  disabled,
+  ...props
+}) {
   const classes = useStyles(props);
   const handleChange = (event) => {
     if (onChange) {
@@ -27,7 +35,12 @@ function Input({ label, helperText, options, selected, onChange, ...props }) {
   };
 
   return (
-    <FormControl variant="filled" size="small" className={classes.formControl}>
+    <FormControl
+      variant="filled"
+      size="small"
+      className={classes.formControl}
+      disabled={disabled}
+    >
       {helperText && (
         <FormHelperText className={classes.helper}>{helperText}</FormHelperText>
       )}
@@ -82,12 +95,14 @@ Input.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   selected: PropTypes.string,
   onChange: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Input.defaultProps = {
   helperText: undefined,
   selected: undefined,
   onChange: undefined,
+  disabled: undefined,
 };
 
 export default Input;
