@@ -31,6 +31,10 @@ const useStyles = makeStyles(
       justifyContent: "center",
       cursor: "pointer",
       color: "#666666",
+      "&:after": {
+        display: "none",
+      },
+      textTransform: "uppercase",
     },
     footerIcon: {
       marginRight: typography.pxToRem(20),
