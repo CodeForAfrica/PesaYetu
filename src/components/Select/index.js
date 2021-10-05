@@ -76,7 +76,7 @@ function Input({
           },
           getContentAnchorEl: null,
         }}
-        classes={{ root: classes.select }}
+        classes={{ root: classes.select, filled: classes.filled }}
       >
         {options?.length &&
           options.map((option) => (

@@ -60,25 +60,26 @@ function ChartFilter({
     <div className={classes.root}>
       <Grid container>
         {attributeOptions?.length > 0 && (
-          <Grid item xs={12} md={6}>
+          <Grid item className={classes.grid}>
             <Select
               helperText={attributeText}
               options={attributeOptions}
               selected={selectedAttribute}
               onChange={onAtrributeChange}
               disabled={!!defaultFilter}
-              classes={{ select: classes.select }}
+              classes={{ select: classes.select, filled: classes.filled }}
             />
           </Grid>
         )}
         {valueOptions?.length > 0 && (
-          <Grid item xs={12} md={6}>
+          <Grid item className={classes.grid}>
             <Select
               helperText={valueText}
               options={valueOptions}
               selected={selectedValue}
+              label="Select a value"
               onChange={onValueChange}
-              classes={{ select: classes.select }}
+              classes={{ select: classes.select, filled: classes.filled }}
             />
           </Grid>
         )}

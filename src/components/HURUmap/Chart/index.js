@@ -6,6 +6,7 @@ import ReactDOMServer from "react-dom/server";
 import embed from "vega-embed";
 
 import configureScope from "./configureScope";
+import Filters from "./Filters";
 import { calculateTooltipPosition } from "./utils";
 
 import ChartTooltip from "@/pesayetu/components/HURUmap/ChartTooltip";
@@ -48,8 +49,8 @@ function Chart({ indicator, title, geoCode, ...props }) {
   const {
     id,
     description,
-    metadata: { source, url },
-    chart_configuration: { disableToggle, defaultType },
+    metadata: { source, url, groups, primary_group: primaryGroup },
+    chart_configuration: { disableToggle, defaultType, filter },
   } = indicator;
 
   const [chartValue, setChartValue] = useState(defaultType || "Value");
@@ -139,6 +140,12 @@ function Chart({ indicator, title, geoCode, ...props }) {
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
       />
+      {!isMobile && (
+        <Filters
+          availableGroups={groups?.filter(({ name }) => name !== primaryGroup)}
+          defaultFilters={filter?.default ?? undefined}
+        />
+      )}
       <div ref={chartRef} className={classes.chart} />
 
       {url && source && (
@@ -159,11 +166,16 @@ Chart.propTypes = {
     chart_configuration: PropTypes.shape({
       disableToggle: PropTypes.bool,
       defaultType: PropTypes.string,
+      filter: PropTypes.PropTypes.shape({
+        default: PropTypes.arrayOf(PropTypes.shape({})),
+      }),
     }),
     description: PropTypes.string,
     metadata: PropTypes.shape({
       source: PropTypes.string,
       url: PropTypes.string,
+      groups: PropTypes.arrayOf(PropTypes.shape({})),
+      primary_group: PropTypes.string,
     }),
     data: PropTypes.arrayOf(PropTypes.shape({})),
   }),
