@@ -5,7 +5,7 @@ import SubcategoryList from "./SubcategoryList";
 
 import Profile from "@/pesayetu/components/HURUmap/Panel/Profile";
 
-function RichData(props) {
+function Panel(props) {
   const { geography, item } = props;
 
   return (
@@ -16,7 +16,7 @@ function RichData(props) {
   );
 }
 
-RichData.propTypes = {
+Panel.propTypes = {
   item: PropTypes.shape({
     icon: PropTypes.string,
     title: PropTypes.string,
@@ -28,9 +28,9 @@ RichData.propTypes = {
   }),
 };
 
-RichData.defaultProps = {
+Panel.defaultProps = {
   item: undefined,
   geography: undefined,
 };
 
-export default RichData;
+export default Panel;
