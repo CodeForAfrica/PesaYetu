@@ -41,7 +41,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
               <Grid item xs={4}>
                 <FacebookShareButton
                   title={title}
-                  url=""
+                  url="www.share.com"
                   className={classes.shareButton}
                 >
                   <FacebookIcon className={classes.icon} />
@@ -53,7 +53,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
               <Grid item xs={4}>
                 <TwitterShareButton
                   title={title}
-                  url=""
+                  url="www.share.com"
                   className={classes.shareButton}
                 >
                   <TwitterIcon className={classes.icon} />
@@ -65,7 +65,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
               <Grid item xs={4}>
                 <LinkedinShareButton
                   title={title}
-                  url=""
+                  url="www.share.com"
                   className={classes.shareButton}
                 >
                   <LinkedInIcon className={classes.icon} />
@@ -77,7 +77,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
               <Grid item xs={4}>
                 <EmailShareButton
                   title={title}
-                  url=""
+                  url="www.share.com"
                   className={classes.shareButton}
                 >
                   <EmailIcon className={classes.icon} />
