@@ -17,21 +17,14 @@ function BasePage({ children, menus, variant, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
   const { menuProps } = navigation;
-  const {
-    logoProps,
-    socialLinks,
-    desktopLogoProps,
-    mobileLogoProps,
-    drawerLogoProps,
-  } = navigationArgs;
-  const { logoProps, socialLinks } = navigationArgs;
+  const { socialLinks, desktopLogoProps, mobileLogoProps, drawerLogoProps } =
+    navigationArgs;
   const theme = useTheme();
 
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigationProps = {
     ...props,
     ...menus,
-    logoProps,
     menuProps,
     socialLinks,
     desktopLogoProps,
