@@ -5,6 +5,18 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/footer-social-fb.svg";
+import { ReactComponent as InstagramIcon } from "@/pesayetu/assets/footer-social-ig.svg";
+import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/footer-social-in.svg";
+import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/footer-social-tw.svg";
+
+const shareData = [
+  { name: "Facebook", icon: FacebookIcon },
+  { name: "Twitter", icon: TwitterIcon },
+  { name: "Instagram", icon: InstagramIcon },
+  { name: "LinkedIn", icon: LinkedInIcon },
+];
+
 function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);
 
@@ -16,9 +28,11 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 
   return (
     <Grid container className={classes.root}>
-      <Grid item>
-        <Typography className={classes.text}>Social media bar</Typography>
-      </Grid>
+      {shareData.map((social) => (
+        <Grid item>
+          <Typography className={classes.text}>{social.name}</Typography>
+        </Grid>
+      ))}
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>
