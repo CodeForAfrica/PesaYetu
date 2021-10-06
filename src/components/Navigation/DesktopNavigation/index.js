@@ -5,6 +5,7 @@ import { useTheme, makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Image from "@/pesayetu/components/Image";
 import Menu from "@/pesayetu/components/Menu";
 import Section from "@/pesayetu/components/Section";
 
@@ -33,10 +34,11 @@ function DesktopNavigation({
         <Grid container alignItems="center">
           <Grid item xs={3}>
             <LogoButton
-              {...logoArgs}
               component={A}
               classes={{ logoButton: classes.logoButton }}
-            />
+            >
+              <Image {...logoArgs} />
+            </LogoButton>
           </Grid>
           <Grid
             item
