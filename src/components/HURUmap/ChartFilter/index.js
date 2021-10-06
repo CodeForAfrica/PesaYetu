@@ -122,7 +122,7 @@ ChartFilter.propTypes = {
   onSelectValue: PropTypes.func,
   onSelectAttribute: PropTypes.func,
   deleteFilter: PropTypes.func,
-  index: PropTypes.anyOfType([PropTypes.number, PropTypes.string]),
+  index: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   attributeText: PropTypes.string,
   valueText: PropTypes.string,
   selectedValue: PropTypes.string,
