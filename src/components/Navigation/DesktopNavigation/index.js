@@ -11,7 +11,9 @@ import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(() => ({
   root: {},
-  logoButton: {},
+  logoButton: {
+    padding: 0,
+  },
   section: {},
 }));
 
@@ -25,18 +27,15 @@ function DesktopNavigation({
 }) {
   const classes = useStyles(props);
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
-  const logoArgs = isDesktop ? desktopLogoProps : mobileLogoProps;
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const logoArgs = !isDesktop ? mobileLogoProps : desktopLogoProps;
 
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
           <Grid item xs={3}>
-            <LogoButton
-              component={A}
-              classes={{ logoButton: classes.logoButton }}
-            >
+            <LogoButton component={A} classes={{ root: classes.logoButton }}>
               <Image
                 width={logoArgs.width}
                 height={logoArgs.height}
