@@ -8,14 +8,32 @@ import useStyles from "./useStyles";
 function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);
 
-  const code = `<div style="position: relative;
-  overflow: hidden;
-  padding-top: 155%"><iframe style="position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;" 
+  const code = `
+  <style scoped>
+    .frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .wrapper {
+        position: relative;
+        overflow: hidden;
+        padding-top: 60%;
+    }
+    @media (max-width: 1280px) {
+        .wrapper {
+          padding-top: 90%;
+        }
+    @media (max-width: 768px) {
+      .wrapper {
+        padding-top: 150%;
+      }
+}
+</style>
+<div class="wrapper"><iframe class="frame" 
   src="${
     process.env.NEXT_PUBLIC_APP_URL
   }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div>

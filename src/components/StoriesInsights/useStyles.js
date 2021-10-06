@@ -60,16 +60,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("md")]: {
       margin: 0,
       width: typography.pxToRem(608),
-      "& > div": {
-        paddingTop: "100% !important",
-      },
     },
     [breakpoints.up("lg")]: {
-      height: typography.pxToRem(530 - 37),
       width: typography.pxToRem(768),
-    },
-    "& > iframe": {
-      height: "100%",
     },
   },
   content: {
