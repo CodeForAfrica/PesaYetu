@@ -44,6 +44,9 @@ function ChartFilter({
   const onAtrributeChange = (e) => {
     if (e?.target?.value) {
       setSelectedAttribute(e.target.value);
+      if (e.target.value === "All values") {
+        setSelectedValue(undefined);
+      }
       setValueOptions(
         groups.find(({ name }) => name === e.target.value)?.subindicators
       );

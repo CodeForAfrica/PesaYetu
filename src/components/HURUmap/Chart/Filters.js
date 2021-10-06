@@ -58,6 +58,9 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
     } else {
       const indexFilterProp = filterSelectProps.map((fp) => {
         if (fp.index === pos) {
+          // adjust available groups for next filter inputs
+          const fGroups = fp.groups?.filter(({ name }) => name !== attribute);
+          setAvailableGroups(fGroups);
           return {
             ...fp,
             selectedAttribute: attribute,
@@ -68,9 +71,6 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       });
 
       setFilterSelectProps(indexFilterProp);
-      // adjust available groups for next filter inputs
-      const fGroups = availableGroups.filter(({ name }) => name !== attribute);
-      setAvailableGroups(fGroups);
     }
   };
 
