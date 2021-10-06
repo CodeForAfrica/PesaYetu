@@ -76,6 +76,7 @@ function Input({
           },
           getContentAnchorEl: null,
         }}
+        InputLabelProps={{ shrink: false }}
         classes={{ root: classes.select, filled: classes.filled }}
       >
         {options?.length &&

@@ -53,7 +53,9 @@ function ChartFilter({
   const onValueChange = (e) => {
     if (e?.target?.value) {
       setSelectedValue(e.target.value);
-      onSelectValue(selectedAttribute, e.target.value);
+      if (onSelectValue) {
+        onSelectValue(selectedAttribute, e.target.value);
+      }
     }
   };
 
@@ -89,7 +91,7 @@ function ChartFilter({
               helperText={valueText}
               options={valueOptions}
               selected={selectedValue}
-              label="Select a value"
+              label={selectedValue?.length ? "" : "Select a value"}
               onChange={onValueChange}
               classes={{ select: classes.select, filled: classes.filled }}
             />

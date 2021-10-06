@@ -126,10 +126,12 @@ function Chart({ indicator, title, geoCode, ...props }) {
   }, [indicator, isMobile, handler]);
 
   // apply default filter if defined
-  if (filter?.default && view) {
-    const filterName = slugify(filter.default?.name);
-    view.signal(`${filterName}Filter`, true);
-    view.signal(`${filterName}FilterValue`, filter.default?.value);
+  if (filter?.defaults?.length && view) {
+    filter.defaults?.forEach((d) => {
+      const filterName = slugify(d?.name);
+      view.signal(`${filterName}Filter`, true);
+      view.signal(`${filterName}FilterValue`, d?.value);
+    });
   }
 
   if (!indicator?.data) {
@@ -155,7 +157,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
             .map((g) => {
               return { ...g, slug: slugify(g?.name) };
             })}
-          defaultFilters={filter?.default ?? undefined}
+          defaultFilters={filter?.defaults ?? undefined}
           view={view}
         />
       )}
@@ -180,7 +182,7 @@ Chart.propTypes = {
       disableToggle: PropTypes.bool,
       defaultType: PropTypes.string,
       filter: PropTypes.PropTypes.shape({
-        default: PropTypes.arrayOf(PropTypes.shape({})),
+        defaults: PropTypes.arrayOf(PropTypes.shape({})),
       }),
     }),
     description: PropTypes.string,

@@ -26,7 +26,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
     if (defaultFilters?.length) {
       const defaultFiltersName = defaultFilters.map(({ name }) => name);
       const availG = filterGroups?.filter(
-        ({ name }) => !defaultFiltersName.include(name)
+        ({ name }) => !defaultFiltersName.includes(name)
       );
       setAvailableGroups(availG);
     } else {
@@ -39,12 +39,16 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
 
   const onSelectValue = (attribute, value) => {
     // adjust available groups
-    const fGroups = availableGroups.filter(({ name }) => name !== attribute);
-    setAvailableGroups(fGroups);
     if (attribute !== "All values") {
       const slug = slugify(attribute);
       view?.signal(`${slug}Filter`, true);
       view?.signal(`${slug}FilterValue`, value);
+    } else {
+      availableGroups.forEach(({ slug: filterName }) => {
+        view?.signal(`${filterName}Filter`, false);
+      });
+      const fGroups = availableGroups.filter(({ name }) => name !== attribute);
+      setAvailableGroups(fGroups);
     }
   };
 
