@@ -29,8 +29,16 @@ function Share({ title, geoCode, indicatorId, ...props }) {
         }
     @media (max-width: 768px) {
       .wrapper {
-        padding-top: 150%;
+        padding-top: 100%;
       }
+    @media (max-width: 620px) {
+      .wrapper {
+        padding-top: 120%;
+      }
+      @media (max-width: 500px) {
+        .wrapper {
+          padding-top: 160%;
+        }
 }
 </style>
 <div class="wrapper"><iframe class="frame" 
