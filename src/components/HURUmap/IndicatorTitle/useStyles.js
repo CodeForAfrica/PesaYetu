@@ -61,6 +61,15 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     backgroundColor: "#ffffff !important",
     width: "100%",
     border: "solid 1px #f8f8f8 !important",
+    "&:hover": {
+      border: "solid 1px #666666 !important",
+      backgroundColor: "#f8f8f8 !important",
+      "& path": {
+        "&:first-child": {
+          fill: "#f8f8f8",
+        },
+      },
+    },
   },
   icon: {
     "& path": {
