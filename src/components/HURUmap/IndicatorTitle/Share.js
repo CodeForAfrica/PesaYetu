@@ -2,6 +2,12 @@ import { Grid, TextField, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import {
+  TwitterShareButton,
+  LinkedinShareButton,
+  FacebookShareButton,
+  EmailShareButton,
+} from "react-share";
 
 import useStyles from "./useStyles";
 
@@ -28,11 +34,45 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 
   return (
     <Grid container className={classes.root}>
-      {shareData.map((social) => (
-        <Grid item>
-          <Typography className={classes.text}>{social.name}</Typography>
-        </Grid>
-      ))}
+      {shareData.map((social) => {
+        switch (social.name) {
+          case "Facebook":
+            return (
+              <FacebookShareButton title="" url="">
+                <FacebookIcon />
+              </FacebookShareButton>
+              // <Grid item>
+              //   <Typography className={classes.text}>{social.name}</Typography>
+              // </Grid>
+            );
+          case "Twitter":
+            return (
+              <TwitterShareButton title="" url="">
+                <TwitterIcon />
+              </TwitterShareButton>
+            );
+          case "Instagram":
+            return (
+              <FacebookShareButton>
+                <InstagramIcon />
+              </FacebookShareButton>
+            );
+          case "LinkedIn":
+            return (
+              <LinkedinShareButton>
+                <LinkedInIcon />
+              </LinkedinShareButton>
+            );
+          case "Email":
+            return (
+              <EmailShareButton>
+                <TwitterIcon />
+              </EmailShareButton>
+            );
+          default:
+            return null;
+        }
+      })}
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>
