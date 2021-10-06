@@ -30,6 +30,9 @@ import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
 import Piero from "@/pesayetu/assets/images/Piero.png";
 import screenshot1 from "@/pesayetu/assets/images/Screenshot 2021-06-14 at 12.51.45@2x.png";
 import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
+import desktopLogo from "@/pesayetu/assets/logos/Component 61–1@2x.png";
+import drawerLogo from "@/pesayetu/assets/logos/Group 4188@2x 2.png";
+import mobileLogo from "@/pesayetu/assets/logos/Group 4188@2x.png";
 import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
 import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
@@ -182,21 +185,21 @@ export const navigationArgs = {
     },
   ],
   desktopLogoProps: {
-    alt: "Code for Africa desktop logo",
+    alt: "desktop logo",
     href: "https://codeforafrica.org",
-    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Component-61-–-1.svg",
+    src: desktopLogo,
   },
 
   mobileLogoProps: {
-    alt: "Code for Africa mobile logo",
+    alt: "mobile logo",
     href: "https://codeforafrica.org",
-    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Group-4188@2x.png",
+    src: mobileLogo,
   },
 
   drawerLogoProps: {
-    alt: "Code for Africa drawer logo",
+    alt: "drawer logo",
     href: "https://codeforafrica.org",
-    src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Group-4188@2x-1.png",
+    src: drawerLogo,
   },
 };
 
