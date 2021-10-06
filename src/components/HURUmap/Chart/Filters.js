@@ -47,9 +47,9 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       availableGroups.forEach(({ slug: filterName }) => {
         view?.signal(`${filterName}Filter`, false);
       });
-      const fGroups = availableGroups.filter(({ name }) => name !== attribute);
-      setAvailableGroups(fGroups);
     }
+    const fGroups = availableGroups.filter(({ name }) => name !== attribute);
+    setAvailableGroups(fGroups);
   };
 
   const deleteFilter = (attribute, filterIndex) => {
