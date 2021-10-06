@@ -28,6 +28,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
     filterGroups.forEach(({ slug: filterName }) => {
       view?.signal(`${filterName}Filter`, false);
     });
+    view?.run();
   }, []);
 
   useEffect(() => {
@@ -41,10 +42,11 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       (a, b) => a.index - b.index
     );
     sortedFiltersProps.forEach((fp) => {
-      if (fp.selectedAttribute !== "All values") {
+      if (fp.selectedAttribute !== "All values" && fp.selectedValue) {
         const filterName = slugify(fp.selectedAttribute);
         view?.signal(`${filterName}Filter`, true);
         view?.signal(`${filterName}FilterValue`, fp.selectedValue);
+        view?.run();
       }
     });
   }, [filterSelectProps, resetFilters]);
@@ -52,7 +54,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
   const onSelectValue = (attribute, value, pos) => {
     if (pos === "default") {
       const filterName = slugify(attribute);
-      view?.signal(`${filterName}FilterValue`, value);
+      view?.signal(`${filterName}FilterValue`, value).run();
     } else {
       const indexFilterProp = filterSelectProps.map((fp) => {
         if (fp.index === pos) {
@@ -141,6 +143,7 @@ Filters.propTypes = {
   defaultFilters: PropTypes.arrayOf(PropTypes.shape({})),
   view: PropTypes.shape({
     signal: PropTypes.func,
+    run: PropTypes.func,
   }),
 };
 

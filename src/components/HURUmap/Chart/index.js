@@ -126,15 +126,14 @@ function Chart({ indicator, title, geoCode, ...props }) {
   }, [indicator, isMobile, handler]);
 
   // apply default filter if defined
-  let defaultFiltersNames;
-  if (view) {
-    defaultFiltersNames = filter.defaults?.map(({ name, value }) => {
+  const defaultFiltersNames =
+    filter?.defaults?.map(({ name, value }) => {
       const filterName = slugify(name);
-      view.signal(`${filterName}Filter`, true);
-      view.signal(`${filterName}FilterValue`, value);
+      view?.signal(`${filterName}Filter`, true);
+      view?.signal(`${filterName}FilterValue`, value);
+      view?.run();
       return name;
-    });
-  }
+    }) ?? [];
 
   if (!indicator?.data) {
     return null;
@@ -157,7 +156,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
           // remove primary group & defined defaults filters
           filterGroups={groups
             ?.filter(({ name }) => name !== primaryGroup)
-            ?.filter(({ name }) => !defaultFiltersNames.includes(name))
+            ?.filter(({ name }) => !defaultFiltersNames?.includes(name))
             ?.map((g) => {
               return { ...g, slug: slugify(g?.name) };
             })}
