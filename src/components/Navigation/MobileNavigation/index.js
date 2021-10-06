@@ -198,10 +198,11 @@ function MobileNavigation({
       <div className={classes.root}>
         <Grid item xs={10}>
           <LogoButton
-            {...mobileLogoProps}
             component={A}
-            classes={{ image: classes.logoButton }}
-          />
+            classes={{ logoButton: classes.logoButton }}
+          >
+            <Image width="237px" height="55px" {...mobileLogoProps} />
+          </LogoButton>
         </Grid>
         <Grid item xs={2}>
           <IconButton
@@ -242,10 +243,11 @@ function MobileNavigation({
             >
               <Grid item xs={10}>
                 <LogoButton
-                  {...drawerLogoProps}
                   component={A}
-                  classes={{ image: classes.logoButton }}
-                />
+                  classes={{ logoButton: classes.logoButton }}
+                >
+                  <Image width="237px" height="55px" {...drawerLogoProps} />
+                </LogoButton>
               </Grid>
               <Grid item xs={2} className={classes.closeButtonSection}>
                 <IconButton

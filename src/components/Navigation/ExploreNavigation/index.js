@@ -8,6 +8,7 @@ import React from "react";
 
 import SearchIcon from "@/pesayetu/assets/icons/search-explore.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
+import Image from "@/pesayetu/components/Image";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
@@ -79,10 +80,11 @@ function ExploreNavigation({
         <Grid container alignItems="center">
           <Grid item xs={3}>
             <LogoButton
-              {...logoArgs}
               component={A}
               classes={{ logoButton: classes.logoButton }}
-            />
+            >
+              <Image width="237px" height="55px" {...logoArgs} />
+            </LogoButton>
           </Grid>
           <Grid
             item

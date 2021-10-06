@@ -28,6 +28,8 @@ function DesktopNavigation({
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const logoArgs = isDesktop ? desktopLogoProps : mobileLogoProps;
 
+  console.log(logoArgs.src);
+
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
@@ -37,7 +39,7 @@ function DesktopNavigation({
               component={A}
               classes={{ logoButton: classes.logoButton }}
             >
-              <Image {...logoArgs} />
+              <Image width="237px" height="55px" {...logoArgs} />
             </LogoButton>
           </Grid>
           <Grid
@@ -64,12 +66,12 @@ DesktopNavigation.propTypes = {
   desktopLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
-    src: PropTypes.string,
+    src: PropTypes.shape({}),
   }),
   mobileLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
-    src: PropTypes.string,
+    src: PropTypes.shape({}),
   }),
 };
 
