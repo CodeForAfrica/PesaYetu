@@ -38,9 +38,9 @@ function Share({ title, geoCode, indicatorId, ...props }) {
         switch (social.name) {
           case "Facebook":
             return (
-              <Grid item lg={4}>
+              <Grid item xs={4}>
                 <FacebookShareButton
-                  title=""
+                  title={title}
                   url=""
                   className={classes.shareButton}
                 >
@@ -50,9 +50,9 @@ function Share({ title, geoCode, indicatorId, ...props }) {
             );
           case "Twitter":
             return (
-              <Grid item lg={4}>
+              <Grid item xs={4}>
                 <TwitterShareButton
-                  title=""
+                  title={title}
                   url=""
                   className={classes.shareButton}
                 >
@@ -62,16 +62,24 @@ function Share({ title, geoCode, indicatorId, ...props }) {
             );
           case "LinkedIn":
             return (
-              <Grid item lg={4}>
-                <LinkedinShareButton className={classes.shareButton}>
+              <Grid item xs={4}>
+                <LinkedinShareButton
+                  title={title}
+                  url=""
+                  className={classes.shareButton}
+                >
                   <LinkedInIcon className={classes.icon} />
                 </LinkedinShareButton>
               </Grid>
             );
           case "Email":
             return (
-              <Grid item lg={4}>
-                <EmailShareButton className={classes.shareButton}>
+              <Grid item xs={4}>
+                <EmailShareButton
+                  title={title}
+                  url=""
+                  className={classes.shareButton}
+                >
                   <EmailIcon className={classes.icon} />
                 </EmailShareButton>
               </Grid>
