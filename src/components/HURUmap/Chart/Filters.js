@@ -29,7 +29,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       view?.signal(`${filterName}Filter`, false);
     });
     view?.run();
-  }, []);
+  }, [view, filterGroups]);
 
   useEffect(() => {
     resetFilters();
@@ -49,7 +49,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
         view?.run();
       }
     });
-  }, [filterSelectProps, resetFilters]);
+  }, [filterSelectProps, resetFilters, view]);
 
   const onSelectValue = (attribute, value, pos) => {
     if (pos === "default") {
@@ -108,6 +108,10 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       },
     ]);
   };
+
+  if (!filterGroups?.length) {
+    return null;
+  }
 
   return (
     <div className={classes.root}>

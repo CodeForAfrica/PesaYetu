@@ -51,7 +51,12 @@ function Chart({ indicator, title, geoCode, ...props }) {
     id,
     description,
     metadata: { source, url, groups, primary_group: primaryGroup },
-    chart_configuration: { disableToggle, defaultType, filter },
+    chart_configuration: {
+      disableToggle,
+      defaultType,
+      filter,
+      stacked_field: stackedField,
+    },
   } = indicator;
 
   const [chartValue, setChartValue] = useState(defaultType || "Value");
@@ -106,7 +111,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
         `top: ${y}px; left: ${x}px; z-index: 1230; position: absolute`
       );
     },
-    [id, geoCode, theme]
+    [id, geoCode, theme, defaultType, disableToggle]
   );
 
   useEffect(() => {
@@ -153,9 +158,10 @@ function Chart({ indicator, title, geoCode, ...props }) {
       />
       {!isMobile && (
         <Filters
-          // remove primary group & defined defaults filters
+          // remove primary group, remove stacked field & defined defaults filters
           filterGroups={groups
             ?.filter(({ name }) => name !== primaryGroup)
+            ?.filter(({ name }) => name !== (stackedField || ""))
             ?.filter(({ name }) => !defaultFiltersNames?.includes(name))
             ?.map((g) => {
               return { ...g, slug: slugify(g?.name) };
@@ -187,6 +193,7 @@ Chart.propTypes = {
       filter: PropTypes.PropTypes.shape({
         defaults: PropTypes.arrayOf(PropTypes.shape({})),
       }),
+      stacked_field: PropTypes.string,
     }),
     description: PropTypes.string,
     metadata: PropTypes.shape({
