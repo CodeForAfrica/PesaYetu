@@ -57,6 +57,18 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   code: {
     background: palette.background.paper,
   },
+  shareButton: {
+    backgroundColor: "#ffffff !important",
+    width: "100%",
+    border: "solid 1px #f8f8f8 !important",
+  },
+  icon: {
+    "& path": {
+      "&:first-child": {
+        fill: "#ffffff",
+      },
+    },
+  },
 }));
 
 export default useStyles;

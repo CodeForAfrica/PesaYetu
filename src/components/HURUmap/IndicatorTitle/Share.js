@@ -38,27 +38,43 @@ function Share({ title, geoCode, indicatorId, ...props }) {
         switch (social.name) {
           case "Facebook":
             return (
-              <FacebookShareButton title="" url="">
-                <FacebookIcon />
-              </FacebookShareButton>
+              <Grid item lg={4}>
+                <FacebookShareButton
+                  title=""
+                  url=""
+                  className={classes.shareButton}
+                >
+                  <FacebookIcon className={classes.icon} />
+                </FacebookShareButton>
+              </Grid>
             );
           case "Twitter":
             return (
-              <TwitterShareButton title="" url="">
-                <TwitterIcon />
-              </TwitterShareButton>
+              <Grid item lg={4}>
+                <TwitterShareButton
+                  title=""
+                  url=""
+                  className={classes.shareButton}
+                >
+                  <TwitterIcon className={classes.icon} />
+                </TwitterShareButton>
+              </Grid>
             );
           case "LinkedIn":
             return (
-              <LinkedinShareButton>
-                <LinkedInIcon />
-              </LinkedinShareButton>
+              <Grid item lg={4}>
+                <LinkedinShareButton className={classes.shareButton}>
+                  <LinkedInIcon className={classes.icon} />
+                </LinkedinShareButton>
+              </Grid>
             );
           case "Email":
             return (
-              <EmailShareButton>
-                <EmailIcon />
-              </EmailShareButton>
+              <Grid item lg={4}>
+                <EmailShareButton className={classes.shareButton}>
+                  <EmailIcon className={classes.icon} />
+                </EmailShareButton>
+              </Grid>
             );
           default:
             return null;
