@@ -114,7 +114,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
       const spec = configureScope(indicator, isMobile);
       if (chartRef?.current) {
         const newView = await embed(chartRef.current, spec, {
-          renderer: "svg",
+          renderer: "canvas",
           actions: false,
           tooltip: handler,
         });
@@ -126,11 +126,13 @@ function Chart({ indicator, title, geoCode, ...props }) {
   }, [indicator, isMobile, handler]);
 
   // apply default filter if defined
-  if (filter?.defaults?.length && view) {
-    filter.defaults?.forEach((d) => {
-      const filterName = slugify(d?.name);
+  let defaultFiltersNames;
+  if (view) {
+    defaultFiltersNames = filter.defaults?.map(({ name, value }) => {
+      const filterName = slugify(name);
       view.signal(`${filterName}Filter`, true);
-      view.signal(`${filterName}FilterValue`, d?.value);
+      view.signal(`${filterName}FilterValue`, value);
+      return name;
     });
   }
 
@@ -152,9 +154,11 @@ function Chart({ indicator, title, geoCode, ...props }) {
       />
       {!isMobile && (
         <Filters
+          // remove primary group & defined defaults filters
           filterGroups={groups
             ?.filter(({ name }) => name !== primaryGroup)
-            .map((g) => {
+            ?.filter(({ name }) => !defaultFiltersNames.includes(name))
+            ?.map((g) => {
               return { ...g, slug: slugify(g?.name) };
             })}
           defaultFilters={filter?.defaults ?? undefined}

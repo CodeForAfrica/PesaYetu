@@ -9,44 +9,47 @@ import Select from "@/pesayetu/components/Select";
 
 function ChartFilter({
   groups,
-  defaultFilter,
   onSelectValue,
+  onSelectAttribute,
   deleteFilter,
   index,
   attributeText,
   valueText,
+  selectedAttribute: selectedAttributeProp,
+  selectedValue: selectedValueProp,
   ...props
 }) {
   const classes = useStyles(props);
 
-  const [filters, setFilters] = useState([]);
-  const [selectedAttribute, setSelectedAttribute] = useState("All values");
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedAttribute, setSelectedAttribute] = useState(
+    selectedAttributeProp
+  );
+  const [selectedValue, setSelectedValue] = useState(selectedValueProp);
 
   const [attributeOptions, setAttributeOptions] = useState([]);
   const [valueOptions, setValueOptions] = useState([]);
 
   useEffect(() => {
-    if (defaultFilter?.name && defaultFilter?.value) {
-      setSelectedAttribute(defaultFilter?.name);
-      setSelectedValue(defaultFilter?.value);
-      setAttributeOptions([defaultFilter?.name]);
+    if (index === "default") {
+      setAttributeOptions([selectedAttribute]);
       setValueOptions(
-        groups?.find(({ name }) => name === defaultFilter?.name)
-          ?.subindicators ?? [defaultFilter.value]
+        groups?.find(({ name }) => name === selectedAttribute)
+          ?.subindicators ?? [selectedValue]
       );
     } else {
-      setFilters(groups);
       setAttributeOptions(["All values", ...groups?.map((g) => g.name)]);
     }
-  }, [groups, defaultFilter]);
+  }, [groups, index, selectedValue, selectedAttribute]);
 
   const onAtrributeChange = (e) => {
     if (e?.target?.value) {
       setSelectedAttribute(e.target.value);
       setValueOptions(
-        filters.find(({ name }) => name === e.target.value)?.subindicators
+        groups.find(({ name }) => name === e.target.value)?.subindicators
       );
+      if (onSelectAttribute) {
+        onSelectAttribute(e.target.value, index);
+      }
     }
   };
 
@@ -54,7 +57,7 @@ function ChartFilter({
     if (e?.target?.value) {
       setSelectedValue(e.target.value);
       if (onSelectValue) {
-        onSelectValue(selectedAttribute, e.target.value);
+        onSelectValue(selectedAttribute, e.target.value, index);
       }
     }
   };
@@ -80,7 +83,7 @@ function ChartFilter({
               options={attributeOptions}
               selected={selectedAttribute}
               onChange={onAtrributeChange}
-              disabled={!!defaultFilter}
+              disabled={index === "default"}
               classes={{ select: classes.select, filled: classes.filled }}
             />
           </Grid>
@@ -97,7 +100,7 @@ function ChartFilter({
             />
           </Grid>
         )}
-        {!defaultFilter && index !== 0 && (
+        {index !== "default" && index !== 0 && (
           <Grid item>
             <IconButton className={classes.button} onClick={removeFilter}>
               <CloseIcon className={classes.icon} />
@@ -116,23 +119,24 @@ ChartFilter.propTypes = {
       subindicators: PropTypes.arrayOf(PropTypes.string),
     })
   ),
-  defaultFilter: PropTypes.shape({
-    name: PropTypes.string,
-    value: PropTypes.string,
-  }),
   onSelectValue: PropTypes.func,
+  onSelectAttribute: PropTypes.func,
   deleteFilter: PropTypes.func,
-  index: PropTypes.number,
+  index: PropTypes.anyOfType([PropTypes.number, PropTypes.string]),
   attributeText: PropTypes.string,
   valueText: PropTypes.string,
+  selectedValue: PropTypes.string,
+  selectedAttribute: PropTypes.string,
 };
 
 ChartFilter.defaultProps = {
-  defaultFilter: undefined,
   groups: undefined,
   onSelectValue: undefined,
   deleteFilter: undefined,
   index: undefined,
+  onSelectAttribute: undefined,
+  selectedValue: undefined,
+  selectedAttribute: undefined,
   attributeText: "Filter by attribute:",
   valueText: "Select a value:",
 };

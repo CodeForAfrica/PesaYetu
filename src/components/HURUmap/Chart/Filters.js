@@ -1,7 +1,7 @@
 import { ButtonBase } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import ChartFilter from "@/pesayetu/components/HURUmap/ChartFilter";
 import slugify from "@/pesayetu/utils/slugify";
@@ -19,37 +19,71 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
     {
       groups: filterGroups,
       index: 0,
+      selectedValue: undefined,
+      selectedAttribute: "All values",
     },
   ]);
 
-  useEffect(() => {
-    if (defaultFilters?.length) {
-      const defaultFiltersName = defaultFilters.map(({ name }) => name);
-      const availG = filterGroups?.filter(
-        ({ name }) => !defaultFiltersName.includes(name)
-      );
-      setAvailableGroups(availG);
-    } else {
-      setAvailableGroups(filterGroups);
-      filterGroups.forEach(({ slug: filterName }) => {
-        view?.signal(`${filterName}Filter`, false);
-      });
-    }
-  }, [defaultFilters, filterGroups, view]);
+  const resetFilters = useCallback(() => {
+    filterGroups.forEach(({ slug: filterName }) => {
+      view?.signal(`${filterName}Filter`, false);
+    });
+  }, []);
 
-  const onSelectValue = (attribute, value) => {
-    // adjust available groups
-    if (attribute !== "All values") {
-      const slug = slugify(attribute);
-      view?.signal(`${slug}Filter`, true);
-      view?.signal(`${slug}FilterValue`, value);
+  useEffect(() => {
+    resetFilters();
+    setAvailableGroups(filterGroups);
+  }, [filterGroups, resetFilters]);
+
+  useEffect(() => {
+    resetFilters();
+    const sortedFiltersProps = filterSelectProps?.sort(
+      (a, b) => a.index - b.index
+    );
+    sortedFiltersProps.forEach((fp) => {
+      if (fp.selectedAttribute !== "All values") {
+        const filterName = slugify(fp.selectedAttribute);
+        view?.signal(`${filterName}Filter`, true);
+        view?.signal(`${filterName}FilterValue`, fp.selectedValue);
+      }
+    });
+  }, [filterSelectProps, resetFilters]);
+
+  const onSelectValue = (attribute, value, pos) => {
+    if (pos === "default") {
+      const filterName = slugify(attribute);
+      view?.signal(`${filterName}FilterValue`, value);
     } else {
-      availableGroups.forEach(({ slug: filterName }) => {
-        view?.signal(`${filterName}Filter`, false);
+      const indexFilterProp = filterSelectProps.map((fp) => {
+        if (fp.index === pos) {
+          return {
+            ...fp,
+            selectedAttribute: attribute,
+            selectedValue: value,
+          };
+        }
+        return fp;
       });
+
+      setFilterSelectProps(indexFilterProp);
+      // adjust available groups for next filter inputs
+      const fGroups = availableGroups.filter(({ name }) => name !== attribute);
+      setAvailableGroups(fGroups);
     }
-    const fGroups = availableGroups.filter(({ name }) => name !== attribute);
-    setAvailableGroups(fGroups);
+  };
+
+  const onSelectAttribute = (attribute, pos) => {
+    const indexFilterProp = filterSelectProps.map((fp) => {
+      if (fp.index === pos) {
+        return {
+          ...fp,
+          selectedAttribute: attribute,
+          selectedValue: undefined,
+        };
+      }
+      return fp;
+    });
+    setFilterSelectProps(indexFilterProp);
   };
 
   const deleteFilter = (attribute, filterIndex) => {
@@ -59,28 +93,42 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
     );
     setAvailableGroups([attributeGroup, ...availableGroups]);
     setFilterSelectProps(filterProps);
-    const slug = slugify(attribute);
-    view?.signal(`${slug}Filter`, false);
   };
 
   const addFilter = () => {
     setFilterSelectProps([
       ...filterSelectProps,
-      { groups: availableGroups, index: filterSelectProps?.length },
+      {
+        groups: availableGroups,
+        index: filterSelectProps?.length,
+        selectedValue: undefined,
+        selectedAttribute: "All values",
+      },
     ]);
   };
 
   return (
     <div className={classes.root}>
-      {defaultFilters?.map((df) => (
-        <ChartFilter groups={filterGroups} defaultFilter={df} />
-      ))}
+      {
+        // default filters cannot be deleted
+        // & their attributes cannot be changes, but values can
+        defaultFilters?.map((df) => (
+          <ChartFilter
+            groups={filterGroups}
+            selectedAttribute={df.name}
+            selectedValue={df.value}
+            index="default"
+            onSelectValue={onSelectValue}
+          />
+        ))
+      }
       {filterSelectProps?.map((filterProp) => (
         <ChartFilter
           key={filterProp.index}
           {...filterProp}
           deleteFilter={deleteFilter}
           onSelectValue={onSelectValue}
+          onSelectAttribute={onSelectAttribute}
         />
       ))}
       <ButtonBase onClick={addFilter}>Add new filter</ButtonBase>
