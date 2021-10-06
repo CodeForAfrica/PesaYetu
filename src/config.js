@@ -186,11 +186,13 @@ export const navigationArgs = {
     href: "https://codeforafrica.org",
     src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Component-61-–-1.svg",
   },
+
   mobileLogoProps: {
     alt: "Code for Africa mobile logo",
     href: "https://codeforafrica.org",
     src: "https://cms.dev.codeforafrica.org/pesayetu/wp-content/uploads/sites/2/2021/10/Group-4188@2x.png",
   },
+
   drawerLogoProps: {
     alt: "Code for Africa drawer logo",
     href: "https://codeforafrica.org",
