@@ -32,6 +32,8 @@ function Tabs({ name: nameProp, items, activeTab, ...props }) {
       <MuiTabs
         value={value}
         onChange={handleChange}
+        variant="scrollable"
+        scrollButtons="off"
         aria-label={`${name} tabs`}
         classes={{
           root: classes.tabs,
