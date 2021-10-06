@@ -11,15 +11,15 @@ import {
 
 import useStyles from "./useStyles";
 
-import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/footer-social-fb.svg";
-import { ReactComponent as InstagramIcon } from "@/pesayetu/assets/footer-social-ig.svg";
-import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/footer-social-in.svg";
-import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/footer-social-tw.svg";
+import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/icons/Group 3047.svg";
+import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/icons/Group 3048.svg";
+import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/icons/Group 3184.svg";
+import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.svg";
 
 const shareData = [
   { name: "Facebook", icon: FacebookIcon },
   { name: "Twitter", icon: TwitterIcon },
-  { name: "Instagram", icon: InstagramIcon },
+  { name: "Email", icon: EmailIcon },
   { name: "LinkedIn", icon: LinkedInIcon },
 ];
 
@@ -41,21 +41,12 @@ function Share({ title, geoCode, indicatorId, ...props }) {
               <FacebookShareButton title="" url="">
                 <FacebookIcon />
               </FacebookShareButton>
-              // <Grid item>
-              //   <Typography className={classes.text}>{social.name}</Typography>
-              // </Grid>
             );
           case "Twitter":
             return (
               <TwitterShareButton title="" url="">
                 <TwitterIcon />
               </TwitterShareButton>
-            );
-          case "Instagram":
-            return (
-              <FacebookShareButton>
-                <InstagramIcon />
-              </FacebookShareButton>
             );
           case "LinkedIn":
             return (
@@ -66,7 +57,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
           case "Email":
             return (
               <EmailShareButton>
-                <TwitterIcon />
+                <EmailIcon />
               </EmailShareButton>
             );
           default:
