@@ -83,7 +83,11 @@ function ExploreNavigation({
               component={A}
               classes={{ logoButton: classes.logoButton }}
             >
-              <Image width="237px" height="55px" {...logoArgs} />
+              <Image
+                width={logoArgs.width}
+                height={logoArgs.height}
+                {...logoArgs}
+              />
             </LogoButton>
           </Grid>
           <Grid
@@ -132,6 +136,8 @@ ExploreNavigation.propTypes = {
     alt: PropTypes.string,
     href: PropTypes.string,
     src: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
   }),
   mobileLogoProps: PropTypes.shape({
     alt: PropTypes.string,

@@ -185,18 +185,24 @@ export const navigationArgs = {
     },
   ],
   desktopLogoProps: {
+    width: 237,
+    height: 55,
     alt: "desktop logo",
     href: "https://codeforafrica.org",
     src: desktopLogo,
   },
 
   mobileLogoProps: {
+    width: 254,
+    height: 40,
     alt: "mobile logo",
     href: "https://codeforafrica.org",
     src: mobileLogo,
   },
 
   drawerLogoProps: {
+    width: 254,
+    height: 40,
     alt: "drawer logo",
     href: "https://codeforafrica.org",
     src: drawerLogo,

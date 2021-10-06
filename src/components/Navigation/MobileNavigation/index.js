@@ -201,7 +201,11 @@ function MobileNavigation({
             component={A}
             classes={{ logoButton: classes.logoButton }}
           >
-            <Image width="254px" height="40px" {...mobileLogoProps} />
+            <Image
+              width={mobileLogoProps.width}
+              height={mobileLogoProps.height}
+              {...mobileLogoProps}
+            />
           </LogoButton>
         </Grid>
         <Grid item xs={2}>
@@ -246,7 +250,11 @@ function MobileNavigation({
                   component={A}
                   classes={{ logoButton: classes.logoButton }}
                 >
-                  <Image width="254px" height="40px" {...drawerLogoProps} />
+                  <Image
+                    width={drawerLogoProps.width}
+                    height={drawerLogoProps.height}
+                    {...drawerLogoProps}
+                  />
                 </LogoButton>
               </Grid>
               <Grid item xs={2} className={classes.closeButtonSection}>
@@ -297,11 +305,15 @@ MobileNavigation.propTypes = {
     alt: PropTypes.string,
     href: PropTypes.string,
     src: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
   }),
   mobileLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
     src: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
   }),
 };
 
