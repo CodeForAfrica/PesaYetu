@@ -59,7 +59,6 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     width: "100%",
     [breakpoints.up("md")]: {
       margin: 0,
-      height: typography.pxToRem(476 - 48),
       width: typography.pxToRem(608),
     },
     [breakpoints.up("lg")]: {
