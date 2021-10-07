@@ -131,14 +131,21 @@ function Chart({ indicator, title, geoCode, ...props }) {
   }, [indicator, isMobile, handler]);
 
   // apply default filter if defined
-  const defaultFiltersNames =
+  const defaultFilters =
     filter?.defaults?.map(({ name, value }) => {
       const filterName = slugify(name);
       view?.signal(`${filterName}Filter`, true);
       view?.signal(`${filterName}FilterValue`, value);
       view?.run();
-      return name;
-    }) ?? [];
+      return {
+        name,
+        value,
+        subindicators: groups?.find(({ name: gName }) => name === gName)
+          ?.subindicators,
+      };
+    }) ?? undefined;
+
+  const defaultFiltersNames = defaultFilters?.map(({ name }) => name);
 
   if (!indicator?.data) {
     return null;
@@ -162,11 +169,11 @@ function Chart({ indicator, title, geoCode, ...props }) {
           filterGroups={groups
             ?.filter(({ name }) => name !== primaryGroup)
             ?.filter(({ name }) => name !== (stackedField || ""))
-            ?.filter(({ name }) => !defaultFiltersNames?.includes(name))
+            ?.filter(({ name }) => !defaultFiltersNames.includes(name))
             ?.map((g) => {
               return { ...g, slug: slugify(g?.name) };
             })}
-          defaultFilters={filter?.defaults ?? undefined}
+          defaultFilters={defaultFilters ?? undefined}
           view={view}
         />
       )}

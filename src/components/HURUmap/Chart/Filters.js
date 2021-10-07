@@ -54,7 +54,9 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
   const onSelectValue = (attribute, value, pos) => {
     if (pos === "default") {
       const filterName = slugify(attribute);
-      view?.signal(`${filterName}FilterValue`, value).run();
+      view?.signal(`${filterName}Filter`, true);
+      view?.signal(`${filterName}FilterValue`, value);
+      view?.run();
     } else {
       const indexFilterProp = filterSelectProps.map((fp) => {
         if (fp.index === pos) {
@@ -120,7 +122,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
         // & their attributes cannot be changes, but values can
         defaultFilters?.map((df) => (
           <ChartFilter
-            groups={filterGroups}
+            groups={[df, ...filterGroups]}
             selectedAttribute={df.name}
             selectedValue={df.value}
             index="default"

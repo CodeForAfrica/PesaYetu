@@ -105,8 +105,8 @@ Default.args = {
       filter: {
         defaults: [
           {
-            name: "age",
-            value: "15-35 (ZA)",
+            name: "language",
+            value: "Other",
           },
         ],
       },

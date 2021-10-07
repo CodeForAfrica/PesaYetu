@@ -103,7 +103,7 @@ function ChartFilter({
             />
           </Grid>
         )}
-        {index !== "default" && index !== 0 && (
+        {index !== "default" && (
           <Grid item>
             <IconButton className={classes.button} onClick={removeFilter}>
               <CloseIcon className={classes.icon} />
