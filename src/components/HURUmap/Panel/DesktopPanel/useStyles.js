@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(
-  ({ typography, palette, transitions, widths, zIndex }) => ({
+  ({ typography, palette, transitions, widths }) => ({
     root: {
       display: "flex",
       height: "100%",
@@ -55,15 +55,6 @@ const useStyles = makeStyles(
       bottom: 0,
       position: "fixed",
       left: 0,
-    },
-    profile: {
-      marginLeft: `max(calc((100vw - 1160px)/2 + 79px), 300px)`,
-      width: typography.pxToRem(800),
-      minHeight: "100%",
-      paddingTop: typography.pxToRem(67.7),
-      paddingLeft: typography.pxToRem(17),
-      paddingRight: typography.pxToRem(17),
-      zIndex: zIndex.drawer,
     },
   })
 );

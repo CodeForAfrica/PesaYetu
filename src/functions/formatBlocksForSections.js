@@ -13,17 +13,18 @@ function formatLazyBlockImage(image) {
 }
 
 function formatLazyBlockIteratorContentWithImage(
-  { items: itemsProps, ...rest },
-  imgField
+  attributes,
+  imgField,
+  itemField = "items"
 ) {
   const items =
-    JSON.parse(decodeURIComponent(itemsProps)).map((item) => {
+    JSON.parse(decodeURIComponent(attributes[itemField])).map((item) => {
       return {
         ...item,
         [imgField]: item[imgField]?.url ?? null,
       };
     }) || null;
-  return { ...rest, items };
+  return { ...attributes, [itemField]: items };
 }
 function formatDataSource({ items: itemsProps, image, ...rest }) {
   const items = JSON.parse(decodeURIComponent(itemsProps)) || null;
@@ -218,6 +219,12 @@ function format(block) {
       return formatDataIndicators(attributes);
     case "lazyblock/tutorial":
       return formatLazyBlockIteratorContentWithImage(attributes, "image");
+    case "lazyblock/panel":
+      return formatLazyBlockIteratorContentWithImage(
+        attributes,
+        "icon",
+        "panelItems"
+      );
     case "lazyblock/documents-and-datasets":
       return formatDocumentsAndDataSets(attributes, innerBlocks);
     case "lazyblock/hero":

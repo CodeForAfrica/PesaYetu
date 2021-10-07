@@ -8,10 +8,44 @@ import useStyles from "./useStyles";
 function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);
 
-  const code = `<iframe style="height:100%; width: 100%"
+  const code = `<div>
+  <style>
+    .frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      z-index: 10;
+    }
+    .wrapper {
+        position: relative;
+        overflow: hidden;
+        padding-top: 60%;
+    }
+    @media (max-width: 1280px) {
+        .wrapper {
+          padding-top: 90%;
+        }
+    @media (max-width: 768px) {
+      .wrapper {
+        padding-top: 100%;
+      }
+    @media (max-width: 620px) {
+      .wrapper {
+        padding-top: 120%;
+      }
+      @media (max-width: 500px) {
+        .wrapper {
+          padding-top: 160%;
+        }
+}
+</style> 
+<div class="wrapper"><iframe class="frame" 
   src="${
     process.env.NEXT_PUBLIC_APP_URL
-  }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe>
+  }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div></div>
   `;
 
   return (
