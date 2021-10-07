@@ -11,6 +11,7 @@ import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
 });
+
 const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
     marginLeft: typography.pxToRem(20),
@@ -48,15 +49,16 @@ function Profile({ categories, geography, ...props }) {
             description={category?.description}
           />
           {category.children.map((child) => (
-            <SubcategoryHeader
-              key={child.title}
-              title={child.title}
-              description={child?.description}
-            >
-              {child.children.map((indicator) => (
-                <Chart {...indicator} geoCode={geography.code} />
+            <Fragment key={child.title}>
+              <SubcategoryHeader
+                key={child.title}
+                title={child.title}
+                description={child?.description}
+              />
+              {child.children.map(({ index, ...indicator }) => (
+                <Chart key={index} {...indicator} geoCode={geography.code} />
               ))}
-            </SubcategoryHeader>
+            </Fragment>
           ))}
         </Fragment>
       ))}
