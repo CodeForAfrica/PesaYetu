@@ -80,7 +80,7 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container justifyContent="space-between">
+      <Grid container justifyContent="space-between" alignItems="center">
         <Grid item xs={12} md={8}>
           <Typography variant="h6">{title}</Typography>
         </Grid>
