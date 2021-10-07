@@ -8,8 +8,8 @@ import useStyles from "./useStyles";
 function Share({ title, geoCode, indicatorId, ...props }) {
   const classes = useStyles(props);
 
-  const code = `
-  <style scoped>
+  const code = `<div>
+  <style>
     .frame {
       position: absolute;
       top: 0;
@@ -44,7 +44,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 <div class="wrapper"><iframe class="frame" 
   src="${
     process.env.NEXT_PUBLIC_APP_URL
-  }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div>
+  }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div></div>
   `;
 
   return (
