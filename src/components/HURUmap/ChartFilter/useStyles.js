@@ -9,7 +9,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
       marginRight: typography.pxToRem(10),
     },
   },
-  button: {
+  icon: {
     padding: 0,
     background: palette.background.paper,
     "& :hover": {
@@ -20,15 +20,14 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   select: {
     width: typography.pxToRem(165),
-    paddingLeft: typography.pxToRem(15),
-    paddingBottom: typography.pxToRem(10),
-    paddingTop: typography.pxToRem(10),
     [breakpoints.up("lg")]: {
       width: typography.pxToRem(185),
     },
   },
   filled: {
-    paddingRight: `0 !important`,
+    padding: `${typography.pxToRem(10)} 0 ${typography.pxToRem(
+      10
+    )} ${typography.pxToRem(15)} !important`,
   },
 }));
 

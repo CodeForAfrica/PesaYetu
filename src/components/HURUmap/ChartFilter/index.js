@@ -36,7 +36,7 @@ function ChartFilter({
         groups?.find(({ name }) => name === selectedAttribute)
           ?.subindicators ?? [selectedValue]
       );
-    } else {
+    } else if (groups) {
       setAttributeOptions(["All values", ...groups?.map((g) => g.name)]);
     }
   }, [groups, index, selectedValue, selectedAttribute]);
@@ -103,9 +103,9 @@ function ChartFilter({
             />
           </Grid>
         )}
-        {index !== "default" && (
+        {index !== "default" && index !== 0 && (
           <Grid item>
-            <IconButton className={classes.button} onClick={removeFilter}>
+            <IconButton className={classes.icon} onClick={removeFilter}>
               <CloseIcon />
             </IconButton>
           </Grid>
