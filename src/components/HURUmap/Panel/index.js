@@ -15,7 +15,11 @@ function Panel({ data, comparedProfile, ...props }) {
   return (
     <>
       <Hidden lgUp implementation="css">
-        <MobilePanel items={items} {...props} />
+        <MobilePanel
+          comparedProfile={formatedComparedProfile}
+          items={items}
+          {...props}
+        />
       </Hidden>
       <Hidden mdDown implementation="css">
         <DesktopPanel

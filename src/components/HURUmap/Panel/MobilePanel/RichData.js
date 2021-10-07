@@ -11,7 +11,7 @@ function RichData(props) {
   return (
     <>
       <SubcategoryList items={item.children} />
-      <Profile categories={[item]} geography={geography} />
+      <Profile {...props} categories={[item]} geography={geography} />
     </>
   );
 }

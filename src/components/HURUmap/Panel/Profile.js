@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
@@ -45,12 +45,14 @@ function Profile({ categories, geography, comparedProfile, ...props }) {
         title={geography.name}
         {...geography}
       />
-      <LocationHeader
-        variant="secondary"
-        icon={Print}
-        title={comparedProfile?.geography?.name}
-        {...comparedProfile?.geography}
-      />
+      <Hidden smDown implementation="css">
+        <LocationHeader
+          variant="secondary"
+          icon={Print}
+          title={comparedProfile?.geography?.name}
+          {...comparedProfile?.geography}
+        />
+      </Hidden>
       {categories.map((category, categoryIndex) => (
         <Fragment key={category.tite}>
           <CategoryHeader
@@ -66,21 +68,16 @@ function Profile({ categories, geography, comparedProfile, ...props }) {
                 description={child?.description}
               />
               {child.children.map((indicator, indicatorIndex) => (
-                <Grid container spacing={2}>
-                  <Grid item xs>
-                    <Chart {...indicator} geoCode={geography.code} />
-                  </Grid>
-                  {comparedProfile?.items && (
-                    <Grid item xs>
-                      <Chart
-                        {...comparedProfile.items[categoryIndex].children[
-                          subcategoryIndex
-                        ].children[indicatorIndex]}
-                        geoCode={geography.code}
-                      />
-                    </Grid>
-                  )}
-                </Grid>
+                <Chart
+                  variant="primary"
+                  {...indicator}
+                  secondaryIndicator={
+                    comparedProfile.items[categoryIndex].children[
+                      subcategoryIndex
+                    ].children[indicatorIndex]
+                  }
+                  geoCode={geography.code}
+                />
               ))}
             </Fragment>
           ))}

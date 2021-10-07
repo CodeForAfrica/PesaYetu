@@ -1,4 +1,4 @@
-import { Typography, useMediaQuery } from "@material-ui/core";
+import { Grid, Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -38,7 +38,13 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
+function Chart({
+  indicator: indicatorProp,
+  secondaryIndicator,
+  title,
+  geoCode,
+  ...props
+}) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
   const [indicator, setIndicator] = useState(indicatorProp);
@@ -73,7 +79,9 @@ function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
   };
 
   const spec = configureScope(indicator, isMobile);
+  const comparedSpec = configureScope(secondaryIndicator?.indicator, isMobile);
   const className = `charttooltip-${id}-${geoCode}`;
+  const isCompare = secondaryIndicator && !isMobile;
 
   const handler = (_, event, item, value) => {
     let el = document.getElementsByClassName(className)[0];
@@ -135,13 +143,29 @@ function Chart({ indicator: indicatorProp, title, geoCode, ...props }) {
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
       />
-      <Vega
-        spec={spec}
-        actions={false}
-        tooltip={handler}
-        onNewView={handleNewView}
-        className={classes.chart}
-      />
+      <Grid container>
+        <Grid item xs={isCompare ? 6 : 12}>
+          <Vega
+            spec={spec}
+            actions={false}
+            tooltip={handler}
+            onNewView={handleNewView}
+            className={classes.chart}
+          />
+        </Grid>
+        <Grid item xs={isCompare ? 6 : 12}>
+          {isCompare && (
+            <Vega
+              spec={comparedSpec}
+              actions={false}
+              tooltip={handler}
+              onNewView={handleNewView}
+              className={classes.chart}
+            />
+          )}
+        </Grid>
+      </Grid>
+
       {url && source && (
         <div className={classes.source}>
           <Typography className={classes.sourceTitle}>Source:&nbsp;</Typography>
@@ -168,12 +192,28 @@ Chart.propTypes = {
     }),
     data: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  secondaryIndicator: PropTypes.shape({
+    indicator: PropTypes.shape({
+      id: PropTypes.number,
+      chart_configuration: PropTypes.shape({
+        disableToggle: PropTypes.bool,
+        defaultType: PropTypes.string,
+      }),
+      description: PropTypes.string,
+      metadata: PropTypes.shape({
+        source: PropTypes.string,
+        url: PropTypes.string,
+      }),
+      data: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+  }),
   title: PropTypes.string,
   geoCode: PropTypes.string,
 };
 
 Chart.defaultProps = {
   indicator: undefined,
+  secondaryIndicator: undefined,
   title: undefined,
   geoCode: undefined,
 };
