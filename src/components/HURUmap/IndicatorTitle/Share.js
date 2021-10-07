@@ -22,7 +22,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
     .wrapper {
         position: relative;
         overflow: hidden;
-        padding-top: 60%;
+        padding-top: 75%;
     }
     @media (max-width: 1280px) {
         .wrapper {

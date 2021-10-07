@@ -24,7 +24,6 @@ const useStyles = makeStyles(
         position: "fixed",
         left: 0,
         right: 0,
-        top: 110,
       },
       "& .tooltipPop": {
         background: palette.background.default,
