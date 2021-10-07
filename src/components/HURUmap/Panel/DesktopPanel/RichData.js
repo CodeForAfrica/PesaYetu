@@ -12,12 +12,7 @@ function RichData({ geography, items, ...props }) {
   return (
     <>
       <TreeView classes={{ root: classes.treeView }} items={items} />
-      <Profile
-        {...props}
-        comparedProfile={items}
-        categories={items}
-        geography={geography}
-      />
+      <Profile {...props} categories={items} geography={geography} />
     </>
   );
 }

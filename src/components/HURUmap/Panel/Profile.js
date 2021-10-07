@@ -39,7 +39,18 @@ function Profile({ categories, geography, comparedProfile, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.profile}>
-      <LocationHeader icon={Print} title={geography.name} {...geography} />
+      <LocationHeader
+        variant="primary"
+        icon={Print}
+        title={geography.name}
+        {...geography}
+      />
+      <LocationHeader
+        variant="secondary"
+        icon={Print}
+        title={comparedProfile?.geography?.name}
+        {...comparedProfile?.geography}
+      />
       {categories.map((category, categoryIndex) => (
         <Fragment key={category.tite}>
           <CategoryHeader
@@ -48,20 +59,21 @@ function Profile({ categories, geography, comparedProfile, ...props }) {
             description={category?.description}
           />
           {category.children.map((child, subcategoryIndex) => (
-            <SubcategoryHeader
-              key={child.title}
-              title={child.title}
-              description={child?.description}
-            >
+            <Fragment key={child.title}>
+              <SubcategoryHeader
+                key={child.title}
+                title={child.title}
+                description={child?.description}
+              />
               {child.children.map((indicator, indicatorIndex) => (
-                <Grid container>
-                  <Grid item>
+                <Grid container spacing={2}>
+                  <Grid item xs>
                     <Chart {...indicator} geoCode={geography.code} />
                   </Grid>
-                  {comparedProfile && (
-                    <Grid item>
+                  {comparedProfile?.items && (
+                    <Grid item xs>
                       <Chart
-                        {...comparedProfile[categoryIndex].children[
+                        {...comparedProfile.items[categoryIndex].children[
                           subcategoryIndex
                         ].children[indicatorIndex]}
                         geoCode={geography.code}
@@ -70,7 +82,7 @@ function Profile({ categories, geography, comparedProfile, ...props }) {
                   )}
                 </Grid>
               ))}
-            </SubcategoryHeader>
+            </Fragment>
           ))}
         </Fragment>
       ))}
@@ -87,15 +99,22 @@ Profile.propTypes = {
       title: PropTypes.string,
     })
   ),
-  comparedProfile: PropTypes.arrayOf(
-    PropTypes.shape({
-      children: PropTypes.arrayOf(
-        PropTypes.shape({
-          children: PropTypes.arrayOf(PropTypes.shape({})),
-        })
-      ),
-    })
-  ),
+  comparedProfile: PropTypes.shape({
+    geography: PropTypes.shape({
+      name: PropTypes.string,
+      code: PropTypes.string,
+    }),
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        children: PropTypes.arrayOf(
+          PropTypes.shape({
+            children: PropTypes.arrayOf(PropTypes.shape({})),
+          })
+        ),
+      })
+    ),
+  }),
+
   geography: PropTypes.shape({
     name: PropTypes.string,
     code: PropTypes.string,
