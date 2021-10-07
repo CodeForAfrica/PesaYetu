@@ -7,17 +7,22 @@ import DesktopNavigation from "./DesktopNavigation";
 import ExploreNavigation from "./ExploreNavigation";
 import MobileNavigation from "./MobileNavigation";
 
-const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
-  root: {
-    backgroundColor: palette.background.default,
-    zIndex: zIndex.modal,
-  },
-  section: {},
-  toolbar: {
-    display: "block",
-    padding: `${typography.pxToRem(12)} 0`,
-  },
-}));
+const useStyles = makeStyles(
+  ({ palette, typography, zIndex, breakpoints }) => ({
+    root: {
+      backgroundColor: palette.background.default,
+      zIndex: zIndex.modal,
+    },
+    section: {},
+    toolbar: {
+      display: "block",
+      padding: `0`,
+      [breakpoints.up("lg")]: {
+        padding: `${typography.pxToRem(12)} 0`,
+      },
+    },
+  })
+);
 
 function Navigation({ variant, ...props }) {
   const classes = useStyles(props);

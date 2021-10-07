@@ -1,3 +1,5 @@
+import A from "@commons-ui/core/A";
+import LogoButton from "@commons-ui/core/LogoButton";
 import {
   Grid,
   Slide,
@@ -15,7 +17,6 @@ import SearchIcon from "@/pesayetu/assets/icons/search-open.svg";
 import MenuCloseIcon from "@/pesayetu/assets/menu_close.svg";
 import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
-import Logo from "@/pesayetu/components/Logo";
 import Menu from "@/pesayetu/components/Menu";
 import Section from "@/pesayetu/components/Section";
 
@@ -26,9 +27,16 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  closeButtonSection: {
+    display: "flex",
+    alignItems: "center",
+  },
+  logoButton: {
+    width: typography.pxToRem(254),
+  },
   section: {
     paddingRight: typography.pxToRem(20),
-    paddingLeft: typography.pxToRem(17),
+    paddingLeft: typography.pxToRem(9.6),
     [breakpoints.up("md")]: {
       width: "100%",
     },
@@ -94,8 +102,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   closeButton: {
     color: palette.background.main,
-    width: 48,
-    paddingLeft: typography.pxToRem(12),
+    width: 60,
     "&:hover": {
       background: "none",
     },
@@ -167,7 +174,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" timeout={1000} ref={ref} {...props} />;
 });
 
-function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
+function MobileNavigation({
+  logoProps,
+  menuProps,
+  mobileLogoProps,
+  drawerLogoProps,
+  socialLinks,
+  ...props
+}) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
 
@@ -182,10 +196,19 @@ function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
   return (
     <Section classes={{ root: classes.section }}>
       <div className={classes.root}>
-        <Grid item xs={10} md={11}>
-          <Logo {...logoProps} />
+        <Grid item xs={10}>
+          <LogoButton
+            component={A}
+            classes={{ logoButton: classes.logoButton }}
+          >
+            <Image
+              width={mobileLogoProps.width}
+              height={mobileLogoProps.height}
+              {...mobileLogoProps}
+            />
+          </LogoButton>
         </Grid>
-        <Grid item xs={2} md={1}>
+        <Grid item xs={2}>
           <IconButton
             aria-label="Open drawer"
             edge="start"
@@ -216,21 +239,25 @@ function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
           <DialogActions className={classes.dialogActions}>
             <Grid
               container
+              item
+              xs={12}
               direction="row"
               ustifyContent="space-between"
               className={classes.logoSection}
             >
-              <Grid item xs={11}>
-                <Logo
-                  {...logoProps}
-                  classes={{
-                    firstTitle: classes.firstTitle,
-                    secondTitle: classes.secondTitle,
-                    subtitle: classes.subtitle,
-                  }}
-                />
+              <Grid item xs={10}>
+                <LogoButton
+                  component={A}
+                  classes={{ logoButton: classes.logoButton }}
+                >
+                  <Image
+                    width={drawerLogoProps.width}
+                    height={drawerLogoProps.height}
+                    {...drawerLogoProps}
+                  />
+                </LogoButton>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2} className={classes.closeButtonSection}>
                 <IconButton
                   aria-label="Close drawer"
                   edge="end"
@@ -238,12 +265,7 @@ function MobileNavigation({ logoProps, menuProps, socialLinks, ...props }) {
                   onClick={handleClose}
                   className={classes.closeButton}
                 >
-                  <Image
-                    src={MenuCloseIcon}
-                    width={48}
-                    height={48}
-                    className={classes.close}
-                  />
+                  <Image src={MenuCloseIcon} width={48} height={48} />
                 </IconButton>
               </Grid>
             </Grid>
@@ -279,11 +301,27 @@ MobileNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
+  drawerLogoProps: PropTypes.shape({
+    alt: PropTypes.string,
+    href: PropTypes.string,
+    src: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+  }),
+  mobileLogoProps: PropTypes.shape({
+    alt: PropTypes.string,
+    href: PropTypes.string,
+    src: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+  }),
 };
 
 MobileNavigation.defaultProps = {
   logoProps: undefined,
   menuProps: undefined,
   socialLinks: undefined,
+  drawerLogoProps: undefined,
+  mobileLogoProps: undefined,
 };
 export default MobileNavigation;
