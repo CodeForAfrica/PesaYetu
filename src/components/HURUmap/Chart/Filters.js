@@ -61,7 +61,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       const indexFilterProp = filterSelectProps.map((fp) => {
         if (fp.index === pos) {
           // adjust available groups for next filter inputs
-          const fGroups = fp.groups?.filter(({ name }) => name !== attribute);
+          const fGroups = fp.groups?.filter((p) => p?.name !== attribute) ?? [];
           setAvailableGroups(fGroups);
           return {
             ...fp,
@@ -91,7 +91,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
   };
 
   const deleteFilter = (attribute, filterIndex) => {
-    const attributeGroup = filterGroups.find(({ name }) => name === attribute);
+    const attributeGroup = filterGroups.find((p) => p?.name === attribute);
     const filterProps = filterSelectProps.filter(
       ({ index }) => index !== filterIndex
     );
@@ -123,8 +123,8 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
         defaultFilters?.map((df) => (
           <ChartFilter
             groups={[df, ...filterGroups]}
-            selectedAttribute={df.name}
-            selectedValue={df.value}
+            selectedAttribute={df?.name}
+            selectedValue={df?.value}
             index="default"
             onSelectValue={onSelectValue}
           />
@@ -139,7 +139,9 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
           onSelectAttribute={onSelectAttribute}
         />
       ))}
-      <ButtonBase onClick={addFilter}>Add new filter</ButtonBase>
+      {availableGroups?.length > 0 && (
+        <ButtonBase onClick={addFilter}>Add new filter</ButtonBase>
+      )}
     </div>
   );
 }

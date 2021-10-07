@@ -15,10 +15,8 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     "& :hover": {
       background: palette.background.paper,
     },
-  },
-  icon: {
-    height: typography.pxToRem(38),
-    width: typography.pxToRem(38),
+    height: typography.pxToRem(36),
+    width: typography.pxToRem(36),
   },
   select: {
     width: typography.pxToRem(165),

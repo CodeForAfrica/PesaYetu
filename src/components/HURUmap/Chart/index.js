@@ -169,7 +169,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
           filterGroups={groups
             ?.filter(({ name }) => name !== primaryGroup)
             ?.filter(({ name }) => name !== (stackedField || ""))
-            ?.filter(({ name }) => !defaultFiltersNames.includes(name))
+            ?.filter(({ name }) => !defaultFiltersNames?.includes(name))
             ?.map((g) => {
               return { ...g, slug: slugify(g?.name) };
             })}
