@@ -23,8 +23,15 @@ const shareData = [
   { name: "LinkedIn", icon: LinkedInIcon },
 ];
 
-function Share({ title, geoCode, indicatorId, ...props }) {
+function Share({ title, geoCode, indicatorId, view, ...props }) {
   const classes = useStyles(props);
+
+  const handleShare = async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    // const url = await view.toImageURL("png");
+  };
 
   const code = `<iframe style="height:100%; width: 100%"
   src="${
@@ -43,6 +50,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
                   title={title}
                   url="www.share.com"
                   className={classes.shareButton}
+                  onClick={handleShare}
                 >
                   <FacebookIcon className={classes.icon} />
                 </FacebookShareButton>
@@ -103,11 +111,16 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 
 Share.propTypes = {
   title: PropTypes.string,
+  view: PropTypes.shape({
+    toImageURL: PropTypes.func,
+    data: PropTypes.func,
+  }),
   geoCode: PropTypes.string,
   indicatorId: PropTypes.number,
 };
 
 Share.defaultProps = {
+  view: undefined,
   title: undefined,
   geoCode: undefined,
   indicatorId: undefined,
