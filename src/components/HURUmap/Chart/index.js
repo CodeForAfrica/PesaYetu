@@ -146,6 +146,7 @@ function Chart({
       <Grid container>
         <Grid item xs={isCompare ? 6 : 12}>
           <Vega
+            variant="primary"
             spec={spec}
             actions={false}
             tooltip={handler}
@@ -156,6 +157,7 @@ function Chart({
         <Grid item xs={isCompare ? 6 : 12}>
           {isCompare && (
             <Vega
+              variant="secondary"
               spec={comparedSpec}
               actions={false}
               tooltip={handler}
