@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   section: {
     paddingRight: typography.pxToRem(20),
-    paddingLeft: typography.pxToRem(17),
+    paddingLeft: typography.pxToRem(9.6),
     [breakpoints.up("md")]: {
       width: "100%",
     },
