@@ -11,7 +11,9 @@ import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(() => ({
   root: {},
-  logoButton: {},
+  logoButton: {
+    paddingLeft: 0,
+  },
   section: {},
 }));
 
