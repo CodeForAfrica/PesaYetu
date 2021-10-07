@@ -17,6 +17,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
       width: 100%;
       height: 100%;
       border: 0;
+      z-index: 10;
     }
     .wrapper {
         position: relative;
@@ -41,7 +42,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
         }
 }
 </style>
-<div class="wrapper"><iframe class="frame" 
+<div class="wrapper"><iframe class="frame" scrolling="no"
   src="${
     process.env.NEXT_PUBLIC_APP_URL
   }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div></div>
