@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
@@ -34,27 +35,40 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   },
 }));
 
-function Profile({ categories, geography, ...props }) {
+function Profile({ categories, geography, comparedProfile, ...props }) {
   const classes = useStyles(props);
-
   return (
     <div className={classes.profile}>
       <LocationHeader icon={Print} title={geography.name} {...geography} />
-      {categories.map((category) => (
+      {categories.map((category, categoryIndex) => (
         <Fragment key={category.tite}>
           <CategoryHeader
             icon={category.icon}
             title={category.title}
             description={category?.description}
           />
-          {category.children.map((child) => (
+          {category.children.map((child, subcategoryIndex) => (
             <SubcategoryHeader
               key={child.title}
               title={child.title}
               description={child?.description}
             >
-              {child.children.map((indicator) => (
-                <Chart {...indicator} geoCode={geography.code} />
+              {child.children.map((indicator, indicatorIndex) => (
+                <Grid container>
+                  <Grid item>
+                    <Chart {...indicator} geoCode={geography.code} />
+                  </Grid>
+                  {comparedProfile && (
+                    <Grid item>
+                      <Chart
+                        {...comparedProfile[categoryIndex].children[
+                          subcategoryIndex
+                        ].children[indicatorIndex]}
+                        geoCode={geography.code}
+                      />
+                    </Grid>
+                  )}
+                </Grid>
               ))}
             </SubcategoryHeader>
           ))}
@@ -73,6 +87,15 @@ Profile.propTypes = {
       title: PropTypes.string,
     })
   ),
+  comparedProfile: PropTypes.arrayOf(
+    PropTypes.shape({
+      children: PropTypes.arrayOf(
+        PropTypes.shape({
+          children: PropTypes.arrayOf(PropTypes.shape({})),
+        })
+      ),
+    })
+  ),
   geography: PropTypes.shape({
     name: PropTypes.string,
     code: PropTypes.string,
@@ -80,6 +103,7 @@ Profile.propTypes = {
 };
 Profile.defaultProps = {
   categories: undefined,
+  comparedProfile: undefined,
   geography: undefined,
 };
 

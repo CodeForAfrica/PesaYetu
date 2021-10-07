@@ -6,14 +6,18 @@ import useStyles from "./useStyles";
 import Profile from "@/pesayetu/components/HURUmap/Panel/Profile";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 
-function RichData(props) {
-  const { geography, items } = props;
+function RichData({ geography, items, ...props }) {
   const classes = useStyles(props);
 
   return (
     <>
       <TreeView classes={{ root: classes.treeView }} items={items} />
-      <Profile categories={items} geography={geography} />
+      <Profile
+        {...props}
+        comparedProfile={items}
+        categories={items}
+        geography={geography}
+      />
     </>
   );
 }
