@@ -41,8 +41,8 @@ function Share({ title, geoCode, indicatorId, ...props }) {
           padding-top: 160%;
         }
 }
-</style>
-<div class="wrapper"><iframe class="frame" scrolling="no"
+</style> 
+<div class="wrapper"><iframe class="frame" 
   src="${
     process.env.NEXT_PUBLIC_APP_URL
   }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div></div>
