@@ -20,9 +20,7 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
             <Grid item xs={12} lg={8} container direction="row" wrap="nowrap">
               <div className={classes.mediaContainer}>
                 <RichTypography className={classes.media}>
-                  {
-                    '<iframe style="height:100%; width: 100%" frameBorder="0" src="http://localhost:3000/embed/ke/6"></iframe>'
-                  }
+                  {story.chart}
                 </RichTypography>
               </div>
             </Grid>
@@ -46,9 +44,7 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
         <div className={classes.mediaContainer}>
           <Section className={classes.section}>
             <RichTypography className={classes.media}>
-              {
-                '<iframe style="height:100%; width: 100%" frameBorder="0" src="http://localhost:3000/embed/47/4"></iframe>'
-              }
+              {story.chart}
             </RichTypography>
           </Section>
         </div>
