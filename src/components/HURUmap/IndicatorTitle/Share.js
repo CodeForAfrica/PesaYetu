@@ -31,6 +31,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
   const handleShare = async () => {
     const imgurl = await view.toImageURL("png");
 
+    // Convert to File format
     const arr = imgurl.split(",");
     const mime = arr[0].match(/:(.*?);/)[1];
     const bstr = atob(arr[1]);
@@ -65,10 +66,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   className={classes.shareButton}
                   beforeOnClick={handleShare}
                 >
-                  <FacebookIcon
-                    className={classes.icon}
-                    // onClick={handleShare}
-                  />
+                  <FacebookIcon className={classes.icon} />
                 </FacebookShareButton>
               </Grid>
             );
@@ -79,6 +77,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   title={title}
                   url="www.share.com"
                   className={classes.shareButton}
+                  beforeOnClick={handleShare}
                 >
                   <TwitterIcon className={classes.icon} />
                 </TwitterShareButton>
@@ -91,6 +90,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   title={title}
                   url="www.share.com"
                   className={classes.shareButton}
+                  beforeOnClick={handleShare}
                 >
                   <LinkedInIcon className={classes.icon} />
                 </LinkedinShareButton>
@@ -103,6 +103,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   title={title}
                   url="www.share.com"
                   className={classes.shareButton}
+                  beforeOnClick={handleShare}
                 >
                   <EmailIcon className={classes.icon} />
                 </EmailShareButton>
