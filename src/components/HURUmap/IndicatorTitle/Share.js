@@ -27,6 +27,10 @@ const shareData = [
 function Share({ title, geoCode, indicatorId, view, ...props }) {
   const classes = useStyles(props);
   const { uploadToS3 } = useS3Upload();
+  // Embed url
+  const url = `${
+    process.env.NEXT_PUBLIC_APP_URL
+  }/embed/${geoCode.toLowerCase()}/${indicatorId}`;
 
   const handleShare = async () => {
     const imgurl = await view.toImageURL("png");
@@ -62,7 +66,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
               <Grid item xs={4}>
                 <FacebookShareButton
                   title={title}
-                  url="www.share.com"
+                  url={url}
                   className={classes.shareButton}
                   beforeOnClick={handleShare}
                 >
@@ -75,7 +79,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
               <Grid item xs={4}>
                 <TwitterShareButton
                   title={title}
-                  url="www.share.com"
+                  url={url}
                   className={classes.shareButton}
                   beforeOnClick={handleShare}
                 >
@@ -88,7 +92,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
               <Grid item xs={4}>
                 <LinkedinShareButton
                   title={title}
-                  url="www.share.com"
+                  url={url}
                   className={classes.shareButton}
                   beforeOnClick={handleShare}
                 >
@@ -101,7 +105,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
               <Grid item xs={4}>
                 <EmailShareButton
                   title={title}
-                  url="www.share.com"
+                  url={url}
                   className={classes.shareButton}
                   beforeOnClick={handleShare}
                 >
