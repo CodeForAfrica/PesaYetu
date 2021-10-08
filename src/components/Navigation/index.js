@@ -15,11 +15,15 @@ const useStyles = makeStyles(
     },
     section: {},
     toolbar: {
-      display: "block",
+      display: "flex",
+      alignItems: "center",
       padding: `0`,
       [breakpoints.up("lg")]: {
         padding: `${typography.pxToRem(12)} 0`,
       },
+    },
+    navigation: {
+      flexGrow: 1,
     },
   })
 );
@@ -34,7 +38,7 @@ function Navigation({ variant, ...props }) {
   return (
     <AppBar color="primary" position={position} className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
-        <Hidden mdDown implementation="css">
+        <Hidden mdDown implementation="css" className={classes.navigation}>
           {variant && variant === "explore" ? (
             <ExploreNavigation
               variant="explore"
@@ -48,7 +52,7 @@ function Navigation({ variant, ...props }) {
             />
           )}
         </Hidden>
-        <Hidden lgUp implementation="css">
+        <Hidden lgUp implementation="css" className={classes.navigation}>
           <MobileNavigation {...props} />
         </Hidden>
       </Toolbar>

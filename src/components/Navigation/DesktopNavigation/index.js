@@ -34,7 +34,7 @@ function DesktopNavigation({
             <LogoButton
               href="/"
               component={Link}
-              classes={{ root: classes.logoButton }}
+              className={classes.logoButton}
             >
               <Image {...desktopLogoProps} />
             </LogoButton>
