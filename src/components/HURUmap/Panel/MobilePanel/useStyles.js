@@ -13,35 +13,16 @@ const useStyles = makeStyles(
       paddingBottom: typography.pxToRem(16),
       paddingLeft: typography.pxToRem(20),
       backgroundColor: palette.background.paper,
-      zIndex: zIndex.snackbar,
+      zIndex: zIndex.modal,
       width: "100%",
-      position: "fixed",
+      position: "sticky",
+      top: 0,
       [breakpoints.up("md")]: {
         paddingLeft: typography.pxToRem(62),
       },
     },
-    tabPanels: {
-      marginTop: 0,
-    },
-    footer: {
-      padding: `${typography.pxToRem(58)} ${typography.pxToRem(100)} `,
-      backgroundColor: palette.background.paper,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      color: "#666666",
-      textTransform: "uppercase",
-      "&:after": {
-        display: "none",
-      },
-      "&:hover": {
-        backgroundColor: palette.background.paper,
-        fontWeight: "normal",
-      },
-    },
-    footerIcon: {
-      marginRight: typography.pxToRem(20),
+    tabsDivider: {
+      display: "none",
     },
     tab: {
       color: "#212529",
@@ -59,6 +40,12 @@ const useStyles = makeStyles(
         marginRight: 0,
       },
     },
+    tabIndicator: {
+      display: "none",
+    },
+    tabPanels: {
+      marginTop: 0,
+    },
     tabSelected: {
       color: palette.background.default,
       backgroundColor: "#666666",
@@ -66,6 +53,26 @@ const useStyles = makeStyles(
         color: palette.background.default,
         backgroundColor: "#666666",
       },
+    },
+    scrollButton: {
+      padding: `${typography.pxToRem(58)} ${typography.pxToRem(100)} `,
+      backgroundColor: palette.background.paper,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      color: "#666666",
+      textTransform: "uppercase",
+      "&:after": {
+        display: "none",
+      },
+      "&:hover": {
+        backgroundColor: palette.background.paper,
+        fontWeight: 600,
+      },
+    },
+    topIcon: {
+      marginRight: typography.pxToRem(20),
     },
   })
 );
