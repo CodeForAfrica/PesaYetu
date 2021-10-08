@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
     marginLeft: typography.pxToRem(20),
     marginRight: typography.pxToRem(20),
-    marginTop: typography.pxToRem(80),
+    marginTop: typography.pxToRem(21),
     [breakpoints.up("md")]: {
       paddingLeft: typography.pxToRem(80),
       marginRight: typography.pxToRem(80),
