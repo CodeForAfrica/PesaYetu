@@ -8,18 +8,19 @@ import { ReactComponent as Caret } from "@/pesayetu/assets/icons/caret.svg";
 import Link from "@/pesayetu/components/Link";
 import slugify from "@/pesayetu/utils/slugify";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
+  root: {
+    position: "sticky",
+    top: 60,
+    zIndex: zIndex.modal,
+  },
   caretContainer: {
-    width: "100%",
-    height: typography.pxToRem(16),
-    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     backgroundColor: palette.grey.light,
-    position: "fixed",
-    left: 0,
-    right: 0,
-    top: 140,
+    display: "flex",
+    height: typography.pxToRem(16),
+    justifyContent: "center",
+    width: "100%",
     "&:active,&:hover, &:focus, &:focus-within": {
       backgroundColor: palette.grey.light,
     },
