@@ -82,7 +82,7 @@ function ExploreNavigation({
             <LogoButton
               href="/"
               component={Link}
-              classes={{ logoButton: classes.logoButton }}
+              className={classes.logoButton}
             >
               <Image {...logoArgs} />
             </LogoButton>
