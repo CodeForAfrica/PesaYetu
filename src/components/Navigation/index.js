@@ -1,5 +1,5 @@
-import { AppBar, Hidden, Toolbar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Hidden, Toolbar, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -26,8 +26,13 @@ const useStyles = makeStyles(
 
 function Navigation({ variant, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const position = useMediaQuery(theme.breakpoints.up("lg"))
+    ? "sticky"
+    : "static";
+
   return (
-    <AppBar color="primary" position="sticky" className={classes.root}>
+    <AppBar color="primary" position={position} className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
         <Hidden mdDown implementation="css">
           {variant && variant === "explore" ? (
