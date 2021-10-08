@@ -74,9 +74,6 @@ const useStyles = makeStyles(
         zIndex: zIndex.appBar,
       },
     },
-    mobileTabs: {
-      top: 80,
-    },
   })
 );
 
