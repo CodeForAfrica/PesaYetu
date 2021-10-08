@@ -110,11 +110,6 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
 
   return (
     <>
-      <Panel
-        classes={{ tabs: classes.mobileTabs }}
-        {...panelProps}
-        {...profile}
-      />
       <Hidden mdDown implementation="css">
         <div className={classes.root}>
           <Map
@@ -134,6 +129,7 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
           />
         </div>
       </Hidden>
+      <Panel {...panelProps} {...profile} />
     </>
   );
 }
