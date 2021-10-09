@@ -27,13 +27,13 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     width: 48,
     height: 48,
     margin: typography.pxToRem(3.2),
-    "&:hover": {
+    "&:hover,&:focus": {
       background: "#7DB2D3",
       borderRadius: 60,
     },
     [breakpoints.up("lg")]: {
       background: "#EBEBEB",
-      "&:hover": {
+      "&:hover,&:focus": {
         background: "#EBEBEB",
         borderRadius: 60,
       },
@@ -44,17 +44,18 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 function SocialMediaIcons({ socialLinks, ...props }) {
   const classes = useStyles(props);
   const viewBoxValue = "0 0 48 48";
+
   if (!socialLinks?.length) {
     return null;
   }
   return (
     <Grid item className={classes.root}>
-      {socialLinks.map(({ url, label, src }) => (
+      {socialLinks.map(({ href, label, src }) => (
         <IconButton
           component={Link}
           disableRipple
           disableFocusRipple
-          href={url}
+          href={href}
           key={label}
           size="medium"
           edge="end"

@@ -7,6 +7,7 @@ import {
   InputLabel,
   Typography,
 } from "@material-ui/core";
+import { uniqueId } from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -19,7 +20,7 @@ function ExpandMoreIcon(props) {
 }
 
 function Input({
-  label,
+  label: labelProp,
   helperText,
   options,
   selected,
@@ -33,6 +34,7 @@ function Input({
       onChange(event);
     }
   };
+  const label = labelProp ? uniqueId(`${labelProp}_`) : undefined;
 
   return (
     <FormControl
@@ -41,21 +43,18 @@ function Input({
       className={classes.formControl}
       disabled={disabled}
     >
-      {helperText && (
+      {helperText ? (
         <FormHelperText className={classes.helper}>{helperText}</FormHelperText>
-      )}
-      {label && (
-        <InputLabel
-          htmlFor={label ? `${label}-${Date.now()}` : ""}
-          className={classes.inputLabel}
-        >
+      ) : null}
+      {label ? (
+        <InputLabel htmlFor={label} shrink className={classes.inputLabel}>
           <Typography variant="caption" className={classes.label}>
             {label}
           </Typography>
         </InputLabel>
-      )}
+      ) : null}
       <Select
-        labelId={label ? `${label}-${Date.now()}` : ""}
+        labelId={label}
         displayEmpty
         disableUnderline
         onChange={handleChange}
@@ -70,13 +69,13 @@ function Input({
             vertical: "bottom",
             horizontal: "left",
           },
+          disableScrollLock: true,
           transformOrigin: {
             vertical: "top",
             horizontal: "left",
           },
           getContentAnchorEl: null,
         }}
-        InputLabelProps={{ shrink: false }}
         classes={{ root: classes.select, filled: classes.filled }}
       >
         {options?.length &&
