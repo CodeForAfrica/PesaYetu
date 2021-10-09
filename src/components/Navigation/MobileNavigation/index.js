@@ -1,4 +1,3 @@
-import A from "@commons-ui/core/A";
 import LogoButton from "@commons-ui/core/LogoButton";
 import {
   Grid,
@@ -17,34 +16,17 @@ import SearchIcon from "@/pesayetu/assets/icons/search-open.svg";
 import MenuCloseIcon from "@/pesayetu/assets/menu_close.svg";
 import MenuOpenIcon from "@/pesayetu/assets/menu_open.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
+import Link from "@/pesayetu/components/Link";
 import Menu from "@/pesayetu/components/Menu";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
-  root: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  closeButtonSection: {
-    display: "flex",
-    alignItems: "center",
-  },
+  root: {},
   logoButton: {
+    padding: 0,
     width: typography.pxToRem(254),
   },
-  section: {
-    paddingRight: typography.pxToRem(20),
-    paddingLeft: typography.pxToRem(9.6),
-    [breakpoints.up("md")]: {
-      width: "100%",
-    },
-    [breakpoints.up("lg")]: {
-      paddingRight: 0,
-      paddingLeft: 0,
-    },
-  },
+  section: {},
   dialog: {
     padding: 0,
   },
@@ -63,25 +45,24 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   logoSection: {
     borderBottom: `2px solid ${palette.background.default}`,
+    padding: `${typography.pxToRem(10)} 0`,
   },
   backdrop: {
-    maxHeight: typography.pxToRem(844),
     backgroundColor: "transparent",
+    maxHeight: typography.pxToRem(844),
   },
   dialogActions: {
-    transform: "matrix(-1, 0, 0, -1, 0, 0, )",
-    background: palette.primary.main,
-    padding: `${typography.pxToRem(16)} ${typography.pxToRem(24.5)}`,
+    padding: 0,
   },
   dialogContent: {
-    background: palette.primary.main,
     overflow: "hidden",
-    padding: `${typography.pxToRem(24.5)}`,
+    padding: `${typography.pxToRem(40)} 0`,
   },
   dialogMenu: {
     padding: `${typography.pxToRem(10.35)} 0`,
   },
   dialogPaper: {
+    background: palette.primary.main,
     maxHeight: typography.pxToRem(844),
     position: "absolute",
     left: 0,
@@ -91,9 +72,11 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   menuButton: {
     color: palette.grey.dark,
     background: "#F0F0F0",
-    width: 48,
     borderRadius: typography.pxToRem(50),
+    height: typography.pxToRem(34),
     margin: typography.pxToRem(8),
+    padding: 0,
+    width: typography.pxToRem(34),
     "&:hover": {
       background: "#F0F0F0",
       borderRadius: typography.pxToRem(50),
@@ -102,7 +85,9 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
   closeButton: {
     color: palette.background.main,
-    width: 60,
+    height: typography.pxToRem(34),
+    padding: 0,
+    width: typography.pxToRem(34),
     "&:hover": {
       background: "none",
     },
@@ -118,8 +103,8 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     fontSize: typography.pxToRem(32),
   },
   close: {
-    fontSize: typography.pxToRem(32),
     color: palette.background.default,
+    fontSize: typography.pxToRem(32),
   },
   label: {
     [breakpoints.up("lg")]: {
@@ -193,114 +178,110 @@ function MobileNavigation({
     e?.preventDefault();
     setOpen(false);
   };
+
   return (
-    <Section classes={{ root: classes.section }}>
-      <div className={classes.root}>
-        <Grid item xs={10}>
-          <LogoButton
-            component={A}
-            classes={{ logoButton: classes.logoButton }}
-          >
-            <Image
-              width={mobileLogoProps.width}
-              height={mobileLogoProps.height}
-              {...mobileLogoProps}
-            />
-          </LogoButton>
-        </Grid>
-        <Grid item xs={2}>
-          <IconButton
-            aria-label="Open drawer"
-            edge="start"
-            size="medium"
-            onClick={handleClickOpen}
-            className={classes.menuButton}
-          >
-            <Image
-              src={MenuOpenIcon}
-              width={48}
-              height={48}
-              className={classes.open}
-            />
-          </IconButton>
-        </Grid>
-        <Dialog
-          fullScreen
-          open={open}
-          onClose={handleClose}
-          BackdropProps={{
-            classes: {
-              root: classes.backdrop,
-            },
-          }}
-          TransitionComponent={Transition}
-          classes={{ root: classes.dialog, paper: classes.dialogPaper }}
-        >
-          <DialogActions className={classes.dialogActions}>
-            <Grid
-              container
-              item
-              xs={12}
-              direction="row"
-              ustifyContent="space-between"
-              className={classes.logoSection}
+    <div className={classes.root}>
+      <Section className={classes.section}>
+        <Grid container alignItems="center" justifyContent="space-between">
+          <Grid item xs={10}>
+            <LogoButton
+              href="/"
+              component={Link}
+              className={classes.logoButton}
             >
-              <Grid item xs={10}>
-                <LogoButton
-                  component={A}
-                  classes={{ logoButton: classes.logoButton }}
-                >
-                  <Image
-                    width={drawerLogoProps.width}
-                    height={drawerLogoProps.height}
-                    {...drawerLogoProps}
-                  />
-                </LogoButton>
-              </Grid>
-              <Grid item xs={2} className={classes.closeButtonSection}>
-                <IconButton
-                  aria-label="Close drawer"
-                  edge="end"
-                  size="medium"
-                  onClick={handleClose}
-                  className={classes.closeButton}
-                >
-                  <Image src={MenuCloseIcon} width={48} height={48} />
-                </IconButton>
-              </Grid>
-            </Grid>
-          </DialogActions>
-          <DialogContent className={classes.dialogContent}>
-            <Menu
-              links={menuProps}
-              socialLinks={socialLinks}
-              classes={{
-                root: classes.mainMenu,
-                menuLinks: classes.menuLinks,
-                label: classes.label,
-                menu: classes.buttonMenu,
-              }}
+              <Image {...mobileLogoProps} />
+            </LogoButton>
+          </Grid>
+          <Grid item>
+            <IconButton
+              aria-label="Open drawer"
+              edge="start"
+              size="medium"
+              onClick={handleClickOpen}
+              className={classes.menuButton}
             >
-              <DropdownSearch
-                classes={{
-                  root: classes.search,
-                  inputRoot: classes.searchInput,
-                }}
-                icon={SearchIcon}
-                {...props}
+              <Image
+                src={MenuOpenIcon}
+                width={24}
+                height={24}
+                className={classes.open}
               />
-            </Menu>
-          </DialogContent>
-        </Dialog>
-      </div>
-    </Section>
+            </IconButton>
+          </Grid>
+          <Dialog
+            fullScreen
+            open={open}
+            onClose={handleClose}
+            BackdropProps={{
+              classes: {
+                root: classes.backdrop,
+              },
+            }}
+            TransitionComponent={Transition}
+            classes={{ root: classes.dialog, paper: classes.dialogPaper }}
+          >
+            <DialogActions className={classes.dialogActions}>
+              <Section className={classes.section}>
+                <Grid
+                  container
+                  direction="row"
+                  justifyContent="space-between"
+                  className={classes.logoSection}
+                >
+                  <Grid item xs={10}>
+                    <LogoButton
+                      href="/"
+                      component={Link}
+                      className={classes.logoButton}
+                    >
+                      <Image {...drawerLogoProps} />
+                    </LogoButton>
+                  </Grid>
+                  <Grid item>
+                    <IconButton
+                      aria-label="Close drawer"
+                      edge="end"
+                      size="medium"
+                      onClick={handleClose}
+                      className={classes.closeButton}
+                    >
+                      <Image src={MenuCloseIcon} width={24} height={24} />
+                    </IconButton>
+                  </Grid>
+                </Grid>
+              </Section>
+            </DialogActions>
+            <DialogContent className={classes.dialogContent}>
+              <Section className={classes.section}>
+                <Menu
+                  links={menuProps}
+                  socialLinks={socialLinks}
+                  classes={{
+                    root: classes.mainMenu,
+                    menuLinks: classes.menuLinks,
+                    label: classes.label,
+                    menu: classes.buttonMenu,
+                  }}
+                >
+                  <DropdownSearch
+                    classes={{
+                      root: classes.search,
+                      inputRoot: classes.searchInput,
+                    }}
+                    icon={SearchIcon}
+                    {...props}
+                  />
+                </Menu>
+              </Section>
+            </DialogContent>
+          </Dialog>
+        </Grid>
+      </Section>
+    </div>
   );
 }
 
 MobileNavigation.propTypes = {
-  logoProps: PropTypes.shape({}),
-  menuProps: PropTypes.arrayOf(PropTypes.shape({})),
-  socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
   drawerLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
@@ -308,6 +289,8 @@ MobileNavigation.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
+  logoProps: PropTypes.shape({}),
+  menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   mobileLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
@@ -315,13 +298,15 @@ MobileNavigation.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 MobileNavigation.defaultProps = {
+  drawerLogoProps: undefined,
   logoProps: undefined,
   menuProps: undefined,
-  socialLinks: undefined,
-  drawerLogoProps: undefined,
   mobileLogoProps: undefined,
+  socialLinks: undefined,
 };
+
 export default MobileNavigation;

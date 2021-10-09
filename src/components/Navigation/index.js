@@ -1,5 +1,5 @@
-import { AppBar, Hidden, Toolbar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Hidden, Toolbar, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -15,21 +15,30 @@ const useStyles = makeStyles(
     },
     section: {},
     toolbar: {
-      display: "block",
+      display: "flex",
+      alignItems: "center",
       padding: `0`,
       [breakpoints.up("lg")]: {
         padding: `${typography.pxToRem(12)} 0`,
       },
+    },
+    navigation: {
+      flexGrow: 1,
     },
   })
 );
 
 function Navigation({ variant, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const position = useMediaQuery(theme.breakpoints.up("lg"))
+    ? "sticky"
+    : "static";
+
   return (
-    <AppBar color="primary" position="sticky" className={classes.root}>
+    <AppBar color="primary" position={position} className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
-        <Hidden mdDown implementation="css">
+        <Hidden mdDown implementation="css" className={classes.navigation}>
           {variant && variant === "explore" ? (
             <ExploreNavigation
               variant="explore"
@@ -43,7 +52,7 @@ function Navigation({ variant, ...props }) {
             />
           )}
         </Hidden>
-        <Hidden lgUp implementation="css">
+        <Hidden lgUp implementation="css" className={classes.navigation}>
           <MobileNavigation {...props} />
         </Hidden>
       </Toolbar>

@@ -1,4 +1,3 @@
-import A from "@commons-ui/core/A";
 import LogoButton from "@commons-ui/core/LogoButton";
 import { Grid, Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
@@ -9,6 +8,7 @@ import React from "react";
 import SearchIcon from "@/pesayetu/assets/icons/search-explore.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Image from "@/pesayetu/components/Image";
+import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
@@ -80,14 +80,11 @@ function ExploreNavigation({
         <Grid container alignItems="center">
           <Grid item xs={3}>
             <LogoButton
-              component={A}
-              classes={{ logoButton: classes.logoButton }}
+              href="/"
+              component={Link}
+              className={classes.logoButton}
             >
-              <Image
-                width={logoArgs.width}
-                height={logoArgs.height}
-                {...logoArgs}
-              />
+              <Image {...logoArgs} />
             </LogoButton>
           </Grid>
           <Grid

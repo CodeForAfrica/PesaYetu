@@ -1,11 +1,11 @@
-import A from "@commons-ui/core/A";
 import LogoButton from "@commons-ui/core/LogoButton";
-import { Grid, useMediaQuery } from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
 import Image from "@/pesayetu/components/Image";
+import Link from "@/pesayetu/components/Link";
 import Menu from "@/pesayetu/components/Menu";
 import Section from "@/pesayetu/components/Section";
 
@@ -21,26 +21,22 @@ function DesktopNavigation({
   logoProps,
   menuProps,
   desktopLogoProps,
-  mobileLogoProps,
   socialLinks,
   ...props
 }) {
   const classes = useStyles(props);
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-  const logoArgs = !isDesktop ? mobileLogoProps : desktopLogoProps;
 
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
           <Grid item xs={3}>
-            <LogoButton component={A} classes={{ root: classes.logoButton }}>
-              <Image
-                width={logoArgs.width}
-                height={logoArgs.height}
-                {...logoArgs}
-              />
+            <LogoButton
+              href="/"
+              component={Link}
+              className={classes.logoButton}
+            >
+              <Image {...desktopLogoProps} />
             </LogoButton>
           </Grid>
           <Grid
@@ -71,13 +67,6 @@ DesktopNavigation.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
-  mobileLogoProps: PropTypes.shape({
-    alt: PropTypes.string,
-    href: PropTypes.string,
-    src: PropTypes.shape({}),
-    width: PropTypes.number,
-    height: PropTypes.number,
-  }),
 };
 
 DesktopNavigation.defaultProps = {
@@ -85,7 +74,6 @@ DesktopNavigation.defaultProps = {
   menuProps: undefined,
   socialLinks: undefined,
   desktopLogoProps: undefined,
-  mobileLogoProps: undefined,
 };
 
 export default DesktopNavigation;
