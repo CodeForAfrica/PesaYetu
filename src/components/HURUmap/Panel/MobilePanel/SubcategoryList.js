@@ -11,8 +11,8 @@ import slugify from "@/pesayetu/utils/slugify";
 const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
   root: {
     position: "sticky",
-    top: 60,
-    zIndex: zIndex.modal,
+    top: 64 + 60, // below navbar and category list tab
+    zIndex: zIndex.appBar,
   },
   caretContainer: {
     alignItems: "center",
