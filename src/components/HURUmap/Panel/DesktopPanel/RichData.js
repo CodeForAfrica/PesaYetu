@@ -26,7 +26,6 @@ RichData.propTypes = {
   }),
   geometries: PropTypes.shape({}),
   highlights: PropTypes.shape({}),
-  tags: PropTypes.shape({}),
 };
 
 RichData.defaultProps = {
@@ -34,7 +33,6 @@ RichData.defaultProps = {
   geography: undefined,
   geometries: undefined,
   highlights: undefined,
-  tags: undefined,
 };
 
 export default RichData;
