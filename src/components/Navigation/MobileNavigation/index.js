@@ -283,7 +283,7 @@ MobileNavigation.propTypes = {
   drawerLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
-    src: PropTypes.string,
+    src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
     width: PropTypes.number,
     height: PropTypes.number,
   }),
@@ -292,7 +292,7 @@ MobileNavigation.propTypes = {
   mobileLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
-    src: PropTypes.string,
+    src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
     width: PropTypes.number,
     height: PropTypes.number,
   }),
