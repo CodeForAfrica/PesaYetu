@@ -111,7 +111,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
         `top: ${y}px; left: ${x}px; z-index: 1230; position: absolute`
       );
     },
-    [id, geoCode, theme, defaultType, disableToggle]
+    [defaultType, disableToggle, geoCode, id]
   );
 
   useEffect(() => {
