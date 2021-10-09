@@ -1,12 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { forwardRef, Fragment } from "react";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
+import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
@@ -16,7 +17,7 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
     marginLeft: typography.pxToRem(20),
     marginRight: typography.pxToRem(20),
-    marginTop: typography.pxToRem(80),
+    marginTop: typography.pxToRem(21),
     [breakpoints.up("md")]: {
       paddingLeft: typography.pxToRem(80),
       marginRight: typography.pxToRem(80),
@@ -35,25 +36,29 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   },
 }));
 
-function Profile({ categories, geography, ...props }) {
+const Profile = forwardRef(function Profile(
+  { categories, geography, ...props },
+  ref
+) {
   const classes = useStyles(props);
 
   return (
-    <div className={classes.profile}>
+    <div className={classes.profile} ref={ref}>
       <LocationHeader icon={Print} title={geography.name} {...geography} />
       {categories.map((category) => (
         <Fragment key={category.tite}>
           <CategoryHeader
-            icon={category.icon}
-            title={category.title}
             description={category?.description}
+            icon={category.icon}
+            id={slugify(category.title)}
+            title={category.title}
           />
           {category.children.map((child) => (
             <Fragment key={child.title}>
               <SubcategoryHeader
-                key={child.title}
-                title={child.title}
                 description={child?.description}
+                id={slugify(child.title)}
+                title={child.title}
               />
               {child.children.map(({ index, ...indicator }) => (
                 <Chart key={index} {...indicator} geoCode={geography.code} />
@@ -64,7 +69,7 @@ function Profile({ categories, geography, ...props }) {
       ))}
     </div>
   );
-}
+});
 
 Profile.propTypes = {
   categories: PropTypes.arrayOf(

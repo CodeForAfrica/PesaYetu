@@ -74,13 +74,11 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     background: "#F0F0F0",
     borderRadius: typography.pxToRem(50),
     height: typography.pxToRem(34),
-    margin: typography.pxToRem(8),
     padding: 0,
     width: typography.pxToRem(34),
     "&:hover": {
       background: "#F0F0F0",
       borderRadius: typography.pxToRem(50),
-      margin: typography.pxToRem(8),
     },
   },
   closeButton: {
@@ -285,7 +283,7 @@ MobileNavigation.propTypes = {
   drawerLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
-    src: PropTypes.string,
+    src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
     width: PropTypes.number,
     height: PropTypes.number,
   }),
@@ -294,7 +292,7 @@ MobileNavigation.propTypes = {
   mobileLogoProps: PropTypes.shape({
     alt: PropTypes.string,
     href: PropTypes.string,
-    src: PropTypes.string,
+    src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
     width: PropTypes.number,
     height: PropTypes.number,
   }),

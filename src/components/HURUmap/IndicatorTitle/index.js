@@ -85,11 +85,13 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
           <Typography variant="h6">{title}</Typography>
         </Grid>
         <Grid item xs={12} md={4} container className={classes.buttons}>
-          {actions.map((act) => (
-            <Grid item key={act.id} className={classes.action}>
-              <Action {...act} />
-            </Grid>
-          ))}
+          {actions
+            .filter((a) => a?.id)
+            .map((act) => (
+              <Grid item key={act.id} className={classes.action}>
+                <Action {...act} />
+              </Grid>
+            ))}
         </Grid>
       </Grid>
     </div>

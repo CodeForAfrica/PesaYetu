@@ -69,8 +69,8 @@ function TutorialStep({ description, title, image, selector, ...props }) {
 }
 
 TutorialStep.propTypes = {
-  description: PropTypes.func,
-  image: PropTypes.number,
+  description: PropTypes.string,
+  image: PropTypes.string,
   onClose: PropTypes.func,
   title: PropTypes.string,
   selector: PropTypes.string,
