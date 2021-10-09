@@ -13,10 +13,10 @@ const useStyles = makeStyles(
       paddingBottom: typography.pxToRem(16),
       paddingLeft: typography.pxToRem(20),
       backgroundColor: palette.background.paper,
-      zIndex: zIndex.modal,
+      zIndex: zIndex.appBar,
       width: "100%",
       position: "sticky",
-      top: 0,
+      top: 64, // below navbar
       [breakpoints.up("md")]: {
         paddingLeft: typography.pxToRem(62),
       },
