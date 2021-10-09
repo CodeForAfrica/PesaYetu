@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Link } from "@material-ui/core";
 import TreeItem from "@material-ui/lab/TreeItem";
 import MuiTreeView from "@material-ui/lab/TreeView";
 import clsx from "clsx";
@@ -13,59 +13,76 @@ import slugify from "@/pesayetu/utils/slugify";
 const TreeView = ({ items, expanded: expandedProps, ...props }) => {
   const [expanded, setExpanded] = useState(expandedProps);
   const classes = useStyles(props);
-  if (!items?.length) {
-    return null;
-  }
-  const handleClick = (event) => {
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
     document
-      .getElementById(slugify(event.target.dataset.title))
+      .getElementById(e.target.dataset.id)
       .scrollIntoView({ behavior: "smooth" });
-    if (event.target.dataset.expand) {
-      setExpanded(event.target.dataset.title);
+    if (e.target.dataset.expand) {
+      setExpanded(e.target.dataset.id);
     }
   };
 
+  if (!items?.length) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <MuiTreeView expanded={[expanded]}>
-        {items.map((item) => (
-          <TreeItem
-            key={item.title}
-            nodeId={item.title}
-            label={
-              <Typography
-                onClick={handleClick}
-                data-title={item.title}
-                data-expand
-                className={classes.label}
-                variant="caption"
-              >
-                {item.title} <CheckIcon className={classes.icon} />
-              </Typography>
-            }
-            classes={{
-              root: classes.tree,
-              expanded: classes.expanded,
-            }}
-          >
-            {item.children.map((child) => (
-              <TreeItem
-                key={child.title}
-                nodeId={child.title}
-                label={
-                  <Typography
-                    data-title={child.title}
-                    onClick={handleClick}
-                    className={clsx(classes.label, classes.childLabel)}
-                    variant="caption"
-                  >
-                    {child.title}
-                  </Typography>
-                }
-              />
-            ))}
-          </TreeItem>
-        ))}
+        {items.map((item) => {
+          const itemId = slugify(item.title);
+
+          return (
+            <TreeItem
+              key={itemId}
+              nodeId={itemId}
+              label={
+                <Link
+                  color="textPrimary"
+                  data-expand
+                  data-id={itemId}
+                  href={`#${itemId}`}
+                  underline="none"
+                  variant="caption"
+                  className={classes.label}
+                >
+                  {item.title} <CheckIcon className={classes.icon} />
+                </Link>
+              }
+              onLabelClick={handleClick}
+              classes={{
+                root: classes.tree,
+                expanded: classes.expanded,
+              }}
+            >
+              {item.children.map((child) => {
+                const childId = slugify(child.title);
+
+                return (
+                  <TreeItem
+                    key={childId}
+                    nodeId={childId}
+                    label={
+                      <Link
+                        color="textPrimary"
+                        data-id={childId}
+                        href={`#${childId}`}
+                        onClick={handleClick}
+                        underline="none"
+                        variant="caption"
+                        className={clsx(classes.label, classes.childLabel)}
+                      >
+                        {child.title}
+                      </Link>
+                    }
+                  />
+                );
+              })}
+            </TreeItem>
+          );
+        })}
       </MuiTreeView>
     </div>
   );
@@ -74,7 +91,7 @@ const TreeView = ({ items, expanded: expandedProps, ...props }) => {
 TreeView.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      children: PropTypes.shape({}),
+      children: PropTypes.arrayOf(PropTypes.shape({})),
     })
   ),
   expanded: PropTypes.string,
