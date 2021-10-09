@@ -25,9 +25,9 @@ function TabPanel({ children, value, name, selected, ...props }) {
 
 TabPanel.propTypes = {
   children: PropTypes.node,
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   name: PropTypes.string,
-  selected: PropTypes.number,
+  selected: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 TabPanel.defaultProps = {
