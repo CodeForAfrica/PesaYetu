@@ -57,14 +57,9 @@ function SubcategoryList({ items }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  if (!items?.length) {
-    return null;
-  }
-
   const handleCaretClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -75,9 +70,11 @@ function SubcategoryList({ items }) {
       .scrollIntoView({ behavior: "smooth" });
     handleClose();
   };
-
   const open = Boolean(anchorEl);
 
+  if (!items?.length) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <Button className={classes.caretContainer} onClick={handleCaretClick}>
@@ -99,11 +96,12 @@ function SubcategoryList({ items }) {
       >
         {items.map(({ title }, index) => (
           <Link
-            underline="none"
-            href={`#${slugify(title)}`}
+            key={title}
             onClick={handleSelect}
             data-index={index}
             data-title={title}
+            href={`#${slugify(title)}`}
+            underline="none"
             variant="caption"
             className={clsx(classes.title, {
               [classes.notSelected]: selectedIndex !== index,
