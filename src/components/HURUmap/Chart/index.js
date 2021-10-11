@@ -1,4 +1,4 @@
-import { Grid, Typography, useMediaQuery } from "@material-ui/core";
+import { Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -78,11 +78,12 @@ function Chart({
     });
   };
 
-  const spec = configureScope(indicator, isMobile);
-  const comparedSpec = configureScope(secondaryIndicator?.indicator, isMobile);
+  const spec = configureScope(
+    indicator,
+    isMobile,
+    secondaryIndicator?.indicator
+  );
   const className = `charttooltip-${id}-${geoCode}`;
-  const isCompare = secondaryIndicator && !isMobile;
-
   const handler = (_, event, item, value) => {
     let el = document.getElementsByClassName(className)[0];
     if (!el) {
@@ -143,30 +144,14 @@ function Chart({
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
       />
-      <Grid container>
-        <Grid item xs={isCompare ? 6 : 12}>
-          <Vega
-            variant="primary"
-            spec={spec}
-            actions={false}
-            tooltip={handler}
-            onNewView={handleNewView}
-            className={classes.chart}
-          />
-        </Grid>
-        <Grid item xs={isCompare ? 6 : 12}>
-          {isCompare && (
-            <Vega
-              variant="secondary"
-              spec={comparedSpec}
-              actions={false}
-              tooltip={handler}
-              onNewView={handleNewView}
-              className={classes.chart}
-            />
-          )}
-        </Grid>
-      </Grid>
+      <Vega
+        variant="primary"
+        spec={spec}
+        actions={false}
+        tooltip={handler}
+        onNewView={handleNewView}
+        className={classes.chart}
+      />
 
       {url && source && (
         <div className={classes.source}>

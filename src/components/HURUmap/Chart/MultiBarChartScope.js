@@ -59,7 +59,7 @@ export default function MultiBarChartScope(
         transform: [...filters],
       },
       {
-        name: "primary_data",
+        name: "primary_formatted",
         source: "primary",
         transform: [
           {
@@ -83,12 +83,12 @@ export default function MultiBarChartScope(
           {
             type: "extent",
             field: "percentage",
-            signal: "percentage_extent",
+            signal: "primary_percentage_extent",
           },
           {
             type: "extent",
             field: "count",
-            signal: "value_extent",
+            signal: "primary_value_extent",
           },
         ],
       },
@@ -117,12 +117,12 @@ export default function MultiBarChartScope(
           {
             type: "extent",
             field: "percentage",
-            signal: "percentage_extent",
+            signal: "secondary_percentage_extent",
           },
           {
             type: "extent",
             field: "count",
-            signal: "value_extent",
+            signal: "secondary_value_extent",
           },
         ],
       },
@@ -197,11 +197,12 @@ export default function MultiBarChartScope(
       {
         name: "yscale",
         type: "band",
-        domain: { data: "primary_data", field: { signal: "mainGroup" } },
+        domain: { data: "primary_formatted", field: { signal: "mainGroup" } },
         range: { step: { signal: "y_step" } },
         padding: 0.15,
       },
-      xScale(),
+      xScale("primary_formatted", "width/2", "xscale"),
+      xScale("primary_formatted", "width/2", "x_secondary_scale"),
     ],
 
     axes: [
@@ -218,117 +219,82 @@ export default function MultiBarChartScope(
 
     marks: [
       {
-        name: "bars",
-        from: { data: "primary_data" },
-        type: "rect",
+        type: "group",
+        name: "primary_bars",
+
         encode: {
-          enter: {
-            y: { scale: "yscale", field: { signal: "mainGroup" } },
-            height: { scale: "yscale", band: 1 },
-            x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-          },
           update: {
-            fill: { value: theme.palette.primary.main },
-            x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-            x2: { scale: "xscale", value: 0 },
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-            },
+            x: { value: 0 },
+            height: { signal: "height" },
           },
         },
+        marks: [
+          {
+            type: "rect",
+            from: { data: "primary_formatted" },
+            encode: {
+              enter: {
+                y: { scale: "yscale", field: { signal: "mainGroup" } },
+                height: { scale: "yscale", band: 1 },
+                x: {
+                  scale: "xscale",
+                  field: { signal: "datatype[Units]" },
+                },
+              },
+              update: {
+                fill: { value: theme.palette.primary.main },
+                x: {
+                  scale: "xscale",
+                  field: { signal: "datatype[Units]" },
+                },
+                x2: { scale: "xscale", value: 0 },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                },
+              },
+            },
+          },
+        ],
       },
       {
-        name: "bars",
-        from: { data: "primary_data" },
-        type: "rect",
+        type: "group",
+        name: "secondary_bars",
         encode: {
-          enter: {
-            y: { scale: "yscale", field: { signal: "mainGroup" } },
-            height: { scale: "yscale", band: 1 },
-            x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-          },
           update: {
-            fill: { value: theme.palette.primary.main },
-            x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-            x2: { scale: "xscale", value: 0 },
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-            },
+            x: { value: "width / 2" },
+            height: { signal: "height" },
           },
         },
+        marks: [
+          {
+            type: "rect",
+            from: { data: "secondary_formatted" },
+            encode: {
+              enter: {
+                y: { scale: "yscale", field: { signal: "mainGroup" } },
+                height: { scale: "yscale", band: 1 },
+                x: {
+                  scale: "x_secondary_scale",
+                  field: { signal: "datatype[Units]" },
+                },
+              },
+              update: {
+                fill: { value: theme.palette.secondary.main },
+                x: {
+                  scale: "x_secondary_scale",
+                  field: { signal: "datatype[Units]" },
+                },
+                x2: { scale: "x_secondary_scale", value: 0 },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                },
+              },
+            },
+          },
+        ],
       },
-      // {
-      //   type: "group",
-      //   name: "primary_bars",
-
-      //   encode: {
-      //     update: {
-      //       x: { value: 0 },
-      //       height: { signal: "height" },
-      //     },
-      //   },
-
-      //   scales: [xScale("primary_data", "width/2")],
-      //   marks: [
-      //     {
-      //       type: "rect",
-      //       from: { data: "primary_data" },
-      //       encode: {
-      //         enter: {
-      //           y: { scale: "yscale", field: { signal: "mainGroup" } },
-      //           height: { scale: "yscale", band: 1 },
-      //           x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-      //         },
-      //         update: {
-      //           fill: { value: theme.palette.primary.main },
-      //           x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-      //           x2: { scale: "xscale", value: 0 },
-      //           tooltip: {
-      //             signal:
-      //               "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-      //           },
-      //         },
-      //       },
-      //     },
-      //   ],
-      // },
-      // {
-      //   type: "group",
-      //   name: "primary_bars",
-
-      //   encode: {
-      //     update: {
-      //       x: { value: "width/2 " },
-      //       height: { signal: "height" },
-      //     },
-      //   },
-
-      //   scales: [xScale("secondary_formatted", "width/2")],
-      //   marks: [
-      //     {
-      //       type: "rect",
-      //       from: { data: "secondary_formatted" },
-      //       encode: {
-      //         enter: {
-      //           y: { scale: "yscale", field: { signal: "mainGroup" } },
-      //           height: { scale: "yscale", band: 1 },
-      //           x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-      //         },
-      //         update: {
-      //           fill: { value: theme.palette.primary.main },
-      //           x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-      //           x2: { scale: "xscale", value: 0 },
-      //           tooltip: {
-      //             signal:
-      //               "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-      //           },
-      //         },
-      //       },
-      //     },
-      //   ],
-      // },
     ],
   };
 }
