@@ -81,6 +81,11 @@ export default function DonutChartScope(data, metadata, config) {
             endAngle: { signal: "endAngle" },
             sort: { signal: "sort" },
           },
+          {
+            type: "formula",
+            as: "custom_label",
+            expr: "datum.name + ' ' + datum.percentage",
+          },
         ],
       },
     ],
@@ -166,6 +171,7 @@ export default function DonutChartScope(data, metadata, config) {
             update: {
               fontSize: { value: 11 },
               fill: { value: theme.palette.chart.text.primary },
+              text: { field: "custom_label" },
             },
           },
           symbols: {
@@ -183,12 +189,6 @@ export default function DonutChartScope(data, metadata, config) {
       {
         name: "color",
         type: "ordinal",
-        range: "category",
-      },
-      {
-        name: "legend_labels",
-        type: "linear",
-        domain: { data: "data_formatted", field: "percentage" },
         range: "category",
       },
     ],

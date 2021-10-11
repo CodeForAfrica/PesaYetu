@@ -10,7 +10,7 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function TreeMapChartScope(data, metadata, config) {
+export default function TreemapChartScope(data, metadata, config) {
   const {
     xTicks,
     defaultType,
@@ -53,46 +53,23 @@ export default function TreeMapChartScope(data, metadata, config) {
         source: "table",
         transform: [
           {
-            type: "aggregate",
-            ops: ["sum"],
-            as: ["count"],
-            fields: ["count"],
-            groupby: { signal: "groups" },
-          },
-          {
-            type: "joinaggregate",
-            as: ["TotalCount"],
-            ops: ["sum"],
-            fields: ["count"],
-          },
-          {
-            type: "formula",
-            expr: "datum.count/datum.TotalCount",
-            as: "percentage",
-          },
-          {
-            type: "extent",
-            field: "percentage",
-            signal: "percentage_extent",
-          },
-          {
-            type: "extent",
-            field: "count",
-            signal: "value_extent",
-          },
-          {
             type: "stratify",
-            key: "id", // change me
-            parentKey: "parent", // change me
+            key: "id",
+            parentKey: "parent",
           },
           {
             type: "treemap",
-            field: "count",
-            sort: { field: "value" }, // not sure if it needs changing
+            field: "size",
+            sort: { field: "value" },
             round: true,
             method: { signal: "layout" },
             ratio: { signal: "aspectRatio" },
             size: [{ signal: "width" }, { signal: "height" }],
+          },
+          {
+            type: "formula",
+            as: "custom_label",
+            expr: "datum.name + ' ' + datum.size",
           },
         ],
       },
@@ -108,7 +85,7 @@ export default function TreeMapChartScope(data, metadata, config) {
       },
       {
         name: "leaves",
-        source: "tree",
+        source: "data_formatted",
         transform: [{ type: "filter", expr: "!datum.children" }],
       },
     ],
@@ -188,62 +165,74 @@ export default function TreeMapChartScope(data, metadata, config) {
     ],
     scales: [
       {
-        name: "xscale",
-        type: "band",
-        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
-        range: { step: { signal: "x_step" } },
-        padding: 0.15,
+        name: "color",
+        type: "ordinal",
+        domain: { data: "nodes", field: "name" },
+        range: "category",
       },
       {
-        name: "yscale",
-        type: "linear",
-        domain: {
-          data: "data_formatted",
-          field: { signal: "datatype[Units]" },
-        },
-        range: [{ signal: "height" }, 0],
-        nice: true,
-      },
-    ],
-    axes: [
-      {
-        orient: "left",
-        scale: "yscale",
-        domainOpacity: 0.5,
-        tickSize: 0,
-        grid: true,
-        labelPadding: 6,
-        zindex: 1,
-        format: { signal: "numberFormat[Units]" },
+        name: "size",
+        type: "ordinal",
       },
       {
-        orient: "bottom",
-        scale: "xscale",
-        bandPosition: 0,
-        domainOpacity: 0.5,
-        tickSize: 0,
-        labels: false,
+        name: "opacity",
+        type: "ordinal",
       },
     ],
 
     marks: [
       {
-        name: "bars",
-        from: { data: "data_formatted" },
         type: "rect",
+        from: { data: "nodes" },
+        interactive: false,
         encode: {
           enter: {
-            x: { scale: "xscale", field: { signal: "mainGroup" } },
-            width: { scale: "xscale", band: 1 },
-            y: { scale: "yscale", field: { signal: "datatype[Units]" } },
-            y2: { scale: "yscale", value: 0 },
+            fill: { scale: "color", field: "name" },
           },
           update: {
+            x: { field: "x0" },
+            y: { field: "y0" },
+            x2: { field: "x1" },
+            y2: { field: "y1" },
+          },
+        },
+      },
+      {
+        type: "rect",
+        from: { data: "leaves" },
+        encode: {
+          enter: {
+            stroke: { value: "#fff" },
+          },
+          update: {
+            x: { field: "x0" },
+            y: { field: "y0" },
+            x2: { field: "x1" },
+            y2: { field: "y1" },
             fill: { value: theme.palette.primary.main },
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-            },
+          },
+          hover: {
+            fill: { value: theme.palette.primary.main },
+          },
+        },
+      },
+      {
+        type: "text",
+        from: { data: "leaves" },
+        interactive: false,
+        encode: {
+          enter: {
+            font: { value: theme.typography.fontFamily },
+            align: { value: "left" },
+            baseline: { value: "line-top" },
+            fill: { value: theme.palette.text.secondary },
+            text: { field: "custom_label" },
+            fontSize: { scale: "size", field: "depth" },
+            fillOpacity: { scale: "opacity", field: "depth" },
+          },
+          update: {
+            x: { signal: "0.5 * (datum.x0 + datum.x1)" },
+            y: { signal: "0.5 * (datum.y0 + datum.y1)" },
           },
         },
       },
