@@ -157,7 +157,7 @@ export default function BarChartScope(data, metadata, config) {
         range: { step: { signal: "y_step" } },
         padding: 0.15,
       },
-      xScale,
+      xScale(),
     ],
 
     axes: [
