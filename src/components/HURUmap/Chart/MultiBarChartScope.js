@@ -1,4 +1,4 @@
-import { xAxis, xScale, defaultConfig, commonSignal } from "./properties";
+import { xAxis, defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -201,21 +201,25 @@ export default function MultiBarChartScope(
         range: { step: { signal: "y_step" } },
         padding: 0.15,
       },
-      xScale("primary_formatted", "width/2", "xscale"),
-      xScale("primary_formatted", "width/2", "x_secondary_scale"),
+      {
+        name: "c",
+        type: "ordinal",
+        domain: [1, 2],
+        range: ["#d5855a", "#6c4e97"],
+      },
     ],
 
-    axes: [
-      {
-        orient: "left",
-        scale: "yscale",
-        domainOpacity: 0.5,
-        tickSize: 0,
-        labelPadding: 6,
-        zindex: 1,
-      },
-      xAxis,
-    ],
+    // axes: [
+    //   {
+    //     orient: "left",
+    //     scale: "yscale",
+    //     domainOpacity: 0.5,
+    //     tickSize: 0,
+    //     labelPadding: 6,
+    //     zindex: 1,
+    //   },
+    //   xAxis,
+    // ],
 
     marks: [
       {
@@ -228,6 +232,31 @@ export default function MultiBarChartScope(
             height: { signal: "height" },
           },
         },
+        scales: [
+          {
+            name: "xscale",
+            type: "linear",
+            range: [0, 200],
+            nice: true,
+            zero: true,
+            domain: {
+              data: "primary_formatted",
+              field: { signal: "datatype[Units]" },
+            },
+          },
+        ],
+        axes: [
+          {
+            orient: "bottom",
+            scale: "xscale",
+            bandPosition: 0,
+            domainOpacity: 0.5,
+            tickSize: 0,
+            format: { signal: "numberFormat[Units]" },
+            grid: true,
+            labelPadding: 6,
+          },
+        ],
         marks: [
           {
             type: "rect",
@@ -266,6 +295,31 @@ export default function MultiBarChartScope(
             height: { signal: "height" },
           },
         },
+        scales: [
+          {
+            name: "xscale",
+            type: "linear",
+            range: [250, 400],
+            nice: true,
+            zero: true,
+            domain: {
+              data: "secondary_formatted",
+              field: { signal: "datatype[Units]" },
+            },
+          },
+        ],
+        axes: [
+          {
+            orient: "bottom",
+            scale: "xscale",
+            bandPosition: 0,
+            domainOpacity: 0.5,
+            tickSize: 0,
+            format: { signal: "numberFormat[Units]" },
+            grid: true,
+            labelPadding: 6,
+          },
+        ],
         marks: [
           {
             type: "rect",
@@ -275,17 +329,17 @@ export default function MultiBarChartScope(
                 y: { scale: "yscale", field: { signal: "mainGroup" } },
                 height: { scale: "yscale", band: 1 },
                 x: {
-                  scale: "x_secondary_scale",
+                  scale: "xscale",
                   field: { signal: "datatype[Units]" },
                 },
               },
               update: {
                 fill: { value: theme.palette.secondary.main },
                 x: {
-                  scale: "x_secondary_scale",
+                  scale: "xscale",
                   field: { signal: "datatype[Units]" },
                 },
-                x2: { scale: "x_secondary_scale", value: 0 },
+                x2: { scale: "xscale", value: 0 },
                 tooltip: {
                   signal:
                     "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
