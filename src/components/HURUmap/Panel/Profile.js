@@ -2,21 +2,23 @@ import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { forwardRef, Fragment } from "react";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
+import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
 });
+
 const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
     marginLeft: typography.pxToRem(20),
     marginRight: typography.pxToRem(20),
-    marginTop: typography.pxToRem(80),
+    marginTop: typography.pxToRem(21),
     [breakpoints.up("md")]: {
       paddingLeft: typography.pxToRem(80),
       marginRight: typography.pxToRem(80),
@@ -35,10 +37,13 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   },
 }));
 
-function Profile({ categories, primaryProfile, secondaryProfile, ...props }) {
+const Profile = forwardRef(function Profile(
+  { categories, primaryProfile, secondaryProfile, ...props },
+  ref
+) {
   const classes = useStyles(props);
   return (
-    <div className={classes.profile}>
+    <div className={classes.profile} ref={ref}>
       <LocationHeader
         variant="primary"
         icon={Print}
@@ -52,23 +57,25 @@ function Profile({ categories, primaryProfile, secondaryProfile, ...props }) {
           title={secondaryProfile?.geography?.name}
           {...secondaryProfile?.geography}
         />
-      </Hidden>
+      </Hidden>{" "}
       {categories.map((category, categoryIndex) => (
         <Fragment key={category.tite}>
           <CategoryHeader
-            icon={category.icon}
-            title={category.title}
             description={category?.description}
+            icon={category.icon}
+            id={slugify(category.title)}
+            title={category.title}
           />
           {category.children.map((child, subcategoryIndex) => (
             <Fragment key={child.title}>
               <SubcategoryHeader
-                key={child.title}
-                title={child.title}
                 description={child?.description}
+                id={slugify(child.title)}
+                title={child.title}
               />
-              {child.children.map((indicator, indicatorIndex) => (
+              {child.children.map(({ index, ...indicator }, indicatorIndex) => (
                 <Chart
+                  key={index}
                   variant="primary"
                   {...indicator}
                   secondaryIndicator={
@@ -89,7 +96,7 @@ function Profile({ categories, primaryProfile, secondaryProfile, ...props }) {
       ))}
     </div>
   );
-}
+});
 
 Profile.propTypes = {
   categories: PropTypes.arrayOf(

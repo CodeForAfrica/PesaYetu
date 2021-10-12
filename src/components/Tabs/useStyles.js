@@ -39,6 +39,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
       cursor: "default",
     },
   },
+  tabPanel: {},
   tabPanels: {
     marginTop: typography.pxToRem(40),
   },

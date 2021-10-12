@@ -68,6 +68,7 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     marginLeft: 0,
     marginBottom: typography.pxToRem(5),
   },
+  filled: {},
 }));
 
 export default useStyles;

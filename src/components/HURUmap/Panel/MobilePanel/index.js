@@ -28,23 +28,31 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   return (
     <div className={classes.root}>
       {/* key is needed to re-render the component when prop changes e.g.
             via storybook controls */}
       <Tabs
-        classes={classes}
         key={activeTab}
         name="mobilepanel"
         items={formatedItems}
         activeTab={activeTab}
+        classes={{
+          divider: classes.tabsDivider,
+          indicator: classes.tabIndicator,
+          tabs: classes.tabs,
+          tab: classes.tab,
+          tabPanels: classes.tabPanels,
+          tabSelected: classes.tabSelected,
+        }}
       />
       <Button
         href={`#${geography.name}`}
         onClick={scrollToTop}
-        className={classes.footer}
+        className={classes.scrollButton}
+        startIcon={<TopIcon className={classes.topIcon} />}
       >
-        <TopIcon className={classes.footerIcon} />
         {scrollToTopLabel}
       </Button>
     </div>

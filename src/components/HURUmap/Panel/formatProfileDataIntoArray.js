@@ -14,6 +14,7 @@ export default function formatData(data) {
             data[label]?.subcategories[child]?.indicators ?? []
           ).map((indicator) => {
             return {
+              index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
               title: indicator,
               indicator:
                 data[label]?.subcategories[child]?.indicators[indicator],

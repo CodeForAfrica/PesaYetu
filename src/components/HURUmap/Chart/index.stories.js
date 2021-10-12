@@ -97,6 +97,7 @@ Default.args = {
           formatting: ",.0f",
         },
         Percentage: {
+          formatting: ".0%",
           maxX: 1,
           minX: 0,
         },
@@ -104,8 +105,8 @@ Default.args = {
       filter: {
         defaults: [
           {
-            name: "age",
-            value: "15-35 (ZA)",
+            name: "language",
+            value: "Other",
           },
         ],
       },

@@ -1,18 +1,29 @@
+import LogoButton from "@commons-ui/core/LogoButton";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import Logo from "@/pesayetu/components/Logo";
+import Image from "@/pesayetu/components/Image";
+import Link from "@/pesayetu/components/Link";
 import Menu from "@/pesayetu/components/Menu";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(() => ({
   root: {},
+  logoButton: {
+    paddingLeft: 0,
+  },
   section: {},
 }));
 
-function DesktopNavigation({ logoProps, menuProps, socialLinks, ...props }) {
+function DesktopNavigation({
+  logoProps,
+  menuProps,
+  desktopLogoProps,
+  socialLinks,
+  ...props
+}) {
   const classes = useStyles(props);
 
   return (
@@ -20,7 +31,13 @@ function DesktopNavigation({ logoProps, menuProps, socialLinks, ...props }) {
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
           <Grid item xs={3}>
-            <Logo {...logoProps} />
+            <LogoButton
+              href="/"
+              component={Link}
+              className={classes.logoButton}
+            >
+              <Image {...desktopLogoProps} />
+            </LogoButton>
           </Grid>
           <Grid
             item
@@ -43,12 +60,20 @@ DesktopNavigation.propTypes = {
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
+  desktopLogoProps: PropTypes.shape({
+    alt: PropTypes.string,
+    href: PropTypes.string,
+    src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
+    width: PropTypes.number,
+    height: PropTypes.number,
+  }),
 };
 
 DesktopNavigation.defaultProps = {
   logoProps: undefined,
   menuProps: undefined,
   socialLinks: undefined,
+  desktopLogoProps: undefined,
 };
 
 export default DesktopNavigation;
