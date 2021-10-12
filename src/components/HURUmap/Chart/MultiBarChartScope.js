@@ -202,24 +202,28 @@ export default function MultiBarChartScope(
         padding: 0.15,
       },
       {
-        name: "c",
-        type: "ordinal",
-        domain: [1, 2],
-        range: ["#d5855a", "#6c4e97"],
+        name: "xscale",
+        type: "linear",
+        range: [0, { signal: "width/2 " }],
+        nice: true,
+        zero: true,
+        domain: {
+          data: "primary_formatted",
+          field: { signal: "datatype[Units]" },
+        },
       },
     ],
 
-    // axes: [
-    //   {
-    //     orient: "left",
-    //     scale: "yscale",
-    //     domainOpacity: 0.5,
-    //     tickSize: 0,
-    //     labelPadding: 6,
-    //     zindex: 1,
-    //   },
-    //   xAxis,
-    // ],
+    axes: [
+      {
+        orient: "left",
+        scale: "yscale",
+        domainOpacity: 0.5,
+        tickSize: 0,
+        labelPadding: 6,
+        zindex: 1,
+      },
+    ],
 
     marks: [
       {
@@ -232,19 +236,6 @@ export default function MultiBarChartScope(
             height: { signal: "height" },
           },
         },
-        scales: [
-          {
-            name: "xscale",
-            type: "linear",
-            range: [0, 200],
-            nice: true,
-            zero: true,
-            domain: {
-              data: "primary_formatted",
-              field: { signal: "datatype[Units]" },
-            },
-          },
-        ],
         axes: [
           {
             orient: "bottom",
@@ -291,23 +282,10 @@ export default function MultiBarChartScope(
         name: "secondary_bars",
         encode: {
           update: {
-            x: { value: "width / 2" },
+            x: { signal: "width / 2" },
             height: { signal: "height" },
           },
         },
-        scales: [
-          {
-            name: "xscale",
-            type: "linear",
-            range: [250, 400],
-            nice: true,
-            zero: true,
-            domain: {
-              data: "secondary_formatted",
-              field: { signal: "datatype[Units]" },
-            },
-          },
-        ],
         axes: [
           {
             orient: "bottom",
@@ -320,6 +298,7 @@ export default function MultiBarChartScope(
             labelPadding: 6,
           },
         ],
+
         marks: [
           {
             type: "rect",
