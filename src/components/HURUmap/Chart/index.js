@@ -43,6 +43,7 @@ function Chart({
   secondaryIndicator,
   title,
   geoCode,
+  extra,
   ...props
 }) {
   const classes = useStyles(props);
@@ -81,7 +82,8 @@ function Chart({
   const spec = configureScope(
     indicator,
     isMobile,
-    secondaryIndicator?.indicator
+    secondaryIndicator?.indicator,
+    extra
   );
   const className = `charttooltip-${id}-${geoCode}`;
   const handler = (_, event, item, value) => {
@@ -196,6 +198,7 @@ Chart.propTypes = {
   }),
   title: PropTypes.string,
   geoCode: PropTypes.string,
+  extra: PropTypes.shape({}),
 };
 
 Chart.defaultProps = {
@@ -203,6 +206,7 @@ Chart.defaultProps = {
   secondaryIndicator: undefined,
   title: undefined,
   geoCode: undefined,
+  extra: undefined,
 };
 
 export default Chart;

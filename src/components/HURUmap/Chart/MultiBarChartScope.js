@@ -14,7 +14,8 @@ export default function MultiBarChartScope(
   primaryData,
   secondaryData,
   metadata,
-  config
+  config,
+  extra
 ) {
   const {
     defaultType,
@@ -207,6 +208,18 @@ export default function MultiBarChartScope(
           field: { signal: "datatype[Units]" },
         },
       },
+      {
+        name: "legend_primary_scale",
+        type: "ordinal",
+        domain: [extra.primary],
+        range: [theme.palette.primary.main],
+      },
+      {
+        name: "legend_secondary_scale",
+        type: "ordinal",
+        domain: [extra.secondary],
+        range: [theme.palette.secondary.main],
+      },
     ],
 
     axes: [
@@ -224,13 +237,18 @@ export default function MultiBarChartScope(
       {
         type: "group",
         name: "primary_bars",
-
         encode: {
           update: {
             x: { value: 0 },
             height: { signal: "height" },
           },
         },
+        legends: [
+          {
+            orient: "top",
+            fill: "legend_primary_scale",
+          },
+        ],
         axes: [
           {
             orient: "bottom",
@@ -281,6 +299,12 @@ export default function MultiBarChartScope(
             height: { signal: "height" },
           },
         },
+        legends: [
+          {
+            orient: "top",
+            fill: "legend_secondary_scale",
+          },
+        ],
         axes: [
           {
             orient: "bottom",

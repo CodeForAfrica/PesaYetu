@@ -9,7 +9,8 @@ import VerticalStackedChartScope from "./VerticalStackedChartScope";
 export default function configureScope(
   indicator,
   isMobile,
-  secondaryIndicator
+  secondaryIndicator,
+  extra
 ) {
   const configuration = indicator?.chart_configuration;
 
@@ -22,7 +23,8 @@ export default function configureScope(
           indicator?.data,
           secondaryIndicator?.data,
           indicator?.metadata,
-          configuration
+          configuration,
+          extra
         );
         break;
     }

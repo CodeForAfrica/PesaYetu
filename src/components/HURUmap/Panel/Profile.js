@@ -77,6 +77,10 @@ function Profile({ categories, primaryProfile, secondaryProfile, ...props }) {
                     ].children[indicatorIndex]
                   }
                   geoCode={secondaryProfile.geography.code}
+                  extra={{
+                    primary: primaryProfile.geography.name,
+                    secondary: secondaryProfile?.geography?.name,
+                  }}
                 />
               ))}
             </Fragment>
