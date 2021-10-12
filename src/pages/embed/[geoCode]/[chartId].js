@@ -1,19 +1,53 @@
+import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+import PropTypes from "prop-types";
 import React from "react";
 
+import createChartImage from "@/pesayetu/lib/createChartImage";
 import fetchJson from "@/pesayetu/utils/fetchJson";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
 });
 
-export default function Embed(props) {
+export default function Embed({
+  description,
+  geoCode,
+  image,
+  indicator,
+  title,
+  ...props
+}) {
   return (
-    <div>
-      <Chart {...props} />
-    </div>
+    <>
+      <NextSeo
+        description={description}
+        image={image}
+        title={title}
+        {...props}
+      />
+      <div>
+        <Chart indicator={indicator} title={title} geoCode={geoCode} />
+      </div>
+    </>
   );
 }
+
+Embed.propTypes = {
+  description: PropTypes.string,
+  geoCode: PropTypes.string,
+  image: PropTypes.string,
+  indicator: PropTypes.shape({}),
+  title: PropTypes.string,
+};
+
+Embed.defaultProps = {
+  description: undefined,
+  geoCode: undefined,
+  image: undefined,
+  indicator: undefined,
+  title: undefined,
+};
 
 export async function getStaticPaths() {
   return {
@@ -22,43 +56,62 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { geoCode, chartId } }) {
+export async function getStaticProps({ params: { geoCode: code, chartId } }) {
   const apiUri = process.env.HURUMAP_API_URL;
-  const { indicator } = await fetchJson(
-    `${apiUri}profile/1/geography/${geoCode.toUpperCase()}/indicator/${chartId}/?format=json`
+  const { indicator: foundIndicator } = await fetchJson(
+    `${apiUri}profile/1/geography/${code.toUpperCase()}/indicator/${chartId}/?format=json`
   );
 
   if (
-    !indicator ||
-    JSON.stringify(indicator) === "{}" ||
-    Object.keys(indicator)?.length === 0
+    !foundIndicator ||
+    JSON.stringify(foundIndicator) === "{}" ||
+    Object.keys(foundIndicator)?.length === 0
   ) {
     return {
       notFound: true,
     };
   }
 
+  const description = foundIndicator.description || null;
+  const geoCode = foundIndicator?.geography_code ?? null;
+  const indicator = {
+    ...foundIndicator,
+    chart_configuration: foundIndicator?.indicator_chart_configuration ?? null,
+    id: foundIndicator?.profile_indicator_id ?? null,
+    metadata: {
+      source: foundIndicator?.metadata_source ?? null,
+      url: foundIndicator?.metadata_url ?? null,
+      primary_group: foundIndicator?.primary_group?.length
+        ? foundIndicator?.primary_group[0]
+        : null,
+      groups: Object.keys(foundIndicator?.data?.[0] || {})
+        .filter((g) => g !== "count")
+        ?.map((g) => {
+          return { name: g };
+        }),
+    },
+  };
+  const title = foundIndicator?.profile_indicator_label ?? null;
+  const image = await createChartImage(geoCode, chartId, indicator);
+  const url = `${process.env.NEXT_PUBLIC_APP_URL}embed${geoCode}/${chartId}`;
+  const openGraph = {
+    title,
+    description,
+    url,
+    images: [{ url: image }],
+  };
+  const twitter = {
+    cartType: "summary_large_image",
+  };
+
   return {
     props: {
-      title: indicator?.profile_indicator_label ?? null,
-      indicator: {
-        ...indicator,
-        chart_configuration: indicator?.indicator_chart_configuration ?? null,
-        id: indicator?.profile_indicator_id ?? null,
-        metadata: {
-          source: indicator?.metadata_source ?? null,
-          url: indicator?.metadata_url ?? null,
-          primary_group: indicator?.primary_group?.length
-            ? indicator?.primary_group[0]
-            : null,
-          groups: Object.keys(indicator?.data?.length ? indicator?.data[0] : {})
-            .filter((g) => g !== "count")
-            ?.map((g) => {
-              return { name: g };
-            }),
-        },
-      },
-      geoCode: indicator?.geography_code ?? null,
+      description,
+      geoCode,
+      indicator,
+      openGraph,
+      title,
+      twitter,
     },
     revalidate: 60 * 5,
   };
