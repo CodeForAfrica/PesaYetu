@@ -65,6 +65,11 @@ export default function DonutChartScope(data, metadata, config) {
             as: "percentage",
           },
           {
+            type: "formula",
+            expr: "format(datum[datatype[Units]], numberFormat[Units]) + ' ' + datum[mainGroup]",
+            as: "custom_label",
+          },
+          {
             type: "extent",
             field: "percentage",
             signal: "percentage_extent",
@@ -76,15 +81,10 @@ export default function DonutChartScope(data, metadata, config) {
           },
           {
             type: "pie",
-            field: "percentage",
+            field: { signal: "datatype[Units]" },
             startAngle: { signal: "startAngle" },
             endAngle: { signal: "endAngle" },
             sort: { signal: "sort" },
-          },
-          {
-            type: "formula",
-            as: "custom_label",
-            expr: "datum.name + ' ' + datum.percentage",
           },
         ],
       },
@@ -150,6 +150,10 @@ export default function DonutChartScope(data, metadata, config) {
         name: "sort",
         value: false,
       },
+      {
+        name: "custom_label",
+        update: { field: "custom_label" },
+      },
       ...filterSignals,
     ],
 
@@ -171,7 +175,6 @@ export default function DonutChartScope(data, metadata, config) {
             update: {
               fontSize: { value: 11 },
               fill: { value: theme.palette.chart.text.primary },
-              text: { field: "custom_label" },
             },
           },
           symbols: {
