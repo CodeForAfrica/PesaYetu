@@ -1,4 +1,4 @@
-import { xAxis, defaultConfig, commonSignal } from "./properties";
+import { defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -17,7 +17,6 @@ export default function MultiBarChartScope(
   config
 ) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -30,10 +29,6 @@ export default function MultiBarChartScope(
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
-
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(
     metadata.groups
@@ -204,7 +199,7 @@ export default function MultiBarChartScope(
       {
         name: "xscale",
         type: "linear",
-        range: [0, { signal: "width/2 " }],
+        range: [0, { signal: "width/2 -30 " }],
         nice: true,
         zero: true,
         domain: {
@@ -240,6 +235,7 @@ export default function MultiBarChartScope(
           {
             orient: "bottom",
             scale: "xscale",
+            tickCount: 3,
             bandPosition: 0,
             domainOpacity: 0.5,
             tickSize: 0,
@@ -295,6 +291,7 @@ export default function MultiBarChartScope(
             tickSize: 0,
             format: { signal: "numberFormat[Units]" },
             grid: true,
+            tickCount: 3,
             labelPadding: 6,
           },
         ],
