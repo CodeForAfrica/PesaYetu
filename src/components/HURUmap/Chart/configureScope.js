@@ -2,6 +2,8 @@ import BarChartScope from "./BarChartScope";
 import DonutChartScope from "./DonutChartScope";
 import LineChartScope from "./LineChartScope";
 import MultiBarChartScope from "./MultiBarChartScope";
+import MultiDonutChartScope from "./MultiDonutChartScope";
+import MultiLineChartScope from "./MultiLineChartScope";
 import StackedChartScope from "./StackedChartScope";
 import VerticalBarChartScope from "./VerticalBarChartScope";
 import VerticalStackedChartScope from "./VerticalStackedChartScope";
@@ -18,6 +20,24 @@ export default function configureScope(
   const chartType = configuration?.chart_type?.toLowerCase();
   if (secondaryIndicator) {
     switch (chartType) {
+      case "line":
+        vegaSpec = MultiLineChartScope(
+          indicator?.data,
+          secondaryIndicator?.data,
+          indicator?.metadata,
+          configuration,
+          extra
+        );
+        break;
+      case "donut":
+        vegaSpec = MultiDonutChartScope(
+          indicator?.data,
+          secondaryIndicator?.data,
+          indicator?.metadata,
+          configuration,
+          extra
+        );
+        break;
       default:
         vegaSpec = MultiBarChartScope(
           indicator?.data,
