@@ -6,24 +6,30 @@ import DesktopPanel from "./DesktopPanel";
 import formatData from "./formatProfileDataIntoArray";
 import MobilePanel from "./MobilePanel";
 
-function Panel({ data, comparedProfile, ...props }) {
-  const items = formatData(data);
-  const formatedComparedProfile = {
-    ...comparedProfile,
-    items: formatData(comparedProfile.data),
+function Panel({ primaryProfile, secondaryProfile, ...props }) {
+  const items = formatData(primaryProfile.data);
+  const formatedPrimaryProfile = {
+    ...primaryProfile,
+    items: formatData(primaryProfile.data),
+  };
+  const formatedSecondaryProfile = {
+    ...secondaryProfile,
+    items: formatData(secondaryProfile.data),
   };
   return (
     <>
       <Hidden lgUp implementation="css">
         <MobilePanel
-          comparedProfile={formatedComparedProfile}
+          primaryProfile={formatedPrimaryProfile}
+          secondaryProfile={formatedSecondaryProfile}
           items={items}
           {...props}
         />
       </Hidden>
       <Hidden mdDown implementation="css">
         <DesktopPanel
-          comparedProfile={formatedComparedProfile}
+          primaryProfile={formatedPrimaryProfile}
+          secondaryProfile={formatedSecondaryProfile}
           items={items}
           {...props}
         />
@@ -34,13 +40,17 @@ function Panel({ data, comparedProfile, ...props }) {
 
 Panel.propTypes = {
   data: PropTypes.shape({}),
-  comparedProfile: PropTypes.shape({
+  primaryProfile: PropTypes.shape({
+    data: PropTypes.shape({}),
+  }),
+  secondaryProfile: PropTypes.shape({
     data: PropTypes.shape({}),
   }),
 };
 
 Panel.defaultProps = {
   data: undefined,
-  comparedProfile: undefined,
+  primaryProfile: undefined,
+  secondaryProfile: undefined,
 };
 export default Panel;

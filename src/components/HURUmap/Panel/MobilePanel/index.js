@@ -8,13 +8,11 @@ import useStyles from "./useStyles";
 import { ReactComponent as TopIcon } from "@/pesayetu/assets/icons/Component 130 – 1.svg";
 import Tabs from "@/pesayetu/components/Tabs";
 
-function MobilePanel({
-  scrollToTopLabel,
-  items,
-  geography,
-  activeType,
-  ...props
-}) {
+function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
+  const {
+    primaryProfile: { items, geography },
+  } = props;
+
   const classes = useStyles(props);
   const activeTab = Math.max(
     items.findIndex(({ title }) => title === activeType),
@@ -24,7 +22,7 @@ function MobilePanel({
     return {
       label: item.title,
       href: `#${item.title}`,
-      children: <RichData item={item} geography={geography} {...props} />,
+      children: <RichData item={item} {...props} />,
     };
   });
   const scrollToTop = () => {
@@ -54,17 +52,19 @@ function MobilePanel({
 }
 
 MobilePanel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({})),
-  geography: PropTypes.shape({
-    name: PropTypes.string,
+  primaryProfile: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({})),
+    geography: PropTypes.shape({
+      name: PropTypes.string,
+    }),
   }),
+
   activeType: PropTypes.string,
   scrollToTopLabel: PropTypes.string,
 };
 
 MobilePanel.defaultProps = {
-  items: undefined,
-  geography: undefined,
+  primaryProfile: undefined,
   activeType: undefined,
   scrollToTopLabel: undefined,
 };

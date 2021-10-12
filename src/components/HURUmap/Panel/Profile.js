@@ -35,22 +35,22 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   },
 }));
 
-function Profile({ categories, geography, comparedProfile, ...props }) {
+function Profile({ categories, primaryProfile, secondaryProfile, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.profile}>
       <LocationHeader
         variant="primary"
         icon={Print}
-        title={geography.name}
-        {...geography}
+        title={primaryProfile.geography.name}
+        {...primaryProfile.geography}
       />
       <Hidden smDown implementation="css">
         <LocationHeader
           variant="secondary"
           icon={Print}
-          title={comparedProfile?.geography?.name}
-          {...comparedProfile?.geography}
+          title={secondaryProfile?.geography?.name}
+          {...secondaryProfile?.geography}
         />
       </Hidden>
       {categories.map((category, categoryIndex) => (
@@ -72,11 +72,11 @@ function Profile({ categories, geography, comparedProfile, ...props }) {
                   variant="primary"
                   {...indicator}
                   secondaryIndicator={
-                    comparedProfile.items[categoryIndex].children[
+                    secondaryProfile.items[categoryIndex].children[
                       subcategoryIndex
                     ].children[indicatorIndex]
                   }
-                  geoCode={geography.code}
+                  geoCode={secondaryProfile.geography.code}
                 />
               ))}
             </Fragment>
@@ -96,7 +96,7 @@ Profile.propTypes = {
       title: PropTypes.string,
     })
   ),
-  comparedProfile: PropTypes.shape({
+  primaryProfile: PropTypes.shape({
     geography: PropTypes.shape({
       name: PropTypes.string,
       code: PropTypes.string,
@@ -111,16 +111,26 @@ Profile.propTypes = {
       })
     ),
   }),
-
-  geography: PropTypes.shape({
-    name: PropTypes.string,
-    code: PropTypes.string,
+  secondaryProfile: PropTypes.shape({
+    geography: PropTypes.shape({
+      name: PropTypes.string,
+      code: PropTypes.string,
+    }),
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        children: PropTypes.arrayOf(
+          PropTypes.shape({
+            children: PropTypes.arrayOf(PropTypes.shape({})),
+          })
+        ),
+      })
+    ),
   }),
 };
 Profile.defaultProps = {
   categories: undefined,
-  comparedProfile: undefined,
-  geography: undefined,
+  primaryProfile: undefined,
+  secondaryProfile: undefined,
 };
 
 export default Profile;

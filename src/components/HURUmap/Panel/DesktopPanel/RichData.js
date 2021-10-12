@@ -6,34 +6,32 @@ import useStyles from "./useStyles";
 import Profile from "@/pesayetu/components/HURUmap/Panel/Profile";
 import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 
-function RichData({ geography, items, ...props }) {
+function RichData({ primaryProfile, ...props }) {
   const classes = useStyles(props);
 
   return (
     <>
-      <TreeView classes={{ root: classes.treeView }} items={items} />
-      <Profile {...props} categories={items} geography={geography} />
+      <TreeView
+        classes={{ root: classes.treeView }}
+        items={primaryProfile.items}
+      />
+      <Profile
+        {...props}
+        categories={primaryProfile.items}
+        primaryProfile={primaryProfile}
+      />
     </>
   );
 }
 
 RichData.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({})),
-  geography: PropTypes.shape({
-    name: PropTypes.string,
-    code: PropTypes.string,
+  primaryProfile: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({})),
   }),
-  geometries: PropTypes.shape({}),
-  highlights: PropTypes.shape({}),
-  tags: PropTypes.shape({}),
 };
 
 RichData.defaultProps = {
-  items: undefined,
-  geography: undefined,
-  geometries: undefined,
-  highlights: undefined,
-  tags: undefined,
+  primaryProfile: undefined,
 };
 
 export default RichData;

@@ -118,8 +118,8 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
       <Panel
         classes={{ tabs: classes.mobileTabs }}
         {...panelProps}
-        {...profile}
-        comparedProfile={{ ...profile, geography: panelArgs.geography }}
+        primaryProfile={profile}
+        secondaryProfile={{ ...profile, geography: panelArgs.geography }}
       />
       <Hidden mdDown implementation="css">
         <div className={classes.root}>
