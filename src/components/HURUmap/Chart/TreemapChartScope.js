@@ -89,15 +89,10 @@ export default function TreemapChartScope(data, metadata, config) {
           },
           {
             type: "treemap",
-            field: "count",
+            field: { signal: "datatype[Units]" },
             method: { signal: "layout" },
             ratio: { signal: "aspectRatio" },
             size: [{ signal: "width" }, { signal: "height" }],
-          },
-          {
-            type: "formula",
-            as: "custom_label",
-            expr: "datum.gender + ' ' + datum.race",
           },
         ],
       },
@@ -209,23 +204,22 @@ export default function TreemapChartScope(data, metadata, config) {
       {
         type: "text",
         from: { data: "data_formatted" },
-        interactive: false,
         encode: {
           enter: {
             font: { value: theme.typography.fontFamily },
             align: { value: "top" },
             baseline: { value: "left" },
             fill: { value: theme.palette.text.secondary },
-            text: {
-              signal:
-                "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup]]",
-            },
           },
           update: {
             align: { value: "top" },
             baseline: { value: "left" },
             x: { signal: "datum.x0 + 15" },
             y: { signal: "datum.y0 + 20" },
+            text: {
+              signal:
+                "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup]]",
+            },
           },
         },
       },
