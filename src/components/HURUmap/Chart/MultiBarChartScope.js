@@ -249,6 +249,7 @@ export default function MultiBarChartScope(
             fill: "legend_primary_scale",
             labelFontWeight: "bold",
             labelColor: "#666",
+            labelFont: theme.typography.fontFamily,
           },
         ],
         axes: [
@@ -307,6 +308,7 @@ export default function MultiBarChartScope(
             fill: "legend_secondary_scale",
             labelFontWeight: "bold",
             labelColor: "#666",
+            labelFont: theme.typography.fontFamily,
           },
         ],
         axes: [
