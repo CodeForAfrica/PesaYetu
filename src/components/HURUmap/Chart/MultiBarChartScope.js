@@ -211,13 +211,13 @@ export default function MultiBarChartScope(
       {
         name: "legend_primary_scale",
         type: "ordinal",
-        domain: [extra.primary],
+        domain: [extra.primary.toUpperCase()],
         range: [theme.palette.primary.main],
       },
       {
         name: "legend_secondary_scale",
         type: "ordinal",
-        domain: [extra.secondary],
+        domain: [extra.secondary.toUpperCase()],
         range: [theme.palette.secondary.main],
       },
     ],
@@ -247,6 +247,8 @@ export default function MultiBarChartScope(
           {
             orient: "top",
             fill: "legend_primary_scale",
+            labelFontWeight: "bold",
+            labelColor: "#666",
           },
         ],
         axes: [
@@ -303,6 +305,8 @@ export default function MultiBarChartScope(
           {
             orient: "top",
             fill: "legend_secondary_scale",
+            labelFontWeight: "bold",
+            labelColor: "#666",
           },
         ],
         axes: [
