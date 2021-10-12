@@ -24,7 +24,6 @@ const useStyles = makeStyles(
         position: "fixed",
         left: 0,
         right: 0,
-        top: 110,
       },
       "& .tooltipPop": {
         background: palette.background.default,
@@ -75,9 +74,6 @@ const useStyles = makeStyles(
         zIndex: zIndex.appBar,
       },
     },
-    mobileTabs: {
-      top: 80,
-    },
   })
 );
 
@@ -114,11 +110,6 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
 
   return (
     <>
-      <Panel
-        classes={{ tabs: classes.mobileTabs }}
-        {...panelProps}
-        {...profile}
-      />
       <Hidden mdDown implementation="css">
         <div className={classes.root}>
           <Map
@@ -138,6 +129,7 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
           />
         </div>
       </Hidden>
+      <Panel {...panelProps} {...profile} />
     </>
   );
 }

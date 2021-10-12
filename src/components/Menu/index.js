@@ -107,6 +107,7 @@ const useStyles = makeStyles(({ typography, breakpoints, palette }) => ({
 
 function Menu({ links, children, socialLinks, ...props }) {
   const classes = useStyles(props);
+
   if (!links?.length) {
     return null;
   }

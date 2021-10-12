@@ -1,17 +1,20 @@
-import { Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import LogoButton from "@commons-ui/core/LogoButton";
+import { Grid, Typography, useMediaQuery } from "@material-ui/core";
+import { useTheme, makeStyles } from "@material-ui/core/styles";
 import { useTour } from "@reactour/tour";
 import PropTypes from "prop-types";
 import React from "react";
 
 import SearchIcon from "@/pesayetu/assets/icons/search-explore.svg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
-import Logo from "@/pesayetu/components/Logo";
+import Image from "@/pesayetu/components/Image";
+import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {},
   section: {},
+  logoButton: {},
   help: {
     color: "#666666",
     textAlign: "center",
@@ -58,9 +61,14 @@ function ExploreNavigation({
   menuProps,
   onOpenHelp,
   socialLinks,
+  desktopLogoProps,
+  mobileLogoProps,
   ...props
 }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+  const logoArgs = isDesktop ? desktopLogoProps : mobileLogoProps;
   const { setIsOpen } = useTour();
 
   const openTooltip = () => {
@@ -71,7 +79,13 @@ function ExploreNavigation({
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center">
           <Grid item xs={3}>
-            <Logo {...logoProps} />
+            <LogoButton
+              href="/"
+              component={Link}
+              className={classes.logoButton}
+            >
+              <Image {...logoArgs} />
+            </LogoButton>
           </Grid>
           <Grid
             item
@@ -115,6 +129,18 @@ ExploreNavigation.propTypes = {
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   onOpenHelp: PropTypes.func,
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
+  desktopLogoProps: PropTypes.shape({
+    alt: PropTypes.string,
+    href: PropTypes.string,
+    src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
+    width: PropTypes.number,
+    height: PropTypes.number,
+  }),
+  mobileLogoProps: PropTypes.shape({
+    alt: PropTypes.string,
+    href: PropTypes.string,
+    src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
+  }),
 };
 
 ExploreNavigation.defaultProps = {
@@ -122,6 +148,8 @@ ExploreNavigation.defaultProps = {
   menuProps: undefined,
   onOpenHelp: undefined,
   socialLinks: undefined,
+  desktopLogoProps: undefined,
+  mobileLogoProps: undefined,
 };
 
 export default ExploreNavigation;

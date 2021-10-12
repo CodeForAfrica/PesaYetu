@@ -27,15 +27,17 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     height: "100%",
     marginLeft: typography.pxToRem(7.5),
     marginRight: typography.pxToRem(10),
-    padding: `${typography.pxToRem(20)} 0`,
+    paddingBottom: typography.pxToRem(20),
     position: "relative",
     [breakpoints.up("md")]: {
       margin: 0,
-      padding: `${typography.pxToRem(34)} 0`,
+      padding: `${typography.pxToRem(14)} 0 ${typography.pxToRem(34)}`,
     },
     [breakpoints.up("lg")]: {
       margin: 0,
-      padding: `${typography.pxToRem(30)} 0`,
+      padding: `${typography.pxToRem(10)} ${typography.pxToRem(
+        33
+      )} ${typography.pxToRem(27)}`,
     },
     "&:after": {
       position: "absolute",
@@ -52,24 +54,15 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
   },
   media: {
-    height: typography.pxToRem(400),
     marginLeft: `-${typography.pxToRem(7.5)}`,
     padding: 0,
     width: "100%",
     [breakpoints.up("md")]: {
       margin: 0,
-      height: typography.pxToRem(476),
       width: typography.pxToRem(608),
     },
     [breakpoints.up("lg")]: {
-      height: typography.pxToRem(530),
-      padding: `${typography.pxToRem(30)} ${typography.pxToRem(
-        33
-      )} ${typography.pxToRem(27)}`,
       width: typography.pxToRem(768),
-    },
-    "& > iframe": {
-      height: "100%",
     },
   },
   content: {

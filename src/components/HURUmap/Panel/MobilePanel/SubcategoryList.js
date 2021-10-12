@@ -8,18 +8,19 @@ import { ReactComponent as Caret } from "@/pesayetu/assets/icons/caret.svg";
 import Link from "@/pesayetu/components/Link";
 import slugify from "@/pesayetu/utils/slugify";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
+  root: {
+    position: "sticky",
+    top: 64 + 60, // below navbar and category list tab
+    zIndex: zIndex.appBar,
+  },
   caretContainer: {
-    width: "100%",
-    height: typography.pxToRem(16),
-    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     backgroundColor: palette.grey.light,
-    position: "fixed",
-    left: 0,
-    right: 0,
-    top: 140,
+    display: "flex",
+    height: typography.pxToRem(16),
+    justifyContent: "center",
+    width: "100%",
     "&:active,&:hover, &:focus, &:focus-within": {
       backgroundColor: palette.grey.light,
     },
@@ -56,14 +57,9 @@ function SubcategoryList({ items }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  if (!items?.length) {
-    return null;
-  }
-
   const handleCaretClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -74,9 +70,11 @@ function SubcategoryList({ items }) {
       .scrollIntoView({ behavior: "smooth" });
     handleClose();
   };
-
   const open = Boolean(anchorEl);
 
+  if (!items?.length) {
+    return null;
+  }
   return (
     <div className={classes.root}>
       <Button className={classes.caretContainer} onClick={handleCaretClick}>
@@ -98,11 +96,12 @@ function SubcategoryList({ items }) {
       >
         {items.map(({ title }, index) => (
           <Link
-            underline="none"
-            href={`#${slugify(title)}`}
+            key={title}
             onClick={handleSelect}
             data-index={index}
             data-title={title}
+            href={`#${slugify(title)}`}
+            underline="none"
             variant="caption"
             className={clsx(classes.title, {
               [classes.notSelected]: selectedIndex !== index,

@@ -67,11 +67,6 @@ export default function VerticalStackedChartScope(data, metadata, config) {
             fields: ["count"],
           },
           {
-            type: "stack",
-            groupby: [primaryGroup],
-            field: "count",
-          },
-          {
             type: "formula",
             expr: "datum.count/datum.TotalCount",
             as: "percentage",
@@ -85,6 +80,11 @@ export default function VerticalStackedChartScope(data, metadata, config) {
             type: "extent",
             field: "count",
             signal: "value_extent",
+          },
+          {
+            type: "stack",
+            groupby: [primaryGroup],
+            field: { signal: "datatype[Units]" },
           },
         ],
       },
@@ -164,7 +164,7 @@ export default function VerticalStackedChartScope(data, metadata, config) {
         name: "xscale",
         type: "band",
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
-        range: { step: { signal: "x_step" } },
+        range: [0, { signal: "width" }],
         padding: 0.15,
       },
       {
