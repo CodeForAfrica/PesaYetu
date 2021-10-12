@@ -22,9 +22,12 @@ export default function TreemapChartScope(data, metadata, config) {
         maxX: percentageMaxX,
       },
     },
+    nest_fields: nestFields,
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
+
+  const nestedFields = nestFields || [primaryGroup]; // if nest fields are undefined, make use primaryGroup
 
   if (xTicks) {
     xAxis.tickCount = xTicks;
@@ -41,7 +44,7 @@ export default function TreemapChartScope(data, metadata, config) {
     autosize: { type: "fit-x", contains: "padding" },
     padding: 5,
     width: { signal: "width" },
-    height: 360,
+    height: 380,
     data: [
       {
         name: "table",
@@ -53,15 +56,40 @@ export default function TreemapChartScope(data, metadata, config) {
         source: "table",
         transform: [
           {
-            type: "stratify",
-            key: "id",
-            parentKey: "parent",
+            type: "aggregate",
+            ops: ["sum"],
+            as: ["count"],
+            fields: ["count"],
+            groupby: { signal: "groups" },
+          },
+          {
+            type: "joinaggregate",
+            as: ["TotalCount"],
+            ops: ["sum"],
+            fields: ["count"],
+          },
+          {
+            type: "formula",
+            expr: "datum.count/datum.TotalCount",
+            as: "percentage",
+          },
+          {
+            type: "extent",
+            field: "percentage",
+            signal: "percentage_extent",
+          },
+          {
+            type: "extent",
+            field: "count",
+            signal: "value_extent",
+          },
+          {
+            type: "nest",
+            keys: nestedFields,
           },
           {
             type: "treemap",
-            field: "size",
-            sort: { field: "value" },
-            round: true,
+            field: "count",
             method: { signal: "layout" },
             ratio: { signal: "aspectRatio" },
             size: [{ signal: "width" }, { signal: "height" }],
@@ -69,24 +97,9 @@ export default function TreemapChartScope(data, metadata, config) {
           {
             type: "formula",
             as: "custom_label",
-            expr: "datum.name + ' ' + datum.size",
+            expr: "datum.gender + ' ' + datum.race",
           },
         ],
-      },
-      {
-        name: "nodes",
-        source: "data_formatted",
-        transform: [
-          {
-            type: "filter",
-            expr: "datum.children",
-          },
-        ],
-      },
-      {
-        name: "leaves",
-        source: "data_formatted",
-        transform: [{ type: "filter", expr: "!datum.children" }],
       },
     ],
     signals: [
@@ -101,7 +114,7 @@ export default function TreemapChartScope(data, metadata, config) {
       },
       {
         name: "groups",
-        value: [primaryGroup],
+        value: nestedFields,
       },
       {
         name: "barvalue",
@@ -123,7 +136,7 @@ export default function TreemapChartScope(data, metadata, config) {
       },
       {
         name: "mainGroup",
-        value: primaryGroup,
+        value: nestedFields[0],
       },
       {
         name: "numberFormat",
@@ -167,41 +180,18 @@ export default function TreemapChartScope(data, metadata, config) {
       {
         name: "color",
         type: "ordinal",
-        domain: { data: "nodes", field: "name" },
-        range: "category",
-      },
-      {
-        name: "size",
-        type: "ordinal",
-      },
-      {
-        name: "opacity",
-        type: "ordinal",
+        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        range: [theme.palette.primary.main],
       },
     ],
 
     marks: [
       {
         type: "rect",
-        from: { data: "nodes" },
-        interactive: false,
+        from: { data: "data_formatted" },
         encode: {
           enter: {
-            fill: { scale: "color", field: "name" },
-          },
-          update: {
-            x: { field: "x0" },
-            y: { field: "y0" },
-            x2: { field: "x1" },
-            y2: { field: "y1" },
-          },
-        },
-      },
-      {
-        type: "rect",
-        from: { data: "leaves" },
-        encode: {
-          enter: {
+            fill: { scale: "color", field: { signal: "mainGroup" } },
             stroke: { value: "#fff" },
           },
           update: {
@@ -209,30 +199,33 @@ export default function TreemapChartScope(data, metadata, config) {
             y: { field: "y0" },
             x2: { field: "x1" },
             y2: { field: "y1" },
-            fill: { value: theme.palette.primary.main },
-          },
-          hover: {
-            fill: { value: theme.palette.primary.main },
+            tooltip: {
+              signal:
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+            },
           },
         },
       },
       {
         type: "text",
-        from: { data: "leaves" },
+        from: { data: "data_formatted" },
         interactive: false,
         encode: {
           enter: {
             font: { value: theme.typography.fontFamily },
-            align: { value: "left" },
-            baseline: { value: "line-top" },
+            align: { value: "top" },
+            baseline: { value: "left" },
             fill: { value: theme.palette.text.secondary },
-            text: { field: "custom_label" },
-            fontSize: { scale: "size", field: "depth" },
-            fillOpacity: { scale: "opacity", field: "depth" },
+            text: {
+              signal:
+                "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup]]",
+            },
           },
           update: {
-            x: { signal: "0.5 * (datum.x0 + datum.x1)" },
-            y: { signal: "0.5 * (datum.y0 + datum.y1)" },
+            align: { value: "top" },
+            baseline: { value: "left" },
+            x: { signal: "datum.x0 + 15" },
+            y: { signal: "datum.y0 + 20" },
           },
         },
       },
