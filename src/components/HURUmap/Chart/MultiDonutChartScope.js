@@ -38,7 +38,7 @@ export default function MultiDonutChartScope(
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
     description: "A basic donut chart example.",
-    width: 750,
+    width: 700,
     height: 180,
     autosize: "none",
     config: defaultConfig,

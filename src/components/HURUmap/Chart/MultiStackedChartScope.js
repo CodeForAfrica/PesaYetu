@@ -355,7 +355,7 @@ export default function MultiStackedChartScope(
         name: "secondary_bars",
         encode: {
           update: {
-            x: { signal: "width / 2" },
+            x: { signal: "width / 2  +30" },
             height: { signal: "height" },
           },
         },
