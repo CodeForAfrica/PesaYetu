@@ -36,8 +36,8 @@ ENV NODE_ENV production
 
 WORKDIR /app
 
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/next-seo.config.js ./
