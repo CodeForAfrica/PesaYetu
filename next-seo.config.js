@@ -18,6 +18,10 @@ export default {
       },
     ],
   },
+  twitter: {
+    handle: "@PesaCheck",
+    site: "@PesaCheck",
+  },
   additionalMetaTags: [
     {
       name: "viewport",
