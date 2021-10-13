@@ -19,8 +19,8 @@ import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.
 const shareData = [
   { name: "Facebook", icon: FacebookIcon },
   { name: "Twitter", icon: TwitterIcon },
-  { name: "Email", icon: EmailIcon },
   { name: "LinkedIn", icon: LinkedInIcon },
+  { name: "Email", icon: EmailIcon },
 ];
 
 function Share({ title, geoCode, indicatorId, view, ...props }) {

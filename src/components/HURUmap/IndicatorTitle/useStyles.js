@@ -59,6 +59,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
   shareButton: {
     backgroundColor: "#ffffff !important",
+    filter: "opacity(0.7)",
     width: "100%",
     border: "solid 1px #f8f8f8 !important",
     "&:hover": {
