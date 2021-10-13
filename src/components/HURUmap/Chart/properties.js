@@ -47,8 +47,13 @@ export const defaultConfig = {
 export const commonSignal = [
   {
     name: "width",
-    update: "containerSize()[0]",
-    on: [{ events: "window:resize", update: "containerSize()[0]" }],
+    update: "containerSize()[0] ? containerSize()[0] : 600",
+    on: [
+      {
+        events: "window:resize",
+        update: "containerSize()[0] ? containerSize()[0] : 600",
+      },
+    ],
   },
   {
     name: "cursor",

@@ -6,6 +6,7 @@ import MultiDonutChartScope from "./MultiDonutChartScope";
 import MultiLineChartScope from "./MultiLineChartScope";
 import MultiStackedChartScope from "./MultiStackedChartScope";
 import StackedChartScope from "./StackedChartScope";
+import TreemapChartScope from "./TreemapChartScope";
 import VerticalBarChartScope from "./VerticalBarChartScope";
 import VerticalStackedChartScope from "./VerticalStackedChartScope";
 
@@ -69,6 +70,13 @@ export default function configureScope(
         break;
       case "donut":
         vegaSpec = DonutChartScope(
+          indicator?.data,
+          indicator?.metadata,
+          configuration
+        );
+        break;
+      case "treemap":
+        vegaSpec = TreemapChartScope(
           indicator?.data,
           indicator?.metadata,
           configuration

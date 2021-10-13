@@ -88,7 +88,6 @@ function Download({
                 <ButtonBase
                   className={classes.text}
                   onClick={() => handleChartValueChange(v)}
-                  disabled={disableToggle}
                 >
                   {v}
                 </ButtonBase>
@@ -157,7 +156,7 @@ Download.propTypes = {
 Download.defaultProps = {
   title: undefined,
   view: undefined,
-  disableToggle: undefined,
+  disableToggle: false,
   chartValue: undefined,
   handleChartValueChange: undefined,
 };
