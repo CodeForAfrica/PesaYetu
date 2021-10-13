@@ -236,7 +236,7 @@ export default function MultiDonutChartScope(
         symbolType: "circle",
         direction: "vertical",
         labelFont: theme.typography.fontFamily,
-        legendX: 500,
+        legendX: 480,
         legendY: 40,
         labelOffset: 12,
         rowPadding: 8,
