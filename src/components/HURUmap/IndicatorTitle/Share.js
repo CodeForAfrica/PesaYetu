@@ -1,6 +1,5 @@
 import { Grid, TextField, Typography } from "@material-ui/core";
 import clsx from "clsx";
-import { useS3Upload } from "next-s3-upload";
 import PropTypes from "prop-types";
 import React from "react";
 import {
@@ -26,30 +25,10 @@ const shareData = [
 
 function Share({ title, geoCode, indicatorId, view, ...props }) {
   const classes = useStyles(props);
-  const { uploadToS3 } = useS3Upload();
   // Embed url
   const url = `${
     process.env.NEXT_PUBLIC_APP_URL
   }/embed/${geoCode.toLowerCase()}/${indicatorId}`;
-
-  const handleShare = async () => {
-    const imgurl = await view.toImageURL("png");
-
-    // Convert to File format
-    const arr = imgurl.split(",");
-    const mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[1]);
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
-
-    // eslint-disable-next-line no-plusplus
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-
-    const result = new File([u8arr], "image.png", { type: mime });
-    await uploadToS3(result);
-  };
 
   const code = `<div>
   <style>
@@ -102,7 +81,6 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   title={title}
                   url={url}
                   className={classes.shareButton}
-                  beforeOnClick={handleShare}
                 >
                   <FacebookIcon className={classes.icon} />
                 </FacebookShareButton>
@@ -115,7 +93,6 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   title={title}
                   url={url}
                   className={classes.shareButton}
-                  beforeOnClick={handleShare}
                 >
                   <TwitterIcon className={classes.icon} />
                 </TwitterShareButton>
@@ -128,7 +105,6 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   title={title}
                   url={url}
                   className={classes.shareButton}
-                  beforeOnClick={handleShare}
                 >
                   <LinkedInIcon className={classes.icon} />
                 </LinkedinShareButton>
@@ -141,7 +117,6 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
                   title={title}
                   url={url}
                   className={classes.shareButton}
-                  beforeOnClick={handleShare}
                 >
                   <EmailIcon className={classes.icon} />
                 </EmailShareButton>
