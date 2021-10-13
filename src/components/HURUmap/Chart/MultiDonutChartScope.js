@@ -230,13 +230,13 @@ export default function MultiDonutChartScope(
         },
       },
       {
-        fill: "color",
-        stroke: "color",
+        fill: "secondary",
+        stroke: "secondary",
         orient: "none",
         symbolType: "circle",
         direction: "vertical",
         labelFont: theme.typography.fontFamily,
-        legendX: 200,
+        legendX: 500,
         legendY: 40,
         labelOffset: 12,
         rowPadding: 8,
@@ -266,6 +266,11 @@ export default function MultiDonutChartScope(
         range: "category",
       },
       {
+        name: "secondary",
+        type: "ordinal",
+        range: "secondary",
+      },
+      {
         name: "legend_labels",
         type: "linear",
         domain: { data: "primary_formatted", field: "percentage" },
@@ -287,36 +292,30 @@ export default function MultiDonutChartScope(
 
     marks: [
       {
-        type: "group",
-        name: "primary_arc",
-        marks: [
-          {
-            type: "arc",
-            from: { data: "primary_formatted" },
-            encode: {
-              enter: {
-                fill: { scale: "color", field: { signal: "mainGroup" } },
-                x: { signal: "(width-30) / 8" },
-                y: { signal: "height / 2" },
-              },
-              update: {
-                startAngle: { field: "startAngle" },
-                endAngle: { field: "endAngle" },
-                padAngle: { signal: "padAngle" },
-                innerRadius: { signal: "innerRadius" },
-                outerRadius: { signal: "(width-30) / 8" },
-                cornerRadius: { signal: "cornerRadius" },
-              },
-            },
+        type: "arc",
+        from: { data: "primary_formatted" },
+        encode: {
+          enter: {
+            fill: { scale: "color", field: { signal: "mainGroup" } },
+            x: { signal: "(width-30) / 8" },
+            y: { signal: "height / 2" },
           },
-        ],
+          update: {
+            startAngle: { field: "startAngle" },
+            endAngle: { field: "endAngle" },
+            padAngle: { signal: "padAngle" },
+            innerRadius: { signal: "innerRadius" },
+            outerRadius: { signal: "(width-30) / 8" },
+            cornerRadius: { signal: "cornerRadius" },
+          },
+        },
       },
       {
         type: "arc",
         from: { data: "secondary_formatted" },
         encode: {
           enter: {
-            fill: { scale: "color", field: { signal: "mainGroup" } },
+            fill: { scale: "secondary", field: { signal: "mainGroup" } },
             x: { signal: "(width-30)/2 +30" },
             y: { signal: "height / 2" },
           },

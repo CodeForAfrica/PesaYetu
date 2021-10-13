@@ -40,6 +40,7 @@ export const defaultConfig = {
   },
   range: {
     category: theme.palette.chart.primary,
+    secondary: theme.palette.chart.secondary,
   },
 };
 
