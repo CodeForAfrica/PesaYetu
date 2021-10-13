@@ -42,6 +42,19 @@ const Profile = forwardRef(function Profile(
   ref
 ) {
   const classes = useStyles(props);
+  const getSecondaryIndicator = (
+    categoryIndex,
+    subcategoryIndex,
+    indicatorIndex
+  ) => {
+    const category =
+      secondaryProfile?.items?.length && secondaryProfile?.items[categoryIndex];
+    const subCategory =
+      category?.children?.length && category?.children[subcategoryIndex];
+    const indicator =
+      subCategory?.children?.length && subCategory?.children[indicatorIndex];
+    return indicator;
+  };
   return (
     <div className={classes.profile} ref={ref}>
       <LocationHeader
@@ -78,12 +91,12 @@ const Profile = forwardRef(function Profile(
                   key={index}
                   variant="primary"
                   {...indicator}
-                  secondaryIndicator={
-                    secondaryProfile.items[categoryIndex].children[
-                      subcategoryIndex
-                    ].children[indicatorIndex]
-                  }
-                  geoCode={secondaryProfile.geography.code}
+                  geoCode={secondaryProfile?.geography?.code}
+                  secondaryIndicator={getSecondaryIndicator(
+                    categoryIndex,
+                    subcategoryIndex,
+                    indicatorIndex
+                  )}
                   extra={{
                     primary: primaryProfile.geography.name,
                     secondary: secondaryProfile?.geography?.name,

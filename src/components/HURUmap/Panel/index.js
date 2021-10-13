@@ -10,11 +10,11 @@ function Panel({ primaryProfile, secondaryProfile, ...props }) {
   const items = formatData(primaryProfile.data);
   const formatedPrimaryProfile = {
     ...primaryProfile,
-    items: formatData(primaryProfile.data),
+    items: formatData(primaryProfile?.data),
   };
   const formatedSecondaryProfile = {
     ...secondaryProfile,
-    items: formatData(secondaryProfile.data),
+    items: formatData(secondaryProfile?.data),
   };
   return (
     <>
