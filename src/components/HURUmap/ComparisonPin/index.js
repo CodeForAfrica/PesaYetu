@@ -1,47 +1,82 @@
-import { Button } from "@material-ui/core";
-import Icon from "next/image";
+import { Box, IconButton, SvgIcon } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
+import { ReactComponent as PinIconDefault } from "@/pesayetu/assets/Component 96 – 12.svg";
+import { ReactComponent as PinIconSelected } from "@/pesayetu/assets/Group 958.svg";
 import Select from "@/pesayetu/components/Select";
 
-const ComparisonPin = ({ icon, label, helperText, options, ...props }) => {
+function PinIcon(props) {
+  return <SvgIcon {...props} />;
+}
+
+const ComparisonPin = ({
+  helperText,
+  onClose,
+  onOpen,
+  options,
+  placeholder,
+  ...props
+}) => {
   const classes = useStyles(props);
-  const [open, isOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleClick = () => setOpen((prev) => !prev);
+  const handleClose = (args) => {
+    setOpen(false);
+    if (onClose) {
+      onClose(args);
+    }
+  };
+  const handleOpen = (args) => {
+    setOpen(true);
+    if (onOpen) {
+      onOpen(args);
+    }
+  };
+  const component = open ? PinIconSelected : PinIconDefault;
 
   return (
-    <div className={classes.root}>
-      <Button variant="contained" className={classes.button}>
-        <div className={`${classes[`icon${open}`]}`}>
-          <Icon src={icon} layout="fill" />
-        </div>
-      </Button>
+    <Box display="flex" alignItems="flex-end" className={classes.root}>
+      <IconButton onClick={handleClick} className={classes.pinButton}>
+        <PinIcon
+          component={component}
+          style={{ fontSize: 62 }}
+          viewBox="0 0 62 62"
+        />
+      </IconButton>
       <Select
         helperText={helperText}
-        label={label}
+        onClose={handleClose}
+        onOpen={handleOpen}
+        open={open}
         options={options}
-        onOpen={() => isOpen(!open)}
-        onClose={() => isOpen(!open)}
+        placeholder={placeholder}
+        classes={{ select: classes.locationSelect }}
       />
-      <hr className={classes.underline} />
-    </div>
+    </Box>
   );
 };
 
 ComparisonPin.propTypes = {
   helperText: PropTypes.string,
-  label: PropTypes.string,
   icon: PropTypes.string,
+  onChange: PropTypes.func,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({})),
+  placeholder: PropTypes.string,
 };
 
 ComparisonPin.defaultProps = {
   helperText: undefined,
-  label: undefined,
   icon: undefined,
+  onChange: undefined,
+  onClose: undefined,
+  onOpen: undefined,
   options: undefined,
+  placeholder: undefined,
 };
 
 export default ComparisonPin;
