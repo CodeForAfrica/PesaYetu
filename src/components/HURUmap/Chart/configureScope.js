@@ -4,6 +4,7 @@ import LineChartScope from "./LineChartScope";
 import MultiBarChartScope from "./MultiBarChartScope";
 import MultiDonutChartScope from "./MultiDonutChartScope";
 import MultiLineChartScope from "./MultiLineChartScope";
+import MultiStackedChartScope from "./MultiStackedChartScope";
 import StackedChartScope from "./StackedChartScope";
 import VerticalBarChartScope from "./VerticalBarChartScope";
 import VerticalStackedChartScope from "./VerticalStackedChartScope";
@@ -22,6 +23,15 @@ export default function configureScope(
     switch (chartType) {
       case "line":
         vegaSpec = MultiLineChartScope(
+          indicator?.data,
+          secondaryIndicator?.data,
+          indicator?.metadata,
+          configuration,
+          extra
+        );
+        break;
+      case "stacked":
+        vegaSpec = MultiStackedChartScope(
           indicator?.data,
           secondaryIndicator?.data,
           indicator?.metadata,
