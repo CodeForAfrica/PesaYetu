@@ -80,16 +80,18 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container justifyContent="space-between">
+      <Grid container justifyContent="space-between" alignItems="center">
         <Grid item xs={12} md={8}>
           <Typography variant="h6">{title}</Typography>
         </Grid>
         <Grid item xs={12} md={4} container className={classes.buttons}>
-          {actions.map((act) => (
-            <Grid item key={act.id} className={classes.action}>
-              <Action {...act} />
-            </Grid>
-          ))}
+          {actions
+            .filter((a) => a?.id)
+            .map((act) => (
+              <Grid item key={act.id} className={classes.action}>
+                <Action {...act} />
+              </Grid>
+            ))}
         </Grid>
       </Grid>
     </div>
@@ -105,7 +107,7 @@ IndicatorTitle.propTypes = {
 IndicatorTitle.defaultProps = {
   description: undefined,
   title: undefined,
-  disableToggle: undefined,
+  disableToggle: false,
 };
 
 export default IndicatorTitle;

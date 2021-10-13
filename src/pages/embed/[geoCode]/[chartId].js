@@ -1,101 +1,117 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+import PropTypes from "prop-types";
 import React from "react";
 
+import createChartImage from "@/pesayetu/lib/createChartImage";
 import fetchJson from "@/pesayetu/utils/fetchJson";
-import fetchProfile from "@/pesayetu/utils/fetchProfile";
-import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurations";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
 });
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: "100% !important",
-  },
-}));
-
-export default function Embed(props) {
-  const classes = useStyles();
+export default function Embed({
+  description,
+  geoCode,
+  image,
+  indicator,
+  title,
+  ...props
+}) {
   return (
-    <div>
-      <Chart {...props} classes={{ root: classes.root }} />
-    </div>
+    <>
+      <NextSeo
+        description={description}
+        image={image}
+        title={title}
+        {...props}
+      />
+      <div>
+        <Chart indicator={indicator} title={title} geoCode={geoCode} />
+      </div>
+    </>
   );
 }
 
+Embed.propTypes = {
+  description: PropTypes.string,
+  geoCode: PropTypes.string,
+  image: PropTypes.string,
+  indicator: PropTypes.shape({}),
+  title: PropTypes.string,
+};
+
+Embed.defaultProps = {
+  description: undefined,
+  geoCode: undefined,
+  image: undefined,
+  indicator: undefined,
+  title: undefined,
+};
+
 export async function getStaticPaths() {
-  const apiUri = process.env.HURUMAP_API_URL;
-  const { locationCodes } = await fetchProfileConfigurations();
-  const { data } = await fetchProfile(apiUri, "KE");
-
-  const subcategories = Object.values(data)?.map((l) => l.subcategories);
-  const profileIndicators = subcategories.reduce((acc, subcat) => {
-    const indicatorIds = Object.values(subcat).reduce((b, m) => {
-      let mIndicatorIds = [];
-      if (m?.indicators) {
-        mIndicatorIds = Object.values(m.indicators).map(({ id }) => id);
-      }
-      return b.concat(mIndicatorIds);
-    }, []);
-
-    return acc.concat(indicatorIds);
-  }, []);
-
-  const paths = locationCodes.reduce((acc, locationCode) => {
-    return acc.concat(
-      profileIndicators.map((pi) => {
-        return {
-          params: { geoCode: locationCode.toString(), chartId: pi.toString() },
-        };
-      })
-    );
-  }, []);
-
   return {
-    paths,
+    paths: [],
     fallback: "blocking",
   };
 }
 
-export async function getStaticProps({ params: { geoCode, chartId } }) {
+export async function getStaticProps({ params: { geoCode: code, chartId } }) {
   const apiUri = process.env.HURUMAP_API_URL;
-  const { indicator } = await fetchJson(
-    `${apiUri}profile/1/geography/${geoCode.toUpperCase()}/indicator/${chartId}/?format=json`
+  const { indicator: foundIndicator } = await fetchJson(
+    `${apiUri}profile/1/geography/${code.toUpperCase()}/indicator/${chartId}/?format=json`
   );
 
   if (
-    !indicator ||
-    JSON.stringify(indicator) === "{}" ||
-    Object.keys(indicator)?.length === 0
+    !foundIndicator ||
+    JSON.stringify(foundIndicator) === "{}" ||
+    Object.keys(foundIndicator)?.length === 0
   ) {
     return {
       notFound: true,
     };
   }
 
+  const description = foundIndicator.description || null;
+  const geoCode = foundIndicator?.geography_code ?? null;
+  const indicator = {
+    ...foundIndicator,
+    chart_configuration: foundIndicator?.indicator_chart_configuration ?? null,
+    id: foundIndicator?.profile_indicator_id ?? null,
+    metadata: {
+      source: foundIndicator?.metadata_source ?? null,
+      url: foundIndicator?.metadata_url ?? null,
+      primary_group: foundIndicator?.primary_group?.length
+        ? foundIndicator?.primary_group[0]
+        : null,
+      groups: Object.keys(foundIndicator?.data?.[0] || {})
+        .filter((g) => g !== "count")
+        ?.map((g) => {
+          return { name: g };
+        }),
+    },
+  };
+  const title = foundIndicator?.profile_indicator_label ?? null;
+  const image = await createChartImage(geoCode, chartId, indicator);
+  const url = `${process.env.NEXT_PUBLIC_APP_URL}embed${geoCode}/${chartId}`;
+  const openGraph = {
+    title,
+    description,
+    url,
+    images: [{ url: image }],
+  };
+  const twitter = {
+    cartType: "summary_large_image",
+  };
+
   return {
     props: {
-      title: indicator?.profile_indicator_label ?? null,
-      indicator: {
-        ...indicator,
-        chart_configuration: indicator?.indicator_chart_configuration ?? null,
-        id: indicator?.profile_indicator_id ?? null,
-        metadata: {
-          source: indicator?.metadata_source ?? null,
-          url: indicator?.metadata_url ?? null,
-          primary_group: indicator?.primary_group?.length
-            ? indicator?.primary_group[0]
-            : null,
-          groups: Object.keys(indicator?.data?.length ? indicator?.data[0] : {})
-            .filter((g) => g !== "count")
-            ?.map((g) => {
-              return { name: g };
-            }),
-        },
-      },
-      geoCode: indicator?.geography_code ?? null,
+      description,
+      geoCode,
+      indicator,
+      openGraph,
+      title,
+      twitter,
     },
     revalidate: 60 * 5,
   };

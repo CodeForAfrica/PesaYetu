@@ -2,6 +2,7 @@ import BarChartScope from "./BarChartScope";
 import DonutChartScope from "./DonutChartScope";
 import LineChartScope from "./LineChartScope";
 import StackedChartScope from "./StackedChartScope";
+import TreemapChartScope from "./TreemapChartScope";
 import VerticalBarChartScope from "./VerticalBarChartScope";
 import VerticalStackedChartScope from "./VerticalStackedChartScope";
 
@@ -40,6 +41,13 @@ export default function configureScope(indicator, isMobile) {
           configuration
         );
       }
+      break;
+    case "treemap":
+      vegaSpec = TreemapChartScope(
+        indicator?.data,
+        indicator?.metadata,
+        configuration
+      );
       break;
     default:
       if (isMobile) {

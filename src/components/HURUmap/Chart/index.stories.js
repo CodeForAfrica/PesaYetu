@@ -90,8 +90,8 @@ Default.args = {
     content_type: "indicator",
     dataset_content_type: "quantitative",
     chart_configuration: {
-      chart_type: "bar",
-      stacked_field: "gender",
+      chart_type: "treemap",
+      nest_fields: ["age"],
       types: {
         Value: {
           formatting: ",.0f",
@@ -99,15 +99,8 @@ Default.args = {
         Percentage: {
           maxX: 1,
           minX: 0,
+          formatting: ".0%",
         },
-      },
-      filter: {
-        defaults: [
-          {
-            name: "age",
-            value: "15-35 (ZA)",
-          },
-        ],
       },
       defaultType: "Value",
       disableToggle: false,

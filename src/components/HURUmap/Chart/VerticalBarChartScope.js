@@ -86,14 +86,6 @@ export default function VerticalBarChartScope(data, metadata, config) {
     signals: [
       ...commonSignal,
       {
-        name: "tooltip",
-        value: {},
-        on: [
-          { events: "rect:mouseover", update: "datum" },
-          { events: "rect:mouseout", update: "{}" },
-        ],
-      },
-      {
         name: "groups",
         value: [primaryGroup],
       },
@@ -162,7 +154,7 @@ export default function VerticalBarChartScope(data, metadata, config) {
         name: "xscale",
         type: "band",
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
-        range: { step: { signal: "x_step" } },
+        range: [0, { signal: "width" }],
         padding: 0.15,
       },
       {

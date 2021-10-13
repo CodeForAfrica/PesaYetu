@@ -2,8 +2,6 @@ import richDataIcon from "@/pesayetu/assets/Component121.svg";
 import pinIcon from "@/pesayetu/assets/Component122.svg";
 import panelPinIcon from "@/pesayetu/assets/icons/Component 95 – 2.svg";
 import pinBlack from "@/pesayetu/assets/icons/Component 96 – 12.svg";
-import locationIcon from "@/pesayetu/assets/icons/Component 97 – 2.svg";
-import mapIcon from "@/pesayetu/assets/icons/Component 98 – 2.svg";
 import Group4646 from "@/pesayetu/assets/icons/Group 4646-white.svg";
 import developmentHover from "@/pesayetu/assets/icons/Group 4646.svg";
 import Group4656 from "@/pesayetu/assets/icons/Group 4656-white.svg";
@@ -30,6 +28,9 @@ import MercyKaragi from "@/pesayetu/assets/images/Mercy-Karagi.png";
 import Piero from "@/pesayetu/assets/images/Piero.png";
 import screenshot1 from "@/pesayetu/assets/images/Screenshot 2021-06-14 at 12.51.45@2x.png";
 import Tricia from "@/pesayetu/assets/images/Tricia-Govindasamy.png";
+import desktopLogo from "@/pesayetu/assets/logos/Component 61.svg";
+import drawerLogo from "@/pesayetu/assets/logos/Group 4188@2x 2.png";
+import mobileLogo from "@/pesayetu/assets/logos/Group 4188@2x.png";
 import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
 import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
 import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
@@ -181,6 +182,29 @@ export const navigationArgs = {
       label: "facebook",
     },
   ],
+  desktopLogoProps: {
+    width: 237,
+    height: 55,
+    alt: "desktop logo",
+    href: "https://codeforafrica.org",
+    src: desktopLogo,
+  },
+
+  mobileLogoProps: {
+    width: 254,
+    height: 40,
+    alt: "mobile logo",
+    href: "https://codeforafrica.org",
+    src: mobileLogo,
+  },
+
+  drawerLogoProps: {
+    width: 254,
+    height: 40,
+    alt: "drawer logo",
+    href: "https://codeforafrica.org",
+    src: drawerLogo,
+  },
 };
 
 export const ourCourses = {
@@ -732,7 +756,7 @@ export const treeViewArgs = {
   ],
 };
 export const panelArgs = {
-  items: [
+  panelItems: [
     {
       value: "rich-data",
       icon: panelPinIcon,
@@ -746,20 +770,8 @@ export const panelArgs = {
       pin: true,
       tree: treeViewArgs,
     },
-    {
-      value: "point-maper",
-      icon: locationIcon,
-      disabled: true,
-      children: "4",
-      tree: treeViewArgs,
-    },
-    {
-      value: "data-mapper",
-      icon: mapIcon,
-      disabled: true,
-      tree: treeViewArgs,
-    },
   ],
+  scrollToTopLabel: "Back To Top",
   logo: {
     image:
       "https://wazimap-ng.s3.amazonaws.com/logos/youthexplorer.png?AWSAccessKeyId=AKIAYIFP5EK2I6PADW2R&Signature=63W%2F43NSETtdv3a9ZgTSfNh9%2FHA%3D&Expires=1632748980",
