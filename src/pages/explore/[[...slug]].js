@@ -12,7 +12,7 @@ import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurati
 
 export default function Explore(props) {
   const {
-    blocks: { tutorial },
+    blocks: { tutorial, panel },
   } = props;
   const {
     query: { showTutorial },
@@ -25,7 +25,7 @@ export default function Explore(props) {
       defaultOpen={Number.parseInt(showTutorial, 10) === 1}
     >
       <Page {...props}>
-        <ExplorePage {...props} />
+        <ExplorePage panelProps={panel} {...props} />
       </Page>
     </Tutorial>
   );
@@ -33,6 +33,7 @@ export default function Explore(props) {
 
 Explore.propTypes = {
   blocks: PropTypes.shape({
+    panel: PropTypes.shape({}),
     tutorial: PropTypes.shape({
       items: PropTypes.arrayOf(PropTypes.shape({})),
     }),
@@ -93,7 +94,6 @@ export async function getStaticProps({ preview, previewData, params }) {
       },
     };
   }
-
   const apiUri = process.env.HURUMAP_API_URL;
   const profile = await fetchProfile(apiUri, code);
 

@@ -4,21 +4,23 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import slugify from "@/pesayetu/utils/slugify";
-
-const useStyles = makeStyles(({ palette, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
     borderBottom: `solid 1px ${palette.divider}`,
+    borderTop: `solid 1px ${palette.divider}`,
   },
   title: {
-    textTransform: "uppercase",
-    padding: typography.pxToRem(10),
+    color: "#1c2030",
+    fontWeight: 400,
+    letterSpacing: typography.pxToRem(2),
     paddingBottom: typography.pxToRem(20),
     paddingTop: typography.pxToRem(20),
-    fontWeight: "400",
-    fontColor: "#1c2030",
-    letterSpacing: typography.pxToRem(2),
-    scrollMarginTop: typography.pxToRem(110),
+    // In mobile, we need to account for navbar + category tabs
+    scrollMarginTop: typography.pxToRem(160),
+    textTransform: "uppercase",
+    [breakpoints.up("lg")]: {
+      scrollMarginTop: typography.pxToRem(110),
+    },
   },
   description: {
     paddingBottom: typography.pxToRem(20),
@@ -36,7 +38,7 @@ const SubcategoryHeader = ({ title, description, ...props }) => {
   }
   return (
     <div className={classes.root}>
-      <Typography id={slugify(title)} variant="h5" className={classes.title}>
+      <Typography {...props} variant="h5" className={classes.title}>
         {title}
       </Typography>
       <RichTypography variant="body2" className={classes.description}>

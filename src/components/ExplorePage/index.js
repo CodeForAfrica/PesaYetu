@@ -8,7 +8,6 @@ import useSWR from "swr";
 import Location from "@/pesayetu/components/HURUmap/Location";
 import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Link from "@/pesayetu/components/Link";
-import { panelArgs } from "@/pesayetu/config";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
@@ -25,7 +24,6 @@ const useStyles = makeStyles(
         position: "fixed",
         left: 0,
         right: 0,
-        top: 110,
       },
       "& .tooltipPop": {
         background: palette.background.default,
@@ -79,7 +77,7 @@ const useStyles = makeStyles(
   })
 );
 
-function ExplorePage({ profile: profileProp, apiUri, ...props }) {
+function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
   const classes = useStyles(props);
   const [geoCode, setGeoCode] = useState(null);
   const handleCodeChange = (_, { code }) => {
@@ -113,31 +111,32 @@ function ExplorePage({ profile: profileProp, apiUri, ...props }) {
   return (
     <>
       <Hidden mdDown implementation="css">
-        <Panel {...panelArgs} {...profile} />
+        <div className={classes.root}>
+          <Map
+            center={[0.3051933453207569, 37.908818734483155]}
+            zoom={6.25}
+            geometries={geometries}
+            geography={geography}
+            onClick={handleCodeChange}
+            {...props}
+            className={classes.map}
+          />
+          <Location
+            highlights={highlights}
+            isLoading={isLoading}
+            tags={tags}
+            className={classes.location}
+          />
+        </div>
       </Hidden>
-      <div className={classes.root}>
-        <Map
-          center={[0.3051933453207569, 37.908818734483155]}
-          zoom={6.25}
-          geometries={geometries}
-          geography={geography}
-          onClick={handleCodeChange}
-          {...props}
-          className={classes.map}
-        />
-        <Location
-          highlights={highlights}
-          isLoading={isLoading}
-          tags={tags}
-          className={classes.location}
-        />
-      </div>
+      <Panel {...panelProps} {...profile} />
     </>
   );
 }
 
 ExplorePage.propTypes = {
   apiUri: PropTypes.string,
+  panelProps: PropTypes.shape({}),
   profile: PropTypes.shape({
     geography: PropTypes.shape({}),
     geometries: PropTypes.shape({}),
@@ -148,6 +147,7 @@ ExplorePage.propTypes = {
 
 ExplorePage.defaultProps = {
   apiUri: undefined,
+  panelProps: undefined,
   profile: undefined,
 };
 

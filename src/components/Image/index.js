@@ -10,7 +10,7 @@ function Image({ src, ...props }) {
 }
 
 Image.propTypes = {
-  src: PropTypes.string,
+  src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
 };
 
 Image.defaultProps = {

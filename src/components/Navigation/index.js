@@ -7,25 +7,35 @@ import DesktopNavigation from "./DesktopNavigation";
 import ExploreNavigation from "./ExploreNavigation";
 import MobileNavigation from "./MobileNavigation";
 
-const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
-  root: {
-    backgroundColor: palette.background.default,
-    zIndex: zIndex.modal,
-  },
-  section: {},
-  toolbar: {
-    display: "block",
-    padding: `${typography.pxToRem(12)} 0`,
-  },
-}));
+const useStyles = makeStyles(
+  ({ palette, typography, zIndex, breakpoints }) => ({
+    root: {
+      backgroundColor: palette.background.default,
+      zIndex: zIndex.modal,
+    },
+    section: {},
+    toolbar: {
+      display: "flex",
+      alignItems: "center",
+      padding: `0`,
+      [breakpoints.up("lg")]: {
+        padding: `${typography.pxToRem(12)} 0`,
+      },
+    },
+    navigation: {
+      flexGrow: 1,
+    },
+  })
+);
 
 function Navigation({ variant, ...props }) {
   const classes = useStyles(props);
+
   return (
     <AppBar color="primary" position="sticky" className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
-        <Hidden mdDown implementation="css">
-          {variant && variant === "explore" ? (
+        <Hidden mdDown implementation="css" className={classes.navigation}>
+          {variant?.toLowerCase() === "explore" ? (
             <ExploreNavigation
               variant="explore"
               {...props}
@@ -38,7 +48,7 @@ function Navigation({ variant, ...props }) {
             />
           )}
         </Hidden>
-        <Hidden lgUp implementation="css">
+        <Hidden lgUp implementation="css" className={classes.navigation}>
           <MobileNavigation {...props} />
         </Hidden>
       </Toolbar>

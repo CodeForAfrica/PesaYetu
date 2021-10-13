@@ -1,3 +1,5 @@
+import { useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import { NextSeo } from "next-seo";
 import PropTypes from "prop-types";
 import React from "react";
@@ -15,13 +17,19 @@ function BasePage({ children, menus, variant, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
   const { menuProps } = navigation;
-  const { logoProps, socialLinks } = navigationArgs;
+  const { socialLinks, desktopLogoProps, mobileLogoProps, drawerLogoProps } =
+    navigationArgs;
+  const theme = useTheme();
+
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigationProps = {
     ...props,
     ...menus,
-    logoProps,
     menuProps,
     socialLinks,
+    desktopLogoProps,
+    mobileLogoProps,
+    drawerLogoProps,
   };
 
   return (
@@ -29,7 +37,7 @@ function BasePage({ children, menus, variant, ...props }) {
       <Navigation {...navigationProps} variant={variant} />
       <NextSeo {...props} />
       {children}
-      {variant !== "explore" && <Footer {...footerProps} />}
+      {!(variant === "explore" && isDesktop) && <Footer {...footerProps} />}
     </>
   );
 }
