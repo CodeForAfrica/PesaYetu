@@ -257,50 +257,6 @@ export default function MultiStackedChartScope(
         zindex: 1,
       },
     ],
-    legends: [
-      {
-        fill: "color",
-        orient: "top",
-        direction: "horizontal",
-        strokeColor: "transparent",
-        labelFont: theme.typography.fontFamily,
-        encode: {
-          labels: {
-            interactive: true,
-            update: {
-              fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text.primary },
-            },
-          },
-          symbols: {
-            update: {
-              stroke: { value: "transparent" },
-            },
-          },
-        },
-      },
-      {
-        fill: "secondary",
-        orient: "top",
-        direction: "horizontal",
-        strokeColor: "transparent",
-        labelFont: theme.typography.fontFamily,
-        encode: {
-          labels: {
-            interactive: true,
-            update: {
-              fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text.primary },
-            },
-          },
-          symbols: {
-            update: {
-              stroke: { value: "transparent" },
-            },
-          },
-        },
-      },
-    ],
 
     marks: [
       {
@@ -312,6 +268,30 @@ export default function MultiStackedChartScope(
             height: { signal: "height" },
           },
         },
+        legends: [
+          {
+            fill: "color",
+            orient: "top",
+            direction: "horizontal",
+            strokeColor: "transparent",
+            labelFont: theme.typography.fontFamily,
+            encode: {
+              labels: {
+                interactive: true,
+                update: {
+                  fontSize: { value: 11 },
+                  fill: { value: theme.palette.chart.text.primary },
+                },
+              },
+              symbols: {
+                update: {
+                  stroke: { value: "transparent" },
+                },
+              },
+            },
+          },
+        ],
+
         axes: [
           {
             orient: "bottom",
@@ -359,6 +339,29 @@ export default function MultiStackedChartScope(
             height: { signal: "height" },
           },
         },
+        legends: [
+          {
+            fill: "secondary",
+            orient: "top",
+            direction: "horizontal",
+            strokeColor: "transparent",
+            labelFont: theme.typography.fontFamily,
+            encode: {
+              labels: {
+                interactive: true,
+                update: {
+                  fontSize: { value: 11 },
+                  fill: { value: theme.palette.chart.text.primary },
+                },
+              },
+              symbols: {
+                update: {
+                  stroke: { value: "transparent" },
+                },
+              },
+            },
+          },
+        ],
         axes: [
           {
             orient: "bottom",
