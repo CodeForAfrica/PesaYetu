@@ -64,7 +64,7 @@ function ChartTooltip({ title, value, formattedValue, item, ...props }) {
         <Typography
           variant="body2"
           component="div"
-          className={clsx(classes.value, classes.text)}
+          className={clsx({ [classes.value]: item }, classes.text)}
         >
           {value}
         </Typography>

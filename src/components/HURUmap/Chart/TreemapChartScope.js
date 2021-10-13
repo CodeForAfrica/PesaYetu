@@ -1,4 +1,4 @@
-import { defaultConfig } from "./properties";
+import { xAxis, defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -10,8 +10,9 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function DonutChartScope(data, metadata, config) {
+export default function TreemapChartScope(data, metadata, config) {
   const {
+    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -21,9 +22,16 @@ export default function DonutChartScope(data, metadata, config) {
         maxX: percentageMaxX,
       },
     },
+    nest_fields: nestFields,
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
+
+  const nestedFields = nestFields || [primaryGroup]; // if nest fields are undefined, make use primaryGroup
+
+  if (xTicks) {
+    xAxis.tickCount = xTicks;
+  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(
     metadata.groups
@@ -31,11 +39,12 @@ export default function DonutChartScope(data, metadata, config) {
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
-    description: "A basic donut chart example.",
-    width: 360,
-    height: 180,
-    autosize: "none",
+    description: "A",
     config: defaultConfig,
+    autosize: { type: "fit-x", contains: "padding" },
+    padding: 5,
+    width: { signal: "width" },
+    height: 380,
     data: [
       {
         name: "table",
@@ -65,11 +74,6 @@ export default function DonutChartScope(data, metadata, config) {
             as: "percentage",
           },
           {
-            type: "formula",
-            expr: "format(datum[datatype[Units]], numberFormat[Units]) + ' ' + datum[mainGroup]",
-            as: "custom_label",
-          },
-          {
             type: "extent",
             field: "percentage",
             signal: "percentage_extent",
@@ -80,27 +84,54 @@ export default function DonutChartScope(data, metadata, config) {
             signal: "value_extent",
           },
           {
-            type: "pie",
+            type: "nest",
+            keys: nestedFields,
+          },
+          {
+            type: "treemap",
             field: { signal: "datatype[Units]" },
-            startAngle: { signal: "startAngle" },
-            endAngle: { signal: "endAngle" },
-            sort: { signal: "sort" },
+            method: { signal: "layout" },
+            ratio: { signal: "aspectRatio" },
+            size: [{ signal: "width" }, { signal: "height" }],
           },
         ],
       },
     ],
     signals: [
+      ...commonSignal,
+      {
+        name: "layout",
+        value: "squarify",
+      },
+      {
+        name: "aspectRatio",
+        value: 1.6,
+      },
       {
         name: "groups",
-        value: [primaryGroup],
+        value: nestedFields,
+      },
+      {
+        name: "barvalue",
+        value: "datum",
       },
       {
         name: "Units",
         value: graphValueTypes[defaultType],
       },
       {
+        name: "applyFilter",
+        value: false,
+      },
+      {
+        name: "filterIndicator",
+      },
+      {
+        name: "filterValue",
+      },
+      {
         name: "mainGroup",
-        value: primaryGroup,
+        value: nestedFields[0],
       },
       {
         name: "numberFormat",
@@ -127,92 +158,68 @@ export default function DonutChartScope(data, metadata, config) {
         value: valueMinX !== "default" ? valueMinX : undefined,
       },
       {
-        name: "startAngle",
-        value: 0,
+        name: "domainMin",
+        update: "Units === 'percentage' ? percentageMinX : valueMinX",
       },
       {
-        name: "endAngle",
-        value: 6.29,
+        name: "domainMax",
+        update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
       },
       {
-        name: "padAngle",
-        value: 0,
-      },
-      {
-        name: "innerRadius",
-        value: 55,
-      },
-      {
-        name: "cornerRadius",
-        value: 0,
-      },
-      {
-        name: "sort",
-        value: false,
-      },
-      {
-        name: "custom_label",
-        update: { field: "custom_label" },
+        name: "height",
+        value: 310,
       },
       ...filterSignals,
     ],
-
-    legends: [
-      {
-        fill: "color",
-        stroke: "color",
-        orient: "none",
-        symbolType: "circle",
-        direction: "vertical",
-        labelFont: theme.typography.fontFamily,
-        legendX: 240,
-        legendY: 40,
-        labelOffset: 12,
-        rowPadding: 8,
-        encode: {
-          labels: {
-            interactive: true,
-            update: {
-              fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text.primary },
-            },
-          },
-          symbols: {
-            enter: {
-              fillOpacity: {
-                value: 1,
-              },
-            },
-          },
-        },
-      },
-    ],
-
     scales: [
       {
         name: "color",
         type: "ordinal",
-        range: "category",
+        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        range: [theme.palette.primary.main],
       },
     ],
 
     marks: [
       {
-        type: "arc",
+        type: "rect",
         from: { data: "data_formatted" },
         encode: {
           enter: {
             fill: { scale: "color", field: { signal: "mainGroup" } },
-            x: { signal: "width / 4" },
-            y: { signal: "height / 2" },
+            stroke: { value: "#fff" },
           },
           update: {
-            startAngle: { field: "startAngle" },
-            endAngle: { field: "endAngle" },
-            padAngle: { signal: "padAngle" },
-            innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "width / 4" },
-            cornerRadius: { signal: "cornerRadius" },
+            x: { field: "x0" },
+            y: { field: "y0" },
+            x2: { field: "x1" },
+            y2: { field: "y1" },
+            tooltip: {
+              signal:
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+            },
+          },
+        },
+      },
+      {
+        type: "text",
+        from: { data: "data_formatted" },
+        encode: {
+          enter: {
+            font: { value: theme.typography.fontFamily },
+            align: { value: "top" },
+            baseline: { value: "left" },
+            fill: { value: theme.palette.text.secondary },
+          },
+          update: {
+            align: { value: "top" },
+            baseline: { value: "left" },
+            x: { signal: "datum.x0 + 15" },
+            y: { signal: "datum.y0 + 20" },
+            text: {
+              signal:
+                "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup]]",
+            },
           },
         },
       },

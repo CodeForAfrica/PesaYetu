@@ -107,7 +107,7 @@ IndicatorTitle.propTypes = {
 IndicatorTitle.defaultProps = {
   description: undefined,
   title: undefined,
-  disableToggle: undefined,
+  disableToggle: false,
 };
 
 export default IndicatorTitle;
