@@ -7,9 +7,10 @@ import {
   InputLabel,
   Typography,
 } from "@material-ui/core";
+import clsx from "clsx";
 import { uniqueId } from "lodash";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
@@ -20,18 +21,22 @@ function ExpandMoreIcon(props) {
 }
 
 function Input({
-  label: labelProp,
+  disabled,
   helperText,
-  options,
-  selected,
+  label: labelProp,
   onChange,
   onOpen,
   onClose,
-  disabled,
+  open,
+  options,
+  selected,
+  placeholder,
   ...props
 }) {
   const classes = useStyles(props);
+  const [value, setValue] = useState();
   const handleChange = (event) => {
+    setValue(event.target.value);
     if (onChange) {
       onChange(event);
     }
@@ -42,8 +47,8 @@ function Input({
     <FormControl
       variant="filled"
       size="small"
-      className={classes.formControl}
       disabled={disabled}
+      className={classes.formControl}
     >
       {helperText ? (
         <FormHelperText className={classes.helper}>{helperText}</FormHelperText>
@@ -62,6 +67,7 @@ function Input({
         onChange={handleChange}
         onOpen={onOpen}
         onClose={onClose}
+        open={open}
         defaultValue={selected || ""}
         IconComponent={ExpandMoreIcon}
         MenuProps={{
@@ -80,8 +86,16 @@ function Input({
           },
           getContentAnchorEl: null,
         }}
-        classes={{ root: classes.select, filled: classes.filled }}
+        classes={{
+          root: classes.select,
+          filled: clsx(classes.filled, { [classes.filledPlaceholder]: !value }),
+        }}
       >
+        {placeholder ? (
+          <MenuItem value="" className={classes.placeholder}>
+            {placeholder}
+          </MenuItem>
+        ) : null}
         {options?.length &&
           options.map((option) => (
             <MenuItem key={option} value={option}>
@@ -94,23 +108,27 @@ function Input({
 }
 
 Input.propTypes = {
+  disabled: PropTypes.bool,
   helperText: PropTypes.string,
   label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  onChange: PropTypes.func,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
+  placeholder: PropTypes.string,
   selected: PropTypes.string,
-  onChange: PropTypes.string,
-  onOpen: PropTypes.string,
-  onClose: PropTypes.string,
-  disabled: PropTypes.bool,
 };
 
 Input.defaultProps = {
+  disabled: undefined,
   helperText: undefined,
-  selected: undefined,
   onChange: undefined,
   onOpen: undefined,
   onClose: undefined,
-  disabled: undefined,
+  open: undefined,
+  placeholder: undefined,
+  selected: undefined,
 };
 
 export default Input;
