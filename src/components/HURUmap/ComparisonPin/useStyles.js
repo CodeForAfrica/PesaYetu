@@ -1,25 +1,27 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
-  root: {},
-  icontrue: {
-    "& img": {
-      filter: "none",
-    },
+  root: {
+    padding: `${typography.pxToRem(20)} 0`,
+    borderBottom: `solid 1px ${palette.divider}`,
   },
-  iconfalse: {
-    "& img": {
-      filter: "brightness(0)",
-    },
-  },
-  button: {
-    marginRight: typography.pxToRem(10),
-    marginTop: typography.pxToRem(12),
-    height: typography.pxToRem(44),
-    width: typography.pxToRem(44),
-    minWidth: typography.pxToRem(44),
+  pinButton: {
+    maxHeight: typography.pxToRem(44),
+    maxWidth: typography.pxToRem(44),
+    overflow: "hidden",
+    padding: 0,
+    marginRight: typography.pxToRem(14),
     backgroundColor: palette.grey.light,
-    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+    borderRadius: "0px 2px 2px 0px",
+    boxShadow: `0px 3px 6px ${alpha(palette.common.black, 0.16)}`, // #00000029
+    "&:hover,&:focus,&:focus-within": {
+      backgroundColor: palette.grey.light,
+    },
+  },
+  locationSelect: {
+    paddingTop: typography.pxToRem(10),
+    paddingBottom: typography.pxToRem(10),
   },
 }));
 
