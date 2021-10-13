@@ -1,20 +1,18 @@
 import React from "react";
 
-import Pin from "@/pesayetu/assets/icons/Component 96 – 12.svg";
-import ComparisonPin from "@/pesayetu/components/HURUmap/ComparisonPin";
+import PinAndCompare from ".";
 
 export default {
-  title: "Components/HURUmap/ComparisonPin",
+  title: "Components/HURUmap/PinAndCompare",
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <ComparisonPin {...args} />;
+const Template = ({ ...args }) => <PinAndCompare {...args} />;
 
 export const Default = Template.bind({});
 
 Default.args = {
   helperText: "Pin and compare",
   placeholder: "Select a location",
-  icon: Pin,
   options: ["Municipality", "Municipality One", "Municipality Two"],
 };

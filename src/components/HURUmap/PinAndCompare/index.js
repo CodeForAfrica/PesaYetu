@@ -12,14 +12,14 @@ function PinIcon(props) {
   return <SvgIcon {...props} />;
 }
 
-const ComparisonPin = ({
+function PinAndCompare({
   helperText,
   onClose,
   onOpen,
   options,
   placeholder,
   ...props
-}) => {
+}) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen((prev) => !prev);
@@ -57,9 +57,9 @@ const ComparisonPin = ({
       />
     </Box>
   );
-};
+}
 
-ComparisonPin.propTypes = {
+PinAndCompare.propTypes = {
   helperText: PropTypes.string,
   icon: PropTypes.string,
   onChange: PropTypes.func,
@@ -69,7 +69,7 @@ ComparisonPin.propTypes = {
   placeholder: PropTypes.string,
 };
 
-ComparisonPin.defaultProps = {
+PinAndCompare.defaultProps = {
   helperText: undefined,
   icon: undefined,
   onChange: undefined,
@@ -79,4 +79,4 @@ ComparisonPin.defaultProps = {
   placeholder: undefined,
 };
 
-export default ComparisonPin;
+export default PinAndCompare;
