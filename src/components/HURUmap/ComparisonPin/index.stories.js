@@ -14,7 +14,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   helperText: "Pin and compare",
-  label: "Select a location",
+  placeholder: "Select a location",
   icon: Pin,
   options: ["Municipality", "Municipality One", "Municipality Two"],
 };
