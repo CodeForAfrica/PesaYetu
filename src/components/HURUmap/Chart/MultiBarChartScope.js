@@ -20,7 +20,7 @@ export default function MultiBarChartScope(
   const {
     defaultType,
     types: {
-      Value: { minX: valueMinX, maxX: valueMaxX },
+      Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
       Percentage: {
         formatting: percentageFormatting,
         minX: percentageMinX,
@@ -153,6 +153,10 @@ export default function MultiBarChartScope(
       },
       {
         name: "numberFormat",
+        value: { percentage: percentageFormatting, value: valueFormatting },
+      },
+      {
+        name: "axesNumberFormat",
         value: { percentage: percentageFormatting, value: "~s" },
       },
       {
@@ -259,7 +263,7 @@ export default function MultiBarChartScope(
             bandPosition: 0,
             domainOpacity: 0.5,
             tickSize: 0,
-            format: { signal: "numberFormat[Units]" },
+            format: { signal: "axesNumberFormat[Units]" },
             grid: true,
             labelPadding: 6,
           },
@@ -318,7 +322,7 @@ export default function MultiBarChartScope(
             bandPosition: 0,
             domainOpacity: 0.5,
             tickSize: 0,
-            format: { signal: "numberFormat[Units]" },
+            format: { signal: "axesNumberFormat[Units]" },
             grid: true,
             labelPadding: 6,
           },
