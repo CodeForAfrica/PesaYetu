@@ -2,26 +2,11 @@ import { Grid, TextField, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import {
-  TwitterShareButton,
-  LinkedinShareButton,
-  FacebookShareButton,
-  EmailShareButton,
-} from "react-share";
 
+import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
-import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/icons/Group 3047.svg";
-import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/icons/Group 3048.svg";
-import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/icons/Group 3184.svg";
-import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.svg";
-
-const shareData = [
-  { name: "Facebook", icon: FacebookIcon },
-  { name: "Twitter", icon: TwitterIcon },
-  { name: "LinkedIn", icon: LinkedInIcon },
-  { name: "Email", icon: EmailIcon },
-];
+const shareData = ["Facebook", "Twitter", "LinkedIn", "Email"];
 
 function Share({ title, geoCode, indicatorId, view, ...props }) {
   const classes = useStyles(props);
@@ -72,60 +57,9 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
 
   return (
     <Grid container className={classes.root}>
-      {shareData.map((social) => {
-        switch (social.name) {
-          case "Facebook":
-            return (
-              <Grid item xs={4}>
-                <FacebookShareButton
-                  title={title}
-                  url={url}
-                  className={classes.shareButton}
-                >
-                  <FacebookIcon className={classes.icon} />
-                </FacebookShareButton>
-              </Grid>
-            );
-          case "Twitter":
-            return (
-              <Grid item xs={4}>
-                <TwitterShareButton
-                  title={title}
-                  url={url}
-                  className={classes.shareButton}
-                >
-                  <TwitterIcon className={classes.icon} />
-                </TwitterShareButton>
-              </Grid>
-            );
-          case "LinkedIn":
-            return (
-              <Grid item xs={4}>
-                <LinkedinShareButton
-                  title={title}
-                  url={url}
-                  className={classes.shareButton}
-                >
-                  <LinkedInIcon className={classes.icon} />
-                </LinkedinShareButton>
-              </Grid>
-            );
-          case "Email":
-            return (
-              <Grid item xs={4}>
-                <EmailShareButton
-                  title={title}
-                  url={url}
-                  className={classes.shareButton}
-                >
-                  <EmailIcon className={classes.icon} />
-                </EmailShareButton>
-              </Grid>
-            );
-          default:
-            return null;
-        }
-      })}
+      {shareData.map((social) => (
+        <ShareButton name={social} title={title} url={url} />
+      ))}
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>
