@@ -204,11 +204,15 @@ export default function MultiDonutChartScope(
       {
         fill: "color",
         stroke: "color",
+        title: extra.primary.toUpperCase(),
+        titleFontWeight: "bold",
+        titleColor: "#666",
+        titleFont: theme.typography.fontFamily,
         orient: "none",
         symbolType: "circle",
         direction: "vertical",
         labelFont: theme.typography.fontFamily,
-        legendX: 200,
+        legendX: { signal: "width / 4 +60" },
         legendY: 40,
         labelOffset: 12,
         rowPadding: 8,
@@ -233,10 +237,14 @@ export default function MultiDonutChartScope(
         fill: "secondary",
         stroke: "secondary",
         orient: "none",
+        title: extra.secondary.toUpperCase(),
+        titleFontWeight: "bold",
+        titleColor: "#666",
+        titleFont: theme.typography.fontFamily,
         symbolType: "circle",
         direction: "vertical",
         labelFont: theme.typography.fontFamily,
-        legendX: 480,
+        legendX: { signal: "width / 2 +240" },
         legendY: 40,
         labelOffset: 12,
         rowPadding: 8,
@@ -276,18 +284,6 @@ export default function MultiDonutChartScope(
         domain: { data: "primary_formatted", field: "percentage" },
         range: "category",
       },
-      {
-        name: "legend_primary_scale",
-        type: "ordinal",
-        domain: [extra.primary.toUpperCase()],
-        range: [theme.palette.primary.main],
-      },
-      {
-        name: "legend_secondary_scale",
-        type: "ordinal",
-        domain: [extra.secondary.toUpperCase()],
-        range: [theme.palette.secondary.main],
-      },
     ],
 
     marks: [
@@ -297,7 +293,7 @@ export default function MultiDonutChartScope(
         encode: {
           enter: {
             fill: { scale: "color", field: { signal: "mainGroup" } },
-            x: { signal: "(width-30) / 8" },
+            x: { signal: "width / 4 - 60" },
             y: { signal: "height / 2" },
           },
           update: {
@@ -305,7 +301,7 @@ export default function MultiDonutChartScope(
             endAngle: { field: "endAngle" },
             padAngle: { signal: "padAngle" },
             innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "(width-30) / 8" },
+            outerRadius: { signal: "width / 8" },
             cornerRadius: { signal: "cornerRadius" },
           },
         },
@@ -316,7 +312,7 @@ export default function MultiDonutChartScope(
         encode: {
           enter: {
             fill: { scale: "secondary", field: { signal: "mainGroup" } },
-            x: { signal: "(width-30)/2 +30" },
+            x: { signal: "width/2 +120" },
             y: { signal: "height / 2" },
           },
           update: {
@@ -324,7 +320,7 @@ export default function MultiDonutChartScope(
             endAngle: { field: "endAngle" },
             padAngle: { signal: "padAngle" },
             innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "(width-30) / 8" },
+            outerRadius: { signal: "width / 8 " },
             cornerRadius: { signal: "cornerRadius" },
           },
         },
