@@ -247,7 +247,7 @@ export default function VerticalStackedChartScope(data, metadata, config) {
             fillOpacity: { value: 1 },
             tooltip: {
               signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'stack': datum[stackedField]}",
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
             },
           },
         },

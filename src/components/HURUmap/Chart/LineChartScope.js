@@ -1,6 +1,8 @@
 import { xAxis, defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
+import theme from "@/pesayetu/theme";
+
 const PERCENTAGE_TYPE = "percentage";
 const VALUE_TYPE = "value";
 const graphValueTypes = {
@@ -8,7 +10,7 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function LineChartScope(data, metadata, config) {
+export default function LineChartScope(data, metadata, config, parentData) {
   const {
     xTicks,
     defaultType,
@@ -20,12 +22,13 @@ export default function LineChartScope(data, metadata, config) {
         maxX: percentageMaxX,
       },
     },
+    parent_label: parentLabel,
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
 
   if (xTicks) {
-    xAxis.tickCount = xTicks;
+    xAxis.tickCount = xTicks || 6;
   }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(
@@ -42,13 +45,18 @@ export default function LineChartScope(data, metadata, config) {
     height: 310,
     data: [
       {
-        name: "table",
+        name: "primaryData",
         values: data,
         transform: [...filters],
       },
       {
-        name: "data_formatted",
-        source: "table",
+        name: "parentData",
+        values: parentData,
+        transform: [...filters],
+      },
+      {
+        name: "primary_data_formatted",
+        source: "primaryData",
         transform: [
           {
             type: "aggregate",
@@ -80,17 +88,43 @@ export default function LineChartScope(data, metadata, config) {
           },
         ],
       },
+      {
+        name: "parent_data_formatted",
+        source: "parentData",
+        transform: [
+          {
+            type: "aggregate",
+            ops: ["sum"],
+            as: ["count"],
+            fields: ["count"],
+            groupby: { signal: "groups" },
+          },
+          {
+            type: "joinaggregate",
+            as: ["TotalCount"],
+            ops: ["sum"],
+            fields: ["count"],
+          },
+          {
+            type: "formula",
+            expr: "datum.count/datum.TotalCount",
+            as: "percentage",
+          },
+          {
+            type: "extent",
+            field: "percentage",
+            signal: "parent_percentage_extent",
+          },
+          {
+            type: "extent",
+            field: "count",
+            signal: "parent_value_extent",
+          },
+        ],
+      },
     ],
     signals: [
       ...commonSignal,
-      {
-        name: "tooltip",
-        value: {},
-        on: [
-          { events: "rect:mouseover", update: "datum" },
-          { events: "rect:mouseout", update: "{}" },
-        ],
-      },
       {
         name: "interpolate",
         value: "linear",
@@ -163,26 +197,38 @@ export default function LineChartScope(data, metadata, config) {
       {
         name: "xscale",
         type: "point",
-        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        domain: {
+          data: "primary_data_formatted",
+          field: { signal: "mainGroup" },
+        },
         range: [15, { signal: "width" }],
       },
       {
         name: "yscale",
         type: "linear",
         domain: {
-          data: "data_formatted",
+          data: "primary_data_formatted",
           field: { signal: "datatype[Units]" },
         },
         range: [{ signal: "height" }, 0],
-        nice: true,
-        zero: true,
+        nice: false,
+        zero: false,
         clamp: true,
       },
       {
         name: "color",
         type: "ordinal",
         range: "category",
-        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        domain: {
+          data: "primary_data_formatted",
+          field: { signal: "mainGroup" },
+        },
+      },
+      {
+        name: "pcolor",
+        type: "ordinal",
+        range: "category",
+        domain: { data: "parent_data_formatted", field: "variant" },
       },
     ],
     axes: [
@@ -206,28 +252,133 @@ export default function LineChartScope(data, metadata, config) {
         labelPadding: 6,
       },
     ],
-
-    marks: [
+    legends: [
       {
-        name: "line",
-        from: { data: "data_formatted" },
-        type: "line",
+        fill: "pcolor",
+        offset: 0,
+        orient: "top-right",
+        labelFont: theme.typography.fontFamily,
+        labelColor: theme.palette.chart.text.primary,
         encode: {
-          enter: {
-            x: { scale: "xscale", field: { signal: "mainGroup" } },
-            stroke: { scale: "color", field: { signal: "mainGroup" } },
-            y: { scale: "yscale", field: { signal: "datatype[Units]" } },
-            strokeWidth: { value: 2 },
+          symbols: {
+            shape: { value: "stroke" },
+            update: {
+              shape: { value: "stroke" },
+              size: { value: 500 },
+              stroke: { value: theme.palette.chart.text.primary },
+              strokeDash: { value: [2, 2] },
+            },
           },
-          update: {
-            interpolate: { signal: "interpolate" },
-            strokeOpacity: { value: 1 },
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+          labels: {
+            update: {
+              text: { value: parentLabel },
             },
           },
         },
+      },
+    ],
+
+    marks: [
+      {
+        type: "group",
+        encode: {
+          update: {
+            x: { value: 0 },
+            height: { signal: "height" },
+          },
+        },
+        marks: [
+          {
+            name: "line",
+            from: { data: "primary_data_formatted" },
+            type: "line",
+            encode: {
+              enter: {
+                x: { scale: "xscale", field: { signal: "mainGroup" } },
+                stroke: { scale: "color", field: { signal: "mainGroup" } },
+                y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+                strokeWidth: { value: 2 },
+              },
+              update: {
+                interpolate: { signal: "interpolate" },
+                strokeOpacity: { value: 1 },
+              },
+            },
+          },
+          {
+            name: "line symbol",
+            from: { data: "primary_data_formatted" },
+            type: "symbol",
+            encode: {
+              enter: {
+                x: { scale: "xscale", field: { signal: "mainGroup" } },
+                y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+                fill: { value: theme.palette.primary.main },
+              },
+              update: {
+                size: { value: 5 },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                },
+              },
+              hover: {
+                size: { value: 70 },
+              },
+            },
+          },
+        ],
+      },
+      {
+        type: "group",
+        encode: {
+          update: {
+            x: { value: 0 },
+            height: { signal: "height" },
+          },
+        },
+        marks: [
+          {
+            name: "line",
+            from: { data: "parent_data_formatted" },
+            type: "line",
+            encode: {
+              enter: {
+                x: { scale: "xscale", field: { signal: "mainGroup" } },
+                stroke: { value: theme.palette.chart.text.primary },
+                y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+                strokeWidth: { value: 2 },
+                strokeDash: { value: [2, 2] },
+              },
+              update: {
+                interpolate: { signal: "interpolate" },
+                strokeOpacity: { value: 1 },
+              },
+            },
+          },
+          {
+            name: "line symbol",
+            from: { data: "parent_data_formatted" },
+            type: "symbol",
+            encode: {
+              enter: {
+                x: { scale: "xscale", field: { signal: "mainGroup" } },
+                y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+                fill: { value: theme.palette.chart.text.primary },
+              },
+              update: {
+                size: { value: 5 },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': 'parent'}",
+                },
+              },
+              hover: {
+                size: { value: 70 },
+              },
+            },
+          },
+        ],
       },
     ],
   };

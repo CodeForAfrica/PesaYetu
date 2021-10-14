@@ -17,7 +17,8 @@ export default function configureScope(indicator, isMobile) {
       vegaSpec = LineChartScope(
         indicator?.data,
         indicator?.metadata,
-        configuration
+        configuration,
+        indicator?.parent_data ?? []
       );
       break;
     case "donut":

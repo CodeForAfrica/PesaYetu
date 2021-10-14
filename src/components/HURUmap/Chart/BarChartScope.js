@@ -27,7 +27,7 @@ export default function BarChartScope(data, metadata, config) {
   const { primary_group: primaryGroup } = metadata;
 
   if (xTicks) {
-    xAxis.tickCount = xTicks;
+    xAxis.tickCount = xTicks || 6;
   }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(

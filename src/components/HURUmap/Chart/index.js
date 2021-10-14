@@ -93,7 +93,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
                 ? value.percentage
                 : undefined
             }
-            item={value?.stack}
+            item={value?.category}
             itemColor={item?.fill}
           />
         </ThemeProvider>
@@ -210,6 +210,7 @@ Chart.propTypes = {
       primary_group: PropTypes.string,
     }),
     data: PropTypes.arrayOf(PropTypes.shape({})),
+    parent_data: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   title: PropTypes.string,
   geoCode: PropTypes.string,

@@ -243,7 +243,7 @@ export default function StackedChartScope(data, metadata, config) {
             x2: { scale: "xscale", field: "y1" },
             tooltip: {
               signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'stack': datum[stackedField]}",
+                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
             },
           },
         },
