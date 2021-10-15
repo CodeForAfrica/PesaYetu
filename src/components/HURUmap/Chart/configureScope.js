@@ -33,13 +33,15 @@ export default function configureScope(indicator, isMobile) {
         vegaSpec = VerticalStackedChartScope(
           indicator?.data,
           indicator?.metadata,
-          configuration
+          configuration,
+          indicator?.parent_data ?? [{}]
         );
       } else {
         vegaSpec = StackedChartScope(
           indicator?.data,
           indicator?.metadata,
-          configuration
+          configuration,
+          indicator?.parent_data ?? [{}]
         );
       }
       break;
@@ -55,7 +57,8 @@ export default function configureScope(indicator, isMobile) {
         vegaSpec = VerticalBarChartScope(
           indicator?.data,
           indicator?.metadata,
-          configuration
+          configuration,
+          indicator?.parent_data ?? [{}]
         );
       } else {
         vegaSpec = BarChartScope(

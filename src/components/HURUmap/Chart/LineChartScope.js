@@ -53,7 +53,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
         transform: [...filters],
       },
       {
-        name: "primary_data_formatted",
+        name: "data_formatted",
         source: "primaryData",
         transform: [
           {
@@ -196,7 +196,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
         name: "xscale",
         type: "point",
         domain: {
-          data: "primary_data_formatted",
+          data: "data_formatted",
           field: { signal: "mainGroup" },
         },
         range: [15, { signal: "width" }],
@@ -205,7 +205,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
         name: "yscale",
         type: "linear",
         domain: {
-          data: "primary_data_formatted",
+          data: "data_formatted",
           field: { signal: "datatype[Units]" },
         },
         range: [{ signal: "height" }, 0],
@@ -218,7 +218,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
         type: "ordinal",
         range: "category",
         domain: {
-          data: "primary_data_formatted",
+          data: "data_formatted",
           field: { signal: "mainGroup" },
         },
       },
@@ -291,7 +291,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
         marks: [
           {
             name: "line",
-            from: { data: "primary_data_formatted" },
+            from: { data: "data_formatted" },
             type: "line",
             encode: {
               enter: {
@@ -308,7 +308,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
           },
           {
             name: "line symbol",
-            from: { data: "primary_data_formatted" },
+            from: { data: "data_formatted" },
             type: "symbol",
             encode: {
               enter: {

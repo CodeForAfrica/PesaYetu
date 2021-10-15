@@ -10,7 +10,7 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function StackedChartScope(data, metadata, config) {
+export default function StackedChartScope(data, metadata, config, parentData) {
   const {
     xTicks,
     defaultType,
@@ -23,17 +23,16 @@ export default function StackedChartScope(data, metadata, config) {
       },
     },
     stacked_field: stackedField,
+    parent_label: parentLabel,
   } = config;
 
-  const { primary_group: primaryGroup } = metadata;
+  const { primary_group: primaryGroup, groups } = metadata;
 
   if (xTicks) {
     xAxis.tickCount = xTicks;
   }
 
-  const { signals: filterSignals, filters } = createFiltersForGroups(
-    metadata.groups
-  );
+  const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
@@ -47,6 +46,11 @@ export default function StackedChartScope(data, metadata, config) {
       {
         name: "table",
         values: data,
+        transform: [...filters],
+      },
+      {
+        name: "parentData",
+        values: parentData,
         transform: [...filters],
       },
       {
@@ -85,6 +89,40 @@ export default function StackedChartScope(data, metadata, config) {
             type: "stack",
             groupby: [primaryGroup],
             field: { signal: "datatype[Units]" },
+          },
+        ],
+      },
+      {
+        name: "parent_data_formatted",
+        source: "parentData",
+        transform: [
+          {
+            type: "aggregate",
+            ops: ["sum"],
+            as: ["count"],
+            fields: ["count"],
+            groupby: [primaryGroup],
+          },
+          {
+            type: "joinaggregate",
+            as: ["TotalCount"],
+            ops: ["sum"],
+            fields: ["count"],
+          },
+          {
+            type: "formula",
+            expr: "datum.count/datum.TotalCount",
+            as: "percentage",
+          },
+          {
+            type: "extent",
+            field: "percentage",
+            signal: "parent_percentage_extent",
+          },
+          {
+            type: "extent",
+            field: "count",
+            signal: "parent_value_extent",
           },
         ],
       },
@@ -187,6 +225,12 @@ export default function StackedChartScope(data, metadata, config) {
           field: stackedField,
         },
       },
+      {
+        name: "pcolor",
+        type: "ordinal",
+        range: "category",
+        domain: { data: "parent_data_formatted", field: "parent" },
+      },
     ],
 
     axes: [
@@ -222,31 +266,87 @@ export default function StackedChartScope(data, metadata, config) {
           },
         },
       },
+      parentData?.length > 1
+        ? {
+            fill: "pcolor",
+            offset: -20,
+            orient: "top-right",
+            labelFont: theme.typography.fontFamily,
+            labelColor: theme.palette.chart.text.primary,
+            encode: {
+              symbols: {
+                shape: { value: "stroke" },
+                update: {
+                  shape: { value: "stroke" },
+                  size: { value: 500 },
+                  stroke: { value: theme.palette.chart.text.primary },
+                  strokeDash: { value: [2, 2] },
+                },
+              },
+              labels: {
+                update: {
+                  text: { value: parentLabel },
+                },
+              },
+            },
+          }
+        : null,
     ],
 
     marks: [
       {
-        name: "bars",
-        from: { data: "data_formatted" },
-        type: "rect",
-        encode: {
-          enter: {
-            y: { scale: "yscale", field: { signal: "mainGroup" } },
-            height: { scale: "yscale", band: 1 },
-            x: { scale: "xscale", field: "y0" },
-            x2: { scale: "xscale", field: "y1" },
-            fill: { scale: "color", field: stackedField },
-          },
-          update: {
-            fillOpacity: { value: 1 },
-            x: { scale: "xscale", field: "y0" },
-            x2: { scale: "xscale", field: "y1" },
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
+        type: "group",
+        marks: [
+          {
+            name: "bars",
+            from: { data: "data_formatted" },
+            type: "rect",
+            encode: {
+              enter: {
+                y: { scale: "yscale", field: { signal: "mainGroup" } },
+                height: { scale: "yscale", band: 1 },
+                x: { scale: "xscale", field: "y0" },
+                x2: { scale: "xscale", field: "y1" },
+                fill: { scale: "color", field: stackedField },
+              },
+              update: {
+                fillOpacity: { value: 1 },
+                x: { scale: "xscale", field: "y0" },
+                x2: { scale: "xscale", field: "y1" },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
+                },
+              },
             },
           },
-        },
+        ],
+      },
+      {
+        type: "group",
+        marks: [
+          {
+            name: "parent",
+            from: { data: "parent_data_formatted" },
+            type: "rule",
+            encode: {
+              enter: {
+                y: { scale: "yscale", field: { signal: "mainGroup" } },
+                y2: {
+                  scale: "yscale",
+                  field: { signal: "mainGroup" },
+                  offset: { signal: "y_step" },
+                },
+                x: { scale: "xscale", field: { signal: "datatype[Units]" } },
+                x2: { scale: "xscale", field: { signal: "datatype[Units]" } },
+                stroke: { value: theme.palette.text.secondary },
+                fill: { value: theme.palette.text.secondary },
+                strokeWidth: { value: 1 },
+                strokeDash: { value: [2, 2] },
+              },
+            },
+          },
+        ],
       },
     ],
   };

@@ -10,7 +10,12 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function VerticalBarChartScope(data, metadata, config) {
+export default function VerticalBarChartScope(
+  data,
+  metadata,
+  config,
+  parentData
+) {
   const {
     xTicks,
     defaultType,
@@ -22,6 +27,7 @@ export default function VerticalBarChartScope(data, metadata, config) {
         maxX: percentageMaxX,
       },
     },
+    parent_label: parentLabel,
   } = config;
 
   const { primary_group: primaryGroup, groups } = metadata;
@@ -44,6 +50,11 @@ export default function VerticalBarChartScope(data, metadata, config) {
       {
         name: "table",
         values: data,
+        transform: [...filters],
+      },
+      {
+        name: "parentData",
+        values: parentData,
         transform: [...filters],
       },
       {
@@ -77,6 +88,40 @@ export default function VerticalBarChartScope(data, metadata, config) {
             type: "extent",
             field: "count",
             signal: "value_extent",
+          },
+        ],
+      },
+      {
+        name: "parent_data_formatted",
+        source: "parentData",
+        transform: [
+          {
+            type: "aggregate",
+            ops: ["sum"],
+            as: ["count"],
+            fields: ["count"],
+            groupby: { signal: "groups" },
+          },
+          {
+            type: "joinaggregate",
+            as: ["TotalCount"],
+            ops: ["sum"],
+            fields: ["count"],
+          },
+          {
+            type: "formula",
+            expr: "datum.count/datum.TotalCount",
+            as: "percentage",
+          },
+          {
+            type: "extent",
+            field: "percentage",
+            signal: "parent_percentage_extent",
+          },
+          {
+            type: "extent",
+            field: "count",
+            signal: "parent_value_extent",
           },
         ],
       },
@@ -165,6 +210,12 @@ export default function VerticalBarChartScope(data, metadata, config) {
         range: [{ signal: "height" }, 0],
         nice: true,
       },
+      {
+        name: "pcolor",
+        type: "ordinal",
+        range: "category",
+        domain: { data: "parent_data_formatted", field: "parent" },
+      },
     ],
     axes: [
       {
@@ -186,27 +237,85 @@ export default function VerticalBarChartScope(data, metadata, config) {
         labels: false,
       },
     ],
-
+    legends:
+      parentData?.length > 1
+        ? [
+            {
+              fill: "pcolor",
+              offset: -20,
+              orient: "top-right",
+              labelFont: theme.typography.fontFamily,
+              labelColor: theme.palette.chart.text.primary,
+              encode: {
+                symbols: {
+                  shape: { value: "stroke" },
+                  update: {
+                    shape: { value: "stroke" },
+                    size: { value: 500 },
+                    stroke: { value: theme.palette.chart.text.primary },
+                    strokeDash: { value: [2, 2] },
+                  },
+                },
+                labels: {
+                  update: {
+                    text: { value: parentLabel },
+                  },
+                },
+              },
+            },
+          ]
+        : null,
     marks: [
       {
-        name: "bars",
-        from: { data: "data_formatted" },
-        type: "rect",
-        encode: {
-          enter: {
-            x: { scale: "xscale", field: { signal: "mainGroup" } },
-            width: { scale: "xscale", band: 1 },
-            y: { scale: "yscale", field: { signal: "datatype[Units]" } },
-            y2: { scale: "yscale", value: 0 },
-          },
-          update: {
-            fill: { value: theme.palette.primary.main },
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+        type: "group",
+        marks: [
+          {
+            name: "bars",
+            from: { data: "data_formatted" },
+            type: "rect",
+            encode: {
+              enter: {
+                x: { scale: "xscale", field: { signal: "mainGroup" } },
+                width: { scale: "xscale", band: 1 },
+                y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+                y2: { scale: "yscale", value: 0 },
+              },
+              update: {
+                fill: { value: theme.palette.primary.main },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                },
+              },
             },
           },
-        },
+        ],
+      },
+      {
+        type: "group",
+        marks: [
+          {
+            name: "parent",
+            from: { data: "parent_data_formatted" },
+            type: "rule",
+            encode: {
+              enter: {
+                x: { scale: "xscale", field: { signal: "mainGroup" } },
+                x2: {
+                  scale: "xscale",
+                  field: { signal: "mainGroup" },
+                  offset: { signal: "width/domain('xscale').length" },
+                },
+                y: { scale: "yscale", field: { signal: "datatype[Units]" } },
+                y2: { scale: "yscale", field: { signal: "datatype[Units]" } },
+                stroke: { value: theme.palette.text.secondary },
+                fill: { value: theme.palette.text.secondary },
+                strokeWidth: { value: 1 },
+                strokeDash: { value: [2, 2] },
+              },
+            },
+          },
+        ],
       },
     ],
   };

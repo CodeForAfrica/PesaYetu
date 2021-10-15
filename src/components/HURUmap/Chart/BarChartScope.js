@@ -53,7 +53,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         transform: [...filters],
       },
       {
-        name: "primary_data_formatted",
+        name: "data_formatted",
         source: "primaryData",
         transform: [
           {
@@ -192,7 +192,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         name: "yscale",
         type: "band",
         domain: {
-          data: "primary_data_formatted",
+          data: "data_formatted",
           field: { signal: "mainGroup" },
         },
         range: { step: { signal: "y_step" } },
@@ -202,7 +202,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         name: "xscale",
         type: "linear",
         domain: {
-          data: "primary_data_formatted",
+          data: "data_formatted",
           field: { signal: "datatype[Units]" },
         },
         domainMin: { signal: "domainMin" },
@@ -271,7 +271,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         marks: [
           {
             name: "bars",
-            from: { data: "primary_data_formatted" },
+            from: { data: "data_formatted" },
             type: "rect",
             encode: {
               enter: {
