@@ -18,7 +18,7 @@ export default function configureScope(indicator, isMobile) {
         indicator?.data,
         indicator?.metadata,
         configuration,
-        indicator?.parent_data ?? []
+        indicator?.parent_data ?? [{}]
       );
       break;
     case "donut":

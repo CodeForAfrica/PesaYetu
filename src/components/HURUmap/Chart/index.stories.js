@@ -107,7 +107,7 @@ Default.args = {
       parent_label: "National Average",
     },
 
-    data: [
+    parent_data: [
       {
         age: "15-19",
         race: "Black African",
@@ -2524,7 +2524,7 @@ Default.args = {
         language: "Sign language",
       },
     ],
-    parent_data: [
+    data: [
       {
         age: "15-19",
         race: "Black African",

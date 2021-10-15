@@ -25,15 +25,13 @@ export default function LineChartScope(data, metadata, config, parentData) {
     parent_label: parentLabel,
   } = config;
 
-  const { primary_group: primaryGroup } = metadata;
+  const { primary_group: primaryGroup, groups } = metadata;
 
   if (xTicks) {
     xAxis.tickCount = xTicks || 6;
   }
 
-  const { signals: filterSignals, filters } = createFiltersForGroups(
-    metadata.groups
-  );
+  const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
@@ -211,7 +209,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
           field: { signal: "datatype[Units]" },
         },
         range: [{ signal: "height" }, 0],
-        nice: false,
+        nice: true,
         zero: false,
         clamp: true,
       },
@@ -252,31 +250,34 @@ export default function LineChartScope(data, metadata, config, parentData) {
         labelPadding: 6,
       },
     ],
-    legends: [
-      {
-        fill: "pcolor",
-        offset: 0,
-        orient: "top-right",
-        labelFont: theme.typography.fontFamily,
-        labelColor: theme.palette.chart.text.primary,
-        encode: {
-          symbols: {
-            shape: { value: "stroke" },
-            update: {
-              shape: { value: "stroke" },
-              size: { value: 500 },
-              stroke: { value: theme.palette.chart.text.primary },
-              strokeDash: { value: [2, 2] },
+    legends:
+      parentData?.length > 1
+        ? [
+            {
+              fill: "pcolor",
+              offset: -20,
+              orient: "top-right",
+              labelFont: theme.typography.fontFamily,
+              labelColor: theme.palette.chart.text.primary,
+              encode: {
+                symbols: {
+                  shape: { value: "stroke" },
+                  update: {
+                    shape: { value: "stroke" },
+                    size: { value: 500 },
+                    stroke: { value: theme.palette.chart.text.primary },
+                    strokeDash: { value: [2, 2] },
+                  },
+                },
+                labels: {
+                  update: {
+                    text: { value: parentLabel },
+                  },
+                },
+              },
             },
-          },
-          labels: {
-            update: {
-              text: { value: parentLabel },
-            },
-          },
-        },
-      },
-    ],
+          ]
+        : null,
 
     marks: [
       {
