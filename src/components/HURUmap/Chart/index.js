@@ -251,7 +251,7 @@ Chart.propTypes = {
 
 Chart.defaultProps = {
   indicator: undefined,
-  secondaryIndicator: undefined,
+  secondaryIndicator: {},
   title: undefined,
   geoCode: undefined,
   extra: undefined,

@@ -8,7 +8,6 @@ import useSWR from "swr";
 import Location from "@/pesayetu/components/HURUmap/Location";
 import Panel from "@/pesayetu/components/HURUmap/Panel";
 import Link from "@/pesayetu/components/Link";
-import { panelArgs } from "@/pesayetu/config";
 import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
@@ -78,7 +77,13 @@ const useStyles = makeStyles(
   })
 );
 
-function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
+function ExplorePage({
+  profile: profileProp,
+  secondaryProfile,
+  panelProps,
+  apiUri,
+  ...props
+}) {
   const classes = useStyles(props);
   const [geoCode, setGeoCode] = useState(null);
   const handleCodeChange = (_, { code }) => {
@@ -132,7 +137,7 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
       </Hidden>
       <Panel
         primaryProfile={profile}
-        secondaryProfile={{ ...profile, geography: panelArgs.geography }}
+        secondaryProfile={secondaryProfile}
         {...panelProps}
         {...profile}
       />
@@ -149,12 +154,19 @@ ExplorePage.propTypes = {
     highlights: PropTypes.arrayOf(PropTypes.shape({})),
     tags: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  secondaryProfile: PropTypes.shape({
+    geography: PropTypes.shape({}),
+    geometries: PropTypes.shape({}),
+    highlights: PropTypes.arrayOf(PropTypes.shape({})),
+    tags: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
 };
 
 ExplorePage.defaultProps = {
   apiUri: undefined,
   panelProps: undefined,
   profile: undefined,
+  secondaryProfile: undefined,
 };
 
 export default ExplorePage;

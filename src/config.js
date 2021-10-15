@@ -755,28 +755,8 @@ export const treeViewArgs = {
     },
   ],
 };
-export const panelArgs = {
-  panelItems: [
-    {
-      value: "rich-data",
-      icon: panelPinIcon,
-      children: "1",
-      tree: treeViewArgs,
-    },
-    {
-      value: "pin",
-      icon: pinBlack,
-      children: "2",
-      pin: true,
-      tree: treeViewArgs,
-    },
-  ],
-  scrollToTopLabel: "Back To Top",
-  logo: {
-    image:
-      "https://wazimap-ng.s3.amazonaws.com/logos/youthexplorer.png?AWSAccessKeyId=AKIAYIFP5EK2I6PADW2R&Signature=63W%2F43NSETtdv3a9ZgTSfNh9%2FHA%3D&Expires=1632748980",
-    url: "https://youthexplorer.org.za",
-  },
+
+const profile = {
   geography: {
     name: "Calvinia SP",
     code: "366005003",
@@ -912,6 +892,31 @@ export const panelArgs = {
     name: "Youth Explorer",
     description: "",
   },
+};
+export const panelArgs = {
+  panelItems: [
+    {
+      value: "rich-data",
+      icon: panelPinIcon,
+      children: "1",
+      tree: treeViewArgs,
+    },
+    {
+      value: "pin",
+      icon: pinBlack,
+      children: "2",
+      pin: true,
+      tree: treeViewArgs,
+    },
+  ],
+  scrollToTopLabel: "Back To Top",
+  logo: {
+    image:
+      "https://wazimap-ng.s3.amazonaws.com/logos/youthexplorer.png?AWSAccessKeyId=AKIAYIFP5EK2I6PADW2R&Signature=63W%2F43NSETtdv3a9ZgTSfNh9%2FHA%3D&Expires=1632748980",
+    url: "https://youthexplorer.org.za",
+  },
+  primaryProfile: profile,
+  secondaryProfile: profile,
 };
 
 export const hurumapArgs = {
