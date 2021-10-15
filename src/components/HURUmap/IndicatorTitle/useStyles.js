@@ -58,16 +58,16 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     background: palette.background.paper,
   },
   shareButton: {
-    backgroundColor: "#ffffff !important",
+    backgroundColor: `${palette.background.default} !important`,
     filter: "opacity(0.7)",
     width: "100%",
-    border: "solid 1px #f8f8f8 !important",
+    border: `solid 1px ${palette.background.paper} !important`,
     "&:hover": {
       border: "solid 1px #666666 !important",
-      backgroundColor: "#f8f8f8 !important",
+      backgroundColor: `${palette.background.paper} !important`,
       "& path": {
         "&:first-child": {
-          fill: "#f8f8f8",
+          fill: palette.background.paper,
         },
       },
     },
@@ -75,7 +75,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   icon: {
     "& path": {
       "&:first-child": {
-        fill: "#ffffff",
+        fill: palette.background.default,
       },
     },
   },
