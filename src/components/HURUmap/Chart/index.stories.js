@@ -90,7 +90,7 @@ Default.args = {
     content_type: "indicator",
     dataset_content_type: "quantitative",
     chart_configuration: {
-      chart_type: "line",
+      chart_type: "bar",
       nest_fields: ["age"],
       types: {
         Value: {

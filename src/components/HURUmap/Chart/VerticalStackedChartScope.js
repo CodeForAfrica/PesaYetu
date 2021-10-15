@@ -25,15 +25,13 @@ export default function VerticalStackedChartScope(data, metadata, config) {
     stacked_field: stackedField,
   } = config;
 
-  const { primary_group: primaryGroup } = metadata;
+  const { primary_group: primaryGroup, groups } = metadata;
 
   if (xTicks) {
     xAxis.tickCount = xTicks;
   }
 
-  const { signals: filterSignals, filters } = createFiltersForGroups(
-    metadata.groups
-  );
+  const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",

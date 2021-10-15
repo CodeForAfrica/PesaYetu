@@ -28,7 +28,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
   const { primary_group: primaryGroup, groups } = metadata;
 
   if (xTicks) {
-    xAxis.tickCount = xTicks || 6;
+    xAxis.tickCount = xTicks;
   }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
@@ -226,7 +226,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
         name: "pcolor",
         type: "ordinal",
         range: "category",
-        domain: { data: "parent_data_formatted", field: "variant" },
+        domain: { data: "parent_data_formatted", field: "parent" },
       },
     ],
     axes: [

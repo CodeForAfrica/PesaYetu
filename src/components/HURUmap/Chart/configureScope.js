@@ -61,7 +61,8 @@ export default function configureScope(indicator, isMobile) {
         vegaSpec = BarChartScope(
           indicator?.data,
           indicator?.metadata,
-          configuration
+          configuration,
+          indicator?.parent_data ?? [{}]
         );
       }
       break;
