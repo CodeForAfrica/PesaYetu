@@ -204,7 +204,10 @@ export default function MultiBarChartScope(
       {
         name: "xscale",
         type: "linear",
-        range: [0, { signal: "width/2 -30 " }],
+        range:
+          secondaryData.length > 0 && primaryData.length > 0
+            ? [0, { signal: "width/2 -30 " }]
+            : [0, { signal: "width" }],
         nice: true,
         zero: true,
         domain: {

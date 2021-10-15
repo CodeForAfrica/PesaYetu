@@ -103,7 +103,15 @@ export default function TreemapChartScope(
             field: { signal: "datatype[Units]" },
             method: { signal: "layout" },
             ratio: { signal: "aspectRatio" },
-            size: [{ signal: "width/2 -30" }, { signal: "height" }],
+            size: [
+              {
+                signal:
+                  secondaryData.length > 0 && primaryData.length > 0
+                    ? "width/2 -30"
+                    : "width",
+              },
+              { signal: "height" },
+            ],
           },
         ],
       },
@@ -324,7 +332,10 @@ export default function TreemapChartScope(
         name: "secondary_bars",
         encode: {
           update: {
-            x: { signal: "width / 2 +30" },
+            x:
+              secondaryData.length > 0 && primaryData.length > 0
+                ? [{ signal: "width / 2 +30" }]
+                : [0],
             height: { signal: "height" },
           },
         },

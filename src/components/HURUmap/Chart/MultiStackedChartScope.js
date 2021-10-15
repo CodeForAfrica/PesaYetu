@@ -227,7 +227,10 @@ export default function MultiStackedChartScope(
         domain: { data: "primary_formatted", field: "y1" },
         domainMin: { signal: "domainMin" },
         domainMax: { signal: "domainMax" },
-        range: [0, { signal: "width/2 -30 " }],
+        range:
+          secondaryData.length > 0 && primaryData.length > 0
+            ? [0, { signal: "width/2 -30 " }]
+            : [0, { signal: "width" }],
         zero: true,
         clamp: true,
         nice: true,
