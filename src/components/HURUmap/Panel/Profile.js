@@ -107,7 +107,7 @@ const Profile = forwardRef(function Profile(
                         categoryIndex,
                         subcategoryIndex,
                         indicatorIndex
-                      )?.indicator?.data.length > 0
+                      )?.indicator?.data?.length > 0
                         ? secondaryProfile?.geography?.name
                         : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
                   }}
