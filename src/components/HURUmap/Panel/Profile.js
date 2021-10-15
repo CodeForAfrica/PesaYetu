@@ -38,7 +38,7 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
 }));
 
 const Profile = forwardRef(function Profile(
-  { categories, primaryProfile, secondaryProfile, ...props },
+  { categories, primaryProfile, secondaryProfile, dataNotAvailable, ...props },
   ref
 ) {
   const classes = useStyles(props);
@@ -98,8 +98,18 @@ const Profile = forwardRef(function Profile(
                     indicatorIndex
                   )}
                   extra={{
-                    primary: primaryProfile.geography.name,
-                    secondary: secondaryProfile?.geography?.name,
+                    primary:
+                      indicator.indicator?.data?.length > 0
+                        ? primaryProfile.geography.name
+                        : `${primaryProfile.geography.name} ${dataNotAvailable}`,
+                    secondary:
+                      getSecondaryIndicator(
+                        categoryIndex,
+                        subcategoryIndex,
+                        indicatorIndex
+                      )?.indicator?.data.length > 0
+                        ? secondaryProfile?.geography?.name
+                        : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
                   }}
                 />
               ))}
@@ -150,11 +160,13 @@ Profile.propTypes = {
       })
     ),
   }),
+  dataNotAvailable: PropTypes.string,
 };
 Profile.defaultProps = {
   categories: undefined,
   primaryProfile: undefined,
   secondaryProfile: undefined,
+  dataNotAvailable: undefined,
 };
 
 export default Profile;
