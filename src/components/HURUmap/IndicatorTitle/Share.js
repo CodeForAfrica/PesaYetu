@@ -38,7 +38,7 @@ function Share({ title, geoCode, indicatorId, ...props }) {
       }
       @media (max-width: 500px) {
         .wrapper {
-          padding-top: 170%;
+          padding-top: 165%;
         }
 }
 </style> 

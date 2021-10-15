@@ -49,7 +49,7 @@ export default function VerticalStackedChartScope(
     config: defaultConfig,
     data: [
       {
-        name: "table",
+        name: "primaryData",
         values: data,
         transform: [...filters],
       },
@@ -60,7 +60,7 @@ export default function VerticalStackedChartScope(
       },
       {
         name: "data_formatted",
-        source: "table",
+        source: "primaryData",
         transform: [
           {
             type: "aggregate",
@@ -281,7 +281,7 @@ export default function VerticalStackedChartScope(
       parentData?.length > 1
         ? {
             fill: "pcolor",
-            offset: -20,
+            offset: -35,
             orient: "top-right",
             labelFont: theme.typography.fontFamily,
             labelColor: theme.palette.chart.text.primary,
@@ -298,6 +298,12 @@ export default function VerticalStackedChartScope(
               labels: {
                 update: {
                   text: { value: parentLabel },
+                },
+              },
+              legends: {
+                update: {
+                  x: { signal: "width" },
+                  y: { signal: "height - 20" },
                 },
               },
             },

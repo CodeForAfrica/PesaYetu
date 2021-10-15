@@ -44,7 +44,7 @@ export default function StackedChartScope(data, metadata, config, parentData) {
     config: defaultConfig,
     data: [
       {
-        name: "table",
+        name: "primaryData",
         values: data,
         transform: [...filters],
       },
@@ -55,7 +55,7 @@ export default function StackedChartScope(data, metadata, config, parentData) {
       },
       {
         name: "data_formatted",
-        source: "table",
+        source: "primaryData",
         transform: [
           {
             type: "aggregate",
@@ -269,7 +269,7 @@ export default function StackedChartScope(data, metadata, config, parentData) {
       parentData?.length > 1
         ? {
             fill: "pcolor",
-            offset: -20,
+            offset: -40,
             orient: "top-right",
             labelFont: theme.typography.fontFamily,
             labelColor: theme.palette.chart.text.primary,

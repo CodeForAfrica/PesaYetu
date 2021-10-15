@@ -34,6 +34,11 @@ export const defaultConfig = {
   axisBottom: {
     domainColor: "transparent",
   },
+  legends: {
+    layout: {
+      direction: "horizontal",
+    },
+  },
   range: {
     category: theme.palette.chart.primary,
   },

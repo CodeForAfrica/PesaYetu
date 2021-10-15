@@ -48,7 +48,7 @@ export default function VerticalBarChartScope(
     height: 310,
     data: [
       {
-        name: "table",
+        name: "primaryData",
         values: data,
         transform: [...filters],
       },
@@ -59,7 +59,7 @@ export default function VerticalBarChartScope(
       },
       {
         name: "data_formatted",
-        source: "table",
+        source: "primaryData",
         transform: [
           {
             type: "aggregate",

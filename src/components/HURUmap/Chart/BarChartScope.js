@@ -1,4 +1,4 @@
-import { xAxis, defaultConfig, commonSignal } from "./properties";
+import { xAxis, xScale, defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -198,19 +198,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         range: { step: { signal: "y_step" } },
         padding: 0.15,
       },
-      {
-        name: "xscale",
-        type: "linear",
-        domain: {
-          data: "data_formatted",
-          field: { signal: "datatype[Units]" },
-        },
-        domainMin: { signal: "domainMin" },
-        domainMax: { signal: "domainMax" },
-        range: [0, { signal: "width" }],
-        clamp: true,
-        nice: true,
-      },
+      xScale,
       {
         name: "pcolor",
         type: "ordinal",
