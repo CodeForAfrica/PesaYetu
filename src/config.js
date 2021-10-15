@@ -969,6 +969,11 @@ export const hurumapArgs = {
       },
     ],
   },
+  pinAndCompare: {
+    helperText: "Pin and compare",
+    placeholder: "Select a location",
+    options: ["Municipality", "Municipality One", "Municipality Two"],
+  },
 };
 
 export const hurumap = {
