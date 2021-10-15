@@ -1,3 +1,4 @@
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
@@ -6,7 +7,9 @@ import React, { forwardRef, Fragment } from "react";
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
+import PinAndCompare from "@/pesayetu/components/HURUmap/PinAndCompare";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
+import { hurumapArgs } from "@/pesayetu/config";
 import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
@@ -41,10 +44,14 @@ const Profile = forwardRef(function Profile(
   ref
 ) {
   const classes = useStyles(props);
+  const { pinAndCompare } = hurumapArgs;
 
   return (
     <div className={classes.profile} ref={ref}>
       <LocationHeader icon={Print} title={geography.name} {...geography} />
+      <Hidden smDown implementation="css">
+        <PinAndCompare {...pinAndCompare} />
+      </Hidden>
       {categories.map((category) => (
         <Fragment key={category.tite}>
           <CategoryHeader
