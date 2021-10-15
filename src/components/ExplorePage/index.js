@@ -139,7 +139,6 @@ function ExplorePage({
         primaryProfile={profile}
         secondaryProfile={secondaryProfile}
         {...panelProps}
-        {...profile}
       />
     </>
   );
