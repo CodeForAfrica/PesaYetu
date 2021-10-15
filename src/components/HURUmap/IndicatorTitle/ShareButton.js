@@ -32,6 +32,7 @@ const ShareButton = ({ name, title, url, ...props }) => {
       <SocialButtonComponent
         title={title}
         url={url}
+        {...props}
         className={classes.shareButton}
       >
         <SocialIcon className={classes.icon} />

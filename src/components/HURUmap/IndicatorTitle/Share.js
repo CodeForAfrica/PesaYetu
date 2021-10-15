@@ -6,9 +6,14 @@ import React from "react";
 import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
-const shareData = ["Facebook", "Twitter", "LinkedIn", "Email"];
-
 function Share({ title, geoCode, indicatorId, view, ...props }) {
+  const shareData = [
+    // props data to be clarified
+    { name: "Facebook", props: { hashtag: "#charts" } },
+    { name: "Twitter", props: { via: "PesaYetu" } },
+    { name: "LinkedIn", props: { source: "www.pesayetu.com" } },
+    { name: "Email", props: { subject: title } },
+  ];
   const classes = useStyles(props);
   // Embed url
   const url = `${
@@ -58,7 +63,12 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
   return (
     <Grid container className={classes.root}>
       {shareData.map((social) => (
-        <ShareButton name={social} title={title} url={url} />
+        <ShareButton
+          name={social.name}
+          title={title}
+          url={url}
+          {...social.props}
+        />
       ))}
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
