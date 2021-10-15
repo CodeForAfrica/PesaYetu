@@ -92,6 +92,7 @@ Default.args = {
     chart_configuration: {
       chart_type: "bar",
       stacked_field: "gender",
+      nest_fields: ["age"],
       types: {
         Value: {
           formatting: ",.0f",
