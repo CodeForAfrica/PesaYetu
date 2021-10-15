@@ -1,6 +1,5 @@
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import L from "leaflet";
-import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useCallback, useEffect, useRef } from "react";
 import ReactDOMServer from "react-dom/server";
@@ -63,7 +62,6 @@ const Layers = ({
   ...props
 }) => {
   const map = useMap();
-  const router = useRouter();
   const groupRef = useRef();
   const classes = useStyles(props);
 
@@ -109,20 +107,16 @@ const Layers = ({
               : geoStyles.hoverOnly.out
           );
         });
-        layer.on("click", (e) => {
-          const href = `/explore/${feature.properties.code.toLowerCase()}`;
-          router.push(href, href, { shallow: !!onClick });
-          if (onClick) {
-            onClick(e, {
-              code: feature.properties.code,
-              level: feature.properties.level,
-              name: feature.properties.name,
-            });
-          }
-        });
+        if (onClick) {
+          layer.on("click", (e) => {
+            if (onClick) {
+              onClick(e, feature);
+            }
+          });
+        }
       }
     },
-    [classes.locationtag, locationCodes, onClick, router]
+    [classes.locationtag, locationCodes, onClick]
   );
 
   useEffect(() => {

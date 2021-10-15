@@ -6,7 +6,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     width: typography.pxToRem(44),
     height: typography.pxToRem(44),
   },
-
   button: {
     backgroundColor: palette.grey.light,
     padding: 0,

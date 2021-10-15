@@ -1,6 +1,7 @@
 import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
@@ -80,10 +81,11 @@ const useStyles = makeStyles(
 function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
   const classes = useStyles(props);
   const [geoCode, setGeoCode] = useState(null);
+  const router = useRouter();
+  // Add UI props to tags
   const handleCodeChange = (_, { code }) => {
     setGeoCode(code);
   };
-  // Add UI props to tags
   const extendTags = useCallback(({ tags: originalTags, ...other }) => {
     const tags = originalTags.map(({ code, ...otherTags }) => ({
       ...otherTags,
@@ -96,7 +98,7 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
     }));
     return { ...other, tags };
   }, []);
-  const [profile, setProfile] = useState(extendTags(profileProp));
+  const [profile, setProfile] = useState(() => extendTags(profileProp));
   const fetcher = (code) => fetchProfile(apiUri, code);
   const { data, error } = useSWR(geoCode || null, fetcher);
   useEffect(() => {
@@ -104,6 +106,14 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
       setProfile(extendTags(data));
     }
   }, [data, extendTags]);
+
+  const handleClick = (e, feature) => {
+    const { code, level, name } = feature.properties;
+    const href = `/explore/${code.toLowerCase()}`;
+    router.push(href, href, { shallow: true });
+    const properties = { code, level, name };
+    handleCodeChange(e, properties);
+  };
 
   const isLoading = geoCode && !(data || error);
   const { geography, geometries, highlights, tags } = profile;
@@ -117,7 +127,7 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
             zoom={6.25}
             geometries={geometries}
             geography={geography}
-            onClick={handleCodeChange}
+            onClick={handleClick}
             {...props}
             className={classes.map}
           />

@@ -72,15 +72,15 @@ function DesktopPanel({ panelItems, ...props }) {
         </TabPanel>
       ))}
       <PanelButtonGroup
+        onChange={handleChange}
+        items={panelItems}
+        value={value}
+        pins={pins}
         classes={{
           root: clsx(classes.panelButtons, {
             [classes.panelButtonsOpen]: !!value,
           }),
         }}
-        onChange={handleChange}
-        items={panelItems}
-        value={value}
-        pins={pins}
       />
     </Drawer>
   );
