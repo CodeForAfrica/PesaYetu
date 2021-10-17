@@ -63,7 +63,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
   return (
     <Grid container className={classes.root}>
       {shareData.map((social) => (
-        <Grid item xs={4}>
+        <Grid item xs={4} key={social.name}>
           <ShareButton
             name={social.name}
             title={title}
