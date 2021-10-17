@@ -1,4 +1,3 @@
-import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import {
@@ -28,16 +27,14 @@ const ShareButton = ({ name, title, url, ...props }) => {
   const SocialIcon = componentMap[name].icon;
 
   return (
-    <Grid item xs={4}>
-      <SocialButtonComponent
-        title={title}
-        url={url}
-        {...props}
-        className={classes.shareButton}
-      >
-        <SocialIcon className={classes.icon} />
-      </SocialButtonComponent>
-    </Grid>
+    <SocialButtonComponent
+      title={title}
+      url="www.test.com"
+      {...props}
+      className={classes.shareButton}
+    >
+      <SocialIcon className={classes.icon} />
+    </SocialButtonComponent>
   );
 };
 

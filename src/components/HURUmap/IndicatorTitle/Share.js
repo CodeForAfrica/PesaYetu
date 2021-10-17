@@ -63,12 +63,14 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
   return (
     <Grid container className={classes.root}>
       {shareData.map((social) => (
-        <ShareButton
-          name={social.name}
-          title={title}
-          url={url}
-          {...social.props}
-        />
+        <Grid item xs={4}>
+          <ShareButton
+            name={social.name}
+            title={title}
+            url={url}
+            {...social.props}
+          />
+        </Grid>
       ))}
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
