@@ -7,18 +7,29 @@ import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
 function Share({ title, geoCode, indicatorId, view, ...props }) {
-  const shareData = [
-    // props data to be clarified
-    { name: "Facebook", props: { hashtag: "#charts" } },
-    { name: "Twitter", props: { via: "PesaYetu" } },
-    { name: "LinkedIn", props: { source: "www.pesayetu.com" } },
-    { name: "Email", props: { subject: title } },
-  ];
-  const classes = useStyles(props);
   // Embed url
   const url = `${
     process.env.NEXT_PUBLIC_APP_URL
   }/embed/${geoCode.toLowerCase()}/${indicatorId}`;
+
+  const shareData = [
+    // props data to be clarified
+    { name: "Facebook", props: { quote: title, hashtag: "#PesaYetu", url } },
+    {
+      name: "Twitter",
+      props: { title, via: "PesaYetu", related: "Code4Africa", url },
+    },
+    {
+      name: "LinkedIn",
+      props: {
+        summary: title,
+        source: process.env.NEXT_PUBLIC_APP_URL,
+      },
+    },
+    { name: "WhatsApp", props: { quote: title } },
+    { name: "Email", props: { subject: title, body: url } },
+  ];
+  const classes = useStyles(props);
 
   const code = `<div>
   <style>
@@ -66,8 +77,8 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
         <Grid item xs={4} key={social.name}>
           <ShareButton
             name={social.name}
-            title={title}
-            url={url}
+            // title={title}
+            // url={url}
             {...social.props}
           />
         </Grid>
