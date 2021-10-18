@@ -15,7 +15,7 @@ export default function configureScope(
   indicator,
   isMobile,
   secondaryIndicator,
-  extra
+  profileNames
 ) {
   const configuration = indicator?.chart_configuration;
 
@@ -29,7 +29,7 @@ export default function configureScope(
           secondaryIndicator?.data,
           indicator?.metadata,
           configuration,
-          extra
+          profileNames
         );
         break;
       case "stacked":
@@ -38,7 +38,7 @@ export default function configureScope(
           secondaryIndicator?.data,
           indicator?.metadata,
           configuration,
-          extra
+          profileNames
         );
         break;
       case "donut":
@@ -47,7 +47,7 @@ export default function configureScope(
           secondaryIndicator?.data,
           indicator?.metadata,
           configuration,
-          extra
+          profileNames
         );
         break;
       case "treemap":
@@ -56,7 +56,7 @@ export default function configureScope(
           secondaryIndicator?.data,
           indicator?.metadata,
           configuration,
-          extra
+          profileNames
         );
         break;
       default:
@@ -65,7 +65,7 @@ export default function configureScope(
           secondaryIndicator?.data,
           indicator?.metadata,
           configuration,
-          extra
+          profileNames
         );
         break;
     }

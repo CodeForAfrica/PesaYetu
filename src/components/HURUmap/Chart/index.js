@@ -45,7 +45,7 @@ function Chart({
   secondaryIndicator: { indicator: secondaryIndicator },
   title,
   geoCode,
-  extra,
+  profileNames,
   ...props
 }) {
   const classes = useStyles(props);
@@ -127,7 +127,7 @@ function Chart({
         indicator,
         isMobile,
         secondaryIndicator,
-        extra
+        profileNames
       );
       if (chartRef?.current) {
         const newView = await embed(chartRef.current, spec, {
@@ -140,7 +140,7 @@ function Chart({
       }
     }
     renderChart();
-  }, [indicator, isMobile, extra, secondaryIndicator, handler]);
+  }, [indicator, isMobile, profileNames, secondaryIndicator, handler]);
 
   // apply default filter if defined
   const defaultFilters =
@@ -246,7 +246,7 @@ Chart.propTypes = {
   }),
   title: PropTypes.string,
   geoCode: PropTypes.string,
-  extra: PropTypes.shape({}),
+  profileNames: PropTypes.shape({}),
 };
 
 Chart.defaultProps = {
@@ -254,7 +254,7 @@ Chart.defaultProps = {
   secondaryIndicator: {},
   title: undefined,
   geoCode: undefined,
-  extra: undefined,
+  profileNames: undefined,
 };
 
 export default Chart;

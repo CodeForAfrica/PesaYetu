@@ -15,7 +15,7 @@ export default function MultiBarChartScope(
   secondaryData,
   metadata,
   config,
-  extra
+  profileNames
 ) {
   const {
     defaultType,
@@ -215,13 +215,13 @@ export default function MultiBarChartScope(
       {
         name: "legend_primary_scale",
         type: "ordinal",
-        domain: [extra.primary.toUpperCase()],
+        domain: [profileNames.primary.toUpperCase()],
         range: [theme.palette.primary.main],
       },
       {
         name: "legend_secondary_scale",
         type: "ordinal",
-        domain: [extra.secondary.toUpperCase()],
+        domain: [profileNames.secondary.toUpperCase()],
         range: [theme.palette.secondary.main],
       },
     ],

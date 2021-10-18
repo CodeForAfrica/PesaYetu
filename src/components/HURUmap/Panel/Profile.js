@@ -94,7 +94,7 @@ const Profile = forwardRef(function Profile(
                     subcategoryIndex,
                     indicatorIndex
                   )}
-                  extra={{
+                  profileNames={{
                     primary:
                       indicator.indicator?.data?.length > 0
                         ? primaryProfile.geography.name

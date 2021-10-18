@@ -15,7 +15,7 @@ export default function MultiDonutChartScope(
   secondaryData,
   metadata,
   config,
-  extra
+  profileNames
 ) {
   const {
     defaultType,
@@ -204,7 +204,7 @@ export default function MultiDonutChartScope(
       {
         fill: "color",
         stroke: "color",
-        title: extra.primary.toUpperCase(),
+        title: profileNames.primary.toUpperCase(),
         titleFontWeight: "bold",
         titleColor: "#666",
         titleFont: theme.typography.fontFamily,
@@ -237,7 +237,7 @@ export default function MultiDonutChartScope(
         fill: "secondary",
         stroke: "secondary",
         orient: "none",
-        title: extra.secondary.toUpperCase(),
+        title: profileNames.secondary.toUpperCase(),
         titleFontWeight: "bold",
         titleColor: "#666",
         titleFont: theme.typography.fontFamily,

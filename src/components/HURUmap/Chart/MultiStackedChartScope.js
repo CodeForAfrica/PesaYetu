@@ -15,7 +15,7 @@ export default function MultiStackedChartScope(
   secondaryData,
   metadata,
   config,
-  extra
+  profileNames
 ) {
   const {
     xTicks,
@@ -282,7 +282,7 @@ export default function MultiStackedChartScope(
             orient: "top",
             direction: "horizontal",
             strokeColor: "transparent",
-            title: extra.primary.toUpperCase(),
+            title: profileNames.primary.toUpperCase(),
             titleFontWeight: "bold",
             titleColor: "#666",
             titleFont: theme.typography.fontFamily,
@@ -357,7 +357,7 @@ export default function MultiStackedChartScope(
             orient: "top",
             direction: "horizontal",
             strokeColor: "transparent",
-            title: extra.secondary.toUpperCase(),
+            title: profileNames.secondary.toUpperCase(),
             titleFontWeight: "bold",
             titleColor: "#666",
             titleFont: theme.typography.fontFamily,
