@@ -24,7 +24,7 @@ const getDominantColor = async (srcStr) => {
 };
 
 function Image({ src, ...props }) {
-  const [color, setColor] = useState("#eee");
+  const [color, setColor] = useState();
 
   if (!src) {
     return null;
