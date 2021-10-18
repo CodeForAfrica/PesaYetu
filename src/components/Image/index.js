@@ -6,11 +6,18 @@ function Image({ src, ...props }) {
   if (!src) {
     return null;
   }
-  return <NImage {...props} src={src} />;
+  const blurProps = {};
+
+  // needed because of this issue https://github.com/vercel/next.js/pull/29367
+  if (!(src?.src?.startsWith("data") || src?.startsWith("data"))) {
+    blurProps.blurDataURL = "data:image/svg+xml;base64,";
+    blurProps.placeholder = "blur";
+  }
+  return <NImage {...blurProps} {...props} src={src} />;
 }
 
 Image.propTypes = {
-  src: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
+  src: PropTypes.string,
 };
 
 Image.defaultProps = {
