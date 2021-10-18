@@ -40,19 +40,40 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
 }));
 
 const Profile = forwardRef(function Profile(
-  { categories, geography, ...props },
+  { categories, primaryProfile, secondaryProfile, dataNotAvailable, ...props },
   ref
 ) {
   const classes = useStyles(props);
   const { pinAndCompare } = hurumapArgs;
 
+  const getSecondaryIndicator = (
+    categoryIndex,
+    subcategoryIndex,
+    indicatorIndex
+  ) => {
+    const category = secondaryProfile?.items?.[categoryIndex];
+    const subCategory = category?.children?.[subcategoryIndex];
+    const indicator = subCategory?.children?.[indicatorIndex];
+    return indicator;
+  };
   return (
     <div className={classes.profile} ref={ref}>
-      <LocationHeader icon={Print} title={geography.name} {...geography} />
+      <LocationHeader
+        variant="primary"
+        icon={Print}
+        title={primaryProfile.geography.name}
+        {...primaryProfile.geography}
+      />
       <Hidden smDown implementation="css">
         <PinAndCompare {...pinAndCompare} />
+        <LocationHeader
+          variant="secondary"
+          icon={Print}
+          title={secondaryProfile?.geography?.name}
+          {...secondaryProfile?.geography}
+        />
       </Hidden>
-      {categories.map((category) => (
+      {categories.map((category, categoryIndex) => (
         <Fragment key={category.tite}>
           <CategoryHeader
             description={category?.description}
@@ -60,15 +81,39 @@ const Profile = forwardRef(function Profile(
             id={slugify(category.title)}
             title={category.title}
           />
-          {category.children.map((child) => (
+          {category.children.map((child, subcategoryIndex) => (
             <Fragment key={child.title}>
               <SubcategoryHeader
                 description={child?.description}
                 id={slugify(child.title)}
                 title={child.title}
               />
-              {child.children.map(({ index, ...indicator }) => (
-                <Chart key={index} {...indicator} geoCode={geography.code} />
+              {child.children.map(({ index, ...indicator }, indicatorIndex) => (
+                <Chart
+                  key={index}
+                  variant="primary"
+                  {...indicator}
+                  geoCode={secondaryProfile?.geography?.code}
+                  secondaryIndicator={getSecondaryIndicator(
+                    categoryIndex,
+                    subcategoryIndex,
+                    indicatorIndex
+                  )}
+                  profileNames={{
+                    primary:
+                      indicator.indicator?.data?.length > 0
+                        ? primaryProfile.geography.name
+                        : `${primaryProfile.geography.name} ${dataNotAvailable}`,
+                    secondary:
+                      getSecondaryIndicator(
+                        categoryIndex,
+                        subcategoryIndex,
+                        indicatorIndex
+                      )?.indicator?.data?.length > 0
+                        ? secondaryProfile?.geography?.name
+                        : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
+                  }}
+                />
               ))}
             </Fragment>
           ))}
@@ -87,14 +132,44 @@ Profile.propTypes = {
       title: PropTypes.string,
     })
   ),
-  geography: PropTypes.shape({
-    name: PropTypes.string,
-    code: PropTypes.string,
+  primaryProfile: PropTypes.shape({
+    geography: PropTypes.shape({
+      name: PropTypes.string,
+      code: PropTypes.string,
+    }),
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        children: PropTypes.arrayOf(
+          PropTypes.shape({
+            children: PropTypes.arrayOf(PropTypes.shape({})),
+          })
+        ),
+      })
+    ),
   }),
+  secondaryProfile: PropTypes.shape({
+    geography: PropTypes.shape({
+      name: PropTypes.string,
+      code: PropTypes.string,
+    }),
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        children: PropTypes.arrayOf(
+          PropTypes.shape({
+            children: PropTypes.arrayOf(PropTypes.shape({})),
+          })
+        ),
+      })
+    ),
+  }),
+  dataNotAvailable: PropTypes.string,
 };
+
 Profile.defaultProps = {
   categories: undefined,
-  geography: undefined,
+  primaryProfile: undefined,
+  secondaryProfile: undefined,
+  dataNotAvailable: undefined,
 };
 
 export default Profile;

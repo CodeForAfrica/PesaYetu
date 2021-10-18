@@ -1,16 +1,20 @@
 import hoverIcon from "@/pesayetu/assets/icons/Component1375.png";
 import theme from "@/pesayetu/theme";
 
-export const xScale = {
-  name: "xscale",
+export const xScale = (
+  data = "data_formatted",
+  width = "width",
+  name = "xscale"
+) => ({
+  name,
   type: "linear",
-  domain: { data: "data_formatted", field: { signal: "datatype[Units]" } },
+  domain: { data, field: { signal: "datatype[Units]" } },
   domainMin: { signal: "domainMin" },
   domainMax: { signal: "domainMax" },
-  range: [0, { signal: "width" }],
+  range: [0, { signal: width }],
   clamp: true,
   nice: true,
-};
+});
 
 export const xAxis = {
   orient: "bottom",
@@ -36,6 +40,7 @@ export const defaultConfig = {
   },
   range: {
     category: theme.palette.chart.primary,
+    secondary: theme.palette.chart.secondary,
   },
 };
 

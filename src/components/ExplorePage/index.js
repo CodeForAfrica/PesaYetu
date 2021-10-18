@@ -78,7 +78,13 @@ const useStyles = makeStyles(
   })
 );
 
-function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
+function ExplorePage({
+  profile: profileProp,
+  secondaryProfile,
+  panelProps,
+  apiUri,
+  ...props
+}) {
   const classes = useStyles(props);
   const [geoCode, setGeoCode] = useState(null);
   const router = useRouter();
@@ -139,7 +145,11 @@ function ExplorePage({ profile: profileProp, panelProps, apiUri, ...props }) {
           />
         </div>
       </Hidden>
-      <Panel {...panelProps} {...profile} />
+      <Panel
+        primaryProfile={profile}
+        secondaryProfile={secondaryProfile}
+        {...panelProps}
+      />
     </>
   );
 }
@@ -153,12 +163,19 @@ ExplorePage.propTypes = {
     highlights: PropTypes.arrayOf(PropTypes.shape({})),
     tags: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  secondaryProfile: PropTypes.shape({
+    geography: PropTypes.shape({}),
+    geometries: PropTypes.shape({}),
+    highlights: PropTypes.arrayOf(PropTypes.shape({})),
+    tags: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
 };
 
 ExplorePage.defaultProps = {
   apiUri: undefined,
   panelProps: undefined,
   profile: undefined,
+  secondaryProfile: undefined,
 };
 
 export default ExplorePage;

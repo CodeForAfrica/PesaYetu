@@ -3,9 +3,31 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
-function Share({ title, geoCode, indicatorId, ...props }) {
+function Share({ title, geoCode, indicatorId, view, ...props }) {
+  // Embed url
+  const url = `${
+    process.env.NEXT_PUBLIC_APP_URL
+  }/embed/${geoCode.toLowerCase()}/${indicatorId}`;
+
+  const shareData = [
+    { name: "Facebook", props: { quote: title, hashtag: "#PesaYetu" } },
+    {
+      name: "Twitter",
+      props: { title, via: "PesaYetu", related: ["Code4Africa"] },
+    },
+    {
+      name: "LinkedIn",
+      props: {
+        summary: title,
+        source: process.env.NEXT_PUBLIC_APP_URL,
+      },
+    },
+    { name: "WhatsApp", props: { quote: title } },
+    { name: "Email", props: { subject: title } },
+  ];
   const classes = useStyles(props);
 
   const code = `<div>
@@ -50,6 +72,16 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 
   return (
     <Grid container className={classes.root}>
+      {shareData.map((social) => (
+        <Grid item xs={4} key={social.name}>
+          <ShareButton
+            name={social.name}
+            // title={title}
+            url={url}
+            {...social.props}
+          />
+        </Grid>
+      ))}
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>
@@ -65,11 +97,16 @@ function Share({ title, geoCode, indicatorId, ...props }) {
 
 Share.propTypes = {
   title: PropTypes.string,
+  view: PropTypes.shape({
+    toImageURL: PropTypes.func,
+    data: PropTypes.func,
+  }),
   geoCode: PropTypes.string,
   indicatorId: PropTypes.number,
 };
 
 Share.defaultProps = {
+  view: undefined,
   title: undefined,
   geoCode: undefined,
   indicatorId: undefined,
