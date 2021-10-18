@@ -47,12 +47,9 @@ const Profile = forwardRef(function Profile(
     subcategoryIndex,
     indicatorIndex
   ) => {
-    const category =
-      secondaryProfile?.items?.length && secondaryProfile?.items[categoryIndex];
-    const subCategory =
-      category?.children?.length && category?.children[subcategoryIndex];
-    const indicator =
-      subCategory?.children?.length && subCategory?.children[indicatorIndex];
+    const category = secondaryProfile?.items?.[categoryIndex];
+    const subCategory = category?.children?.[subcategoryIndex];
+    const indicator = subCategory?.children?.[indicatorIndex];
     return indicator;
   };
   return (
