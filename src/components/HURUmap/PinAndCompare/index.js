@@ -41,6 +41,7 @@ function PinAndCompare({
     <Box display="flex" alignItems="flex-end" className={classes.root}>
       <IconButton onClick={handleClick} className={classes.pinButton}>
         <PinIcon
+          color="primary"
           component={component}
           style={{ fontSize: 62 }}
           viewBox="0 0 62 62"
