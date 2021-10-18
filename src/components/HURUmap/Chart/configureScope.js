@@ -7,7 +7,7 @@ import MultiLineChartScope from "./MultiLineChartScope";
 import MultiStackedChartScope from "./MultiStackedChartScope";
 import MultiTreemapChartScope from "./MultiTreemapChartScope";
 import StackedChartScope from "./StackedChartScope";
-import TreemapChartScope from "./TreeMapChartScope";
+import TreemapChartScope from "./TreemapChartScope";
 import VerticalBarChartScope from "./VerticalBarChartScope";
 import VerticalStackedChartScope from "./VerticalStackedChartScope";
 
