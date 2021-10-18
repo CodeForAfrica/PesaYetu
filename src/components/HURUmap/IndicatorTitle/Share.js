@@ -13,11 +13,10 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
   }/embed/${geoCode.toLowerCase()}/${indicatorId}`;
 
   const shareData = [
-    // props data to be clarified
-    { name: "Facebook", props: { quote: title, hashtag: "#PesaYetu", url } },
+    { name: "Facebook", props: { quote: title, hashtag: "#PesaYetu" } },
     {
       name: "Twitter",
-      props: { title, via: "PesaYetu", related: "Code4Africa", url },
+      props: { title, via: "PesaYetu", related: ["Code4Africa"] },
     },
     {
       name: "LinkedIn",
@@ -27,7 +26,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
       },
     },
     { name: "WhatsApp", props: { quote: title } },
-    { name: "Email", props: { subject: title, body: url } },
+    { name: "Email", props: { subject: title } },
   ];
   const classes = useStyles(props);
 
@@ -78,7 +77,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
           <ShareButton
             name={social.name}
             // title={title}
-            // url={url}
+            url={url}
             {...social.props}
           />
         </Grid>

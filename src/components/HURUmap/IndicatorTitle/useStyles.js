@@ -65,21 +65,10 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     paddingTop: `${typography.pxToRem(5)} !important`,
     "&:hover": {
       border: "solid 1px #666666 !important",
-      backgroundColor: `${palette.background.paper} !important`,
-      "& path": {
-        "&:first-child": {
-          // fill: palette.background.paper,
-        },
-      },
+      backgroundColor: `${palette.grey.light} !important`,
     },
   },
-  icon: {
-    "& path": {
-      "&:first-child": {
-        // fill: palette.background.default,
-      },
-    },
-  },
+  icon: {},
 }));
 
 export default useStyles;
