@@ -8,8 +8,15 @@ function Image({ src, ...props }) {
   }
   const blurProps = {};
 
+  let srcStr = "";
+  if (typeof src === "string") {
+    srcStr = src;
+  } else if (typeof src?.src === "string") {
+    srcStr = src?.src;
+  }
+
   // needed because of this issue https://github.com/vercel/next.js/pull/29367
-  if (!(src?.src?.startsWith("data") || src?.startsWith("data"))) {
+  if (!srcStr.startsWith("data")) {
     blurProps.blurDataURL = "data:image/svg+xml;base64,";
     blurProps.placeholder = "blur";
   }
