@@ -40,7 +40,14 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function Chart({ indicator, title, geoCode, ...props }) {
+function Chart({
+  indicator,
+  secondaryIndicator: { indicator: secondaryIndicator },
+  title,
+  geoCode,
+  profileNames,
+  ...props
+}) {
   const classes = useStyles(props);
   const chartRef = useRef();
   const [view, setView] = useState(null);
@@ -116,7 +123,12 @@ function Chart({ indicator, title, geoCode, ...props }) {
 
   useEffect(() => {
     async function renderChart() {
-      const spec = configureScope(indicator, isMobile);
+      const spec = configureScope(
+        indicator,
+        isMobile,
+        secondaryIndicator,
+        profileNames
+      );
       if (chartRef?.current) {
         const newView = await embed(chartRef.current, spec, {
           renderer: "canvas",
@@ -128,7 +140,7 @@ function Chart({ indicator, title, geoCode, ...props }) {
       }
     }
     renderChart();
-  }, [indicator, isMobile, handler]);
+  }, [indicator, isMobile, profileNames, secondaryIndicator, handler]);
 
   // apply default filter if defined
   const defaultFilters =
@@ -211,14 +223,38 @@ Chart.propTypes = {
     }),
     data: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  secondaryIndicator: PropTypes.shape({
+    indicator: PropTypes.shape({
+      id: PropTypes.number,
+      chart_configuration: PropTypes.shape({
+        disableToggle: PropTypes.bool,
+        defaultType: PropTypes.string,
+        filter: PropTypes.PropTypes.shape({
+          defaults: PropTypes.arrayOf(PropTypes.shape({})),
+        }),
+        stacked_field: PropTypes.string,
+      }),
+      description: PropTypes.string,
+      metadata: PropTypes.shape({
+        source: PropTypes.string,
+        url: PropTypes.string,
+        groups: PropTypes.arrayOf(PropTypes.shape({})),
+        primary_group: PropTypes.string,
+      }),
+      data: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+  }),
   title: PropTypes.string,
   geoCode: PropTypes.string,
+  profileNames: PropTypes.shape({}),
 };
 
 Chart.defaultProps = {
   indicator: undefined,
+  secondaryIndicator: {},
   title: undefined,
   geoCode: undefined,
+  profileNames: undefined,
 };
 
 export default Chart;

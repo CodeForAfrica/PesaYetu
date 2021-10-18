@@ -9,7 +9,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     justifyContent: "space-between",
   },
   title: {
-    borderBottom: `solid 5px ${palette.primary.main}`,
+    borderBottom: ({ variant }) =>
+      `solid 5px ${
+        variant === "secondary" ? palette.secondary.main : palette.primary.main
+      }`,
     marginBottom: typography.pxToRem(20),
   },
   description: {
