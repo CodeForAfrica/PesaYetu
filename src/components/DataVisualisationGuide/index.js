@@ -24,12 +24,12 @@ function DataVisualisationGuide({ title, items, ...props }) {
         <RichTypography component="h4" variant="h4" className={classes.title}>
           {title}
         </RichTypography>
-
         <Hidden smDown implementation="css">
           <Carousel showDots={!isDesktop}>
-            {items.map((item) => (
+            {items.map(({ imagePlaceholder, ...item }) => (
               <Card
                 {...item}
+                imageProps={imagePlaceholder}
                 key={item.image}
                 classes={{
                   root: classes.card,

@@ -33,15 +33,13 @@ const useStyles = makeStyles(
       }),
       "&:hover": {
         boxShadow: `0px 3px 6px ${alpha(palette.common.black, 0.16)}`, // #00000029
+        filter: "unset",
       },
+      filter: "grayscale(1)",
       "& img": {
-        filter: "grayscale(1)",
         transition: transitions.create("filter", {
           easing: transitions.easing.easeOut,
         }),
-        "&:hover": {
-          filter: "unset",
-        },
       },
     },
     logo: {
@@ -61,7 +59,7 @@ function ProjectPartners({ title, partners, ...props }) {
             {title}
           </Typography>
         </Grid>
-        {partners?.map(({ link, logo, name }) => (
+        {partners?.map(({ link, logo, name, imagePlaceholder }) => (
           <Grid key={link} item md={6}>
             <LogoButton
               component={Link}
@@ -75,6 +73,7 @@ function ProjectPartners({ title, partners, ...props }) {
                 src={logo.url}
                 alt={name}
                 className={classes.logo}
+                {...imagePlaceholder}
               />
             </LogoButton>
           </Grid>
@@ -88,10 +87,12 @@ ProjectPartners.propTypes = {
   title: PropTypes.string,
   partners: PropTypes.arrayOf(
     PropTypes.shape({
+      imagePlaceholder: PropTypes.shape({}),
       link: PropTypes.string,
       logo: PropTypes.shape({
         url: PropTypes.string,
       }),
+
       name: PropTypes.string,
     })
   ),

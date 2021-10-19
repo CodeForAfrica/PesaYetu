@@ -31,7 +31,7 @@ const InsightsData = ({ title, overline, items, ...props }) => {
           {itemsToShow.map((item) => {
             return (
               <Grid item lg={4} xs={12} md={6} key={item.href}>
-                <Card {...item} />
+                <Card imageProps={item.imagePlaceholder} {...item} />
               </Grid>
             );
           })}
@@ -45,6 +45,7 @@ InsightsData.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       href: PropTypes.string,
+      imagePlaceholder: PropTypes.shape({}),
     })
   ),
   overline: PropTypes.string,

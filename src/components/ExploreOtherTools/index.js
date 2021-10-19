@@ -26,6 +26,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
             <Card
               key={item.title}
               {...item}
+              imageProps={item.imagePlaceholder}
               classes={{
                 root: classes.card,
                 media: classes.cardMedia,
