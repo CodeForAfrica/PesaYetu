@@ -139,7 +139,7 @@ export async function getStaticProps({ params, preview, previewData }) {
       notFound: true,
     };
   }
-  const blocks = formatBlocksForSections(props?.post?.blocks || []);
+  const blocks = await formatBlocksForSections(props?.post?.blocks || []);
 
   const relatedPosts =
     formatStoryPosts(

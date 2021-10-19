@@ -70,7 +70,7 @@ export async function getStaticProps({ preview, previewData }) {
   );
   const { children } = res;
 
-  const blocks = formatBlocksForSections(props?.post?.blocks);
+  const blocks = await formatBlocksForSections(props?.post?.blocks);
 
   const { configuration } = await fetchJson(
     `${process.env.HURUMAP_API_URL}profile_by_url/?format=json`
