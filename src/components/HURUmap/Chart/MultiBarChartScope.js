@@ -1,4 +1,4 @@
-import { xAxis, xScale, defaultConfig, commonSignal } from "./properties";
+import { defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -10,9 +10,14 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function BarChartScope(data, metadata, config, parentData) {
+export default function MultiBarChartScope(
+  primaryData,
+  secondaryData,
+  metadata,
+  config,
+  profileNames
+) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -22,16 +27,13 @@ export default function BarChartScope(data, metadata, config, parentData) {
         maxX: percentageMaxX,
       },
     },
-    parent_label: parentLabel,
   } = config;
 
-  const { primary_group: primaryGroup, groups } = metadata;
+  const { primary_group: primaryGroup } = metadata;
 
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
-
-  const { signals: filterSignals, filters } = createFiltersForGroups(groups);
+  const { signals: filterSignals, filters } = createFiltersForGroups(
+    metadata.groups
+  );
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
@@ -43,18 +45,18 @@ export default function BarChartScope(data, metadata, config, parentData) {
     height: { signal: "height" },
     data: [
       {
-        name: "primaryData",
-        values: data,
+        name: "primary",
+        values: primaryData,
         transform: [...filters],
       },
       {
-        name: "parentData",
-        values: parentData,
+        name: "secondary",
+        values: secondaryData,
         transform: [...filters],
       },
       {
-        name: "data_formatted",
-        source: "primaryData",
+        name: "primary_formatted",
+        source: "primary",
         transform: [
           {
             type: "aggregate",
@@ -77,18 +79,18 @@ export default function BarChartScope(data, metadata, config, parentData) {
           {
             type: "extent",
             field: "percentage",
-            signal: "percentage_extent",
+            signal: "primary_percentage_extent",
           },
           {
             type: "extent",
             field: "count",
-            signal: "value_extent",
+            signal: "primary_value_extent",
           },
         ],
       },
       {
-        name: "parent_data_formatted",
-        source: "parentData",
+        name: "secondary_formatted",
+        source: "secondary",
         transform: [
           {
             type: "aggregate",
@@ -111,12 +113,12 @@ export default function BarChartScope(data, metadata, config, parentData) {
           {
             type: "extent",
             field: "percentage",
-            signal: "parent_percentage_extent",
+            signal: "secondary_percentage_extent",
           },
           {
             type: "extent",
             field: "count",
-            signal: "parent_value_extent",
+            signal: "secondary_value_extent",
           },
         ],
       },
@@ -152,6 +154,10 @@ export default function BarChartScope(data, metadata, config, parentData) {
       {
         name: "numberFormat",
         value: { percentage: percentageFormatting, value: valueFormatting },
+      },
+      {
+        name: "axesNumberFormat",
+        value: { percentage: percentageFormatting, value: "~s" },
       },
       {
         name: "datatype",
@@ -191,19 +197,35 @@ export default function BarChartScope(data, metadata, config, parentData) {
       {
         name: "yscale",
         type: "band",
-        domain: {
-          data: "data_formatted",
-          field: { signal: "mainGroup" },
-        },
+        domain: { data: "primary_formatted", field: { signal: "mainGroup" } },
         range: { step: { signal: "y_step" } },
         padding: 0.15,
       },
-      xScale(),
       {
-        name: "pcolor",
+        name: "xscale",
+        type: "linear",
+        range:
+          secondaryData.length > 0 && primaryData.length > 0
+            ? [0, { signal: "width/2 -30 " }]
+            : [0, { signal: "width" }],
+        nice: true,
+        zero: true,
+        domain: {
+          data: "primary_formatted",
+          field: { signal: "datatype[Units]" },
+        },
+      },
+      {
+        name: "legend_primary_scale",
         type: "ordinal",
-        range: "category",
-        domain: { data: "parent_data_formatted", field: "parent" },
+        domain: [profileNames.primary.toUpperCase()],
+        range: [theme.palette.primary.main],
+      },
+      {
+        name: "legend_secondary_scale",
+        type: "ordinal",
+        domain: [profileNames.secondary.toUpperCase()],
+        range: [theme.palette.secondary.main],
       },
     ],
 
@@ -216,60 +238,58 @@ export default function BarChartScope(data, metadata, config, parentData) {
         labelPadding: 6,
         zindex: 1,
       },
-      xAxis,
     ],
-    legends:
-      parentData?.length > 1
-        ? [
-            {
-              fill: "pcolor",
-              offset: -20,
-              orient: "top-right",
-              labelFont: theme.typography.fontFamily,
-              labelColor: theme.palette.chart.text.primary,
-              encode: {
-                symbols: {
-                  shape: { value: "stroke" },
-                  update: {
-                    shape: { value: "stroke" },
-                    size: { value: 500 },
-                    stroke: { value: theme.palette.chart.text.primary },
-                    strokeDash: { value: [2, 2] },
-                  },
-                },
-                labels: {
-                  update: {
-                    text: { value: parentLabel },
-                  },
-                },
-              },
-            },
-          ]
-        : null,
 
     marks: [
       {
         type: "group",
+        name: "primary_bars",
         encode: {
           update: {
             x: { value: 0 },
             height: { signal: "height" },
           },
         },
+        legends: [
+          {
+            orient: "top",
+            fill: "legend_primary_scale",
+            labelFontWeight: "bold",
+            labelColor: "#666",
+            labelFont: theme.typography.fontFamily,
+          },
+        ],
+        axes: [
+          {
+            orient: "bottom",
+            scale: "xscale",
+            bandPosition: 0,
+            domainOpacity: 0.5,
+            tickSize: 0,
+            format: { signal: "axesNumberFormat[Units]" },
+            grid: true,
+            labelPadding: 6,
+          },
+        ],
         marks: [
           {
-            name: "bars",
-            from: { data: "data_formatted" },
             type: "rect",
+            from: { data: "primary_formatted" },
             encode: {
               enter: {
                 y: { scale: "yscale", field: { signal: "mainGroup" } },
                 height: { scale: "yscale", band: 1 },
-                x: { scale: "xscale", field: { signal: "datatype[Units]" } },
+                x: {
+                  scale: "xscale",
+                  field: { signal: "datatype[Units]" },
+                },
               },
               update: {
                 fill: { value: theme.palette.primary.main },
-                x: { scale: "xscale", field: { signal: "datatype[Units]" } },
+                x: {
+                  scale: "xscale",
+                  field: { signal: "datatype[Units]" },
+                },
                 x2: { scale: "xscale", value: 0 },
                 tooltip: {
                   signal:
@@ -282,25 +302,59 @@ export default function BarChartScope(data, metadata, config, parentData) {
       },
       {
         type: "group",
+        name: "secondary_bars",
+        encode: {
+          update: {
+            x: { signal: "(width / 2 ) +30" },
+            height: { signal: "height" },
+          },
+        },
+        legends: [
+          {
+            orient: "top",
+            fill: "legend_secondary_scale",
+            labelFontWeight: "bold",
+            labelColor: "#666",
+            labelFont: theme.typography.fontFamily,
+          },
+        ],
+        axes: [
+          {
+            orient: "bottom",
+            scale: "xscale",
+            bandPosition: 0,
+            domainOpacity: 0.5,
+            tickSize: 0,
+            format: { signal: "axesNumberFormat[Units]" },
+            grid: true,
+            labelPadding: 6,
+          },
+        ],
+
         marks: [
           {
-            name: "parent",
-            from: { data: "parent_data_formatted" },
-            type: "rule",
+            type: "rect",
+            from: { data: "secondary_formatted" },
             encode: {
               enter: {
                 y: { scale: "yscale", field: { signal: "mainGroup" } },
-                y2: {
-                  scale: "yscale",
-                  field: { signal: "mainGroup" },
-                  offset: { signal: "y_step" },
+                height: { scale: "yscale", band: 1 },
+                x: {
+                  scale: "xscale",
+                  field: { signal: "datatype[Units]" },
                 },
-                x: { scale: "xscale", field: { signal: "datatype[Units]" } },
-                x2: { scale: "xscale", field: { signal: "datatype[Units]" } },
-                stroke: { value: theme.palette.text.secondary },
-                fill: { value: theme.palette.text.secondary },
-                strokeWidth: { value: 1 },
-                strokeDash: { value: [2, 2] },
+              },
+              update: {
+                fill: { value: theme.palette.secondary.main },
+                x: {
+                  scale: "xscale",
+                  field: { signal: "datatype[Units]" },
+                },
+                x2: { scale: "xscale", value: 0 },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                },
               },
             },
           },

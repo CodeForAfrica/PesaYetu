@@ -1,6 +1,9 @@
 import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
 
 export default function formatData(data) {
+  if (!data) {
+    return null;
+  }
   return Object.keys(data).map((label) => {
     return {
       title: label,

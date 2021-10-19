@@ -57,6 +57,18 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   code: {
     background: palette.background.paper,
   },
+  shareButton: {
+    backgroundColor: `${palette.background.default} !important`,
+    filter: "opacity(0.6)",
+    width: "100%",
+    border: `solid 1px ${palette.background.paper} !important`,
+    paddingTop: `${typography.pxToRem(5)} !important`,
+    "&:hover": {
+      border: "solid 1px #666666 !important",
+      backgroundColor: `${palette.grey.light} !important`,
+    },
+  },
+  icon: {},
 }));
 
 export default useStyles;
