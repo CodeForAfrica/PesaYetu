@@ -1,4 +1,10 @@
-import { defaultConfig, xAxis, commonSignal } from "./properties";
+import {
+  defaultConfig,
+  xAxis,
+  commonSignal,
+  parentLegend,
+  stackedLegend,
+} from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -30,6 +36,11 @@ export default function StackedChartScope(data, metadata, config, parentData) {
 
   if (xTicks) {
     xAxis.tickCount = xTicks;
+  }
+
+  let legends = [stackedLegend];
+  if (parentData?.length) {
+    legends = [stackedLegend, parentLegend(parentLabel)];
   }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
@@ -244,54 +255,7 @@ export default function StackedChartScope(data, metadata, config, parentData) {
       },
       xAxis,
     ],
-    legends: [
-      {
-        fill: "color",
-        orient: "top",
-        direction: "horizontal",
-        strokeColor: "transparent",
-        labelFont: theme.typography.fontFamily,
-        encode: {
-          labels: {
-            interactive: true,
-            update: {
-              fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text.primary },
-            },
-          },
-          symbols: {
-            update: {
-              stroke: { value: "transparent" },
-            },
-          },
-        },
-      },
-      parentData?.length > 1
-        ? {
-            fill: "pcolor",
-            offset: -40,
-            orient: "top-right",
-            labelFont: theme.typography.fontFamily,
-            labelColor: theme.palette.chart.text.primary,
-            encode: {
-              symbols: {
-                shape: { value: "stroke" },
-                update: {
-                  shape: { value: "stroke" },
-                  size: { value: 500 },
-                  stroke: { value: theme.palette.chart.text.primary },
-                  strokeDash: { value: [2, 2] },
-                },
-              },
-              labels: {
-                update: {
-                  text: { value: parentLabel },
-                },
-              },
-            },
-          }
-        : null,
-    ],
+    legends,
 
     marks: [
       {

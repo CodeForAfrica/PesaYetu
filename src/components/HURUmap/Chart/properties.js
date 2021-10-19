@@ -63,3 +63,51 @@ export const commonSignal = [
     value: 35,
   },
 ];
+
+export const parentLegend = (label) => {
+  return {
+    fill: "pcolor",
+    offset: -40,
+    orient: "top-right",
+    labelFont: theme.typography.fontFamily,
+    labelColor: theme.palette.chart.text.primary,
+    encode: {
+      symbols: {
+        shape: { value: "stroke" },
+        update: {
+          shape: { value: "stroke" },
+          size: { value: 500 },
+          stroke: { value: theme.palette.chart.text.primary },
+          strokeDash: { value: [2, 2] },
+        },
+      },
+      labels: {
+        update: {
+          text: { value: label },
+        },
+      },
+    },
+  };
+};
+
+export const stackedLegend = {
+  fill: "color",
+  orient: "top",
+  direction: "horizontal",
+  strokeColor: "transparent",
+  labelFont: theme.typography.fontFamily,
+  encode: {
+    labels: {
+      interactive: true,
+      update: {
+        fontSize: { value: 11 },
+        fill: { value: theme.palette.chart.text.primary },
+      },
+    },
+    symbols: {
+      update: {
+        stroke: { value: "transparent" },
+      },
+    },
+  },
+};
