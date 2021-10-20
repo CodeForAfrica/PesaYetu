@@ -1,4 +1,4 @@
-// import { getPlaiceholder } from "plaiceholder";
+import { getPlaiceholder } from "plaiceholder";
 
 export default async function getImagePlaceholder(image) {
   if (!image) {
@@ -6,10 +6,9 @@ export default async function getImagePlaceholder(image) {
   }
   const placeholder = {};
   try {
-    // placeholder.blurDataURL = await getPlaiceholder(image).then(
-    //   ({ base64 }) => base64
-    // );
-    placeholder.blurDataURL = "data:null";
+    placeholder.blurDataURL = await getPlaiceholder(image, { size: 10 }).then(
+      ({ base64 }) => base64
+    );
 
     placeholder.placeholder = "blur";
   } catch (err) {
