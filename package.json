@@ -31,7 +31,6 @@
     "@reactour/tour": "^2.0.0",
     "@svgr/webpack": "^5.5.0",
     "aws-sdk": "^2.1005.0",
-    "canvas": "^2.8.0",
     "clsx": "^1.1.1",
     "d3-format": "^3.0.1",
     "deepmerge": "^4.2.2",
@@ -103,7 +102,8 @@
     "storybook-addon-material-ui": "^0.9.0-alpha.24",
     "storybook-addon-next-router": "^3.0.5",
     "svg-url-loader": "^7.1.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "canvas": "^2.8.0"
   },
   "browserslist": [
     "defaults"
