@@ -27,7 +27,7 @@ export default function VerticalBarChartScope(
         maxX: percentageMaxX,
       },
     },
-    parent_label: parentLabel,
+    parentLabel,
   } = config;
 
   const { primary_group: primaryGroup, groups } = metadata;

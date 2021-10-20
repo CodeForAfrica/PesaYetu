@@ -17,7 +17,10 @@ export default function configureScope(
   secondaryIndicator,
   profileNames
 ) {
-  const configuration = indicator?.chart_configuration;
+  const configuration = {
+    ...indicator?.chart_configuration,
+    parentLabel: `${indicator?.parentName} data`,
+  };
 
   let vegaSpec;
   const chartType = configuration?.chart_type?.toLowerCase();
@@ -76,7 +79,7 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          indicator?.parent_data ?? [{}]
+          indicator?.parentData ?? [{}]
         );
         break;
       case "donut":
@@ -84,7 +87,7 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          indicator?.parent_data ?? [{}]
+          indicator?.parentData ?? [{}]
         );
         break;
       case "treemap":
@@ -92,7 +95,7 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          indicator?.parent_data ?? [{}]
+          indicator?.parentData ?? [{}]
         );
         break;
       case "stacked":
@@ -101,14 +104,14 @@ export default function configureScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parent_data ?? [{}]
+            indicator?.parentData ?? [{}]
           );
         } else {
           vegaSpec = StackedChartScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parent_data ?? [{}]
+            indicator?.parentData ?? [{}]
           );
         }
         break;
@@ -118,14 +121,14 @@ export default function configureScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parent_data ?? [{}]
+            indicator?.parentData ?? [{}]
           );
         } else {
           vegaSpec = BarChartScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parent_data ?? [{}]
+            indicator?.parentData ?? [{}]
           );
         }
         break;

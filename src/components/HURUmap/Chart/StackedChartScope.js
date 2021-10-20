@@ -29,7 +29,7 @@ export default function StackedChartScope(data, metadata, config, parentData) {
       },
     },
     stacked_field: stackedField,
-    parent_label: parentLabel,
+    parentLabel,
   } = config;
 
   const { primary_group: primaryGroup, groups } = metadata;

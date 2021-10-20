@@ -222,7 +222,6 @@ Chart.propTypes = {
       primary_group: PropTypes.string,
     }),
     data: PropTypes.arrayOf(PropTypes.shape({})),
-    parent_data: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   secondaryIndicator: PropTypes.shape({
     indicator: PropTypes.shape({

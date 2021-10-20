@@ -22,7 +22,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         maxX: percentageMaxX,
       },
     },
-    parent_label: parentLabel,
+    parentLabel,
   } = config;
 
   const { primary_group: primaryGroup, groups } = metadata;

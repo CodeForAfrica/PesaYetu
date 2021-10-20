@@ -1,6 +1,6 @@
 import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
 
-export default function formatData(data) {
+export default function formatData(data, parent) {
   if (!data) {
     return null;
   }
@@ -19,8 +19,15 @@ export default function formatData(data) {
             return {
               index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
               title: indicator,
-              indicator:
-                data[label]?.subcategories[child]?.indicators[indicator],
+              indicator: {
+                ...data[label]?.subcategories[child]?.indicators[indicator],
+                parentData: parent.data
+                  ? parent?.data[label]?.subcategories[child]?.indicators[
+                      indicator
+                    ]?.data ?? null
+                  : null,
+                parentName: parent?.name ?? null,
+              },
             };
           }),
         };

@@ -33,7 +33,7 @@ export default function VerticalStackedChartScope(
         maxX: percentageMaxX,
       },
     },
-    parent_label: parentLabel,
+    parentLabel,
     stacked_field: stackedField,
   } = config;
 
