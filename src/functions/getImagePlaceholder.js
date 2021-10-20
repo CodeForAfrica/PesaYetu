@@ -6,7 +6,7 @@ export default async function getImagePlaceholder(image) {
   }
   const placeholder = {};
   try {
-    placeholder.blurDataURL = await getPlaiceholder(image, { size: 10 }).then(
+    placeholder.blurDataURL = await getPlaiceholder(image, { size: 4 }).then(
       ({ base64 }) => base64
     );
 
