@@ -88,7 +88,7 @@ const Profile = forwardRef(function Profile(
                   key={index}
                   variant="primary"
                   {...indicator}
-                  geoCode={secondaryProfile?.geography?.code}
+                  geoCode={primaryProfile?.geography?.code}
                   secondaryIndicator={getSecondaryIndicator(
                     categoryIndex,
                     subcategoryIndex,
