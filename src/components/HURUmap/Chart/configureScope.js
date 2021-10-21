@@ -24,6 +24,8 @@ export default function configureScope(
       : undefined,
   };
 
+  const showParent = configuration?.show_parent ?? false;
+
   let vegaSpec;
   const chartType = configuration?.chart_type?.toLowerCase();
   if (secondaryIndicator) {
@@ -81,23 +83,21 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          indicator?.parentData ?? [{}]
+          showParent ? indicator?.parentData : [{}]
         );
         break;
       case "donut":
         vegaSpec = DonutChartScope(
           indicator?.data,
           indicator?.metadata,
-          configuration,
-          indicator?.parentData ?? [{}]
+          configuration
         );
         break;
       case "treemap":
         vegaSpec = TreemapChartScope(
           indicator?.data,
           indicator?.metadata,
-          configuration,
-          indicator?.parentData ?? [{}]
+          configuration
         );
         break;
       case "stacked":
@@ -106,14 +106,14 @@ export default function configureScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parentData ?? [{}]
+            showParent ? indicator?.parentData : [{}]
           );
         } else {
           vegaSpec = StackedChartScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parentData ?? [{}]
+            showParent ? indicator?.parentData : [{}]
           );
         }
         break;
@@ -123,14 +123,14 @@ export default function configureScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parentData ?? [{}]
+            showParent ? indicator?.parentData : [{}]
           );
         } else {
           vegaSpec = BarChartScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            indicator?.parentData ?? [{}]
+            showParent ? indicator?.parentData : [{}]
           );
         }
         break;

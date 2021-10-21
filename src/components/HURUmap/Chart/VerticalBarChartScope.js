@@ -315,7 +315,7 @@ export default function VerticalBarChartScope(
                 y2: { scale: "yscale", field: { signal: "datatype[Units]" } },
                 stroke: {
                   signal:
-                    "datum[datatype[Units]] > datum.primary[datatype[Units]] ? grey_mark: white_mark",
+                    "datum.primary && (datum[datatype[Units]] > datum.primary[datatype[Units]]) ? grey_mark: white_mark",
                 },
                 strokeWidth: { value: 1 },
                 strokeDash: { value: [2, 2] },

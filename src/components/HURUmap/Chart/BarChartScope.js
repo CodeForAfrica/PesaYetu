@@ -306,7 +306,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
                 x2: { scale: "xscale", field: { signal: "datatype[Units]" } },
                 stroke: {
                   signal:
-                    "datum[datatype[Units]] > datum.primary[datatype[Units]] ? grey_mark: white_mark",
+                    " datum.primary && (datum[datatype[Units]] > datum.primary[datatype[Units]]) ? grey_mark: white_mark",
                 },
                 strokeWidth: { value: 1 },
                 strokeDash: { value: [2, 2] },
