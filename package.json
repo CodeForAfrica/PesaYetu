@@ -7,7 +7,6 @@
   "homepage": "https://dev.pesayetu.pesacheck.org",
   "private": false,
   "scripts": {
-    "preinstall": "node -r dotenv/config preinstall.js",
     "dev": "next dev",
     "format": "yarn prettier --write --ignore-path './.gitignore' '**/*.+(json|md|yml)' '.'",
     "format-staged": "yarn prettier --write '**/*.+(json|md|yml)'",
@@ -60,8 +59,7 @@
     "video.js": "^7.14.3",
     "videojs-youtube": "^2.6.1",
     "webpack": "^5.0.0",
-    "xlsx": "^0.17.1",
-    "canvas": "^2.8.0"
+    "xlsx": "^0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

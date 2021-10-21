@@ -1,17 +1,8 @@
 import AWS from "aws-sdk";
+import sharp from "sharp";
 import * as vega from "vega";
 
 import configureScope from "@/pesayetu/components/HURUmap/Chart/configureScope";
-
-function stream2buffer(stream) {
-  return new Promise((resolve, reject) => {
-    const buf = [];
-
-    stream.on("data", (chunk) => buf.push(chunk));
-    stream.on("end", () => resolve(Buffer.concat(buf)));
-    stream.on("error", (err) => reject(err));
-  });
-}
 
 function uploadAsync(s3, params) {
   return new Promise((resolve, reject) => {
@@ -33,9 +24,8 @@ export default async function createChartImage(geoCode, chartId, indicator) {
   const spec = configureScope(indicator);
   const view = new vega.View(vega.parse(spec), { renderer: "none" });
 
-  const canvas = await view.toCanvas();
-  const stream = canvas.createPNGStream();
-  const Body = await stream2buffer(stream);
+  const svg = await view.toSVG();
+  const Body = await sharp(Buffer.from(svg)).png().toBuffer();
   const Key = `media/images/pesayetu-${geoCode}-${chartId}.png`;
   const config = {
     accessKeyId: process.env.S3_UPLOAD_KEY,
