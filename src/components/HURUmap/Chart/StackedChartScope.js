@@ -130,6 +130,13 @@ export default function StackedChartScope(data, metadata, config, parentData) {
             field: "count",
             signal: "parent_value_extent",
           },
+          {
+            type: "lookup",
+            from: "data_formatted",
+            key: { signal: "mainGroup" },
+            fields: [{ signal: "mainGroup" }],
+            as: ["primary"],
+          },
         ],
       },
     ],
@@ -201,14 +208,22 @@ export default function StackedChartScope(data, metadata, config, parentData) {
         name: "height",
         update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
       },
+      {
+        name: "white_mark",
+        value: theme.palette.text.secondary,
+      },
+      {
+        name: "grey_mark",
+        value: theme.palette.chart.text.primary,
+      },
       ...filterSignals,
     ],
     scales: [
       {
         name: "yscale",
         type: "band",
-        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
-        range: { step: { signal: "y_step - 5 " } },
+        domain: { data: "data_formatted", field: primaryGroup },
+        range: { step: { signal: "y_step" } },
         padding: 0.15,
       },
       {
@@ -294,12 +309,14 @@ export default function StackedChartScope(data, metadata, config, parentData) {
                 y2: {
                   scale: "yscale",
                   field: { signal: "mainGroup" },
-                  offset: { signal: "y_step" },
+                  offset: { signal: "y_step - 5" },
                 },
                 x: { scale: "xscale", field: { signal: "datatype[Units]" } },
                 x2: { scale: "xscale", field: { signal: "datatype[Units]" } },
-                stroke: { value: theme.palette.text.secondary },
-                fill: { value: theme.palette.text.secondary },
+                stroke: {
+                  signal:
+                    "datum[datatype[Units]] > datum.primary[datatype[Units]] ? grey_mark: white_mark",
+                },
                 strokeWidth: { value: 1 },
                 strokeDash: { value: [2, 2] },
               },

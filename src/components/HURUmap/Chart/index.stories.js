@@ -109,7 +109,7 @@ Default.args = {
     },
     parentName: "Kenya",
 
-    parentData: [
+    data: [
       {
         age: "15-19",
         race: "Black African",
@@ -2526,7 +2526,7 @@ Default.args = {
         language: "Sign language",
       },
     ],
-    data: [
+    parentData: [
       {
         age: "15-19",
         race: "Black African",

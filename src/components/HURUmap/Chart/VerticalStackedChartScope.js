@@ -134,6 +134,13 @@ export default function VerticalStackedChartScope(
             field: "count",
             signal: "parent_value_extent",
           },
+          {
+            type: "lookup",
+            from: "data_formatted",
+            key: { signal: "mainGroup" },
+            fields: [{ signal: "mainGroup" }],
+            as: ["primary"],
+          },
         ],
       },
     ],
@@ -205,13 +212,21 @@ export default function VerticalStackedChartScope(
         name: "height",
         value: 310,
       },
+      {
+        name: "white_mark",
+        value: theme.palette.text.secondary,
+      },
+      {
+        name: "grey_mark",
+        value: theme.palette.chart.text.primary,
+      },
       ...filterSignals,
     ],
     scales: [
       {
         name: "xscale",
         type: "band",
-        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        domain: { data: "data_formatted", field: primaryGroup },
         range: [0, { signal: "width" }],
         padding: 0.15,
       },
@@ -302,12 +317,14 @@ export default function VerticalStackedChartScope(
                 x2: {
                   scale: "xscale",
                   field: { signal: "mainGroup" },
-                  offset: { signal: "width/domain('xscale').length" },
+                  offset: { signal: "width/domain('xscale').length - 10" },
                 },
                 y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                 y2: { scale: "yscale", field: { signal: "datatype[Units]" } },
-                stroke: { value: theme.palette.text.secondary },
-                fill: { value: theme.palette.text.secondary },
+                stroke: {
+                  signal:
+                    "datum[datatype[Units]] > datum.primary[datatype[Units]] ? grey_mark: white_mark",
+                },
                 strokeWidth: { value: 1 },
                 strokeDash: { value: [2, 2] },
               },
