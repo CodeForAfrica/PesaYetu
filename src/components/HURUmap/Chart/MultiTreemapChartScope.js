@@ -1,4 +1,4 @@
-import { xAxis, defaultConfig, commonSignal } from "./properties";
+import { defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -18,7 +18,6 @@ export default function TreemapChartScope(
   profileNames
 ) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -34,10 +33,6 @@ export default function TreemapChartScope(
   const { primary_group: primaryGroup } = metadata;
 
   const nestedFields = nestFields || [primaryGroup]; // if nest fields are undefined, make use primaryGroup
-
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(
     metadata.groups

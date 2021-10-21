@@ -19,7 +19,9 @@ export default function configureScope(
 ) {
   const configuration = {
     ...indicator?.chart_configuration,
-    parentLabel: `${indicator?.parentName} data`,
+    parentLabel: indicator?.parentName
+      ? `${indicator?.parentName} data`
+      : undefined,
   };
 
   let vegaSpec;

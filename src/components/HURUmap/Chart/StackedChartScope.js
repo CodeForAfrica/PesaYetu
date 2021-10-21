@@ -18,7 +18,6 @@ const graphValueTypes = {
 
 export default function StackedChartScope(data, metadata, config, parentData) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -34,12 +33,8 @@ export default function StackedChartScope(data, metadata, config, parentData) {
 
   const { primary_group: primaryGroup, groups } = metadata;
 
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
-
   let legends = [stackedLegend];
-  if (parentData?.length) {
+  if (parentData?.length > 1) {
     legends = [stackedLegend, parentLegend(parentLabel)];
   }
 
@@ -213,7 +208,7 @@ export default function StackedChartScope(data, metadata, config, parentData) {
         name: "yscale",
         type: "band",
         domain: { data: "data_formatted", field: { signal: "mainGroup" } },
-        range: { step: { signal: "y_step" } },
+        range: { step: { signal: "y_step - 5 " } },
         padding: 0.15,
       },
       {

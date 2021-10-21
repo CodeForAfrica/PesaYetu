@@ -1,6 +1,5 @@
 import {
   defaultConfig,
-  xAxis,
   commonSignal,
   stackedLegend,
   parentLegend,
@@ -23,7 +22,6 @@ export default function VerticalStackedChartScope(
   parentData
 ) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -39,12 +37,8 @@ export default function VerticalStackedChartScope(
 
   const { primary_group: primaryGroup, groups } = metadata;
 
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
-
   let legends = [stackedLegend];
-  if (parentData?.length) {
+  if (parentData?.length > 1) {
     legends = [stackedLegend, parentLegend(parentLabel)];
   }
 

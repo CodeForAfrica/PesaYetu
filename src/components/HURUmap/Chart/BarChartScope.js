@@ -1,4 +1,4 @@
-import { xAxis, xScale, defaultConfig, commonSignal } from "./properties";
+import { xScale, defaultConfig, commonSignal, xAxis } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -26,10 +26,6 @@ export default function BarChartScope(data, metadata, config, parentData) {
   } = config;
 
   const { primary_group: primaryGroup, groups } = metadata;
-
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
@@ -118,6 +114,13 @@ export default function BarChartScope(data, metadata, config, parentData) {
             field: "count",
             signal: "parent_value_extent",
           },
+          {
+            type: "lookup",
+            from: "data_formatted",
+            key: { signal: "mainGroup" },
+            fields: [{ signal: "mainGroup" }],
+            as: ["primary"],
+          },
         ],
       },
     ],
@@ -126,10 +129,6 @@ export default function BarChartScope(data, metadata, config, parentData) {
       {
         name: "groups",
         value: [primaryGroup],
-      },
-      {
-        name: "barvalue",
-        value: "datum",
       },
       {
         name: "Units",
@@ -185,6 +184,14 @@ export default function BarChartScope(data, metadata, config, parentData) {
         name: "height",
         update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
       },
+      {
+        name: "white_mark",
+        value: theme.palette.text.secondary,
+      },
+      {
+        name: "grey_mark",
+        value: theme.palette.chart.text.primary,
+      },
       ...filterSignals,
     ],
     scales: [
@@ -193,7 +200,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         type: "band",
         domain: {
           data: "data_formatted",
-          field: { signal: "mainGroup" },
+          field: primaryGroup,
         },
         range: { step: { signal: "y_step" } },
         padding: 0.15,
@@ -203,7 +210,7 @@ export default function BarChartScope(data, metadata, config, parentData) {
         name: "pcolor",
         type: "ordinal",
         range: "category",
-        domain: { data: "parent_data_formatted", field: "parent" },
+        domain: [parentLabel],
       },
     ],
 
@@ -216,7 +223,6 @@ export default function BarChartScope(data, metadata, config, parentData) {
         labelPadding: 6,
         zindex: 1,
       },
-      xAxis,
     ],
     legends:
       parentData?.length > 1
@@ -237,11 +243,6 @@ export default function BarChartScope(data, metadata, config, parentData) {
                     strokeDash: { value: [2, 2] },
                   },
                 },
-                labels: {
-                  update: {
-                    text: { value: parentLabel },
-                  },
-                },
               },
             },
           ]
@@ -256,6 +257,12 @@ export default function BarChartScope(data, metadata, config, parentData) {
             height: { signal: "height" },
           },
         },
+        axes: [
+          {
+            ...xAxis,
+            tickCount: xTicks,
+          },
+        ],
         marks: [
           {
             name: "bars",
@@ -293,12 +300,14 @@ export default function BarChartScope(data, metadata, config, parentData) {
                 y2: {
                   scale: "yscale",
                   field: { signal: "mainGroup" },
-                  offset: { signal: "y_step" },
+                  offset: { signal: "y_step - 5" },
                 },
                 x: { scale: "xscale", field: { signal: "datatype[Units]" } },
                 x2: { scale: "xscale", field: { signal: "datatype[Units]" } },
-                stroke: { value: theme.palette.text.secondary },
-                fill: { value: theme.palette.text.secondary },
+                stroke: {
+                  signal:
+                    "datum[datatype[Units]] > datum.primary[datatype[Units]] ? grey_mark: white_mark",
+                },
                 strokeWidth: { value: 1 },
                 strokeDash: { value: [2, 2] },
               },

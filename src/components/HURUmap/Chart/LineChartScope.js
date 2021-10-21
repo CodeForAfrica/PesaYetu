@@ -1,4 +1,4 @@
-import { xAxis, defaultConfig, commonSignal } from "./properties";
+import { defaultConfig } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -26,10 +26,6 @@ export default function LineChartScope(data, metadata, config, parentData) {
   } = config;
 
   const { primary_group: primaryGroup, groups } = metadata;
-
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
@@ -122,7 +118,20 @@ export default function LineChartScope(data, metadata, config, parentData) {
       },
     ],
     signals: [
-      ...commonSignal,
+      {
+        name: "width",
+        update: "containerSize()[0] ? containerSize()[0] : 600",
+        on: [
+          {
+            events: "window:resize",
+            update: "containerSize()[0] ? containerSize()[0] : 600",
+          },
+        ],
+      },
+      {
+        name: "cursor",
+        value: `pointer`,
+      },
       {
         name: "interpolate",
         value: "linear",
@@ -236,6 +245,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
         domain: false,
         domainOpacity: 0.5,
         tickSize: 0,
+        tickCount: xTicks || 6,
         labelPadding: 6,
         zindex: 1,
         format: { signal: "numberFormat[Units]" },
@@ -371,7 +381,7 @@ export default function LineChartScope(data, metadata, config, parentData) {
                 size: { value: 5 },
                 tooltip: {
                   signal:
-                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': 'parent'}",
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
                 },
               },
               hover: {

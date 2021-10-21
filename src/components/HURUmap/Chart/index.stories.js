@@ -107,8 +107,9 @@ Default.args = {
       disableToggle: false,
       parent_label: "National Average",
     },
+    parentName: "Kenya",
 
-    parent_data: [
+    parentData: [
       {
         age: "15-19",
         race: "Black African",

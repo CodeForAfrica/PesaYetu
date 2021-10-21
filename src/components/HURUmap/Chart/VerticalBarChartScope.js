@@ -1,4 +1,4 @@
-import { xAxis, defaultConfig, commonSignal } from "./properties";
+import { defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -17,7 +17,6 @@ export default function VerticalBarChartScope(
   parentData
 ) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -31,10 +30,6 @@ export default function VerticalBarChartScope(
   } = config;
 
   const { primary_group: primaryGroup, groups } = metadata;
-
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
