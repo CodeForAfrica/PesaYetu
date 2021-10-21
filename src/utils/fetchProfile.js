@@ -27,7 +27,19 @@ async function fetchProfile(apiUri, geoCode) {
       name,
     }));
 
-  return { data, geography, geometries, highlights, tags, overview };
+  const parent = {};
+  const { code: parentCode, name } =
+    geography.parents[geography.parents.length - 1] || {};
+
+  if (parentCode) {
+    const parentJson = await fetchJson(
+      `${apiUri}all_details/profile/1/geography/${parentCode.toUpperCase()}/?format=json`
+    );
+    parent.data = parentJson.profile.profile_data;
+    parent.name = name;
+  }
+
+  return { data, geography, geometries, highlights, tags, overview, parent };
 }
 
 export default fetchProfile;

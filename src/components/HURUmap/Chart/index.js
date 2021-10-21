@@ -100,7 +100,7 @@ function Chart({
                 ? value.percentage
                 : undefined
             }
-            item={value?.stack}
+            item={value?.category}
             itemColor={item?.fill}
           />
         </ThemeProvider>

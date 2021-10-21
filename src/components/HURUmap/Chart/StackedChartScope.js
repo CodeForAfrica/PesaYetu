@@ -1,4 +1,10 @@
-import { defaultConfig, xAxis, commonSignal } from "./properties";
+import {
+  defaultConfig,
+  xAxis,
+  commonSignal,
+  parentLegend,
+  stackedLegend,
+} from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -10,9 +16,8 @@ const graphValueTypes = {
   Value: VALUE_TYPE,
 };
 
-export default function StackedChartScope(data, metadata, config) {
+export default function StackedChartScope(data, metadata, config, parentData) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -23,17 +28,17 @@ export default function StackedChartScope(data, metadata, config) {
       },
     },
     stacked_field: stackedField,
+    parentLabel,
   } = config;
 
-  const { primary_group: primaryGroup } = metadata;
+  const { primary_group: primaryGroup, groups } = metadata;
 
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
+  let legends = [stackedLegend];
+  if (parentData?.length > 1) {
+    legends = [stackedLegend, parentLegend(parentLabel)];
   }
 
-  const { signals: filterSignals, filters } = createFiltersForGroups(
-    metadata.groups
-  );
+  const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
@@ -45,13 +50,18 @@ export default function StackedChartScope(data, metadata, config) {
     config: defaultConfig,
     data: [
       {
-        name: "table",
+        name: "primaryData",
         values: data,
         transform: [...filters],
       },
       {
+        name: "parentData",
+        values: parentData,
+        transform: [...filters],
+      },
+      {
         name: "data_formatted",
-        source: "table",
+        source: "primaryData",
         transform: [
           {
             type: "aggregate",
@@ -85,6 +95,47 @@ export default function StackedChartScope(data, metadata, config) {
             type: "stack",
             groupby: [primaryGroup],
             field: { signal: "datatype[Units]" },
+          },
+        ],
+      },
+      {
+        name: "parent_data_formatted",
+        source: "parentData",
+        transform: [
+          {
+            type: "aggregate",
+            ops: ["sum"],
+            as: ["count"],
+            fields: ["count"],
+            groupby: [primaryGroup],
+          },
+          {
+            type: "joinaggregate",
+            as: ["TotalCount"],
+            ops: ["sum"],
+            fields: ["count"],
+          },
+          {
+            type: "formula",
+            expr: "datum.count/datum.TotalCount",
+            as: "percentage",
+          },
+          {
+            type: "extent",
+            field: "percentage",
+            signal: "parent_percentage_extent",
+          },
+          {
+            type: "extent",
+            field: "count",
+            signal: "parent_value_extent",
+          },
+          {
+            type: "lookup",
+            from: "data_formatted",
+            key: { signal: "mainGroup" },
+            fields: [{ signal: "mainGroup" }],
+            as: ["primary"],
           },
         ],
       },
@@ -157,13 +208,21 @@ export default function StackedChartScope(data, metadata, config) {
         name: "height",
         update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
       },
+      {
+        name: "white_mark",
+        value: theme.palette.text.secondary,
+      },
+      {
+        name: "grey_mark",
+        value: theme.palette.chart.text.primary,
+      },
       ...filterSignals,
     ],
     scales: [
       {
         name: "yscale",
         type: "band",
-        domain: { data: "data_formatted", field: { signal: "mainGroup" } },
+        domain: { data: "data_formatted", field: primaryGroup },
         range: { step: { signal: "y_step" } },
         padding: 0.15,
       },
@@ -187,6 +246,12 @@ export default function StackedChartScope(data, metadata, config) {
           field: stackedField,
         },
       },
+      {
+        name: "pcolor",
+        type: "ordinal",
+        range: "category",
+        domain: { data: "parent_data_formatted", field: "parent" },
+      },
     ],
 
     axes: [
@@ -200,53 +265,64 @@ export default function StackedChartScope(data, metadata, config) {
       },
       xAxis,
     ],
-    legends: [
-      {
-        fill: "color",
-        orient: "top",
-        direction: "horizontal",
-        strokeColor: "transparent",
-        labelFont: theme.typography.fontFamily,
-        encode: {
-          labels: {
-            interactive: true,
-            update: {
-              fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text.primary },
-            },
-          },
-          symbols: {
-            update: {
-              stroke: { value: "transparent" },
-            },
-          },
-        },
-      },
-    ],
+    legends,
 
     marks: [
       {
-        name: "bars",
-        from: { data: "data_formatted" },
-        type: "rect",
-        encode: {
-          enter: {
-            y: { scale: "yscale", field: { signal: "mainGroup" } },
-            height: { scale: "yscale", band: 1 },
-            x: { scale: "xscale", field: "y0" },
-            x2: { scale: "xscale", field: "y1" },
-            fill: { scale: "color", field: stackedField },
-          },
-          update: {
-            fillOpacity: { value: 1 },
-            x: { scale: "xscale", field: "y0" },
-            x2: { scale: "xscale", field: "y1" },
-            tooltip: {
-              signal:
-                "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'stack': datum[stackedField]}",
+        type: "group",
+        marks: [
+          {
+            name: "bars",
+            from: { data: "data_formatted" },
+            type: "rect",
+            encode: {
+              enter: {
+                y: { scale: "yscale", field: { signal: "mainGroup" } },
+                height: { scale: "yscale", band: 1 },
+                x: { scale: "xscale", field: "y0" },
+                x2: { scale: "xscale", field: "y1" },
+                fill: { scale: "color", field: stackedField },
+              },
+              update: {
+                fillOpacity: { value: 1 },
+                x: { scale: "xscale", field: "y0" },
+                x2: { scale: "xscale", field: "y1" },
+                tooltip: {
+                  signal:
+                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
+                },
+              },
             },
           },
-        },
+        ],
+      },
+      {
+        type: "group",
+        marks: [
+          {
+            name: "parent",
+            from: { data: "parent_data_formatted" },
+            type: "rule",
+            encode: {
+              enter: {
+                y: { scale: "yscale", field: { signal: "mainGroup" } },
+                y2: {
+                  scale: "yscale",
+                  field: { signal: "mainGroup" },
+                  offset: { signal: "y_step - 5" },
+                },
+                x: { scale: "xscale", field: { signal: "datatype[Units]" } },
+                x2: { scale: "xscale", field: { signal: "datatype[Units]" } },
+                stroke: {
+                  signal:
+                    "datum.primary && (datum[datatype[Units]] > datum.primary[datatype[Units]]) ? grey_mark: white_mark",
+                },
+                strokeWidth: { value: 1 },
+                strokeDash: { value: [2, 2] },
+              },
+            },
+          },
+        ],
       },
     ],
   };

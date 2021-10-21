@@ -7,14 +7,13 @@ import formatData from "./formatProfileDataIntoArray";
 import MobilePanel from "./MobilePanel";
 
 function Panel({ primaryProfile, secondaryProfile, ...props }) {
-  const items = formatData(primaryProfile.data);
   const formatedPrimaryProfile = {
     ...primaryProfile,
-    items: formatData(primaryProfile?.data),
+    items: formatData(primaryProfile?.data, primaryProfile.parent),
   };
   const formatedSecondaryProfile = {
     ...secondaryProfile,
-    items: formatData(secondaryProfile?.data),
+    items: formatData(secondaryProfile?.data, secondaryProfile?.parent),
   };
   return (
     <>
@@ -22,7 +21,6 @@ function Panel({ primaryProfile, secondaryProfile, ...props }) {
         <MobilePanel
           primaryProfile={formatedPrimaryProfile}
           secondaryProfile={formatedSecondaryProfile}
-          items={items}
           {...props}
         />
       </Hidden>
@@ -30,7 +28,6 @@ function Panel({ primaryProfile, secondaryProfile, ...props }) {
         <DesktopPanel
           primaryProfile={formatedPrimaryProfile}
           secondaryProfile={formatedSecondaryProfile}
-          items={items}
           {...props}
         />
       </Hidden>
@@ -42,9 +39,11 @@ Panel.propTypes = {
   data: PropTypes.shape({}),
   primaryProfile: PropTypes.shape({
     data: PropTypes.shape({}),
+    parent: PropTypes.shape({}),
   }),
   secondaryProfile: PropTypes.shape({
     data: PropTypes.shape({}),
+    parent: PropTypes.shape({}),
   }),
 };
 

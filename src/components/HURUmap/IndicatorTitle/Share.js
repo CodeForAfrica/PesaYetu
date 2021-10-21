@@ -60,7 +60,7 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
       }
       @media (max-width: 500px) {
         .wrapper {
-          padding-top: 160%;
+          padding-top: 165%;
         }
 }
 </style> 
