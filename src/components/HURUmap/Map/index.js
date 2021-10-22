@@ -21,13 +21,13 @@ const useStyles = makeStyles(({ typography }) => ({
 function Map({
   center,
   className,
-  zoom,
-  styles,
-  geometries,
   geography,
-  tileLayers,
-  preferredChildren,
+  geometries,
   locationCodes,
+  preferredChildren,
+  styles,
+  tileLayers,
+  zoom,
   ...props
 }) {
   const classes = useStyles(props);
@@ -103,9 +103,10 @@ function Map({
       <ZoomControl position="bottomright" />
       <Layers
         {...props}
-        selectedBoundary={selectedBoundary}
-        parentsGeometries={geometries.parents}
+        geography={geography}
         locationCodes={locationCodes}
+        parentsGeometries={geometries.parents}
+        selectedBoundary={selectedBoundary}
       />
     </MapContainer>
   );
@@ -123,38 +124,38 @@ Map.propTypes = {
     return null;
   },
   className: PropTypes.string,
-  zoom: PropTypes.number,
-  styles: PropTypes.shape({}),
+  geography: PropTypes.shape({
+    level: PropTypes.string,
+  }),
   geometries: PropTypes.shape({
     parents: PropTypes.arrayOf(PropTypes.shape({})),
     children: PropTypes.shape({}),
     boundary: PropTypes.shape({}),
   }),
-  geography: PropTypes.shape({
-    level: PropTypes.string,
-  }),
-  setShouldFetch: PropTypes.func,
-  setGeoCode: PropTypes.func,
-  tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
-  preferredChildren: PropTypes.shape({}),
   locationCodes: PropTypes.arrayOf(PropTypes.string),
+  preferredChildren: PropTypes.shape({}),
+  setGeoCode: PropTypes.func,
+  setShouldFetch: PropTypes.func,
+  styles: PropTypes.shape({}),
+  tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
+  zoom: PropTypes.number,
 };
 
 Map.defaultProps = {
   center: undefined,
   className: undefined,
-  zoom: undefined,
+  geography: undefined,
+  geometries: undefined,
+  locationCodes: undefined,
+  preferredChildren: undefined,
+  setGeoCode: undefined,
+  setShouldFetch: undefined,
   styles: {
     height: "100%",
     width: "100%",
   },
-  geometries: undefined,
-  geography: undefined,
-  setShouldFetch: undefined,
-  setGeoCode: undefined,
   tileLayers: undefined,
-  preferredChildren: undefined,
-  locationCodes: undefined,
+  zoom: undefined,
 };
 
 export default Map;
