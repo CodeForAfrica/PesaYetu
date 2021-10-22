@@ -54,7 +54,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    // since we'll only do redirect for new paths, blocking seem appropriate
     fallback: "blocking",
   };
 }
@@ -75,17 +74,26 @@ export async function getStaticProps({ preview, previewData, params }) {
   const blocks = formatBlocksForSections(props?.post?.blocks);
   const { locationCodes, preferredChildren } =
     await fetchProfileConfigurations();
-  const [originalCode] = params?.slug || ["ke"];
+  const [originalCode] = params?.slug || [""];
   const code = originalCode.toLowerCase();
+  const [primaryCode, secondaryCode] = originalCode
+    .split("-vs-")
+    .map((c) => c.trim().toLowerCase())
+    .filter((c) => c);
 
-  if (!locationCodes.includes(code)) {
+  if (
+    !(
+      locationCodes.includes(primaryCode) &&
+      (!secondaryCode || locationCodes.includes(secondaryCode))
+    )
+  ) {
     return {
       notFound: true,
     };
   }
 
-  // Allow for case-insensitive code orhuman-reaable location names
-  // appended to code e.g. ke/kenya,  47/nairobi
+  // Allow for case-insensitive code or human-readable location names
+  // appended to code e.g. ke/kenya, 47/nairobi, 47-vs-11/nairobi-vs-isiolo
   if (code !== originalCode || params?.slug?.length > 1) {
     return {
       redirect: {
@@ -94,8 +102,14 @@ export async function getStaticProps({ preview, previewData, params }) {
       },
     };
   }
+
   const apiUri = process.env.HURUMAP_API_URL;
-  const profile = await fetchProfile(apiUri, code);
+  const primaryProfile = await fetchProfile(apiUri, primaryCode);
+  const profile = [primaryProfile];
+  if (secondaryCode) {
+    const secondaryProfile = await fetchProfile(apiUri, secondaryCode);
+    profile.push(secondaryProfile);
+  }
 
   return {
     props: {
