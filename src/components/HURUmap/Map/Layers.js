@@ -6,7 +6,10 @@ import ReactDOMServer from "react-dom/server";
 import { useMap, LayerGroup, FeatureGroup, GeoJSON } from "react-leaflet";
 
 import LocationTag from "@/pesayetu/components/HURUmap/LocationTag";
-import theme from "@/pesayetu/theme";
+import theme, {
+  CHART_PRIMARY_COLOR_SCHEME,
+  CHART_SECONDARY_COLOR_SCHEME,
+} from "@/pesayetu/theme";
 
 const useStyles = makeStyles(() => ({
   locationtag: {
@@ -16,57 +19,92 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const geoStyles = {
+const primaryGeoStyles = {
   inactive: {
+    color: CHART_PRIMARY_COLOR_SCHEME[3],
     fillColor: "#f8f8f8",
     fillOpacity: 1,
-    color: "#666666",
     weight: 1,
   },
   hoverOnly: {
-    over: {
-      fillColor: "#7DB2D3",
-      fillOpacity: 1,
-      color: "#666666",
-    },
     out: {
-      fillColor: "#DFDFDF",
+      color: CHART_PRIMARY_COLOR_SCHEME[3],
+      fillColor: CHART_PRIMARY_COLOR_SCHEME[2],
       fillOpacity: 1,
-      color: "#666666",
       weight: 1,
+    },
+    over: {
+      color: CHART_PRIMARY_COLOR_SCHEME[3],
+      fillColor: CHART_PRIMARY_COLOR_SCHEME[1],
+      fillOpacity: 1,
     },
   },
   selected: {
-    over: {
-      color: "#666666",
-      fillColor: "#7DB2D3",
-      opacity: 1,
-    },
     out: {
-      color: "#666666",
-      fillColor: "#7DB2D3",
+      color: CHART_PRIMARY_COLOR_SCHEME[3],
+      fillColor: CHART_PRIMARY_COLOR_SCHEME[1],
       strokeWidth: 1,
       opacity: 1,
       fillOpacity: 1,
-
       weight: 1.5,
+    },
+    over: {
+      color: CHART_PRIMARY_COLOR_SCHEME[3],
+      fillColor: CHART_PRIMARY_COLOR_SCHEME[1],
+      opacity: 1,
     },
   },
 };
 
-const Layers = ({
-  selectedBoundary,
-  parentsGeometries,
-  onClick,
+const secondaryGeoStyles = {
+  ...primaryGeoStyles,
+  hoverOnly: {
+    out: {
+      color: CHART_PRIMARY_COLOR_SCHEME[3],
+      fillColor: CHART_PRIMARY_COLOR_SCHEME[2],
+      fillOpacity: 1,
+      weight: 1,
+    },
+    over: {
+      color: CHART_PRIMARY_COLOR_SCHEME[3],
+      fillColor: CHART_PRIMARY_COLOR_SCHEME[1],
+      fillOpacity: 1,
+    },
+  },
+  selected: {
+    out: {
+      color: CHART_PRIMARY_COLOR_SCHEME[3],
+      fillColor: CHART_PRIMARY_COLOR_SCHEME[1],
+      strokeWidth: 1,
+      opacity: 1,
+      fillOpacity: 1,
+      weight: 1.5,
+    },
+    over: {
+      color: CHART_SECONDARY_COLOR_SCHEME[3],
+      fillColor: CHART_SECONDARY_COLOR_SCHEME[1],
+      opacity: 1,
+    },
+  },
+};
+
+function Layers({
+  geography,
+  isPinning,
   locationCodes,
+  onClick,
+  parentsGeometries,
+  selectedBoundary,
   ...props
-}) => {
+}) {
+  console.log("BOOM", { isPinning, selectedBoundary, geography });
   const map = useMap();
   const groupRef = useRef();
   const classes = useStyles(props);
 
   const onEachFeature = useCallback(
     (feature, layer) => {
+      let geoStyles = primaryGeoStyles;
       if (!locationCodes?.includes(feature.properties.code)) {
         layer.setStyle(geoStyles.inactive);
       } else {
@@ -94,6 +132,9 @@ const Layers = ({
             : geoStyles.hoverOnly.out
         );
         layer.on("mouseover", () => {
+          geoStyles = isPinning ? secondaryGeoStyles : primaryGeoStyles;
+          const selected = feature?.properties?.selected;
+          console.log("HOVERV", { geoStyles, feature, layer, selected });
           layer.setStyle(
             feature?.properties?.selected
               ? geoStyles.selected.over
@@ -101,6 +142,9 @@ const Layers = ({
           );
         });
         layer.on("mouseout", () => {
+          geoStyles = isPinning ? secondaryGeoStyles : primaryGeoStyles;
+          const selected = feature?.properties?.selected;
+          console.log("HOVERT", { geoStyles, feature, layer, selected });
           layer.setStyle(
             feature?.properties?.selected
               ? geoStyles.selected.out
@@ -109,14 +153,16 @@ const Layers = ({
         });
         if (onClick) {
           layer.on("click", (e) => {
-            if (onClick) {
+            const { code: featureCode } = feature.properties;
+            const { code: geoCode } = geography || {};
+            if (featureCode !== geoCode) {
               onClick(e, feature);
             }
           });
         }
       }
     },
-    [classes.locationtag, locationCodes, onClick]
+    [classes.locationtag, geography, isPinning, locationCodes, onClick]
   );
 
   useEffect(() => {
@@ -148,20 +194,24 @@ const Layers = ({
       </FeatureGroup>
     </>
   );
-};
+}
 
 Layers.propTypes = {
+  geography: PropTypes.shape({ code: PropTypes.string }),
+  isPinning: PropTypes.bool,
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
+  onClick: PropTypes.func,
   parentsGeometries: PropTypes.arrayOf(PropTypes.shape({})),
   selectedBoundary: PropTypes.shape({}),
-  onClick: PropTypes.func,
-  locationCodes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Layers.defaultProps = {
+  geography: undefined,
+  isPinning: undefined,
+  locationCodes: undefined,
+  onClick: undefined,
   parentsGeometries: undefined,
   selectedBoundary: undefined,
-  onClick: undefined,
-  locationCodes: undefined,
 };
 
 export default Layers;
