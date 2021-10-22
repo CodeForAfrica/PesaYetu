@@ -40,12 +40,29 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
 }));
 
 const Profile = forwardRef(function Profile(
-  { categories, primaryProfile, secondaryProfile, dataNotAvailable, ...props },
+  {
+    categories,
+    onClickUnpin,
+    primaryProfile,
+    secondaryProfile,
+    dataNotAvailable,
+    ...props
+  },
   ref
 ) {
   const classes = useStyles(props);
   const { pinAndCompare } = hurumapArgs;
 
+  const handleClick = (profile) => {
+    if (primaryProfile && secondaryProfile) {
+      return () => {
+        if (onClickUnpin) {
+          onClickUnpin(profile?.geography?.code);
+        }
+      };
+    }
+    return undefined;
+  };
   const getSecondaryIndicator = (
     categoryIndex,
     subcategoryIndex,
@@ -62,16 +79,21 @@ const Profile = forwardRef(function Profile(
         variant="primary"
         icon={Print}
         title={primaryProfile.geography.name}
+        onClick={handleClick(primaryProfile)}
         {...primaryProfile.geography}
       />
       <Hidden smDown implementation="css">
-        <PinAndCompare {...pinAndCompare} />
-        <LocationHeader
-          variant="secondary"
-          icon={Print}
-          title={secondaryProfile?.geography?.name}
-          {...secondaryProfile?.geography}
-        />
+        {secondaryProfile ? (
+          <LocationHeader
+            variant="secondary"
+            icon={Print}
+            onClick={handleClick(primaryProfile)}
+            title={secondaryProfile.geography?.name}
+            {...secondaryProfile.geography}
+          />
+        ) : (
+          <PinAndCompare {...pinAndCompare} />
+        )}
       </Hidden>
       {categories.map((category, categoryIndex) => (
         <Fragment key={category.tite}>
@@ -132,6 +154,8 @@ Profile.propTypes = {
       title: PropTypes.string,
     })
   ),
+  dataNotAvailable: PropTypes.string,
+  onClickUnpin: PropTypes.func,
   primaryProfile: PropTypes.shape({
     geography: PropTypes.shape({
       name: PropTypes.string,
@@ -162,14 +186,14 @@ Profile.propTypes = {
       })
     ),
   }),
-  dataNotAvailable: PropTypes.string,
 };
 
 Profile.defaultProps = {
   categories: undefined,
+  dataNotAvailable: undefined,
+  onClickUnpin: undefined,
   primaryProfile: undefined,
   secondaryProfile: undefined,
-  dataNotAvailable: undefined,
 };
 
 export default Profile;
