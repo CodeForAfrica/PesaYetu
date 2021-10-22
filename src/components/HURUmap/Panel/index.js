@@ -7,14 +7,20 @@ import formatData from "./formatProfileDataIntoArray";
 import MobilePanel from "./MobilePanel";
 
 function Panel({ primaryProfile, secondaryProfile, ...props }) {
-  const items = formatData(primaryProfile.data);
+  const primaryItems = formatData(primaryProfile?.data);
+  const secondaryItems = formatData(secondaryProfile?.data);
+  const items = primaryItems || secondaryItems;
+
+  if (!items?.length) {
+    return null;
+  }
   const formatedPrimaryProfile = {
     ...primaryProfile,
-    items: formatData(primaryProfile?.data),
+    items: primaryItems,
   };
   const formatedSecondaryProfile = {
     ...secondaryProfile,
-    items: formatData(secondaryProfile?.data),
+    items: secondaryItems,
   };
   return (
     <>
