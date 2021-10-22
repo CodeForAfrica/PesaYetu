@@ -1,6 +1,6 @@
 import { Drawer } from "@material-ui/core";
 import clsx from "clsx";
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 import React from "react";
 
 import PanelItem from "./PanelItem";
@@ -9,7 +9,13 @@ import useStyles from "./useStyles";
 import PanelButtonGroup from "@/pesayetu/components/HURUmap/PanelButtonGroup";
 import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
 
-function DesktopPanel({ panelItems, ...props }) {
+function DesktopPanel({
+  isPinning,
+  onClickPin,
+  onClickUnpin,
+  panelItems,
+  ...props
+}) {
   const [value, setValue] = React.useState();
   const [pins, setPins] = React.useState([]);
   const paperRef = React.useRef();
@@ -58,7 +64,7 @@ function DesktopPanel({ panelItems, ...props }) {
       }}
       variant="permanent"
       anchor="left"
-      open={!!value}
+      open={!isPinning && !!value}
     >
       {panelItems.map((item) => (
         <TabPanel
@@ -68,7 +74,7 @@ function DesktopPanel({ panelItems, ...props }) {
           value={value}
           classes={{ tabPanel: classes.tabPanel }}
         >
-          <PanelItem item={item} {...props} />
+          <PanelItem item={item} onClickUnpin={onClickUnpin} {...props} />
         </TabPanel>
       ))}
       <PanelButtonGroup
@@ -87,16 +93,22 @@ function DesktopPanel({ panelItems, ...props }) {
 }
 
 DesktopPanel.propTypes = {
-  panelItems: Proptypes.arrayOf(
-    Proptypes.shape({
-      value: Proptypes.string,
-      children: Proptypes.node,
-      tree: Proptypes.shape({}),
+  isPinning: PropTypes.bool,
+  onClickPin: PropTypes.func,
+  onClickUnpin: PropTypes.func,
+  panelItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string,
+      children: PropTypes.node,
+      tree: PropTypes.shape({}),
     })
   ),
 };
 
 DesktopPanel.defaultProps = {
+  isPinning: undefined,
+  onClickPin: undefined,
+  onClickUnpin: undefined,
   panelItems: undefined,
 };
 
