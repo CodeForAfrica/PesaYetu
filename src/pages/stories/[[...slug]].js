@@ -154,20 +154,21 @@ export async function getStaticProps({ params, preview, previewData }) {
     props?.post?.featuredImage?.node?.sourceUrl
   );
   const relatedPostsNode = await Promise.all(
-    props?.post?.categories?.edges[0]?.node?.posts?.nodes?.map(
+    props?.post?.categories?.edges?.[0]?.node?.posts?.nodes?.map(
       async (categoryPost) => {
         const imagePlaceholder = await getImagePlaceholder(
           categoryPost.featuredImage?.node?.sourceUrl
         );
         return { ...categoryPost, imagePlaceholder };
       }
-    )
+    ) || []
   );
   const relatedPosts =
-    formatStoryPosts(relatedPostsNode ?? [], {
+    formatStoryPosts(relatedPostsNode, {
       slug: props?.post?.slug,
       ctaText: blocks?.relatedPosts?.ctaText,
     }) || [];
+
   return {
     props: {
       ...props,
