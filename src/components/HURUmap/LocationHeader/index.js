@@ -1,13 +1,24 @@
-import { Typography, Button } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  IconButton,
+  SvgIcon as MuiSvgIcon,
+  Typography,
+} from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
+import { ReactComponent as CloseIcon } from "@/pesayetu/assets/icons/Component 108-1.svg";
 import Image from "@/pesayetu/components/Image";
 import slugify from "@/pesayetu/utils/slugify";
 
-const LocationHeader = ({ level, parent, title, icon, ...props }) => {
+function SvgIcon(props) {
+  return <MuiSvgIcon {...props} />;
+}
+
+const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
   const classes = useStyles(props);
 
   if (!title) {
@@ -15,16 +26,36 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
   }
   return (
     <div id={slugify(title)} className={classes.root}>
-      <div className={classes.titleContent}>
-        <Typography variant="h3" className={classes.title}>
-          {title}
-        </Typography>
-        <Button variant="contained" className={classes.button}>
-          <div className={classes.icon}>
-            <Image src={icon} layout="fill" />
-          </div>
-        </Button>
-      </div>
+      <Grid container justifyContent="space-between">
+        <Grid item>
+          <Grid container alignItems="flex-start">
+            <Grid item>
+              <Typography variant="h3" className={classes.title}>
+                {title}
+              </Typography>
+            </Grid>
+            {onClick ? (
+              <Grid item>
+                <IconButton onClick={onClick} className={classes.closeButton}>
+                  <SvgIcon
+                    component={CloseIcon}
+                    style={{ fontSize: 44 }}
+                    viewBox="0 0 44 44"
+                    className={classes.closeButtonIcon}
+                  />
+                </IconButton>
+              </Grid>
+            ) : null}
+          </Grid>
+        </Grid>
+        <Grid item>
+          <Button variant="contained" className={classes.button}>
+            <div className={classes.icon}>
+              <Image src={icon} layout="fill" />
+            </div>
+          </Button>
+        </Grid>
+      </Grid>
       {parent && (
         <Typography variant="subtitle2" className={classes.description}>
           {`A ${level} in ${parent}`}
@@ -35,17 +66,19 @@ const LocationHeader = ({ level, parent, title, icon, ...props }) => {
 };
 
 LocationHeader.propTypes = {
-  title: PropTypes.string,
-  level: PropTypes.string,
-  parent: PropTypes.string,
   icon: PropTypes.string,
+  level: PropTypes.string,
+  onClick: PropTypes.func,
+  parent: PropTypes.string,
+  title: PropTypes.string,
 };
 
 LocationHeader.defaultProps = {
-  title: undefined,
-  level: undefined,
-  parent: undefined,
   icon: undefined,
+  level: undefined,
+  onClick: undefined,
+  parent: undefined,
+  title: undefined,
 };
 
 export default LocationHeader;

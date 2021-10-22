@@ -33,6 +33,22 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     minWidth: typography.pxToRem(44),
     boxShadow: "none",
   },
+  closeButton: {
+    marginLeft: typography.pxToRem(20),
+    maxHeight: typography.pxToRem(44),
+    maxWidth: typography.pxToRem(44),
+    overflow: "hidden",
+    padding: 0,
+  },
+  closeButtonIcon: {
+    color: palette.grey.light,
+    "&:hover": {
+      color: "#666",
+      "& .Component_108-1_svg__b": {
+        stroke: palette.common.white,
+      },
+    },
+  },
 }));
 
 export default useStyles;
