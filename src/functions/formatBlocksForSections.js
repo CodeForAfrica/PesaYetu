@@ -26,7 +26,9 @@ async function formatLazyBlockIteratorContentWithImage(
           return {
             ...item,
             [imgField]: item[imgField]?.url ?? null,
-            imagePlaceholder: await getImagePlaceholder(item[imgField]?.url),
+            [`${imgField}Props`]: await getImagePlaceholder(
+              item[imgField]?.url
+            ),
           };
         }
       )
@@ -51,7 +53,9 @@ async function formatLazyBlockIteratorContentWithImages(
           icon: item.icon?.url,
           dataVisualProps: {
             [imgField]: item[imgField]?.url,
-            imagePlaceholder: await getImagePlaceholder(item[imgField]?.url),
+            [`${imgField}Props`]: await getImagePlaceholder(
+              item[imgField]?.url
+            ),
           },
         };
       })
@@ -79,7 +83,7 @@ async function formatPartnersBlock(block) {
       return {
         ...attributes,
         logo,
-        imagePlaceholder: await getImagePlaceholder(logo?.url),
+        logoProps: await getImagePlaceholder(logo?.url),
       };
     }
     default:
@@ -98,7 +102,7 @@ async function formatPartners({
   const partners = await Promise.all(
     JSON.parse(decodeURIComponent(serializedPartner)).map(async (partner) => ({
       ...partner,
-      imagePlaceholder: await getImagePlaceholder(partner?.logo?.url),
+      logoProps: await getImagePlaceholder(partner?.logo?.url),
     }))
   );
   return {
@@ -137,17 +141,16 @@ async function formatFeaturedStories(attributes) {
   if (!featuredStory) {
     return null;
   }
-  const { news, insights } = featuredStory;
 
+  const { news, insights } = featuredStory;
+  const image = news?.featuredImage?.node?.sourceUrl;
   const formattedNews = {
     title: news?.title,
     description: news?.excerpt?.replace(/<[^>]+>/g, ""),
     href: `/stories${news?.uri}`,
     slug: news?.slug,
-    image: news?.featuredImage?.node?.sourceUrl,
-    imagePlaceholder: await getImagePlaceholder(
-      news?.featuredImage?.node?.sourceUrl
-    ),
+    image,
+    imageProps: await getImagePlaceholder(image),
     ctaText: attributes?.ctaText ?? "",
   };
   const chartBlock = insights.blocks?.find(
@@ -163,15 +166,16 @@ async function formatFeaturedStories(attributes) {
     chart: chartBlock?.attributes?.chart ?? "",
     ctaText: attributes?.ctaText ?? "",
   };
-
   return { news: formattedNews, insights: formattedInsights };
 }
+
 function formatTypes(typesString) {
   return typesString.split("\n").map((item) => {
     const [name = null, href = null] = item.split(",").map((i) => i.trim());
     return { name, href };
   });
 }
+
 function formatDocumentsAndDataSets(
   {
     countLabel,
@@ -208,7 +212,7 @@ function formatDocumentsAndDataSets(
   });
 }
 
-function format(block) {
+async function format(block) {
   const { attributes, name, innerBlocks } = block;
   switch (name) {
     case "acf/insights-stories":
@@ -229,12 +233,17 @@ function format(block) {
       return formatDataSource(attributes);
     case "lazyblock/supporting-partners":
       return formatLazyBlockIteratorContentWithImage(attributes, "logo");
-    case "lazyblock/other-hero":
+    case "lazyblock/other-hero": {
+      const image = await formatLazyBlockImage(attributes?.image);
+      const accentImage = await formatLazyBlockImage(attributes?.accentImage);
       return {
         ...attributes,
-        image: formatLazyBlockImage(attributes?.image),
-        accentImage: formatLazyBlockImage(attributes?.accentImage),
+        image,
+        imageProps: await getImagePlaceholder(image),
+        accentImage,
+        accentImageProps: await getImagePlaceholder(accentImage),
       };
+    }
     case "lazyblock/share-story":
       return {
         ...attributes,
