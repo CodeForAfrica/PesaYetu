@@ -126,10 +126,10 @@ export async function getStaticProps({ params, preview, previewData }) {
           pagination: categoryPagination,
           posts: await Promise.all(
             categoryPosts.map(async (categoryPost) => {
-              const imagePlaceholder = await getImagePlaceholder(
+              const imageProps = await getImagePlaceholder(
                 categoryPost.featuredImage?.node?.sourceUrl
               );
-              return { ...categoryPost, imagePlaceholder };
+              return { ...categoryPost, imageProps };
             })
           ),
         };
@@ -156,10 +156,10 @@ export async function getStaticProps({ params, preview, previewData }) {
   const relatedPostsNode = await Promise.all(
     props?.post?.categories?.edges?.[0]?.node?.posts?.nodes?.map(
       async (categoryPost) => {
-        const imagePlaceholder = await getImagePlaceholder(
+        const imageProps = await getImagePlaceholder(
           categoryPost.featuredImage?.node?.sourceUrl
         );
-        return { ...categoryPost, imagePlaceholder };
+        return { ...categoryPost, imageProps };
       }
     ) || []
   );
