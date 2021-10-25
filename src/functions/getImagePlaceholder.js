@@ -1,18 +1,15 @@
 import { getPlaiceholder } from "plaiceholder";
 
-export default async function getImagePlaceholder(image) {
-  if (!image) {
+export default async function getImagePlaceholder(src) {
+  if (!src) {
     return null;
   }
-  const placeholder = {};
   try {
-    placeholder.blurDataURL = await getPlaiceholder(image, { size: 4 }).then(
-      ({ base64 }) => base64
-    );
-
-    placeholder.placeholder = "blur";
+    const { base64, img } = await getPlaiceholder(src);
+    const placeholder = base64?.length ? "blur" : "empty";
+    return { ...img, blurDataURL: base64, placeholder };
   } catch (err) {
     // do nothing;
   }
-  return placeholder;
+  return null;
 }
