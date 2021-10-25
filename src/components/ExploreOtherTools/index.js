@@ -22,11 +22,11 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
         </Typography>
 
         <Carousel>
-          {items.map((item) => (
+          {items.map(({ imageProps, ...item }) => (
             <Card
               key={item.title}
               {...item}
-              imageProps={item.imagePlaceholder}
+              imageProps={imageProps}
               classes={{
                 root: classes.card,
                 media: classes.cardMedia,
@@ -42,13 +42,13 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
 };
 
 ExploreOtherTools.propTypes = {
-  title: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({})),
+  title: PropTypes.string,
 };
 
 ExploreOtherTools.defaultProps = {
-  title: undefined,
   items: undefined,
+  title: undefined,
 };
 
 export default ExploreOtherTools;
