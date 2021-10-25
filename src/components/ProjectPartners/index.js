@@ -59,7 +59,7 @@ function ProjectPartners({ title, partners, ...props }) {
             {title}
           </Typography>
         </Grid>
-        {partners?.map(({ link, logo, name, imagePlaceholder }) => (
+        {partners?.map(({ link, logo, logoProps, name }) => (
           <Grid key={link} item md={6}>
             <LogoButton
               component={Link}
@@ -68,12 +68,10 @@ function ProjectPartners({ title, partners, ...props }) {
             >
               <Image
                 objectFit="contain"
-                width={310}
-                height={224}
                 src={logo.url}
+                {...logoProps}
                 alt={name}
                 className={classes.logo}
-                {...imagePlaceholder}
               />
             </LogoButton>
           </Grid>
@@ -87,12 +85,11 @@ ProjectPartners.propTypes = {
   title: PropTypes.string,
   partners: PropTypes.arrayOf(
     PropTypes.shape({
-      imagePlaceholder: PropTypes.shape({}),
       link: PropTypes.string,
       logo: PropTypes.shape({
         url: PropTypes.string,
       }),
-
+      logoProps: PropTypes.shape({}),
       name: PropTypes.string,
     })
   ),
