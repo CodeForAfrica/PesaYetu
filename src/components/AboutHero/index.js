@@ -1,11 +1,11 @@
 import { Grid } from "@material-ui/core";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import AboutHeroBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
+import aboutHeroBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
 import useStyles from "@/pesayetu/components/AboutHero/useStyles";
 import Header from "@/pesayetu/components/Header";
+import Image from "@/pesayetu/components/Image";
 import Section from "@/pesayetu/components/Section";
 
 function AboutHero({ overline, subtitle, title, ...props }) {
@@ -14,7 +14,7 @@ function AboutHero({ overline, subtitle, title, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.background}>
-        <Image objectFit="cover" src={AboutHeroBg} layout="fill" />
+        <Image objectFit="cover" src={aboutHeroBg} layout="fill" />
       </div>
       <div className={classes.whiteBackground} />
       <Section classes={{ root: classes.section }}>
