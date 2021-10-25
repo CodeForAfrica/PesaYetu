@@ -26,6 +26,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 }));
 function SupportingPartners({ title, items, ...props }) {
   const classes = useStyles(props);
+
   if (!items || !items.length) {
     return null;
   }
@@ -36,17 +37,15 @@ function SupportingPartners({ title, items, ...props }) {
           {title}
         </Typography>
         <Grid container spacing={2} className={classes.logoContainer}>
-          {items.map(({ link, logo, name, imagePlaceholder }) => (
+          {items.map(({ link, logo, logoProps, name }) => (
             <Grid item key={link}>
               <A className={classes.link} href={link}>
                 <Image
                   className={classes.logo}
                   objectFit="contain"
-                  width={138}
-                  height={64}
                   src={logo}
                   alt={name}
-                  {...imagePlaceholder}
+                  {...logoProps}
                 />
               </A>
             </Grid>
@@ -61,9 +60,9 @@ SupportingPartners.propTypes = {
   title: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      imagePlaceholder: PropTypes.shape({}),
       link: PropTypes.string,
       logo: PropTypes.string,
+      logoProps: PropTypes.shape({}),
       name: PropTypes.string,
     })
   ),
