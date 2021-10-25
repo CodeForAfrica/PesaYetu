@@ -19,6 +19,7 @@ function CarouselItem({ items, variant, ...props }) {
           <Card
             key={item.slug}
             {...item}
+            imageProps={item.imageProps}
             variant={variant}
             className={classes.story}
           />

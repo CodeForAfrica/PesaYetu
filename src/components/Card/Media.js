@@ -73,8 +73,8 @@ function Media({
     <div className={classes.root}>
       <Image
         layout="fill"
-        {...imageProps}
         src={media}
+        {...imageProps}
         className={classes.image}
       />
     </div>

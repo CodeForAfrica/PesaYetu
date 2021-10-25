@@ -43,7 +43,15 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   },
 }));
 
-function ProjectOwner({ className, description, link, logo, name, ...props }) {
+function ProjectOwner({
+  className,
+  description,
+  link,
+  logo,
+  logoProps,
+  name,
+  ...props
+}) {
   const classes = useStyles(props);
 
   return (
@@ -54,7 +62,7 @@ function ProjectOwner({ className, description, link, logo, name, ...props }) {
     >
       <div className={classes.content}>
         <LogoButton component={Link} href={link} className={classes.logo}>
-          <Image layout="fill" src={logo.url} alt={name} />
+          <Image src={logo.url} {...logoProps} layout="fill" alt={name} />
         </LogoButton>
         <RichTypography variant="body2" className={classes.description}>
           {description}
@@ -71,6 +79,7 @@ ProjectOwner.propTypes = {
   logo: PropTypes.shape({
     url: PropTypes.string,
   }),
+  logoProps: PropTypes.shape({}),
   name: PropTypes.string,
 };
 
@@ -79,6 +88,7 @@ ProjectOwner.defaultProps = {
   description: undefined,
   link: undefined,
   logo: undefined,
+  logoProps: undefined,
   name: undefined,
 };
 
