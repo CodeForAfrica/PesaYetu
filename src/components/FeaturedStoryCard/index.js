@@ -13,7 +13,7 @@ function FeaturedStoryCard({
   description,
   href,
   image,
-  imagePlaceholder,
+  imageProps,
   title,
   variant,
   ...props
@@ -34,7 +34,7 @@ function FeaturedStoryCard({
       <Grid item xs={12} lg={7}>
         <Card
           {...mediaProps}
-          imageProps={imagePlaceholder}
+          imageProps={imageProps}
           variant={variant}
           classes={{
             root: classes.card,
@@ -64,7 +64,7 @@ FeaturedStoryCard.propTypes = {
   ctaText: PropTypes.string,
   chart: PropTypes.string,
   variant: PropTypes.oneOf(["insights", "news"]),
-  imagePlaceholder: PropTypes.shape({}),
+  imageProps: PropTypes.shape({}),
 };
 FeaturedStoryCard.defaultProps = {
   description: undefined,
@@ -74,6 +74,6 @@ FeaturedStoryCard.defaultProps = {
   ctaText: undefined,
   chart: undefined,
   variant: "news",
-  imagePlaceholder: undefined,
+  imageProps: undefined,
 };
 export default FeaturedStoryCard;
