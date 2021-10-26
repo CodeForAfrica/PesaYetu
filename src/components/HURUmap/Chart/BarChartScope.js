@@ -276,27 +276,30 @@ export default function BarChartScope(
             height: { signal: "height" },
           },
         },
-        legends: [
-          {
-            fill: "primary_parent_color_scale",
-            orient: "none",
-            legendX: { signal: "width - 90" },
-            legendY: { value: -40 },
-            labelFont: theme.typography.fontFamily,
-            labelColor: theme.palette.chart.text.primary,
-            encode: {
-              symbols: {
-                shape: { value: "stroke" },
-                update: {
-                  shape: { value: "stroke" },
-                  size: { value: 500 },
-                  stroke: { value: theme.palette.chart.text.primary },
-                  strokeDash: { value: [2, 2] },
+        legends:
+          primaryParentData.length > 1
+            ? [
+                {
+                  fill: "primary_parent_color_scale",
+                  orient: "none",
+                  legendX: { signal: "width - 90" },
+                  legendY: { value: -40 },
+                  labelFont: theme.typography.fontFamily,
+                  labelColor: theme.palette.chart.text.primary,
+                  encode: {
+                    symbols: {
+                      shape: { value: "stroke" },
+                      update: {
+                        shape: { value: "stroke" },
+                        size: { value: 500 },
+                        stroke: { value: theme.palette.chart.text.primary },
+                        strokeDash: { value: [2, 2] },
+                      },
+                    },
+                  },
                 },
-              },
-            },
-          },
-        ],
+              ]
+            : null,
         marks: [
           {
             name: "parent",
