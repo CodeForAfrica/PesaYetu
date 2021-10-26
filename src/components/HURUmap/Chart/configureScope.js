@@ -130,7 +130,11 @@ export default function configureScope(
             indicator?.data,
             indicator?.metadata,
             configuration,
-            showParent ? indicator?.parentData : [{}]
+            null,
+            showParent ? indicator?.parentData : [{}],
+            showParent ? indicator?.parentData : [{}],
+            profileNames,
+            false
           );
         }
         break;

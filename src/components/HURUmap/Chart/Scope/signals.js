@@ -1,0 +1,156 @@
+import hoverIcon from "@/pesayetu/assets/icons/Component1375.png";
+import theme from "@/pesayetu/theme";
+
+const graphValueTypes = {
+  Percentage: "percentage",
+  Value: "value",
+};
+
+export default function Signals(
+  chartType,
+  filterSignals,
+  primaryGroup,
+  groups,
+  config
+) {
+  const {
+    defaultType,
+    types: {
+      Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
+      Percentage: {
+        formatting: percentageFormatting,
+        minX: percentageMinX,
+        maxX: percentageMaxX,
+      },
+    },
+  } = config;
+
+  return [
+    {
+      name: "width",
+      update: "containerSize()[0] ? containerSize()[0] : 600",
+      on: [
+        {
+          events: "window:resize",
+          update: "containerSize()[0] ? containerSize()[0] : 600",
+        },
+      ],
+    },
+    {
+      name: "cursor",
+      value: `url("${
+        chartType !== "line" ? hoverIcon.src : undefined
+      }"), pointer`,
+    },
+    {
+      name: "x_step",
+      value: 40,
+    },
+    {
+      name: "y_step",
+      value: 35,
+    },
+    {
+      name: "groups",
+      value: groups,
+    },
+    {
+      name: "Units",
+      value: graphValueTypes[defaultType || "Value"],
+    },
+    {
+      name: "applyFilter",
+      value: false,
+    },
+    {
+      name: "filterIndicator",
+    },
+    {
+      name: "filterValue",
+    },
+    {
+      name: "mainGroup",
+      value: primaryGroup,
+    },
+    {
+      name: "numberFormat",
+      value: {
+        percentage: percentageFormatting || ".0%",
+        value: valueFormatting || ",.0f",
+      },
+    },
+    {
+      name: "datatype",
+      value: { percentage: "percentage", value: "count" },
+    },
+    {
+      name: "percentageMaxX",
+      value: percentageMaxX !== "default" ? percentageMaxX : undefined,
+    },
+    {
+      name: "percentageMinX",
+      value: percentageMinX !== "default" ? percentageMinX : undefined,
+    },
+    {
+      name: "valueMaxX",
+      value: valueMaxX !== "default" ? valueMaxX : undefined,
+    },
+    {
+      name: "valueMinX",
+      value: valueMinX !== "default" ? valueMinX : undefined,
+    },
+    {
+      name: "domainMin",
+      update: "Units === 'percentage' ? percentageMinX : valueMinX",
+    },
+    {
+      name: "domainMax",
+      update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
+    },
+    {
+      name: "height",
+      update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
+    },
+    {
+      name: "totalHeight",
+      update: "height + 160",
+    },
+    {
+      name: "white_mark",
+      value: theme.palette.text.secondary,
+    },
+    {
+      name: "grey_mark",
+      value: theme.palette.chart.text.primary,
+    },
+    { name: "titleX", value: 0 },
+    { name: "titleY" },
+    { name: "titleH" },
+    { name: "titleGroupY" },
+    { name: "titlefontSize", value: 18 },
+    { name: "titlefontWeight", value: 700 },
+    { name: "subtitleX", value: 0 },
+    { name: "subtitleY", update: "titleY + 20" },
+    { name: "subtitlefontSize", value: 12 },
+    { name: "subtitlefontWeight", value: 400 },
+    { name: "projectFill", value: "steelblue" },
+    { name: "projectX", update: "width" },
+    { name: "projectY", update: "titleY" },
+    { name: "projectAlign", value: "right" },
+    { name: "sourceGroupH" },
+    { name: "sourceGroupY" },
+    { name: "sourceX", value: 0 },
+    { name: "sourceY" },
+    { name: "sourceFontSize", value: 12 },
+    { name: "sourceFontWeight", value: 400 },
+    { name: "logoX", update: "width - 40" },
+    { name: "logoWidth", update: 0 },
+    { name: "logoUrl" },
+    { name: "logoAspect", value: true },
+    { name: "chartSource" },
+    { name: "chartTitle" },
+    { name: "chartSubtitle" },
+    { name: "projectName" },
+    ...filterSignals,
+  ];
+}
