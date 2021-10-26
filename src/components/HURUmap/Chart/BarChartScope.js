@@ -1,6 +1,5 @@
-import { deepmerge } from "@material-ui/utils";
+import merge from "deepmerge";
 
-import { xAxis } from "./properties";
 import Scope from "./Scope";
 
 import theme from "@/pesayetu/theme";
@@ -19,16 +18,23 @@ export default function BarChartScope(
 
   const { primary_group: primaryGroup } = metadata;
 
-  return deepmerge(
+  return merge(
     Scope(
       primaryData,
       metadata,
       config,
       secondaryData,
       primaryParentData,
-      secondaryParentData
+      secondaryParentData,
+      "bar"
     ),
     {
+      signals: [
+        {
+          name: "height",
+          update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
+        },
+      ],
       scales: [
         {
           name: "yscale",
@@ -87,13 +93,7 @@ export default function BarChartScope(
           range: [theme.palette.secondary.main],
         },
         {
-          name: "primary_parent_color_scale",
-          type: "ordinal",
-          range: "category",
-          domain: [parentLabel],
-        },
-        {
-          name: "secondary_parent_color_scale",
+          name: "parent_color_scale",
           type: "ordinal",
           range: "category",
           domain: [parentLabel],
@@ -121,7 +121,7 @@ export default function BarChartScope(
                   orient: "top",
                   fill: "legend_primary_scale",
                   labelFontWeight: "bold",
-                  labelColor: isCompare ? "#666" : "transparent",
+                  labelColor: "#666",
                   labelFont: theme.typography.fontFamily,
                 },
               ]
@@ -136,8 +136,15 @@ export default function BarChartScope(
               zindex: 1,
             },
             {
-              ...xAxis,
-              tickCount: xTicks,
+              orient: "bottom",
+              scale: "xscale",
+              bandPosition: 0,
+              domainOpacity: 0.5,
+              tickSize: 0,
+              format: { signal: "numberFormat[Units]" },
+              grid: true,
+              labelPadding: 6,
+              tickCount: xTicks || 6,
             },
           ],
           marks: [
@@ -177,7 +184,7 @@ export default function BarChartScope(
             primaryParentData.length > 1
               ? [
                   {
-                    fill: "primary_parent_color_scale",
+                    fill: "parent_color_scale",
                     orient: "none",
                     legendX: { signal: "width - 90" },
                     legendY: { value: -40 },
@@ -340,7 +347,6 @@ export default function BarChartScope(
           ],
         },
       ],
-    },
-    { clone: true }
+    }
   );
 }

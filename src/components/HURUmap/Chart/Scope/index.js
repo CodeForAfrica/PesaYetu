@@ -11,7 +11,8 @@ export default function Scope(
   config,
   secondaryData,
   primaryParentData,
-  secondaryParentData
+  secondaryParentData,
+  chartType
 ) {
   const { primary_group: primaryGroup, groups } = metadata;
 
@@ -48,7 +49,7 @@ export default function Scope(
       ]),
     ],
     signals: signals(
-      "bar",
+      chartType,
       filterSignals,
       primaryGroup,
       [primaryGroup],
