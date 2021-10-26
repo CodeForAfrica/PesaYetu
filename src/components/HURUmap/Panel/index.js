@@ -8,8 +8,7 @@ import MobilePanel from "./MobilePanel";
 
 function Panel({ primaryProfile, secondaryProfile, ...props }) {
   const primaryItems = formatData(primaryProfile?.data);
-  const secondaryItems = formatData(secondaryProfile?.data);
-  const items = primaryItems || secondaryItems;
+  const items = primaryItems;
 
   if (!items?.length) {
     return null;
@@ -18,10 +17,12 @@ function Panel({ primaryProfile, secondaryProfile, ...props }) {
     ...primaryProfile,
     items: primaryItems,
   };
-  const formatedSecondaryProfile = {
-    ...secondaryProfile,
-    items: secondaryItems,
-  };
+  const formatedSecondaryProfile = secondaryProfile
+    ? {
+        ...secondaryProfile,
+        items: formatData(secondaryProfile.data),
+      }
+    : undefined;
   return (
     <>
       <Hidden lgUp implementation="css">
