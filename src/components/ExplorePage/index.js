@@ -101,7 +101,7 @@ function initializer({ profiles, options }) {
   const [primaryOptions, secondaryOptions] = options;
 
   return {
-    isPinning: true,
+    isPinning: false,
     primary: extendProfileTags(primary, primaryOptions),
     secondary: extendProfileTags(secondary, secondaryOptions),
   };
@@ -119,8 +119,10 @@ function reducer(state, action) {
         const newState = { ...state };
         newState[profileType].code = code;
         newState[profileType].shouldFetch = true;
+        newState.slug = code.toLowerCase();
         return newState;
       }
+
       return state;
     }
     case "show": {
@@ -139,6 +141,7 @@ function reducer(state, action) {
           return newState;
         }
       }
+
       return state;
     }
     case "pin":
@@ -148,8 +151,11 @@ function reducer(state, action) {
       if (state.isPinning && code) {
         const newState = { ...state, isPinning: false };
         newState.secondary = { code, shouldFetch: true };
+        newState.slug =
+          `${state.primary.geography.code}-vs-${code}`.toLowerCase();
         return newState;
       }
+
       return state;
     }
     case "unpin": {
@@ -159,21 +165,40 @@ function reducer(state, action) {
         newState.secondary = undefined;
       } else if (state.primary?.geography?.code === code && state.secondary) {
         // NOTE: need to reset color from secondary back to primary as well
-        newState.primary = extendProfileTags(newState.secondary, {
+        newState.primary = extendProfileTags(state.secondary, {
           color: "primary",
         });
         newState.secondary = undefined;
       }
+      newState.slug = newState.primary.geography.code.toLowerCase();
+
       return newState;
     }
+    case "reset":
+      return initializer(action.payload);
     default:
       throw new Error();
   }
 }
 
-function ExplorePage({ apiUri, panelProps, profile: profileProp, ...props }) {
+function initialState(profiles, onClick) {
+  return {
+    profiles: Array.isArray(profiles) ? profiles : [profiles],
+    options: [
+      { color: "primary", onClick },
+      { color: "secondary", onClick },
+    ],
+  };
+}
+
+function ExplorePage({
+  apiUri,
+  locationCodes,
+  panelProps,
+  profile: profileProp,
+  ...props
+}) {
   const classes = useStyles(props);
-  const profiles = Array.isArray(profileProp) ? profileProp : [profileProp];
   // NOTE: This setState and the corresponding useEffect are "hacks" since at
   //       this point, useReducer hasn't been called yet so we can't use
   //       dispatch directly but we need handleClickTag for initializer.
@@ -183,15 +208,15 @@ function ExplorePage({ apiUri, panelProps, profile: profileProp, ...props }) {
   };
   const [state, dispatch] = useReducer(
     reducer,
-    {
-      profiles,
-      options: [
-        { color: "primary", onClick: handleClickTag },
-        { color: "secondary", onClick: handleClickTag },
-      ],
-    },
+    initialState(profileProp, handleClickTag),
     initializer
   );
+  useEffect(() => {
+    dispatch({
+      type: "reset",
+      payload: initialState(profileProp, handleClickTag),
+    });
+  }, [profileProp]);
   useEffect(() => {
     if (geoCode) {
       dispatch({ type: "fetch", payload: { code: geoCode } });
@@ -210,18 +235,21 @@ function ExplorePage({ apiUri, panelProps, profile: profileProp, ...props }) {
         payload: { profile: data, options: { onClick: handleClickTag } },
       });
     }
-  }, [data, state.secondary?.code, state.secondary?.shouldFetch]);
+  }, [data]);
 
-  const handleClickMap = (e, feature) => {
-    const { code, level, name } = feature.properties;
+  const handleSelectLocation = (payload) => {
+    const { code } = payload;
     const newPath = state.isPinning
-      ? `${state.primary.code}-vs-${code}`
+      ? `${state.primary.geography.code}-vs-${code}`
       : `${code}`;
     const href = `/explore/${newPath.toLowerCase()}`;
     router.push(href, href, { shallow: true });
     const type = state.isPinning ? "compare" : "fetch";
-    const payload = { code, level, name };
     dispatch({ type, payload });
+  };
+
+  const handleClickMap = (_, feature) => {
+    return handleSelectLocation(feature.properties);
   };
 
   const handleClickPin = () => {
@@ -235,6 +263,14 @@ function ExplorePage({ apiUri, panelProps, profile: profileProp, ...props }) {
     }
     dispatch({ type: "unpin", payload });
   };
+  useEffect(() => {
+    if (state.slug) {
+      const href = `/explore/${state.slug}`;
+      router.push(href, href, { shallow: true });
+    }
+    // router shouldn't part of useEffect dependencies: https://nextjs.org/docs/api-reference/next/router#userouter
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.slug]);
 
   const isLoading = shouldFetch() && !(data || error);
   const {
@@ -257,6 +293,7 @@ function ExplorePage({ apiUri, panelProps, profile: profileProp, ...props }) {
             geography={geography}
             geometries={geometries}
             isPinning={state.isPinning}
+            locationCodes={locationCodes}
             onClick={handleClickMap}
             zoom={6.25}
             {...props}
@@ -272,10 +309,12 @@ function ExplorePage({ apiUri, panelProps, profile: profileProp, ...props }) {
       </Hidden>
       <Panel
         isPinning={state.isPinning}
-        primaryProfile={state.primary}
-        secondaryProfile={state.secondary}
+        locationCodes={locationCodes}
         onClickPin={handleClickPin}
         onClickUnpin={handleClickUnpin}
+        onSelectLocation={handleSelectLocation}
+        primaryProfile={state.primary}
+        secondaryProfile={state.secondary}
         {...panelProps}
       />
     </>
@@ -284,8 +323,9 @@ function ExplorePage({ apiUri, panelProps, profile: profileProp, ...props }) {
 
 ExplorePage.propTypes = {
   apiUri: PropTypes.string,
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
   panelProps: PropTypes.shape({}),
-  profile: PropTypes.oneOfType(
+  profile: PropTypes.oneOfType([
     PropTypes.shape({
       geography: PropTypes.shape({}),
       geometries: PropTypes.shape({}),
@@ -299,12 +339,13 @@ ExplorePage.propTypes = {
         highlights: PropTypes.arrayOf(PropTypes.shape({})),
         tags: PropTypes.arrayOf(PropTypes.shape({})),
       })
-    )
-  ),
+    ),
+  ]),
 };
 
 ExplorePage.defaultProps = {
   apiUri: undefined,
+  locationCodes: undefined,
   panelProps: undefined,
   profile: undefined,
 };
