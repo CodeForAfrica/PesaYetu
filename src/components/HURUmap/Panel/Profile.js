@@ -6,8 +6,10 @@ import React, { forwardRef, Fragment } from "react";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
+import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
+import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
 import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
@@ -108,6 +110,13 @@ const Profile = forwardRef(function Profile(
                         ? secondaryProfile?.geography?.name
                         : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
                   }}
+                />
+              ))}
+              {child?.metrics?.map(({ label, ...other }) => (
+                <KeyMetric
+                  key={label}
+                  title={label}
+                  formattedValue={formatNumericalValue(other)}
                 />
               ))}
             </Fragment>

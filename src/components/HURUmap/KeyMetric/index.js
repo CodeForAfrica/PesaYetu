@@ -8,7 +8,7 @@ import useStyles from "./useStyles";
 const KeyMetric = ({
   className,
   formattedValue,
-  value,
+  value: valueProp,
   title,
   color,
   description,
@@ -16,13 +16,15 @@ const KeyMetric = ({
 }) => {
   const classes = useStyles(props);
 
-  if (!(value && title)) {
+  if (!((valueProp || formattedValue) && title)) {
     return null;
   }
+  const value = formattedValue || valueProp;
+
   return (
     <div className={clsx(classes.root, className)}>
       <div className={classes.metric}>
-        <Typography variant="h3">{formattedValue || value}</Typography>
+        <Typography variant="h3">{value}</Typography>
         <Typography
           variant="caption"
           className={clsx(classes.text, classes.title)}

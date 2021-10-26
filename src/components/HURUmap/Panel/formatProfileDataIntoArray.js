@@ -30,6 +30,7 @@ export default function formatData(data, parent) {
               },
             };
           }),
+          metrics: data[label]?.subcategories[child]?.key_metrics ?? [],
         };
       }),
     };
