@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -163,10 +164,12 @@ function MobileNavigation({
   mobileLogoProps,
   drawerLogoProps,
   socialLinks,
+  href,
   ...props
 }) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleClickOpen = (e) => {
     e?.preventDefault();
@@ -175,6 +178,11 @@ function MobileNavigation({
   const handleClose = (e) => {
     e?.preventDefault();
     setOpen(false);
+  };
+
+  const handleClickSearch = (code) => {
+    setOpen(false);
+    router.push(`${href}/${code}`);
   };
 
   return (
@@ -267,6 +275,7 @@ function MobileNavigation({
                       inputRoot: classes.searchInput,
                     }}
                     icon={SearchIcon}
+                    onClick={handleClickSearch}
                     {...props}
                   />
                 </Menu>
@@ -287,6 +296,7 @@ MobileNavigation.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
+  href: PropTypes.string,
   logoProps: PropTypes.shape({}),
   menuProps: PropTypes.arrayOf(PropTypes.shape({})),
   mobileLogoProps: PropTypes.shape({
@@ -301,6 +311,7 @@ MobileNavigation.propTypes = {
 
 MobileNavigation.defaultProps = {
   drawerLogoProps: undefined,
+  href: "/explore",
   logoProps: undefined,
   menuProps: undefined,
   mobileLogoProps: undefined,
