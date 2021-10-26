@@ -14,6 +14,10 @@ export const Default = Template.bind({});
 Default.args = {
   title: "Population by Age Group",
   geoCode: "KE",
+  profileNames: {
+    primary: "County A",
+    secondary: "County B",
+  },
   indicator: {
     id: 203,
     description:
@@ -105,11 +109,10 @@ Default.args = {
       },
       defaultType: "Value",
       disableToggle: false,
-      parent_label: "National Average",
+      show_parent: true,
     },
     parentName: "Kenya",
-
-    data: [
+    parentData: [
       {
         age: "15-19",
         race: "Black African",
@@ -2526,7 +2529,7 @@ Default.args = {
         language: "Sign language",
       },
     ],
-    parentData: [
+    data: [
       {
         age: "15-19",
         race: "Black African",

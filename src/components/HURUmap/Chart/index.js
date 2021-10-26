@@ -54,6 +54,8 @@ function Chart({
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  console.log(profileNames);
+
   const {
     id,
     description,
