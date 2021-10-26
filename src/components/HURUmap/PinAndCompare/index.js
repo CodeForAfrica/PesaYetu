@@ -1,6 +1,6 @@
 import { Box, IconButton, SvgIcon } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 import useStyles from "./useStyles";
 
@@ -14,28 +14,21 @@ function PinIcon(props) {
 
 function PinAndCompare({
   helperText,
+  isPinning,
+  onChange,
   onClose,
-  onOpen,
+  onClickPin,
   options,
   placeholder,
   ...props
 }) {
   const classes = useStyles(props);
-  const [open, setOpen] = useState(false);
-  const handleClick = () => setOpen((prev) => !prev);
-  const handleClose = (args) => {
-    setOpen(false);
-    if (onClose) {
-      onClose(args);
+  const handleClick = (e) => {
+    if (onClickPin) {
+      onClickPin(e);
     }
   };
-  const handleOpen = (args) => {
-    setOpen(true);
-    if (onOpen) {
-      onOpen(args);
-    }
-  };
-  const component = open ? PinIconSelected : PinIconDefault;
+  const component = isPinning ? PinIconSelected : PinIconDefault;
 
   return (
     <Box display="flex" alignItems="flex-end" className={classes.root}>
@@ -49,9 +42,10 @@ function PinAndCompare({
       </IconButton>
       <Select
         helperText={helperText}
-        onClose={handleClose}
-        onOpen={handleOpen}
-        open={open}
+        onClose={onClose}
+        onChange={onChange}
+        open={isPinning}
+        onOpen={handleClick}
         options={options}
         placeholder={placeholder}
         classes={{ select: classes.locationSelect }}
@@ -63,9 +57,11 @@ function PinAndCompare({
 PinAndCompare.propTypes = {
   helperText: PropTypes.string,
   icon: PropTypes.string,
+  isPinning: PropTypes.bool,
   onChange: PropTypes.func,
-  onOpen: PropTypes.func,
+  onClickPin: PropTypes.func,
   onClose: PropTypes.func,
+  onOpen: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
 };
@@ -73,7 +69,9 @@ PinAndCompare.propTypes = {
 PinAndCompare.defaultProps = {
   helperText: undefined,
   icon: undefined,
+  isPinning: undefined,
   onChange: undefined,
+  onClickPin: undefined,
   onClose: undefined,
   onOpen: undefined,
   options: undefined,
