@@ -96,12 +96,20 @@ function Input({
             {placeholder}
           </MenuItem>
         ) : null}
-        {options?.length &&
-          options.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
+        {options?.map((option) => {
+          const optionLabel = option?.label ?? option;
+          const optionValue = option?.value ?? option;
+          const optionDisabled = option?.disabled;
+          return (
+            <MenuItem
+              key={optionValue}
+              disabled={optionDisabled}
+              value={optionValue}
+            >
+              {optionLabel}
             </MenuItem>
-          ))}
+          );
+        })}
       </Select>
     </FormControl>
   );
