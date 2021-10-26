@@ -7,6 +7,8 @@ import XLSX from "xlsx";
 
 import useStyles from "./useStyles";
 
+import logo from "@/pesayetu/assets/logos/Group4462.svg";
+
 function Download({
   title,
   view: viewProp,
@@ -22,12 +24,44 @@ function Download({
     setView(viewProp);
   }, [viewProp]);
 
+  const setImageLayout = async (e, type) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const currentHeight = view.signal("height");
+    const newView = view;
+    newView?.signal("totalHeight", currentHeight + 160);
+    newView?.signal("chartTitle", title);
+    newView?.signal("chartSubtitle", "");
+    newView?.signal("chartSource", "");
+    newView?.signal("projectName", ["County Development", "Index Statistics"]);
+    newView?.signal("logoWidth", 60);
+    newView?.signal("logoUrl", logo);
+
+    if (type.toLowerCase() === "layout1") {
+      newView?.signal("titleY", 0);
+      newView?.signal("titleH", 40);
+      newView?.signal("titleGroupY", 0);
+      newView?.signal("sourceGroupY", currentHeight + 80);
+      newView?.signal("sourceGroupH", 40);
+      newView?.signal("sourceY", 60);
+    } else {
+      newView?.signal("titleY", 80);
+      newView?.signal("titleH", 40);
+      newView?.signal("titleGroupY", currentHeight + 80);
+      newView?.signal("sourceGroupY", 0);
+      newView?.signal("sourceGroupH", 40);
+      newView?.signal("sourceY", 40);
+    }
+
+    setView(newView);
+  };
+
   const handleImageDownload = async (e, type) => {
     e.preventDefault();
     e.stopPropagation();
 
     const imgType = type.toLowerCase();
-
     const url = await view.toImageURL(imgType);
     const link = document.createElement("a");
     link.download = `${title}.${imgType}`;
@@ -117,7 +151,12 @@ function Download({
       <Grid item container className={classes.row}>
         {["Layout1", "Layout2"].map((p) => (
           <Grid item xs={6} index={p} className={classes.button}>
-            <ButtonBase className={classes.text} onClick={() => {}}>
+            <ButtonBase
+              className={classes.text}
+              onClick={(e) => {
+                setImageLayout(e, p);
+              }}
+            >
               {p}
             </ButtonBase>
           </Grid>
@@ -147,6 +186,7 @@ Download.propTypes = {
   view: PropTypes.shape({
     toImageURL: PropTypes.func,
     data: PropTypes.func,
+    signal: PropTypes.func,
   }),
   disableToggle: PropTypes.bool,
   chartValue: PropTypes.oneOf(["Value", "Percentage"]),
