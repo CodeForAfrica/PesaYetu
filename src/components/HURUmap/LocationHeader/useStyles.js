@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     borderBottom: `solid 1px ${palette.divider}`,
+    paddingTop: typography.pxToRem(20),
   },
   titleContent: {
     display: "flex",
