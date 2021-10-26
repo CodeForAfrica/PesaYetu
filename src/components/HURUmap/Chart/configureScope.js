@@ -29,11 +29,11 @@ export default function configureScope(
         indicator?.data,
         indicator?.metadata,
         configuration,
-        indicator?.data,
+        secondaryIndicator?.data,
         showParent ? indicator?.parentData : [{}],
-        showParent ? indicator?.parentData : [{}],
+        showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
-        true
+        false
       );
       break;
     case "donut":
