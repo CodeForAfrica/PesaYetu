@@ -15,6 +15,7 @@ function PanelButtonGroup({ items, value, onChange, pins, ...props }) {
   const isPin = (current) => {
     return pins.includes(current);
   };
+
   if (!items?.length) {
     return null;
   }

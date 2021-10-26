@@ -97,7 +97,6 @@ function Layers({
   selectedBoundary,
   ...props
 }) {
-  console.log("BOOM", { isPinning, selectedBoundary, geography });
   const map = useMap();
   const groupRef = useRef();
   const classes = useStyles(props);
@@ -133,8 +132,6 @@ function Layers({
         );
         layer.on("mouseover", () => {
           geoStyles = isPinning ? secondaryGeoStyles : primaryGeoStyles;
-          const selected = feature?.properties?.selected;
-          console.log("HOVERV", { geoStyles, feature, layer, selected });
           layer.setStyle(
             feature?.properties?.selected
               ? geoStyles.selected.over
@@ -143,8 +140,6 @@ function Layers({
         });
         layer.on("mouseout", () => {
           geoStyles = isPinning ? secondaryGeoStyles : primaryGeoStyles;
-          const selected = feature?.properties?.selected;
-          console.log("HOVERT", { geoStyles, feature, layer, selected });
           layer.setStyle(
             feature?.properties?.selected
               ? geoStyles.selected.out

@@ -44,6 +44,11 @@ function DesktopPanel({
   const handleChange = (nextValue) => {
     if (isPin(nextValue)) {
       setPins(addOrRemovePin(pins, nextValue));
+      if (!isPinning) {
+        onClickPin();
+      } else {
+        onClickUnpin();
+      }
     }
     if (!nextValue) {
       setPins([]);
@@ -52,6 +57,7 @@ function DesktopPanel({
     setValue(nextValue);
   };
 
+  const open = !isPinning && !!value;
   return (
     <Drawer
       PaperProps={{ ref: paperRef }}
@@ -64,14 +70,14 @@ function DesktopPanel({
       }}
       variant="permanent"
       anchor="left"
-      open={!isPinning && !!value}
+      open={open}
     >
       {panelItems.map((item) => (
         <TabPanel
           key={item.value}
           name={item.value}
           selected={item.value}
-          value={value}
+          value={open ? value : undefined}
           classes={{ tabPanel: classes.tabPanel }}
         >
           <PanelItem item={item} onClickUnpin={onClickUnpin} {...props} />
@@ -80,11 +86,11 @@ function DesktopPanel({
       <PanelButtonGroup
         onChange={handleChange}
         items={panelItems}
-        value={value}
+        value={open ? value : undefined}
         pins={pins}
         classes={{
           root: clsx(classes.panelButtons, {
-            [classes.panelButtonsOpen]: !!value,
+            [classes.panelButtonsOpen]: open,
           }),
         }}
       />
