@@ -2,7 +2,7 @@ import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { forwardRef, Fragment } from "react";
+import React, { forwardRef, useState, Fragment } from "react";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
@@ -42,16 +42,59 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
 const Profile = forwardRef(function Profile(
   {
     categories,
+    dataNotAvailable,
+    isPinning,
+    locationCodes,
+    onClickPin,
     onClickUnpin,
+    onSelectLocation,
     primaryProfile,
     secondaryProfile,
-    dataNotAvailable,
     ...props
   },
   ref
 ) {
   const classes = useStyles(props);
+  const [options] = useState(() => {
+    const defaultOption = {
+      disabled: true,
+      label: "Select location",
+      value: null,
+    };
+    const { geography, geometries } = primaryProfile;
+    // siblings will be on the last element of the parents array.
+    const siblings = geometries?.parents?.slice(-1)?.[0];
+    const availableOptions =
+      siblings?.features
+        ?.filter(
+          ({ properties: { code } }) =>
+            code !== geography.code && locationCodes.includes(code)
+        )
+        ?.map(({ properties: { name: label, code: value } }) => ({
+          label,
+          value,
+        })) || [];
+    return [defaultOption, ...availableOptions];
+  });
   const { pinAndCompare } = hurumapArgs;
+
+  const handleClickPin = (e) => {
+    if (onClickPin) {
+      onClickPin(e);
+    }
+  };
+
+  const handleClose = (e) => {
+    // TODO(kilemensi): For some reason, e.target.value doesn't seem to work.
+    const code = e.nativeEvent?.target?.dataset?.value;
+    if (code) {
+      if (onSelectLocation) {
+        onSelectLocation({ code });
+      }
+    } else if (onClickUnpin) {
+      onClickUnpin();
+    }
+  };
 
   const handleClick = (profile) => {
     if (primaryProfile && secondaryProfile) {
@@ -63,6 +106,7 @@ const Profile = forwardRef(function Profile(
     }
     return undefined;
   };
+
   const getSecondaryIndicator = (
     categoryIndex,
     subcategoryIndex,
@@ -87,12 +131,18 @@ const Profile = forwardRef(function Profile(
           <LocationHeader
             variant="secondary"
             icon={Print}
-            onClick={handleClick(primaryProfile)}
+            onClick={handleClick(secondaryProfile)}
             title={secondaryProfile.geography?.name}
             {...secondaryProfile.geography}
           />
         ) : (
-          <PinAndCompare {...pinAndCompare} />
+          <PinAndCompare
+            {...pinAndCompare}
+            isPinning={isPinning}
+            onClose={handleClose}
+            onClickPin={handleClickPin}
+            options={options}
+          />
         )}
       </Hidden>
       {categories.map((category, categoryIndex) => (
@@ -155,11 +205,18 @@ Profile.propTypes = {
     })
   ),
   dataNotAvailable: PropTypes.string,
+  isPinning: PropTypes.bool,
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
+  onClickPin: PropTypes.func,
   onClickUnpin: PropTypes.func,
+  onSelectLocation: PropTypes.func,
   primaryProfile: PropTypes.shape({
     geography: PropTypes.shape({
       name: PropTypes.string,
       code: PropTypes.string,
+    }),
+    geometries: PropTypes.shape({
+      parents: PropTypes.arrayOf(PropTypes.shape({})),
     }),
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -191,7 +248,11 @@ Profile.propTypes = {
 Profile.defaultProps = {
   categories: undefined,
   dataNotAvailable: undefined,
+  isPinning: undefined,
+  locationCodes: undefined,
+  onClickPin: undefined,
   onClickUnpin: undefined,
+  onSelectLocation: undefined,
   primaryProfile: undefined,
   secondaryProfile: undefined,
 };
