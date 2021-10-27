@@ -75,11 +75,21 @@ export async function getStaticProps({ preview, previewData, params }) {
   const { locationCodes, preferredChildren } =
     await fetchProfileConfigurations();
   const [originalCode] = params?.slug || [""];
-  const code = originalCode.toLowerCase();
+  const code = originalCode.trim().toLowerCase();
   const [primaryCode, secondaryCode] = originalCode
     .split("-vs-")
     .map((c) => c.trim().toLowerCase())
     .filter((c) => c);
+
+  // /explore -> /explore/ke
+  if (!code) {
+    return {
+      redirect: {
+        destination: `/explore/ke`,
+        permanent: true,
+      },
+    };
+  }
 
   if (
     !(
