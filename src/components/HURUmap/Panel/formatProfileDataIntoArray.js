@@ -20,9 +20,9 @@ export default function formatProfileDataIntoArray(data, parent) {
               index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
               title: indicator,
               indicator: {
-                ...data[label]?.subcategories[child]?.indicators[indicator],
+                ...data[label]?.subcategories?.[child]?.indicators?.[indicator],
                 parentData: parent.data
-                  ? parent?.data[label]?.subcategories[child]?.indicators[
+                  ? parent?.data?.[label]?.subcategories?.[child]?.indicators?.[
                       indicator
                     ]?.data ?? null
                   : null,
