@@ -113,7 +113,7 @@ export default function Signals(
     },
     {
       name: "totalHeight",
-      update: "height + 160",
+      update: "height",
     },
     {
       name: "interpolate",

@@ -16,6 +16,8 @@ function Download({
   handleChartValueChange,
   disableToggle,
   spec,
+  source,
+  height,
   ...props
 }) {
   const classes = useStyles(props);
@@ -37,11 +39,11 @@ function Download({
     e.preventDefault();
     e.stopPropagation();
 
-    const currentHeight = view.signal("height");
-    view?.signal("totalHeight", currentHeight + 160);
+    const totalHeight = height + 240; // chartHeight + extra space for legends, logo + title;
+    view?.signal("totalHeight", totalHeight);
     view?.signal("chartTitle", title);
     view?.signal("chartSubtitle", "");
-    view?.signal("chartSource", "");
+    view?.signal("chartSource", source ? `Source: ${source}` : "");
     view?.signal("projectName", ["County Development", "Index Statistics"]);
     view?.signal("logoWidth", 60);
     view?.signal("logoUrl", logo);
@@ -50,16 +52,16 @@ function Download({
       view?.signal("titleY", 0);
       view?.signal("titleH", 40);
       view?.signal("titleGroupY", 0);
-      view?.signal("sourceGroupY", currentHeight + 80);
+      view?.signal("sourceGroupY", totalHeight - 100);
       view?.signal("sourceGroupH", 40);
-      view?.signal("sourceY", 60);
+      view?.signal("sourceY", 0);
     } else {
-      view?.signal("titleY", 80);
-      view?.signal("titleH", 40);
-      view?.signal("titleGroupY", currentHeight + 80);
-      view?.signal("sourceGroupY", 0);
-      view?.signal("sourceGroupH", 40);
-      view?.signal("sourceY", 40);
+      view?.signal("titleY", 40);
+      view?.signal("titleH", 50);
+      view?.signal("titleGroupY", totalHeight - 100);
+      view?.signal("sourceGroupY", 1);
+      view?.signal("sourceGroupH", 60);
+      view?.signal("sourceY", 30);
     }
     await view?.runAsync();
 
@@ -196,6 +198,8 @@ Download.propTypes = {
   disableToggle: PropTypes.bool,
   chartValue: PropTypes.oneOf(["Value", "Percentage"]),
   handleChartValueChange: PropTypes.func,
+  height: PropTypes.number,
+  source: PropTypes.string,
 };
 
 Download.defaultProps = {
@@ -204,6 +208,8 @@ Download.defaultProps = {
   disableToggle: false,
   chartValue: undefined,
   handleChartValueChange: undefined,
+  height: 450,
+  source: undefined,
 };
 
 export default Download;

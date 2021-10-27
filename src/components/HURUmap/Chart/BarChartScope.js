@@ -310,7 +310,6 @@ export default function BarChartScope(
           encode: {
             update: {
               x: { signal: "(width / 2 ) + 30" },
-              y: { signal: "titleH" },
               height: { signal: "height" },
             },
           },

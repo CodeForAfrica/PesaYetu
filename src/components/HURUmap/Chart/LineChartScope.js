@@ -306,7 +306,9 @@ export default function LineChartScope(
             update: {
               x: { signal: "width / 2 + 30" },
               y: { signal: "titleH" },
-              height: { signal: "height" },
+              height: {
+                signal: "data('secondary_formatted').length > 1 ? height : 0",
+              },
             },
           },
           legends: isCompare

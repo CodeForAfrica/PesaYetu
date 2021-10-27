@@ -164,7 +164,6 @@ function Chart({
   if (!indicator?.data) {
     return null;
   }
-
   return (
     <div className={classes.root} id={`chart-${id}-${geoCode}`}>
       <IndicatorTitle
@@ -177,6 +176,8 @@ function Chart({
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
         spec={cSpec}
+        height={view?.height()}
+        source={source}
       />
       {!isMobile && (
         <Filters
