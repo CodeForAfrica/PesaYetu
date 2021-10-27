@@ -1,11 +1,11 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
 import mapLines from "@/pesayetu/assets/images/Mask Group -1.jpg";
 import Header from "@/pesayetu/components/Header";
+import Image from "@/pesayetu/components/Image";
 import Section from "@/pesayetu/components/Section";
 import useProgressiveImage from "@/pesayetu/utils/useProgressiveImage";
 
@@ -127,13 +127,14 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
 
 function OtherHero({
   accentImage,
-  image: imageProps,
+  accentImageProps,
+  image: imageProp,
   overline,
   subtitle,
   title,
   ...props
 }) {
-  const image = useProgressiveImage(imageProps);
+  const image = useProgressiveImage(imageProp);
   const classes = useStyles({ image, ...props });
 
   if (!title?.length) {
@@ -188,6 +189,7 @@ function OtherHero({
               layout="intrinsic"
               className={classes.accentImage}
               src={accentImage}
+              {...accentImageProps}
               alt=""
             />
           </Grid>
@@ -199,6 +201,7 @@ function OtherHero({
 
 OtherHero.propTypes = {
   accentImage: PropTypes.string,
+  accentImageProps: PropTypes.shape({}),
   image: PropTypes.string,
   overline: PropTypes.string,
   subtitle: PropTypes.string,
@@ -207,6 +210,7 @@ OtherHero.propTypes = {
 
 OtherHero.defaultProps = {
   accentImage: undefined,
+  accentImageProps: undefined,
   image: undefined,
   overline: undefined,
   subtitle: undefined,

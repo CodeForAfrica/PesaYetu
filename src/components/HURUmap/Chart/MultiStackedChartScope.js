@@ -1,4 +1,4 @@
-import { defaultConfig, xAxis, commonSignal } from "./properties";
+import { defaultConfig, commonSignal } from "./properties";
 import { createFiltersForGroups } from "./utils";
 
 import theme from "@/pesayetu/theme";
@@ -18,7 +18,6 @@ export default function MultiStackedChartScope(
   profileNames
 ) {
   const {
-    xTicks,
     defaultType,
     types: {
       Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
@@ -32,10 +31,6 @@ export default function MultiStackedChartScope(
   } = config;
 
   const { primary_group: primaryGroup } = metadata;
-
-  if (xTicks) {
-    xAxis.tickCount = xTicks;
-  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(
     metadata.groups

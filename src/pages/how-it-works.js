@@ -63,7 +63,7 @@ export async function getStaticProps({ preview, previewData }) {
     };
   }
 
-  const blocks = formatBlocksForSections(props?.post?.blocks);
+  const blocks = await formatBlocksForSections(props?.post?.blocks);
 
   return {
     props: {

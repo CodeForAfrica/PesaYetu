@@ -17,7 +17,14 @@ export default function configureScope(
   secondaryIndicator,
   profileNames
 ) {
-  const configuration = indicator?.chart_configuration;
+  const configuration = {
+    ...indicator?.chart_configuration,
+    parentLabel: indicator?.parentName
+      ? `${indicator?.parentName} data`
+      : undefined,
+  };
+
+  const showParent = configuration?.show_parent ?? false;
 
   let vegaSpec;
   const chartType = configuration?.chart_type?.toLowerCase();
@@ -75,7 +82,8 @@ export default function configureScope(
         vegaSpec = LineChartScope(
           indicator?.data,
           indicator?.metadata,
-          configuration
+          configuration,
+          showParent ? indicator?.parentData : [{}]
         );
         break;
       case "donut":
@@ -97,13 +105,15 @@ export default function configureScope(
           vegaSpec = VerticalStackedChartScope(
             indicator?.data,
             indicator?.metadata,
-            configuration
+            configuration,
+            showParent ? indicator?.parentData : [{}]
           );
         } else {
           vegaSpec = StackedChartScope(
             indicator?.data,
             indicator?.metadata,
-            configuration
+            configuration,
+            showParent ? indicator?.parentData : [{}]
           );
         }
         break;
@@ -112,13 +122,15 @@ export default function configureScope(
           vegaSpec = VerticalBarChartScope(
             indicator?.data,
             indicator?.metadata,
-            configuration
+            configuration,
+            showParent ? indicator?.parentData : [{}]
           );
         } else {
           vegaSpec = BarChartScope(
             indicator?.data,
             indicator?.metadata,
-            configuration
+            configuration,
+            showParent ? indicator?.parentData : [{}]
           );
         }
         break;

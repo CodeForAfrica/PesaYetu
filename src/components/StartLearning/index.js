@@ -33,6 +33,7 @@ const useStyles = makeStyles(({ typography }) => ({
 
 const StartLearning = ({ ctaText, href, title, subtitle, ...props }) => {
   const classes = useStyles(props);
+
   return (
     <div className={classes.root}>
       <Section classes={{ root: classes.section }}>

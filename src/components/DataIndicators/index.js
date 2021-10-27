@@ -7,7 +7,6 @@ import {
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -17,6 +16,7 @@ import useStyles from "./useStyles";
 
 import bg from "@/pesayetu/assets/images/Mask Group 8.png";
 import Header from "@/pesayetu/components/Header";
+import Image from "@/pesayetu/components/Image";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" timeout={300} ref={ref} {...props} />;

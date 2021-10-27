@@ -41,7 +41,7 @@ function Input({
       onChange(event);
     }
   };
-  const label = labelProp ? uniqueId(`${labelProp}_`) : undefined;
+  const labelId = labelProp ? uniqueId(`${labelProp}_`) : undefined;
 
   return (
     <FormControl
@@ -53,15 +53,15 @@ function Input({
       {helperText ? (
         <FormHelperText className={classes.helper}>{helperText}</FormHelperText>
       ) : null}
-      {label ? (
-        <InputLabel htmlFor={label} shrink className={classes.inputLabel}>
+      {labelId ? (
+        <InputLabel htmlFor={labelId} shrink className={classes.inputLabel}>
           <Typography variant="caption" className={classes.label}>
-            {label}
+            {labelProp}
           </Typography>
         </InputLabel>
       ) : null}
       <Select
-        labelId={label}
+        labelId={labelId}
         displayEmpty
         disableUnderline
         onChange={handleChange}
