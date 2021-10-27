@@ -11,7 +11,9 @@ const KeyMetric = ({
   value: valueProp,
   title,
   color,
-  description,
+  description: descriptionProp,
+  parentName,
+  parentFormattedValue,
   ...props
 }) => {
   const classes = useStyles(props);
@@ -20,6 +22,10 @@ const KeyMetric = ({
     return null;
   }
   const value = formattedValue || valueProp;
+  const description =
+    descriptionProp || parentFormattedValue
+      ? `${parentFormattedValue} ${parentName}`
+      : undefined;
 
   return (
     <div className={clsx(classes.root, className)}>
@@ -60,6 +66,8 @@ KeyMetric.propTypes = {
   formattedValue: PropTypes.string,
   title: PropTypes.string,
   value: PropTypes.number,
+  parentName: PropTypes.string,
+  parentFormattedValue: PropTypes.string,
 };
 
 KeyMetric.defaultProps = {
@@ -69,6 +77,8 @@ KeyMetric.defaultProps = {
   formattedValue: undefined,
   title: undefined,
   value: undefined,
+  parentName: undefined,
+  parentFormattedValue: undefined,
 };
 
 export default KeyMetric;
