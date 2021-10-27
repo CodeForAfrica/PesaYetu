@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Papa from "papaparse";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
+import * as vega from "vega";
 import XLSX from "xlsx";
 
 import useStyles from "./useStyles";
@@ -11,55 +12,56 @@ import logo from "@/pesayetu/assets/logos/Group4462.svg";
 
 function Download({
   title,
-  view: viewProp,
   chartValue,
   handleChartValueChange,
   disableToggle,
+  spec,
   ...props
 }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
+  const [layout, setLayout] = useState("Layout1");
 
   useEffect(() => {
+    const viewProp = new vega.View(vega.parse(spec), { renderer: "none" });
     setView(viewProp);
-  }, [viewProp]);
+  }, [spec]);
 
   const setImageLayout = async (e, type) => {
     e.preventDefault();
     e.stopPropagation();
-
-    const currentHeight = view.signal("height");
-    const newView = view;
-    newView?.signal("totalHeight", currentHeight + 160);
-    newView?.signal("chartTitle", title);
-    newView?.signal("chartSubtitle", "");
-    newView?.signal("chartSource", "");
-    newView?.signal("projectName", ["County Development", "Index Statistics"]);
-    newView?.signal("logoWidth", 60);
-    newView?.signal("logoUrl", logo);
-
-    if (type.toLowerCase() === "layout1") {
-      newView?.signal("titleY", 0);
-      newView?.signal("titleH", 40);
-      newView?.signal("titleGroupY", 0);
-      newView?.signal("sourceGroupY", currentHeight + 80);
-      newView?.signal("sourceGroupH", 40);
-      newView?.signal("sourceY", 60);
-    } else {
-      newView?.signal("titleY", 80);
-      newView?.signal("titleH", 40);
-      newView?.signal("titleGroupY", currentHeight + 80);
-      newView?.signal("sourceGroupY", 0);
-      newView?.signal("sourceGroupH", 40);
-      newView?.signal("sourceY", 40);
-    }
-
-    setView(newView);
+    setLayout(type);
   };
 
   const handleImageDownload = async (e, type) => {
     e.preventDefault();
     e.stopPropagation();
+
+    const currentHeight = view.signal("height");
+    view?.signal("totalHeight", currentHeight + 160);
+    view?.signal("chartTitle", title);
+    view?.signal("chartSubtitle", "");
+    view?.signal("chartSource", "");
+    view?.signal("projectName", ["County Development", "Index Statistics"]);
+    view?.signal("logoWidth", 60);
+    view?.signal("logoUrl", logo);
+
+    if (layout.toLowerCase() === "layout1") {
+      view?.signal("titleY", 0);
+      view?.signal("titleH", 40);
+      view?.signal("titleGroupY", 0);
+      view?.signal("sourceGroupY", currentHeight + 80);
+      view?.signal("sourceGroupH", 40);
+      view?.signal("sourceY", 60);
+    } else {
+      view?.signal("titleY", 80);
+      view?.signal("titleH", 40);
+      view?.signal("titleGroupY", currentHeight + 80);
+      view?.signal("sourceGroupY", 0);
+      view?.signal("sourceGroupH", 40);
+      view?.signal("sourceY", 40);
+    }
+    await view?.runAsync();
 
     const imgType = type.toLowerCase();
     const url = await view.toImageURL(imgType);
@@ -150,7 +152,14 @@ function Download({
       </Grid>
       <Grid item container className={classes.row}>
         {["Layout1", "Layout2"].map((p) => (
-          <Grid item xs={6} index={p} className={classes.button}>
+          <Grid
+            item
+            xs={6}
+            index={p}
+            className={clsx(classes.button, {
+              [classes.activeButton]: layout === p,
+            })}
+          >
             <ButtonBase
               className={classes.text}
               onClick={(e) => {
@@ -183,11 +192,7 @@ function Download({
 
 Download.propTypes = {
   title: PropTypes.string,
-  view: PropTypes.shape({
-    toImageURL: PropTypes.func,
-    data: PropTypes.func,
-    signal: PropTypes.func,
-  }),
+  spec: PropTypes.shape({}),
   disableToggle: PropTypes.bool,
   chartValue: PropTypes.oneOf(["Value", "Percentage"]),
   handleChartValueChange: PropTypes.func,
@@ -195,7 +200,7 @@ Download.propTypes = {
 
 Download.defaultProps = {
   title: undefined,
-  view: undefined,
+  spec: undefined,
   disableToggle: false,
   chartValue: undefined,
   handleChartValueChange: undefined,

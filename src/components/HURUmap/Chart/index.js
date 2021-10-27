@@ -51,10 +51,9 @@ function Chart({
   const classes = useStyles(props);
   const chartRef = useRef();
   const [view, setView] = useState(null);
+  const [cSpec, setCSpec] = useState(null);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  console.log(profileNames);
 
   const {
     id,
@@ -131,6 +130,7 @@ function Chart({
         secondaryIndicator,
         profileNames
       );
+      setCSpec(spec);
       if (chartRef?.current) {
         const newView = await embed(chartRef.current, spec, {
           renderer: "canvas",
@@ -176,6 +176,7 @@ function Chart({
         disableToggle={disableToggle}
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
+        spec={cSpec}
       />
       {!isMobile && (
         <Filters

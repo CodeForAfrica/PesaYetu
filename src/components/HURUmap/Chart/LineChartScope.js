@@ -235,8 +235,11 @@ export default function LineChartScope(
                   {
                     fill: "parent_color_scale",
                     orient: "none",
-                    legendX: { value: 130 },
-                    legendY: { value: -35 },
+                    legendX: {
+                      signal:
+                        "data('secondary_formatted').length > 1 ? (width / 2 ) - 90 : width - 90",
+                    },
+                    legendY: { value: -40 },
                     labelFont: theme.typography.fontFamily,
                     labelColor: theme.palette.chart.text.primary,
                     encode: {
@@ -400,14 +403,14 @@ export default function LineChartScope(
             },
           },
           legends:
-            primaryParentData?.length > 1
+            secondaryParentData?.length > 1
               ? [
                   {
                     fill: "parent_color_scale",
                     offset: 20,
                     orient: "none",
-                    legendX: { value: 130 },
-                    legendY: { value: -35 },
+                    legendX: { signal: "(width / 2 ) - 120" },
+                    legendY: { value: -40 },
                     labelFont: theme.typography.fontFamily,
                     labelColor: theme.palette.chart.text.primary,
                     encode: {
