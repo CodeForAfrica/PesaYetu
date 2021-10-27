@@ -1,5 +1,6 @@
 import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React, { forwardRef, Fragment } from "react";
@@ -37,10 +38,29 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
       zIndex: zIndex.drawer,
     },
   },
+  metricRow: {
+    marginBottom: typography.pxToRem(8),
+    [breakpoints.up("lg")]: {
+      marginBottom: typography.pxToRem(14),
+    },
+  },
+  metric: {
+    width: "100%",
+    [breakpoints.up("md")]: {
+      width: typography.pxToRem(374),
+    },
+  },
 }));
 
 const Profile = forwardRef(function Profile(
-  { categories, primaryProfile, secondaryProfile, dataNotAvailable, ...props },
+  {
+    categories,
+    primaryProfile,
+    secondaryProfile,
+    dataNotAvailable,
+    isCompare,
+    ...props
+  },
   ref
 ) {
   const classes = useStyles(props);
@@ -54,6 +74,14 @@ const Profile = forwardRef(function Profile(
     const indicator = subCategory?.children?.[indicatorIndex];
     return indicator;
   };
+
+  const getSecondaryMetric = (categoryIndex, subcategoryIndex, metricIndex) => {
+    const category = secondaryProfile?.items?.[categoryIndex];
+    const subCategory = category?.children?.[subcategoryIndex];
+    const metric = subCategory?.metrics?.[metricIndex];
+    return metric;
+  };
+
   return (
     <div className={classes.profile} ref={ref}>
       <LocationHeader
@@ -112,13 +140,45 @@ const Profile = forwardRef(function Profile(
                   }}
                 />
               ))}
-              {child?.metrics?.map(({ label, ...other }) => (
-                <KeyMetric
-                  key={label}
-                  title={label}
-                  formattedValue={formatNumericalValue(other)}
-                />
-              ))}
+              {child?.metrics?.map(
+                ({ label, parentMetric, ...other }, metricIndex) => {
+                  const secondaryMetric = getSecondaryMetric(
+                    categoryIndex,
+                    subcategoryIndex,
+                    metricIndex
+                  );
+                  return (
+                    <div key={label} className={classes.metricRow}>
+                      <KeyMetric
+                        title={label}
+                        formattedValue={formatNumericalValue(other)}
+                        parentFormattedValue={
+                          parentMetric
+                            ? formatNumericalValue(parentMetric)
+                            : undefined
+                        }
+                        {...other}
+                        className={clsx({ [classes.metric]: isCompare })}
+                      />
+                      {secondaryMetric && (
+                        <KeyMetric
+                          title={secondaryMetric?.label ?? undefined}
+                          formattedValue={formatNumericalValue(
+                            secondaryMetric?.value,
+                            secondaryMetric?.method
+                          )}
+                          parentFormattedValue={
+                            parentMetric
+                              ? formatNumericalValue(parentMetric)
+                              : undefined
+                          }
+                          color="secondary"
+                        />
+                      )}
+                    </div>
+                  );
+                }
+              )}
             </Fragment>
           ))}
         </Fragment>
@@ -167,12 +227,14 @@ Profile.propTypes = {
     ),
   }),
   dataNotAvailable: PropTypes.string,
+  isCompare: PropTypes.bool,
 };
 Profile.defaultProps = {
   categories: undefined,
   primaryProfile: undefined,
   secondaryProfile: undefined,
   dataNotAvailable: undefined,
+  isCompare: false,
 };
 
 export default Profile;
