@@ -39,6 +39,28 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   },
 }));
 
+function computeOptions(primaryProfile, locationCodes) {
+  const defaultOption = {
+    disabled: true,
+    label: "Select location",
+    value: null,
+  };
+  const { geography, geometries } = primaryProfile;
+  // siblings will be on the last element of the parents array.
+  const siblings = geometries?.parents?.slice(-1)?.[0];
+  const availableOptions =
+    siblings?.features
+      ?.filter(
+        ({ properties: { code } }) =>
+          code !== geography.code && locationCodes.includes(code)
+      )
+      ?.map(({ properties: { name: label, code: value } }) => ({
+        label,
+        value,
+      })) || [];
+  return [defaultOption, ...availableOptions];
+}
+
 const Profile = forwardRef(function Profile(
   {
     categories,
@@ -55,28 +77,8 @@ const Profile = forwardRef(function Profile(
   ref
 ) {
   const classes = useStyles(props);
-  const [options] = useState(() => {
-    const defaultOption = {
-      disabled: true,
-      label: "Select location",
-      value: null,
-    };
-    const { geography, geometries } = primaryProfile;
-    // siblings will be on the last element of the parents array.
-    const siblings = geometries?.parents?.slice(-1)?.[0];
-    const availableOptions =
-      siblings?.features
-        ?.filter(
-          ({ properties: { code } }) =>
-            code !== geography.code && locationCodes.includes(code)
-        )
-        ?.map(({ properties: { name: label, code: value } }) => ({
-          label,
-          value,
-        })) || [];
-    return [defaultOption, ...availableOptions];
-  });
   const { pinAndCompare } = hurumapArgs;
+  const [options] = useState(computeOptions(primaryProfile, locationCodes));
 
   const handleClickPin = (e) => {
     if (onClickPin) {
