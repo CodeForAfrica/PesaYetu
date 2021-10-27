@@ -1,6 +1,6 @@
 import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
 
-export default function formatData(data, parent) {
+export default function formatProfileDataIntoArray(data, parent) {
   if (!data) {
     return null;
   }
