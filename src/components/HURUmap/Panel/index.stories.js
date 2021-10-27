@@ -2,7 +2,9 @@ import React from "react";
 
 import Panel from ".";
 
-import { panelArgs } from "@/pesayetu/config";
+import { hurumapArgs, panelArgs } from "@/pesayetu/config";
+
+const { locationCodes } = hurumapArgs;
 
 export default {
   title: "Components/HURUmap/Panel",
@@ -13,4 +15,7 @@ const Template = ({ ...args }) => <Panel {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = panelArgs;
+Default.args = {
+  locationCodes,
+  ...panelArgs,
+};
