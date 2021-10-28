@@ -1,13 +1,16 @@
 import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React, { forwardRef, Fragment } from "react";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
+import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
+import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
 import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
@@ -35,6 +38,21 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
       zIndex: zIndex.drawer,
     },
   },
+  metricRow: {
+    display: "flex",
+    marginBottom: typography.pxToRem(8),
+    [breakpoints.up("lg")]: {
+      marginBottom: typography.pxToRem(14),
+    },
+    "&:first-child": {},
+  },
+  metric: {
+    width: "100%",
+    [breakpoints.up("md")]: {
+      marginRight: typography.pxToRem(18),
+      maxWidth: "50%",
+    },
+  },
 }));
 
 const Profile = forwardRef(function Profile(
@@ -52,6 +70,14 @@ const Profile = forwardRef(function Profile(
     const indicator = subCategory?.children?.[indicatorIndex];
     return indicator;
   };
+
+  const getSecondaryMetric = (categoryIndex, subcategoryIndex, metricIndex) => {
+    const category = secondaryProfile?.items?.[categoryIndex];
+    const subCategory = category?.children?.[subcategoryIndex];
+    const metric = subCategory?.metrics?.[metricIndex];
+    return metric;
+  };
+
   return (
     <div className={classes.profile} ref={ref}>
       <LocationHeader
@@ -110,6 +136,50 @@ const Profile = forwardRef(function Profile(
                   }}
                 />
               ))}
+              {child?.metrics?.map(
+                ({ label, parentMetric, ...other }, metricIndex) => {
+                  const secondaryMetric = getSecondaryMetric(
+                    categoryIndex,
+                    subcategoryIndex,
+                    metricIndex
+                  );
+                  return (
+                    <div key={label} className={classes.metricRow}>
+                      <KeyMetric
+                        title={label}
+                        formattedValue={formatNumericalValue(other)}
+                        parentFormattedValue={
+                          parentMetric
+                            ? formatNumericalValue(parentMetric)
+                            : undefined
+                        }
+                        {...other}
+                        color="primary"
+                        className={clsx({ [classes.metric]: secondaryProfile })}
+                      />
+                      {secondaryMetric && (
+                        <KeyMetric
+                          title={secondaryMetric?.label ?? undefined}
+                          formattedValue={formatNumericalValue({
+                            value: secondaryMetric?.value,
+                            method: secondaryMetric?.method,
+                          })}
+                          parentFormattedValue={
+                            parentMetric
+                              ? formatNumericalValue(parentMetric)
+                              : undefined
+                          }
+                          color="secondary"
+                          {...secondaryMetric}
+                          className={clsx({
+                            [classes.metric]: secondaryProfile,
+                          })}
+                        />
+                      )}
+                    </div>
+                  );
+                }
+              )}
             </Fragment>
           ))}
         </Fragment>

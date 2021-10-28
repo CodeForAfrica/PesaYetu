@@ -1,8 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   root: {
-    maxWidth: typography.pxToRem(374),
+    width: "100%",
+    marginBottom: typography.pxToRem(20),
+    [breakpoints.up("md")]: {
+      width: typography.pxToRem(240),
+    },
   },
   metric: {
     backgroundColor: palette.background.paper,
