@@ -11,7 +11,7 @@ const KeyMetric = ({
   value: valueProp,
   title,
   color,
-  description: descriptionProp,
+  description,
   parentName,
   parentFormattedValue,
   ...props
@@ -22,8 +22,8 @@ const KeyMetric = ({
     return null;
   }
   const value = formattedValue || valueProp;
-  const description =
-    descriptionProp || parentFormattedValue
+  const parentValue =
+    description || parentFormattedValue
       ? `${parentFormattedValue} ${parentName}`
       : undefined;
 
@@ -42,17 +42,17 @@ const KeyMetric = ({
             root: classes.progressBar,
             determinate: classes.progressBarDeterminate,
           }}
-          value={value}
+          value={parseFloat(value.replace(",", ""))}
           color={color}
           variant="determinate"
         />
       </div>
-      {description && (
+      {parentValue && (
         <Typography
           variant="caption"
           className={clsx(classes.text, classes.description)}
         >
-          {description}
+          {parentValue}
         </Typography>
       )}
     </div>

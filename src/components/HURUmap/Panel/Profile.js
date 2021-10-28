@@ -39,28 +39,24 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
     },
   },
   metricRow: {
+    display: "flex",
     marginBottom: typography.pxToRem(8),
     [breakpoints.up("lg")]: {
       marginBottom: typography.pxToRem(14),
     },
+    "&:first-child": {},
   },
   metric: {
     width: "100%",
     [breakpoints.up("md")]: {
-      width: typography.pxToRem(374),
+      marginRight: typography.pxToRem(18),
+      maxWidth: "50%",
     },
   },
 }));
 
 const Profile = forwardRef(function Profile(
-  {
-    categories,
-    primaryProfile,
-    secondaryProfile,
-    dataNotAvailable,
-    isCompare,
-    ...props
-  },
+  { categories, primaryProfile, secondaryProfile, dataNotAvailable, ...props },
   ref
 ) {
   const classes = useStyles(props);
@@ -158,21 +154,26 @@ const Profile = forwardRef(function Profile(
                             : undefined
                         }
                         {...other}
-                        className={clsx({ [classes.metric]: isCompare })}
+                        color="primary"
+                        className={clsx({ [classes.metric]: secondaryProfile })}
                       />
                       {secondaryMetric && (
                         <KeyMetric
                           title={secondaryMetric?.label ?? undefined}
-                          formattedValue={formatNumericalValue(
-                            secondaryMetric?.value,
-                            secondaryMetric?.method
-                          )}
+                          formattedValue={formatNumericalValue({
+                            value: secondaryMetric?.value,
+                            method: secondaryMetric?.method,
+                          })}
                           parentFormattedValue={
                             parentMetric
                               ? formatNumericalValue(parentMetric)
                               : undefined
                           }
                           color="secondary"
+                          {...secondaryMetric}
+                          className={clsx({
+                            [classes.metric]: secondaryProfile,
+                          })}
                         />
                       )}
                     </div>
@@ -227,14 +228,12 @@ Profile.propTypes = {
     ),
   }),
   dataNotAvailable: PropTypes.string,
-  isCompare: PropTypes.bool,
 };
 Profile.defaultProps = {
   categories: undefined,
   primaryProfile: undefined,
   secondaryProfile: undefined,
   dataNotAvailable: undefined,
-  isCompare: false,
 };
 
 export default Profile;
