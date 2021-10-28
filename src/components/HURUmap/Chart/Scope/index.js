@@ -12,7 +12,8 @@ export default function Scope(
   secondaryData,
   primaryParentData,
   secondaryParentData,
-  chartType
+  chartType,
+  transform = []
 ) {
   const { primary_group: primaryGroup, groups } = metadata;
 
@@ -27,8 +28,9 @@ export default function Scope(
     width: { signal: "width" },
     height: { signal: "totalHeight" },
     data: [
-      ...data("primary", primaryData, filters),
+      ...data("primary", primaryData, filters, transform),
       ...data("primary_parent", primaryParentData, filters, [
+        ...transform,
         {
           type: "lookup",
           from: "primary_formatted",
@@ -37,8 +39,9 @@ export default function Scope(
           as: ["primary"],
         },
       ]),
-      ...data("secondary", secondaryData, filters),
+      ...data("secondary", secondaryData, filters, transform),
       ...data("secondary_parent", secondaryParentData, filters, [
+        ...transform,
         {
           type: "lookup",
           from: "secondary_formatted",
@@ -147,8 +150,8 @@ export default function Scope(
               enter: {
                 x: { value: 0 },
                 x2: { signal: "sourceGroupY > 0 ? width: 0" },
-                y: { signal: "sourceY > 0 ? sourceY + 40: 0" },
-                y2: { signal: "sourceY > 0 ? sourceY + 40: 0" },
+                y: { signal: "sourceGroupY > 50 ? 0 : sourceGroupH" },
+                y2: { signal: "sourceGroupY > 50 ? 0 : sourceGroupH" },
                 stroke: { value: theme.palette.chart.text.primary },
                 strokeWidth: { value: 2 },
                 strokeOpacity: { signal: "sourceGroupY > 50 ? 0.1: 1" },
@@ -165,7 +168,7 @@ export default function Scope(
               update: {
                 opacity: { value: 1 },
                 x: { signal: "sourceX" },
-                y: { signal: "sourceGroupY > 50 ? sourceY + 20 : sourceY" },
+                y: { signal: "sourceY" },
                 fontSize: { signal: "sourceFontSize" },
                 fontWeight: { signal: "sourceFontWeight" },
               },
@@ -179,7 +182,7 @@ export default function Scope(
               },
               update: {
                 x: { signal: "logoX" },
-                y: { signal: "sourceGroupY > 50 ? sourceY: 0" },
+                y: { signal: "sourceY - 15" },
                 width: { signal: "logoWidth" },
                 aspect: { signal: "logoAspect" },
               },

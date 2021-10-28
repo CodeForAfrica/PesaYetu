@@ -288,42 +288,111 @@ export default function MultiDonutChartScope(
 
     marks: [
       {
-        type: "arc",
-        from: { data: "primary_formatted" },
+        type: "group",
+        name: "primary_pie",
         encode: {
-          enter: {
-            fill: { scale: "color", field: { signal: "mainGroup" } },
-            x: { signal: "width / 4 - 60" },
-            y: { signal: "height / 2" },
-          },
           update: {
-            startAngle: { field: "startAngle" },
-            endAngle: { field: "endAngle" },
-            padAngle: { signal: "padAngle" },
-            innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "width / 8" },
-            cornerRadius: { signal: "cornerRadius" },
+            x: { value: 0 },
+            y: { signal: "chartY" },
+            height: { signal: "height" },
+            width: {
+              signal:
+                "data('secondary_formatted').length > 1 ? (width / 2 ) : width",
+            },
           },
         },
+        legends: [
+          {
+            fill: "color",
+            stroke: "color",
+            title: profileNames.primary.toUpperCase(),
+            titleFontWeight: "bold",
+            titleColor: "#666",
+            titleFont: theme.typography.fontFamily,
+            orient: "none",
+            symbolType: "circle",
+            direction: "vertical",
+            labelFont: theme.typography.fontFamily,
+            legendX: { signal: "width / 4 +60" },
+            legendY: 40,
+            labelOffset: 12,
+            rowPadding: 8,
+            encode: {
+              labels: {
+                interactive: true,
+                update: {
+                  fontSize: { value: 11 },
+                  fill: { value: theme.palette.chart.text.primary },
+                },
+              },
+              symbols: {
+                enter: {
+                  fillOpacity: {
+                    value: 1,
+                  },
+                },
+              },
+            },
+          },
+        ],
+        marks: [
+          {
+            type: "arc",
+            from: { data: "primary_formatted" },
+            encode: {
+              enter: {
+                fill: { scale: "color", field: { signal: "mainGroup" } },
+                x: { signal: "width / 4 - 60" },
+                y: { signal: "height / 2" },
+              },
+              update: {
+                startAngle: { field: "startAngle" },
+                endAngle: { field: "endAngle" },
+                padAngle: { signal: "padAngle" },
+                innerRadius: { signal: "innerRadius" },
+                outerRadius: { signal: "width / 8" },
+                cornerRadius: { signal: "cornerRadius" },
+              },
+            },
+          },
+        ],
       },
       {
-        type: "arc",
-        from: { data: "secondary_formatted" },
+        type: "group",
+        name: "primary_pie",
         encode: {
-          enter: {
-            fill: { scale: "secondary", field: { signal: "mainGroup" } },
-            x: { signal: "width/2 +120" },
-            y: { signal: "height / 2" },
-          },
           update: {
-            startAngle: { field: "startAngle" },
-            endAngle: { field: "endAngle" },
-            padAngle: { signal: "padAngle" },
-            innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "width / 8 " },
-            cornerRadius: { signal: "cornerRadius" },
+            x: { value: 0 },
+            y: { signal: "chartY" },
+            height: { signal: "height" },
+            width: {
+              signal:
+                "data('secondary_formatted').length > 1 ? (width / 2 ) : width",
+            },
           },
         },
+
+        marks: [
+          {
+            type: "arc",
+            from: { data: "secondary_formatted" },
+            encode: {
+              enter: {
+                fill: { scale: "secondary", field: { signal: "mainGroup" } },
+                x: { signal: "width/2 +120" },
+                y: { signal: "height / 2" },
+              },
+              update: {
+                startAngle: { field: "startAngle" },
+                endAngle: { field: "endAngle" },
+                padAngle: { signal: "padAngle" },
+                innerRadius: { signal: "innerRadius" },
+                outerRadius: { signal: "width / 8 " },
+                cornerRadius: { signal: "cornerRadius" },
+              },
+            },
+          },
+        ],
       },
     ],
   };

@@ -1,219 +1,271 @@
-import { defaultConfig } from "./properties";
-import { createFiltersForGroups } from "./utils";
+import merge from "deepmerge";
+
+import Scope from "./Scope";
 
 import theme from "@/pesayetu/theme";
 
-const PERCENTAGE_TYPE = "percentage";
-const VALUE_TYPE = "value";
-const graphValueTypes = {
-  Percentage: PERCENTAGE_TYPE,
-  Value: VALUE_TYPE,
-};
+export default function DonutChartScope(
+  primaryData,
+  metadata,
+  config,
+  secondaryData,
+  primaryParentData,
+  secondaryParentData,
+  profileNames,
+  isCompare,
+  isMobile
+) {
+  const { primary_group: primaryGroup } = metadata;
 
-export default function DonutChartScope(data, metadata, config) {
-  const {
-    defaultType,
-    types: {
-      Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
-      Percentage: {
-        formatting: percentageFormatting,
-        minX: percentageMinX,
-        maxX: percentageMaxX,
-      },
-    },
-  } = config;
-
-  const { primary_group: primaryGroup, groups } = metadata;
-
-  const { signals: filterSignals, filters } = createFiltersForGroups(groups);
-
-  return {
-    $schema: "https://vega.github.io/schema/vega/v5.json",
-    description: "A basic donut chart example.",
-    width: 360,
-    height: 180,
-    autosize: "none",
-    config: defaultConfig,
-    data: [
-      {
-        name: "table",
-        values: data,
-        transform: [...filters],
-      },
-      {
-        name: "data_formatted",
-        source: "table",
-        transform: [
-          {
-            type: "aggregate",
-            ops: ["sum"],
-            as: ["count"],
-            fields: ["count"],
-            groupby: { signal: "groups" },
-          },
-          {
-            type: "joinaggregate",
-            as: ["TotalCount"],
-            ops: ["sum"],
-            fields: ["count"],
-          },
-          {
-            type: "formula",
-            expr: "datum.count/datum.TotalCount",
-            as: "percentage",
-          },
-          {
-            type: "formula",
-            expr: "format(datum[datatype[Units]], numberFormat[Units]) + ' ' + datum[mainGroup]",
-            as: "custom_label",
-          },
-          {
-            type: "extent",
-            field: "percentage",
-            signal: "percentage_extent",
-          },
-          {
-            type: "extent",
-            field: "count",
-            signal: "value_extent",
-          },
-          {
-            type: "pie",
-            field: { signal: "datatype[Units]" },
-            startAngle: { signal: "startAngle" },
-            endAngle: { signal: "endAngle" },
-            sort: { signal: "sort" },
-          },
-        ],
-      },
-    ],
-    signals: [
-      {
-        name: "groups",
-        value: [primaryGroup],
-      },
-      {
-        name: "Units",
-        value: graphValueTypes[defaultType],
-      },
-      {
-        name: "mainGroup",
-        value: primaryGroup,
-      },
-      {
-        name: "numberFormat",
-        value: { percentage: percentageFormatting, value: valueFormatting },
-      },
-      {
-        name: "datatype",
-        value: { percentage: "percentage", value: "count" },
-      },
-      {
-        name: "percentageMaxX",
-        value: percentageMaxX !== "default" ? percentageMaxX : undefined,
-      },
-      {
-        name: "percentageMinX",
-        value: percentageMinX !== "default" ? percentageMinX : undefined,
-      },
-      {
-        name: "valueMaxX",
-        value: valueMaxX !== "default" ? valueMaxX : undefined,
-      },
-      {
-        name: "valueMinX",
-        value: valueMinX !== "default" ? valueMinX : undefined,
-      },
-      {
-        name: "startAngle",
-        value: 0,
-      },
-      {
-        name: "endAngle",
-        value: 6.29,
-      },
-      {
-        name: "padAngle",
-        value: 0,
-      },
-      {
-        name: "innerRadius",
-        value: 55,
-      },
-      {
-        name: "cornerRadius",
-        value: 0,
-      },
-      {
-        name: "sort",
-        value: false,
-      },
-      {
-        name: "custom_label",
-        update: { field: "custom_label" },
-      },
-      ...filterSignals,
-    ],
-
-    legends: [
-      {
-        fill: "color",
-        stroke: "color",
-        orient: "none",
-        symbolType: "circle",
-        direction: "vertical",
-        labelFont: theme.typography.fontFamily,
-        legendX: 240,
-        legendY: 40,
-        labelOffset: 12,
-        rowPadding: 8,
-        encode: {
-          labels: {
-            interactive: true,
+  return merge(
+    Scope(
+      primaryData,
+      metadata,
+      config,
+      secondaryData,
+      primaryParentData,
+      secondaryParentData,
+      "donut",
+      [
+        {
+          type: "formula",
+          expr: "format(datum[datatype[Units]], numberFormat[Units]) + ' ' + datum[mainGroup]",
+          as: "custom_label",
+        },
+        {
+          type: "pie",
+          field: { signal: "datatype[Units]" },
+          startAngle: { signal: "startAngle" },
+          endAngle: { signal: "endAngle" },
+          sort: { signal: "sort" },
+        },
+      ]
+    ),
+    {
+      height: isMobile && isCompare && secondaryData.length > 1 ? 380 : 180,
+      signals: [
+        {
+          name: "height",
+          value: isMobile && isCompare && secondaryData.length > 1 ? 380 : 180,
+        },
+        {
+          name: "isMobile",
+          value: isMobile,
+        },
+        {
+          name: "isCompare",
+          value: isCompare,
+        },
+        {
+          name: "donutSize",
+          value: 360,
+        },
+      ],
+      scales: [
+        {
+          name: "color",
+          type: "ordinal",
+          range: "category",
+        },
+        {
+          name: "secondary",
+          type: "ordinal",
+          range: "secondary",
+        },
+        {
+          name: "legend_primary_scale",
+          type: "ordinal",
+          domain: [isCompare ? profileNames.primary.toUpperCase() : ""],
+          range: [isCompare ? theme.palette.primary.main : "transparent"],
+        },
+        {
+          name: "legend_secondary_scale",
+          type: "ordinal",
+          domain: [profileNames.secondary.toUpperCase()],
+          range: [theme.palette.secondary.main],
+        },
+        {
+          name: "empty_legend",
+          type: "ordinal",
+          domain: [""],
+          range: ["transparent"],
+        },
+        {
+          name: "legend_labels",
+          type: "linear",
+          domain: { data: "primary_formatted", field: "custom_label" },
+          range: "category",
+        },
+      ],
+      marks: [
+        {
+          type: "group",
+          name: "primary_pie",
+          encode: {
             update: {
-              fontSize: { value: 11 },
-              fill: { value: theme.palette.chart.text.primary },
-            },
-          },
-          symbols: {
-            enter: {
-              fillOpacity: {
-                value: 1,
+              x: { value: 0 },
+              y: { signal: "chartY" },
+              height: {
+                signal:
+                  "isMobile && isCompare && data('secondary_formatted').length > 1 ? height/2: height",
+              },
+              width: {
+                signal:
+                  "isMobile && data('secondary_formatted').length > 1 ? width : width/2",
               },
             },
           },
+          legends: [
+            {
+              orient: "top",
+              fill: "legend_primary_scale",
+              labelFontWeight: "bold",
+              labelColor: "#666",
+              labelFont: theme.typography.fontFamily,
+            },
+            {
+              fill: "color",
+              stroke: "color",
+              orient: "none",
+              symbolType: "circle",
+              direction: "vertical",
+              labelFont: theme.typography.fontFamily,
+              legendX: { signal: "donutSize/2 + 40" },
+              legendY: 40,
+              labelOffset: 12,
+              rowPadding: 8,
+              encode: {
+                labels: {
+                  interactive: true,
+                  update: {
+                    fontSize: { value: 11 },
+                    fill: { value: theme.palette.chart.text.primary },
+                  },
+                },
+                symbols: {
+                  enter: {
+                    fillOpacity: {
+                      value: 1,
+                    },
+                  },
+                },
+              },
+            },
+          ],
+          marks: [
+            {
+              type: "arc",
+              from: { data: "primary_formatted" },
+              encode: {
+                enter: {
+                  fill: { scale: "color", field: { signal: "mainGroup" } },
+                  x: { signal: "donutSize/4" },
+                  y: {
+                    signal:
+                      "isMobile && data('secondary_formatted').length > 1 ? height /4 : height/2",
+                  },
+                },
+                update: {
+                  startAngle: { field: "startAngle" },
+                  endAngle: { field: "endAngle" },
+                  padAngle: { signal: "padAngle" },
+                  innerRadius: { signal: "innerRadius" },
+                  outerRadius: { signal: "donutSize / 4" },
+                  cornerRadius: { signal: "cornerRadius" },
+                },
+              },
+            },
+          ],
         },
-      },
-    ],
-
-    scales: [
-      {
-        name: "color",
-        type: "ordinal",
-        range: "category",
-      },
-    ],
-
-    marks: [
-      {
-        type: "arc",
-        from: { data: "data_formatted" },
-        encode: {
-          enter: {
-            fill: { scale: "color", field: { signal: "mainGroup" } },
-            x: { signal: "width / 4" },
-            y: { signal: "height / 2" },
+        {
+          type: "group",
+          name: "secondary_pie",
+          encode: {
+            update: {
+              x: {
+                signal:
+                  "!isMobile && data('secondary_formatted').length > 1 ? width / 2 + 30 : 0",
+              },
+              y: {
+                signal:
+                  "isMobile && data('secondary_formatted').length > 1 ? height/2 + 30: data('secondary_formatted').length > 1 ? chartY: height + 40",
+              },
+              height: {
+                signal:
+                  "isMobile && data('secondary_formatted').length > 1 ? height/2: 0",
+              },
+              width: {
+                signal:
+                  "!isMobile && data('secondary_formatted').length > 1 ? (width / 2 ) : data('secondary_formatted').length > 1 ? width : 0",
+              },
+            },
           },
-          update: {
-            startAngle: { field: "startAngle" },
-            endAngle: { field: "endAngle" },
-            padAngle: { signal: "padAngle" },
-            innerRadius: { signal: "innerRadius" },
-            outerRadius: { signal: "width / 4" },
-            cornerRadius: { signal: "cornerRadius" },
-          },
+          legends: isCompare
+            ? [
+                {
+                  orient: "top",
+                  fill: "legend_secondary_scale",
+                  labelFontWeight: "bold",
+                  labelColor: "#666",
+                  labelFont: theme.typography.fontFamily,
+                },
+                {
+                  fill:
+                    secondaryData?.length > 1 ? "secondary" : "empty_legend",
+                  stroke: "secondary",
+                  orient: "none",
+                  symbolType: "circle",
+                  direction: "vertical",
+                  labelFont: theme.typography.fontFamily,
+                  legendX: { signal: "donutSize / 2 + 40" },
+                  legendY: 40,
+                  labelOffset: 12,
+                  rowPadding: 8,
+                  encode: {
+                    labels: {
+                      interactive: true,
+                      update: {
+                        fontSize: { value: 11 },
+                        fill: { value: theme.palette.chart.text.primary },
+                      },
+                    },
+                    symbols: {
+                      enter: {
+                        fillOpacity: {
+                          value: 1,
+                        },
+                      },
+                    },
+                  },
+                },
+              ]
+            : null,
+          marks: [
+            {
+              type: "arc",
+              from: { data: "secondary_formatted" },
+              encode: {
+                enter: {
+                  fill: { scale: "secondary", field: primaryGroup },
+                  x: { signal: "donutSize/4" },
+                  y: {
+                    signal:
+                      "isMobile && data('secondary_formatted').length > 1 ? height /4 : height/2",
+                  },
+                },
+                update: {
+                  startAngle: { field: "startAngle" },
+                  endAngle: { field: "endAngle" },
+                  padAngle: { signal: "padAngle" },
+                  innerRadius: { signal: "innerRadius" },
+                  outerRadius: { signal: "donutSize / 4 " },
+                  cornerRadius: { signal: "cornerRadius" },
+                },
+              },
+            },
+          ],
         },
-      },
-    ],
-  };
+      ],
+    }
+  );
 }

@@ -10,7 +10,8 @@ export default function configureScope(
   indicator,
   isMobile,
   secondaryIndicator,
-  profileNames
+  profileNames,
+  isCompare = false
 ) {
   const configuration = {
     ...indicator?.chart_configuration,
@@ -29,18 +30,24 @@ export default function configureScope(
         indicator?.data,
         indicator?.metadata,
         configuration,
-        secondaryIndicator?.data,
+        secondaryIndicator?.data ?? [{}],
         showParent ? indicator?.parentData : [{}],
         showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
-        false
+        isCompare
       );
       break;
     case "donut":
       vegaSpec = DonutChartScope(
         indicator?.data,
         indicator?.metadata,
-        configuration
+        configuration,
+        secondaryIndicator?.data ?? [{}],
+        showParent ? indicator?.parentData : [{}],
+        showParent ? secondaryIndicator?.parentData : [{}],
+        profileNames,
+        isCompare,
+        isMobile
       );
       break;
     case "treemap":
@@ -84,7 +91,7 @@ export default function configureScope(
           showParent ? indicator?.parentData : [{}],
           showParent ? secondaryIndicator?.parentData : [{}],
           profileNames,
-          false
+          isCompare
         );
       }
       break;

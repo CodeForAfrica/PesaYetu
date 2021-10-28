@@ -28,11 +28,11 @@ export default function Signals(
   return [
     {
       name: "width",
-      update: "containerSize()[0] ? containerSize()[0] : 600",
+      update: "containerSize()[0] ? containerSize()[0] : 800",
       on: [
         {
           events: "window:resize",
-          update: "containerSize()[0] ? containerSize()[0] : 600",
+          update: "containerSize()[0] ? containerSize()[0] : 800",
         },
       ],
     },
@@ -127,6 +127,35 @@ export default function Signals(
       name: "grey_mark",
       value: theme.palette.chart.text.primary,
     },
+    {
+      name: "startAngle",
+      value: 0,
+    },
+    {
+      name: "endAngle",
+      value: 6.29,
+    },
+    {
+      name: "padAngle",
+      value: 0,
+    },
+    {
+      name: "innerRadius",
+      value: 55,
+    },
+    {
+      name: "cornerRadius",
+      value: 0,
+    },
+    {
+      name: "sort",
+      value: false,
+    },
+    // {
+    //   name: "custom_label",
+    //   update: { field: "custom_label" },
+    // },
+    { name: "chartY", value: 0 },
     { name: "titleX", value: 0 },
     { name: "titleY", value: 0 },
     { name: "titleH", value: 0 },

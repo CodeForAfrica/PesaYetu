@@ -107,7 +107,7 @@ export default function BarChartScope(
           encode: {
             update: {
               x: { value: 0 },
-              y: { signal: "titleH" },
+              y: { signal: "chartY" },
               height: { signal: "height" },
               width: {
                 signal:
@@ -176,7 +176,7 @@ export default function BarChartScope(
           encode: {
             update: {
               x: { value: 0 },
-              y: { signal: "titleH" },
+              y: { signal: "chartY" },
               height: { signal: "height" },
             },
           },
@@ -236,7 +236,7 @@ export default function BarChartScope(
           encode: {
             update: {
               x: { signal: "(width / 2 ) + 30" },
-              y: { signal: "titleH" },
+              y: { signal: "chartY" },
               height: {
                 signal: "data('secondary_formatted').length > 1 ? height : 0",
               },

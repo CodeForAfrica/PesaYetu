@@ -49,16 +49,18 @@ function Download({
     view?.signal("logoUrl", logo);
 
     if (layout.toLowerCase() === "layout1") {
-      view?.signal("titleY", 0);
-      view?.signal("titleH", 40);
-      view?.signal("titleGroupY", 0);
-      view?.signal("sourceGroupY", totalHeight - 100);
-      view?.signal("sourceGroupH", 40);
-      view?.signal("sourceY", 0);
-    } else {
-      view?.signal("titleY", 40);
+      view?.signal("titleY", 20);
       view?.signal("titleH", 50);
-      view?.signal("titleGroupY", totalHeight - 100);
+      view?.signal("chartY", 50);
+      view?.signal("titleGroupY", 0);
+      view?.signal("sourceGroupY", totalHeight - 80);
+      view?.signal("sourceGroupH", 60);
+      view?.signal("sourceY", 30);
+    } else {
+      view?.signal("titleY", 25);
+      view?.signal("titleH", 50);
+      view?.signal("chartY", 60);
+      view?.signal("titleGroupY", totalHeight - 80);
       view?.signal("sourceGroupY", 1);
       view?.signal("sourceGroupH", 60);
       view?.signal("sourceY", 30);
