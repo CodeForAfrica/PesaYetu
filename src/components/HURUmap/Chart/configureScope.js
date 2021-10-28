@@ -54,7 +54,13 @@ export default function configureScope(
       vegaSpec = TreemapChartScope(
         indicator?.data,
         indicator?.metadata,
-        configuration
+        configuration,
+        secondaryIndicator?.data ?? [{}],
+        showParent ? indicator?.parentData : [{}],
+        showParent ? secondaryIndicator?.parentData : [{}],
+        profileNames,
+        isCompare,
+        isMobile
       );
       break;
     case "stacked":

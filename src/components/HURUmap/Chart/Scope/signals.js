@@ -127,6 +127,7 @@ export default function Signals(
       name: "grey_mark",
       value: theme.palette.chart.text.primary,
     },
+    // arc signals (pie)
     {
       name: "startAngle",
       value: 0,
@@ -151,10 +152,16 @@ export default function Signals(
       name: "sort",
       value: false,
     },
-    // {
-    //   name: "custom_label",
-    //   update: { field: "custom_label" },
-    // },
+    // treemap signals
+    {
+      name: "layout",
+      value: "squarify",
+    },
+    {
+      name: "aspectRatio",
+      value: 1.6,
+    },
+    // signals for logo and title => image layout downloads
     { name: "chartY", value: 0 },
     { name: "titleX", value: 0 },
     { name: "titleY", value: 0 },
@@ -177,7 +184,7 @@ export default function Signals(
     { name: "sourceFontSize", value: 12 },
     { name: "sourceFontWeight", value: 400 },
     { name: "logoX", update: "width - 40" },
-    { name: "logoWidth", update: 0 },
+    { name: "logoWidth", value: 0 },
     { name: "logoUrl" },
     { name: "logoAspect", value: true },
     { name: "chartSource" },

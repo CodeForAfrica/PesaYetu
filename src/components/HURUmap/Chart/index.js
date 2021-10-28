@@ -134,7 +134,7 @@ function Chart({
       if (chartRef?.current) {
         const newView = await embed(chartRef.current, spec, {
           renderer: "canvas",
-          actions: true,
+          actions: false,
           tooltip: handler,
         });
 
