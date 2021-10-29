@@ -6,6 +6,7 @@ import StoriesPage from "@/pesayetu/components/StoriesPage";
 import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getCategories from "@/pesayetu/functions/getCategories";
+import getImagePlaceholder from "@/pesayetu/functions/getImagePlaceholder";
 import getPostTypeStaticPaths from "@/pesayetu/functions/postTypes/getPostTypeStaticPaths";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
@@ -54,6 +55,7 @@ export default function Index({
             ...blocks?.relatedPosts,
             items: relatedPosts,
           }}
+          {...props}
         />
       )}
     </Page>
@@ -116,12 +118,20 @@ export async function getStaticProps({ params, preview, previewData }) {
         const {
           props: { posts: categoryPosts, pagination: categoryPagination },
         } = await getPostTypeStaticProps({ slug: [categorySlug] }, postType);
+
         return {
           name,
           slug: categorySlug,
           href: `/stories/${categorySlug}`,
           pagination: categoryPagination,
-          posts: categoryPosts,
+          posts: await Promise.all(
+            categoryPosts.map(async (categoryPost) => {
+              const imageProps = await getImagePlaceholder(
+                categoryPost.featuredImage?.node?.sourceUrl
+              );
+              return { ...categoryPost, imageProps };
+            })
+          ),
         };
       })
     );
@@ -139,13 +149,25 @@ export async function getStaticProps({ params, preview, previewData }) {
       notFound: true,
     };
   }
-  const blocks = formatBlocksForSections(props?.post?.blocks || []);
-
+  const blocks = await formatBlocksForSections(props?.post?.blocks || []);
+  const postImagePlaceholder = await getImagePlaceholder(
+    props?.post?.featuredImage?.node?.sourceUrl
+  );
+  const relatedPostsNode = await Promise.all(
+    props?.post?.categories?.edges?.[0]?.node?.posts?.nodes?.map(
+      async (categoryPost) => {
+        const imageProps = await getImagePlaceholder(
+          categoryPost.featuredImage?.node?.sourceUrl
+        );
+        return { ...categoryPost, imageProps };
+      }
+    ) || []
+  );
   const relatedPosts =
-    formatStoryPosts(
-      props?.post?.categories?.edges[0]?.node?.posts?.nodes ?? [],
-      { slug: props?.post?.slug, ctaText: blocks?.relatedPosts?.ctaText }
-    ) || [];
+    formatStoryPosts(relatedPostsNode, {
+      slug: props?.post?.slug,
+      ctaText: blocks?.relatedPosts?.ctaText,
+    }) || [];
 
   return {
     props: {
@@ -154,6 +176,7 @@ export async function getStaticProps({ params, preview, previewData }) {
       activeCategory: activeCategory ?? null,
       items,
       relatedPosts: relatedPosts.slice(0, 3),
+      postImagePlaceholder,
     },
     revalidate,
   };

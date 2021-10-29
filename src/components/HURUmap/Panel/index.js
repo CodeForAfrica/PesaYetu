@@ -9,7 +9,7 @@ import MobilePanel from "./MobilePanel";
 function Panel({ primaryProfile, secondaryProfile, ...props }) {
   const formatedPrimaryProfile = {
     ...primaryProfile,
-    items: formatData(primaryProfile?.data, primaryProfile.parent),
+    items: formatData(primaryProfile?.data, primaryProfile?.parent),
   };
   const formatedSecondaryProfile = {
     ...secondaryProfile,

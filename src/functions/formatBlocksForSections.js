@@ -1,5 +1,7 @@
 import { camelCase } from "lodash";
 
+import getImagePlaceholder from "./getImagePlaceholder";
+
 function formatName(name) {
   return camelCase(name.split("/")[1]?.trim()); // converts blocks with other naming conversion to camel case, eg media-text to mediaText
 }
@@ -12,18 +14,25 @@ function formatLazyBlockImage(image) {
   return data?.url;
 }
 
-function formatLazyBlockIteratorContentWithImage(
+async function formatLazyBlockIteratorContentWithImage(
   attributes,
   imgField,
   itemField = "items"
 ) {
   const items =
-    JSON.parse(decodeURIComponent(attributes[itemField])).map((item) => {
-      return {
-        ...item,
-        [imgField]: item[imgField]?.url ?? null,
-      };
-    }) || null;
+    (await Promise.all(
+      JSON.parse(decodeURIComponent(attributes[itemField])).map(
+        async (item) => {
+          return {
+            ...item,
+            [imgField]: item[imgField]?.url ?? null,
+            [`${imgField}Props`]: await getImagePlaceholder(
+              item[imgField]?.url
+            ),
+          };
+        }
+      )
+    )) || null;
   return { ...attributes, [itemField]: items };
 }
 function formatDataSource({ items: itemsProps, image, ...rest }) {
@@ -31,21 +40,26 @@ function formatDataSource({ items: itemsProps, image, ...rest }) {
   return { ...rest, image: formatLazyBlockImage(image), items };
 }
 
-function formatLazyBlockIteratorContentWithImages(
+async function formatLazyBlockIteratorContentWithImages(
   { items: itemsProps, ...rest },
   imgField
 ) {
   const items =
-    JSON.parse(decodeURIComponent(itemsProps)).map((item) => {
-      return {
-        title: item?.title,
-        description: item?.description,
-        icon: item.icon?.url,
-        dataVisualProps: {
-          [imgField]: item[imgField]?.url,
-        },
-      };
-    }) || null;
+    (await Promise.all(
+      JSON.parse(decodeURIComponent(itemsProps)).map(async (item) => {
+        return {
+          title: item?.title,
+          description: item?.description,
+          icon: item.icon?.url,
+          dataVisualProps: {
+            [imgField]: item[imgField]?.url,
+            [`${imgField}Props`]: await getImagePlaceholder(
+              item[imgField]?.url
+            ),
+          },
+        };
+      })
+    )) || null;
   return { ...rest, items };
 }
 
@@ -61,28 +75,40 @@ function formatDataIndicators({ items: itemsProps, ...rest }) {
   return { ...rest, items };
 }
 
-function formatPartnersBlock(block) {
+async function formatPartnersBlock(block) {
   const { attributes, name } = block;
   switch (name) {
-    case "lazyblock/main-partner":
+    case "lazyblock/main-partner": {
+      const logo = JSON.parse(decodeURIComponent(attributes?.logo)) || null;
       return {
         ...attributes,
-        logo: JSON.parse(decodeURIComponent(attributes?.logo)) || null,
+        logo,
+        logoProps: await getImagePlaceholder(logo?.url),
       };
+    }
     default:
       return attributes;
   }
 }
 
-function formatPartners({ attributes: { partners, ...rest }, innerBlocks }) {
-  const items = innerBlocks.reduce((acc, cur) => {
-    acc[formatName(cur.name)] = formatPartnersBlock(cur);
+async function formatPartners({
+  attributes: { partners: serializedPartner, ...rest },
+  innerBlocks,
+}) {
+  const items = await innerBlocks.reduce(async (acc, cur) => {
+    acc[formatName(cur.name)] = await formatPartnersBlock(cur);
     return acc;
   }, {});
+  const partners = await Promise.all(
+    JSON.parse(decodeURIComponent(serializedPartner)).map(async (partner) => ({
+      ...partner,
+      logoProps: await getImagePlaceholder(partner?.logo?.url),
+    }))
+  );
   return {
     ...rest,
     ...items,
-    partners: JSON.parse(decodeURIComponent(partners)) || null,
+    partners,
   };
 }
 
@@ -110,19 +136,21 @@ function formatInsightsStories(attr) {
   return { ...attributes, stories: formattedStories };
 }
 
-function formatFeaturedStories(attributes) {
+async function formatFeaturedStories(attributes) {
   const featuredStory = attributes?.featuredStory;
   if (!featuredStory) {
     return null;
   }
-  const { news, insights } = featuredStory;
 
+  const { news, insights } = featuredStory;
+  const image = news?.featuredImage?.node?.sourceUrl;
   const formattedNews = {
     title: news?.title,
     description: news?.excerpt?.replace(/<[^>]+>/g, ""),
     href: `/stories${news?.uri}`,
     slug: news?.slug,
-    image: news?.featuredImage?.node?.sourceUrl,
+    image,
+    imageProps: await getImagePlaceholder(image),
     ctaText: attributes?.ctaText ?? "",
   };
   const chartBlock = insights.blocks?.find(
@@ -138,15 +166,16 @@ function formatFeaturedStories(attributes) {
     chart: chartBlock?.attributes?.chart ?? "",
     ctaText: attributes?.ctaText ?? "",
   };
-
   return { news: formattedNews, insights: formattedInsights };
 }
+
 function formatTypes(typesString) {
   return typesString.split("\n").map((item) => {
     const [name = null, href = null] = item.split(",").map((i) => i.trim());
     return { name, href };
   });
 }
+
 function formatDocumentsAndDataSets(
   {
     countLabel,
@@ -183,7 +212,7 @@ function formatDocumentsAndDataSets(
   });
 }
 
-function format(block) {
+async function format(block) {
   const { attributes, name, innerBlocks } = block;
   switch (name) {
     case "acf/insights-stories":
@@ -204,12 +233,17 @@ function format(block) {
       return formatDataSource(attributes);
     case "lazyblock/supporting-partners":
       return formatLazyBlockIteratorContentWithImage(attributes, "logo");
-    case "lazyblock/other-hero":
+    case "lazyblock/other-hero": {
+      const image = await formatLazyBlockImage(attributes?.image);
+      const accentImage = await formatLazyBlockImage(attributes?.accentImage);
       return {
         ...attributes,
-        image: formatLazyBlockImage(attributes?.image),
-        accentImage: formatLazyBlockImage(attributes?.accentImage),
+        image,
+        imageProps: await getImagePlaceholder(image),
+        accentImage,
+        accentImageProps: await getImagePlaceholder(accentImage),
       };
+    }
     case "lazyblock/share-story":
       return {
         ...attributes,
@@ -235,7 +269,7 @@ function format(block) {
   }
 }
 
-export default function formatBlocksForSections(blc) {
+export default async function formatBlocksForSections(blc) {
   // filter empty block {}
   const blocks = blc?.filter(
     (b) => Object.keys(b).length !== 0 && Object.hasOwnProperty.call(b, "name")
@@ -246,11 +280,12 @@ export default function formatBlocksForSections(blc) {
   );
   blocks?.push({ name: "core/texts", attributes: texts });
 
-  return blocks?.reduce((acc, cur) => {
-    const attr = format(cur);
-    if (attr) {
-      acc[formatName(cur.name)] = format(cur);
-    }
-    return acc;
-  }, {});
+  const blockObj = {};
+  await Promise.all(
+    blocks?.map(async (block) => {
+      blockObj[formatName(block.name)] = await format(block);
+    }) || []
+  );
+
+  return blockObj;
 }

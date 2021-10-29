@@ -8,21 +8,29 @@ import useStyles from "./useStyles";
 const KeyMetric = ({
   className,
   formattedValue,
-  value,
+  value: valueProp,
   title,
   color,
   description,
+  parentName,
+  parentFormattedValue,
   ...props
 }) => {
   const classes = useStyles(props);
 
-  if (!(value && title)) {
+  if (!((valueProp || formattedValue) && title)) {
     return null;
   }
+  const value = formattedValue || valueProp;
+  const parentValue =
+    description || parentFormattedValue
+      ? `${parentFormattedValue} ${parentName}`
+      : undefined;
+
   return (
     <div className={clsx(classes.root, className)}>
       <div className={classes.metric}>
-        <Typography variant="h3">{formattedValue || value}</Typography>
+        <Typography variant="h3">{value}</Typography>
         <Typography
           variant="caption"
           className={clsx(classes.text, classes.title)}
@@ -34,17 +42,17 @@ const KeyMetric = ({
             root: classes.progressBar,
             determinate: classes.progressBarDeterminate,
           }}
-          value={value}
+          value={parseFloat(value.replace(",", ""))}
           color={color}
           variant="determinate"
         />
       </div>
-      {description && (
+      {parentValue && (
         <Typography
           variant="caption"
           className={clsx(classes.text, classes.description)}
         >
-          {description}
+          {parentValue}
         </Typography>
       )}
     </div>
@@ -58,6 +66,8 @@ KeyMetric.propTypes = {
   formattedValue: PropTypes.string,
   title: PropTypes.string,
   value: PropTypes.number,
+  parentName: PropTypes.string,
+  parentFormattedValue: PropTypes.string,
 };
 
 KeyMetric.defaultProps = {
@@ -67,6 +77,8 @@ KeyMetric.defaultProps = {
   formattedValue: undefined,
   title: undefined,
   value: undefined,
+  parentName: undefined,
+  parentFormattedValue: undefined,
 };
 
 export default KeyMetric;

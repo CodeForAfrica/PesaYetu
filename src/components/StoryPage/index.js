@@ -18,6 +18,7 @@ function StoryPage({
   chart,
   socialLinks,
   relatedPosts,
+  postImagePlaceholder,
   ...props
 }) {
   const classes = useStyles(props);
@@ -32,6 +33,7 @@ function StoryPage({
             {image && (
               <figure className={classes.image}>
                 <Image
+                  {...postImagePlaceholder}
                   alt="article"
                   src={image}
                   layout="fill"
@@ -67,6 +69,7 @@ StoryPage.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   chart: PropTypes.string,
+  postImagePlaceholder: PropTypes.shape({}),
 };
 
 StoryPage.defaultProps = {
@@ -77,6 +80,7 @@ StoryPage.defaultProps = {
   image: undefined,
   title: undefined,
   chart: undefined,
+  postImagePlaceholder: undefined,
 };
 
 export default StoryPage;

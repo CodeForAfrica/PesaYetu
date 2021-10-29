@@ -1,13 +1,13 @@
 import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import heroBg from "@/pesayetu/assets/images/Mask Group 8.jpg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Header from "@/pesayetu/components/Header";
+import Image from "@/pesayetu/components/Image";
 import Section from "@/pesayetu/components/Section";
 
 const Map = dynamic(() => import("./Map"), { ssr: false });

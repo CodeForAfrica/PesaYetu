@@ -24,13 +24,13 @@ function DataVisualisationGuide({ title, items, ...props }) {
         <RichTypography component="h4" variant="h4" className={classes.title}>
           {title}
         </RichTypography>
-
         <Hidden smDown implementation="css">
           <Carousel showDots={!isDesktop}>
-            {items.map((item) => (
+            {items.map(({ imageProps, ...item }) => (
               <Card
-                {...item}
                 key={item.image}
+                {...item}
+                imageProps={imageProps}
                 classes={{
                   root: classes.card,
                   contentDescription: classes.cardContentDescription,
@@ -42,10 +42,11 @@ function DataVisualisationGuide({ title, items, ...props }) {
 
         <Hidden mdUp implementation="css">
           <Grid container className={classes.container}>
-            {items.map((item) => (
+            {items.map(({ imageProps, ...item }) => (
               <Grid item xs={12} key={item.image}>
                 <Card
                   {...item}
+                  imageProps={imageProps}
                   classes={{
                     root: classes.card,
                     contentDescription: classes.cardContentDescription,

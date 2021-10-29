@@ -72,7 +72,7 @@ export async function getStaticProps({ preview, previewData, params }) {
     };
   }
 
-  const blocks = formatBlocksForSections(props?.post?.blocks);
+  const blocks = await formatBlocksForSections(props?.post?.blocks);
   const { locationCodes, preferredChildren } =
     await fetchProfileConfigurations();
   const [originalCode] = params?.slug || ["ke"];
