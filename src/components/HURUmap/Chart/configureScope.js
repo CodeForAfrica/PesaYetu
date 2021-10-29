@@ -30,11 +30,11 @@ export default function configureScope(
         indicator?.data,
         indicator?.metadata,
         configuration,
-        secondaryIndicator?.data ?? [{}],
+        indicator?.data ?? [{}],
         showParent ? indicator?.parentData : [{}],
         showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
-        isCompare,
+        true,
         isMobile
       );
       break;
@@ -77,7 +77,10 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          showParent ? indicator?.parentData : [{}]
+          secondaryIndicator?.data ?? null,
+          showParent ? indicator?.parentData : [{}],
+          showParent ? secondaryIndicator?.parentData : [{}],
+          profileNames
         );
       }
       break;

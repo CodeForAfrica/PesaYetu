@@ -73,11 +73,21 @@ export default function Signals(
       value: primaryGroup,
     },
     {
+      name: "percentageFormatting",
+      value: percentageFormatting || ".0%",
+    },
+    {
+      name: "valueFormatting",
+      value: valueFormatting || ",.0f",
+    },
+    {
+      name: "trimZeroFormat",
+      value: "~s",
+    },
+    {
       name: "numberFormat",
-      value: {
-        percentage: percentageFormatting || ".0%",
-        value: valueFormatting || ",.0f",
-      },
+      update:
+        "{ 'percentage': percentageFormatting, 'value':  data('secondary_formatted').length > 1 ? trimZeroFormat : valueFormatting }",
     },
     {
       name: "datatype",

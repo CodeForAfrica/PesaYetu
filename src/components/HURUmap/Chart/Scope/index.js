@@ -16,7 +16,8 @@ export default function Scope(
   transform = []
 ) {
   const { primary_group: primaryGroup, groups } = metadata;
-  const nestedFields = config?.nest_fields ?? [primaryGroup]; // if nest fields are undefined, make use primaryGroup for treemap
+  const stackedField = config?.stacked_field;
+  const nestedFields = config?.nest_fields ?? [primaryGroup];
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
@@ -56,7 +57,7 @@ export default function Scope(
       chartType,
       filterSignals,
       nestedFields[0] || primaryGroup,
-      nestedFields || [primaryGroup],
+      chartType === "stacked" ? [primaryGroup, stackedField] : nestedFields,
       config
     ),
     marks: [
