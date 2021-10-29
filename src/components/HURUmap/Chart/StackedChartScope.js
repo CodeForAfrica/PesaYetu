@@ -10,8 +10,7 @@ export default function StackedChartScope(
   config,
   secondaryData,
   primaryParentData,
-  secondaryParentData,
-  profileNames
+  secondaryParentData
 ) {
   const { xTicks, parentLabel } = config;
 
@@ -105,18 +104,6 @@ export default function StackedChartScope(
             data: "primary_formatted",
             field: stackedField,
           },
-        },
-        {
-          name: "legend_primary_scale",
-          type: "ordinal",
-          domain: [profileNames.primary.toUpperCase()],
-          range: [theme.palette.primary.main],
-        },
-        {
-          name: "legend_secondary_scale",
-          type: "ordinal",
-          domain: [profileNames.secondary.toUpperCase()],
-          range: [theme.palette.secondary.main],
         },
         {
           name: "parent_color_scale",

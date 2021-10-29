@@ -8,9 +8,9 @@ import VerticalStackedChartScope from "./VerticalStackedChartScope";
 
 export default function configureScope(
   indicator,
-  isMobile,
-  secondaryIndicator,
-  profileNames,
+  isMobile = false,
+  secondaryIndicator = null,
+  profileNames = { primary: "", secondary: "" },
   isCompare = false
 ) {
   const configuration = {
@@ -82,8 +82,7 @@ export default function configureScope(
           configuration,
           secondaryIndicator?.data ?? null,
           showParent ? indicator?.parentData : [{}],
-          showParent ? secondaryIndicator?.parentData : [{}],
-          profileNames
+          showParent ? secondaryIndicator?.parentData : [{}]
         );
       }
       break;
@@ -93,7 +92,11 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          showParent ? indicator?.parentData : [{}]
+          secondaryIndicator?.data ?? [{}],
+          showParent ? indicator?.parentData : [{}],
+          showParent ? secondaryIndicator?.parentData : [{}],
+          profileNames,
+          isCompare
         );
       } else {
         vegaSpec = BarChartScope(
