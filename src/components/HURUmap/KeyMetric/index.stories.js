@@ -16,4 +16,6 @@ Default.args = {
   value: 11,
   title: "Voter registration %",
   description: "10.1% National Average",
+  parentName: undefined,
+  parentFormattedValue: undefined,
 };

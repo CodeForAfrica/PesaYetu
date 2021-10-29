@@ -3,31 +3,71 @@ import clsx from "clsx";
 import Papa from "papaparse";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
+import * as vega from "vega";
 import XLSX from "xlsx";
 
 import useStyles from "./useStyles";
 
+import logo from "@/pesayetu/assets/logos/Group4462.svg";
+
 function Download({
   title,
-  view: viewProp,
   chartValue,
   handleChartValueChange,
   disableToggle,
+  spec,
+  source,
+  height,
   ...props
 }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
+  const [layout, setLayout] = useState("Layout1");
 
   useEffect(() => {
+    const viewProp = new vega.View(vega.parse(spec), { renderer: "none" });
     setView(viewProp);
-  }, [viewProp]);
+  }, [spec]);
+
+  const setImageLayout = async (e, type) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setLayout(type);
+  };
 
   const handleImageDownload = async (e, type) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const imgType = type.toLowerCase();
+    const totalHeight = height + 240; // chartHeight + extra space for legends, logo + title;
+    view?.signal("totalHeight", totalHeight);
+    view?.signal("chartTitle", title);
+    view?.signal("chartSubtitle", "");
+    view?.signal("chartSource", source ? `Source: ${source}` : "");
+    view?.signal("projectName", ["County Development", "Index Statistics"]);
+    view?.signal("logoWidth", 60);
+    view?.signal("logoUrl", logo);
 
+    if (layout.toLowerCase() === "layout1") {
+      view?.signal("titleY", 20);
+      view?.signal("titleH", 50);
+      view?.signal("chartY", 50);
+      view?.signal("titleGroupY", 0);
+      view?.signal("sourceGroupY", totalHeight - 80);
+      view?.signal("sourceGroupH", 60);
+      view?.signal("sourceY", 30);
+    } else {
+      view?.signal("titleY", 25);
+      view?.signal("titleH", 50);
+      view?.signal("chartY", 60);
+      view?.signal("titleGroupY", totalHeight - 80);
+      view?.signal("sourceGroupY", 1);
+      view?.signal("sourceGroupH", 60);
+      view?.signal("sourceY", 30);
+    }
+    await view?.runAsync();
+
+    const imgType = type.toLowerCase();
     const url = await view.toImageURL(imgType);
     const link = document.createElement("a");
     link.download = `${title}.${imgType}`;
@@ -116,8 +156,20 @@ function Download({
       </Grid>
       <Grid item container className={classes.row}>
         {["Layout1", "Layout2"].map((p) => (
-          <Grid item xs={6} index={p} className={classes.button}>
-            <ButtonBase className={classes.text} onClick={() => {}}>
+          <Grid
+            item
+            xs={6}
+            index={p}
+            className={clsx(classes.button, {
+              [classes.activeButton]: layout === p,
+            })}
+          >
+            <ButtonBase
+              className={classes.text}
+              onClick={(e) => {
+                setImageLayout(e, p);
+              }}
+            >
               {p}
             </ButtonBase>
           </Grid>
@@ -144,21 +196,22 @@ function Download({
 
 Download.propTypes = {
   title: PropTypes.string,
-  view: PropTypes.shape({
-    toImageURL: PropTypes.func,
-    data: PropTypes.func,
-  }),
+  spec: PropTypes.shape({}),
   disableToggle: PropTypes.bool,
   chartValue: PropTypes.oneOf(["Value", "Percentage"]),
   handleChartValueChange: PropTypes.func,
+  height: PropTypes.number,
+  source: PropTypes.string,
 };
 
 Download.defaultProps = {
   title: undefined,
-  view: undefined,
+  spec: undefined,
   disableToggle: false,
   chartValue: undefined,
   handleChartValueChange: undefined,
+  height: 450,
+  source: undefined,
 };
 
 export default Download;

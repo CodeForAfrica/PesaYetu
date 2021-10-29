@@ -19,7 +19,7 @@ function Panel({ primaryProfile, secondaryProfile, ...props }) {
   const formatedSecondaryProfile = secondaryProfile
     ? {
         ...secondaryProfile,
-        items: formatData(secondaryProfile.data, secondaryProfile.parent),
+        items: formatData(secondaryProfile?.data, secondaryProfile?.parent),
       }
     : undefined;
   return (
