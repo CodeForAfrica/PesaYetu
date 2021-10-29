@@ -34,7 +34,8 @@ export default function configureScope(
         showParent ? indicator?.parentData : [{}],
         showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
-        isCompare
+        isCompare,
+        isMobile
       );
       break;
     case "donut":

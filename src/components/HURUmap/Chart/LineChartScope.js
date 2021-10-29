@@ -12,7 +12,8 @@ export default function LineChartScope(
   primaryParentData,
   secondaryParentData,
   profileNames,
-  isCompare
+  isCompare,
+  isMobile
 ) {
   const { xTicks, parentLabel } = config;
 
@@ -29,11 +30,19 @@ export default function LineChartScope(
       "line"
     ),
     {
-      height: 310,
+      height: isMobile && isCompare && secondaryData.length > 1 ? 620 : 310,
       signals: [
         {
           name: "height",
-          value: 310,
+          value: isMobile && isCompare && secondaryData.length > 1 ? 620 : 310,
+        },
+        {
+          name: "isMobile",
+          value: isMobile,
+        },
+        {
+          name: "isCompare",
+          value: isCompare,
         },
       ],
       scales: [
@@ -48,7 +57,7 @@ export default function LineChartScope(
             15,
             {
               signal:
-                "data('secondary_formatted').length > 1 ? width/2 - 30 : width",
+                "data('secondary_formatted').length > 1 && !isMobile ? width/2 - 30 : width",
             },
           ],
         },
@@ -63,7 +72,7 @@ export default function LineChartScope(
             15,
             {
               signal:
-                "data('secondary_formatted').length > 1 ? width/2 - 30 : 0",
+                "!isMobile && data('secondary_formatted').length > 1 ? width/2 - 30 : data('secondary_formatted').length > 1 ? width : 0",
             },
           ],
         },
@@ -74,7 +83,7 @@ export default function LineChartScope(
             data: "primary_formatted",
             field: { signal: "datatype[Units]" },
           },
-          range: [{ signal: "height" }, 0],
+          range: [{ signal: "isCompare && isMobile ? height/2: height" }, 0],
           nice: true,
           zero: false,
           clamp: true,
@@ -86,7 +95,7 @@ export default function LineChartScope(
             data: "secondary_formatted",
             field: { signal: "datatype[Units]" },
           },
-          range: [{ signal: "height" }, 0],
+          range: [{ signal: "isCompare && isMobile ? height/2: height" }, 0],
           nice: true,
           zero: false,
           clamp: true,
@@ -137,10 +146,13 @@ export default function LineChartScope(
             update: {
               x: { value: 0 },
               y: { signal: "chartY" },
-              height: { signal: "height" },
+              height: {
+                signal:
+                  "isMobile && isCompare && data('secondary_formatted').length > 1 ? height/2: height",
+              },
               width: {
                 signal:
-                  "data('secondary_formatted').length > 1 ? (width / 2 ) : width",
+                  "isMobile && data('secondary_formatted').length > 1 ? width : width/2",
               },
             },
           },
@@ -226,7 +238,10 @@ export default function LineChartScope(
             update: {
               x: { value: 0 },
               y: { signal: "chartY" },
-              height: { signal: "height" },
+              height: {
+                signal:
+                  "isMobile && isCompare && data('secondary_formatted').length > 1 ? height/2: height",
+              },
             },
           },
           legends:
@@ -237,9 +252,9 @@ export default function LineChartScope(
                     orient: "none",
                     legendX: {
                       signal:
-                        "data('secondary_formatted').length > 1 ? (width / 2 ) - 90 : width - 90",
+                        "data('secondary_formatted').length > 1 ? (width / 2 ) - 100 : width - 85",
                     },
-                    legendY: { value: -40 },
+                    legendY: { value: -35 },
                     labelFont: theme.typography.fontFamily,
                     labelColor: theme.palette.chart.text.primary,
                     encode: {
@@ -304,10 +319,21 @@ export default function LineChartScope(
           name: "secondary_lines",
           encode: {
             update: {
-              x: { signal: "width / 2 + 30" },
-              y: { signal: "chartY" },
+              x: {
+                signal:
+                  "!isMobile && data('secondary_formatted').length > 1 ? width / 2 + 30 : 0",
+              },
+              y: {
+                signal:
+                  "isMobile && data('secondary_formatted').length > 1 ? height/2 + 60: data('secondary_formatted').length > 1 ? chartY: height + 40",
+              },
               height: {
-                signal: "data('secondary_formatted').length > 1 ? height : 0",
+                signal:
+                  "isMobile && data('secondary_formatted').length > 1 ? height/2: data('secondary_formatted').length > 1 ? height: 0",
+              },
+              width: {
+                signal:
+                  "!isMobile && data('secondary_formatted').length > 1 ? (width / 2 ) : data('secondary_formatted').length > 1 ? width : 0",
               },
             },
           },
@@ -400,8 +426,18 @@ export default function LineChartScope(
           name: "secondary_parent_line",
           encode: {
             update: {
-              x: { signal: "width / 2 + 30" },
-              height: { signal: "height" },
+              x: {
+                signal:
+                  "!isMobile && data('secondary_formatted').length > 1 ? width / 2 + 30 : 0",
+              },
+              y: {
+                signal:
+                  "isMobile && data('secondary_formatted').length > 1 ? height/2 + 30: data('secondary_formatted').length > 1 ? chartY: height + 40",
+              },
+              height: {
+                signal:
+                  "isMobile && data('secondary_formatted').length > 1 ? height/2: 0",
+              },
             },
           },
           legends:
