@@ -62,8 +62,7 @@ export default function StackedChartScope(
           range: [
             0,
             {
-              signal:
-                "data('secondary_formatted').length > 1 ? width/2 - 30 : width",
+              signal: "data('secondary').length > 1 ? width/2 - 30 : width",
             },
           ],
           zero: true,
@@ -79,8 +78,7 @@ export default function StackedChartScope(
           range: [
             0,
             {
-              signal:
-                "data('secondary_formatted').length > 1 ? width/2 - 30 : 0",
+              signal: "data('secondary').length > 1 ? width/2 - 30 : 0",
             },
           ],
           zero: true,
@@ -123,8 +121,7 @@ export default function StackedChartScope(
               y: { signal: "chartY" },
               height: { signal: "height" },
               width: {
-                signal:
-                  "data('secondary_formatted').length > 1 ? (width / 2 ) : width",
+                signal: "data('secondary').length > 1 ? (width / 2 ) : width",
               },
             },
           },
@@ -266,7 +263,7 @@ export default function StackedChartScope(
               x: { signal: "(width / 2 ) + 30" },
               y: { signal: "chartY" },
               height: {
-                signal: "data('secondary_formatted').length > 1 ? height : 0",
+                signal: "data('secondary').length > 1 ? height : 0",
               },
             },
           },
@@ -340,7 +337,7 @@ export default function StackedChartScope(
             update: {
               x: { signal: "(width / 2 ) + 30" },
               height: {
-                signal: "data('secondary_formatted').length > 1 ? height : 0",
+                signal: "data('secondary').length > 1 ? height : 0",
               },
             },
           },

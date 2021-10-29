@@ -42,11 +42,12 @@ export default function DonutChartScope(
       ]
     ),
     {
-      height: isMobile && isCompare && secondaryData.length > 1 ? 380 : 180,
+      height: isMobile && isCompare && secondaryData?.length > 1 ? 380 : 180,
+      width: 700,
       signals: [
         {
           name: "height",
-          value: isMobile && isCompare && secondaryData.length > 1 ? 380 : 180,
+          value: isMobile && isCompare && secondaryData?.length > 1 ? 380 : 180,
         },
         {
           name: "isMobile",
@@ -107,11 +108,11 @@ export default function DonutChartScope(
               y: { signal: "chartY" },
               height: {
                 signal:
-                  "isMobile && isCompare && data('secondary_formatted').length > 1 ? height/2: height",
+                  "isMobile && isCompare && data('secondary').length > 1 ? height/2: height",
               },
               width: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? width : width/2",
+                  "isMobile && data('secondary').length > 1 ? width : width/2",
               },
             },
           },
@@ -162,7 +163,7 @@ export default function DonutChartScope(
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
-                      "isMobile && data('secondary_formatted').length > 1 ? height /4 : height/2",
+                      "isMobile && data('secondary').length > 1 ? height /4 : height/2",
                   },
                 },
                 update: {
@@ -184,19 +185,19 @@ export default function DonutChartScope(
             update: {
               x: {
                 signal:
-                  "!isMobile && data('secondary_formatted').length > 1 ? width / 2 + 30 : 0",
+                  "!isMobile && data('secondary').length > 1 ? width / 2 + 30 : 0",
               },
               y: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? height/2 + 30: data('secondary_formatted').length > 1 ? chartY: height + 40",
+                  "isMobile && data('secondary').length > 1 ? height/2 + 30: data('secondary').length > 1 ? chartY: height + 40",
               },
               height: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? height/2: 0",
+                  "isMobile && data('secondary').length > 1 ? height/2: 0",
               },
               width: {
                 signal:
-                  "!isMobile && data('secondary_formatted').length > 1 ? (width / 2 ) : data('secondary_formatted').length > 1 ? width : 0",
+                  "!isMobile && data('secondary').length > 1 ? (width / 2 ) : data('secondary').length > 1 ? width : 0",
               },
             },
           },
@@ -250,7 +251,7 @@ export default function DonutChartScope(
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
-                      "isMobile && data('secondary_formatted').length > 1 ? height /4 : height/2",
+                      "isMobile && data('secondary').length > 1 ? height /4 : height/2",
                   },
                 },
                 update: {

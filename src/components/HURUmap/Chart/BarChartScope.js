@@ -52,8 +52,7 @@ export default function BarChartScope(
           range: [
             0,
             {
-              signal:
-                "data('secondary_formatted').length > 1 ? width/2 - 30 : width",
+              signal: "data('secondary').length > 1 ? width/2 - 30 : width",
             },
           ],
           nice: true,
@@ -69,8 +68,7 @@ export default function BarChartScope(
           range: [
             0,
             {
-              signal:
-                "data('secondary_formatted').length > 1 ? width/2 - 30 : 0",
+              signal: "data('secondary').length > 1 ? width/2 - 30 : 0",
             },
           ],
           nice: true,
@@ -110,8 +108,7 @@ export default function BarChartScope(
               y: { signal: "chartY" },
               height: { signal: "height" },
               width: {
-                signal:
-                  "data('secondary_formatted').length > 1 ? (width / 2 ) : width",
+                signal: "data('secondary').length > 1 ? (width / 2 ) : width",
               },
             },
           },
@@ -181,7 +178,7 @@ export default function BarChartScope(
             },
           },
           legends:
-            primaryParentData.length > 1
+            primaryParentData?.length > 1
               ? [
                   {
                     fill: "parent_color_scale",
@@ -238,7 +235,7 @@ export default function BarChartScope(
               x: { signal: "(width / 2 ) + 30" },
               y: { signal: "chartY" },
               height: {
-                signal: "data('secondary_formatted').length > 1 ? height : 0",
+                signal: "data('secondary').length > 1 ? height : 0",
               },
             },
           },
@@ -246,12 +243,10 @@ export default function BarChartScope(
             ? [
                 {
                   orient: {
-                    signal:
-                      "data('secondary_formatted').length > 1 ? 'top' : 'none'",
+                    signal: "data('secondary').length > 1 ? 'top' : 'none'",
                   },
                   legendY: {
-                    signal:
-                      "data('secondary_formatted').length > 1 ? 0 : height + 28 ",
+                    signal: "data('secondary').length > 1 ? 0 : height + 28 ",
                   },
                   legendX: { signal: "-width/2 - 30" },
                   fill: "legend_secondary_scale",

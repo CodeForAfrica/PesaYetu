@@ -30,7 +30,7 @@ export default function configureScope(
         indicator?.data,
         indicator?.metadata,
         configuration,
-        secondaryIndicator?.data ?? [{}],
+        secondaryIndicator?.data ?? null,
         showParent ? indicator?.parentData : [{}],
         showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
@@ -43,7 +43,7 @@ export default function configureScope(
         indicator?.data,
         indicator?.metadata,
         configuration,
-        secondaryIndicator?.data ?? [{}],
+        secondaryIndicator?.data ?? null,
         showParent ? indicator?.parentData : [{}],
         showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
@@ -56,7 +56,7 @@ export default function configureScope(
         indicator?.data,
         indicator?.metadata,
         configuration,
-        secondaryIndicator?.data ?? [{}],
+        secondaryIndicator?.data ?? null,
         showParent ? indicator?.parentData : [{}],
         showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
@@ -70,9 +70,9 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          secondaryIndicator?.data ?? [{}],
-          showParent ? indicator?.parentData : [{}],
-          showParent ? secondaryIndicator?.parentData : [{}],
+          secondaryIndicator?.data ?? null,
+          showParent ? indicator?.parentData : null,
+          showParent ? secondaryIndicator?.parentData : null,
           isCompare
         );
       } else {
@@ -92,9 +92,9 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          secondaryIndicator?.data ?? [{}],
-          showParent ? indicator?.parentData : [{}],
-          showParent ? secondaryIndicator?.parentData : [{}],
+          secondaryIndicator?.data ?? null,
+          showParent ? indicator?.parentData : null,
+          showParent ? secondaryIndicator?.parentData : null,
           profileNames,
           isCompare
         );

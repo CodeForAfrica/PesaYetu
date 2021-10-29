@@ -87,7 +87,7 @@ export default function Signals(
     {
       name: "numberFormat",
       update:
-        "{ 'percentage': percentageFormatting, 'value':  data('secondary_formatted').length > 1 ? trimZeroFormat : valueFormatting }",
+        "{ 'percentage': percentageFormatting, 'value':  data('secondary').length > 1 ? trimZeroFormat : valueFormatting }",
     },
     {
       name: "datatype",

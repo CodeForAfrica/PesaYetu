@@ -57,7 +57,7 @@ export default function LineChartScope(
             15,
             {
               signal:
-                "data('secondary_formatted').length > 1 && !isMobile ? width/2 - 30 : width",
+                "data('secondary').length > 1 && !isMobile ? width/2 - 30 : width",
             },
           ],
         },
@@ -72,7 +72,7 @@ export default function LineChartScope(
             15,
             {
               signal:
-                "!isMobile && data('secondary_formatted').length > 1 ? width/2 - 30 : data('secondary_formatted').length > 1 ? width : 0",
+                "!isMobile && data('secondary').length > 1 ? width/2 - 30 : data('secondary').length > 1 ? width : 0",
             },
           ],
         },
@@ -148,11 +148,11 @@ export default function LineChartScope(
               y: { signal: "chartY" },
               height: {
                 signal:
-                  "isMobile && isCompare && data('secondary_formatted').length > 1 ? height/2: height",
+                  "isMobile && isCompare && data('secondary').length > 1 ? height/2: height",
               },
               width: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? width : width/2",
+                  "isMobile && data('secondary').length > 1 ? width : width/2",
               },
             },
           },
@@ -240,7 +240,7 @@ export default function LineChartScope(
               y: { signal: "chartY" },
               height: {
                 signal:
-                  "isMobile && isCompare && data('secondary_formatted').length > 1 ? height/2: height",
+                  "isMobile && isCompare && data('secondary').length > 1 ? height/2: height",
               },
             },
           },
@@ -252,7 +252,7 @@ export default function LineChartScope(
                     orient: "none",
                     legendX: {
                       signal:
-                        "data('secondary_formatted').length > 1  && !isMobile? (width / 2 ) - 100 : width - 85",
+                        "data('secondary').length > 1  && !isMobile? (width / 2 ) - 100 : width - 85",
                     },
                     legendY: { value: -35 },
                     labelFont: theme.typography.fontFamily,
@@ -321,19 +321,19 @@ export default function LineChartScope(
             update: {
               x: {
                 signal:
-                  "!isMobile && data('secondary_formatted').length > 1 ? width / 2 + 30 : 0",
+                  "!isMobile && data('secondary').length > 1 ? width / 2 + 30 : 0",
               },
               y: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? height/2 + 60: data('secondary_formatted').length > 1 ? chartY: height + 40",
+                  "isMobile && data('secondary').length > 1 ? height/2 + 60: data('secondary').length > 1 ? chartY: height + 40",
               },
               height: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? height/2: data('secondary_formatted').length > 1 ? height: 0",
+                  "isMobile && data('secondary').length > 1 ? height/2: data('secondary').length > 1 ? height: 0",
               },
               width: {
                 signal:
-                  "!isMobile && data('secondary_formatted').length > 1 ? (width / 2 ) : data('secondary_formatted').length > 1 ? width : 0",
+                  "!isMobile && data('secondary').length > 1 ? (width / 2 ) : data('secondary').length > 1 ? width : 0",
               },
             },
           },
@@ -348,28 +348,31 @@ export default function LineChartScope(
                 },
               ]
             : null,
-          axes: [
-            {
-              orient: "left",
-              scale: "s_yscale",
-              domain: false,
-              domainOpacity: 0.5,
-              tickSize: 0,
-              tickCount: xTicks || 6,
-              labelPadding: 6,
-              zindex: 1,
-              format: { signal: "numberFormat[Units]" },
-            },
-            {
-              orient: "bottom",
-              scale: "s_xscale",
-              bandPosition: 0,
-              domainOpacity: 0.5,
-              tickSize: 0,
-              grid: true,
-              labelPadding: 6,
-            },
-          ],
+          axes:
+            secondaryData?.length > 1
+              ? [
+                  {
+                    orient: "left",
+                    scale: "s_yscale",
+                    domain: false,
+                    domainOpacity: 0.5,
+                    tickSize: 0,
+                    tickCount: xTicks || 6,
+                    labelPadding: 6,
+                    zindex: 1,
+                    format: { signal: "numberFormat[Units]" },
+                  },
+                  {
+                    orient: "bottom",
+                    scale: "s_xscale",
+                    bandPosition: 0,
+                    domainOpacity: 0.5,
+                    tickSize: 0,
+                    grid: true,
+                    labelPadding: 6,
+                  },
+                ]
+              : null,
           marks: [
             {
               name: "line",
@@ -428,15 +431,15 @@ export default function LineChartScope(
             update: {
               x: {
                 signal:
-                  "!isMobile && data('secondary_formatted').length > 1 ? width / 2 + 30 : 0",
+                  "!isMobile && data('secondary').length > 1 ? width / 2 + 30 : 0",
               },
               y: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? height/2 + 30: data('secondary_formatted').length > 1 ? chartY: height + 40",
+                  "isMobile && data('secondary').length > 1 ? height/2 + 30: data('secondary').length > 1 ? chartY: height + 40",
               },
               height: {
                 signal:
-                  "isMobile && data('secondary_formatted').length > 1 ? height/2: 0",
+                  "isMobile && data('secondary').length > 1 ? height/2: 0",
               },
             },
           },
