@@ -252,7 +252,7 @@ export default function LineChartScope(
                     orient: "none",
                     legendX: {
                       signal:
-                        "data('secondary_formatted').length > 1 ? (width / 2 ) - 100 : width - 85",
+                        "data('secondary_formatted').length > 1  && !isMobile? (width / 2 ) - 100 : width - 85",
                     },
                     legendY: { value: -35 },
                     labelFont: theme.typography.fontFamily,
@@ -447,8 +447,10 @@ export default function LineChartScope(
                     fill: "parent_color_scale",
                     offset: 20,
                     orient: "none",
-                    legendX: { signal: "(width / 2 ) - 120" },
-                    legendY: { value: -40 },
+                    legendX: {
+                      signal: "isMobile ? width -90: (width / 2 ) - 120",
+                    },
+                    legendY: { value: isMobile ? -10 : -40 },
                     labelFont: theme.typography.fontFamily,
                     labelColor: theme.palette.chart.text.primary,
                     encode: {

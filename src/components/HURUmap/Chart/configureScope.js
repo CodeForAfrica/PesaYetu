@@ -30,11 +30,11 @@ export default function configureScope(
         indicator?.data,
         indicator?.metadata,
         configuration,
-        indicator?.data ?? [{}],
+        secondaryIndicator?.data ?? [{}],
         showParent ? indicator?.parentData : [{}],
         showParent ? secondaryIndicator?.parentData : [{}],
         profileNames,
-        true,
+        isCompare,
         isMobile
       );
       break;
@@ -70,7 +70,10 @@ export default function configureScope(
           indicator?.data,
           indicator?.metadata,
           configuration,
-          showParent ? indicator?.parentData : [{}]
+          secondaryIndicator?.data ?? [{}],
+          showParent ? indicator?.parentData : [{}],
+          showParent ? secondaryIndicator?.parentData : [{}],
+          isCompare
         );
       } else {
         vegaSpec = StackedChartScope(

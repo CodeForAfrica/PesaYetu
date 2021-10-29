@@ -1,7 +1,6 @@
 import data from "./data";
 import signals from "./signals";
 
-import { defaultConfig } from "@/pesayetu/components/HURUmap/Chart/properties";
 import { createFiltersForGroups } from "@/pesayetu/components/HURUmap/Chart/utils";
 import theme from "@/pesayetu/theme";
 
@@ -24,7 +23,27 @@ export default function Scope(
   return {
     $schema: "https://vega.github.io/schema/vega/v5.json",
     description: "A",
-    config: defaultConfig,
+    config: {
+      axis: {
+        labelColor: theme.palette.chart.text.primary,
+        labelFont: theme.typography.fontFamily,
+        labelFontSize: 11,
+        gridColor: theme.palette.chart.text.primary,
+        gridOpacity: 0.2,
+      },
+      axisBottom: {
+        domainColor: "transparent",
+      },
+      legends: {
+        layout: {
+          direction: "horizontal",
+        },
+      },
+      range: {
+        category: theme.palette.chart.primary,
+        secondary: theme.palette.chart.secondary,
+      },
+    },
     autosize: { type: "fit-x", contains: "padding" },
     padding: 5,
     width: { signal: "width" },
