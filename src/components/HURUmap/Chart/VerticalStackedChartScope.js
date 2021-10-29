@@ -1,337 +1,426 @@
-import {
-  defaultConfig,
-  commonSignal,
-  stackedLegend,
-  parentLegend,
-} from "./properties";
-import { createFiltersForGroups } from "./utils";
+import merge from "deepmerge";
+
+import Scope from "./Scope";
 
 import theme from "@/pesayetu/theme";
 
-const PERCENTAGE_TYPE = "percentage";
-const VALUE_TYPE = "value";
-const graphValueTypes = {
-  Percentage: PERCENTAGE_TYPE,
-  Value: VALUE_TYPE,
-};
-
 export default function VerticalStackedChartScope(
-  data,
+  primaryData,
   metadata,
   config,
-  parentData
+  secondaryData,
+  primaryParentData,
+  secondaryParentData,
+  isCompare
 ) {
-  const {
-    defaultType,
-    types: {
-      Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
-      Percentage: {
-        formatting: percentageFormatting,
-        minX: percentageMinX,
-        maxX: percentageMaxX,
-      },
-    },
-    parentLabel,
-    stacked_field: stackedField,
-  } = config;
+  const { parentLabel } = config;
 
-  const { primary_group: primaryGroup, groups } = metadata;
+  const { primary_group: primaryGroup } = metadata;
+  const stackedField = config.stacked_field;
 
-  let legends = [stackedLegend];
-  if (parentData?.length > 1) {
-    legends = [stackedLegend, parentLegend(parentLabel)];
-  }
-
-  const { signals: filterSignals, filters } = createFiltersForGroups(groups);
-
-  return {
-    $schema: "https://vega.github.io/schema/vega/v5.json",
-    description: "A",
-    autosize: { type: "fit-x", contains: "padding" },
-    padding: 5,
-    width: { signal: "width" },
-    height: { signal: "height" },
-    config: defaultConfig,
-    data: [
-      {
-        name: "primaryData",
-        values: data,
-        transform: [...filters],
-      },
-      {
-        name: "parentData",
-        values: parentData,
-        transform: [...filters],
-      },
-      {
-        name: "data_formatted",
-        source: "primaryData",
-        transform: [
-          {
-            type: "aggregate",
-            ops: ["sum"],
-            as: ["count"],
-            fields: ["count"],
-            groupby: { signal: "groups" },
-          },
-          {
-            type: "joinaggregate",
-            as: ["TotalCount"],
-            ops: ["sum"],
-            fields: ["count"],
-          },
-          {
-            type: "formula",
-            expr: "datum.count/datum.TotalCount",
-            as: "percentage",
-          },
-          {
-            type: "extent",
-            field: "percentage",
-            signal: "percentage_extent",
-          },
-          {
-            type: "extent",
-            field: "count",
-            signal: "value_extent",
-          },
-          {
-            type: "stack",
-            groupby: [primaryGroup],
-            field: { signal: "datatype[Units]" },
-          },
-        ],
-      },
-      {
-        name: "parent_data_formatted",
-        source: "parentData",
-        transform: [
-          {
-            type: "aggregate",
-            ops: ["sum"],
-            as: ["count"],
-            fields: ["count"],
-            groupby: [primaryGroup],
-          },
-          {
-            type: "joinaggregate",
-            as: ["TotalCount"],
-            ops: ["sum"],
-            fields: ["count"],
-          },
-          {
-            type: "formula",
-            expr: "datum.count/datum.TotalCount",
-            as: "percentage",
-          },
-          {
-            type: "extent",
-            field: "percentage",
-            signal: "parent_percentage_extent",
-          },
-          {
-            type: "extent",
-            field: "count",
-            signal: "parent_value_extent",
-          },
-          {
-            type: "lookup",
-            from: "data_formatted",
-            key: { signal: "mainGroup" },
-            fields: [{ signal: "mainGroup" }],
-            as: ["primary"],
-          },
-        ],
-      },
-    ],
-    signals: [
-      ...commonSignal,
-      {
-        name: "groups",
-        value: [primaryGroup, stackedField],
-      },
-      {
-        name: "barvalue",
-        value: "datum",
-      },
-      {
-        name: "Units",
-        value: graphValueTypes[defaultType],
-      },
-      {
-        name: "applyFilter",
-        value: false,
-      },
-      {
-        name: "filterIndicator",
-      },
-      {
-        name: "filterValue",
-      },
-      {
-        name: "mainGroup",
-        value: primaryGroup,
-      },
-      {
-        name: "stackedField",
-        value: stackedField,
-      },
-      {
-        name: "numberFormat",
-        value: { percentage: percentageFormatting, value: valueFormatting },
-      },
-      {
-        name: "datatype",
-        value: { percentage: "percentage", value: "count" },
-      },
-      {
-        name: "percentageMaxX",
-        value: percentageMaxX !== "default" ? percentageMaxX : undefined,
-      },
-      {
-        name: "percentageMinX",
-        value: percentageMinX !== "default" ? percentageMinX : undefined,
-      },
-      {
-        name: "valueMaxX",
-        value: valueMaxX !== "default" ? valueMaxX : undefined,
-      },
-      {
-        name: "valueMinX",
-        value: valueMinX !== "default" ? valueMinX : undefined,
-      },
-      {
-        name: "domainMin",
-        update: "Units === 'percentage' ? percentageMinX : valueMinX",
-      },
-      {
-        name: "domainMax",
-        update: "Units === 'percentage' ? percentageMaxX : valueMaxX",
-      },
-      {
-        name: "height",
-        value: 310,
-      },
-      {
-        name: "white_mark",
-        value: theme.palette.text.secondary,
-      },
-      {
-        name: "grey_mark",
-        value: theme.palette.chart.text.primary,
-      },
-      ...filterSignals,
-    ],
-    scales: [
-      {
-        name: "xscale",
-        type: "band",
-        domain: { data: "data_formatted", field: primaryGroup },
-        range: [0, { signal: "width" }],
-        padding: 0.15,
-      },
-      {
-        name: "yscale",
-        type: "linear",
-        domain: { data: "data_formatted", field: "y1" },
-        domainMin: { signal: "domainMin" },
-        domainMax: { signal: "domainMax" },
-        range: [{ signal: "height" }, 0],
-        zero: true,
-        nice: true,
-      },
-      {
-        name: "color",
-        type: "ordinal",
-        range: "category",
-        domain: {
-          data: "data_formatted",
-          field: stackedField,
+  return merge(
+    Scope(
+      primaryData,
+      metadata,
+      config,
+      secondaryData,
+      primaryParentData,
+      secondaryParentData,
+      "stacked",
+      [
+        {
+          type: "stack",
+          groupby: [primaryGroup],
+          field: { signal: "datatype[Units]" },
         },
-      },
-      {
-        name: "pcolor",
-        type: "ordinal",
-        range: "category",
-        domain: { data: "parent_data_formatted", field: "parent" },
-      },
-    ],
-    axes: [
-      {
-        orient: "left",
-        scale: "yscale",
-        domainOpacity: 0.5,
-        tickSize: 0,
-        grid: true,
-        labelPadding: 6,
-        zindex: 1,
-        format: { signal: "numberFormat[Units]" },
-      },
-      {
-        orient: "bottom",
-        scale: "xscale",
-        bandPosition: 0,
-        domainOpacity: 0.5,
-        tickSize: 0,
-        labels: false,
-      },
-    ],
-    legends,
-    marks: [
-      {
-        type: "group",
-        marks: [
-          {
-            name: "bars",
-            from: { data: "data_formatted" },
-            type: "rect",
-            encode: {
-              enter: {
-                x: { scale: "xscale", field: { signal: "mainGroup" } },
-                width: { scale: "xscale", band: 1 },
-                y: { scale: "yscale", field: "y0" },
-                y2: { scale: "yscale", field: "y1" },
-                fill: { scale: "color", field: stackedField },
-              },
-              update: {
-                fillOpacity: { value: 1 },
-                tooltip: {
-                  signal:
-                    "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
-                },
+      ]
+    ),
+    {
+      height: isCompare && secondaryData.length > 1 ? 620 : 310,
+      signals: [
+        {
+          name: "height",
+          value: isCompare && secondaryData.length > 1 ? 620 : 310,
+        },
+        {
+          name: "isCompare",
+          value: isCompare,
+        },
+        {
+          name: "stackedField",
+          value: stackedField,
+        },
+      ],
+      scales: [
+        {
+          name: "xscale",
+          type: "band",
+          domain: { data: "primary_formatted", field: primaryGroup },
+          range: [0, { signal: "width" }],
+          padding: 0.15,
+        },
+        {
+          name: "yscale",
+          type: "linear",
+          domain: { data: "primary_formatted", field: "y1" },
+          domainMin: { signal: "domainMin" },
+          domainMax: { signal: "domainMax" },
+          range: [
+            {
+              signal:
+                "isCompare && data('secondary').length > 1 ? height/2: height",
+            },
+            0,
+          ],
+          zero: true,
+          nice: true,
+        },
+        {
+          name: "s_xscale",
+          type: "band",
+          domain: { data: "secondary_formatted", field: primaryGroup },
+          range: [0, { signal: "width" }],
+          padding: 0.15,
+        },
+        {
+          name: "s_yscale",
+          type: "linear",
+          domain: { data: "secondary_formatted", field: "y1" },
+          domainMin: { signal: "domainMin" },
+          domainMax: { signal: "domainMax" },
+          range: [
+            {
+              signal:
+                "isCompare && data('secondary').length > 1 ? height/2: height",
+            },
+            0,
+          ],
+          zero: true,
+          nice: true,
+        },
+        {
+          name: "secondary_color",
+          type: "ordinal",
+          range: "secondary",
+          domain: {
+            data: "secondary_formatted",
+            field: stackedField,
+          },
+        },
+        {
+          name: "color",
+          type: "ordinal",
+          range: "category",
+          domain: {
+            data: "primary_formatted",
+            field: stackedField,
+          },
+        },
+        {
+          name: "parent_color_scale",
+          type: "ordinal",
+          range: "category",
+          domain: [parentLabel],
+        },
+      ],
+      marks: [
+        {
+          type: "group",
+          name: "primary_stacked_bars",
+          encode: {
+            update: {
+              x: { value: 0 },
+              y: { signal: "chartY" },
+              height: {
+                signal:
+                  "isCompare && data('secondary').length > 1 ? height/2: height",
               },
             },
           },
-        ],
-      },
-      {
-        type: "group",
-        marks: [
-          {
-            name: "parent",
-            from: { data: "parent_data_formatted" },
-            type: "rule",
-            encode: {
-              enter: {
-                x: { scale: "xscale", field: { signal: "mainGroup" } },
-                x2: {
-                  scale: "xscale",
-                  field: { signal: "mainGroup" },
-                  offset: { signal: "width/domain('xscale').length - 10" },
+          axes: [
+            {
+              orient: "left",
+              scale: "yscale",
+              domainOpacity: 0.5,
+              tickSize: 0,
+              grid: true,
+              labelPadding: 6,
+              zindex: 1,
+              format: { signal: "numberFormat[Units]" },
+            },
+            {
+              orient: "bottom",
+              scale: "xscale",
+              bandPosition: 0,
+              domainOpacity: 0.5,
+              tickSize: 0,
+              labels: false,
+            },
+          ],
+          legends: [
+            {
+              fill: "color",
+              orient: "top",
+              direction: "horizontal",
+              strokeColor: "transparent",
+              labelFont: theme.typography.fontFamily,
+              encode: {
+                labels: {
+                  interactive: true,
+                  update: {
+                    fontSize: { value: 11 },
+                    fill: { value: theme.palette.chart.text.primary },
+                  },
                 },
-                y: { scale: "yscale", field: { signal: "datatype[Units]" } },
-                y2: { scale: "yscale", field: { signal: "datatype[Units]" } },
-                stroke: {
-                  signal:
-                    "datum.primary && (datum[datatype[Units]] > datum.primary[datatype[Units]]) ? grey_mark: white_mark",
+                symbols: {
+                  update: {
+                    stroke: { value: "transparent" },
+                  },
                 },
-                strokeWidth: { value: 1 },
-                strokeDash: { value: [2, 2] },
+              },
+            },
+          ],
+          marks: [
+            {
+              name: "bars",
+              from: { data: "primary_formatted" },
+              type: "rect",
+              encode: {
+                enter: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  width: { scale: "xscale", band: 1 },
+                  y: { scale: "yscale", field: "y0" },
+                  y2: { scale: "yscale", field: "y1" },
+                  fill: { scale: "color", field: stackedField },
+                },
+                update: {
+                  fillOpacity: { value: 1 },
+                  tooltip: {
+                    signal:
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
+                  },
+                },
+              },
+            },
+          ],
+        },
+        {
+          type: "group",
+          name: "primary_parent_rule",
+          encode: {
+            update: {
+              x: { value: 0 },
+              y: { signal: "chartY" },
+              height: {
+                signal:
+                  "isCompare && data('secondary').length > 1 ? height/2: height",
               },
             },
           },
-        ],
-      },
-    ],
-  };
+          legends:
+            primaryParentData?.length > 1
+              ? [
+                  {
+                    fill: "parent_color_scale",
+                    orient: "none",
+                    legendX: { signal: "width - 90" },
+                    legendY: { value: -40 },
+                    labelFont: theme.typography.fontFamily,
+                    labelColor: theme.palette.chart.text.primary,
+                    encode: {
+                      symbols: {
+                        shape: { value: "stroke" },
+                        update: {
+                          shape: { value: "stroke" },
+                          size: { value: 500 },
+                          stroke: { value: theme.palette.chart.text.primary },
+                          strokeDash: { value: [2, 2] },
+                        },
+                      },
+                    },
+                  },
+                ]
+              : null,
+          marks: [
+            {
+              from: { data: "primary_parent_formatted" },
+              type: "rule",
+              encode: {
+                enter: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  x2: {
+                    scale: "xscale",
+                    field: { signal: "mainGroup" },
+                    offset: { signal: "width/domain('xscale').length - 10" },
+                  },
+                  y: { scale: "yscale", field: "y1" },
+                  y2: { scale: "yscale", field: "y1" },
+                  stroke: {
+                    signal:
+                      "datum.primary && (datum[datatype[Units]] > datum.primary[datatype[Units]]) ? grey_mark: white_mark",
+                  },
+                  strokeWidth: { value: 1 },
+                  strokeDash: { value: [2, 2] },
+                },
+              },
+            },
+          ],
+        },
+        {
+          type: "group",
+          name: "secondary_stacked_bars",
+          encode: {
+            update: {
+              x: {
+                value: 0,
+              },
+              y: {
+                signal:
+                  "data('secondary').length > 1 ? height/2 + 60: height + 40",
+              },
+              height: {
+                signal: "data('secondary').length > 1 ? height/2: 0",
+              },
+            },
+          },
+          axes:
+            secondaryData?.length > 1
+              ? [
+                  {
+                    orient: "left",
+                    scale: "s_yscale",
+                    domainOpacity: 0.5,
+                    tickSize: 0,
+                    grid: true,
+                    labelPadding: 6,
+                    zindex: 1,
+                    format: { signal: "numberFormat[Units]" },
+                  },
+                  {
+                    orient: "bottom",
+                    scale: "s_xscale",
+                    bandPosition: 0,
+                    domainOpacity: 0.5,
+                    tickSize: 0,
+                    labels: false,
+                  },
+                ]
+              : null,
+          legends:
+            secondaryData?.length > 1
+              ? [
+                  {
+                    fill: "secondary_color",
+                    orient: "top",
+                    direction: "horizontal",
+                    strokeColor: "transparent",
+                    labelFont: theme.typography.fontFamily,
+                    encode: {
+                      labels: {
+                        interactive: true,
+                        update: {
+                          fontSize: { value: 11 },
+                          fill: { value: theme.palette.chart.text.primary },
+                        },
+                      },
+                      symbols: {
+                        update: {
+                          stroke: { value: "transparent" },
+                        },
+                      },
+                    },
+                  },
+                ]
+              : null,
+          marks: [
+            {
+              name: "secondary_bars",
+              from: { data: "secondary_formatted" },
+              type: "rect",
+              encode: {
+                enter: {
+                  x: { scale: "s_xscale", field: { signal: "mainGroup" } },
+                  width: { scale: "s_xscale", band: 1 },
+                  y: { scale: "s_yscale", field: "y0" },
+                  y2: { scale: "s_yscale", field: "y1" },
+                  fill: { scale: "secondary_color", field: stackedField },
+                },
+                update: {
+                  fillOpacity: { value: 1 },
+                  tooltip: {
+                    signal:
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
+                  },
+                },
+              },
+            },
+          ],
+        },
+        {
+          type: "group",
+          name: "secondary_parent_rule",
+          encode: {
+            update: {
+              x: { value: 0 },
+              y: {
+                signal:
+                  "data('secondary').length > 1 ? height/2 + 30: data('secondary').length > 1 ? chartY: height + 40",
+              },
+              height: {
+                signal: "data('secondary').length > 1 ? height/2: 0",
+              },
+            },
+          },
+          legends:
+            secondaryParentData?.length > 1
+              ? [
+                  {
+                    fill: "parent_color_scale",
+                    orient: "none",
+                    legendX: { signal: "width - 90" },
+                    legendY: { value: -10 },
+                    labelFont: theme.typography.fontFamily,
+                    labelColor: theme.palette.chart.text.primary,
+                    encode: {
+                      symbols: {
+                        shape: { value: "stroke" },
+                        update: {
+                          shape: { value: "stroke" },
+                          size: { value: 500 },
+                          stroke: { value: theme.palette.chart.text.primary },
+                          strokeDash: { value: [2, 2] },
+                        },
+                      },
+                    },
+                  },
+                ]
+              : null,
+          marks: [
+            {
+              from: { data: "secondary_parent_formatted" },
+              type: "rule",
+              encode: {
+                enter: {
+                  x: { scale: "s_xscale", field: { signal: "mainGroup" } },
+                  x2: {
+                    scale: "s_xscale",
+                    field: { signal: "mainGroup" },
+                    offset: { signal: "width/domain('xscale').length - 10" },
+                  },
+                  y: { scale: "s_yscale", field: "y1" },
+                  y2: { scale: "s_yscale", field: "y1" },
+                  stroke: {
+                    signal:
+                      "datum.secondary && (datum[datatype[Units]] > datum.secondary[datatype[Units]]) ? grey_mark: white_mark",
+                  },
+                  strokeWidth: { value: 1 },
+                  strokeDash: { value: [2, 2] },
+                },
+              },
+            },
+          ],
+        },
+      ],
+    }
+  );
 }
