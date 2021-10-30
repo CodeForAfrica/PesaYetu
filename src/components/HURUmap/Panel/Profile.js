@@ -199,6 +199,7 @@ const Profile = forwardRef(function Profile(
                     subcategoryIndex,
                     indicatorIndex
                   )}
+                  isCompare={!!secondaryProfile}
                   profileNames={{
                     primary:
                       indicator.indicator?.data?.length > 0

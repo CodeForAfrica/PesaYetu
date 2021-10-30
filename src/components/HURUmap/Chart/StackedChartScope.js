@@ -281,7 +281,7 @@ export default function StackedChartScope(
             },
           ],
           legends:
-            secondaryParentData?.length > 1
+            secondaryData?.length > 1
               ? [
                   {
                     fill: "secondary_color",
