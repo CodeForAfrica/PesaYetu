@@ -29,11 +29,11 @@ export default function VerticalBarChartScope(
       "bar"
     ),
     {
-      height: isCompare && secondaryData.length > 1 ? 620 : 310,
+      height: isCompare && secondaryData?.length > 1 ? 620 : 310,
       signals: [
         {
           name: "height",
-          value: isCompare && secondaryData.length > 1 ? 620 : 310,
+          value: isCompare && secondaryData?.length > 1 ? 620 : 310,
         },
         {
           name: "isCompare",
@@ -194,7 +194,7 @@ export default function VerticalBarChartScope(
                     fill: "parent_color_scale",
                     orient: "none",
                     legendX: { signal: "width - 90" },
-                    legendY: { value: -40 },
+                    legendY: { value: -35 },
                     labelFont: theme.typography.fontFamily,
                     labelColor: theme.palette.chart.text.primary,
                     encode: {
@@ -222,7 +222,7 @@ export default function VerticalBarChartScope(
                   x2: {
                     scale: "xscale",
                     field: { signal: "mainGroup" },
-                    offset: { signal: "width/domain('xscale').length - 10" },
+                    offset: { signal: "width/domain('xscale').length - 8" },
                   },
                   y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   y2: { scale: "yscale", field: { signal: "datatype[Units]" } },
@@ -318,8 +318,7 @@ export default function VerticalBarChartScope(
             update: {
               x: { value: 0 },
               y: {
-                signal:
-                  "data('secondary').length > 1 ? height/2 + 30: data('secondary').length > 1 ? chartY: height + 40",
+                signal: "data('secondary').length > 1 ? height/2 + 60: chartY",
               },
               height: {
                 signal: "data('secondary').length > 1 ? height/2: 0",
@@ -333,7 +332,7 @@ export default function VerticalBarChartScope(
                     fill: "parent_color_scale",
                     orient: "none",
                     legendX: { signal: "width - 90" },
-                    legendY: { value: -10 },
+                    legendY: { value: -35 },
                     labelFont: theme.typography.fontFamily,
                     labelColor: theme.palette.chart.text.primary,
                     encode: {
@@ -352,6 +351,7 @@ export default function VerticalBarChartScope(
               : null,
           marks: [
             {
+              name: "secondary_parent",
               from: { data: "secondary_parent_formatted" },
               type: "rule",
               encode: {
@@ -360,7 +360,7 @@ export default function VerticalBarChartScope(
                   x2: {
                     scale: "s_xscale",
                     field: { signal: "mainGroup" },
-                    offset: { signal: "width/domain('xscale').length - 10" },
+                    offset: { signal: "width/domain('s_xscale').length - 8" },
                   },
                   y: {
                     scale: "s_yscale",
