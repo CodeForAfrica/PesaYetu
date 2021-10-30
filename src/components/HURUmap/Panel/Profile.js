@@ -40,8 +40,10 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
     },
   },
   metricRow: {
-    display: "flex",
     marginBottom: typography.pxToRem(8),
+    [breakpoints.up("md")]: {
+      display: "flex",
+    },
     [breakpoints.up("lg")]: {
       marginBottom: typography.pxToRem(14),
     },
