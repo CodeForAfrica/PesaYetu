@@ -48,13 +48,15 @@ const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
             ) : null}
           </Grid>
         </Grid>
-        <Grid item>
-          <Button variant="contained" className={classes.button}>
-            <div className={classes.icon}>
-              <Image src={icon} layout="fill" />
-            </div>
-          </Button>
-        </Grid>
+        {icon ? (
+          <Grid item>
+            <Button variant="contained" className={classes.button}>
+              <div className={classes.icon}>
+                <Image src={icon} layout="fill" />
+              </div>
+            </Button>
+          </Grid>
+        ) : null}
       </Grid>
       {parent && (
         <Typography variant="subtitle2" className={classes.description}>

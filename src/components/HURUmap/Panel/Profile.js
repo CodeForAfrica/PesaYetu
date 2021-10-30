@@ -158,7 +158,6 @@ const Profile = forwardRef(function Profile(
       {secondaryProfile ? (
         <LocationHeader
           variant="secondary"
-          icon={Print}
           onClick={handleClick(secondaryProfile)}
           title={secondaryProfile.geography?.name}
           {...secondaryProfile.geography}
