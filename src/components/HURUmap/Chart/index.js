@@ -51,6 +51,7 @@ function Chart({
   const classes = useStyles(props);
   const chartRef = useRef();
   const [view, setView] = useState(null);
+  const [cSpec, setCSpec] = useState(null);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -129,6 +130,7 @@ function Chart({
         secondaryIndicator,
         profileNames
       );
+      setCSpec(spec);
       if (chartRef?.current) {
         const newView = await embed(chartRef.current, spec, {
           renderer: "canvas",
@@ -162,7 +164,6 @@ function Chart({
   if (!indicator?.data) {
     return null;
   }
-
   return (
     <div className={classes.root} id={`chart-${id}-${geoCode}`}>
       <IndicatorTitle
@@ -174,6 +175,9 @@ function Chart({
         disableToggle={disableToggle}
         chartValue={chartValue}
         handleChartValueChange={handleChartValueChange}
+        spec={cSpec}
+        height={view?.height()}
+        source={source}
       />
       {!isMobile && (
         <Filters

@@ -30,6 +30,19 @@ export default function formatData(data, parent) {
               },
             };
           }),
+          metrics: (data[label]?.subcategories[child]?.key_metrics ?? []).map(
+            (m, index) => {
+              return {
+                ...m,
+                parentName: parent?.name ?? null,
+                parentMetric: parent.data
+                  ? parent?.data[label]?.subcategories[child]?.key_metrics[
+                      index
+                    ] ?? null
+                  : null,
+              };
+            }
+          ),
         };
       }),
     };
