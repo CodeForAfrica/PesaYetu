@@ -1,10 +1,12 @@
-import { Box, LinearProgress, Typography } from "@material-ui/core";
+import { Box, LinearProgress, Typography, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { alpha } from "@material-ui/core/styles/colorManipulator";
 import { capitalize } from "@material-ui/core/utils";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+
+import { ReactComponent as CancelIcon } from "@/pesayetu/assets/icons/Component108-4.svg";
 
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: ({ active, variant }) => {
@@ -24,6 +26,17 @@ const useStyles = makeStyles(({ palette, typography }) => ({
       position: "relative",
       minWidth: typography.pxToRem(88),
     };
+  },
+  cancelBtn: {
+    position: "absolute",
+    top: -68,
+    color: "#ebebeb",
+    "&:hover": {
+      color: "#666666",
+      "& .Component108-4_svg__b": {
+        stroke: palette.text.secondary,
+      },
+    },
   },
   level: {
     borderRadius: typography.pxToRem(4),
@@ -86,6 +99,7 @@ function LocationTag({
       onClick(e, { code, level, name: nameProp });
     }
   };
+
   const name = isLoading ? "…" : nameProp;
   return (
     <Box
@@ -96,6 +110,11 @@ function LocationTag({
       alignItems="center"
       className={clsx(classes.root, className)}
     >
+      {variant === "marker" ? (
+        <IconButton className={classes.cancelBtn}>
+          <CancelIcon />
+        </IconButton>
+      ) : null}
       {isLoading ? (
         <LinearProgress className={clsx(classes.level, classes.levelLoading)} />
       ) : (
@@ -125,6 +144,7 @@ LocationTag.propTypes = {
     levelLoaded: PropTypes.string,
     levelLoading: PropTypes.string,
     name: PropTypes.string,
+    cancelBtn: PropTypes.string,
   }),
   className: PropTypes.string,
   code: PropTypes.string,
@@ -133,7 +153,7 @@ LocationTag.propTypes = {
   level: PropTypes.string,
   name: PropTypes.string,
   onClick: PropTypes.func,
-  variant: PropTypes.oneOf(["default", "highlight"]),
+  variant: PropTypes.oneOf(["default", "highlight", "marker"]),
 };
 
 LocationTag.defaultProps = {

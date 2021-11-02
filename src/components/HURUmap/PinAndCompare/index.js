@@ -1,6 +1,6 @@
 import { Box, IconButton, SvgIcon } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
@@ -23,16 +23,42 @@ function PinAndCompare({
   ...props
 }) {
   const classes = useStyles(props);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(null);
+
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    setOpen((prevOpen) => !prevOpen);
+    if (!open && onClickPin) {
+      onClickPin(e);
+    }
+  };
+
+  const handleClose = (e) => {
+    setOpen(false);
+    if (onClose) {
+      onClose(e);
+    }
+  };
+
+  const handleChange = (e) => {
+    setSelected(e.target.value);
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   const handleClick = (e) => {
+    setOpen(true);
     if (onClickPin) {
       onClickPin(e);
     }
   };
-  const component = isPinning ? PinIconSelected : PinIconDefault;
+  const component = open && isPinning ? PinIconSelected : PinIconDefault;
 
   return (
     <Box display="flex" alignItems="flex-end" className={classes.root}>
-      <IconButton onClick={handleClick} className={classes.pinButton}>
+      <IconButton onClick={handleButtonClick} className={classes.pinButton}>
         <PinIcon
           color="primary"
           component={component}
@@ -42,12 +68,13 @@ function PinAndCompare({
       </IconButton>
       <Select
         helperText={helperText}
-        onClose={onClose}
-        onChange={onChange}
-        open={isPinning}
+        onChange={handleChange}
+        open={open && isPinning}
         onOpen={handleClick}
+        onClose={handleClose}
         options={options}
         placeholder={placeholder}
+        selected={selected}
         classes={{ select: classes.locationSelect }}
       />
     </Box>
@@ -64,6 +91,7 @@ PinAndCompare.propTypes = {
   onOpen: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
+  value: PropTypes.string,
 };
 
 PinAndCompare.defaultProps = {
@@ -76,6 +104,7 @@ PinAndCompare.defaultProps = {
   onOpen: undefined,
   options: undefined,
   placeholder: undefined,
+  value: undefined,
 };
 
 export default PinAndCompare;

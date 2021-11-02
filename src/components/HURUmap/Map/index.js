@@ -28,6 +28,7 @@ function Map({
   styles,
   tileLayers,
   zoom,
+  isPinOrCompare,
   ...props
 }) {
   const classes = useStyles(props);
@@ -35,6 +36,10 @@ function Map({
 
   const getSelectedBoundary = useCallback(
     (level, geoms) => {
+      if (isPinOrCompare) {
+        // if we are pinning/comparing do not drill down
+        return geoms.boundary;
+      }
       const preferredChildrenPerLevel = preferredChildren[level];
       const preferredLevel =
         preferredChildrenPerLevel?.find((l) => geoms.children[l]) ?? null;
@@ -44,7 +49,7 @@ function Map({
       }
       return null;
     },
-    [preferredChildren]
+    [preferredChildren, isPinOrCompare]
   );
 
   useEffect(() => {
@@ -107,6 +112,7 @@ function Map({
         locationCodes={locationCodes}
         parentsGeometries={geometries.parents}
         selectedBoundary={selectedBoundary}
+        isPinOrCompare={isPinOrCompare}
       />
     </MapContainer>
   );
@@ -139,6 +145,7 @@ Map.propTypes = {
   styles: PropTypes.shape({}),
   tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
   zoom: PropTypes.number,
+  isPinOrCompare: PropTypes.bool,
 };
 
 Map.defaultProps = {
@@ -156,6 +163,7 @@ Map.defaultProps = {
   },
   tileLayers: undefined,
   zoom: undefined,
+  isPinOrCompare: undefined,
 };
 
 export default Map;

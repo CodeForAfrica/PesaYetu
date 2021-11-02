@@ -1,7 +1,7 @@
 import { Drawer } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
 import PanelItem from "./PanelItem";
 import useStyles from "./useStyles";
@@ -11,16 +11,57 @@ import TabPanel from "@/pesayetu/components/Tabs/TabPanel";
 
 function DesktopPanel({
   isPinning,
+  isCompare,
   onClickPin,
   onClickUnpin,
-  panelItems,
+  panelItems: panelItemsProp,
   ...props
 }) {
   const [value, setValue] = React.useState();
   const [pins, setPins] = React.useState([]);
+  const [panelItems, setPanelItems] = React.useState(panelItemsProp);
   const paperRef = React.useRef();
   const drawerWidth = paperRef.current?.clientWidth;
   const classes = useStyles({ ...props, drawerWidth });
+
+  useEffect(() => {
+    const foundCompare = panelItemsProp?.find(
+      (item) => item.value === "secondaryPin"
+    );
+    if (isCompare && !foundCompare) {
+      const pinItems = panelItemsProp?.find((i) => i.value === "pin");
+      const secondaryPin = {
+        ...pinItems,
+        value: "secondaryPin",
+      };
+      setPanelItems([...panelItemsProp, secondaryPin]);
+    }
+    if (!isCompare && foundCompare) {
+      setPanelItems(panelItemsProp?.filter((p) => p?.value !== "secondaryPin"));
+    }
+  }, [isCompare, panelItemsProp]);
+
+  useEffect(() => {
+    if (isPinning || isCompare) {
+      setPins((p) => {
+        const index = p.indexOf("pin");
+        if (index === -1) {
+          return [...p, "pin"];
+        }
+        return p;
+      });
+    } else if (!isPinning && !isCompare) {
+      setPins((p) => {
+        const index = p.indexOf("pin");
+        if (index !== -1) {
+          const c = [...p];
+          c?.splice(index, 1);
+          return c;
+        }
+        return p;
+      });
+    }
+  }, [isPinning, isCompare]);
 
   const isPin = (current) => {
     const found = panelItems.find((item) => item.value === current);
@@ -44,7 +85,7 @@ function DesktopPanel({
   const handleChange = (nextValue) => {
     if (isPin(nextValue)) {
       setPins(addOrRemovePin(pins, nextValue));
-      if (!isPinning) {
+      if (!isPinning && !isCompare) {
         onClickPin();
       } else {
         onClickUnpin();
@@ -57,7 +98,7 @@ function DesktopPanel({
     setValue(nextValue);
   };
 
-  const open = !isPinning && !!value;
+  const open = value === "rich-data";
   return (
     <Drawer
       PaperProps={{ ref: paperRef }}
@@ -72,7 +113,7 @@ function DesktopPanel({
       anchor="left"
       open={open}
     >
-      {panelItems.map((item) => (
+      {panelItems?.map((item) => (
         <TabPanel
           key={item.value}
           name={item.value}
@@ -80,7 +121,13 @@ function DesktopPanel({
           value={open ? value : undefined}
           classes={{ tabPanel: classes.tabPanel }}
         >
-          <PanelItem item={item} onClickUnpin={onClickUnpin} {...props} />
+          <PanelItem
+            item={item}
+            onClickUnpin={onClickUnpin}
+            isPinning={isPinning}
+            onClickPin={onClickPin}
+            {...props}
+          />
         </TabPanel>
       ))}
       <PanelButtonGroup
@@ -99,6 +146,7 @@ function DesktopPanel({
 }
 
 DesktopPanel.propTypes = {
+  isCompare: PropTypes.bool,
   isPinning: PropTypes.bool,
   onClickPin: PropTypes.func,
   onClickUnpin: PropTypes.func,
@@ -112,6 +160,7 @@ DesktopPanel.propTypes = {
 };
 
 DesktopPanel.defaultProps = {
+  isCompare: undefined,
   isPinning: undefined,
   onClickPin: undefined,
   onClickUnpin: undefined,

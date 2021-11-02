@@ -59,6 +59,21 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       filter: "brightness(0) invert()",
     },
   },
+  secondaryPin: {
+    backgroundColor: palette.secondary.main,
+    "&.Mui-selected": {
+      backgroundColor: palette.secondary.main,
+      "& $icon": {
+        filter: "brightness(0) invert()",
+      },
+      "&:hover": {
+        backgroundColor: palette.secondary.main,
+      },
+    },
+    "& $icon": {
+      filter: "brightness(0) invert()",
+    },
+  },
   buttonGroup: {},
 }));
 

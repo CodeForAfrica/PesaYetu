@@ -1,3 +1,4 @@
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
@@ -113,7 +114,7 @@ const Profile = forwardRef(function Profile(
         onSelectLocation({ code });
       }
     } else if (onClickUnpin) {
-      onClickUnpin();
+      onClickUnpin(code);
     }
   };
 
@@ -155,22 +156,24 @@ const Profile = forwardRef(function Profile(
         onClick={handleClick(primaryProfile)}
         {...primaryProfile.geography}
       />
-      {secondaryProfile ? (
-        <LocationHeader
-          variant="secondary"
-          onClick={handleClick(secondaryProfile)}
-          title={secondaryProfile.geography?.name}
-          {...secondaryProfile.geography}
-        />
-      ) : (
-        <PinAndCompare
-          {...pinAndCompare}
-          isPinning={isPinning}
-          onClose={handleClose}
-          onClickPin={handleClickPin}
-          options={options}
-        />
-      )}
+      <Hidden smDown implementation="css">
+        {secondaryProfile ? (
+          <LocationHeader
+            variant="secondary"
+            onClick={handleClick(secondaryProfile)}
+            title={secondaryProfile.geography?.name}
+            {...secondaryProfile.geography}
+          />
+        ) : (
+          <PinAndCompare
+            {...pinAndCompare}
+            isPinning={isPinning}
+            onClose={handleClose}
+            onClickPin={handleClickPin}
+            options={options}
+          />
+        )}
+      </Hidden>
       {categories.map((category, categoryIndex) => (
         <Fragment key={category.tite}>
           <CategoryHeader

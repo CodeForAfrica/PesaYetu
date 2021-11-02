@@ -102,6 +102,7 @@ function initializer({ profiles, options }) {
 
   return {
     isPinning: false,
+    isCompare: primary && secondary,
     primary: extendProfileTags(primary, primaryOptions),
     secondary: extendProfileTags(secondary, secondaryOptions),
   };
@@ -113,7 +114,7 @@ function reducer(state, action) {
       const code = action.payload?.code;
       if (code) {
         let profileType = "primary";
-        if (state.isPinning) {
+        if (state.isPinning || state.isCompare) {
           profileType = "secondary";
         }
         const newState = { ...state };
@@ -148,18 +149,18 @@ function reducer(state, action) {
       return { ...state, isPinning: true };
     case "compare": {
       const code = action.payload?.code;
-      if (state.isPinning && code) {
+      if (code) {
         const newState = { ...state, isPinning: false };
         newState.secondary = { code, shouldFetch: true };
         newState.slug =
           `${state.primary.geography.code}-vs-${code}`.toLowerCase();
-        return newState;
+        return { ...newState, isCompare: true };
       }
 
-      return state;
+      return { ...state, isCompare: true };
     }
     case "unpin": {
-      const newState = { ...state, isPinning: false };
+      const newState = { ...state, isPinning: false, isCompare: false };
       const code = action.payload?.code;
       if (state.secondary?.geography?.code === code) {
         newState.secondary = undefined;
@@ -170,6 +171,7 @@ function reducer(state, action) {
         });
         newState.secondary = undefined;
       }
+      newState.secondary = undefined;
       newState.slug = newState.primary.geography.code.toLowerCase();
 
       return newState;
@@ -239,12 +241,13 @@ function ExplorePage({
 
   const handleSelectLocation = (payload) => {
     const { code } = payload;
-    const newPath = state.isPinning
-      ? `${state.primary.geography.code}-vs-${code}`
-      : `${code}`;
+    const newPath =
+      state.isPinning || state.isCompare
+        ? `${state.primary.geography.code}-vs-${code}`
+        : `${code}`;
     const href = `/explore/${newPath.toLowerCase()}`;
     router.push(href, href, { shallow: true });
-    const type = state.isPinning ? "compare" : "fetch";
+    const type = state.isPinning || state.isCompare ? "compare" : "fetch";
     dispatch({ type, payload });
   };
 
@@ -291,11 +294,14 @@ function ExplorePage({
           <Map
             center={[0.3051933453207569, 37.908818734483155]}
             geography={geography}
+            secondaryGeography={state.secondary?.geography}
             geometries={geometries}
+            isPinOrCompare={state.isPinning || state.isCompare}
             isPinning={state.isPinning}
             locationCodes={locationCodes}
             onClick={handleClickMap}
-            zoom={6.25}
+            onClickUnpin={handleClickUnpin}
+            zoom={7}
             {...props}
             className={classes.map}
           />
@@ -309,6 +315,7 @@ function ExplorePage({
       </Hidden>
       <Panel
         isPinning={state.isPinning}
+        isCompare={state.isCompare}
         locationCodes={locationCodes}
         onClickPin={handleClickPin}
         onClickUnpin={handleClickUnpin}
