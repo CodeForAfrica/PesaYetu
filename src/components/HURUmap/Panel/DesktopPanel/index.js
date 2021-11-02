@@ -25,21 +25,22 @@ function DesktopPanel({
   const classes = useStyles({ ...props, drawerWidth });
 
   useEffect(() => {
-    const foundCompare = panelItemsProp?.find(
-      (item) => item.value === "secondaryPin"
-    );
-    if (isCompare && !foundCompare) {
-      const pinItems = panelItemsProp?.find((i) => i.value === "pin");
-      const secondaryPin = {
-        ...pinItems,
-        value: "secondaryPin",
-      };
-      setPanelItems([...panelItemsProp, secondaryPin]);
-    }
-    if (!isCompare && foundCompare) {
-      setPanelItems(panelItemsProp?.filter((p) => p?.value !== "secondaryPin"));
-    }
-  }, [isCompare, panelItemsProp]);
+    setPanelItems((pi) => {
+      const foundCompare = pi?.find((item) => item.value === "secondaryPin");
+      if (isCompare && !foundCompare) {
+        const pinItems = pi?.find((i) => i.value === "pin");
+        const secondaryPin = {
+          ...pinItems,
+          value: "secondaryPin",
+        };
+        return [...pi, secondaryPin];
+      }
+      if (!isCompare && foundCompare) {
+        return pi?.filter((p) => p?.value !== "secondaryPin");
+      }
+      return pi;
+    });
+  }, [isCompare]);
 
   useEffect(() => {
     if (isPinning || isCompare) {
@@ -53,12 +54,11 @@ function DesktopPanel({
     } else if (!isPinning && !isCompare) {
       setPins((p) => {
         const index = p.indexOf("pin");
+        const c = [...p];
         if (index !== -1) {
-          const c = [...p];
           c?.splice(index, 1);
-          return c;
         }
-        return p;
+        return c;
       });
     }
   }, [isPinning, isCompare]);
