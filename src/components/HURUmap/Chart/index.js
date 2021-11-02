@@ -46,6 +46,7 @@ function Chart({
   title,
   geoCode,
   profileNames,
+  isCompare,
   ...props
 }) {
   const classes = useStyles(props);
@@ -128,7 +129,8 @@ function Chart({
         indicator,
         isMobile,
         secondaryIndicator,
-        profileNames
+        profileNames,
+        isCompare
       );
       setCSpec(spec);
       if (chartRef?.current) {
@@ -251,6 +253,7 @@ Chart.propTypes = {
   title: PropTypes.string,
   geoCode: PropTypes.string,
   profileNames: PropTypes.shape({}),
+  isCompare: PropTypes.bool,
 };
 
 Chart.defaultProps = {
@@ -259,6 +262,7 @@ Chart.defaultProps = {
   title: undefined,
   geoCode: undefined,
   profileNames: undefined,
+  isCompare: false,
 };
 
 export default Chart;

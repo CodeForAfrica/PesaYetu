@@ -65,7 +65,7 @@ function DropdownSearch({
   href: hrefProp,
   label,
   counties,
-  onClick: onClickProp,
+  onClick,
   icon: iconProp,
   placeholder,
   variant,
@@ -98,9 +98,9 @@ function DropdownSearch({
     }
   }, [counties, countyCode, query]);
 
-  const handleSearchClick = () => {
-    if (onClickProp) {
-      onClickProp(countyCode);
+  const handleClickSearch = () => {
+    if (onClick) {
+      onClick(countyCode);
     } else if (hrefProp?.length && countyCode) {
       const href = `${hrefProp}/${countyCode}`;
       router.push(href);
@@ -112,7 +112,7 @@ function DropdownSearch({
   const searchIconButton = (
     <IconButton
       color="primary"
-      onClick={handleSearchClick}
+      onClick={handleClickSearch}
       size="small"
       className={classes.button}
     >

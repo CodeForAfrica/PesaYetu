@@ -30,11 +30,11 @@ export default function LineChartScope(
       "line"
     ),
     {
-      height: isMobile && isCompare && secondaryData.length > 1 ? 620 : 310,
+      height: isMobile && isCompare && secondaryData?.length > 1 ? 620 : 310,
       signals: [
         {
           name: "height",
-          value: isMobile && isCompare && secondaryData.length > 1 ? 620 : 310,
+          value: isMobile && isCompare && secondaryData?.length > 1 ? 620 : 310,
         },
         {
           name: "isMobile",

@@ -15,6 +15,7 @@ function PanelButtonGroup({ items, value, onChange, pins, ...props }) {
   const isPin = (current) => {
     return pins.includes(current);
   };
+
   if (!items?.length) {
     return null;
   }
@@ -31,9 +32,15 @@ function PanelButtonGroup({ items, value, onChange, pins, ...props }) {
           <ToggleButton
             key={buttonProps.value}
             {...buttonProps}
-            className={clsx(classes.button, {
-              [classes.pin]: isPin(buttonProps.value),
-            })}
+            className={clsx(
+              classes.button,
+              {
+                [classes.pin]: isPin(buttonProps.value),
+              },
+              {
+                [classes.secondaryPin]: buttonProps.value === "secondaryPin",
+              }
+            )}
           >
             <Image className={classes.icon} src={icon} width={44} height={44} />
           </ToggleButton>

@@ -6,7 +6,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     width: typography.pxToRem(44),
     height: typography.pxToRem(44),
   },
-
   button: {
     backgroundColor: palette.grey.light,
     padding: 0,
@@ -54,6 +53,21 @@ const useStyles = makeStyles(({ typography, palette }) => ({
       },
       "&:hover": {
         backgroundColor: palette.primary.main,
+      },
+    },
+    "& $icon": {
+      filter: "brightness(0) invert()",
+    },
+  },
+  secondaryPin: {
+    backgroundColor: palette.secondary.main,
+    "&.Mui-selected": {
+      backgroundColor: palette.secondary.main,
+      "& $icon": {
+        filter: "brightness(0) invert()",
+      },
+      "&:hover": {
+        backgroundColor: palette.secondary.main,
       },
     },
     "& $icon": {

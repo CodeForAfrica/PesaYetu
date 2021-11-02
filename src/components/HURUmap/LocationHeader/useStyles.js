@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     borderBottom: `solid 1px ${palette.divider}`,
+    paddingTop: typography.pxToRem(20),
   },
   titleContent: {
     display: "flex",
@@ -32,6 +33,22 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     height: typography.pxToRem(44),
     minWidth: typography.pxToRem(44),
     boxShadow: "none",
+  },
+  closeButton: {
+    marginLeft: typography.pxToRem(20),
+    maxHeight: typography.pxToRem(44),
+    maxWidth: typography.pxToRem(44),
+    overflow: "hidden",
+    padding: 0,
+  },
+  closeButtonIcon: {
+    color: palette.grey.light,
+    "&:hover": {
+      color: "#666",
+      "& .Component_108-1_svg__b": {
+        stroke: palette.common.white,
+      },
+    },
   },
 }));
 

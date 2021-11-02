@@ -69,6 +69,15 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
     marginBottom: typography.pxToRem(5),
   },
   filled: {},
+  filledPlaceholder: {
+    color: "#959696",
+  },
+  placeholder: {
+    color: "#959696",
+    "&.Mui-selected": {
+      display: "none",
+    },
+  },
 }));
 
 export default useStyles;

@@ -36,11 +36,11 @@ export default function VerticalStackedChartScope(
       ]
     ),
     {
-      height: isCompare && secondaryData.length > 1 ? 620 : 310,
+      height: isCompare && secondaryData?.length > 1 ? 620 : 310,
       signals: [
         {
           name: "height",
-          value: isCompare && secondaryData.length > 1 ? 620 : 310,
+          value: isCompare && secondaryData?.length > 1 ? 620 : 310,
         },
         {
           name: "isCompare",

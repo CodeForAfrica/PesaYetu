@@ -18,8 +18,13 @@ const buildVariant = (
   textTransform,
 });
 
-const CHART_PRIMARY_COLOR_SCHEME = ["#0067A3", "#7DB2D3", "#DFDFDF", "#666666"];
-const CHART_SECONDARY_COLOR_SCHEME = [
+export const CHART_PRIMARY_COLOR_SCHEME = [
+  "#0067A3",
+  "#7DB2D3",
+  "#DFDFDF",
+  "#666666",
+];
+export const CHART_SECONDARY_COLOR_SCHEME = [
   "#EE4538",
   "#F8A199",
   "#DFDFDF",

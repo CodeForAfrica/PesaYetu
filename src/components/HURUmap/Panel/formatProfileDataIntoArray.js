@@ -1,6 +1,6 @@
 import defaultIcon from "@/pesayetu/assets/icons/Group 4658-white.svg";
 
-export default function formatData(data, parent) {
+export default function formatProfileDataIntoArray(data, parent) {
   if (!data) {
     return null;
   }
@@ -20,9 +20,9 @@ export default function formatData(data, parent) {
               index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
               title: indicator,
               indicator: {
-                ...data[label]?.subcategories[child]?.indicators[indicator],
+                ...data[label]?.subcategories?.[child]?.indicators?.[indicator],
                 parentData: parent.data
-                  ? parent?.data[label]?.subcategories[child]?.indicators[
+                  ? parent?.data?.[label]?.subcategories?.[child]?.indicators?.[
                       indicator
                     ]?.data ?? null
                   : null,

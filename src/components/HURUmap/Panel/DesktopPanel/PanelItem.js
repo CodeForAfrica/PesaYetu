@@ -6,12 +6,9 @@ import RichData from "./RichData";
 function PanelItem({ item, ...props }) {
   const key = item.value;
   switch (key) {
-    case "rich-data":
-      return <RichData {...props} />;
-    case "pin":
-      return <RichData {...props} />;
+    case "rich-data": // fallthrough
     default:
-      return null;
+      return <RichData {...props} />;
   }
 }
 

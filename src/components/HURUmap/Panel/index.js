@@ -7,14 +7,21 @@ import formatData from "./formatProfileDataIntoArray";
 import MobilePanel from "./MobilePanel";
 
 function Panel({ primaryProfile, secondaryProfile, ...props }) {
+  const primaryItems = formatData(primaryProfile?.data, primaryProfile?.parent);
+
+  if (!primaryItems?.length) {
+    return null;
+  }
   const formatedPrimaryProfile = {
     ...primaryProfile,
-    items: formatData(primaryProfile?.data, primaryProfile?.parent),
+    items: primaryItems,
   };
-  const formatedSecondaryProfile = {
-    ...secondaryProfile,
-    items: formatData(secondaryProfile?.data, secondaryProfile?.parent),
-  };
+  const formatedSecondaryProfile = secondaryProfile
+    ? {
+        ...secondaryProfile,
+        items: formatData(secondaryProfile?.data, secondaryProfile?.parent),
+      }
+    : undefined;
   return (
     <>
       <Hidden lgUp implementation="css">
