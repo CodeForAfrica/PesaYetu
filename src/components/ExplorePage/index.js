@@ -146,7 +146,10 @@ function reducer(state, action) {
       return state;
     }
     case "pin":
-      return { ...state, isPinning: true };
+      if (state.primary.geography.code.toLowerCase() !== "ke") {
+        return { ...state, isPinning: true };
+      }
+      return { ...state, isPinning: false };
     case "compare": {
       const code = action.payload?.code;
       if (code) {

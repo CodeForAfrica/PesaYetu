@@ -216,7 +216,7 @@ function Layers({
         onEachFeature,
       });
       otherLayers.addLayer(siblings);
-      if (isPinOrCompare) {
+      if (isPinOrCompare && otherLayers.getBounds().isValid()) {
         map.fitBounds(otherLayers.getBounds(), {
           animate: true,
           duration: 0.5, // in seconds
