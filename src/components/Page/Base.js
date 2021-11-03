@@ -7,13 +7,14 @@ import React from "react";
 import Footer from "@/pesayetu/components/Footer";
 import Navigation from "@/pesayetu/components/Navigation";
 import { navigationArgs } from "@/pesayetu/config";
+import { seoPropTypes } from "@/pesayetu/functions/getPagePropTypes";
 import getFooterMenu from "@/pesayetu/functions/menus/getFooterMenu";
 import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 
 /**
  * Base page that can be used to build all other pages.
  */
-function BasePage({ children, menus, variant, ...props }) {
+function BasePage({ children, menus, variant, post: { seo }, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
   const { menuProps } = navigation;
@@ -35,7 +36,19 @@ function BasePage({ children, menus, variant, ...props }) {
   return (
     <>
       <Navigation {...navigationProps} variant={variant} />
-      <NextSeo {...props} />
+      <NextSeo
+        title={seo?.title}
+        description={seo?.metaDesc}
+        openGraph={{
+          title: seo?.title,
+          description: seo?.metaDesc,
+          images: [{ url: seo?.opengraphImage?.sourceUrl }],
+          url: seo?.canonical,
+          type: seo?.opengraphType,
+        }}
+        nofollow={seo?.metaRobotsNofollow !== "follow"}
+        noindex={seo?.metaRobotsNoindex !== "index"}
+      />
       {children}
       {!(variant === "explore" && isDesktop) && <Footer {...footerProps} />}
     </>
@@ -52,6 +65,7 @@ BasePage.propTypes = {
     primaryMenu: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   variant: PropTypes.string,
+  ...seoPropTypes,
 };
 
 BasePage.defaultProps = {
