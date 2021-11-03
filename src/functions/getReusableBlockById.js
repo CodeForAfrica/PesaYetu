@@ -2,9 +2,9 @@ import queryReusableBlocks from "@/pesayetu/lib/wordpress/blocks/queryReusableBl
 import { initializeWpApollo } from "@/pesayetu/lib/wordpress/connector";
 
 /**
- * Retrieve media details by ID.
+ * Retrieve reusable block  by ID.
  *
- * @param  {number} id The media's database ID.
+ * @param  {number} id The blocks's database ID.
  * @return {object}    Object containing Apollo client instance and post data or error object.
  */
 export default async function getReusableBlockById(id) {
@@ -17,7 +17,7 @@ export default async function getReusableBlockById(id) {
   const apolloClient = initializeWpApollo();
 
   // Execute query.
-  const media = await apolloClient
+  const reusableBlock = await apolloClient
     .query({
       query: queryReusableBlocks,
       variables: {
@@ -40,5 +40,5 @@ export default async function getReusableBlockById(id) {
       };
     });
 
-  return media;
+  return reusableBlock;
 }
