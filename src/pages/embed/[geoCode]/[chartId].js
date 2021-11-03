@@ -122,13 +122,18 @@ export async function getStaticProps({
     primaryProfileParent
   );
   const indicator = primaryProfileIndicators.find(
-    (p) => p?.indicator?.id === chartId
+    (p) => p?.indicator?.id === parseInt(chartId, 10)
   );
 
-  console.log(indicator);
+  if (!indicator) {
+    return {
+      notFound: true,
+    };
+  }
 
   const profileNames = {
     primary: primaryName,
+    secondary: "",
   };
 
   let title = indicator?.title ?? null;
@@ -145,7 +150,7 @@ export async function getStaticProps({
       secondaryProfileParent
     );
     secondaryIndicator = secondaryProfileIndicators.find(
-      (p) => p?.indicator?.id === chartId
+      (p) => p?.indicator?.id === parseInt(chartId, 10)
     );
     profileNames.secondary = secondaryName;
 
@@ -156,8 +161,8 @@ export async function getStaticProps({
   const image = await createChartImage(
     originalCode,
     chartId,
-    indicator,
-    secondaryIndicator,
+    indicator?.indicator,
+    secondaryIndicator ?? { indicator: null },
     isCompare,
     profileNames
   );
@@ -174,13 +179,13 @@ export async function getStaticProps({
 
   return {
     props: {
-      description: indicator?.description ?? null,
+      description: indicator?.indicator?.description ?? null,
       geoCode: originalCode,
-      indicator,
+      indicator: indicator?.indicator ?? null,
       isCompare,
       openGraph,
       profileNames,
-      secondaryIndicator: secondaryIndicator ?? null,
+      secondaryIndicator: secondaryIndicator ?? { indicator: null },
       title,
       twitter,
     },
