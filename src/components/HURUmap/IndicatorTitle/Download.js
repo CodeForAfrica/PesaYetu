@@ -8,7 +8,8 @@ import XLSX from "xlsx";
 
 import useStyles from "./useStyles";
 
-import logo from "@/pesayetu/assets/logos/Group4462.svg";
+import cfalogo from "@/pesayetu/assets/logos/Group4462.svg";
+import projectlogo from "@/pesayetu/assets/logos/Group5002.svg";
 
 function Download({
   title,
@@ -39,18 +40,18 @@ function Download({
     e.preventDefault();
     e.stopPropagation();
 
-    const totalHeight = height + 240; // chartHeight + extra space for legends, logo + title;
+    const totalHeight = height + 250; // chartHeight + extra space for legends, logo + title;
     view?.signal("totalHeight", totalHeight);
     view?.signal("chartTitle", title);
     view?.signal("chartSubtitle", "");
     view?.signal("chartSource", source ? `Source: ${source}` : "");
-    view?.signal("projectName", ["County Development", "Index Statistics"]);
+    view?.signal("projectLogoUrl", projectlogo);
     view?.signal("logoWidth", 60);
-    view?.signal("logoUrl", logo);
+    view?.signal("logoUrl", cfalogo);
 
     if (layout.toLowerCase() === "layout1") {
       view?.signal("titleY", 20);
-      view?.signal("titleH", 50);
+      view?.signal("titleH", 60);
       view?.signal("chartY", 50);
       view?.signal("titleGroupY", 0);
       view?.signal("sourceGroupY", totalHeight - 80);
@@ -58,7 +59,7 @@ function Download({
       view?.signal("sourceY", 30);
     } else {
       view?.signal("titleY", 25);
-      view?.signal("titleH", 50);
+      view?.signal("titleH", 60);
       view?.signal("chartY", 60);
       view?.signal("titleGroupY", totalHeight - 80);
       view?.signal("sourceGroupY", 1);
