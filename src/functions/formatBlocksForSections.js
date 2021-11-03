@@ -1,9 +1,10 @@
 import { camelCase } from "lodash";
 
 import getImagePlaceholder from "./getImagePlaceholder";
+import getReusableBlockById from "./getReusableBlockById";
 
 function formatName(name) {
-  return camelCase(name.split("/")[1]?.trim()); // converts blocks with other naming conversion to camel case, eg media-text to mediaText
+  return camelCase(name?.split("/")[1]?.trim()); // converts blocks with other naming conversion to camel case, eg media-text to mediaText
 }
 
 function formatLazyBlockImage(image) {
@@ -231,6 +232,17 @@ async function format(block) {
       return formatLazyBlockIteratorContentWithImages(attributes, "image");
     case "lazyblock/data-source":
       return formatDataSource(attributes);
+    case "core/block": {
+      // Retrieve reusable block data.
+      const reusableBlocks = await getReusableBlockById(attributes.ref);
+      // NOTE(Obed) By default recursion falls victim to this rule though functions are hoisted. this enables functions to be called recursively as used here.
+      //            see: https://github.com/eslint/eslint/issues/12473
+      // eslint-disable-next-line no-use-before-define
+      reusableBlocks.blocks = await formatBlocksForSections(
+        reusableBlocks.blocks
+      );
+      return reusableBlocks;
+    }
     case "lazyblock/supporting-partners":
       return formatLazyBlockIteratorContentWithImage(attributes, "logo");
     case "lazyblock/other-hero": {
@@ -280,10 +292,15 @@ export default async function formatBlocksForSections(blc) {
   );
   blocks?.push({ name: "core/texts", attributes: texts });
 
-  const blockObj = {};
+  let blockObj = {};
   await Promise.all(
     blocks?.map(async (block) => {
-      blockObj[formatName(block.name)] = await format(block);
+      const formattedBlock = await format(block);
+      if (block.name === "core/block") {
+        blockObj = { ...blockObj, ...formattedBlock?.blocks };
+      } else {
+        blockObj[formatName(block.name)] = formattedBlock;
+      }
     }) || []
   );
 
