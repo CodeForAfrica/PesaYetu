@@ -52,7 +52,7 @@ const Content = ({
       >
         {description}
       </RichTypography>
-      {href && (
+      {href && ctaText && (
         <Link
           href={href}
           underline="always"

@@ -1,4 +1,5 @@
 import { Grid } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -20,7 +21,9 @@ function CarouselItem({ items, variant, ...props }) {
             key={item.slug}
             {...item}
             imageProps={item.imageProps}
-            variant={variant}
+            classes={{
+              media: clsx({ [classes.shadow]: variant === "embed" }),
+            }}
             className={classes.story}
           />
         </Grid>

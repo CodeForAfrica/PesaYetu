@@ -1,4 +1,5 @@
 import { Grid } from "@material-ui/core";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -35,11 +36,13 @@ function FeaturedStoryCard({
         <Card
           {...mediaProps}
           imageProps={imageProps}
-          variant={variant}
+          ctaText={null}
           classes={{
             root: classes.card,
-            media: classes.media,
-            mediaImage: classes.mediaImage,
+            media: clsx(classes.media, {
+              [classes.shadow]: variant === "embed",
+            }),
+            mediaImage: clsx({ [classes.mediaImage]: variant !== "embed" }),
           }}
         />
       </Grid>
