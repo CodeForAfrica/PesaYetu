@@ -58,6 +58,18 @@ const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
     display: "-webkit-box",
     lineClamp: 3,
   },
+  shadow: {
+    boxShadow: "0px 3px 10px #0000001A",
+    margin: typography.pxToRem(6),
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(364),
+      width: typography.pxToRem(596),
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(403),
+      width: typography.pxToRem(658),
+    },
+  },
 }));
 
 export default useStyles;

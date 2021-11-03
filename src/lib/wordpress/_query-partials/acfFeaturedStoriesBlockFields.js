@@ -28,6 +28,12 @@ const acfFeaturedStoriesBlockFields = `
           uri
           slug
           excerpt
+          featuredImage {
+            node {
+              altText
+              sourceUrl(size: $featuredImageSize)
+            }
+          }
           blocks {
             ${lazyBlockInsightChartBlockFields}
           }

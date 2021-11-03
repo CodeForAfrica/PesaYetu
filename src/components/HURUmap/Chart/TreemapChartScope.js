@@ -59,18 +59,22 @@ export default function TreemapChartScope(
           name: "isCompare",
           value: isCompare,
         },
+        {
+          name: "nestedFields",
+          value: nestedFields,
+        },
       ],
       scales: [
         {
           name: "color",
           type: "ordinal",
-          domain: { data: "primary_formatted", field: primaryGroup },
+          domain: { data: "primary_formatted", field: nestedFields[0] },
           range: [theme.palette.primary.main],
         },
         {
           name: "secondary",
           type: "ordinal",
-          domain: { data: "secondary_formatted", field: primaryGroup },
+          domain: { data: "secondary_formatted", field: nestedFields[0] },
           range: [theme.palette.secondary.main],
         },
         {
@@ -132,7 +136,7 @@ export default function TreemapChartScope(
                   y2: { field: "y1" },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                      "{'group': datum[mainGroup] + ' ' + (isValid(datum[nestedFields[1]]) ? datum[nestedFields[1]] : '' ) + ' ' + (isValid(datum[nestedFields[2]]) ? datum[nestedFields[2]] :  '') , 'count': format(datum.count, numberFormat.value)}",
                   },
                 },
               },
@@ -152,7 +156,7 @@ export default function TreemapChartScope(
                   y: { signal: "datum.y0 + 20" },
                   text: {
                     signal:
-                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup]]",
+                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
                   },
                 },
               },
@@ -209,7 +213,7 @@ export default function TreemapChartScope(
                   y2: { field: "y1" },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                      "{'group': datum[mainGroup] + ' ' + (isValid(datum[nestedFields[1]]) ? datum[nestedFields[1]] : '' ) + ' ' + (isValid(datum[nestedFields[2]]) ? datum[nestedFields[2]] :  '') , 'count': format(datum.count, numberFormat.value)}",
                   },
                 },
               },
@@ -229,7 +233,7 @@ export default function TreemapChartScope(
                   y: { signal: "datum.y0 + 20" },
                   text: {
                     signal:
-                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup]]",
+                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
                   },
                 },
               },

@@ -16,6 +16,11 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
       marginBottom: typography.pxToRem(40),
     },
   },
+  shadow: {
+    boxShadow: "0px 3px 10px #0000001A",
+    margin: typography.pxToRem(3),
+    minWidth: `${typography.pxToRem(370)} !important`,
+  },
 }));
 
 export default useStyles;

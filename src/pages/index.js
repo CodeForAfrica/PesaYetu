@@ -17,11 +17,11 @@ import fetchJson from "@/pesayetu/utils/fetchJson";
 export default function Home({ boundary, blocks, ...props }) {
   return (
     <Page {...props}>
-      <Hero {...blocks.hero} boundary={boundary} />
+      <Hero {...blocks?.hero} boundary={boundary} />
       <HowItWorks {...blocks?.howItWorks} />
       <DataVisualisationGuide {...blocks?.dataVisualisationGuide} />
       <StoriesInsights {...blocks?.insightsStories} />
-      <DataIndicators {...blocks.dataIndicators} />
+      <DataIndicators {...blocks?.dataIndicators} />
       <InsightData {...blocks?.dataInsights} />
       <Project {...blocks?.partnersAndNewsletter} />
       <ExploreOtherTools {...blocks?.exploreOtherTools} />
@@ -83,7 +83,7 @@ export async function getStaticProps({ preview, previewData }) {
       blocks: {
         ...blocks,
         hero: {
-          ...blocks.hero,
+          ...(blocks?.hero ?? {}),
           featuredCounties,
         },
       },

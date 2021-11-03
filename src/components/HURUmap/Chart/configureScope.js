@@ -8,10 +8,10 @@ import VerticalStackedChartScope from "./VerticalStackedChartScope";
 
 export default function configureScope(
   indicator,
-  isMobile = false,
   secondaryIndicator = null,
   profileNames = { primary: "", secondary: "" },
-  isCompare = false
+  isCompare = false,
+  isMobile = false
 ) {
   const configuration = {
     ...indicator?.chart_configuration,

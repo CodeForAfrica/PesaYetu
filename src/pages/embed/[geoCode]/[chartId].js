@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import createChartImage from "@/pesayetu/lib/createChartImage";
-import fetchJson from "@/pesayetu/utils/fetchJson";
+import fetchProfile from "@/pesayetu/utils/fetchProfile";
+import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurations";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
@@ -27,7 +28,12 @@ export default function Embed({
         {...props}
       />
       <div>
-        <Chart indicator={indicator} title={title} geoCode={geoCode} />
+        <Chart
+          {...props}
+          indicator={indicator}
+          title={title}
+          geoCode={geoCode}
+        />
       </div>
     </>
   );
@@ -56,47 +62,114 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { geoCode: code, chartId } }) {
+export function getIndicatorsArray(data, parent) {
+  return Object.keys(data).reduce((acc, label) => {
+    const indicators = Object.keys(data[label]?.subcategories).reduce(
+      (indiAcc, child) => {
+        const indObj = Object.keys(
+          data[label]?.subcategories[child]?.indicators ?? []
+        ).map((indicator) => {
+          return {
+            index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
+            title: indicator,
+            indicator: {
+              ...data[label]?.subcategories?.[child]?.indicators?.[indicator],
+              parentData: parent.data
+                ? parent?.data?.[label]?.subcategories?.[child]?.indicators?.[
+                    indicator
+                  ]?.data ?? null
+                : null,
+              parentName: parent?.name ?? null,
+            },
+          };
+        });
+        return [...indiAcc, ...indObj];
+      },
+      []
+    );
+    return [...acc, ...indicators];
+  }, []);
+}
+
+export async function getStaticProps({
+  params: { geoCode: originalCode, chartId },
+}) {
   const apiUri = process.env.HURUMAP_API_URL;
-  const { indicator: foundIndicator } = await fetchJson(
-    `${apiUri}profile/1/geography/${code.toUpperCase()}/indicator/${chartId}/?format=json`
-  );
+  const { locationCodes } = await fetchProfileConfigurations();
+  const [primaryCode, secondaryCode] = originalCode
+    .split("-vs-")
+    .map((c) => c.trim().toLowerCase())
+    .filter((c) => c);
 
   if (
-    !foundIndicator ||
-    JSON.stringify(foundIndicator) === "{}" ||
-    Object.keys(foundIndicator)?.length === 0
+    !(
+      locationCodes.includes(primaryCode) &&
+      (!secondaryCode || locationCodes.includes(secondaryCode))
+    )
   ) {
     return {
       notFound: true,
     };
   }
 
-  const description = foundIndicator.description || null;
-  const geoCode = foundIndicator?.geography_code ?? null;
-  const indicator = {
-    ...foundIndicator,
-    chart_configuration: foundIndicator?.indicator_chart_configuration ?? null,
-    id: foundIndicator?.profile_indicator_id ?? null,
-    metadata: {
-      source: foundIndicator?.metadata_source ?? null,
-      url: foundIndicator?.metadata_url ?? null,
-      primary_group: foundIndicator?.primary_group?.length
-        ? foundIndicator?.primary_group[0]
-        : null,
-      groups: Object.keys(foundIndicator?.data?.[0] || {})
-        .filter((g) => g !== "count")
-        ?.map((g) => {
-          return { name: g };
-        }),
-    },
+  const {
+    data: primaryProfileData,
+    parent: primaryProfileParent,
+    geography: { name: primaryName },
+  } = await fetchProfile(apiUri, primaryCode);
+  const primaryProfileIndicators = getIndicatorsArray(
+    primaryProfileData,
+    primaryProfileParent
+  );
+  const indicator = primaryProfileIndicators.find(
+    (p) => p?.indicator?.id === parseInt(chartId, 10)
+  );
+
+  if (!indicator) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const profileNames = {
+    primary: primaryName,
+    secondary: "",
   };
-  const title = foundIndicator?.profile_indicator_label ?? null;
-  const image = await createChartImage(geoCode, chartId, indicator);
-  const url = `${process.env.NEXT_PUBLIC_APP_URL}embed${geoCode}/${chartId}`;
+
+  let title = indicator?.title ?? null;
+
+  let secondaryIndicator = null;
+  if (secondaryCode) {
+    const {
+      data: secondaryProfileData,
+      parent: secondaryProfileParent,
+      geography: { name: secondaryName },
+    } = await fetchProfile(apiUri, secondaryCode);
+    const secondaryProfileIndicators = getIndicatorsArray(
+      secondaryProfileData,
+      secondaryProfileParent
+    );
+    secondaryIndicator = secondaryProfileIndicators.find(
+      (p) => p?.indicator?.id === parseInt(chartId, 10)
+    );
+    profileNames.secondary = secondaryName;
+
+    title = title ? `${title} | ${primaryName} vs ${secondaryName}` : null;
+  }
+
+  const isCompare = !!secondaryCode;
+  const image = await createChartImage(
+    originalCode,
+    chartId,
+    indicator?.indicator,
+    secondaryIndicator ?? { indicator: null },
+    isCompare,
+    profileNames
+  );
+  const url = `${process.env.NEXT_PUBLIC_APP_URL}embed/${originalCode}/${chartId}`;
   const openGraph = {
     title,
-    description,
+    description: indicator?.description ?? null,
     url,
     images: [{ url: image }],
   };
@@ -106,10 +179,13 @@ export async function getStaticProps({ params: { geoCode: code, chartId } }) {
 
   return {
     props: {
-      description,
-      geoCode,
-      indicator,
+      description: indicator?.indicator?.description ?? null,
+      geoCode: originalCode,
+      indicator: indicator?.indicator ?? null,
+      isCompare,
       openGraph,
+      profileNames,
+      secondaryIndicator: secondaryIndicator ?? { indicator: null },
       title,
       twitter,
     },

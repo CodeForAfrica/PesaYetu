@@ -159,6 +159,7 @@ async function formatFeaturedStories(attributes) {
       Object.hasOwnProperty.call(b, "name") &&
       b?.name === "lazyblock/insight-chart"
   );
+  const insightImage = insights?.featuredImage?.node?.sourceUrl ?? null;
   const formattedInsights = {
     title: insights?.title,
     description: insights?.excerpt?.replace(/<[^>]+>/g, ""),
@@ -166,6 +167,8 @@ async function formatFeaturedStories(attributes) {
     slug: insights?.slug,
     chart: chartBlock?.attributes?.chart ?? "",
     ctaText: attributes?.ctaText ?? "",
+    image: insightImage,
+    imageProps: await getImagePlaceholder(insightImage),
   };
   return { news: formattedNews, insights: formattedInsights };
 }
@@ -298,7 +301,7 @@ export default async function formatBlocksForSections(blc) {
       const formattedBlock = await format(block);
       if (block.name === "core/block") {
         blockObj = { ...blockObj, ...formattedBlock?.blocks };
-      } else {
+      } else if (formattedBlock) {
         blockObj[formatName(block.name)] = formattedBlock;
       }
     }) || []
