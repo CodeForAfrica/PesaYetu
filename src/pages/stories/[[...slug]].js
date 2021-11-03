@@ -29,7 +29,7 @@ export default function Index({
   }
 
   return (
-    <Page {...props}>
+    <Page {...props} post={post}>
       {archive ? (
         <>
           <StoriesPage

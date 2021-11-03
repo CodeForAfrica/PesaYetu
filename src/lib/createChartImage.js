@@ -20,8 +20,20 @@ const ACL = "public-read";
 const CacheControl = "max-age=630720000, public";
 const ContentType = "image/png";
 
-export default async function createChartImage(geoCode, chartId, indicator) {
-  const spec = configureScope(indicator);
+export default async function createChartImage(
+  geoCode,
+  chartId,
+  indicator,
+  secondaryIndicator,
+  isCompare,
+  profileNames
+) {
+  const spec = configureScope(
+    indicator,
+    secondaryIndicator,
+    profileNames,
+    isCompare
+  );
   const view = new vega.View(vega.parse(spec), { renderer: "none" });
 
   const svg = await view.toSVG();

@@ -127,10 +127,10 @@ function Chart({
     async function renderChart() {
       const spec = configureScope(
         indicator,
-        isMobile,
         secondaryIndicator,
         profileNames,
-        isCompare
+        isCompare,
+        isMobile
       );
       setCSpec(spec);
       if (chartRef?.current) {
@@ -144,7 +144,14 @@ function Chart({
       }
     }
     renderChart();
-  }, [indicator, isMobile, profileNames, secondaryIndicator, handler]);
+  }, [
+    indicator,
+    isMobile,
+    isCompare,
+    profileNames,
+    secondaryIndicator,
+    handler,
+  ]);
 
   // apply default filter if defined
   const defaultFilters =
