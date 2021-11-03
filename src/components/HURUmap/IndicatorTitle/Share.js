@@ -6,7 +6,7 @@ import React from "react";
 import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
-function Share({ title, geoCode, indicatorId, view, ...props }) {
+function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
   // Embed url
   const url = `${
     process.env.NEXT_PUBLIC_APP_URL
@@ -48,19 +48,19 @@ function Share({ title, geoCode, indicatorId, view, ...props }) {
     }
     @media (max-width: 1280px) {
         .wrapper {
-          padding-top: 90%;
+          padding-top: ${isCompare ? "160%" : "90%"};
         }
     @media (max-width: 768px) {
       .wrapper {
-        padding-top: 100%;
+        padding-top: ${isCompare ? "160%" : "100%"};
       }
     @media (max-width: 620px) {
       .wrapper {
-        padding-top: 120%;
+        padding-top: ${isCompare ? "200%" : "120%"};
       }
       @media (max-width: 500px) {
         .wrapper {
-          padding-top: 165%;
+          padding-top: ${isCompare ? "300%" : "165%"};
         }
 }
 </style> 
@@ -103,6 +103,7 @@ Share.propTypes = {
   }),
   geoCode: PropTypes.string,
   indicatorId: PropTypes.number,
+  isCompare: PropTypes.bool,
 };
 
 Share.defaultProps = {
@@ -110,6 +111,7 @@ Share.defaultProps = {
   title: undefined,
   geoCode: undefined,
   indicatorId: undefined,
+  isCompare: undefined,
 };
 
 export default Share;

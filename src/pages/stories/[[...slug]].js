@@ -35,7 +35,7 @@ export default function Index({
           <StoriesPage
             hero={{ ...blocks?.otherHero }}
             activeCategory={activeCategory}
-            featuredStories={blocks.featuredStories}
+            featuredStories={blocks?.featuredStories}
             {...props}
           />
         </>

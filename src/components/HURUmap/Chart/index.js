@@ -187,6 +187,7 @@ function Chart({
         spec={cSpec}
         height={view?.height()}
         source={source}
+        isCompare={isCompare}
       />
       {!isMobile && (
         <Filters

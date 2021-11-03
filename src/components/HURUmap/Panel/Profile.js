@@ -147,6 +147,11 @@ const Profile = forwardRef(function Profile(
     return metric;
   };
 
+  let geoCode = primaryProfile?.geography?.code;
+  if (secondaryProfile) {
+    geoCode = `${geoCode}-vs-${secondaryProfile?.geography?.code}`;
+  }
+
   return (
     <div className={classes.profile} ref={ref}>
       <LocationHeader
@@ -194,7 +199,7 @@ const Profile = forwardRef(function Profile(
                   key={index}
                   variant="primary"
                   {...indicator}
-                  geoCode={primaryProfile?.geography?.code}
+                  geoCode={geoCode}
                   secondaryIndicator={getSecondaryIndicator(
                     categoryIndex,
                     subcategoryIndex,

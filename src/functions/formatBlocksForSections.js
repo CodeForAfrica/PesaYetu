@@ -298,7 +298,7 @@ export default async function formatBlocksForSections(blc) {
       const formattedBlock = await format(block);
       if (block.name === "core/block") {
         blockObj = { ...blockObj, ...formattedBlock?.blocks };
-      } else {
+      } else if (formattedBlock) {
         blockObj[formatName(block.name)] = formattedBlock;
       }
     }) || []

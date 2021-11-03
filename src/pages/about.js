@@ -16,7 +16,7 @@ export default function About({ blocks, ...props }) {
     <Page {...props}>
       <Hero {...blocks?.aboutHero} />
       <Summary {...blocks?.summary} />
-      <DataIndicators {...blocks.dataIndicators} />
+      <DataIndicators {...blocks?.dataIndicators} />
       <AboutTeam {...blocks?.aboutTeam} />
       <Project {...blocks?.partnersAndNewsletter} />
       <SupportingPartners {...blocks?.supportingPartners} />
