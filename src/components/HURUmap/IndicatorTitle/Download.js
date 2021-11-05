@@ -1,11 +1,6 @@
-import {
-  ButtonBase,
-  IconButton,
-  Grid,
-  SvgIcon,
-  Typography,
-} from "@material-ui/core";
+import { ButtonBase, IconButton, Grid, Typography } from "@material-ui/core";
 import clsx from "clsx";
+import Image from "next/image";
 import Papa from "papaparse";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
@@ -58,7 +53,7 @@ function Download({
     view?.signal("logoWidth", 60);
     view?.signal("logoUrl", cfalogo);
 
-    if (layout.toLowerCase() === "layout1") {
+    if (layout === 0) {
       view?.signal("titleY", 20);
       view?.signal("titleH", 60);
       view?.signal("chartY", 50);
@@ -175,12 +170,12 @@ function Download({
             })}
           >
             <IconButton
-              className={classes.text}
+              className={classes.layoutButton}
               onClick={(e) => {
                 setImageLayout(e, index);
               }}
             >
-              <SvgIcon component={p} />
+              <Image src={p} width={24} height={24} alt="layout" />
             </IconButton>
           </Grid>
         ))}
