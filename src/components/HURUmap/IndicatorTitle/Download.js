@@ -1,4 +1,10 @@
-import { ButtonBase, Grid, Typography } from "@material-ui/core";
+import {
+  ButtonBase,
+  IconButton,
+  Grid,
+  SvgIcon,
+  Typography,
+} from "@material-ui/core";
 import clsx from "clsx";
 import Papa from "papaparse";
 import PropTypes from "prop-types";
@@ -10,6 +16,7 @@ import useStyles from "./useStyles";
 
 import cfalogo from "@/pesayetu/assets/logos/Group4462.svg";
 import projectlogo from "@/pesayetu/assets/logos/Group5002.svg";
+import { indicatorDownload } from "@/pesayetu/config";
 
 function Download({
   title,
@@ -23,7 +30,9 @@ function Download({
 }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
-  const [layout, setLayout] = useState("Layout1");
+
+  const { values, layouts, images, files } = indicatorDownload;
+  const [layout, setLayout] = useState(0);
 
   useEffect(() => {
     const viewProp = new vega.View(vega.parse(spec), { renderer: "none" });
@@ -117,7 +126,7 @@ function Download({
       {!disableToggle && (
         <>
           <Grid item container xs={12} className={classes.row}>
-            {["Percentage", "Value"].map((v) => (
+            {values.map((v) => (
               <Grid
                 item
                 xs={6}
@@ -141,7 +150,7 @@ function Download({
         </>
       )}
       <Grid item container className={classes.row}>
-        {["PNG", "SVG"].map((p) => (
+        {images.map((p) => (
           <Grid item xs={6} index={p} className={classes.button}>
             <ButtonBase
               className={classes.text}
@@ -156,23 +165,23 @@ function Download({
         <Typography className={classes.text}>Layout option:</Typography>
       </Grid>
       <Grid item container className={classes.row}>
-        {["Layout1", "Layout2"].map((p) => (
+        {layouts.map((p, index) => (
           <Grid
             item
             xs={6}
             index={p}
             className={clsx(classes.button, {
-              [classes.activeButton]: layout === p,
+              [classes.activeButton]: layout === index,
             })}
           >
-            <ButtonBase
+            <IconButton
               className={classes.text}
               onClick={(e) => {
-                setImageLayout(e, p);
+                setImageLayout(e, index);
               }}
             >
-              {p}
-            </ButtonBase>
+              <SvgIcon component={p} />
+            </IconButton>
           </Grid>
         ))}
       </Grid>
@@ -180,13 +189,13 @@ function Download({
         <Typography className={classes.text}>Download data as:</Typography>
       </Grid>
       <Grid item container className={classes.row}>
-        {["CSV", "XLSX", "JSON"].map((d) => (
-          <Grid item xs={4} index={d} className={classes.button}>
+        {files.map((f) => (
+          <Grid item xs={4} index={f} className={classes.button}>
             <ButtonBase
               className={classes.text}
-              onClick={(e) => handleDataDownload(e, d)}
+              onClick={(e) => handleDataDownload(e, f)}
             >
-              {d}
+              {f}
             </ButtonBase>
           </Grid>
         ))}

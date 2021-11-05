@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="19" viewBox="0 0 35 19">
+  <g id="Group_923" data-name="Group 923" transform="translate(0 0.5)">
+    <line id="Line_34" data-name="Line 34" x1="35" transform="translate(0 17)" fill="none" stroke="#666" stroke-width="3"/>
+    <line id="Line_36" data-name="Line 36" x1="17" transform="translate(0 2)" fill="none" stroke="#666" stroke-width="1"/>
+    <line id="Line_48" data-name="Line 48" x1="11" fill="none" stroke="#666" stroke-width="1"/>
+    <line id="Line_37" data-name="Line 37" x1="8" transform="translate(27 1)" fill="none" stroke="#666" stroke-width="3"/>
+    <g id="Group_564" data-name="Group 564" transform="translate(0 4)" opacity="0.2">
+      <g id="Rectangle_295" data-name="Rectangle 295" fill="none" stroke="#666" stroke-width="1">
+        <rect width="35" height="10" stroke="none"/>
+        <rect x="0.5" y="0.5" width="34" height="9" fill="none"/>
+      </g>
+      <g id="Group_563" data-name="Group 563" transform="translate(0 3)">
+        <line id="Line_38" data-name="Line 38" x1="27" transform="translate(0 2)" fill="none" stroke="#666" stroke-width="1"/>
+        <line id="Line_52" data-name="Line 52" x1="32" transform="translate(0 4)" fill="none" stroke="#666" stroke-width="1"/>
+        <line id="Line_39" data-name="Line 39" x1="19" fill="none" stroke="#666" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
