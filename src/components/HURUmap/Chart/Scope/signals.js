@@ -1,4 +1,5 @@
 import hoverIcon from "@/pesayetu/assets/icons/Component1375.png";
+import { hurumapArgs } from "@/pesayetu/config";
 import theme from "@/pesayetu/theme";
 
 const graphValueTypes = {
@@ -13,17 +14,18 @@ export default function Signals(
   groups,
   config
 ) {
-  const {
-    defaultType,
-    types: {
-      Value: { formatting: valueFormatting, minX: valueMinX, maxX: valueMaxX },
-      Percentage: {
-        formatting: percentageFormatting,
-        minX: percentageMinX,
-        maxX: percentageMaxX,
-      },
-    },
-  } = config;
+  const formatting = hurumapArgs.chartFormatting;
+
+  const valueFormatting = config?.types?.Value?.formatting ?? formatting.value;
+  const percentageFormatting =
+    config?.types?.Percentage?.formatting ?? formatting.percentage;
+
+  const valueMaxX = config?.types?.Value?.maxX ?? undefined;
+  const valueMinX = config?.types?.Value?.minX ?? undefined;
+  const percentageMinX = config?.types?.Percentage?.maxX ?? undefined;
+  const percentageMaxX = config?.types?.Percentage?.minX ?? undefined;
+
+  const defaultType = config?.defaultType ?? "Value";
 
   return [
     {
@@ -56,7 +58,7 @@ export default function Signals(
     },
     {
       name: "Units",
-      value: graphValueTypes[defaultType || "Value"],
+      value: graphValueTypes[defaultType],
     },
     {
       name: "applyFilter",
@@ -74,11 +76,11 @@ export default function Signals(
     },
     {
       name: "percentageFormatting",
-      value: percentageFormatting || ".0%",
+      value: percentageFormatting,
     },
     {
       name: "valueFormatting",
-      value: valueFormatting || ",.0f",
+      value: valueFormatting,
     },
     {
       name: "trimZeroFormat",

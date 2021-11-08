@@ -60,13 +60,14 @@ function Chart({
     id,
     description,
     metadata: { source, url, groups, primary_group: primaryGroup },
-    chart_configuration: {
-      disableToggle,
-      defaultType,
-      filter,
-      stacked_field: stackedField,
-    },
   } = indicator;
+
+  const {
+    disableToggle,
+    defaultType,
+    filter,
+    stacked_field: stackedField,
+  } = indicator?.chart_configuration || {};
 
   const [chartValue, setChartValue] = useState(defaultType || "Value");
 
@@ -98,7 +99,7 @@ function Chart({
             title={value.group}
             value={value.count}
             formattedValue={
-              defaultType.toLowerCase() === "percentage" || !disableToggle
+              defaultType?.toLowerCase() === "percentage" || !disableToggle
                 ? value.percentage
                 : undefined
             }

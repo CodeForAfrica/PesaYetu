@@ -886,6 +886,10 @@ export const hurumapArgs = {
       fileTypes: ["CSV", "XLSX", "JSON"],
     },
   },
+  chartFormatting: {
+    percentage: ".0%",
+    value: ",.0f",
+  },
 };
 
 export const hurumap = {
