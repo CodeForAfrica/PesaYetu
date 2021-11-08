@@ -1,14 +1,10 @@
 import hoverIcon from "@/pesayetu/assets/icons/Component1375.png";
+import { hurumapArgs } from "@/pesayetu/config";
 import theme from "@/pesayetu/theme";
 
 const graphValueTypes = {
   Percentage: "percentage",
   Value: "value",
-};
-
-const formatting = {
-  percentage: ".0%",
-  value: ",.0f",
 };
 
 export default function Signals(
@@ -18,6 +14,8 @@ export default function Signals(
   groups,
   config
 ) {
+  const formatting = hurumapArgs.chartFormatting;
+
   const valueFormatting = config?.types?.Value?.formatting ?? formatting.value;
   const percentageFormatting =
     config?.types?.Percentage?.formatting ?? formatting.percentage;
