@@ -11,7 +11,7 @@ import useStyles from "./useStyles";
 
 import cfalogo from "@/pesayetu/assets/logos/Group4462.svg";
 import projectlogo from "@/pesayetu/assets/logos/Group5002.svg";
-import { indicatorDownload } from "@/pesayetu/config";
+import { hurumapArgs } from "@/pesayetu/config";
 
 function Download({
   title,
@@ -26,7 +26,11 @@ function Download({
   const classes = useStyles(props);
   const [view, setView] = useState(null);
 
-  const { values, layouts, images, files } = indicatorDownload;
+  const {
+    indicatorTitle: {
+      download: { values, layouts, imageTypes, fileTypes },
+    },
+  } = hurumapArgs;
   const [layout, setLayout] = useState(0);
 
   useEffect(() => {
@@ -125,7 +129,7 @@ function Download({
               <Grid
                 item
                 xs={6}
-                index={v}
+                key={v}
                 className={clsx(classes.button, {
                   [classes.activeButton]: chartValue === v,
                 })}
@@ -145,8 +149,8 @@ function Download({
         </>
       )}
       <Grid item container className={classes.row}>
-        {images.map((p) => (
-          <Grid item xs={6} index={p} className={classes.button}>
+        {imageTypes.map((p) => (
+          <Grid item xs={6} key={p} className={classes.button}>
             <ButtonBase
               className={classes.text}
               onClick={(e) => handleImageDownload(e, p)}
@@ -164,7 +168,7 @@ function Download({
           <Grid
             item
             xs={6}
-            index={p}
+            key={p}
             className={clsx(classes.button, {
               [classes.activeButton]: layout === index,
             })}
@@ -184,8 +188,8 @@ function Download({
         <Typography className={classes.text}>Download data as:</Typography>
       </Grid>
       <Grid item container className={classes.row}>
-        {files.map((f) => (
-          <Grid item xs={4} index={f} className={classes.button}>
+        {fileTypes.map((f) => (
+          <Grid item xs={4} key={f} className={classes.button}>
             <ButtonBase
               className={classes.text}
               onClick={(e) => handleDataDownload(e, f)}

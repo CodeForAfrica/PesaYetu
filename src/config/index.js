@@ -290,13 +290,6 @@ export const searchArgs = {
   ],
 };
 
-export const indicatorDownload = {
-  values: ["Percentage", "Value"],
-  layouts: [Layout1, Layout2],
-  images: ["PNG", "SVG"],
-  files: ["CSV", "XLSX", "JSON"],
-};
-
 export const insightDataTabStories = {
   items: [
     {
@@ -884,6 +877,14 @@ export const hurumapArgs = {
     helperText: "Pin and compare",
     placeholder: "Select a location",
     options: ["Municipality", "Municipality One", "Municipality Two"],
+  },
+  indicatorTitle: {
+    download: {
+      values: ["Percentage", "Value"],
+      layouts: [Layout1, Layout2],
+      imageTypes: ["PNG", "SVG"],
+      fileTypes: ["CSV", "XLSX", "JSON"],
+    },
   },
 };
 
