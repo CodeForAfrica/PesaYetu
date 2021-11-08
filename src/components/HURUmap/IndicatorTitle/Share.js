@@ -60,7 +60,7 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
       }
       @media (max-width: 500px) {
         .wrapper {
-          padding-top: ${isCompare ? "300%" : "165%"};
+          padding-top: ${isCompare ? "300%" : "170%"};
         }
 }
 </style> 

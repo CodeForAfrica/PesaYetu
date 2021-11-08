@@ -14,6 +14,8 @@ import Group4658 from "@/pesayetu/assets/icons/Group 4658-white.svg";
 import summaryHover from "@/pesayetu/assets/icons/Group 4658.svg";
 import Group4659 from "@/pesayetu/assets/icons/Group 4659-white.svg";
 import implementHover from "@/pesayetu/assets/icons/Group 4659.svg";
+import Layout1 from "@/pesayetu/assets/icons/Group922.svg";
+import Layout2 from "@/pesayetu/assets/icons/Group923.svg";
 import unsplashOne from "@/pesayetu/assets/images/adomas-aleno-unsplash.png";
 import DataVisualOne from "@/pesayetu/assets/images/DataVisualOne.png";
 import DataVisualThree from "@/pesayetu/assets/images/DataVisualThree.png";
@@ -875,6 +877,14 @@ export const hurumapArgs = {
     helperText: "Pin and compare",
     placeholder: "Select a location",
     options: ["Municipality", "Municipality One", "Municipality Two"],
+  },
+  indicatorTitle: {
+    download: {
+      values: ["Percentage", "Value"],
+      layouts: [Layout1, Layout2],
+      imageTypes: ["PNG", "SVG"],
+      fileTypes: ["CSV", "XLSX", "JSON"],
+    },
   },
 };
 

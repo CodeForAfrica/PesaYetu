@@ -29,6 +29,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     lineHeight: 17 / 11,
     color: "#666666",
   },
+  layoutButton: {
+    padding: 0,
+  },
   button: {
     display: "flex",
     alignItems: "center",
