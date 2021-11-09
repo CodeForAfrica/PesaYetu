@@ -173,6 +173,10 @@ export default function DonutChartScope(
                   innerRadius: { signal: "innerRadius" },
                   outerRadius: { signal: "donutSize / 4" },
                   cornerRadius: { signal: "cornerRadius" },
+                  tooltip: {
+                    signal:
+                      "{'group': datum[mainGroup], 'count': format(datum.percentage, numberFormat.percentage)}",
+                  },
                 },
               },
             },
@@ -261,6 +265,10 @@ export default function DonutChartScope(
                   innerRadius: { signal: "innerRadius" },
                   outerRadius: { signal: "donutSize / 4 " },
                   cornerRadius: { signal: "cornerRadius" },
+                  tooltip: {
+                    signal:
+                      "{'group': datum[mainGroup], 'count': format(datum.percentage, numberFormat.percentage)}",
+                  },
                 },
               },
             },
