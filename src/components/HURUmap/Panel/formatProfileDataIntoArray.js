@@ -35,11 +35,13 @@ export default function formatProfileDataIntoArray(data, parent) {
               return {
                 ...m,
                 parentName: parent?.name ?? null,
-                parentMetric: parent.data
-                  ? parent?.data[label]?.subcategories[child]?.key_metrics[
-                      index
-                    ] ?? null
-                  : null,
+                parentMetric:
+                  parent.data &&
+                  parent?.data[label]?.subcategories[child]?.key_metrics
+                    ? parent?.data[label]?.subcategories[child]?.key_metrics[
+                        index
+                      ] ?? null
+                    : null,
               };
             }
           ),
