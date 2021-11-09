@@ -63,6 +63,14 @@ export default function TreemapChartScope(
           name: "nestedFields",
           value: nestedFields,
         },
+        {
+          name: "percentageAverage",
+          update: "100 / data('primary_formatted').length",
+        },
+        {
+          name: "secondaryPercentageAverage",
+          update: "100 / data('secondary_formatted').length",
+        },
       ],
       scales: [
         {
@@ -152,11 +160,11 @@ export default function TreemapChartScope(
                 update: {
                   align: { value: "left" },
                   baseline: { value: "top" },
-                  x: { signal: "datum.x0 + 15" },
-                  y: { signal: "datum.y0 + 20" },
+                  x: { signal: "datum.x0 + 12" },
+                  y: { signal: "datum.y0 + 15" },
                   text: {
                     signal:
-                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
+                      "datum.percentage * 100 < percentageAverage ? '': [format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
                   },
                 },
               },
@@ -229,11 +237,11 @@ export default function TreemapChartScope(
                 update: {
                   align: { value: "left" },
                   baseline: { value: "top" },
-                  x: { signal: "datum.x0 + 15" },
-                  y: { signal: "datum.y0 + 20" },
+                  x: { signal: "datum.x0 + 12" },
+                  y: { signal: "datum.y0 + 15" },
                   text: {
                     signal:
-                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
+                      "datum.percentage * 100 < secondaryPercentageAverage ? '': [format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
                   },
                 },
               },
