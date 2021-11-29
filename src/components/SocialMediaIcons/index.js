@@ -22,13 +22,13 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   button: {
-    background: "#7DB2D3",
+    background: "#7986D1",
     borderRadius: 50,
     width: 48,
     height: 48,
     margin: typography.pxToRem(3.2),
     "&:hover,&:focus": {
-      background: "#7DB2D3",
+      background: "#7986D1",
       borderRadius: 60,
     },
     [breakpoints.up("lg")]: {
