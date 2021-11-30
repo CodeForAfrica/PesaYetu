@@ -6,7 +6,7 @@ import React from "react";
 
 import Link from "@/pesayetu/components/Link";
 
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
+const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
     paddingTop: typography.pxToRem(32),
     [breakpoints.up("lg")]: {
@@ -22,13 +22,13 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     },
   },
   button: {
-    background: "#7986D1",
+    background: palette.primary.light,
     borderRadius: 50,
     width: 48,
     height: 48,
     margin: typography.pxToRem(3.2),
     "&:hover,&:focus": {
-      background: "#7986D1",
+      background: palette.primary.light,
       borderRadius: 60,
     },
     [breakpoints.up("lg")]: {

@@ -2,7 +2,7 @@ import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import aboutHeroBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.png";
+import aboutHeroBg from "@/pesayetu/assets/images/sat-mtKenya-2@2x.jpg";
 import useStyles from "@/pesayetu/components/AboutHero/useStyles";
 import Header from "@/pesayetu/components/Header";
 import Image from "@/pesayetu/components/Image";
