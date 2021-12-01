@@ -4,7 +4,7 @@ export function idify(string) {
     .replace(/[^a-z0-9]/g, "")
     .replace(/\s+/g, "_")
     .replace(/_+/g, "_");
-};
+}
 /**
  * createFiltersForGroups
  * this method creates the filter for the data transformations as well as the signals that drive the filter. we can set signals from outside to set the filter. we use two signals, one to indicate if the filter is active (we can have multiple filters) the second is the value we filter for.
