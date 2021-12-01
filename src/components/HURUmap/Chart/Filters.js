@@ -3,8 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useCallback } from "react";
 
+import { idify } from "./utils";
+
 import ChartFilter from "@/pesayetu/components/HURUmap/ChartFilter";
-import slugify from "@/pesayetu/utils/slugify";
 
 const useStyles = makeStyles(({ typography }) => ({
   root: {
@@ -43,7 +44,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
     );
     sortedFiltersProps.forEach((fp) => {
       if (fp.selectedAttribute !== "All values" && fp.selectedValue) {
-        const filterName = slugify(fp.selectedAttribute);
+        const filterName = idify(fp.selectedAttribute);
         view?.signal(`${filterName}Filter`, true);
         view?.signal(`${filterName}FilterValue`, fp.selectedValue);
         view?.run();
@@ -53,7 +54,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
 
   const onSelectValue = (attribute, value, pos) => {
     if (pos === "default") {
-      const filterName = slugify(attribute);
+      const filterName = idify(attribute);
       view?.signal(`${filterName}Filter`, true);
       view?.signal(`${filterName}FilterValue`, value);
       view?.run();

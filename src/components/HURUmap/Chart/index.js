@@ -7,13 +7,12 @@ import embed from "vega-embed";
 
 import configureScope from "./configureScope";
 import Filters from "./Filters";
-import { calculateTooltipPosition } from "./utils";
+import { calculateTooltipPosition, idify } from "./utils";
 
 import ChartTooltip from "@/pesayetu/components/HURUmap/ChartTooltip";
 import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
 import Link from "@/pesayetu/components/Link";
 import theme from "@/pesayetu/theme";
-import slugify from "@/pesayetu/utils/slugify";
 
 const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
@@ -157,7 +156,7 @@ function Chart({
   // apply default filter if defined
   const defaultFilters =
     filter?.defaults?.map(({ name, value }) => {
-      const filterName = slugify(name);
+      const filterName = idify(name);
       view?.signal(`${filterName}Filter`, true);
       view?.signal(`${filterName}FilterValue`, value);
       view?.run();
@@ -198,7 +197,7 @@ function Chart({
             ?.filter(({ name }) => name !== (stackedField || ""))
             ?.filter(({ name }) => !defaultFiltersNames?.includes(name))
             ?.map((g) => {
-              return { ...g, slug: slugify(g?.name) };
+              return { ...g, slug: idify(g?.name) };
             })}
           defaultFilters={defaultFilters ?? undefined}
           view={view}
