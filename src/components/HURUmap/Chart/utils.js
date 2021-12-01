@@ -1,4 +1,4 @@
-export const idify = (string) => {
+export function idify(string) {
   return string
     .replace(/^\s+|\s+$/g, "")
     .replace(/[^a-z0-9]/g, "")
