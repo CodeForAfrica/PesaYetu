@@ -18,17 +18,21 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     marginBottom: typography.pxToRem(49.38),
     textTransform: "uppercase",
   },
-  logoContainer: {
+  gridContainer: {
     [breakpoints.down("sm")]: {
       width: "100%",
       textAlign: "center",
-      marginBottom: typography.pxToRem(40),
     },
-    marginBottom: typography.pxToRem(100),
+  },
+  logoContainer: {
+    marginBottom: typography.pxToRem(40),
     height: typography.pxToRem(116),
     width: typography.pxToRem(150),
     position: "relative",
     filter: "grayscale(1)",
+    [breakpoints.up("mdtu")]: {
+      marginBottom: typography.pxToRem(100),
+    },
   },
   link: {
     filter: "grayscale(1)",
@@ -53,7 +57,7 @@ function SupportingPartners({ title, items, ...props }) {
         </Typography>
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           {items.map(({ link, logo, name }) => (
-            <Grid item key={link}>
+            <Grid item key={link} className={classes.gridContainer}>
               <LogoButton
                 component={Link}
                 href={link}
