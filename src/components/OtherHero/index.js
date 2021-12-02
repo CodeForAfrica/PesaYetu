@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     position: "relative",
     paddingBottom: typography.pxToRem(43),
     [breakpoints.up("lg")]: {
-      paddingBottom: typography.pxToRem(98),
+      paddingBottom: typography.pxToRem(93),
     },
   },
   textContainer: {

@@ -30,12 +30,14 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     lineHeight: 20 / 13,
     color: "#666666",
     display: "inline-flex",
+    fontWeight: 500,
   },
   sourceLink: {
     color: palette.text.primary,
     fontSize: typography.pxToRem(13),
     lineHeight: 20 / 13,
     fontFamily: typography.body1.fontFamily,
+    fontWeight: 500,
   },
 }));
 

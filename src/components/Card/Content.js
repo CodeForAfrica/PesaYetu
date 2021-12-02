@@ -21,6 +21,7 @@ const useStyles = makeStyles(({ typography }) => ({
   link: {
     display: "inline-flex",
     marginTop: typography.pxToRem(20),
+    fontWeight: "bold",
   },
 }));
 
