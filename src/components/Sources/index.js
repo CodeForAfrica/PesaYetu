@@ -37,11 +37,15 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
     // Array.sort happens "in place" so we need to copy the array for useState
     // to notice the change
     // see: https://github.com/facebook/react/issues/19780#issuecomment-688068412
-    if (sortOrder) {
+    if (sortOrder && items?.length) {
       if (sortOrder?.toLowerCase() === "least recently updated") {
-        setSortedItems([...items.sort((a, b) => a.date.localeCompare(b.date))]);
+        setSortedItems([
+          ...items.sort((a, b) => a?.date?.localeCompare(b?.date)),
+        ]);
       } else if (sortOrder?.toLowerCase() === "most recently updated") {
-        setSortedItems([...items.sort((a, b) => b.date.localeCompare(a.date))]);
+        setSortedItems([
+          ...items.sort((a, b) => b?.date?.localeCompare(a?.date)),
+        ]);
       }
     }
   }, [items, sortOrder]);

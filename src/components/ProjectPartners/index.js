@@ -53,14 +53,14 @@ function ProjectPartners({ title, partners, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container className={classes.content}>
+      <Grid container className={classes.content} alignItems="center">
         <Grid item xs={12}>
           <Typography variant="h4" className={classes.title}>
             {title}
           </Typography>
         </Grid>
-        {partners?.map(({ link, logo, logoProps, name }) => (
-          <Grid key={link} item md={6}>
+        {partners?.map(({ link, logo, logoProps, name }, index) => (
+          <Grid key={link} item md={index > 1 ? 4 : 6}>
             <LogoButton
               component={Link}
               href={link}

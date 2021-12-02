@@ -19,13 +19,13 @@ const buildVariant = (
 });
 
 export const CHART_PRIMARY_COLOR_SCHEME = [
-  "#0067A3",
-  "#7DB2D3",
+  "#0B2AEA",
+  "#7986D1",
   "#DFDFDF",
   "#666666",
 ];
 export const CHART_SECONDARY_COLOR_SCHEME = [
-  "#EE4538",
+  "#FC0D1B",
   "#F8A199",
   "#DFDFDF",
   "#666666",
@@ -42,11 +42,11 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#0067A3", // main blue
-      light: "#7DB2D3", // hightlight blue
+      main: "#0B2AEA", // main blue
+      light: "#7986D1", // hightlight blue
     },
     secondary: {
-      main: "#EE4538", // main red
+      main: "#FC0D1B", // main red
       light: "#F8A199", // highlight red
     },
     background: {

@@ -33,6 +33,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   date: {},
   resourceType: {},
   cta: {
+    fontWeight: "bold",
     marginTop: typography.pxToRem(20),
     [breakpoints.up("lg")]: {
       marginTop: 0,

@@ -10,7 +10,7 @@ export function idify(string) {
  * this method creates the filter for the data transformations as well as the signals that drive the filter. we can set signals from outside to set the filter. we use two signals, one to indicate if the filter is active (we can have multiple filters) the second is the value we filter for.
  *
  * */
-export const createFiltersForGroups = (groups) => {
+export function createFiltersForGroups(groups) {
   // we use a Map here to make it faster to create unique filters
   const filters = new Map();
   const signals = new Map();
@@ -28,14 +28,9 @@ export const createFiltersForGroups = (groups) => {
     signals: Array.from(signals.values()),
     filters: Array.from(filters.values()),
   };
-};
+}
 
-export const calculateTooltipPosition = (
-  event,
-  tooltipBox,
-  offsetX,
-  offsetY
-) => {
+export function calculateTooltipPosition(event, tooltipBox, offsetX, offsetY) {
   let x = event.pageX + offsetX;
   if (x + tooltipBox.width > window.innerWidth) {
     x = +event.pageX - offsetX - tooltipBox.width;
@@ -48,4 +43,4 @@ export const calculateTooltipPosition = (
     y = +event.pageY - offsetY - tooltipBox.height;
   }
   return { x, y };
-};
+}

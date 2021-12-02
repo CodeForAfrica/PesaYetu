@@ -78,6 +78,7 @@ function formatDataIndicators({ items: itemsProps, ...rest }) {
 
 async function formatPartnersBlock(block) {
   const { attributes, name } = block;
+
   switch (name) {
     case "lazyblock/main-partner": {
       const logo = JSON.parse(decodeURIComponent(attributes?.logo)) || null;
@@ -97,9 +98,11 @@ async function formatPartners({
   innerBlocks,
 }) {
   const items = await innerBlocks.reduce(async (acc, cur) => {
-    acc[formatName(cur.name)] = await formatPartnersBlock(cur);
-    return acc;
-  }, {});
+    const accumulator = await acc;
+    accumulator[formatName(cur.name)] = await formatPartnersBlock(cur);
+    return accumulator;
+  }, Promise.resolve({}));
+
   const partners = await Promise.all(
     JSON.parse(decodeURIComponent(serializedPartner)).map(async (partner) => ({
       ...partner,

@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="394" height="262" viewBox="0 0 394 262"><defs><style>.a{fill:url(#a);}.b{fill:#fff;}.c{filter:url(#b);}</style><linearGradient id="a" x1="1" y1="1" x2="0" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#dc5242"/><stop offset="1" stop-color="#0067a3"/></linearGradient><filter id="b" x="0" y="0" width="394" height="262" filterUnits="userSpaceOnUse"><feOffset dy="3" input="SourceAlpha"/><feGaussianBlur stdDeviation="3" result="c"/><feFlood flood-opacity="0.161"/><feComposite operator="in" in2="c"/><feComposite in="SourceGraphic"/></filter></defs><g transform="translate(-158.727 -1064.598)"><g class="c" transform="matrix(1, 0, 0, 1, 158.73, 1064.6)"><path class="a" d="M0,0H376V244H0Z" transform="translate(9 6)"/></g><path class="b" d="M27.5,0,55,48H0Z" transform="translate(379.727 1165.598) rotate(90)"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="394" height="262" viewBox="0 0 394 262">
+  <defs>
+    <filter id="Path_3094" x="0" y="0" width="394" height="262" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_4702" data-name="Group 4702" transform="translate(-158.727 -1064.598)">
+    <g transform="matrix(1, 0, 0, 1, 158.73, 1064.6)" filter="url(#Path_3094)">
+      <path id="Path_3094-2" data-name="Path 3094" d="M0,0H376V244H0Z" transform="translate(9 6)" fill="#0b2aea"/>
+    </g>
+    <path id="Polygon_3" data-name="Polygon 3" d="M27.5,0,55,48H0Z" transform="translate(379.727 1165.598) rotate(90)" fill="#fff"/>
+  </g>
+</svg>
