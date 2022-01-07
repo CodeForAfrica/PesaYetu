@@ -132,9 +132,9 @@ export default async function getPostTypeTaxonomyArchive(
             archiveSeo?.title ??
             `${taxonomyId} - ${response.defaultSeo?.openGraph?.siteName ?? ""}`,
           metaDesc: archiveSeo?.metaDesc ?? "",
-          canonical: `${canonical.protocol}//${
-            canonical?.hostname
-          }${replaceMultisitePrefix(canonical?.pathname)}`,
+          canonical: `${canonical?.origin}${replaceMultisitePrefix(
+            canonical?.pathname
+          )}`,
           metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
           metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
         },

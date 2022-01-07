@@ -74,9 +74,9 @@ export default async function processPostTypeQuery(
         ...post,
         seo: {
           ...post.seo,
-          canonical: `${canonical.protocol}//${
-            canonical?.hostname
-          }${replaceMultisitePrefix(canonical?.pathname)}`,
+          canonical: `${canonical?.origin}${replaceMultisitePrefix(
+            canonical?.pathname
+          )}`,
         },
         postsPageBlockJSON: homepageSettings?.postsPage?.blocksJSON ?? null,
       };

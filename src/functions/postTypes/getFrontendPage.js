@@ -1,4 +1,5 @@
 import getMenus from "@/pesayetu/functions/menus/getMenus";
+import replaceMultisitePrefix from "@/pesayetu/functions/replaceMultisitePrefix";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import frontendPageSeo from "@/pesayetu/lib/wordpress/_config/frontendPageSeo";
 import { initializeWpApollo } from "@/pesayetu/lib/wordpress/connector";
@@ -34,13 +35,18 @@ export default async function getFrontendPage(route) {
       response.defaultSeo = formatDefaultSeoData({ homepageSettings, siteSeo });
 
       // Set route SEO.
+      const canonical = new URL(
+        `${response.defaultSeo?.openGraph?.url ?? ""}/${route}`
+      );
       return {
         seo: {
           title: `${frontendPageSeo?.[route]?.title} - ${
             response.defaultSeo?.openGraph?.siteName ?? ""
           }`,
           metaDesc: frontendPageSeo?.[route]?.description,
-          canonical: `${response.defaultSeo?.openGraph?.url ?? ""}/${route}`,
+          canonical: `${canonical?.origin}${replaceMultisitePrefix(
+            canonical?.pathname
+          )}`,
         },
       };
     })
