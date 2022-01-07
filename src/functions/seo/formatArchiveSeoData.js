@@ -1,4 +1,3 @@
-import replaceMultisitePrefix from "@/pesayetu/functions/replaceMultisitePrefix";
 import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
 
 /**
@@ -20,11 +19,6 @@ export default function formatArchiveSeoData(
 ) {
   // Check if viewing post archive and have received posts page SEO data.
   if (postType === "post" && postsPageSeo) {
-    console.log(
-      replaceMultisitePrefix(
-        `${defaultSeo?.openGraph?.url ?? ""}/${postTypes?.[postType]?.route}`
-      )
-    );
     return {
       ...postsPageSeo,
       canonical: `${defaultSeo?.openGraph?.url ?? ""}/${
@@ -32,12 +26,6 @@ export default function formatArchiveSeoData(
       }`,
     };
   }
-  console.log(
-    replaceMultisitePrefix(
-      archiveSeo?.canonical ??
-        `${defaultSeo?.openGraph?.url ?? ""}/${fallbackSeo?.route}`
-    )
-  );
 
   // Use archive SEO if provided, else generate SEO data from fallback data.
   return {
