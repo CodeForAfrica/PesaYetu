@@ -1,3 +1,4 @@
+import replaceMultisitePrefix from "@/pesayetu/functions/replaceMultisitePrefix";
 import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
 
 /**
@@ -19,15 +20,22 @@ export default function formatArchiveSeoData(
 ) {
   // Check if viewing post archive and have received posts page SEO data.
   if (postType === "post" && postsPageSeo) {
+    const canonicalURL = new URL(
+      `${defaultSeo?.openGraph?.url ?? ""}/${postTypes?.[postType]?.route}`
+    );
+    canonicalURL.pathname = replaceMultisitePrefix(canonicalURL?.pathname);
     return {
       ...postsPageSeo,
-      canonical: `${defaultSeo?.openGraph?.url ?? ""}/${
-        postTypes?.[postType]?.route
-      }`,
+      canonical: canonicalURL.toString(),
     };
   }
 
   // Use archive SEO if provided, else generate SEO data from fallback data.
+  const canonical = new URL(
+    archiveSeo?.canonical ??
+      `${defaultSeo?.openGraph?.url ?? ""}/${fallbackSeo?.route}`
+  );
+  canonical.pathname = replaceMultisitePrefix(canonical?.pathname);
   return {
     title:
       archiveSeo?.title ??
@@ -35,8 +43,6 @@ export default function formatArchiveSeoData(
     metaDesc: archiveSeo?.metaDesc ?? fallbackSeo?.description ?? "",
     metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
     metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
-    canonical:
-      archiveSeo?.canonical ??
-      `${defaultSeo?.openGraph?.url ?? ""}/${fallbackSeo?.route}`,
+    canonical: canonical.toString(),
   };
 }

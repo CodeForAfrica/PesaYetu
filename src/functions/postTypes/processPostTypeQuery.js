@@ -1,4 +1,5 @@
 import getMenus from "@/pesayetu/functions/menus/getMenus";
+import replaceMultisitePrefix from "@/pesayetu/functions/replaceMultisitePrefix";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import {
   createWpApolloClient,
@@ -68,8 +69,14 @@ export default async function processPostTypeQuery(
       }
 
       // Retrieve blocks from archive stories page
+      const canonical = new URL(post?.seo?.canonical);
+      canonical.pathname = replaceMultisitePrefix(canonical?.pathname);
       return {
         ...post,
+        seo: {
+          ...post.seo,
+          canonical: canonical.toString(),
+        },
         postsPageBlockJSON: homepageSettings?.postsPage?.blocksJSON ?? null,
       };
     })

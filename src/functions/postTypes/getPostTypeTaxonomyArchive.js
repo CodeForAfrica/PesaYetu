@@ -1,4 +1,5 @@
 import getMenus from "@/pesayetu/functions/menus/getMenus";
+import replaceMultisitePrefix from "@/pesayetu/functions/replaceMultisitePrefix";
 import formatDefaultSeoData from "@/pesayetu/functions/seo/formatDefaultSeoData";
 import { postTypes } from "@/pesayetu/lib/wordpress/_config/postTypes";
 import queryPostsByCategory from "@/pesayetu/lib/wordpress/categories/queryPostsByCategory";
@@ -120,6 +121,11 @@ export default async function getPostTypeTaxonomyArchive(
         homepageSettings?.postsPage?.blocks ?? []
       ).concat(JSON.parse(homepageSettings?.postsPage?.blocksJSON) ?? []);
       // Structure archive SEO & blocks.
+      const canonical = new URL(
+        archiveSeo?.canonical ?? breadcrumb ?? fallback
+      );
+      canonical.pathname = replaceMultisitePrefix(canonical?.pathname);
+
       response.post = {
         seo: {
           ...archiveSeo,
@@ -127,7 +133,7 @@ export default async function getPostTypeTaxonomyArchive(
             archiveSeo?.title ??
             `${taxonomyId} - ${response.defaultSeo?.openGraph?.siteName ?? ""}`,
           metaDesc: archiveSeo?.metaDesc ?? "",
-          canonical: archiveSeo?.canonical ?? breadcrumb ?? fallback,
+          canonical: canonical.toString(),
           metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
           metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
         },

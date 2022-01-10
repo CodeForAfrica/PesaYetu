@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
-  titleTemplate: "%s | PesaYetu",
+  titleTemplate: "%s",
   defaultTitle: "PesaYetu",
   description: "County data to hold your government accountable",
   openGraph: {
