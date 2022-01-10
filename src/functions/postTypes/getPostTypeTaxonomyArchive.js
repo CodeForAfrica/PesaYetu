@@ -124,6 +124,7 @@ export default async function getPostTypeTaxonomyArchive(
       const canonical = new URL(
         archiveSeo?.canonical ?? breadcrumb ?? fallback
       );
+      canonical.pathname = replaceMultisitePrefix(canonical?.pathname);
 
       response.post = {
         seo: {
@@ -132,9 +133,7 @@ export default async function getPostTypeTaxonomyArchive(
             archiveSeo?.title ??
             `${taxonomyId} - ${response.defaultSeo?.openGraph?.siteName ?? ""}`,
           metaDesc: archiveSeo?.metaDesc ?? "",
-          canonical: `${canonical?.origin}${replaceMultisitePrefix(
-            canonical?.pathname
-          )}`,
+          canonical: canonical.toString(),
           metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
           metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
         },

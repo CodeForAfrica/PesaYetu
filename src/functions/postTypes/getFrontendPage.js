@@ -38,15 +38,14 @@ export default async function getFrontendPage(route) {
       const canonical = new URL(
         `${response.defaultSeo?.openGraph?.url ?? ""}/${route}`
       );
+      canonical.pathname = replaceMultisitePrefix(canonical?.pathname);
       return {
         seo: {
           title: `${frontendPageSeo?.[route]?.title} - ${
             response.defaultSeo?.openGraph?.siteName ?? ""
           }`,
           metaDesc: frontendPageSeo?.[route]?.description,
-          canonical: `${canonical?.origin}${replaceMultisitePrefix(
-            canonical?.pathname
-          )}`,
+          canonical: canonical.toString(),
         },
       };
     })

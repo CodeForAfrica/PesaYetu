@@ -23,11 +23,10 @@ export default function formatArchiveSeoData(
     const canonicalURL = new URL(
       `${defaultSeo?.openGraph?.url ?? ""}/${postTypes?.[postType]?.route}`
     );
+    canonicalURL.pathname = replaceMultisitePrefix(canonicalURL?.pathname);
     return {
       ...postsPageSeo,
-      canonical: `${canonicalURL?.origin}${replaceMultisitePrefix(
-        canonicalURL?.pathname
-      )}`,
+      canonical: canonicalURL.toString(),
     };
   }
 
@@ -36,6 +35,7 @@ export default function formatArchiveSeoData(
     archiveSeo?.canonical ??
       `${defaultSeo?.openGraph?.url ?? ""}/${fallbackSeo?.route}`
   );
+  canonical.pathname = replaceMultisitePrefix(canonical?.pathname);
   return {
     title:
       archiveSeo?.title ??
@@ -43,8 +43,6 @@ export default function formatArchiveSeoData(
     metaDesc: archiveSeo?.metaDesc ?? fallbackSeo?.description ?? "",
     metaRobotsNofollow: archiveSeo?.metaRobotsNofollow ?? "follow",
     metaRobotsNoindex: archiveSeo?.metaRobotsNoindex ?? "index",
-    canonical: `${canonical?.origin}${replaceMultisitePrefix(
-      canonical?.pathname
-    )}`,
+    canonical: canonical.toString(),
   };
 }
