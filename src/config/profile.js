@@ -47847,7 +47847,6 @@ export default {
         ],
       },
     ],
-    themes: [],
   },
   highlights: [],
   overview: {
