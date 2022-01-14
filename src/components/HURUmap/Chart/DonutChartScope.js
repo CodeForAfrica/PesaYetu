@@ -17,6 +17,18 @@ export default function DonutChartScope(
 ) {
   const { primary_group: primaryGroup } = metadata;
 
+  const secondaryLegend = isCompare
+    ? [
+        {
+          orient: "top",
+          fill: "legend_secondary_scale",
+          labelFontWeight: "bold",
+          labelColor: "#666",
+          labelFont: theme.typography.fontFamily,
+        },
+      ]
+    : [];
+
   return merge(
     Scope(
       primaryData,
@@ -205,46 +217,40 @@ export default function DonutChartScope(
               },
             },
           },
-          legends: isCompare
-            ? [
-                {
-                  orient: "top",
-                  fill: "legend_secondary_scale",
-                  labelFontWeight: "bold",
-                  labelColor: "#666",
-                  labelFont: theme.typography.fontFamily,
-                },
-                {
-                  fill:
-                    secondaryData?.length > 1 ? "secondary" : "empty_legend",
-                  stroke: "secondary",
-                  orient: "none",
-                  symbolType: "circle",
-                  direction: "vertical",
-                  labelFont: theme.typography.fontFamily,
-                  legendX: { signal: "donutSize / 2 + 40" },
-                  legendY: 40,
-                  labelOffset: 12,
-                  rowPadding: 8,
-                  encode: {
-                    labels: {
-                      interactive: true,
-                      update: {
-                        fontSize: { value: 11 },
-                        fill: { value: theme.palette.chart.text.primary },
+          legends:
+            secondaryData?.length > 1
+              ? [
+                  ...secondaryLegend,
+                  {
+                    fill: "secondary",
+                    stroke: "secondary",
+                    orient: "none",
+                    symbolType: "circle",
+                    direction: "vertical",
+                    labelFont: theme.typography.fontFamily,
+                    legendX: { signal: "donutSize / 2 + 40" },
+                    legendY: 40,
+                    labelOffset: 12,
+                    rowPadding: 8,
+                    encode: {
+                      labels: {
+                        interactive: true,
+                        update: {
+                          fontSize: { value: 11 },
+                          fill: { value: theme.palette.chart.text.primary },
+                        },
                       },
-                    },
-                    symbols: {
-                      enter: {
-                        fillOpacity: {
-                          value: 1,
+                      symbols: {
+                        enter: {
+                          fillOpacity: {
+                            value: 1,
+                          },
                         },
                       },
                     },
                   },
-                },
-              ]
-            : null,
+                ]
+              : secondaryLegend,
           marks: [
             {
               type: "arc",
