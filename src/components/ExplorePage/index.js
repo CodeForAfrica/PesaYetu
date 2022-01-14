@@ -102,7 +102,7 @@ function initializer({ profiles, options }) {
 
   return {
     isPinning: false,
-    isCompare: primary && secondary,
+    isCompare: !!(primary && secondary),
     primary: extendProfileTags(primary, primaryOptions),
     secondary: extendProfileTags(secondary, secondaryOptions),
   };

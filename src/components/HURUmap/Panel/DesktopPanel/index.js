@@ -39,26 +39,22 @@ function DesktopPanel({
         }
         return x;
       }) ?? [];
-    setPanelItems(pItems);
-  }, [panelItemsProp, primaryProfile.items]);
 
-  useEffect(() => {
-    setPanelItems((pi) => {
-      const foundCompare = pi?.find((item) => item.value === "secondaryPin");
-      if (isCompare && !foundCompare) {
-        const pinItems = pi?.find((i) => i.value === "pin");
+    if (isCompare) {
+      const foundCompare = pItems?.find(
+        (item) => item.value === "secondaryPin"
+      );
+      if (!foundCompare) {
+        const pinIndex = pItems?.findIndex((i) => i?.value === "pin");
         const secondaryPin = {
-          ...pinItems,
+          ...pItems[pinIndex],
           value: "secondaryPin",
         };
-        return [...pi, secondaryPin];
+        pItems.splice(pinIndex + 1, 0, secondaryPin);
       }
-      if (!isCompare && foundCompare) {
-        return pi?.filter((p) => p?.value !== "secondaryPin");
-      }
-      return pi;
-    });
-  }, [isCompare]);
+    }
+    setPanelItems(pItems);
+  }, [isCompare, panelItemsProp, primaryProfile.items]);
 
   useEffect(() => {
     if (isPinning || isCompare) {
