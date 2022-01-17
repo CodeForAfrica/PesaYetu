@@ -343,6 +343,7 @@ export default function LineChartScope(
                   orient: "top",
                   fill: "legend_secondary_scale",
                   labelFontWeight: "bold",
+                  labelLimit: 400,
                   labelColor: "#666",
                   labelFont: theme.typography.fontFamily,
                 },

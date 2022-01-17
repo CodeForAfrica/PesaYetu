@@ -197,6 +197,7 @@ export default function TreemapChartScope(
                   labelFontWeight: "bold",
                   labelColor: "#666",
                   labelFont: theme.typography.fontFamily,
+                  labelLimit: 400,
                 },
               ]
             : null,
