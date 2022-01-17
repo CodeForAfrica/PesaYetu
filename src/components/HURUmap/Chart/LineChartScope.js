@@ -325,7 +325,7 @@ export default function LineChartScope(
               },
               y: {
                 signal:
-                  "isMobile && data('secondary').length > 1 ? height/2 + 60: data('secondary').length > 1 ? chartY: height + 40",
+                  "isMobile && data('secondary').length > 1 ? height/2 + 60: data('secondary').length > 1 ? chartY: height + 60",
               },
               height: {
                 signal:
