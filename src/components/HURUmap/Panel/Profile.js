@@ -132,11 +132,13 @@ const Profile = forwardRef(function Profile(
   const getSecondaryIndicator = (
     categoryIndex,
     subcategoryIndex,
-    indicatorIndex
+    indicatorId
   ) => {
     const category = secondaryProfile?.items?.[categoryIndex];
     const subCategory = category?.children?.[subcategoryIndex];
-    const indicator = subCategory?.children?.[indicatorIndex];
+    const indicator = subCategory?.children?.find(
+      ({ indicator: { id } }) => indicatorId === id
+    );
     return indicator;
   };
 
@@ -194,7 +196,7 @@ const Profile = forwardRef(function Profile(
                 id={slugify(child.title)}
                 title={child.title}
               />
-              {child.children.map(({ index, ...indicator }, indicatorIndex) => (
+              {child.children.map(({ index, ...indicator }) => (
                 <Chart
                   key={index}
                   variant="primary"
@@ -203,7 +205,7 @@ const Profile = forwardRef(function Profile(
                   secondaryIndicator={getSecondaryIndicator(
                     categoryIndex,
                     subcategoryIndex,
-                    indicatorIndex
+                    indicator.indicator.id
                   )}
                   isCompare={!!secondaryProfile}
                   profileNames={{
@@ -215,7 +217,7 @@ const Profile = forwardRef(function Profile(
                       getSecondaryIndicator(
                         categoryIndex,
                         subcategoryIndex,
-                        indicatorIndex
+                        indicator.indicator.id
                       )?.indicator?.data?.length > 0
                         ? secondaryProfile?.geography?.name
                         : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
