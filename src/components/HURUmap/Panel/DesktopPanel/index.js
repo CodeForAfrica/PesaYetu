@@ -1,7 +1,7 @@
 import { Drawer } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import PanelItem from "./PanelItem";
 import useStyles from "./useStyles";
@@ -15,32 +15,46 @@ function DesktopPanel({
   onClickPin,
   onClickUnpin,
   panelItems: panelItemsProp,
+  primaryProfile,
   ...props
 }) {
-  const [value, setValue] = React.useState();
-  const [pins, setPins] = React.useState([]);
-  const [panelItems, setPanelItems] = React.useState(panelItemsProp);
-  const paperRef = React.useRef();
+  const [value, setValue] = useState();
+  const [pins, setPins] = useState([]);
+  const [panelItems, setPanelItems] = useState([]);
+  const paperRef = useRef();
   const drawerWidth = paperRef.current?.clientWidth;
   const classes = useStyles({ ...props, drawerWidth });
 
   useEffect(() => {
-    setPanelItems((pi) => {
-      const foundCompare = pi?.find((item) => item.value === "secondaryPin");
-      if (isCompare && !foundCompare) {
-        const pinItems = pi?.find((i) => i.value === "pin");
+    const pItems =
+      panelItemsProp?.map((x) => {
+        if (
+          (x?.value === "rich-data" || x?.value === "pin") &&
+          primaryProfile?.items?.length === 0
+        ) {
+          return {
+            ...x,
+            disabled: true,
+          };
+        }
+        return x;
+      }) ?? [];
+
+    if (isCompare) {
+      const foundCompare = pItems?.find(
+        (item) => item.value === "secondaryPin"
+      );
+      if (!foundCompare) {
+        const pinIndex = pItems?.findIndex((i) => i?.value === "pin");
         const secondaryPin = {
-          ...pinItems,
+          ...pItems[pinIndex],
           value: "secondaryPin",
         };
-        return [...pi, secondaryPin];
+        pItems.splice(pinIndex + 1, 0, secondaryPin);
       }
-      if (!isCompare && foundCompare) {
-        return pi?.filter((p) => p?.value !== "secondaryPin");
-      }
-      return pi;
-    });
-  }, [isCompare]);
+    }
+    setPanelItems(pItems);
+  }, [isCompare, panelItemsProp, primaryProfile.items]);
 
   useEffect(() => {
     if (isPinning || isCompare) {
@@ -126,6 +140,7 @@ function DesktopPanel({
             onClickUnpin={onClickUnpin}
             isPinning={isPinning}
             onClickPin={onClickPin}
+            primaryProfile={primaryProfile}
             {...props}
           />
         </TabPanel>
@@ -157,6 +172,9 @@ DesktopPanel.propTypes = {
       tree: PropTypes.shape({}),
     })
   ),
+  primaryProfile: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
 };
 
 DesktopPanel.defaultProps = {
@@ -165,6 +183,7 @@ DesktopPanel.defaultProps = {
   onClickPin: undefined,
   onClickUnpin: undefined,
   panelItems: undefined,
+  primaryProfile: undefined,
 };
 
 export default DesktopPanel;

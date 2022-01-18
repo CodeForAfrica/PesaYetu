@@ -4,49 +4,59 @@ export default function formatProfileDataIntoArray(data, parent) {
   if (!data) {
     return null;
   }
-  return Object.keys(data).map((label) => {
-    return {
-      title: label,
-      icon: data[label].icon ?? defaultIcon,
-      description: data[label].description,
-      children: Object.keys(data[label]?.subcategories).map((child) => {
-        return {
-          title: child,
-          description: data[label]?.subcategories[child].description,
-          children: Object.keys(
-            data[label]?.subcategories[child]?.indicators ?? []
-          ).map((indicator) => {
+  return Object.keys(data)
+    .map((label) => {
+      return {
+        title: label,
+        icon: data[label].icon ?? defaultIcon,
+        description: data[label].description,
+        children: Object.keys(data[label]?.subcategories)
+          .map((child) => {
             return {
-              index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
-              title: indicator,
-              indicator: {
-                ...data[label]?.subcategories?.[child]?.indicators?.[indicator],
-                parentData: parent.data
-                  ? parent?.data?.[label]?.subcategories?.[child]?.indicators?.[
-                      indicator
-                    ]?.data ?? null
-                  : null,
-                parentName: parent?.name ?? null,
-              },
+              title: child,
+              description: data[label]?.subcategories[child].description,
+              children: Object.keys(
+                data[label]?.subcategories[child]?.indicators ?? []
+              )
+                .map((indicator) => {
+                  return {
+                    index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
+                    title: indicator,
+                    indicator: {
+                      ...data[label]?.subcategories?.[child]?.indicators?.[
+                        indicator
+                      ],
+                      parentData: parent.data
+                        ? parent?.data?.[label]?.subcategories?.[child]
+                            ?.indicators?.[indicator]?.data ?? null
+                        : null,
+                      parentName: parent?.name ?? null,
+                    },
+                  };
+                })
+                .filter((indic) => indic.indicator),
+              metrics: (
+                data[label]?.subcategories[child]?.key_metrics ?? []
+              ).map((m, index) => {
+                return {
+                  ...m,
+                  parentName: parent?.name ?? null,
+                  parentMetric:
+                    parent.data &&
+                    parent?.data[label]?.subcategories[child]?.key_metrics
+                      ? parent?.data[label]?.subcategories[child]?.key_metrics[
+                          index
+                        ] ?? null
+                      : null,
+                };
+              }),
             };
-          }),
-          metrics: (data[label]?.subcategories[child]?.key_metrics ?? []).map(
-            (m, index) => {
-              return {
-                ...m,
-                parentName: parent?.name ?? null,
-                parentMetric:
-                  parent.data &&
-                  parent?.data[label]?.subcategories[child]?.key_metrics
-                    ? parent?.data[label]?.subcategories[child]?.key_metrics[
-                        index
-                      ] ?? null
-                    : null,
-              };
-            }
+          })
+          .filter(
+            (subcategory) =>
+              subcategory.metrics.length || subcategory.metrics.length
           ),
-        };
-      }),
-    };
-  });
+      };
+    })
+    .filter((category) => category.children.length);
 }

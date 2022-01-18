@@ -82,7 +82,9 @@ export default function configureScope(
           configuration,
           secondaryIndicator?.data ?? null,
           showParent ? indicator?.parentData : [{}],
-          showParent ? secondaryIndicator?.parentData : [{}]
+          showParent ? secondaryIndicator?.parentData : [{}],
+          profileNames,
+          isCompare
         );
       }
       break;

@@ -38,7 +38,10 @@ export default function TreemapChartScope(
           method: { signal: "layout" },
           ratio: { signal: "aspectRatio" },
           size: [
-            { signal: "isCompare && !isMobile ? width/2 -30: width" },
+            {
+              signal:
+                "isCompare && data('secondary').length > 1 && !isMobile ? width/2 -30: width",
+            },
             { signal: "isCompare && isMobile ? height/2 : height" },
           ],
         },
@@ -107,14 +110,6 @@ export default function TreemapChartScope(
             update: {
               x: { value: 0 },
               y: { signal: "chartY" },
-              height: {
-                signal:
-                  "isMobile && isCompare && data('secondary').length > 1 ? height/2: height",
-              },
-              width: {
-                signal:
-                  "isMobile && data('secondary').length > 1 ? width : width/2",
-              },
             },
           },
           legends: isCompare
@@ -202,6 +197,7 @@ export default function TreemapChartScope(
                   labelFontWeight: "bold",
                   labelColor: "#666",
                   labelFont: theme.typography.fontFamily,
+                  labelLimit: 400,
                 },
               ]
             : null,

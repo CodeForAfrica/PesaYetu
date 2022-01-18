@@ -10,12 +10,31 @@ export default function StackedChartScope(
   config,
   secondaryData,
   primaryParentData,
-  secondaryParentData
+  secondaryParentData,
+  profileNames,
+  isCompare
 ) {
   const { xTicks, parentLabel } = config;
 
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
+
+  const secondaryLegend = [
+    {
+      orient: {
+        value: "none",
+      },
+      legendY: {
+        signal: "height + 30 ",
+      },
+      labelLimit: 400,
+      legendX: { signal: "-width/2 - 30" },
+      fill: "legend_secondary_scale",
+      labelFontWeight: "bold",
+      labelColor: "#666",
+      labelFont: theme.typography.fontFamily,
+    },
+  ];
 
   return merge(
     Scope(
@@ -102,6 +121,18 @@ export default function StackedChartScope(
             data: "primary_formatted",
             field: stackedField,
           },
+        },
+        {
+          name: "legend_primary_scale",
+          type: "ordinal",
+          domain: [profileNames.primary.toUpperCase()],
+          range: [theme.palette.primary.main],
+        },
+        {
+          name: "legend_secondary_scale",
+          type: "ordinal",
+          domain: [profileNames.secondary.toUpperCase()],
+          range: [theme.palette.secondary.main],
         },
         {
           name: "parent_color_scale",
@@ -281,8 +312,9 @@ export default function StackedChartScope(
             },
           ],
           legends:
-            secondaryData?.length > 1
+            isCompare && secondaryData?.length > 1
               ? [
+                  ...secondaryLegend,
                   {
                     fill: "secondary_color",
                     orient: "top",
@@ -305,7 +337,7 @@ export default function StackedChartScope(
                     },
                   },
                 ]
-              : null,
+              : secondaryLegend,
           marks: [
             {
               name: "secondary_bars",

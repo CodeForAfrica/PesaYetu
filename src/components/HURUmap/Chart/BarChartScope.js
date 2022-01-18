@@ -249,6 +249,7 @@ export default function BarChartScope(
                     signal: "data('secondary').length > 1 ? 0 : height + 28 ",
                   },
                   legendX: { signal: "-width/2 - 30" },
+                  labelLimit: 400,
                   fill: "legend_secondary_scale",
                   labelFontWeight: "bold",
                   labelColor: isCompare ? "#666" : "transparent",
