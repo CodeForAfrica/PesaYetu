@@ -19,22 +19,24 @@ export default function StackedChartScope(
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
 
-  const secondaryLegend = [
-    {
-      orient: {
-        value: "none",
-      },
-      legendY: {
-        signal: "height + 30 ",
-      },
-      labelLimit: 400,
-      legendX: { signal: "-width/2 - 30" },
-      fill: "legend_secondary_scale",
-      labelFontWeight: "bold",
-      labelColor: "#666",
-      labelFont: theme.typography.fontFamily,
-    },
-  ];
+  const secondaryLegend = isCompare
+    ? [
+        {
+          orient: {
+            value: "none",
+          },
+          legendY: {
+            signal: "height + 30 ",
+          },
+          labelLimit: 400,
+          legendX: { signal: "-width/2 - 30" },
+          fill: "legend_secondary_scale",
+          labelFontWeight: "bold",
+          labelColor: "#666",
+          labelFont: theme.typography.fontFamily,
+        },
+      ]
+    : null;
 
   return merge(
     Scope(

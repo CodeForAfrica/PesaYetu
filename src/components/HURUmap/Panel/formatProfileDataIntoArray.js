@@ -54,7 +54,7 @@ export default function formatProfileDataIntoArray(data, parent) {
           })
           .filter(
             (subcategory) =>
-              subcategory.metrics.length || subcategory.metrics.length
+              subcategory.children.length || subcategory.metrics.length
           ),
       };
     })
