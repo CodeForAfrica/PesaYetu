@@ -158,6 +158,7 @@ export default function BarChartScope(
                   fill: { value: theme.palette.primary.main },
                   x: { scale: "xscale", field: { signal: "datatype[Units]" } },
                   x2: { scale: "xscale", value: 0 },
+                  y: { scale: "yscale", field: { signal: "mainGroup" } },
                   tooltip: {
                     signal:
                       "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
@@ -207,7 +208,7 @@ export default function BarChartScope(
               from: { data: "primary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   y: { scale: "yscale", field: { signal: "mainGroup" } },
                   y2: {
                     scale: "yscale",
@@ -286,6 +287,7 @@ export default function BarChartScope(
                 },
                 update: {
                   fill: { value: theme.palette.secondary.main },
+                  y: { scale: "yscale", field: { signal: "mainGroup" } },
                   x: {
                     scale: "s_xscale",
                     field: { signal: "datatype[Units]" },
@@ -315,7 +317,7 @@ export default function BarChartScope(
               from: { data: "secondary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   y: { scale: "yscale", field: { signal: "mainGroup" } },
                   y2: {
                     scale: "yscale",

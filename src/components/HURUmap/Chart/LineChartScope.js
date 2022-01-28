@@ -202,6 +202,8 @@ export default function LineChartScope(
                   strokeWidth: { value: 2 },
                 },
                 update: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   interpolate: { signal: "interpolate" },
                   strokeOpacity: { value: 1 },
                 },
@@ -218,6 +220,8 @@ export default function LineChartScope(
                   fill: { value: theme.palette.primary.main },
                 },
                 update: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   size: { value: 5 },
                   tooltip: {
                     signal:
@@ -285,6 +289,8 @@ export default function LineChartScope(
                   strokeDash: { value: [2, 2] },
                 },
                 update: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   interpolate: { signal: "interpolate" },
                   strokeOpacity: { value: 1 },
                 },
@@ -301,6 +307,8 @@ export default function LineChartScope(
                   fill: { value: theme.palette.chart.text.primary },
                 },
                 update: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   size: { value: 5 },
                   tooltip: {
                     signal:

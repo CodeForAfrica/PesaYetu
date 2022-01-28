@@ -180,6 +180,11 @@ export default function DonutChartScope(
                   },
                 },
                 update: {
+                  x: { signal: "donutSize/4" },
+                  y: {
+                    signal:
+                      "isMobile && data('secondary').length > 1 ? height /4 : height/2",
+                  },
                   startAngle: { field: "startAngle" },
                   endAngle: { field: "endAngle" },
                   padAngle: { signal: "padAngle" },
@@ -266,6 +271,11 @@ export default function DonutChartScope(
                   },
                 },
                 update: {
+                  x: { signal: "donutSize/4" },
+                  y: {
+                    signal:
+                      "isMobile && data('secondary').length > 1 ? height /4 : height/2",
+                  },
                   startAngle: { field: "startAngle" },
                   endAngle: { field: "endAngle" },
                   padAngle: { signal: "padAngle" },
