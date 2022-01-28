@@ -55,7 +55,7 @@ export default function BarChartScope(
               signal: "data('secondary').length > 1 ? width/2 - 30 : width",
             },
           ],
-          nice: true,
+          nice: xTicks || 6,
           zero: true,
           domain: {
             data: "primary_formatted",
@@ -71,7 +71,7 @@ export default function BarChartScope(
               signal: "data('secondary').length > 1 ? width/2 - 30 : 0",
             },
           ],
-          nice: true,
+          nice: xTicks || 6,
           zero: true,
           domain: {
             data: "secondary_formatted",
@@ -267,7 +267,7 @@ export default function BarChartScope(
               format: { signal: "numberFormat[Units]" },
               grid: true,
               labelPadding: 6,
-              tickCount: xTicks,
+              tickCount: xTicks || 6,
             },
           ],
 

@@ -88,7 +88,7 @@ export default function StackedChartScope(
           ],
           zero: true,
           clamp: true,
-          nice: true,
+          nice: xTicks || 6,
         },
         {
           name: "s_xscale",
@@ -104,7 +104,7 @@ export default function StackedChartScope(
           ],
           zero: true,
           clamp: true,
-          nice: true,
+          nice: xTicks || 6,
         },
         {
           name: "color",
