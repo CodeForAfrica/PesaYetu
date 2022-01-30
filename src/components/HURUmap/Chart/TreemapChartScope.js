@@ -66,14 +66,6 @@ export default function TreemapChartScope(
           name: "nestedFields",
           value: nestedFields,
         },
-        {
-          name: "percentageAverage",
-          update: "100 / data('primary_formatted').length",
-        },
-        {
-          name: "secondaryPercentageAverage",
-          update: "100 / data('secondary_formatted').length",
-        },
       ],
       scales: [
         {
@@ -154,12 +146,13 @@ export default function TreemapChartScope(
                 },
                 update: {
                   align: { value: "left" },
-                  baseline: { value: "top" },
-                  x: { signal: "datum.x0 + 12" },
-                  y: { signal: "datum.y0 + 15" },
+                  x: { signal: "datum.x0 + 5" },
+                  y: { signal: "datum.y0 + 13" },
+                  limit: { signal: "datum.x1 - datum.x0 - 10" },
+                  y2: { signal: "datum.y1 - datum.y0 - 26" },
                   text: {
                     signal:
-                      "datum.percentage * 100 < percentageAverage ? '': [format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
+                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
                   },
                 },
               },
@@ -237,7 +230,7 @@ export default function TreemapChartScope(
                   y: { signal: "datum.y0 + 15" },
                   text: {
                     signal:
-                      "datum.percentage * 100 < secondaryPercentageAverage ? '': [format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
+                      "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
                   },
                 },
               },
