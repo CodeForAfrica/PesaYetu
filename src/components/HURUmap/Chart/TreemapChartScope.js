@@ -147,7 +147,7 @@ export default function TreemapChartScope(
                 update: {
                   align: { value: "left" },
                   x: { signal: "datum.x0 + 5" },
-                  y: { signal: "datum.y0 + 13" },
+                  y: { signal: "datum.y0 + 15" },
                   limit: { signal: "datum.x1 - datum.x0 - 10" },
                   text: {
                     signal:
@@ -225,7 +225,7 @@ export default function TreemapChartScope(
                 update: {
                   align: { value: "left" },
                   x: { signal: "datum.x0 + 5" },
-                  y: { signal: "datum.y0 + 13" },
+                  y: { signal: "datum.y0 + 15" },
                   limit: { signal: "datum.x1 - datum.x0 - 10" },
                   text: {
                     signal:
