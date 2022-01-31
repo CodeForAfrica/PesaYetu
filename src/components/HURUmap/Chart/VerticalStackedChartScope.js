@@ -194,6 +194,8 @@ export default function VerticalStackedChartScope(
                   fill: { scale: "color", field: stackedField },
                 },
                 update: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  y: { scale: "yscale", field: "y0" },
                   fillOpacity: { value: 1 },
                   tooltip: {
                     signal:
@@ -246,7 +248,7 @@ export default function VerticalStackedChartScope(
               from: { data: "primary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
                   x2: {
                     scale: "xscale",

@@ -164,6 +164,8 @@ export default function VerticalBarChartScope(
                   y2: { scale: "yscale", value: 0 },
                 },
                 update: {
+                  x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   fill: { value: theme.palette.primary.main },
                   tooltip: {
                     signal:
@@ -217,7 +219,7 @@ export default function VerticalBarChartScope(
               from: { data: "primary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
                   x2: {
                     scale: "xscale",
@@ -301,6 +303,11 @@ export default function VerticalBarChartScope(
                   y2: { scale: "s_yscale", value: 0 },
                 },
                 update: {
+                  x: { scale: "s_xscale", field: { signal: "mainGroup" } },
+                  y: {
+                    scale: "s_yscale",
+                    field: { signal: "datatype[Units]" },
+                  },
                   fill: { value: theme.palette.secondary.main },
                   tooltip: {
                     signal:
@@ -355,7 +362,7 @@ export default function VerticalBarChartScope(
               from: { data: "secondary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "s_xscale", field: { signal: "mainGroup" } },
                   x2: {
                     scale: "s_xscale",
