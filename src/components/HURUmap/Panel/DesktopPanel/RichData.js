@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useRef, useState } from "react";
 
@@ -9,17 +10,18 @@ import TreeView from "@/pesayetu/components/HURUmap/TreeView";
 function RichData({ primaryProfile, ...props }) {
   const classes = useStyles(props);
   const [expanded, setExpanded] = useState();
+  const router = useRouter();
   const profileRef = useRef();
 
   const handleLabelClick = (e) => {
     e.preventDefault();
-    const { id, expand } = e.target.dataset;
+    const { id } = e.target.dataset;
     const { current: el } = profileRef;
-    if (el) {
+    if (el && id) {
+      const as = `${window.location.pathname}#${id}`;
+      router.push(router.pathname, as, { shallow: true });
+      setExpanded(id);
       el.querySelector(`#${id}`).scrollIntoView({ behavior: "smooth" });
-      if (expand) {
-        setExpanded(id);
-      }
     }
   };
 
