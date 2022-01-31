@@ -88,7 +88,7 @@ export default function StackedChartScope(
           ],
           zero: true,
           clamp: true,
-          nice: true,
+          nice: xTicks || 6,
         },
         {
           name: "s_xscale",
@@ -104,7 +104,7 @@ export default function StackedChartScope(
           ],
           zero: true,
           clamp: true,
-          nice: true,
+          nice: xTicks || 6,
         },
         {
           name: "color",
@@ -216,6 +216,7 @@ export default function StackedChartScope(
                   fill: { scale: "color", field: stackedField },
                 },
                 update: {
+                  y: { scale: "yscale", field: { signal: "mainGroup" } },
                   fillOpacity: { value: 1 },
                   x: { scale: "xscale", field: "y0" },
                   x2: { scale: "xscale", field: "y1" },
@@ -268,7 +269,7 @@ export default function StackedChartScope(
               from: { data: "primary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   y: { scale: "yscale", field: { signal: "mainGroup" } },
                   y2: {
                     scale: "yscale",
@@ -355,6 +356,8 @@ export default function StackedChartScope(
                 },
                 update: {
                   fillOpacity: { value: 1 },
+                  y: { scale: "yscale", field: { signal: "mainGroup" } },
+                  x: { scale: "s_xscale", field: "y0" },
                   tooltip: {
                     signal:
                       "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
@@ -381,7 +384,7 @@ export default function StackedChartScope(
               from: { data: "secondary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   y: { scale: "yscale", field: { signal: "mainGroup" } },
                   y2: {
                     scale: "yscale",
