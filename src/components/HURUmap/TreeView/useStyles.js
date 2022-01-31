@@ -13,18 +13,19 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     },
   },
   label: {
-    marginRight: typography.pxToRem(20),
     height: typography.pxToRem(38),
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
     fontWeight: 500,
+    letterSpacing: 0.6,
   },
   childLabel: {
     fontWeight: 300,
+    marginRight: typography.pxToRem(20),
   },
   icon: {
-    marginLeft: typography.pxToRem(20),
+    margin: `auto ${typography.pxToRem(20)}`,
     fill: palette.grey.main,
     width: typography.pxToRem(19),
   },

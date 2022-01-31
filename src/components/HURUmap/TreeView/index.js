@@ -1,4 +1,4 @@
-import { Link } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import TreeItem from "@material-ui/lab/TreeItem";
 import MuiTreeView from "@material-ui/lab/TreeView";
 import clsx from "clsx";
@@ -27,22 +27,18 @@ const TreeView = ({ expanded, items, onLabelClick, ...props }) => {
               key={itemId}
               nodeId={itemId}
               label={
-                <Link
-                  color="textPrimary"
-                  data-expand
-                  data-id={itemId}
-                  href={`#${itemId}`}
-                  underline="none"
-                  variant="caption"
-                  className={classes.label}
-                >
-                  {item.title} <CheckIcon className={classes.icon} />
-                </Link>
+                <>
+                  <Typography data-id={itemId} variant="caption">
+                    {item.title}
+                  </Typography>
+                  <CheckIcon className={classes.icon} />
+                </>
               }
               onLabelClick={onLabelClick}
               classes={{
                 root: classes.tree,
                 expanded: classes.expanded,
+                label: classes.label,
               }}
             >
               {item.children.map((child) => {
@@ -53,18 +49,14 @@ const TreeView = ({ expanded, items, onLabelClick, ...props }) => {
                     key={childId}
                     nodeId={childId}
                     label={
-                      <Link
-                        color="textPrimary"
-                        data-id={childId}
-                        href={`#${childId}`}
-                        underline="none"
-                        variant="caption"
-                        className={clsx(classes.label, classes.childLabel)}
-                      >
+                      <Typography data-id={itemId} variant="caption">
                         {child.title}
-                      </Link>
+                      </Typography>
                     }
                     onLabelClick={onLabelClick}
+                    classes={{
+                      label: clsx(classes.label, classes.childLabel),
+                    }}
                   />
                 );
               })}
