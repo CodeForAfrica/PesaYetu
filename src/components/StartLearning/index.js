@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import mapLines from "@/pesayetu/assets/images/bg-map-contour-white.jpeg";
+import mapLines from "@/pesayetu/assets/images/bg-map-white.jpeg";
 import Header from "@/pesayetu/components/Header";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";

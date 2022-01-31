@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import mapLines from "@/pesayetu/assets/images/Mask Group -1.jpg";
+import mapLines from "@/pesayetu/assets/images/bg-map-grey.jpeg";
 import Header from "@/pesayetu/components/Header";
 import Image from "@/pesayetu/components/Image";
 import Section from "@/pesayetu/components/Section";
