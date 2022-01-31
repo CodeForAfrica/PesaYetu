@@ -149,7 +149,6 @@ export default function TreemapChartScope(
                   x: { signal: "datum.x0 + 5" },
                   y: { signal: "datum.y0 + 13" },
                   limit: { signal: "datum.x1 - datum.x0 - 10" },
-                  y2: { signal: "datum.y1 - datum.y0 - 26" },
                   text: {
                     signal:
                       "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
@@ -225,9 +224,9 @@ export default function TreemapChartScope(
                 },
                 update: {
                   align: { value: "left" },
-                  baseline: { value: "top" },
-                  x: { signal: "datum.x0 + 12" },
-                  y: { signal: "datum.y0 + 15" },
+                  x: { signal: "datum.x0 + 5" },
+                  y: { signal: "datum.y0 + 13" },
+                  limit: { signal: "datum.x1 - datum.x0 - 10" },
                   text: {
                     signal:
                       "[format(datum[datatype[Units]], numberFormat[Units]), datum[mainGroup], datum[nestedFields[1]] || '', datum[nestedFields[2]] || '' ]",
