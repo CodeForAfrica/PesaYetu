@@ -193,7 +193,7 @@ export default function DonutChartScope(
                   cornerRadius: { signal: "cornerRadius" },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.percentage, numberFormat.percentage)}",
+                      "{'group': datum[mainGroup], 'count': format(datum[datatype[Units]], numberFormat[Units])}",
                   },
                 },
               },
@@ -284,7 +284,7 @@ export default function DonutChartScope(
                   cornerRadius: { signal: "cornerRadius" },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.percentage, numberFormat.percentage)}",
+                      "{'group': datum[mainGroup], 'count': format(datum[datatype[Units]], numberFormat[Units])}",
                   },
                 },
               },
