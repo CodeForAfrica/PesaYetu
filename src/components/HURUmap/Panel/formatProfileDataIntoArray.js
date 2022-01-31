@@ -34,7 +34,7 @@ export default function formatProfileDataIntoArray(data, parent) {
                     },
                   };
                 })
-                .filter((indic) => indic.indicator),
+                .filter((indic) => indic.indicator?.data),
               metrics: (
                 data[label]?.subcategories[child]?.key_metrics ?? []
               ).map((m, index) => {
