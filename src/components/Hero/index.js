@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import heroBg from "@/pesayetu/assets/images/bg-map-white.jpeg";
+import heroBg from "@/pesayetu/assets/images/bg-map-white.jpg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Header from "@/pesayetu/components/Header";
 import Image from "@/pesayetu/components/Image";
