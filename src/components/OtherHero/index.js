@@ -143,7 +143,7 @@ function OtherHero({
   return (
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
-        <Image objectFit="cover" src={mapLines} layout="fill" />
+        <Image objectFit="cover" src={mapLines} layout="fill" unoptimized />
         <Grid container>
           <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />

@@ -92,7 +92,7 @@ function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.background}>
-        <Image src={heroBg} layout="fill" />
+        <Image src={heroBg} layout="fill" unoptimized />
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>

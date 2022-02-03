@@ -25,7 +25,7 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.background}>
-        <Image objectFit="cover" src={howItWorksBg} layout="fill" />
+        <Image objectFit="cover" src={howItWorksBg} layout="fill" unoptimized />
       </div>
       <Hidden lgUp smDown implementation="css">
         <div className={classes.tabletWhite} />
