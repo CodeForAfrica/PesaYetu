@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import heroBg from "@/pesayetu/assets/images/Mask Group 8.jpg";
+import heroBg from "@/pesayetu/assets/images/bg-map-white.jpg";
 import DropdownSearch from "@/pesayetu/components/DropdownSearch";
 import Header from "@/pesayetu/components/Header";
 import Image from "@/pesayetu/components/Image";
@@ -92,7 +92,7 @@ function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.background}>
-        <Image src={heroBg} layout="fill" />
+        <Image src={heroBg} layout="fill" unoptimized />
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
