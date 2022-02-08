@@ -7,7 +7,7 @@ import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     position: "relative",
     height: typography.pxToRem(299),
@@ -19,7 +19,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
       width: typography.pxToRem(371),
     },
     "& .leaflet-container": {
-      background: palette.background.default,
+      background: "transparent",
     },
   },
   tooltip: {
@@ -44,6 +44,11 @@ function Map({
   const router = useRouter();
 
   const onEachFeature = (feature, layer) => {
+    layer.setStyle({
+      fillColor: theme.palette.background.default,
+      fillOpacity: 1,
+    });
+
     if (featuredCounties.includes(feature.properties.code)) {
       layer.setStyle({
         weight: 1.5,
@@ -59,7 +64,7 @@ function Map({
       layer.on("mouseout", () => {
         setHoverGeo(null);
         layer.setStyle({
-          opacity: 1,
+          fillOpacity: 1,
           fillColor: theme.palette.background.default,
         });
       });

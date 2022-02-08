@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import visualsImg from "@/pesayetu/assets/images/Component1236.svg";
-import howItWorksBg from "@/pesayetu/assets/images/sat-mtKenya.jpg";
+import howItWorksBg from "@/pesayetu/assets/images/sat-mtKenya-1_alt@2400x.jpg";
 import Player from "@/pesayetu/components/HowItWorks/Player";
 import useStyles from "@/pesayetu/components/HowItWorks/useStyles";
 import Image from "@/pesayetu/components/Image";
@@ -25,7 +25,7 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
   return (
     <div className={classes.root}>
       <div className={classes.background}>
-        <Image objectFit="cover" src={howItWorksBg} layout="fill" />
+        <Image objectFit="cover" src={howItWorksBg} layout="fill" unoptimized />
       </div>
       <Hidden lgUp smDown implementation="css">
         <div className={classes.tabletWhite} />

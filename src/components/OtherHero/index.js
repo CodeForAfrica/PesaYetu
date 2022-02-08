@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-import mapLines from "@/pesayetu/assets/images/Mask Group -1.jpg";
+import mapLines from "@/pesayetu/assets/images/bg-map-grey.jpg";
 import Header from "@/pesayetu/components/Header";
 import Image from "@/pesayetu/components/Image";
 import Section from "@/pesayetu/components/Section";
@@ -143,7 +143,7 @@ function OtherHero({
   return (
     <div className={classes.root}>
       <div className={classes.backgroundGrid}>
-        <Image objectFit="cover" src={mapLines} layout="fill" />
+        <Image objectFit="cover" src={mapLines} layout="fill" unoptimized />
         <Grid container>
           <Grid item xs={12} md={6}>
             <div className={classes.leftBackground} />

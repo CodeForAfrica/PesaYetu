@@ -9,6 +9,12 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
