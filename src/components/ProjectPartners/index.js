@@ -60,7 +60,11 @@ function ProjectPartners({ title, partners, ...props }) {
           </Typography>
         </Grid>
         {partners?.map(({ link, logo, logoProps, name }, index) => (
-          <Grid key={link} item md={index > 1 ? 4 : 6}>
+          <Grid
+            key={link}
+            item
+            md={index > 1 && partners.length - index > 2 ? 4 : 6}
+          >
             <LogoButton
               component={Link}
               href={link}
