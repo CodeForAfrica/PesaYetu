@@ -33,6 +33,7 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
               />
               <Content
                 key={story.slug}
+                {...props}
                 {...story}
                 className={classes.content}
               />
@@ -55,7 +56,12 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
             onClick={onClick}
             steps={steps}
           />
-          <Content key={story.slug} {...story} className={classes.content} />
+          <Content
+            key={story.slug}
+            {...props}
+            {...story}
+            className={classes.content}
+          />
         </Section>
       </Hidden>
     </>
