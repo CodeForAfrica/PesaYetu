@@ -86,7 +86,7 @@ Content.defaultProps = {
   title: undefined,
   titleProps: undefined,
   href: undefined,
-  ctaText: "Read me",
+  ctaText: undefined,
   linkProps: undefined,
 };
 
