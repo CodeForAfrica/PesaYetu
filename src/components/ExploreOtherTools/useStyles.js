@@ -10,7 +10,11 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     textAlign: "center",
     marginBottom: typography.pxToRem(40),
   },
-  card: {},
+  card: {
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(266),
+    },
+  },
   cardContent: {
     color: "#212529",
   },

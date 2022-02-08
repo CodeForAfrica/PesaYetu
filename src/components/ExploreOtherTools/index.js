@@ -50,7 +50,6 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
                     root: classes.card,
                     media: classes.cardMedia,
                     content: classes.cardContent,
-                    contentTitle: classes.cardContentTitle,
                   }}
                 />
               </Grid>
