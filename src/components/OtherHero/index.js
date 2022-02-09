@@ -15,7 +15,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     backgroundColor: palette.background.paper,
     minHeight: "min-content",
     position: "relative",
-    height: typography.pxToRem(784),
+    height: typography.pxToRem(780),
     [breakpoints.up("md")]: {
       height: typography.pxToRem(456),
     },
@@ -23,9 +23,12 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       height: typography.pxToRem(599),
     },
   },
-  backgroundGrid: {
+  backgroundContainer: {
     position: "absolute",
-    height: typography.pxToRem(456),
+  },
+  backgroundGrid: {
+    position: "relative",
+    height: typography.pxToRem(390),
     width: "100%",
     [breakpoints.up("md")]: {
       height: typography.pxToRem(456),
@@ -34,13 +37,14 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       height: typography.pxToRem(599),
     },
   },
-  right: {
-    right: 0,
-  },
   section: {
     height: "100%",
     display: "flex",
-    alignItems: "center",
+    position: "absolute",
+    [breakpoints.up("md")]: {
+      alignItems: "center",
+      position: "initial",
+    },
   },
   textContainer: {
     [breakpoints.up("lg")]: {
@@ -73,6 +77,14 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       height: typography.pxToRem(432),
     },
   },
+  container: {
+    flexDirection: "column-reverse",
+    justifyContent: "space-around",
+    [breakpoints.up("md")]: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+  },
 }));
 
 function OtherHero({
@@ -92,27 +104,28 @@ function OtherHero({
   }
   return (
     <div className={classes.root}>
-      <Grid container>
-        <Grid item md={image ? 6 : 12} className={classes.backgroundGrid}>
-          <Image objectFit="cover" src={mapLines} layout="fill" unoptimized />
+      <Grid
+        container
+        className={clsx(classes.container, classes.backgroundContainer)}
+      >
+        <Grid item md={6}>
+          <div className={classes.backgroundGrid}>
+            <Image objectFit="cover" src={mapLines} layout="fill" unoptimized />
+          </div>
         </Grid>
-        {image && (
-          <Grid
-            item
-            md={6}
-            className={clsx(classes.right, classes.backgroundGrid)}
-          >
-            <Image objectFit="cover" src={image} layout="fill" unoptimized />
-          </Grid>
-        )}
+        <Grid item md={6}>
+          <div className={classes.backgroundGrid}>
+            <Image
+              objectFit="cover"
+              src={image || mapLines}
+              layout="fill"
+              unoptimized
+            />
+          </div>
+        </Grid>
       </Grid>
       <Section classes={{ root: classes.section }}>
-        <Grid
-          container
-          alignItems="center"
-          justifyContent="space-between"
-          direction="row"
-        >
+        <Grid container alignItems="center" className={classes.container}>
           <Grid item md={6} className={classes.textContainer}>
             <Header
               overline={overline}
