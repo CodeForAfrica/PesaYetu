@@ -14,14 +14,26 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     backgroundColor: palette.background.paper,
     minHeight: "min-content",
     position: "relative",
-    height: typography.pxToRem(599),
+    height: typography.pxToRem(456),
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(456),
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(599),
+    },
   },
   backgroundGrid: {
     position: "absolute",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: typography.pxToRem(599),
+    height: typography.pxToRem(456),
     width: "100%",
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(456),
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(599),
+    },
   },
   section: {
     height: "100%",
@@ -29,7 +41,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     alignItems: "center",
   },
   textContainer: {
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       width: typography.pxToRem(501),
     },
   },
@@ -46,14 +58,15 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   subtitle: {
     marginRight: 0,
     position: "relative",
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       width: typography.pxToRem(376),
     },
   },
   accentImage: {
-    width: typography.pxToRem(262),
+    height: typography.pxToRem(264),
+    width: typography.pxToRem(254),
     position: "relative",
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       width: typography.pxToRem(400),
       height: typography.pxToRem(432),
     },
@@ -102,7 +115,7 @@ function OtherHero({
           justifyContent="space-between"
           direction="row"
         >
-          <Grid item className={classes.textContainer}>
+          <Grid item md={6} className={classes.textContainer}>
             <Header
               overline={overline}
               subtitle={subtitle}
@@ -116,7 +129,7 @@ function OtherHero({
             </Header>
           </Grid>
           {accentImage && (
-            <Grid item className={classes.accentImage}>
+            <Grid item md={6} className={classes.accentImage}>
               <Image
                 layout="fill"
                 src={accentImage}
