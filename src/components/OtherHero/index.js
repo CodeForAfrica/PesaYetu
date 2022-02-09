@@ -1,5 +1,6 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -14,7 +15,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     backgroundColor: palette.background.paper,
     minHeight: "min-content",
     position: "relative",
-    height: typography.pxToRem(456),
+    height: typography.pxToRem(784),
     [breakpoints.up("md")]: {
       height: typography.pxToRem(456),
     },
@@ -24,8 +25,6 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   },
   backgroundGrid: {
     position: "absolute",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
     height: typography.pxToRem(456),
     width: "100%",
     [breakpoints.up("md")]: {
@@ -34,6 +33,9 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     [breakpoints.up("lg")]: {
       height: typography.pxToRem(599),
     },
+  },
+  right: {
+    right: 0,
   },
   section: {
     height: "100%",
@@ -90,22 +92,18 @@ function OtherHero({
   }
   return (
     <div className={classes.root}>
-      <Grid container className={classes.backgroundGrid}>
-        <Image objectFit="cover" src={mapLines} layout="fill" unoptimized />
+      <Grid container>
+        <Grid item md={image ? 6 : 12} className={classes.backgroundGrid}>
+          <Image objectFit="cover" src={mapLines} layout="fill" unoptimized />
+        </Grid>
         {image && (
-          <>
-            <Grid item md={6} />
-            <Grid item md={6}>
-              <div className={classes.backgroundGrid}>
-                <Image
-                  objectFit="cover"
-                  src={image}
-                  layout="fill"
-                  unoptimized
-                />
-              </div>
-            </Grid>
-          </>
+          <Grid
+            item
+            md={6}
+            className={clsx(classes.right, classes.backgroundGrid)}
+          >
+            <Image objectFit="cover" src={image} layout="fill" unoptimized />
+          </Grid>
         )}
       </Grid>
       <Section classes={{ root: classes.section }}>
@@ -129,7 +127,7 @@ function OtherHero({
             </Header>
           </Grid>
           {accentImage && (
-            <Grid item md={6} className={classes.accentImage}>
+            <Grid item className={classes.accentImage}>
               <Image
                 layout="fill"
                 src={accentImage}
