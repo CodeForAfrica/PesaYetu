@@ -39,8 +39,8 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
         </Hidden>
         <Hidden mdDown implementation="css">
           <Grid container className={classes.list}>
-            {items.map(({ imageProps, ...item }) => (
-              <Grid item lg={3} md={6} xs={12} key={item.href}>
+            {items.slice(0, 4).map(({ imageProps, ...item }) => (
+              <Grid item lg={3} key={item.href}>
                 <Card
                   key={item.title}
                   {...item}
