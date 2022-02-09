@@ -85,6 +85,15 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
       justifyContent: "space-between",
     },
   },
+  singleBackground: {
+    height: typography.pxToRem(720),
+    [breakpoints.up("md")]: {
+      height: typography.pxToRem(456),
+    },
+    [breakpoints.up("lg")]: {
+      height: typography.pxToRem(599),
+    },
+  },
 }));
 
 function OtherHero({
@@ -103,26 +112,27 @@ function OtherHero({
     return null;
   }
   return (
-    <div className={classes.root}>
+    <div className={clsx(classes.root, { [classes.singleBackground]: !image })}>
       <Grid
         container
         className={clsx(classes.container, classes.backgroundContainer)}
       >
-        <Grid item md={6}>
-          <div className={classes.backgroundGrid}>
+        <Grid item md={image ? 6 : 12}>
+          <div
+            className={clsx(classes.backgroundGrid, {
+              [classes.singleBackground]: !image,
+            })}
+          >
             <Image objectFit="cover" src={mapLines} layout="fill" unoptimized />
           </div>
         </Grid>
-        <Grid item md={6}>
-          <div className={classes.backgroundGrid}>
-            <Image
-              objectFit="cover"
-              src={image || mapLines}
-              layout="fill"
-              unoptimized
-            />
-          </div>
-        </Grid>
+        {image && (
+          <Grid item md={6}>
+            <div className={classes.backgroundGrid}>
+              <Image objectFit="cover" src={image} layout="fill" unoptimized />
+            </div>
+          </Grid>
+        )}
       </Grid>
       <Section classes={{ root: classes.section }}>
         <Grid container alignItems="center" className={classes.container}>
