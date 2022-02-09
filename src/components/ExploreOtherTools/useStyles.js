@@ -10,12 +10,16 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     textAlign: "center",
     marginBottom: typography.pxToRem(40),
   },
-  card: {},
+  card: {
+    [breakpoints.up("lg")]: {
+      width: typography.pxToRem(266),
+    },
+  },
   cardContent: {
     color: "#212529",
   },
   cardContentTitle: {
-    marginTop: typography.pxToRem(20),
+    marginTop: typography.pxToRem(10),
   },
   cardContentDescription: {},
   cardMedia: {
@@ -29,7 +33,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       -${typography.pxToRem((254 - 216.89) / 2)}
       -${typography.pxToRem((390 - 350) / 2)}
       0
-      -${typography.pxToRem((390 - 350) / 2)}
     `,
     [breakpoints.up("md")]: {
       margin: `
@@ -53,7 +56,7 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       height: typography.pxToRem(
         220.61 + (((254 - 216.89) / 2) * 220.61) / 216.89
       ),
-      width: typography.pxToRem(356 + (((390 - 350) / 2) * 296) / 350),
+      width: typography.pxToRem(296 + (((390 - 350) / 2) * 296) / 350),
     },
   },
 }));

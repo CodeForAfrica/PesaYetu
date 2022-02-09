@@ -38,7 +38,7 @@ function TooltipBanner({ tagline, ctaText, ...props }) {
             <Button
               variant="text"
               component={Link}
-              href="/explore?showTutorial=1"
+              href="/explore/ke?showTutorial=1"
               className={classes.cta}
             >
               {ctaText}
