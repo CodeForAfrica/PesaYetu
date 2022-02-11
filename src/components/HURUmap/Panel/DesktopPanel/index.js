@@ -121,7 +121,8 @@ function DesktopPanel({
     setValue(nextValue);
   };
 
-  const open = value === "rich-data";
+  const activePanelItems = panelItems.find((a) => !a.disabled);
+  const open = value === "rich-data" && activePanelItems;
 
   return (
     <>
