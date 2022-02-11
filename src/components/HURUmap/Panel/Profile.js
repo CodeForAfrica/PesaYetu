@@ -1,7 +1,6 @@
-import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { forwardRef, useState, useCallback } from "react";
+import React, { forwardRef, useState } from "react";
 
 import MemoizedProfileItems from "./MemoizedProfileItems";
 
@@ -95,27 +94,25 @@ const Profile = forwardRef(function Profile(
     return undefined;
   };
 
-  const getSecondaryIndicator = useCallback(
-    (categoryIndex, subcategoryIndex, indicatorId) => {
-      const category = secondaryProfile?.items?.[categoryIndex];
-      const subCategory = category?.children?.[subcategoryIndex];
-      const indicator = subCategory?.children?.find(
-        ({ indicator: { id } }) => indicatorId === id
-      );
-      return indicator;
-    },
-    [secondaryProfile?.items]
-  );
+  const getSecondaryIndicator = (
+    categoryIndex,
+    subcategoryIndex,
+    indicatorId
+  ) => {
+    const category = secondaryProfile?.items?.[categoryIndex];
+    const subCategory = category?.children?.[subcategoryIndex];
+    const indicator = subCategory?.children?.find(
+      ({ indicator: { id } }) => indicatorId === id
+    );
+    return indicator;
+  };
 
-  const getSecondaryMetric = useCallback(
-    (categoryIndex, subcategoryIndex, metricIndex) => {
-      const category = secondaryProfile?.items?.[categoryIndex];
-      const subCategory = category?.children?.[subcategoryIndex];
-      const metric = subCategory?.metrics?.[metricIndex];
-      return metric;
-    },
-    [secondaryProfile?.items]
-  );
+  const getSecondaryMetric = (categoryIndex, subcategoryIndex, metricIndex) => {
+    const category = secondaryProfile?.items?.[categoryIndex];
+    const subCategory = category?.children?.[subcategoryIndex];
+    const metric = subCategory?.metrics?.[metricIndex];
+    return metric;
+  };
 
   let geoCode = primaryProfile?.geography?.code;
   if (secondaryProfile) {
@@ -131,23 +128,22 @@ const Profile = forwardRef(function Profile(
         onClick={handleClick(primaryProfile)}
         {...primaryProfile.geography}
       />
-      <Hidden smDown implementation="css">
-        {secondaryProfile ? (
-          <LocationHeader
-            variant="secondary"
-            onClick={handleClick(secondaryProfile)}
-            title={secondaryProfile.geography?.name}
-            {...secondaryProfile.geography}
-          />
-        ) : (
-          <PinAndCompare
-            {...pinAndCompare}
-            onChange={handleChange}
-            onClickPin={handleClickPin}
-            options={options}
-          />
-        )}
-      </Hidden>
+      {secondaryProfile ? (
+        <LocationHeader
+          variant="secondary"
+          onClick={handleClick(secondaryProfile)}
+          title={secondaryProfile.geography?.name}
+          {...secondaryProfile.geography}
+        />
+      ) : (
+        <PinAndCompare
+          {...props}
+          {...pinAndCompare}
+          onChange={handleChange}
+          onClickPin={handleClickPin}
+          options={options}
+        />
+      )}
       <MemoizedProfileItems
         categories={categories}
         dataNotAvailable={dataNotAvailable}

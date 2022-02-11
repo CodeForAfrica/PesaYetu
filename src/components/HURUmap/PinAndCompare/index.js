@@ -17,17 +17,17 @@ function PinAndCompare({
   onChange,
   onClose,
   onClickPin,
-  onOpen,
   options,
   placeholder,
+  isMobile,
+  ...props
 }) {
-  const classes = useStyles();
+  const classes = useStyles(props);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-    e.stopPropagation();
     setOpen((prevOpen) => !prevOpen);
     if (!open && onClickPin) {
       onClickPin(e);
@@ -51,24 +51,26 @@ function PinAndCompare({
 
   const handleClick = (e) => {
     setOpen(true);
-    if (onOpen) {
-      onOpen(e);
+    if (!isMobile && onClickPin) {
+      onClickPin(e);
     }
   };
   const component = open ? PinIconSelected : PinIconDefault;
 
   return (
     <Box display="flex" alignItems="flex-end" className={classes.root}>
-      <IconButton onClick={handleButtonClick} className={classes.pinButton}>
-        <PinIcon
-          color="primary"
-          component={component}
-          style={{ fontSize: 60 }}
-          viewBox="0 0 62 55"
-        />
-      </IconButton>
+      {!isMobile && (
+        <IconButton onClick={handleButtonClick} className={classes.pinButton}>
+          <PinIcon
+            color="primary"
+            component={component}
+            style={{ fontSize: 60 }}
+            viewBox="0 0 62 55"
+          />
+        </IconButton>
+      )}
       <Select
-        helperText={helperText}
+        helperText={isMobile ? placeholder : helperText}
         onChange={handleChange}
         open={open}
         onOpen={handleClick}
@@ -87,9 +89,9 @@ PinAndCompare.propTypes = {
   onChange: PropTypes.func,
   onClickPin: PropTypes.func,
   onClose: PropTypes.func,
-  onOpen: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
+  isMobile: PropTypes.bool,
 };
 
 PinAndCompare.defaultProps = {
@@ -97,9 +99,9 @@ PinAndCompare.defaultProps = {
   onChange: undefined,
   onClickPin: undefined,
   onClose: undefined,
-  onOpen: undefined,
   options: undefined,
   placeholder: undefined,
+  isMobile: false,
 };
 
 export default PinAndCompare;
