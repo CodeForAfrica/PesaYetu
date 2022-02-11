@@ -30,8 +30,8 @@ function DesktopPanel({
   const handleOnIdle = () => {
     if (!value) {
       setValue("rich-data");
+      timerEl.current.reset();
     }
-    timerEl.current.pause();
   };
 
   useEffect(() => {
@@ -126,7 +126,7 @@ function DesktopPanel({
 
   return (
     <>
-      <IdleTimer ref={timerEl} timeout={1000 * 0.2} onIdle={handleOnIdle} />
+      <IdleTimer ref={timerEl} timeout={1000 * 2} onIdle={handleOnIdle} />
       <Drawer
         PaperProps={{ ref: paperRef }}
         classes={{
