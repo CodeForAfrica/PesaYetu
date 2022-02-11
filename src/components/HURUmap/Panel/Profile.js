@@ -1,23 +1,14 @@
 import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { forwardRef, useState, Fragment } from "react";
+import React, { forwardRef, useState, useCallback } from "react";
+
+import MemoizedProfileItems from "./MemoizedProfileItems";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
-import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
-import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import PinAndCompare from "@/pesayetu/components/HURUmap/PinAndCompare";
-import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import { hurumapArgs } from "@/pesayetu/config";
-import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
-import slugify from "@/pesayetu/utils/slugify";
-
-const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
-  ssr: false,
-});
 
 const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
@@ -40,31 +31,9 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
       zIndex: zIndex.drawer,
     },
   },
-  metricRow: {
-    marginBottom: typography.pxToRem(8),
-    [breakpoints.up("md")]: {
-      display: "flex",
-    },
-    [breakpoints.up("lg")]: {
-      marginBottom: typography.pxToRem(14),
-    },
-    "&:first-child": {},
-  },
-  metric: {
-    width: "100%",
-    [breakpoints.up("md")]: {
-      marginRight: typography.pxToRem(18),
-      maxWidth: "50%",
-    },
-  },
 }));
 
 function computeOptions(primaryProfile, locationCodes) {
-  const defaultOption = {
-    disabled: true,
-    label: "Select location",
-    value: null,
-  };
   const { geography, geometries } = primaryProfile;
   // siblings will be on the last element of the parents array.
   const siblings = geometries?.parents?.slice(-1)?.[0];
@@ -78,14 +47,13 @@ function computeOptions(primaryProfile, locationCodes) {
         label,
         value,
       })) || [];
-  return [defaultOption, ...availableOptions];
+  return availableOptions;
 }
 
 const Profile = forwardRef(function Profile(
   {
     categories,
     dataNotAvailable,
-    isPinning,
     locationCodes,
     onClickPin,
     onClickUnpin,
@@ -106,9 +74,7 @@ const Profile = forwardRef(function Profile(
     }
   };
 
-  const handleClose = (e) => {
-    // TODO(kilemensi): For some reason, e.target.value doesn't seem to work.
-    const code = e.nativeEvent?.target?.dataset?.value;
+  const handleChange = (code) => {
     if (code) {
       if (onSelectLocation) {
         onSelectLocation({ code });
@@ -129,25 +95,27 @@ const Profile = forwardRef(function Profile(
     return undefined;
   };
 
-  const getSecondaryIndicator = (
-    categoryIndex,
-    subcategoryIndex,
-    indicatorId
-  ) => {
-    const category = secondaryProfile?.items?.[categoryIndex];
-    const subCategory = category?.children?.[subcategoryIndex];
-    const indicator = subCategory?.children?.find(
-      ({ indicator: { id } }) => indicatorId === id
-    );
-    return indicator;
-  };
+  const getSecondaryIndicator = useCallback(
+    (categoryIndex, subcategoryIndex, indicatorId) => {
+      const category = secondaryProfile?.items?.[categoryIndex];
+      const subCategory = category?.children?.[subcategoryIndex];
+      const indicator = subCategory?.children?.find(
+        ({ indicator: { id } }) => indicatorId === id
+      );
+      return indicator;
+    },
+    [secondaryProfile?.items]
+  );
 
-  const getSecondaryMetric = (categoryIndex, subcategoryIndex, metricIndex) => {
-    const category = secondaryProfile?.items?.[categoryIndex];
-    const subCategory = category?.children?.[subcategoryIndex];
-    const metric = subCategory?.metrics?.[metricIndex];
-    return metric;
-  };
+  const getSecondaryMetric = useCallback(
+    (categoryIndex, subcategoryIndex, metricIndex) => {
+      const category = secondaryProfile?.items?.[categoryIndex];
+      const subCategory = category?.children?.[subcategoryIndex];
+      const metric = subCategory?.metrics?.[metricIndex];
+      return metric;
+    },
+    [secondaryProfile?.items]
+  );
 
   let geoCode = primaryProfile?.geography?.code;
   if (secondaryProfile) {
@@ -174,104 +142,21 @@ const Profile = forwardRef(function Profile(
         ) : (
           <PinAndCompare
             {...pinAndCompare}
-            isPinning={isPinning}
-            onClose={handleClose}
+            onChange={handleChange}
             onClickPin={handleClickPin}
             options={options}
           />
         )}
       </Hidden>
-      {categories.map((category, categoryIndex) => (
-        <Fragment key={category.tite}>
-          <CategoryHeader
-            description={category?.description}
-            icon={category.icon}
-            id={slugify(category.title)}
-            title={category.title}
-          />
-          {category.children.map((child, subcategoryIndex) => (
-            <Fragment key={child.title}>
-              <SubcategoryHeader
-                description={child?.description}
-                id={slugify(child.title)}
-                title={child.title}
-              />
-              {child.children.map(({ index, ...indicator }) => (
-                <Chart
-                  key={index}
-                  variant="primary"
-                  {...indicator}
-                  geoCode={geoCode}
-                  secondaryIndicator={getSecondaryIndicator(
-                    categoryIndex,
-                    subcategoryIndex,
-                    indicator.indicator.id
-                  )}
-                  isCompare={!!secondaryProfile}
-                  profileNames={{
-                    primary:
-                      indicator.indicator?.data?.length > 0
-                        ? primaryProfile.geography.name
-                        : `${primaryProfile.geography.name} ${dataNotAvailable}`,
-                    secondary:
-                      getSecondaryIndicator(
-                        categoryIndex,
-                        subcategoryIndex,
-                        indicator.indicator.id
-                      )?.indicator?.data?.length > 0
-                        ? secondaryProfile?.geography?.name
-                        : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
-                  }}
-                />
-              ))}
-              {child?.metrics?.map(
-                ({ label, parentMetric, ...other }, metricIndex) => {
-                  const secondaryMetric = getSecondaryMetric(
-                    categoryIndex,
-                    subcategoryIndex,
-                    metricIndex
-                  );
-                  return (
-                    <div key={label} className={classes.metricRow}>
-                      <KeyMetric
-                        title={label}
-                        formattedValue={formatNumericalValue(other)}
-                        parentFormattedValue={
-                          parentMetric
-                            ? formatNumericalValue(parentMetric)
-                            : undefined
-                        }
-                        {...other}
-                        color="primary"
-                        className={clsx({ [classes.metric]: secondaryProfile })}
-                      />
-                      {secondaryMetric && (
-                        <KeyMetric
-                          title={secondaryMetric?.label ?? undefined}
-                          formattedValue={formatNumericalValue({
-                            value: secondaryMetric?.value,
-                            method: secondaryMetric?.method,
-                          })}
-                          parentFormattedValue={
-                            parentMetric
-                              ? formatNumericalValue(parentMetric)
-                              : undefined
-                          }
-                          color="secondary"
-                          {...secondaryMetric}
-                          className={clsx({
-                            [classes.metric]: secondaryProfile,
-                          })}
-                        />
-                      )}
-                    </div>
-                  );
-                }
-              )}
-            </Fragment>
-          ))}
-        </Fragment>
-      ))}
+      <MemoizedProfileItems
+        categories={categories}
+        dataNotAvailable={dataNotAvailable}
+        getSecondaryIndicator={getSecondaryIndicator}
+        getSecondaryMetric={getSecondaryMetric}
+        primaryProfile={primaryProfile}
+        secondaryProfile={secondaryProfile}
+        geoCode={geoCode}
+      />
     </div>
   );
 });
@@ -286,7 +171,6 @@ Profile.propTypes = {
     })
   ),
   dataNotAvailable: PropTypes.string,
-  isPinning: PropTypes.bool,
   locationCodes: PropTypes.arrayOf(PropTypes.string),
   onClickPin: PropTypes.func,
   onClickUnpin: PropTypes.func,
@@ -329,7 +213,6 @@ Profile.propTypes = {
 Profile.defaultProps = {
   categories: undefined,
   dataNotAvailable: undefined,
-  isPinning: undefined,
   locationCodes: undefined,
   onClickPin: undefined,
   onClickUnpin: undefined,
