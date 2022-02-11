@@ -2,6 +2,7 @@ import { Drawer } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useEffect, useRef, useState } from "react";
+import IdleTimer from "react-idle-timer";
 
 import PanelItem from "./PanelItem";
 import useStyles from "./useStyles";
@@ -24,6 +25,14 @@ function DesktopPanel({
   const paperRef = useRef();
   const drawerWidth = paperRef.current?.clientWidth;
   const classes = useStyles({ ...props, drawerWidth });
+
+  const timerEl = useRef();
+  const handleOnIdle = () => {
+    if (!value) {
+      setValue("rich-data");
+    }
+    timerEl.current.pause();
+  };
 
   useEffect(() => {
     const pItems =
@@ -113,50 +122,54 @@ function DesktopPanel({
   };
 
   const open = value === "rich-data";
+
   return (
-    <Drawer
-      PaperProps={{ ref: paperRef }}
-      classes={{
-        root: clsx(classes.root, {
-          [classes.drawerOpen]: !!value,
-          [classes.drawerClose]: !value,
-        }),
-        paper: classes.paper,
-      }}
-      variant="permanent"
-      anchor="left"
-      open={open}
-    >
-      {panelItems?.map((item) => (
-        <TabPanel
-          key={item.value}
-          name={item.value}
-          selected={item.value}
-          value={open ? value : undefined}
-          classes={{ tabPanel: classes.tabPanel }}
-        >
-          <PanelItem
-            item={item}
-            onClickUnpin={onClickUnpin}
-            isPinning={isPinning}
-            onClickPin={onClickPin}
-            primaryProfile={primaryProfile}
-            {...props}
-          />
-        </TabPanel>
-      ))}
-      <PanelButtonGroup
-        onChange={handleChange}
-        items={panelItems}
-        value={open ? value : undefined}
-        pins={pins}
+    <>
+      <IdleTimer ref={timerEl} timeout={1000 * 0.2} onIdle={handleOnIdle} />
+      <Drawer
+        PaperProps={{ ref: paperRef }}
         classes={{
-          root: clsx(classes.panelButtons, {
-            [classes.panelButtonsOpen]: open,
+          root: clsx(classes.root, {
+            [classes.drawerOpen]: !!value,
+            [classes.drawerClose]: !value,
           }),
+          paper: classes.paper,
         }}
-      />
-    </Drawer>
+        variant="permanent"
+        anchor="left"
+        open={open}
+      >
+        {panelItems?.map((item) => (
+          <TabPanel
+            key={item.value}
+            name={item.value}
+            selected={item.value}
+            value={open ? value : undefined}
+            classes={{ tabPanel: classes.tabPanel }}
+          >
+            <PanelItem
+              item={item}
+              onClickUnpin={onClickUnpin}
+              isPinning={isPinning}
+              onClickPin={onClickPin}
+              primaryProfile={primaryProfile}
+              {...props}
+            />
+          </TabPanel>
+        ))}
+        <PanelButtonGroup
+          onChange={handleChange}
+          items={panelItems}
+          value={open ? value : undefined}
+          pins={pins}
+          classes={{
+            root: clsx(classes.panelButtons, {
+              [classes.panelButtonsOpen]: open,
+            }),
+          }}
+        />
+      </Drawer>
+    </>
   );
 }
 
