@@ -14,20 +14,20 @@ function PinIcon(props) {
 
 function PinAndCompare({
   helperText,
-  isPinning,
   onChange,
   onClose,
   onClickPin,
+  onOpen,
   options,
   placeholder,
-  ...props
 }) {
-  const classes = useStyles(props);
+  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
 
   const handleButtonClick = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setOpen((prevOpen) => !prevOpen);
     if (!open && onClickPin) {
       onClickPin(e);
@@ -42,19 +42,20 @@ function PinAndCompare({
   };
 
   const handleChange = (e) => {
-    setSelected(e.target.value);
+    const code = e.target.value;
+    setSelected(code);
     if (onChange) {
-      onChange(e);
+      onChange(code);
     }
   };
 
   const handleClick = (e) => {
     setOpen(true);
-    if (onClickPin) {
-      onClickPin(e);
+    if (onOpen) {
+      onOpen(e);
     }
   };
-  const component = open && isPinning ? PinIconSelected : PinIconDefault;
+  const component = open ? PinIconSelected : PinIconDefault;
 
   return (
     <Box display="flex" alignItems="flex-end" className={classes.root}>
@@ -62,14 +63,14 @@ function PinAndCompare({
         <PinIcon
           color="primary"
           component={component}
-          style={{ fontSize: 62 }}
-          viewBox="0 0 62 62"
+          style={{ fontSize: 60 }}
+          viewBox="0 0 62 55"
         />
       </IconButton>
       <Select
         helperText={helperText}
         onChange={handleChange}
-        open={open && isPinning}
+        open={open}
         onOpen={handleClick}
         onClose={handleClose}
         options={options}
@@ -83,28 +84,22 @@ function PinAndCompare({
 
 PinAndCompare.propTypes = {
   helperText: PropTypes.string,
-  icon: PropTypes.string,
-  isPinning: PropTypes.bool,
   onChange: PropTypes.func,
   onClickPin: PropTypes.func,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
-  value: PropTypes.string,
 };
 
 PinAndCompare.defaultProps = {
   helperText: undefined,
-  icon: undefined,
-  isPinning: undefined,
   onChange: undefined,
   onClickPin: undefined,
   onClose: undefined,
   onOpen: undefined,
   options: undefined,
   placeholder: undefined,
-  value: undefined,
 };
 
 export default PinAndCompare;
