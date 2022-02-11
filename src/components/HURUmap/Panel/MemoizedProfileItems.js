@@ -1,14 +1,18 @@
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React, { memo, Fragment } from "react";
 
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
-import Chart from "@/pesayetu/components/HURUmap/Chart";
 import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
 import slugify from "@/pesayetu/utils/slugify";
+
+const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
+  ssr: false,
+});
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   metricRow: {
