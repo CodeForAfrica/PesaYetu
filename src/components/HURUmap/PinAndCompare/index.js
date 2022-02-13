@@ -42,10 +42,9 @@ function PinAndCompare({
   };
 
   const handleChange = (e) => {
-    const code = e.target.value;
-    setSelected(code);
+    setSelected(e.target.value);
     if (onChange) {
-      onChange(code);
+      onChange(e);
     }
   };
 

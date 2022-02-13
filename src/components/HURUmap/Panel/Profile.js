@@ -73,7 +73,9 @@ const Profile = forwardRef(function Profile(
     }
   };
 
-  const handleChange = (code) => {
+  const handleClose = (e) => {
+    // TODO(kilemensi): For some reason, e.target.value doesn't seem to work.
+    const code = e.nativeEvent?.target?.dataset?.value;
     if (code) {
       if (onSelectLocation) {
         onSelectLocation({ code });
@@ -139,7 +141,7 @@ const Profile = forwardRef(function Profile(
         <PinAndCompare
           {...props}
           {...pinAndCompare}
-          onChange={handleChange}
+          onClose={handleClose}
           onClickPin={handleClickPin}
           options={options}
         />
