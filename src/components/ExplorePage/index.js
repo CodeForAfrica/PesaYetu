@@ -317,8 +317,9 @@ function ExplorePage({
         </div>
       </Hidden>
       <Panel
-        isPinning={state.isPinning}
         isCompare={state.isCompare}
+        isLoading={isLoading}
+        isPinning={state.isPinning}
         locationCodes={locationCodes}
         onClickPin={handleClickPin}
         onClickUnpin={handleClickUnpin}

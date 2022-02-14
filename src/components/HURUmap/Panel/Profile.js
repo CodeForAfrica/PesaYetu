@@ -1,3 +1,4 @@
+import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { forwardRef, useState } from "react";
@@ -30,6 +31,10 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
       zIndex: zIndex.drawer,
     },
   },
+  progress: {
+    display: "block",
+    margin: "0 auto",
+  },
 }));
 
 function computeOptions(primaryProfile, locationCodes) {
@@ -54,6 +59,7 @@ const Profile = forwardRef(function Profile(
     categories,
     dataNotAvailable,
     locationCodes,
+    isLoading,
     onClickPin,
     onClickUnpin,
     onSelectLocation,
@@ -123,6 +129,7 @@ const Profile = forwardRef(function Profile(
 
   return (
     <div className={classes.profile} ref={ref}>
+      {isLoading && <CircularProgress classes={{ root: classes.progress }} />}
       <LocationHeader
         variant="primary"
         icon={Print}
@@ -170,6 +177,7 @@ Profile.propTypes = {
   ),
   dataNotAvailable: PropTypes.string,
   locationCodes: PropTypes.arrayOf(PropTypes.string),
+  isLoading: PropTypes.bool,
   onClickPin: PropTypes.func,
   onClickUnpin: PropTypes.func,
   onSelectLocation: PropTypes.func,
@@ -212,6 +220,7 @@ Profile.defaultProps = {
   categories: undefined,
   dataNotAvailable: undefined,
   locationCodes: undefined,
+  isLoading: undefined,
   onClickPin: undefined,
   onClickUnpin: undefined,
   onSelectLocation: undefined,
