@@ -3,14 +3,13 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import useSWR from "swr";
 
 import useExplore from "./useExplore";
+import useProfileGeography from "./useProfileGeography";
 import useStyles from "./useStyles";
 
 import Location from "@/pesayetu/components/HURUmap/Location";
 import Panel from "@/pesayetu/components/HURUmap/Panel";
-import fetchProfile from "@/pesayetu/utils/fetchProfile";
 
 const Map = dynamic(() => import("@/pesayetu/components/HURUmap/Map"), {
   ssr: false,
@@ -27,7 +26,6 @@ function initialState(profiles, onClick) {
 }
 
 function ExplorePage({
-  apiUri,
   locationCodes,
   panelProps,
   profile: profileProp,
@@ -56,11 +54,10 @@ function ExplorePage({
     }
   }, [dispatch, geoCode]);
   const router = useRouter();
-  const fetcher = (code) => fetchProfile(apiUri, code);
   const shouldFetch = () =>
     (state.primary.shouldFetch && state.primary.code) ||
     (state.secondary?.shouldFetch && state.secondary?.code);
-  const { data, error } = useSWR(shouldFetch, fetcher);
+  const { data, error } = useProfileGeography(shouldFetch);
   useEffect(() => {
     if (data) {
       dispatch({

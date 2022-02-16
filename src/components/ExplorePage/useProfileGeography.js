@@ -3,8 +3,8 @@ import useSWR from "swr";
 import fetchJson from "@/pesayetu/utils/fetchJson";
 
 function useProfileGeography(shouldFetch) {
-  const fetcher = (url) => {
-    return fetchJson(url);
+  const fetcher = (code) => {
+    return fetchJson(`/api/hurumap/geographies/${code}`);
   };
   const { data, error } = useSWR(shouldFetch, fetcher);
 
