@@ -116,6 +116,9 @@ function DesktopPanel({
   return (
     <Drawer
       PaperProps={{ ref: paperRef }}
+      variant="permanent"
+      anchor="left"
+      open={open}
       classes={{
         root: clsx(classes.root, {
           [classes.drawerOpen]: !!value,
@@ -123,9 +126,6 @@ function DesktopPanel({
         }),
         paper: classes.paper,
       }}
-      variant="permanent"
-      anchor="left"
-      open={open}
     >
       {panelItems?.map((item) => (
         <TabPanel
