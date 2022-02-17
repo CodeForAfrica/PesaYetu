@@ -31,10 +31,8 @@ function StoriesPage({
 
   useEffect(() => {
     if (page && contentRef.current) {
-      contentRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      document.documentElement.style.scrollBehavior = "smooth";
+      contentRef.current.scrollIntoView();
     }
   }, [page]);
 
