@@ -25,9 +25,8 @@ export default async function getPostTypeTaxonomyArchive(
   postType = "post",
   orderBy = "DATE",
   order = "DESC",
-  cursor = null,
-  getNext = true,
-  perPage = 12
+  offset = 0,
+  size = 9
 ) {
   // Define single post query based on taxonomy.
   const postTypeQuery = {
@@ -62,10 +61,8 @@ export default async function getPostTypeTaxonomyArchive(
   // Determine query variables.
   const variables = {
     id: taxonomyId,
-    first: getNext ? perPage : null, // Only used for retrieving next set.
-    last: getNext ? null : perPage, // Only used for retrieving previous set.
-    after: getNext ? cursor : null, // Only used for retrieving next set.
-    before: getNext ? null : cursor, // Only used for retrieving previous set.
+    offset: parseInt(offset, 10),
+    size: parseInt(size, 10),
     orderBy,
     order,
   };
