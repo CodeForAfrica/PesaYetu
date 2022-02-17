@@ -76,7 +76,7 @@ function Stories({
         ctaText={featuredStoryProps.ctaText}
       />
       <Pagination
-        count={Math.ceil(pagination.offsetPagination.total / 9)}
+        count={Math.ceil((pagination?.offsetPagination?.total ?? 0) / 9)}
         onChangePage={handleClickPage}
         page={page}
         pageSize={9}

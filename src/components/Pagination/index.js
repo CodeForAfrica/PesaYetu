@@ -1,14 +1,46 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { Pagination as MuiPagination } from "@material-ui/lab";
+import { Pagination as MuiPagination, PaginationItem } from "@material-ui/lab";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     display: "flex",
     justifyContent: "center",
   },
   section: {},
+  paginationButton: {
+    minWidth: typography.pxToRem(16),
+    height: typography.pxToRem(16),
+    border: `2px solid ${palette.text.hint}`,
+    borderRadius: "50%",
+    color: palette.text.secondary,
+    backgroundColor: palette.background.default,
+    width: typography.pxToRem(16),
+    "&:hover": {
+      backgroundColor: palette.text.hint,
+      color: palette.text.hint,
+    },
+    "&$focusVisible": {
+      backgroundColor: palette.text.hint,
+    },
+    "&$selected": {
+      backgroundColor: palette.text.hint,
+      color: palette.text.hint,
+      "&:hover": {
+        backgroundColor: palette.text.hint,
+        color: palette.text.hint,
+      },
+    },
+  },
+  selected: {
+    backgroundColor: palette.text.hint,
+    color: palette.text.hint,
+    "&:hover": {
+      backgroundColor: palette.text.hint,
+      color: palette.text.hint,
+    },
+  },
 }));
 
 function Pagination({ onChangePage, page, count, ...props }) {
@@ -22,7 +54,15 @@ function Pagination({ onChangePage, page, count, ...props }) {
         page={page}
         hideNextButton
         hidePrevButton
-        className={classes.paginationButton}
+        renderItem={(item) => (
+          <PaginationItem
+            {...item}
+            classes={{
+              root: classes.paginationButton,
+              selected: classes.selected,
+            }}
+          />
+        )}
       />
     </div>
   );
