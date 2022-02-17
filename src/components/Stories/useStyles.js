@@ -21,6 +21,10 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
     margin: typography.pxToRem(3),
     minWidth: `${typography.pxToRem(370)} !important`,
   },
+  progress: {
+    display: "block",
+    margin: "0 auto",
+  },
 }));
 
 export default useStyles;
