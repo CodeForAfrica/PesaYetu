@@ -8,7 +8,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     display: "flex",
     justifyContent: "center",
   },
-  section: {},
   paginationButton: {
     minWidth: typography.pxToRem(16),
     height: typography.pxToRem(16),

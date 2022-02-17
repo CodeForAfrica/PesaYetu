@@ -22,7 +22,7 @@ function Stories({
   const classes = useStyles(props);
   const variant = category === "insights" ? "embed" : undefined;
 
-  const [posts, setPosts] = useState(itemsProp);
+  const [stories, setStories] = useState(itemsProp);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClickPage = (_, value) => {
@@ -31,35 +31,32 @@ function Stories({
     }
   };
 
-  const { data, error } = useSWR(
-    ["/api/wp/archive", category, page],
-    (url, taxonomyId, pageProp) => {
-      let offset;
-      if (pageProp === 1) {
-        offset = 0;
-      } else if (pageProp === 2) {
-        offset = 6;
-      } else {
-        offset = (pageProp - 2) * 9 + 6;
-      }
-      return fetchAPI(`${url}/?taxonomyId=${taxonomyId}&offset=${offset}`);
+  const { data, error } = useSWR("/api/wp/archive", (url) => {
+    let offset;
+    if (page === 1) {
+      offset = 0;
+    } else if (page === 2) {
+      offset = 6;
+    } else {
+      offset = (page - 2) * 9 + 6;
     }
-  );
+    return fetchAPI(`${url}/?taxonomyId=${category}&offset=${offset}`);
+  });
 
   useEffect(() => {
-    if (data) {
-      setPosts(data);
-      setIsLoading(false);
-    } else if (!data && !error) {
+    if (!data && !error) {
       setIsLoading(true);
     } else {
+      if (data) {
+        setStories(data);
+      }
       setIsLoading(false);
     }
   }, [data, error]);
 
-  let items = posts;
+  let items = stories;
   if (page === 1) {
-    items = posts
+    items = stories
       ?.filter(({ slug }) => slug !== featuredStoryProps?.slug)
       ?.slice(0, 6);
   }
