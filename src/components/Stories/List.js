@@ -24,7 +24,9 @@ function List({ items, variant, ...props }) {
             imageProps={item.imageProps}
             classes={{
               media: clsx({ [classes.shadow]: variant === "embed" }),
-              mediaImage: classes.mediaImage,
+              mediaImage: clsx(classes.mediaImage, {
+                [classes.embedImage]: variant === "embed",
+              }),
               contentDescription: classes.description,
               contentTitle: classes.title,
             }}
