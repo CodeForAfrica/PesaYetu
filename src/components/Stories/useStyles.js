@@ -21,6 +21,23 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
     margin: typography.pxToRem(3),
     minWidth: `${typography.pxToRem(370)} !important`,
   },
+  mediaImage: {
+    objectFit: "cover !important",
+  },
+  description: {
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
+  },
+  title: {
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
+  },
   progress: {
     display: "block",
     margin: "0 auto",

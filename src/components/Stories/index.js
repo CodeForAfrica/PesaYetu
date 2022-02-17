@@ -69,6 +69,7 @@ function Stories({
       {isLoading && <CircularProgress classes={{ root: classes.progress }} />}
       <List
         items={items}
+        key={category}
         variant={variant}
         ctaText={featuredStoryProps.ctaText}
       />
