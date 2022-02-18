@@ -22,6 +22,7 @@ function RichData({ primaryProfile, ...props }) {
         setExpanded(id);
       }
     }
+    return true;
   };
 
   return (
