@@ -17,11 +17,11 @@ const TreeView = ({ items, onLabelClick, ...props }) => {
   const handleLabelClick = (e) => {
     e.preventDefault();
     const { id, expand } = e.target.dataset;
-    if (expand && id) {
+    if (expand) {
       setExpanded(id);
-      if (onLabelClick) {
-        onLabelClick(id);
-      }
+    }
+    if (onLabelClick) {
+      onLabelClick(id);
     }
   };
 
@@ -76,7 +76,7 @@ const TreeView = ({ items, onLabelClick, ...props }) => {
                         {child.title}
                       </Link>
                     }
-                    onLabelClick={onLabelClick}
+                    onLabelClick={handleLabelClick}
                   />
                 );
               })}
