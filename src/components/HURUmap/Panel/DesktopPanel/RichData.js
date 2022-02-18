@@ -16,7 +16,8 @@ function RichData({ primaryProfile, ...props }) {
     const { id, expand } = e.target.dataset;
     const { current: el } = profileRef;
     if (el) {
-      el.querySelector(`#${id}`).scrollIntoView({ behavior: "smooth" });
+      document.documentElement.style.scrollBehavior = "smooth";
+      el.querySelector(`#${id}`).scrollIntoView();
       if (expand) {
         setExpanded(id);
       }
