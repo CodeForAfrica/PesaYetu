@@ -12,9 +12,9 @@ function RichData({ primaryProfile, ...props }) {
 
   const handleLabelClick = (id) => {
     const el = profileRef?.current;
-    if (el) {
+    if (el && id) {
       document.documentElement.style.scrollBehavior = "smooth";
-      el.querySelector(`#${id}`).scrollIntoView();
+      el.querySelector(`#${id}`)?.scrollIntoView();
     }
   };
 

@@ -40,7 +40,7 @@ const TreeView = ({ items, onLabelClick, ...props }) => {
               nodeId={itemId}
               label={
                 <>
-                  <Typography data-id={itemId} variant="caption">
+                  <Typography data-id={itemId} data-expand variant="caption">
                     {item.title}
                   </Typography>
                   <CheckIcon className={classes.icon} />
@@ -61,7 +61,7 @@ const TreeView = ({ items, onLabelClick, ...props }) => {
                     key={childId}
                     nodeId={childId}
                     label={
-                      <Typography data-id={itemId} variant="caption">
+                      <Typography data-id={childId} variant="caption">
                         {child.title}
                       </Typography>
                     }
