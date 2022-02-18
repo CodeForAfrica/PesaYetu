@@ -3,15 +3,27 @@ import TreeItem from "@material-ui/lab/TreeItem";
 import MuiTreeView from "@material-ui/lab/TreeView";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import useStyles from "./useStyles";
 
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
 import slugify from "@/pesayetu/utils/slugify";
 
-const TreeView = ({ expanded, items, onLabelClick, ...props }) => {
+const TreeView = ({ items, onLabelClick, ...props }) => {
   const classes = useStyles(props);
+  const [expanded, setExpanded] = useState();
+
+  const handleLabelClick = (e) => {
+    e.preventDefault();
+    const { id, expand } = e.target.dataset;
+    if (expand && id) {
+      setExpanded(id);
+      if (onLabelClick) {
+        onLabelClick(id);
+      }
+    }
+  };
 
   if (!items?.length) {
     return null;
@@ -39,7 +51,7 @@ const TreeView = ({ expanded, items, onLabelClick, ...props }) => {
                   {item.title} <CheckIcon className={classes.icon} />
                 </Link>
               }
-              onLabelClick={onLabelClick}
+              onLabelClick={handleLabelClick}
               classes={{
                 root: classes.tree,
                 expanded: classes.expanded,
@@ -77,7 +89,6 @@ const TreeView = ({ expanded, items, onLabelClick, ...props }) => {
 };
 
 TreeView.propTypes = {
-  expanded: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       children: PropTypes.arrayOf(PropTypes.shape({})),
@@ -87,7 +98,6 @@ TreeView.propTypes = {
 };
 
 TreeView.defaultProps = {
-  expanded: undefined,
   items: undefined,
   onLabelClick: undefined,
 };
