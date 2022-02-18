@@ -21,7 +21,8 @@ function RichData({ primaryProfile, ...props }) {
       const as = `${window.location.pathname}#${id}`;
       router.push(router.pathname, as, { shallow: true });
       setExpanded(id);
-      el.querySelector(`#${id}`).scrollIntoView({ behavior: "smooth" });
+      document.documentElement.style.scrollBehavior = "smooth";
+      el.querySelector(`#${id}`).scrollIntoView();
     }
   };
 
