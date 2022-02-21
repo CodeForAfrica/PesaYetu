@@ -6,15 +6,16 @@ import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function PrivacyPolicy({ blocks, ...props }) {
+export default function PrivacyPolicy({ blocks, title, ...props }) {
   return (
     <Page {...props}>
-      <StoryPage />
+      <StoryPage title={title} {...props} />
     </Page>
   );
 }
 
 PrivacyPolicy.propTypes = {
+  title: PropTypes.string,
   blocks: PropTypes.shape({
     aboutProject: PropTypes.shape({}),
   }),
@@ -22,6 +23,7 @@ PrivacyPolicy.propTypes = {
 
 PrivacyPolicy.defaultProps = {
   blocks: undefined,
+  title: undefined,
 };
 
 export async function getStaticProps({ preview, previewData }) {
@@ -40,10 +42,12 @@ export async function getStaticProps({ preview, previewData }) {
   }
 
   const blocks = await formatBlocksForSections(props?.post?.blocks);
+  const title = props?.post?.title;
 
   return {
     props: {
       ...props,
+      title,
       blocks,
     },
     revalidate,
