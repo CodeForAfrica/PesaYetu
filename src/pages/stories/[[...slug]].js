@@ -28,6 +28,10 @@ export default function Index({
     authorName = post?.author?.node?.nickname ?? post?.author?.node?.slug;
   }
 
+  if (post?.customAuthor?.name?.length > 1) {
+    authorName = post.customAuthor.name;
+  }
+
   return (
     <Page {...props} post={post}>
       {archive ? (
@@ -77,6 +81,9 @@ Index.propTypes = {
   post: PropTypes.shape({
     slug: PropTypes.string,
     date: PropTypes.string,
+    customAuthor: PropTypes.shape({
+      name: PropTypes.string,
+    }),
     featuredImage: PropTypes.shape({
       node: PropTypes.shape({
         sourceUrl: PropTypes.string,
