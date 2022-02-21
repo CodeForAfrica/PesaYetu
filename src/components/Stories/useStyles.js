@@ -37,20 +37,6 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
       minWidth: `${typography.pxToRem(290)} !important`,
     },
   },
-  description: {
-    overflow: "hidden",
-    display: "-webkit-box",
-    WebkitLineClamp: 3,
-    WebkitBoxOrient: "vertical",
-    textOverflow: "ellipsis",
-  },
-  title: {
-    overflow: "hidden",
-    display: "-webkit-box",
-    WebkitLineClamp: 2,
-    WebkitBoxOrient: "vertical",
-    textOverflow: "ellipsis",
-  },
   progress: {
     display: "block",
     margin: "0 auto",
