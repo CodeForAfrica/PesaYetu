@@ -1,27 +1,22 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(
-  ({ typography, palette, transitions, widths }) => ({
+  ({ typography, palette, transitions, widths, zIndex }) => ({
     root: {
       display: "flex",
       height: "100%",
-    },
-    drawerOpen: {
       minWidth: typography.pxToRem(1049),
       maxWidth: "max-content",
       transition: transitions.create("width", {
         easing: transitions.easing.sharp,
         duration: transitions.duration.enteringScreen,
       }),
+      visibility: "hidden",
     },
-    drawerClose: {
-      transition: transitions.create("width", {
-        easing: transitions.easing.sharp,
-        duration: transitions.duration.leavingScreen,
-      }),
-      overflowX: "hidden",
-      width: typography.pxToRem(44),
+    drawerOpen: {
+      visibility: "visible",
     },
+    drawerClose: {},
     paper: {
       background: "transparent",
       border: "none",
@@ -36,6 +31,8 @@ const useStyles = makeStyles(
       width: typography.pxToRem(44),
       position: "fixed",
       left: 0,
+      zIndex: zIndex.drawer + 1,
+      top: typography.pxToRem(110),
     },
     panelButtonsOpen: {
       left: `max(calc((100vw - ${widths.values.lg}px)/2 + 833px),1054px)`,
