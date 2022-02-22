@@ -20,12 +20,15 @@ export default function PrivacyPolicy(props) {
 PrivacyPolicy.propTypes = {
   title: PropTypes.string,
   blocks: PropTypes.shape({}),
-  pageContent: PropTypes.string,
+  post: PropTypes.shape({
+    title: PropTypes.string,
+    content: PropTypes.string,
+  }),
 };
 
 PrivacyPolicy.defaultProps = {
   blocks: undefined,
-  pageContent: undefined,
+  post: undefined,
   title: undefined,
 };
 
