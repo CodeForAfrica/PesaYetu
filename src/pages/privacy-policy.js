@@ -6,15 +6,13 @@ import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-export default function PrivacyPolicy({
-  blocks,
-  title,
-  pageContent,
-  ...props
-}) {
+export default function PrivacyPolicy(props) {
+  const {
+    post: { title, content },
+  } = props;
   return (
-    <Page {...props}>
-      <StoryPage title={title} {...props} content={pageContent} />
+    <Page {...props} title={title}>
+      <StoryPage content={content} title={title} />
     </Page>
   );
 }
