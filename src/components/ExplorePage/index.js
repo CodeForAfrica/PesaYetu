@@ -144,6 +144,7 @@ function ExplorePage({
       <Panel
         isPinning={state.isPinning}
         isCompare={state.isCompare}
+        isLoading={isLoading}
         locationCodes={locationCodes}
         onClickPin={handleClickPin}
         onClickUnpin={handleClickUnpin}
