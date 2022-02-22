@@ -13,6 +13,7 @@ function PanelButtons({
   onClickUnpin,
   panelItems: panelItemsProp,
   primaryProfile,
+  secondaryProfile,
   drawerRef,
   ...props
 }) {
@@ -20,6 +21,14 @@ function PanelButtons({
   const [pins, setPins] = useState([]);
   const [panelItems, setPanelItems] = useState([]);
   const classes = useStyles({ ...props });
+
+  useEffect(() => {
+    if (primaryProfile.items.length || secondaryProfile?.items?.length) {
+      setTimeout(() => {
+        setValue("rich-data");
+      }, 1000);
+    }
+  }, [primaryProfile.items, secondaryProfile?.items]);
 
   useEffect(() => {
     const pItems =
@@ -153,6 +162,9 @@ PanelButtons.propTypes = {
   primaryProfile: PropTypes.shape({
     items: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  secondaryProfile: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
 };
 
 PanelButtons.defaultProps = {
@@ -163,6 +175,7 @@ PanelButtons.defaultProps = {
   onClickUnpin: undefined,
   panelItems: undefined,
   primaryProfile: undefined,
+  secondaryProfile: undefined,
 };
 
 export default PanelButtons;
