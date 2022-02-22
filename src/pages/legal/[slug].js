@@ -6,7 +6,7 @@ import StoryPage from "@/pesayetu/components/StoryPage";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 
-const posts = ["privacy-policy", "terms-of-service"];
+const pages = ["privacy-policy", "terms-of-service"];
 
 export default function LegalPrivacyPolicy(props) {
   const {
@@ -35,7 +35,7 @@ LegalPrivacyPolicy.defaultProps = {
 };
 
 export async function getStaticPaths() {
-  const paths = posts.map((page) => ({
+  const paths = pages.map((page) => ({
     params: { slug: page },
   }));
 
@@ -43,11 +43,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ preview, params, previewData }) {
-  console.log(params);
-
   const postType = "page";
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
-    { slug: "privacy-policy" },
+    { slug: params.slug },
     postType,
     preview,
     previewData
