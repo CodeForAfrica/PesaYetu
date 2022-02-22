@@ -75,7 +75,7 @@ function ExplorePage({
         : `${code}`;
     const href = `/explore/${newPath.toLowerCase()}`;
     router.push(href, href, { shallow: true });
-    const type = state.isPinning || state.isCompare ? "compare" : "fetch";
+    const type = state.isPinning && state.isCompare ? "compare" : "fetch";
     dispatch({ type, payload });
   };
 

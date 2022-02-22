@@ -38,13 +38,21 @@ function reducer(state, action) {
       const code = action.payload?.code;
       if (code) {
         let profileType = "primary";
+        const newState = { ...state };
+        newState.slug = code.toLowerCase();
+
         if (state.isPinning || state.isCompare) {
           profileType = "secondary";
+          newState.slug =
+            `${state.primary.geography.code}-vs-${code}`.toLowerCase();
+          newState.isCompare = true;
         }
-        const newState = { ...state };
-        newState[profileType].code = code;
-        newState[profileType].shouldFetch = true;
-        newState.slug = code.toLowerCase();
+        newState[profileType] = {
+          ...newState[profileType],
+          code,
+          shouldFetch: true,
+        };
+
         return newState;
       }
 
@@ -77,7 +85,7 @@ function reducer(state, action) {
     case "compare": {
       const code = action.payload?.code;
       if (code) {
-        const newState = { ...state, isPinning: false };
+        const newState = { ...state };
         newState.secondary = { code, shouldFetch: true };
         newState.slug =
           `${state.primary.geography.code}-vs-${code}`.toLowerCase();
