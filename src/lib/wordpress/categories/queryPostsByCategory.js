@@ -12,16 +12,14 @@ import {
 // Query: retrieve posts category archive.
 const queryPostsByCategory = gql`
   query GET_POSTS_BY_CATEGORY(
-    $first: Int
-    $last: Int
-    $after: String
-    $before: String
     $orderBy: PostObjectsConnectionOrderbyEnum = DATE
     $order: OrderEnum = DESC
     $imageSize: MediaItemSizeEnum = MEDIUM
     $featuredImageSize: MediaItemSizeEnum = LARGE
     $id: ID!
     $idType: CategoryIdType = SLUG
+    $offset: Int!
+    $size: Int!
   ) {
     ${categoriesPostFields}
     ${defaultPageData}

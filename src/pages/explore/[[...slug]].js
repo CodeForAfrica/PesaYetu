@@ -7,8 +7,7 @@ import Tutorial from "@/pesayetu/components/HURUmap/Tutorial";
 import Page from "@/pesayetu/components/Page";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
-import fetchProfile from "@/pesayetu/utils/fetchProfile";
-import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurations";
+import { fetchProfile, fetchProfileGeography } from "@/pesayetu/lib/hurumap";
 
 export default function Explore(props) {
   const {
@@ -47,7 +46,7 @@ Explore.defaultProps = {
 const postType = "page";
 
 export async function getStaticPaths() {
-  const { locationCodes } = await fetchProfileConfigurations();
+  const { locationCodes } = await fetchProfile();
   const paths = locationCodes.map((locationCode) => ({
     params: { slug: [locationCode] },
   }));
@@ -72,14 +71,9 @@ export async function getStaticProps({ preview, previewData, params }) {
   }
 
   const blocks = await formatBlocksForSections(props?.post?.blocks);
-  const { locationCodes, preferredChildren } =
-    await fetchProfileConfigurations();
+  const { locationCodes, preferredChildren } = await fetchProfile();
   const [originalCode] = params?.slug || [""];
   const code = originalCode.trim().toLowerCase();
-  const [primaryCode, secondaryCode] = originalCode
-    .split("-vs-")
-    .map((c) => c.trim().toLowerCase())
-    .filter((c) => c);
 
   // /explore -> /explore/ke
   if (!code) {
@@ -91,19 +85,9 @@ export async function getStaticProps({ preview, previewData, params }) {
     };
   }
 
-  if (
-    !(
-      locationCodes.includes(primaryCode) &&
-      (!secondaryCode || locationCodes.includes(secondaryCode))
-    )
-  ) {
-    return {
-      notFound: true,
-    };
-  }
-
   // Allow for case-insensitive code or human-readable location names
-  // appended to code e.g. ke/kenya, 47/nairobi, 47-vs-11/nairobi-vs-isiolo
+  // appended to code e.g.:
+  // KE => ke, 47/nairobi => 47, 47-vs-11/nairobi-vs-isiolo => 47-vs-11
   if (code !== originalCode || params?.slug?.length > 1) {
     return {
       redirect: {
@@ -113,18 +97,27 @@ export async function getStaticProps({ preview, previewData, params }) {
     };
   }
 
-  const apiUri = process.env.HURUMAP_API_URL;
-  const primaryProfile = await fetchProfile(apiUri, primaryCode);
+  const geoCodes = code
+    .split("-vs-")
+    .map((c) => c.trim())
+    .filter((c) => c);
+  if (!geoCodes.every((gC) => locationCodes.includes(gC))) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const [primaryCode, secondaryCode] = geoCodes;
+  const primaryProfile = await fetchProfileGeography(primaryCode);
   const profile = [primaryProfile];
   if (secondaryCode) {
-    const secondaryProfile = await fetchProfile(apiUri, secondaryCode);
+    const secondaryProfile = await fetchProfileGeography(secondaryCode);
     profile.push(secondaryProfile);
   }
 
   return {
     props: {
       ...props,
-      apiUri,
       blocks,
       locationCodes,
       profile,

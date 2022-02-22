@@ -42,7 +42,10 @@ function FeaturedStoryCard({
             media: clsx(classes.media, {
               [classes.shadow]: variant === "embed",
             }),
-            mediaImage: clsx({ [classes.mediaImage]: variant !== "embed" }),
+            mediaImage: clsx({
+              [classes.mediaImage]: variant !== "embed",
+              [classes.embedImage]: variant === "embed",
+            }),
           }}
         />
       </Grid>

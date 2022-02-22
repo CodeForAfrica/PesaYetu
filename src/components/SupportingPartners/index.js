@@ -29,18 +29,13 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     height: typography.pxToRem(116),
     width: typography.pxToRem(150),
     position: "relative",
-    filter: "grayscale(1)",
-    [breakpoints.up("mdtu")]: {
+    [breakpoints.up("md")]: {
       marginBottom: typography.pxToRem(100),
     },
   },
-  link: {
-    filter: "grayscale(1)",
-  },
   logo: {
-    margin: "0",
-    width: "100%",
-    height: "100%",
+    mixBlendMode: "luminosity",
+    opacity: 0.5,
   },
 }));
 function SupportingPartners({ title, items, ...props }) {
@@ -64,11 +59,11 @@ function SupportingPartners({ title, items, ...props }) {
                 className={classes.logoContainer}
               >
                 <Image
-                  className={classes.logo}
-                  objectFit="contain"
-                  layout="fill"
                   src={logo}
                   alt={name}
+                  objectFit="contain"
+                  layout="fill"
+                  className={classes.logo}
                 />
               </LogoButton>
             </Grid>

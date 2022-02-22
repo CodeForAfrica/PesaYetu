@@ -22,11 +22,7 @@ export const archivePostFragment = gql`
 // Query partial: retrieve archive fields.
 export const archivePosts = `
   posts(
-    first: $first
-    last: $last
-    after: $after
-    before: $before
-    where: {orderby: {field: $orderBy, order: $order}}
+    where: { offsetPagination: {offset: $offset, size: $size}, orderby: {field: $orderBy, order: $order}}
   ) {
     ${archivePageInfo}
     edges {
@@ -47,6 +43,8 @@ const queryPostsArchive = gql`
     $orderBy: PostObjectsConnectionOrderbyEnum = DATE
     $order: OrderEnum = DESC
     $imageSize: MediaItemSizeEnum = THUMBNAIL
+    $offset: Int!
+    $size: Int!
   ) {
     ${defaultPageData}
     homepageSettings {

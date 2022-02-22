@@ -5,6 +5,9 @@ const archivePageInfo = `
     endCursor
     hasNextPage
     hasPreviousPage
+    offsetPagination {
+      total
+    }
   }
 `;
 

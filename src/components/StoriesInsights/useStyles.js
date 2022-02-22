@@ -69,6 +69,13 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     marginTop: typography.pxToRem(40),
     width: "100%",
   },
+  contentDescription: {
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 5,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
+  },
 }));
 
 export default useStyles;

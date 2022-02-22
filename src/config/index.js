@@ -84,7 +84,7 @@ export const dataIndicator = {
 const ABOUT = {
   about:
     "This site is an openAFRICA project of Code for Africa.\n" +
-    "        All content is released under a Creative Commons 4 Attribution Licence. \n" +
+    "        All content is released under a Creative Commons attribution Licence 4.0. \n" +
     "        Reuse it to help empower your own community.\n" +
     "        The code is available on GitHub and data is available on openAFRICA.\n",
 };
@@ -893,6 +893,9 @@ export const hurumapArgs = {
 };
 
 export const hurumap = {
+  api: {
+    url: "http://localhost:8000/api/v1/",
+  },
   formatting: {
     decimal: ",.1f",
     integer: ",.2d",
@@ -901,8 +904,8 @@ export const hurumap = {
 };
 
 const config = {
-  footerArgs,
   exploreTools,
+  footerArgs,
   navigationArgs,
   url: "http://localhost:3000",
 };

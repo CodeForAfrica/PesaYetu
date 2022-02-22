@@ -20,8 +20,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "prepare": "husky install",
-    "chromatic": "chromatic --debug --exit-once-uploaded --exit-zero-on-changes"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
@@ -37,7 +36,7 @@
     "deepmerge": "^4.2.2",
     "leaflet": "^1.7.1",
     "lodash": "^4.17.21",
-    "next": "^11.1.0",
+    "next": "^12.1.0",
     "next-images": "^1.8.1",
     "next-seo": "^4.26.0",
     "papaparse": "^5.3.1",
@@ -81,7 +80,6 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-imports": "^2.0.0",
-    "chromatic": "^5.9.2",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.0.1",

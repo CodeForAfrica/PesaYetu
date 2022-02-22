@@ -1,23 +1,14 @@
-import { Hidden } from "@material-ui/core";
+import { Hidden, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React, { forwardRef, useState, Fragment } from "react";
+import React, { forwardRef, useState } from "react";
+
+import ProfileItems from "./ProfileItems";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
-import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
-import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import PinAndCompare from "@/pesayetu/components/HURUmap/PinAndCompare";
-import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import { hurumapArgs } from "@/pesayetu/config";
-import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
-import slugify from "@/pesayetu/utils/slugify";
-
-const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
-  ssr: false,
-});
 
 const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
@@ -40,22 +31,9 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
       zIndex: zIndex.drawer,
     },
   },
-  metricRow: {
-    marginBottom: typography.pxToRem(8),
-    [breakpoints.up("md")]: {
-      display: "flex",
-    },
-    [breakpoints.up("lg")]: {
-      marginBottom: typography.pxToRem(14),
-    },
-    "&:first-child": {},
-  },
-  metric: {
-    width: "100%",
-    [breakpoints.up("md")]: {
-      marginRight: typography.pxToRem(18),
-      maxWidth: "50%",
-    },
+  progress: {
+    display: "block",
+    margin: "0 auto",
   },
 }));
 
@@ -85,6 +63,7 @@ const Profile = forwardRef(function Profile(
   {
     categories,
     dataNotAvailable,
+    isLoading,
     isPinning,
     locationCodes,
     onClickPin,
@@ -156,6 +135,7 @@ const Profile = forwardRef(function Profile(
 
   return (
     <div className={classes.profile} ref={ref}>
+      {isLoading && <CircularProgress classes={{ root: classes.progress }} />}
       <LocationHeader
         variant="primary"
         icon={Print}
@@ -181,97 +161,15 @@ const Profile = forwardRef(function Profile(
           />
         )}
       </Hidden>
-      {categories.map((category, categoryIndex) => (
-        <Fragment key={category.tite}>
-          <CategoryHeader
-            description={category?.description}
-            icon={category.icon}
-            id={slugify(category.title)}
-            title={category.title}
-          />
-          {category.children.map((child, subcategoryIndex) => (
-            <Fragment key={child.title}>
-              <SubcategoryHeader
-                description={child?.description}
-                id={slugify(child.title)}
-                title={child.title}
-              />
-              {child.children.map(({ index, ...indicator }) => (
-                <Chart
-                  key={index}
-                  variant="primary"
-                  {...indicator}
-                  geoCode={geoCode}
-                  secondaryIndicator={getSecondaryIndicator(
-                    categoryIndex,
-                    subcategoryIndex,
-                    indicator.indicator.id
-                  )}
-                  isCompare={!!secondaryProfile}
-                  profileNames={{
-                    primary:
-                      indicator.indicator?.data?.length > 0
-                        ? primaryProfile.geography.name
-                        : `${primaryProfile.geography.name} ${dataNotAvailable}`,
-                    secondary:
-                      getSecondaryIndicator(
-                        categoryIndex,
-                        subcategoryIndex,
-                        indicator.indicator.id
-                      )?.indicator?.data?.length > 0
-                        ? secondaryProfile?.geography?.name
-                        : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
-                  }}
-                />
-              ))}
-              {child?.metrics?.map(
-                ({ label, parentMetric, ...other }, metricIndex) => {
-                  const secondaryMetric = getSecondaryMetric(
-                    categoryIndex,
-                    subcategoryIndex,
-                    metricIndex
-                  );
-                  return (
-                    <div key={label} className={classes.metricRow}>
-                      <KeyMetric
-                        title={label}
-                        formattedValue={formatNumericalValue(other)}
-                        parentFormattedValue={
-                          parentMetric
-                            ? formatNumericalValue(parentMetric)
-                            : undefined
-                        }
-                        {...other}
-                        color="primary"
-                        className={clsx({ [classes.metric]: secondaryProfile })}
-                      />
-                      {secondaryMetric && (
-                        <KeyMetric
-                          title={secondaryMetric?.label ?? undefined}
-                          formattedValue={formatNumericalValue({
-                            value: secondaryMetric?.value,
-                            method: secondaryMetric?.method,
-                          })}
-                          parentFormattedValue={
-                            parentMetric
-                              ? formatNumericalValue(parentMetric)
-                              : undefined
-                          }
-                          color="secondary"
-                          {...secondaryMetric}
-                          className={clsx({
-                            [classes.metric]: secondaryProfile,
-                          })}
-                        />
-                      )}
-                    </div>
-                  );
-                }
-              )}
-            </Fragment>
-          ))}
-        </Fragment>
-      ))}
+      <ProfileItems
+        categories={categories}
+        dataNotAvailable={dataNotAvailable}
+        getSecondaryIndicator={getSecondaryIndicator}
+        getSecondaryMetric={getSecondaryMetric}
+        primaryProfile={primaryProfile}
+        secondaryProfile={secondaryProfile}
+        geoCode={geoCode}
+      />
     </div>
   );
 });
@@ -286,6 +184,7 @@ Profile.propTypes = {
     })
   ),
   dataNotAvailable: PropTypes.string,
+  isLoading: PropTypes.bool,
   isPinning: PropTypes.bool,
   locationCodes: PropTypes.arrayOf(PropTypes.string),
   onClickPin: PropTypes.func,
@@ -329,6 +228,7 @@ Profile.propTypes = {
 Profile.defaultProps = {
   categories: undefined,
   dataNotAvailable: undefined,
+  isLoading: undefined,
   isPinning: undefined,
   locationCodes: undefined,
   onClickPin: undefined,
