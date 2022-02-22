@@ -1,5 +1,5 @@
 import getPostTypeTaxonomyArchive from "@/pesayetu/functions/postTypes/getPostTypeTaxonomyArchive";
-
+import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
 /**
  * Load more posts for category archive.
  *
@@ -13,7 +13,8 @@ export default async function archive(req, res) {
       postType = "post",
       orderBy = "DATE",
       order = "DESC",
-      cursor = null,
+      offset = 0,
+      size = 9,
     } = req.query;
 
     const postsData = await getPostTypeTaxonomyArchive(
@@ -22,7 +23,8 @@ export default async function archive(req, res) {
       postType,
       orderBy,
       order,
-      cursor
+      offset,
+      size
     );
 
     // Check for errors.
@@ -33,7 +35,9 @@ export default async function archive(req, res) {
     // Remove Apollo client from return.
     delete postsData?.apolloClient;
 
-    res.status(200).send(postsData);
+    const result = formatStoryPosts(postsData?.posts);
+
+    res.status(200).send(result);
   } catch (error) {
     res
       .status(error?.status || 500)

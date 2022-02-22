@@ -70,6 +70,18 @@ const useStyles = makeStyles(({ breakpoints, typography, widths }) => ({
       width: typography.pxToRem(658),
     },
   },
+  embedImage: {
+    height: `${typography.pxToRem(150)} !important`,
+    minWidth: `${typography.pxToRem(290)} !important`,
+    [breakpoints.up("md")]: {
+      height: `${typography.pxToRem(320)} !important`,
+      minWidth: `${typography.pxToRem(520)} !important`,
+    },
+    [breakpoints.up("lg")]: {
+      height: `${typography.pxToRem(363)} !important`,
+      minWidth: `${typography.pxToRem(570)} !important`,
+    },
+  },
 }));
 
 export default useStyles;

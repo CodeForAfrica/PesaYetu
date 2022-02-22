@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ typography, breakpoints }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     marginBottom: typography.pxToRem(80),
   },
@@ -19,7 +19,41 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   shadow: {
     boxShadow: "0px 3px 10px #0000001A",
     margin: typography.pxToRem(3),
-    minWidth: `${typography.pxToRem(370)} !important`,
+    [breakpoints.up("md")]: {
+      minWidth: `${typography.pxToRem(260)} !important`,
+    },
+    [breakpoints.up("lg")]: {
+      minWidth: `${typography.pxToRem(370)} !important`,
+    },
+  },
+  mediaImage: {
+    objectFit: "cover !important",
+  },
+  embedImage: {
+    height: `${typography.pxToRem(150)} !important`,
+    minWidth: `${typography.pxToRem(260)} !important`,
+    [breakpoints.up("lg")]: {
+      height: `${typography.pxToRem(150)} !important`,
+      minWidth: `${typography.pxToRem(290)} !important`,
+    },
+  },
+  description: {
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
+  },
+  title: {
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
+  },
+  progress: {
+    display: "block",
+    margin: "0 auto",
   },
 }));
 
