@@ -13,10 +13,6 @@ const useStyles = makeStyles(
       }),
       visibility: "hidden",
     },
-    drawerOpen: {
-      visibility: "visible",
-    },
-    drawerClose: {},
     paper: {
       background: "transparent",
       border: "none",
