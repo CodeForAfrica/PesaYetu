@@ -47,14 +47,9 @@ export async function getStaticProps({ preview, previewData }) {
   }
 
   const blocks = await formatBlocksForSections(props?.post?.blocks);
-  const title = props?.post?.title;
-  const pageContent = props?.post?.content;
-
   return {
     props: {
       ...props,
-      title,
-      pageContent,
       blocks,
     },
     revalidate,
