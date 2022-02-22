@@ -80,7 +80,15 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
 }));
 
-function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
+function Hero({
+  comment,
+  title,
+  subtitle,
+  searchLabel,
+  boundary,
+  featuredCounties,
+  ...props
+}) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
@@ -88,7 +96,9 @@ function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
   const [hoverGeo, setHoverGeo] = useState(null);
 
   const zoom = isUpLg ? 6 : 5.25;
-  const counties = boundary?.features?.map(({ properties }) => properties);
+  const counties = boundary?.features
+    ?.filter(({ properties: { code } }) => featuredCounties.includes(code))
+    ?.map(({ properties }) => properties);
   return (
     <div className={classes.root}>
       <div className={classes.background}>
@@ -128,6 +138,7 @@ function Hero({ comment, title, subtitle, searchLabel, boundary, ...props }) {
                 }}
                 boundary={boundary}
                 setHoverGeo={setHoverGeo}
+                featuredCounties={featuredCounties}
                 {...props}
               />
               {hoverGeo && (
@@ -151,6 +162,7 @@ Hero.propTypes = {
   boundary: PropTypes.shape({
     features: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  featuredCounties: PropTypes.arrayOf(PropTypes.string),
 };
 
 Hero.defaultProps = {
@@ -159,6 +171,7 @@ Hero.defaultProps = {
   searchLabel: undefined,
   title: undefined,
   boundary: undefined,
+  featuredCounties: undefined,
 };
 
 export default Hero;

@@ -21,10 +21,21 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   actionAreaFocusHighlight: {},
   actionAreaFocusVisible: {},
   content: {},
-  contentDescription: {},
+  contentDescription: {
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
+  },
   contentLink: {},
   contentTitle: ({ squareMedia }) => ({
     marginTop: typography.pxToRem(squareMedia ? 20 : 40),
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
   }),
   media: {},
   mediaImage: {

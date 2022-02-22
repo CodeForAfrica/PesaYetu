@@ -27,8 +27,6 @@ function List({ items, variant, ...props }) {
               mediaImage: clsx(classes.mediaImage, {
                 [classes.embedImage]: variant === "embed",
               }),
-              contentDescription: classes.description,
-              contentTitle: classes.title,
             }}
             className={classes.story}
           />

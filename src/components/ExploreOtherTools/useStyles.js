@@ -21,7 +21,9 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   cardContentTitle: {
     marginTop: typography.pxToRem(10),
   },
-  cardContentDescription: {},
+  cardContentDescription: {
+    WebkitLineClamp: 5,
+  },
   cardMedia: {
     "&:after": {
       content: '""',

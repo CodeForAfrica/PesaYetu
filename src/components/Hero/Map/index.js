@@ -79,9 +79,13 @@ function Map({
       <MapContainer
         center={center}
         zoom={zoom}
+        boxZoom={false}
+        dragging={false}
+        doubleClickZoom={false}
         zoomControl={false}
         scrollWheelZoom={false}
         touchZoom={false}
+        trackResize={false}
         zoomSnap={0.25}
         style={styles}
       >

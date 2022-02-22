@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     width: typography.pxToRem(278),
     position: "absolute",
     marginTop: typography.pxToRem(5),
-    zIndex: 1,
+    zIndex: 10,
     background: palette.background.default,
     border: `2px solid ${palette.grey.main}`,
     borderRadius: typography.pxToRem(10),
@@ -88,10 +88,8 @@ function DropdownSearch({
   };
 
   useEffect(() => {
-    if (query?.length > 2 && !countyCode) {
-      const matchedGeo = counties?.filter(({ name }) =>
-        name.match(new RegExp(query, "i"))
-      );
+    if (query?.length > 0 && !countyCode) {
+      const matchedGeo = counties?.filter(({ name }) => name.startsWith(query));
       setSuggestions(matchedGeo);
     } else {
       setSuggestions([]);
