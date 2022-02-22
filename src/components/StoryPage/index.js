@@ -28,7 +28,7 @@ function StoryPage({
       <StoryHeader {...props} />
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Grid item xs={false} lg={1} />
+          <Grid item xs={undefined} lg={1} />
           <Grid item xs={12} lg={7}>
             {!chart && image && (
               <figure className={classes.image}>
