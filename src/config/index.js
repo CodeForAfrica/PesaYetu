@@ -893,6 +893,9 @@ export const hurumapArgs = {
 };
 
 export const hurumap = {
+  api: {
+    url: "http://localhost:8000/api/v1/",
+  },
   formatting: {
     decimal: ",.1f",
     integer: ",.2d",
