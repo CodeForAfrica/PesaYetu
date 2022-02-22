@@ -28,7 +28,7 @@ export default function Index({
     authorName = post?.author?.node?.nickname ?? post?.author?.node?.slug;
   }
 
-  if (post?.customAuthor?.name?.length > 1) {
+  if (post?.customAuthor?.name?.length) {
     authorName = post.customAuthor.name;
   }
 
