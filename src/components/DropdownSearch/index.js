@@ -89,7 +89,9 @@ function DropdownSearch({
 
   useEffect(() => {
     if (query?.length > 0 && !countyCode) {
-      const matchedGeo = counties?.filter(({ name }) => name.startsWith(query));
+      const matchedGeo = counties?.filter(({ name }) =>
+        name.toLowerCase()?.startsWith(query)
+      );
       setSuggestions(matchedGeo);
     } else {
       setSuggestions([]);
