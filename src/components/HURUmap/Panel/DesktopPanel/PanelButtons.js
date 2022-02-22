@@ -24,10 +24,13 @@ function PanelButtons({
 
   useEffect(() => {
     if (primaryProfile.items.length || secondaryProfile?.items?.length) {
-      setTimeout(() => {
-        setValue("rich-data");
-      }, 1000);
+      const interval = setTimeout(() => setValue("rich-data"), 1000);
+
+      return () => {
+        clearTimeout(interval);
+      };
     }
+    return null;
   }, [primaryProfile.items, secondaryProfile?.items]);
 
   useEffect(() => {
