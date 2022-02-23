@@ -135,3 +135,33 @@ export async function fetchProfileGeography(geoCode) {
     items: formatProfileGeographyData(data, parent),
   };
 }
+
+export function computeLocationOptions(
+  primaryProfile,
+  locationCodes,
+  isMobile
+) {
+  const { geography, geometries } = primaryProfile;
+  // siblings will be on the last element of the parents array.
+  let siblingsOrParent = geometries?.parents?.slice(-1)?.[0];
+  const children = Object.values(geometries?.children)?.[0];
+
+  if (isMobile) {
+    // include siblings, and parent
+    siblingsOrParent = {
+      features: geometries?.parents?.flatMap(({ features }) => features),
+    };
+  }
+
+  const availableOptions =
+    [...(siblingsOrParent?.features ?? []), ...children?.features]
+      ?.filter(
+        ({ properties: { code } }) =>
+          code !== geography.code && locationCodes.includes(code)
+      )
+      ?.map(({ properties: { name: label, code: value } }) => ({
+        label,
+        value,
+      })) || [];
+  return availableOptions;
+}
