@@ -40,7 +40,6 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
   };
 
   const handleClose = (e) => {
-    // TODO(kilemensi): For some reason, e.target.value doesn't seem to work.
     const code = e.nativeEvent?.target?.dataset?.value;
     if (code && onSelectLocation) {
       onSelectLocation({ code });

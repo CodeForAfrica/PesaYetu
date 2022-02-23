@@ -154,7 +154,7 @@ export function computeLocationOptions(
   }
 
   const availableOptions =
-    [...(siblingsOrParent?.features ?? []), ...children?.features]
+    [...(siblingsOrParent?.features ?? []), ...(children?.features ?? [])]
       ?.filter(
         ({ properties: { code } }) =>
           code !== geography.code && locationCodes.includes(code)
