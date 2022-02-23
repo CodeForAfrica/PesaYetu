@@ -40,6 +40,9 @@ const singlePostFragment = gql`
     ${globalPostFields}
     blocksJSON
     content
+    customAuthor {
+      name
+    }
     excerpt
     ${seoPostFields}
     ${authorPostFields}

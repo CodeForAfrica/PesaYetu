@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Grid, Hidden, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -20,22 +20,44 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
         <Typography variant="h4" className={classes.title}>
           {title}
         </Typography>
-
-        <Carousel>
-          {items.map(({ imageProps, ...item }) => (
-            <Card
-              key={item.title}
-              {...item}
-              imageProps={imageProps}
-              classes={{
-                root: classes.card,
-                media: classes.cardMedia,
-                content: classes.cardContent,
-                contentTitle: classes.cardContentTitle,
-              }}
-            />
-          ))}
-        </Carousel>
+        <Hidden lgUp implementation="css">
+          <Carousel>
+            {items.map(({ imageProps, ...item }) => (
+              <Card
+                key={item.title}
+                {...item}
+                imageProps={imageProps}
+                classes={{
+                  root: classes.card,
+                  media: classes.cardMedia,
+                  content: classes.cardContent,
+                  contentTitle: classes.cardContentTitle,
+                  contentDescription: classes.cardContentDescription,
+                }}
+              />
+            ))}
+          </Carousel>
+        </Hidden>
+        <Hidden mdDown implementation="css">
+          <Grid container className={classes.list}>
+            {items.slice(0, 4).map(({ imageProps, ...item }) => (
+              <Grid item lg={3} key={item.href}>
+                <Card
+                  key={item.title}
+                  {...item}
+                  imageProps={imageProps}
+                  mediaProps={{ square: true }}
+                  classes={{
+                    root: classes.card,
+                    media: classes.cardMedia,
+                    content: classes.cardContent,
+                    contentDescription: classes.cardContentDescription,
+                  }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Hidden>
       </Section>
     </div>
   );

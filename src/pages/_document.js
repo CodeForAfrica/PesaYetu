@@ -9,12 +9,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
@@ -31,14 +25,6 @@ export default class MyDocument extends Document {
             });
           `,
             }}
-          />
-          {/* Used in page headers */}
-          <link
-            rel="preload"
-            href="/fonts/poppins-v15-latin-900.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin=""
           />
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />

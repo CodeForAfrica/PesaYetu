@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 
 import Card from "@/pesayetu/components/Card";
 
-function CarouselItem({ items, variant, ...props }) {
+function List({ items, variant, ...props }) {
   const classes = useStyles(props);
 
   if (!items?.length) {
@@ -19,10 +19,14 @@ function CarouselItem({ items, variant, ...props }) {
         <Grid key={item.slug} item xs={12} md={6} lg={4}>
           <Card
             key={item.slug}
+            {...props}
             {...item}
             imageProps={item.imageProps}
             classes={{
               media: clsx({ [classes.shadow]: variant === "embed" }),
+              mediaImage: clsx(classes.mediaImage, {
+                [classes.embedImage]: variant === "embed",
+              }),
             }}
             className={classes.story}
           />
@@ -32,7 +36,7 @@ function CarouselItem({ items, variant, ...props }) {
   );
 }
 
-CarouselItem.propTypes = {
+List.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       slug: PropTypes.string,
@@ -41,9 +45,9 @@ CarouselItem.propTypes = {
   variant: PropTypes.string,
 };
 
-CarouselItem.defaultProps = {
+List.defaultProps = {
   items: undefined,
   variant: undefined,
 };
 
-export default CarouselItem;
+export default List;

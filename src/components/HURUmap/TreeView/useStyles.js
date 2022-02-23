@@ -19,6 +19,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     alignItems: "center",
     justifyContent: "flex-end",
     fontWeight: 500,
+    letterSpacing: 0.6,
   },
   childLabel: {
     fontWeight: 300,

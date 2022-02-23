@@ -14,7 +14,7 @@ function a11yProps(name, index) {
   };
 }
 
-function Tabs({ activeTab, items, name: nameProp, ...props }) {
+function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
   const router = useRouter();
   const classes = useStyles(props);
   const [value, setValue] = useState(activeTab);
@@ -22,6 +22,9 @@ function Tabs({ activeTab, items, name: nameProp, ...props }) {
 
   const handleChange = (_event, newValue) => {
     setValue(newValue);
+    if (onChange) {
+      onChange(_event);
+    }
   };
 
   if (!items?.length) {
@@ -82,12 +85,14 @@ Tabs.propTypes = {
       children: PropTypes.string,
     })
   ),
+  onChange: PropTypes.func,
 };
 
 Tabs.defaultProps = {
   activeTab: 0,
   items: undefined,
   name: undefined,
+  onChange: undefined,
 };
 
 export default Tabs;

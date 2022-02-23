@@ -49,6 +49,7 @@ function StoriesInsights({ overline, title, stories, ...props }) {
       >
         {stories.map((story) => (
           <CarouselItem
+            {...props}
             key={story.slug}
             activeStep={currentSlide}
             onClick={handleDotClick}

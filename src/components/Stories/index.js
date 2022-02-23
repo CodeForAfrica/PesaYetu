@@ -1,94 +1,101 @@
-import { useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
-import { chunk } from "lodash";
+import { CircularProgress } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
-import CarouselItem from "./CarouselItem";
+import List from "./List";
 import useStyles from "./useStyles";
 
-import Carousel from "@/pesayetu/components/Carousel";
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
+import Pagination from "@/pesayetu/components/Pagination";
 import fetchAPI from "@/pesayetu/utils/fetchApi";
-import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
-
-const responsive = {
-  desktop: {
-    items: 1,
-  },
-  tablet: {
-    items: 1,
-  },
-};
 
 function Stories({
   featuredStoryProps,
-  items,
+  items: itemsProp,
   category,
   pagination,
+  page,
+  paginate,
   ...props
 }) {
   const classes = useStyles(props);
-  const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.up("md"));
-  const itemsToShow = isTablet ? 6 : 3;
   const variant = category === "insights" ? "embed" : undefined;
 
-  // Track all news, including initial news and additionally loaded pages.
-  const [allStories, setAllStories] = useState(items);
-  // Track carousel slide
-  const [nextItemIndex, setNextItemIndex] = useState();
-  const [paginator, setPaginator] = useState(pagination);
+  const [stories, setStories] = useState(itemsProp);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClickPage = (_, value) => {
+    if (paginate) {
+      paginate(value);
+    }
+  };
+
+  const { data, error } = useSWR("/api/wp/archive", (url) => {
+    let offset;
+    if (page === 1) {
+      offset = 0;
+    } else if (page === 2) {
+      offset = 6;
+    } else {
+      offset = (page - 2) * 9 + 6;
+    }
+    return fetchAPI(`${url}/?taxonomyId=${category}&offset=${offset}`);
+  });
 
   useEffect(() => {
-    setAllStories(items);
-  }, [items]);
+    if (!data && !error) {
+      setIsLoading(true);
+    } else {
+      if (data) {
+        setStories(data);
+      }
+      setIsLoading(false);
+    }
+  }, [data, error]);
 
-  const fetchMore =
-    paginator?.hasNextPage &&
-    allStories.length - nextItemIndex * itemsToShow <= itemsToShow;
-
-  const { data: moreStoriesProps } = useSWR(
-    fetchMore ? ["/api/wp/archive", category, paginator?.endCursor] : null,
-    (url, taxonomyId, cursor) =>
-      fetchAPI(`${url}/?taxonomyId=${taxonomyId}&cursor=${cursor}`)
-  );
-
-  if (fetchMore && moreStoriesProps) {
-    const moreFormatStories = formatStoryPosts(
-      moreStoriesProps?.posts,
-      featuredStoryProps
-    );
-    setAllStories([...allStories, ...(moreFormatStories ?? [])]);
-    const newPaginator = moreStoriesProps?.pagination;
-    setPaginator(newPaginator);
+  let items = stories;
+  if (page === 1) {
+    items = stories
+      ?.filter(({ slug }) => slug !== featuredStoryProps?.slug)
+      ?.slice(0, 6);
   }
 
-  const carouselItems = chunk(allStories, itemsToShow);
   return (
     <div className={classes.root}>
-      <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
-      <Carousel
-        responsive={responsive}
-        beforeChange={(nextSlide) => {
-          setNextItemIndex(nextSlide);
-        }}
-      >
-        {carouselItems.map((ci) => (
-          <CarouselItem items={ci} variant={variant} key={ci[0].slug} />
-        ))}
-      </Carousel>
+      {page === 1 && (
+        <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
+      )}
+      {isLoading && <CircularProgress classes={{ root: classes.progress }} />}
+      <List
+        items={items}
+        key={category}
+        variant={variant}
+        ctaText={featuredStoryProps.ctaText}
+      />
+      <Pagination
+        count={Math.ceil((pagination?.offsetPagination?.total ?? 0) / 9)}
+        onChangePage={handleClickPage}
+        page={page}
+        pageSize={9}
+      />
     </div>
   );
 }
 
 Stories.propTypes = {
   category: PropTypes.string,
-  featuredStoryProps: PropTypes.shape({}),
+  featuredStoryProps: PropTypes.shape({
+    slug: PropTypes.string,
+    ctaText: PropTypes.string,
+  }),
   items: PropTypes.arrayOf(PropTypes.shape({})),
+  page: PropTypes.number,
+  paginate: PropTypes.func,
   pagination: PropTypes.shape({
-    hasNextPage: PropTypes.bool,
+    offsetPagination: PropTypes.shape({
+      total: PropTypes.number,
+    }),
   }),
 };
 
@@ -96,7 +103,9 @@ Stories.defaultProps = {
   category: undefined,
   featuredStoryProps: undefined,
   items: undefined,
+  paginate: undefined,
   pagination: undefined,
+  page: undefined,
 };
 
 export default Stories;

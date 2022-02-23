@@ -1,9 +1,9 @@
-import { CircularProgress } from "@material-ui/core";
+import { Hidden, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { forwardRef, useState } from "react";
 
-import MemoizedProfileItems from "./MemoizedProfileItems";
+import ProfileItems from "./ProfileItems";
 
 import Print from "@/pesayetu/assets/icons/print.svg";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
@@ -58,8 +58,9 @@ const Profile = forwardRef(function Profile(
   {
     categories,
     dataNotAvailable,
-    locationCodes,
     isLoading,
+    isPinning,
+    locationCodes,
     onClickPin,
     onClickUnpin,
     onSelectLocation,
@@ -137,23 +138,25 @@ const Profile = forwardRef(function Profile(
         onClick={handleClick(primaryProfile)}
         {...primaryProfile.geography}
       />
-      {secondaryProfile ? (
-        <LocationHeader
-          variant="secondary"
-          onClick={handleClick(secondaryProfile)}
-          title={secondaryProfile.geography?.name}
-          {...secondaryProfile.geography}
-        />
-      ) : (
-        <PinAndCompare
-          {...props}
-          {...pinAndCompare}
-          onClose={handleClose}
-          onClickPin={handleClickPin}
-          options={options}
-        />
-      )}
-      <MemoizedProfileItems
+      <Hidden smDown implementation="css">
+        {secondaryProfile ? (
+          <LocationHeader
+            variant="secondary"
+            onClick={handleClick(secondaryProfile)}
+            title={secondaryProfile.geography?.name}
+            {...secondaryProfile.geography}
+          />
+        ) : (
+          <PinAndCompare
+            {...pinAndCompare}
+            isPinning={isPinning}
+            onClose={handleClose}
+            onClickPin={handleClickPin}
+            options={options}
+          />
+        )}
+      </Hidden>
+      <ProfileItems
         categories={categories}
         dataNotAvailable={dataNotAvailable}
         getSecondaryIndicator={getSecondaryIndicator}
@@ -176,8 +179,9 @@ Profile.propTypes = {
     })
   ),
   dataNotAvailable: PropTypes.string,
-  locationCodes: PropTypes.arrayOf(PropTypes.string),
   isLoading: PropTypes.bool,
+  isPinning: PropTypes.bool,
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
   onClickPin: PropTypes.func,
   onClickUnpin: PropTypes.func,
   onSelectLocation: PropTypes.func,
@@ -219,8 +223,9 @@ Profile.propTypes = {
 Profile.defaultProps = {
   categories: undefined,
   dataNotAvailable: undefined,
-  locationCodes: undefined,
   isLoading: undefined,
+  isPinning: undefined,
+  locationCodes: undefined,
   onClickPin: undefined,
   onClickUnpin: undefined,
   onSelectLocation: undefined,

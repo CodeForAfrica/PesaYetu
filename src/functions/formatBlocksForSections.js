@@ -119,7 +119,7 @@ async function formatPartners({
 function formatInsightsStories(attr) {
   const { stories, ...attributes } = attr;
   const formattedStories = stories?.map(
-    ({ story: { blocks, excerpt, uri: href, ...rest } }) => {
+    ({ story: { blocks, excerpt, uri, ...rest } }) => {
       const chartBlock = blocks?.find(
         (b) =>
           Object.hasOwnProperty.call(b, "name") &&
@@ -128,7 +128,7 @@ function formatInsightsStories(attr) {
       return {
         ...rest,
         description: excerpt ?? "",
-        href,
+        href: `/stories${uri}`,
         chart: chartBlock?.attributes?.chart ?? "",
       };
     }

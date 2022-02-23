@@ -33,7 +33,9 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
               />
               <Content
                 key={story.slug}
+                {...props}
                 {...story}
+                classes={{ description: classes.contentDescription }}
                 className={classes.content}
               />
             </Grid>
@@ -55,7 +57,13 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
             onClick={onClick}
             steps={steps}
           />
-          <Content key={story.slug} {...story} className={classes.content} />
+          <Content
+            key={story.slug}
+            {...props}
+            {...story}
+            classes={{ description: classes.contentDescription }}
+            className={classes.content}
+          />
         </Section>
       </Hidden>
     </>

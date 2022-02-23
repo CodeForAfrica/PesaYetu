@@ -1,3 +1,5 @@
-export default async function fetchJson(...options) {
-  return fetch(...options).then((res) => res.json());
+async function fetchJson(resource, init) {
+  return fetch(resource, init).then((res) => res.json());
 }
+
+export default fetchJson;

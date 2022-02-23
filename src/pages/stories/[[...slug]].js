@@ -28,6 +28,10 @@ export default function Index({
     authorName = post?.author?.node?.nickname ?? post?.author?.node?.slug;
   }
 
+  if (post?.customAuthor?.name?.length) {
+    authorName = post.customAuthor.name;
+  }
+
   return (
     <Page {...props} post={post}>
       {archive ? (
@@ -77,6 +81,9 @@ Index.propTypes = {
   post: PropTypes.shape({
     slug: PropTypes.string,
     date: PropTypes.string,
+    customAuthor: PropTypes.shape({
+      name: PropTypes.string,
+    }),
     featuredImage: PropTypes.shape({
       node: PropTypes.shape({
         sourceUrl: PropTypes.string,
@@ -125,12 +132,12 @@ export async function getStaticProps({ params, preview, previewData }) {
           href: `/stories/${categorySlug}`,
           pagination: categoryPagination,
           posts: await Promise.all(
-            categoryPosts.map(async (categoryPost) => {
+            categoryPosts?.map(async (categoryPost) => {
               const imageProps = await getImagePlaceholder(
                 categoryPost.featuredImage?.node?.sourceUrl
               );
               return { ...categoryPost, imageProps };
-            })
+            }) ?? []
           ),
         };
       })
@@ -163,11 +170,7 @@ export async function getStaticProps({ params, preview, previewData }) {
       }
     ) || []
   );
-  const relatedPosts =
-    formatStoryPosts(relatedPostsNode, {
-      slug: props?.post?.slug,
-      ctaText: blocks?.relatedPosts?.ctaText,
-    }) || [];
+  const relatedPosts = formatStoryPosts(relatedPostsNode) || [];
 
   return {
     props: {

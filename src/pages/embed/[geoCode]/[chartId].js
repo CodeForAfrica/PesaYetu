@@ -4,35 +4,32 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import createChartImage from "@/pesayetu/lib/createChartImage";
-import fetchProfile from "@/pesayetu/utils/fetchProfile";
-import fetchProfileConfigurations from "@/pesayetu/utils/fetchProfileConfigurations";
+import { fetchProfile, fetchProfileGeography } from "@/pesayetu/lib/hurumap";
+import site from "@/pesayetu/utils/site";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
 });
 
 export default function Embed({
-  description,
-  geoCode,
-  image,
   indicator,
+  geoCode,
+  profileNames,
+  secondaryIndicator,
   title,
   ...props
 }) {
   return (
     <>
-      <NextSeo
-        description={description}
-        image={image}
-        title={title}
-        {...props}
-      />
+      <NextSeo title={title} {...props} />
       <div>
         <Chart
           {...props}
           indicator={indicator}
-          title={title}
           geoCode={geoCode}
+          profileNames={profileNames}
+          secondaryIndicator={secondaryIndicator}
+          title={title}
         />
       </div>
     </>
@@ -44,6 +41,8 @@ Embed.propTypes = {
   geoCode: PropTypes.string,
   image: PropTypes.string,
   indicator: PropTypes.shape({}),
+  secondaryIndicator: PropTypes.shape({}),
+  profileNames: PropTypes.shape({}),
   title: PropTypes.string,
 };
 
@@ -52,6 +51,8 @@ Embed.defaultProps = {
   geoCode: undefined,
   image: undefined,
   indicator: undefined,
+  secondaryIndicator: undefined,
+  profileNames: undefined,
   title: undefined,
 };
 
@@ -62,70 +63,51 @@ export async function getStaticPaths() {
   };
 }
 
-export function getIndicatorsArray(data, parent) {
-  return Object.keys(data).reduce((acc, label) => {
-    const indicators = Object.keys(data[label]?.subcategories).reduce(
-      (indiAcc, child) => {
-        const indObj = Object.keys(
-          data[label]?.subcategories[child]?.indicators ?? []
-        ).map((indicator) => {
-          return {
-            index: `${indicator}-${data[label]?.subcategories[child]?.indicators[indicator]?.id}`,
-            title: indicator,
-            indicator: {
-              ...data[label]?.subcategories?.[child]?.indicators?.[indicator],
-              parentData: parent.data
-                ? parent?.data?.[label]?.subcategories?.[child]?.indicators?.[
-                    indicator
-                  ]?.data ?? null
-                : null,
-              parentName: parent?.name ?? null,
-            },
-          };
-        });
-        return [...indiAcc, ...indObj];
-      },
-      []
-    );
-    return [...acc, ...indicators];
-  }, []);
+export function getIndicators(categories) {
+  return categories
+    .flatMap((category) => category.children)
+    .flatMap((subcategory) => subcategory.children);
 }
 
 export async function getStaticProps({
   params: { geoCode: originalCode, chartId },
 }) {
-  const apiUri = process.env.HURUMAP_API_URL;
-  const { locationCodes } = await fetchProfileConfigurations();
-  const [primaryCode, secondaryCode] = originalCode
+  const geoCodes = originalCode
     .split("-vs-")
     .map((c) => c.trim().toLowerCase())
     .filter((c) => c);
-
-  if (
-    !(
-      locationCodes.includes(primaryCode) &&
-      (!secondaryCode || locationCodes.includes(secondaryCode))
-    )
-  ) {
+  const { locationCodes } = await fetchProfile();
+  if (!geoCodes.every((gC) => locationCodes.includes(gC))) {
     return {
       notFound: true,
     };
   }
 
+  const [primaryCode, secondaryCode] = geoCodes;
   const {
-    data: primaryProfileData,
-    parent: primaryProfileParent,
-    geography: { name: primaryName },
-  } = await fetchProfile(apiUri, primaryCode);
-  const primaryProfileIndicators = getIndicatorsArray(
-    primaryProfileData,
-    primaryProfileParent
-  );
-  const indicator = primaryProfileIndicators.find(
+    items: primaryProfileCategories,
+    geography: { name: primaryName = "" },
+  } = await fetchProfileGeography(primaryCode);
+  const primaryProfileIndicators = getIndicators(primaryProfileCategories);
+  let primaryIndicator = primaryProfileIndicators.find(
     (p) => p?.indicator?.id === parseInt(chartId, 10)
   );
 
-  if (!indicator) {
+  let secondaryIndicator = null;
+  let secondaryName = null;
+  if (secondaryCode) {
+    const { items: secondaryProfileCategories, geography: secondaryGeography } =
+      await fetchProfileGeography(secondaryCode);
+    ({ name: secondaryName = "" } = secondaryGeography);
+    const secondaryProfileIndicators = getIndicators(
+      secondaryProfileCategories
+    );
+    secondaryIndicator = secondaryProfileIndicators.find(
+      (p) => p?.indicator?.id === parseInt(chartId, 10)
+    );
+  }
+
+  if (!(primaryIndicator || secondaryIndicator)) {
     return {
       notFound: true,
     };
@@ -133,43 +115,36 @@ export async function getStaticProps({
 
   const profileNames = {
     primary: primaryName,
-    secondary: "",
+    secondary: secondaryName,
   };
-
-  let title = indicator?.title ?? null;
-
-  let secondaryIndicator = null;
-  if (secondaryCode) {
-    const {
-      data: secondaryProfileData,
-      parent: secondaryProfileParent,
-      geography: { name: secondaryName },
-    } = await fetchProfile(apiUri, secondaryCode);
-    const secondaryProfileIndicators = getIndicatorsArray(
-      secondaryProfileData,
-      secondaryProfileParent
-    );
-    secondaryIndicator = secondaryProfileIndicators.find(
-      (p) => p?.indicator?.id === parseInt(chartId, 10)
-    );
-    profileNames.secondary = secondaryName;
-
-    title = title ? `${title} | ${primaryName} vs ${secondaryName}` : null;
+  // Primary **must always** exist but secondary is optional
+  if (!primaryIndicator) {
+    primaryIndicator = secondaryIndicator;
+    profileNames.primary = secondaryName;
+    profileNames.secondary = primaryName;
+    secondaryIndicator = null;
+  }
+  let title = `${primaryIndicator.title || ""} | ${profileNames.primary}`;
+  if (secondaryIndicator) {
+    title = `${title} vs ${secondaryName}`;
   }
 
   const isCompare = !!secondaryCode;
   const image = await createChartImage(
     originalCode,
     chartId,
-    indicator?.indicator,
+    primaryIndicator.indicator,
     secondaryIndicator ?? { indicator: null },
     isCompare,
     profileNames
   );
-  const url = `${process.env.NEXT_PUBLIC_APP_URL}embed/${originalCode}/${chartId}`;
+  const url = new URL(
+    `/embed/${originalCode}/${chartId}`,
+    site.environmentUrl
+  ).toString();
   const openGraph = {
     title,
-    description: indicator?.description ?? null,
+    description: primaryIndicator.description || null,
     url,
     images: [{ url: image }],
   };
@@ -179,9 +154,9 @@ export async function getStaticProps({
 
   return {
     props: {
-      description: indicator?.indicator?.description ?? null,
+      description: primaryIndicator.indicator?.description ?? null,
       geoCode: originalCode,
-      indicator: indicator?.indicator ?? null,
+      indicator: primaryIndicator?.indicator ?? null,
       isCompare,
       openGraph,
       profileNames,
