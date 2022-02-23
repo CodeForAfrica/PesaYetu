@@ -1,4 +1,4 @@
-import { Hidden, CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { forwardRef, useState } from "react";
@@ -9,6 +9,7 @@ import Print from "@/pesayetu/assets/icons/print.svg";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import PinAndCompare from "@/pesayetu/components/HURUmap/PinAndCompare";
 import { hurumapArgs } from "@/pesayetu/config";
+import { computeLocationOptions } from "@/pesayetu/lib/hurumap";
 
 const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
@@ -37,23 +38,6 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   },
 }));
 
-function computeOptions(primaryProfile, locationCodes) {
-  const { geography, geometries } = primaryProfile;
-  // siblings will be on the last element of the parents array.
-  const siblings = geometries?.parents?.slice(-1)?.[0];
-  const availableOptions =
-    siblings?.features
-      ?.filter(
-        ({ properties: { code } }) =>
-          code !== geography.code && locationCodes.includes(code)
-      )
-      ?.map(({ properties: { name: label, code: value } }) => ({
-        label,
-        value,
-      })) || [];
-  return availableOptions;
-}
-
 const Profile = forwardRef(function Profile(
   {
     categories,
@@ -66,13 +50,16 @@ const Profile = forwardRef(function Profile(
     onSelectLocation,
     primaryProfile,
     secondaryProfile,
+    isMobile,
     ...props
   },
   ref
 ) {
   const classes = useStyles(props);
   const { pinAndCompare } = hurumapArgs;
-  const [options] = useState(computeOptions(primaryProfile, locationCodes));
+  const [options] = useState(
+    computeLocationOptions(primaryProfile, locationCodes, isMobile)
+  );
 
   const handleClickPin = (e) => {
     if (onClickPin) {
@@ -138,24 +125,23 @@ const Profile = forwardRef(function Profile(
         onClick={handleClick(primaryProfile)}
         {...primaryProfile.geography}
       />
-      <Hidden smDown implementation="css">
-        {secondaryProfile ? (
-          <LocationHeader
-            variant="secondary"
-            onClick={handleClick(secondaryProfile)}
-            title={secondaryProfile.geography?.name}
-            {...secondaryProfile.geography}
-          />
-        ) : (
-          <PinAndCompare
-            {...pinAndCompare}
-            isPinning={isPinning}
-            onClose={handleClose}
-            onClickPin={handleClickPin}
-            options={options}
-          />
-        )}
-      </Hidden>
+      {secondaryProfile ? (
+        <LocationHeader
+          variant="secondary"
+          onClick={handleClick(secondaryProfile)}
+          title={secondaryProfile.geography?.name}
+          {...secondaryProfile.geography}
+        />
+      ) : (
+        <PinAndCompare
+          {...pinAndCompare}
+          isMobile={isMobile}
+          isPinning={isPinning}
+          onClose={handleClose}
+          onClickPin={handleClickPin}
+          options={options}
+        />
+      )}
       <ProfileItems
         categories={categories}
         dataNotAvailable={dataNotAvailable}
@@ -180,6 +166,7 @@ Profile.propTypes = {
   ),
   dataNotAvailable: PropTypes.string,
   isLoading: PropTypes.bool,
+  isMobile: PropTypes.bool,
   isPinning: PropTypes.bool,
   locationCodes: PropTypes.arrayOf(PropTypes.string),
   onClickPin: PropTypes.func,
@@ -224,6 +211,7 @@ Profile.defaultProps = {
   categories: undefined,
   dataNotAvailable: undefined,
   isLoading: undefined,
+  isMobile: false,
   isPinning: undefined,
   locationCodes: undefined,
   onClickPin: undefined,
