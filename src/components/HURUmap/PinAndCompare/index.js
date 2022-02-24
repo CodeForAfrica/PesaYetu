@@ -84,7 +84,7 @@ function PinAndCompare({
         options={options}
         placeholder={placeholder}
         selected={selected}
-        classes={{ select: classes.locationSelect }}
+        classes={{ select: classes.locationSelect, paper: classes.selectPaper }}
       />
     </Box>
   );

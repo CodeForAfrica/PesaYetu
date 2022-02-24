@@ -23,6 +23,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     paddingTop: typography.pxToRem(10),
     paddingBottom: typography.pxToRem(10),
   },
+  selectPaper: {
+    height: typography.pxToRem(310),
+  },
 }));
 
 export default useStyles;
