@@ -46,8 +46,8 @@ Explore.defaultProps = {
 const postType = "page";
 
 export async function getStaticPaths() {
-  const { locationCodes } = await fetchProfile();
-  const paths = locationCodes.map((locationCode) => ({
+  const { locations } = await fetchProfile();
+  const paths = locations.map(({ code: locationCode }) => ({
     params: { slug: [locationCode] },
   }));
 
@@ -71,7 +71,7 @@ export async function getStaticProps({ preview, previewData, params }) {
   }
 
   const blocks = await formatBlocksForSections(props?.post?.blocks);
-  const { locationCodes, preferredChildren } = await fetchProfile();
+  const { locations, preferredChildren } = await fetchProfile();
   const [originalCode] = params?.slug || [""];
   const code = originalCode.trim().toLowerCase();
 
@@ -97,6 +97,7 @@ export async function getStaticProps({ preview, previewData, params }) {
     };
   }
 
+  const locationCodes = locations.map(({ code: locationCode }) => locationCode);
   const geoCodes = code
     .split("-vs-")
     .map((c) => c.trim())
@@ -119,7 +120,7 @@ export async function getStaticProps({ preview, previewData, params }) {
     props: {
       ...props,
       blocks,
-      locationCodes,
+      locations,
       profile,
       variant: "explore",
       preferredChildren,

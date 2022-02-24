@@ -10,13 +10,13 @@ export async function fetchProfile() {
     new URL("/api/v1/profiles/1/?format=json", apiUrl)
   );
 
-  const locationCodes = (
-    Object.keys(configuration?.featured_geographies)?.reduce((acc, v) => {
-      return acc.concat(configuration?.featured_geographies[v]);
-    }, []) || []
-  ).map((l) => l.toLowerCase());
+  const locations = configuration?.featured_locations?.map(
+    ({ name, code, level }) => {
+      return { name, level, code: code.toLowerCase() };
+    }
+  );
 
-  return { locationCodes, preferredChildren: configuration.preferred_children };
+  return { locations, preferredChildren: configuration.preferred_children };
 }
 
 function formatProfileGeographyData(data, parent) {

@@ -76,7 +76,8 @@ export async function getStaticProps({
     .split("-vs-")
     .map((c) => c.trim().toLowerCase())
     .filter((c) => c);
-  const { locationCodes } = await fetchProfile();
+  const { locations } = await fetchProfile();
+  const locationCodes = locations?.map(({ code }) => code) ?? [];
   if (!geoCodes.every((gC) => locationCodes.includes(gC))) {
     return {
       notFound: true,
@@ -94,7 +95,7 @@ export async function getStaticProps({
   );
 
   let secondaryIndicator = null;
-  let secondaryName = null;
+  let secondaryName = "";
   if (secondaryCode) {
     const { items: secondaryProfileCategories, geography: secondaryGeography } =
       await fetchProfileGeography(secondaryCode);
