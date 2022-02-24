@@ -10,13 +10,11 @@ export async function fetchProfile() {
     new URL("/api/v1/profiles/1/?format=json", apiUrl)
   );
 
-  const locations = (
-    Object.keys(configuration?.featured_locations)?.reduce((acc, v) => {
-      return acc.concat(configuration?.featured_locations[v]);
-    }, []) || []
-  ).map(({ name, code }) => {
-    return { name, code: code.toLowerCase() };
-  });
+  const locations = configuration?.featured_locations?.map(
+    ({ name, code, level }) => {
+      return { name, level, code: code.toLowerCase() };
+    }
+  );
 
   return { locations, preferredChildren: configuration.preferred_children };
 }
