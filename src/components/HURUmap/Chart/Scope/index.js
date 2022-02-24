@@ -15,8 +15,18 @@ export default function Scope(
   transform = []
 ) {
   const { primary_group: primaryGroup, groups } = metadata;
+  const groupField = config?.group_field;
   const stackedField = config?.stacked_field;
-  const nestedFields = config?.nest_fields ?? [primaryGroup];
+  const nestedFields = config?.nest_fields;
+
+  let groupBy = [primaryGroup];
+  if (chartType === "stacked" && stackedField) {
+    groupBy = [primaryGroup, stackedField];
+  } else if (chartType === "treemap" && nestedFields) {
+    groupBy = nestedFields;
+  } else if (chartType === "line" && groupField) {
+    groupBy = [primaryGroup, groupField];
+  }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
 
@@ -72,13 +82,7 @@ export default function Scope(
         },
       ]),
     ],
-    signals: signals(
-      chartType,
-      filterSignals,
-      nestedFields[0] || primaryGroup,
-      chartType === "stacked" ? [primaryGroup, stackedField] : nestedFields,
-      config
-    ),
+    signals: signals(chartType, filterSignals, primaryGroup, groupBy, config),
     marks: [
       {
         type: "group",

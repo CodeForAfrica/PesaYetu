@@ -94,7 +94,7 @@ export async function getStaticProps({
   );
 
   let secondaryIndicator = null;
-  let secondaryName = null;
+  let secondaryName = "";
   if (secondaryCode) {
     const { items: secondaryProfileCategories, geography: secondaryGeography } =
       await fetchProfileGeography(secondaryCode);
