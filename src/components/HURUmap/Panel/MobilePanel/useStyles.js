@@ -3,6 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(
   ({ typography, palette, zIndex, breakpoints }) => ({
     root: {},
+    dataNotAvail: {
+      color: "#666666",
+      fontWeight: "bold",
+      fontSize: typography.pxToRem(10),
+      lineHeight: 16 / 10,
+      letterSpacing: typography.pxToRem(0.8),
+      margin: `${typography.pxToRem(20)} 0`,
+      textTransform: "uppercase",
+    },
     locationRoot: {
       scrollMargin: typography.pxToRem(200),
     },

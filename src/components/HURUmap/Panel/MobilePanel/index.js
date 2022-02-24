@@ -1,9 +1,8 @@
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import RichData from "./RichData";
-import useStyles from "./useStyles";
 
 import { ReactComponent as TopIcon } from "@/pesayetu/assets/icons/Component 130 – 1.svg";
 import Print from "@/pesayetu/assets/icons/print.svg";
@@ -14,9 +13,14 @@ import Tabs from "@/pesayetu/components/Tabs";
 import { hurumapArgs } from "@/pesayetu/config";
 import { computeLocationOptions } from "@/pesayetu/lib/hurumap";
 
+// being last is necessary for style override to work
+// eslint-disable-next-line import/order
+import useStyles from "./useStyles";
+
 function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
   const classes = useStyles(props);
-  const { locationCodes, onSelectLocation, primaryProfile } = props;
+  const { locationCodes, onSelectLocation, primaryProfile, dataNotAvailable } =
+    props;
   const { geography, items } = primaryProfile;
 
   const { pinAndCompare } = hurumapArgs;
@@ -62,6 +66,9 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
             onClose={handleClose}
             options={options}
           />
+          <Typography
+            className={classes.dataNotAvail}
+          >{`${geography.name} ${dataNotAvailable}`}</Typography>
         </Section>
       )}
       {/* key is needed to re-render the component when prop changes e.g.
@@ -95,24 +102,26 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
 }
 
 MobilePanel.propTypes = {
+  activeType: PropTypes.string,
+  dataNotAvailable: PropTypes.string,
+  locationCodes: PropTypes.arrayOf(PropTypes.string),
+  onSelectLocation: PropTypes.func,
   primaryProfile: PropTypes.shape({
     items: PropTypes.arrayOf(PropTypes.shape({})),
     geography: PropTypes.shape({
       name: PropTypes.string,
     }),
   }),
-  locationCodes: PropTypes.arrayOf(PropTypes.string),
-  onSelectLocation: PropTypes.func,
-  activeType: PropTypes.string,
   scrollToTopLabel: PropTypes.string,
 };
 
 MobilePanel.defaultProps = {
-  primaryProfile: undefined,
   activeType: undefined,
-  scrollToTopLabel: undefined,
+  dataNotAvailable: undefined,
   locationCodes: undefined,
   onSelectLocation: undefined,
+  primaryProfile: undefined,
+  scrollToTopLabel: undefined,
 };
 
 export default MobilePanel;
