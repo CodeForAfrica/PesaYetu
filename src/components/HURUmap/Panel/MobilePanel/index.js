@@ -1,6 +1,6 @@
 import { Button, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 import RichData from "./RichData";
 
@@ -11,7 +11,6 @@ import PinAndCompare from "@/pesayetu/components/HURUmap/PinAndCompare";
 import Section from "@/pesayetu/components/Section";
 import Tabs from "@/pesayetu/components/Tabs";
 import { hurumapArgs } from "@/pesayetu/config";
-import { computeLocationOptions } from "@/pesayetu/lib/hurumap";
 
 // being last is necessary for style override to work
 // eslint-disable-next-line import/order
@@ -19,14 +18,10 @@ import useStyles from "./useStyles";
 
 function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
   const classes = useStyles(props);
-  const { locationCodes, onSelectLocation, primaryProfile, dataNotAvailable } =
-    props;
+  const { onSelectLocation, primaryProfile, dataNotAvailable } = props;
   const { geography, items } = primaryProfile;
 
   const { pinAndCompare } = hurumapArgs;
-  const [options] = useState(
-    computeLocationOptions(primaryProfile, locationCodes, true)
-  );
 
   const activeTab = Math.max(
     items?.findIndex(({ title }) => title === activeType),
@@ -61,10 +56,11 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
             {...geography}
           />
           <PinAndCompare
+            {...props}
             {...pinAndCompare}
             isMobile
             onClose={handleClose}
-            options={options}
+            geographyCode={geography.code}
           />
           <Typography
             className={classes.dataNotAvail}
@@ -104,12 +100,12 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
 MobilePanel.propTypes = {
   activeType: PropTypes.string,
   dataNotAvailable: PropTypes.string,
-  locationCodes: PropTypes.arrayOf(PropTypes.string),
   onSelectLocation: PropTypes.func,
   primaryProfile: PropTypes.shape({
     items: PropTypes.arrayOf(PropTypes.shape({})),
     geography: PropTypes.shape({
       name: PropTypes.string,
+      code: PropTypes.string,
     }),
   }),
   scrollToTopLabel: PropTypes.string,
@@ -118,7 +114,6 @@ MobilePanel.propTypes = {
 MobilePanel.defaultProps = {
   activeType: undefined,
   dataNotAvailable: undefined,
-  locationCodes: undefined,
   onSelectLocation: undefined,
   primaryProfile: undefined,
   scrollToTopLabel: undefined,

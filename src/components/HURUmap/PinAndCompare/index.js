@@ -17,7 +17,8 @@ function PinAndCompare({
   onChange,
   onClose,
   onClickPin,
-  options,
+  locations,
+  geographyCode,
   placeholder,
   isMobile,
   ...props
@@ -25,6 +26,12 @@ function PinAndCompare({
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const options = locations
+    ?.filter(({ code }) => code !== geographyCode)
+    ?.map(({ code: value, name: label }) => ({
+      label,
+      value,
+    }));
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -88,9 +95,10 @@ PinAndCompare.propTypes = {
   onChange: PropTypes.func,
   onClickPin: PropTypes.func,
   onClose: PropTypes.func,
-  options: PropTypes.arrayOf(PropTypes.shape({})),
+  locations: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
   isMobile: PropTypes.bool,
+  geographyCode: PropTypes.string,
 };
 
 PinAndCompare.defaultProps = {
@@ -98,9 +106,10 @@ PinAndCompare.defaultProps = {
   onChange: undefined,
   onClickPin: undefined,
   onClose: undefined,
-  options: undefined,
+  locations: undefined,
   placeholder: undefined,
   isMobile: false,
+  geographyCode: undefined,
 };
 
 export default PinAndCompare;

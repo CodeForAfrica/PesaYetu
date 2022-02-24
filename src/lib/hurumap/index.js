@@ -10,13 +10,15 @@ export async function fetchProfile() {
     new URL("/api/v1/profiles/1/?format=json", apiUrl)
   );
 
-  const locationCodes = (
-    Object.keys(configuration?.featured_geographies)?.reduce((acc, v) => {
-      return acc.concat(configuration?.featured_geographies[v]);
+  const locations = (
+    Object.keys(configuration?.featured_locations)?.reduce((acc, v) => {
+      return acc.concat(configuration?.featured_locations[v]);
     }, []) || []
-  ).map((l) => l.toLowerCase());
+  ).map(({ name, code }) => {
+    return { name, code: code.toLowerCase() };
+  });
 
-  return { locationCodes, preferredChildren: configuration.preferred_children };
+  return { locations, preferredChildren: configuration.preferred_children };
 }
 
 function formatProfileGeographyData(data, parent) {
@@ -134,34 +136,4 @@ export async function fetchProfileGeography(geoCode) {
     parent,
     items: formatProfileGeographyData(data, parent),
   };
-}
-
-export function computeLocationOptions(
-  primaryProfile,
-  locationCodes,
-  isMobile
-) {
-  const { geography, geometries } = primaryProfile;
-  // siblings will be on the last element of the parents array.
-  let siblingsOrParent = geometries?.parents?.slice(-1)?.[0];
-  const children = Object.values(geometries?.children)?.[0];
-
-  if (isMobile) {
-    // include siblings, and parent
-    siblingsOrParent = {
-      features: geometries?.parents?.flatMap(({ features }) => features),
-    };
-  }
-
-  const availableOptions =
-    [...(siblingsOrParent?.features ?? []), ...(children?.features ?? [])]
-      ?.filter(
-        ({ properties: { code } }) =>
-          code !== geography.code && locationCodes.includes(code)
-      )
-      ?.map(({ properties: { name: label, code: value } }) => ({
-        label,
-        value,
-      })) || [];
-  return availableOptions;
 }

@@ -25,12 +25,7 @@ function initialState(profiles, onClick) {
   };
 }
 
-function ExplorePage({
-  locationCodes,
-  panelProps,
-  profile: profileProp,
-  ...props
-}) {
+function ExplorePage({ panelProps, profile: profileProp, ...props }) {
   const classes = useStyles(props);
   // NOTE: This setState and the corresponding useEffect are "hacks" since at
   //       this point, useReducer hasn't been called yet so we can't use
@@ -126,7 +121,6 @@ function ExplorePage({
             geometries={geometries}
             isPinOrCompare={state.isPinning || state.isCompare}
             isPinning={state.isPinning}
-            locationCodes={locationCodes}
             onClick={handleClickMap}
             onClickUnpin={handleClickUnpin}
             zoom={7}
@@ -142,10 +136,10 @@ function ExplorePage({
         </div>
       </Hidden>
       <Panel
+        {...props}
         isCompare={state.isCompare}
         isLoading={isLoading}
         isPinning={state.isPinning}
-        locationCodes={locationCodes}
         onClickPin={handleClickPin}
         onClickUnpin={handleClickUnpin}
         onSelectLocation={handleSelectLocation}
@@ -159,7 +153,6 @@ function ExplorePage({
 
 ExplorePage.propTypes = {
   apiUri: PropTypes.string,
-  locationCodes: PropTypes.arrayOf(PropTypes.string),
   panelProps: PropTypes.shape({}),
   profile: PropTypes.oneOfType([
     PropTypes.shape({
@@ -181,7 +174,6 @@ ExplorePage.propTypes = {
 
 ExplorePage.defaultProps = {
   apiUri: undefined,
-  locationCodes: undefined,
   panelProps: undefined,
   profile: undefined,
 };

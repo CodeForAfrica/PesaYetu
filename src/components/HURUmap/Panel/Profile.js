@@ -1,7 +1,7 @@
 import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 
 import ProfileItems from "./ProfileItems";
 
@@ -9,7 +9,6 @@ import Print from "@/pesayetu/assets/icons/print.svg";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import PinAndCompare from "@/pesayetu/components/HURUmap/PinAndCompare";
 import { hurumapArgs } from "@/pesayetu/config";
-import { computeLocationOptions } from "@/pesayetu/lib/hurumap";
 
 const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
   profile: {
@@ -44,22 +43,17 @@ const Profile = forwardRef(function Profile(
     dataNotAvailable,
     isLoading,
     isPinning,
-    locationCodes,
     onClickPin,
     onClickUnpin,
     onSelectLocation,
     primaryProfile,
     secondaryProfile,
-    isMobile,
     ...props
   },
   ref
 ) {
   const classes = useStyles(props);
   const { pinAndCompare } = hurumapArgs;
-  const [options] = useState(
-    computeLocationOptions(primaryProfile, locationCodes, isMobile)
-  );
 
   const handleClickPin = (e) => {
     if (onClickPin) {
@@ -134,12 +128,12 @@ const Profile = forwardRef(function Profile(
         />
       ) : (
         <PinAndCompare
+          {...props}
           {...pinAndCompare}
-          isMobile={isMobile}
+          geography={primaryProfile?.geography?.code}
           isPinning={isPinning}
           onClose={handleClose}
           onClickPin={handleClickPin}
-          options={options}
         />
       )}
       <ProfileItems
@@ -166,9 +160,7 @@ Profile.propTypes = {
   ),
   dataNotAvailable: PropTypes.string,
   isLoading: PropTypes.bool,
-  isMobile: PropTypes.bool,
   isPinning: PropTypes.bool,
-  locationCodes: PropTypes.arrayOf(PropTypes.string),
   onClickPin: PropTypes.func,
   onClickUnpin: PropTypes.func,
   onSelectLocation: PropTypes.func,
@@ -211,9 +203,7 @@ Profile.defaultProps = {
   categories: undefined,
   dataNotAvailable: undefined,
   isLoading: undefined,
-  isMobile: false,
   isPinning: undefined,
-  locationCodes: undefined,
   onClickPin: undefined,
   onClickUnpin: undefined,
   onSelectLocation: undefined,
