@@ -1,4 +1,5 @@
 import { ButtonBase, IconButton, Grid, Typography } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Image from "next/image";
 import Papa from "papaparse";
@@ -25,6 +26,7 @@ function Download({
 }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
+  const { palette } = useTheme();
 
   const {
     indicatorTitle: {
@@ -56,6 +58,7 @@ function Download({
     view?.signal("projectLogoUrl", projectlogo);
     view?.signal("logoWidth", 60);
     view?.signal("logoUrl", cfalogo);
+    view?.signal("background", palette.common.white);
 
     if (layout === 0) {
       view?.signal("titleY", 20);
