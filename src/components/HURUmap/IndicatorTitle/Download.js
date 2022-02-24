@@ -1,4 +1,5 @@
 import { ButtonBase, IconButton, Grid, Typography } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Image from "next/image";
 import Papa from "papaparse";
@@ -13,6 +14,9 @@ import cfalogo from "@/pesayetu/assets/logos/Group4462.svg";
 import projectlogo from "@/pesayetu/assets/logos/Group5002.svg";
 import { hurumapArgs } from "@/pesayetu/config";
 
+// https://vega.github.io/vega/docs/api/view/#view_toImageURL
+const IMAGE_SCALE_FACTOR = 2;
+
 function Download({
   title,
   chartValue,
@@ -25,6 +29,7 @@ function Download({
 }) {
   const classes = useStyles(props);
   const [view, setView] = useState(null);
+  const { palette } = useTheme();
 
   const {
     indicatorTitle: {
@@ -56,6 +61,7 @@ function Download({
     view?.signal("projectLogoUrl", projectlogo);
     view?.signal("logoWidth", 60);
     view?.signal("logoUrl", cfalogo);
+    view?.signal("background", palette.common.white);
 
     if (layout === 0) {
       view?.signal("titleY", 20);
@@ -77,7 +83,7 @@ function Download({
     await view?.runAsync();
 
     const imgType = type.toLowerCase();
-    const url = await view.toImageURL(imgType);
+    const url = await view.toImageURL(imgType, IMAGE_SCALE_FACTOR);
     const link = document.createElement("a");
     link.download = `${title}.${imgType}`;
     link.href = url;
