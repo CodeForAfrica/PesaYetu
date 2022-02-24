@@ -158,7 +158,7 @@ export default function LineChartScope(
             facet: {
               name: "primary_formatted_series",
               data: "primary_formatted",
-              groupby: groupField ?? [],
+              groupby: groupField || primaryGroup,
             },
           },
           encode: {
@@ -216,11 +216,11 @@ export default function LineChartScope(
               encode: {
                 enter: {
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
+                  stroke: { scale: "color", field: groupField || primaryGroup },
                   y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   strokeWidth: { value: 2 },
                 },
                 update: {
-                  stroke: { scale: "color", field: groupField || primaryGroup },
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
                   y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   interpolate: { signal: "interpolate" },
