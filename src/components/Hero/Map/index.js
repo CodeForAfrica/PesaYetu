@@ -43,13 +43,15 @@ function Map({
   const classes = useStyles(props);
   const router = useRouter();
 
+  const countyCodes = featuredCounties?.map(({ code }) => code);
+
   const onEachFeature = (feature, layer) => {
     layer.setStyle({
       fillColor: theme.palette.background.default,
       fillOpacity: 1,
     });
 
-    if (featuredCounties.includes(feature.properties.code)) {
+    if (countyCodes.includes(feature.properties.code)) {
       layer.setStyle({
         weight: 1.5,
         dashArray: 0,
@@ -115,7 +117,9 @@ Map.propTypes = {
   boundary: PropTypes.shape({}),
   geoJSONStyles: PropTypes.shape({}),
   setHoverGeo: PropTypes.func,
-  featuredCounties: PropTypes.arrayOf(PropTypes.string),
+  featuredCounties: PropTypes.arrayOf(
+    PropTypes.shape({ code: PropTypes.string })
+  ),
 };
 
 Map.defaultProps = {
