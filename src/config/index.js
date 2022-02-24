@@ -176,12 +176,12 @@ export const navigationArgs = {
   },
   socialLinks: [
     {
-      href: "https://twitter.com/",
+      href: "https://twitter.com/Code4Africa",
       src: Twitter,
       label: "twitter",
     },
     {
-      href: "https://web.facebook.com/?_rdc=1&_rdr",
+      href: "https://www.facebook.com/CodeForAfrica",
       src: Facebook,
       label: "facebook",
     },
