@@ -23,12 +23,12 @@ function Map({
   className,
   geography,
   geometries,
+  locations,
   preferredChildren,
   styles,
   tileLayers,
   zoom,
   isPinOrCompare,
-  locations,
   ...props
 }) {
   const classes = useStyles(props);
@@ -111,10 +111,10 @@ function Map({
       <Layers
         {...props}
         geography={geography}
+        locationCodes={locationCodes}
         parentsGeometries={geometries.parents}
         selectedBoundary={selectedBoundary}
         isPinOrCompare={isPinOrCompare}
-        locationCodes={locationCodes}
       />
     </MapContainer>
   );
@@ -140,6 +140,7 @@ Map.propTypes = {
     children: PropTypes.shape({}),
     boundary: PropTypes.shape({}),
   }),
+  locations: PropTypes.arrayOf(PropTypes.shape({ code: PropTypes.string })),
   preferredChildren: PropTypes.shape({}),
   setGeoCode: PropTypes.func,
   setShouldFetch: PropTypes.func,
@@ -147,7 +148,6 @@ Map.propTypes = {
   tileLayers: PropTypes.arrayOf(PropTypes.shape({})),
   zoom: PropTypes.number,
   isPinOrCompare: PropTypes.bool,
-  locations: PropTypes.arrayOf(PropTypes.shape({ code: PropTypes.string })),
 };
 
 Map.defaultProps = {
@@ -155,6 +155,7 @@ Map.defaultProps = {
   className: undefined,
   geography: undefined,
   geometries: undefined,
+  locations: undefined,
   preferredChildren: undefined,
   setGeoCode: undefined,
   setShouldFetch: undefined,
@@ -165,7 +166,6 @@ Map.defaultProps = {
   tileLayers: undefined,
   zoom: undefined,
   isPinOrCompare: undefined,
-  locations: undefined,
 };
 
 export default Map;

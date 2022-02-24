@@ -14,13 +14,13 @@ function PinIcon(props) {
 
 function PinAndCompare({
   helperText,
+  isMobile,
+  geographyCode,
+  locations,
   onChange,
   onClose,
   onClickPin,
-  locations,
-  geographyCode,
   placeholder,
-  isMobile,
   ...props
 }) {
   const classes = useStyles(props);
@@ -92,24 +92,24 @@ function PinAndCompare({
 
 PinAndCompare.propTypes = {
   helperText: PropTypes.string,
+  isMobile: PropTypes.bool,
+  geographyCode: PropTypes.string,
+  locations: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.func,
   onClickPin: PropTypes.func,
   onClose: PropTypes.func,
-  locations: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
-  isMobile: PropTypes.bool,
-  geographyCode: PropTypes.string,
 };
 
 PinAndCompare.defaultProps = {
   helperText: undefined,
+  isMobile: false,
+  geographyCode: undefined,
+  locations: undefined,
   onChange: undefined,
   onClickPin: undefined,
   onClose: undefined,
-  locations: undefined,
   placeholder: undefined,
-  isMobile: false,
-  geographyCode: undefined,
 };
 
 export default PinAndCompare;

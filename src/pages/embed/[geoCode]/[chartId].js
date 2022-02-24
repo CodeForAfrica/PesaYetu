@@ -77,9 +77,8 @@ export async function getStaticProps({
     .map((c) => c.trim().toLowerCase())
     .filter((c) => c);
   const { locations } = await fetchProfile();
-  if (
-    !geoCodes.every((gC) => locations?.map(({ code }) => code)?.includes(gC))
-  ) {
+  const locationCodes = locations?.map(({ code }) => code) ?? [];
+  if (!geoCodes.every((gC) => locationCodes.includes(gC))) {
     return {
       notFound: true,
     };
