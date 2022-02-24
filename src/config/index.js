@@ -37,8 +37,6 @@ import drawerLogo from "@/pesayetu/assets/logos/Group 4188@2x-white.png";
 import mobileLogo from "@/pesayetu/assets/logos/Group 4188@3x.png";
 import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
 import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
-import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
-import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 
 export const dataIndicator = {
   title: "Data <span class='highlight'>Indicators</span>",
@@ -174,18 +172,6 @@ export const navigationArgs = {
       },
     ],
   },
-  socialLinks: [
-    {
-      href: "https://twitter.com/Code4Africa",
-      src: Twitter,
-      label: "twitter",
-    },
-    {
-      href: "https://www.facebook.com/CodeForAfrica",
-      src: Facebook,
-      label: "facebook",
-    },
-  ],
   desktopLogoProps: {
     width: 237,
     height: 55,
