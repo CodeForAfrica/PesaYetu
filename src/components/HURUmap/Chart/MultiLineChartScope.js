@@ -4,7 +4,7 @@ import Scope from "./Scope";
 
 import theme from "@/pesayetu/theme";
 
-export default function LineChartScope(
+export default function MultiLineChartScope(
   primaryData,
   metadata,
   config,
@@ -20,15 +20,13 @@ export default function LineChartScope(
   const { primary_group: primaryGroup } = metadata;
   const groupField = config.group_field;
 
-  const transform = groupField
-    ? [
-        {
-          type: "stack",
-          groupby: [groupField],
-          field: { signal: "datatype[Units]" },
-        },
-      ]
-    : [];
+  const transform = [
+    {
+      type: "stack",
+      groupby: [groupField],
+      field: { signal: "datatype[Units]" },
+    },
+  ];
 
   return merge(
     Scope(
@@ -38,7 +36,7 @@ export default function LineChartScope(
       secondaryData,
       primaryParentData,
       secondaryParentData,
-      "line",
+      "multi-line",
       transform
     ),
     {
@@ -55,6 +53,10 @@ export default function LineChartScope(
         {
           name: "isCompare",
           value: isCompare,
+        },
+        {
+          name: "groupField",
+          value: groupField,
         },
       ],
       scales: [
@@ -118,7 +120,7 @@ export default function LineChartScope(
           range: "category",
           domain: {
             data: "primary_formatted",
-            field: groupField || primaryGroup,
+            field: groupField,
           },
         },
         {
@@ -127,7 +129,7 @@ export default function LineChartScope(
           range: "secondary",
           domain: {
             data: "secondary_formatted",
-            field: groupField || primaryGroup,
+            field: groupField,
           },
         },
         {
@@ -185,7 +187,29 @@ export default function LineChartScope(
                   labelFont: theme.typography.fontFamily,
                 },
               ]
-            : null,
+            : [
+                {
+                  fill: "color",
+                  orient: "top",
+                  direction: "horizontal",
+                  strokeColor: "transparent",
+                  labelFont: theme.typography.fontFamily,
+                  encode: {
+                    labels: {
+                      interactive: true,
+                      update: {
+                        fontSize: { value: 11 },
+                        fill: { value: theme.palette.chart.text.primary },
+                      },
+                    },
+                    symbols: {
+                      update: {
+                        stroke: { value: "transparent" },
+                      },
+                    },
+                  },
+                },
+              ],
           axes: [
             {
               orient: "left",
@@ -220,7 +244,7 @@ export default function LineChartScope(
                   strokeWidth: { value: 2 },
                 },
                 update: {
-                  stroke: { scale: "color", field: groupField || primaryGroup },
+                  stroke: { scale: "color", field: groupField },
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
                   y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   interpolate: { signal: "interpolate" },
@@ -244,7 +268,7 @@ export default function LineChartScope(
                   size: { value: 5 },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[groupField]}",
                   },
                 },
                 hover: {
@@ -257,6 +281,13 @@ export default function LineChartScope(
         {
           type: "group",
           name: "primary_parent_line",
+          from: {
+            facet: {
+              name: "primary_parent_formatted_series",
+              data: "primary_parent_formatted",
+              groupby: groupField ?? [],
+            },
+          },
           encode: {
             update: {
               x: { value: 0 },
@@ -297,7 +328,7 @@ export default function LineChartScope(
           marks: [
             {
               name: "line",
-              from: { data: "primary_parent_formatted" },
+              from: { data: "primary_parent_formatted_series" },
               type: "line",
               encode: {
                 enter: {
@@ -317,7 +348,7 @@ export default function LineChartScope(
             },
             {
               name: "line symbol",
-              from: { data: "primary_parent_formatted" },
+              from: { data: "primary_parent_formatted_series" },
               type: "symbol",
               encode: {
                 enter: {
@@ -331,7 +362,7 @@ export default function LineChartScope(
                   size: { value: 5 },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[groupField]}",
                   },
                 },
                 hover: {
@@ -344,6 +375,13 @@ export default function LineChartScope(
         {
           type: "group",
           name: "secondary_lines",
+          from: {
+            facet: {
+              name: "secondary_formatted_series",
+              data: "secondary_formatted",
+              groupby: groupField ?? [],
+            },
+          },
           encode: {
             update: {
               x: {
@@ -375,7 +413,29 @@ export default function LineChartScope(
                   labelFont: theme.typography.fontFamily,
                 },
               ]
-            : null,
+            : [
+                {
+                  fill: "secondary_color",
+                  orient: "top",
+                  direction: "horizontal",
+                  strokeColor: "transparent",
+                  labelFont: theme.typography.fontFamily,
+                  encode: {
+                    labels: {
+                      interactive: true,
+                      update: {
+                        fontSize: { value: 11 },
+                        fill: { value: theme.palette.chart.text.primary },
+                      },
+                    },
+                    symbols: {
+                      update: {
+                        stroke: { value: "transparent" },
+                      },
+                    },
+                  },
+                },
+              ],
           axes:
             secondaryData?.length > 1
               ? [
@@ -404,14 +464,14 @@ export default function LineChartScope(
           marks: [
             {
               name: "line",
-              from: { data: "secondary_formatted" },
+              from: { data: "secondary_formatted_series" },
               type: "line",
               encode: {
                 enter: {
                   x: { scale: "s_xscale", field: { signal: "mainGroup" } },
                   stroke: {
                     scale: "secondary_color",
-                    field: groupField || primaryGroup,
+                    field: groupField,
                   },
                   y: {
                     scale: "s_yscale",
@@ -427,7 +487,7 @@ export default function LineChartScope(
             },
             {
               name: "line symbol",
-              from: { data: "secondary_formatted" },
+              from: { data: "secondary_formatted_series" },
               type: "symbol",
               encode: {
                 enter: {
@@ -442,7 +502,7 @@ export default function LineChartScope(
                   size: { value: 5 },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[groupField]}",
                   },
                 },
                 hover: {
@@ -455,6 +515,13 @@ export default function LineChartScope(
         {
           type: "group",
           name: "secondary_parent_line",
+          from: {
+            facet: {
+              name: "secondary_parent_formatted_series",
+              data: "secondary_parent_formatted",
+              groupby: groupField ?? [],
+            },
+          },
           encode: {
             update: {
               x: {
@@ -501,7 +568,7 @@ export default function LineChartScope(
           marks: [
             {
               name: "line",
-              from: { data: "secondary_parent_formatted" },
+              from: { data: "secondary_parent_formatted_series" },
               type: "line",
               encode: {
                 enter: {
@@ -522,7 +589,7 @@ export default function LineChartScope(
             },
             {
               name: "line symbol",
-              from: { data: "secondary_parent_formatted" },
+              from: { data: "secondary_parent_formatted_series" },
               type: "symbol",
               encode: {
                 enter: {

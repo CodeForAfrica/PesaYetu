@@ -1,6 +1,7 @@
 import BarChartScope from "./BarChartScope";
 import DonutChartScope from "./DonutChartScope";
 import LineChartScope from "./LineChartScope";
+import MultiLineChartScope from "./MultiLineChartScope";
 import StackedChartScope from "./StackedChartScope";
 import TreemapChartScope from "./TreemapChartScope";
 import VerticalBarChartScope from "./VerticalBarChartScope";
@@ -26,17 +27,31 @@ export default function configureScope(
   const chartType = configuration?.chart_type?.toLowerCase();
   switch (chartType) {
     case "line":
-      vegaSpec = LineChartScope(
-        indicator?.data,
-        indicator?.metadata,
-        configuration,
-        secondaryIndicator?.data ?? null,
-        showParent ? indicator?.parentData : [{}],
-        showParent ? secondaryIndicator?.parentData : [{}],
-        profileNames,
-        isCompare,
-        isMobile
-      );
+      if (configuration?.group_field) {
+        vegaSpec = MultiLineChartScope(
+          indicator?.data,
+          indicator?.metadata,
+          configuration,
+          secondaryIndicator?.data ?? null,
+          showParent ? indicator?.parentData : [{}],
+          showParent ? secondaryIndicator?.parentData : [{}],
+          profileNames,
+          isCompare,
+          isMobile
+        );
+      } else {
+        vegaSpec = LineChartScope(
+          indicator?.data,
+          indicator?.metadata,
+          configuration,
+          secondaryIndicator?.data ?? null,
+          showParent ? indicator?.parentData : [{}],
+          showParent ? secondaryIndicator?.parentData : [{}],
+          profileNames,
+          isCompare,
+          isMobile
+        );
+      }
       break;
     case "donut":
       vegaSpec = DonutChartScope(

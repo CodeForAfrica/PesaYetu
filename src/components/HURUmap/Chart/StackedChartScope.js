@@ -120,7 +120,7 @@ export default function StackedChartScope(
           type: "ordinal",
           range: "secondary",
           domain: {
-            data: "primary_formatted",
+            data: "secondary_formatted",
             field: stackedField,
           },
         },
