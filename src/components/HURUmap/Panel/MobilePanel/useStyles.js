@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(
   ({ typography, palette, zIndex, breakpoints }) => ({
     root: {},
-    dataNotAvail: {
+    dataNotAvailable: {
       color: "#666666",
       fontWeight: "bold",
       fontSize: typography.pxToRem(10),

@@ -63,7 +63,7 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
             geographyCode={geography.code}
           />
           <Typography
-            className={classes.dataNotAvail}
+            className={classes.dataNotAvailable}
           >{`${geography.name} ${dataNotAvailable}`}</Typography>
         </Section>
       )}
