@@ -18,17 +18,6 @@ export default function LineChartScope(
   const { xTicks, parentLabel } = config;
 
   const { primary_group: primaryGroup } = metadata;
-  const groupField = config.group_field;
-
-  const transform = groupField
-    ? [
-        {
-          type: "stack",
-          groupby: [groupField],
-          field: { signal: "datatype[Units]" },
-        },
-      ]
-    : [];
 
   return merge(
     Scope(
@@ -38,8 +27,7 @@ export default function LineChartScope(
       secondaryData,
       primaryParentData,
       secondaryParentData,
-      "line",
-      transform
+      "line"
     ),
     {
       height: isMobile && isCompare && secondaryData?.length > 1 ? 620 : 310,
@@ -118,7 +106,7 @@ export default function LineChartScope(
           range: "category",
           domain: {
             data: "primary_formatted",
-            field: groupField || primaryGroup,
+            field: primaryGroup,
           },
         },
         {
@@ -127,7 +115,7 @@ export default function LineChartScope(
           range: "secondary",
           domain: {
             data: "secondary_formatted",
-            field: groupField || primaryGroup,
+            field: primaryGroup,
           },
         },
         {
@@ -154,13 +142,6 @@ export default function LineChartScope(
         {
           type: "group",
           name: "primary_lines",
-          from: {
-            facet: {
-              name: "primary_formatted_series",
-              data: "primary_formatted",
-              groupby: groupField || primaryGroup,
-            },
-          },
           encode: {
             update: {
               x: { value: 0 },
@@ -211,12 +192,12 @@ export default function LineChartScope(
           marks: [
             {
               name: "line",
-              from: { data: "primary_formatted_series" },
+              from: { data: "primary_formatted" },
               type: "line",
               encode: {
                 enter: {
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
-                  stroke: { scale: "color", field: groupField || primaryGroup },
+                  stroke: { scale: "color", field: { signal: "mainGroup" } },
                   y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   strokeWidth: { value: 2 },
                 },
@@ -230,7 +211,7 @@ export default function LineChartScope(
             },
             {
               name: "line symbol",
-              from: { data: "primary_formatted_series" },
+              from: { data: "primary_formatted" },
               type: "symbol",
               encode: {
                 enter: {
@@ -411,7 +392,7 @@ export default function LineChartScope(
                   x: { scale: "s_xscale", field: { signal: "mainGroup" } },
                   stroke: {
                     scale: "secondary_color",
-                    field: groupField || primaryGroup,
+                    field: { signal: "mainGroup" },
                   },
                   y: {
                     scale: "s_yscale",
