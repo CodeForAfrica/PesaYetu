@@ -31,7 +31,8 @@ function PinAndCompare({
     ?.map(({ code: value, name: label }) => ({
       label,
       value,
-    }));
+    }))
+    ?.sort((a, b) => a?.label?.localeCompare(b?.label));
 
   const handleButtonClick = (e) => {
     e.preventDefault();
