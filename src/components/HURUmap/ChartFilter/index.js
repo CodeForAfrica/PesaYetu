@@ -33,11 +33,15 @@ function ChartFilter({
     if (index === "default") {
       setAttributeOptions([selectedAttribute]);
       setValueOptions(
-        groups?.find(({ name }) => name === selectedAttribute)
-          ?.subindicators ?? [selectedValue]
+        groups
+          ?.find(({ name }) => name === selectedAttribute)
+          ?.subindicators?.sort((a, b) => a.localeCompare(b)) ?? [selectedValue]
       );
     } else if (groups) {
-      setAttributeOptions(["All values", ...groups?.map((g) => g.name)]);
+      setAttributeOptions([
+        "All values",
+        ...groups?.map((g) => g.name)?.sort((a, b) => a.localeCompare(b)),
+      ]);
     }
   }, [groups, index, selectedValue, selectedAttribute]);
 
@@ -48,7 +52,9 @@ function ChartFilter({
         setSelectedValue(undefined);
       }
       setValueOptions(
-        groups.find(({ name }) => name === e.target.value)?.subindicators
+        groups
+          .find(({ name }) => name === e.target.value)
+          ?.subindicators?.sort((a, b) => a.localeCompare(b))
       );
       if (onSelectAttribute) {
         onSelectAttribute(e.target.value, index);
@@ -83,7 +89,7 @@ function ChartFilter({
           <Grid item className={classes.grid}>
             <Select
               helperText={attributeText}
-              options={attributeOptions?.sort((a, b) => a.localeCompare(b))}
+              options={attributeOptions}
               selected={selectedAttribute}
               onChange={onAtrributeChange}
               disabled={index === "default"}
@@ -95,7 +101,7 @@ function ChartFilter({
           <Grid item className={classes.grid}>
             <Select
               helperText={valueText}
-              options={valueOptions?.sort((a, b) => a.localeCompare(b))}
+              options={valueOptions}
               selected={selectedValue}
               label={selectedValue?.length ? "" : "Select a value"}
               onChange={onValueChange}
