@@ -16,7 +16,7 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     { name: "Facebook", props: { quote: title, hashtag: "#PesaYetu" } },
     {
       name: "Twitter",
-      props: { title, via: "PesaYetu", related: ["Code4Africa"] },
+      props: { title, via: "Code4Africa", related: ["Code4Africa"] },
     },
     {
       name: "LinkedIn",
