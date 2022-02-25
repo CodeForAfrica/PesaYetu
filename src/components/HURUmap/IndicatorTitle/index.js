@@ -24,6 +24,9 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     padding: `${typography.pxToRem(18)} ${typography.pxToRem(
       20
     )} ${typography.pxToRem(31)} ${typography.pxToRem(16)}`,
+    "& > p > span": {
+      display: "inline-block",
+    },
   },
   link: {
     color: palette.text.primary,
