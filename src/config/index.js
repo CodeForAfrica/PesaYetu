@@ -891,8 +891,15 @@ export const hurumap = {
   },
 };
 
+// https://vega.github.io/vega/docs/api/view/#view_toImageURL
+const IMAGE_SCALE_FACTOR = 2;
+
 const config = {
   exploreTools,
+  images: {
+    scaleFactor:
+      process.env.NEXT_PUBLIC_IMAGE_SCALE_FACTOR || IMAGE_SCALE_FACTOR,
+  },
   footerArgs,
   navigationArgs,
   url: "http://localhost:3000",
