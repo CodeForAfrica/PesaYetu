@@ -3,6 +3,7 @@ import sharp from "sharp";
 import * as vega from "vega";
 
 import configureScope from "@/pesayetu/components/HURUmap/Chart/configureScope";
+import config from "@/pesayetu/config";
 
 function uploadAsync(s3, params) {
   return new Promise((resolve, reject) => {
@@ -26,7 +27,8 @@ export default async function createChartImage(
   indicator,
   secondaryIndicator,
   isCompare,
-  profileNames
+  profileNames,
+  background = "#ffffff"
 ) {
   const spec = configureScope(
     indicator,
@@ -34,12 +36,15 @@ export default async function createChartImage(
     profileNames,
     isCompare
   );
-  const view = new vega.View(vega.parse(spec), { renderer: "none" });
-
-  const svg = await view.toSVG();
-  const Body = await sharp(Buffer.from(svg)).png().toBuffer();
   const Key = `media/images/pesayetu-${geoCode}-${chartId}.png`;
-  const config = {
+  const view = new vega.View(vega.parse(spec), { renderer: "none" });
+  if (background) {
+    view.background(background);
+  }
+  await view.runAsync();
+  const svg = await view.toSVG(config.images.scaleFactor);
+  const Body = await sharp(Buffer.from(svg)).png().toBuffer();
+  const clientConfig = {
     accessKeyId: process.env.S3_UPLOAD_KEY,
     secretAccessKey: process.env.S3_UPLOAD_SECRET,
     region: process.env.S3_UPLOAD_REGION,
@@ -53,6 +58,6 @@ export default async function createChartImage(
     CacheControl,
     ContentType,
   };
-  const s3 = new AWS.S3(config);
+  const s3 = new AWS.S3(clientConfig);
   return uploadAsync(s3, params);
 }
