@@ -8,6 +8,7 @@ import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
+import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
@@ -51,42 +52,16 @@ const ProfileItems = memo(
             <CategoryHeader
               description={category?.description}
               icon={category.icon}
+              id={slugify(category.title)}
               title={category.title}
             />
             {category.children.map((child, subcategoryIndex) => (
               <Fragment key={child.title}>
                 <SubcategoryHeader
                   description={child?.description}
+                  id={slugify(child.title)}
                   title={child.title}
                 />
-                {child.children.map(({ index, ...indicator }) => (
-                  <Chart
-                    key={index}
-                    variant="primary"
-                    {...indicator}
-                    geoCode={geoCode}
-                    secondaryIndicator={getSecondaryIndicator(
-                      categoryIndex,
-                      subcategoryIndex,
-                      indicator.indicator.id
-                    )}
-                    isCompare={!!secondaryProfile}
-                    profileNames={{
-                      primary:
-                        indicator.indicator?.data?.length > 0
-                          ? primaryProfile.geography.name
-                          : `${primaryProfile.geography.name} ${dataNotAvailable}`,
-                      secondary:
-                        getSecondaryIndicator(
-                          categoryIndex,
-                          subcategoryIndex,
-                          indicator.indicator.id
-                        )?.indicator?.data?.length > 0
-                          ? secondaryProfile?.geography?.name
-                          : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
-                    }}
-                  />
-                ))}
                 {child?.metrics?.map(
                   ({ label, parentMetric, ...other }, metricIndex) => {
                     const secondaryMetric = getSecondaryMetric(
@@ -134,6 +109,34 @@ const ProfileItems = memo(
                     );
                   }
                 )}
+                {child.children.map(({ index, ...indicator }) => (
+                  <Chart
+                    key={index}
+                    variant="primary"
+                    {...indicator}
+                    geoCode={geoCode}
+                    secondaryIndicator={getSecondaryIndicator(
+                      categoryIndex,
+                      subcategoryIndex,
+                      indicator.indicator.id
+                    )}
+                    isCompare={!!secondaryProfile}
+                    profileNames={{
+                      primary:
+                        indicator.indicator?.data?.length > 0
+                          ? primaryProfile.geography.name
+                          : `${primaryProfile.geography.name} ${dataNotAvailable}`,
+                      secondary:
+                        getSecondaryIndicator(
+                          categoryIndex,
+                          subcategoryIndex,
+                          indicator.indicator.id
+                        )?.indicator?.data?.length > 0
+                          ? secondaryProfile?.geography?.name
+                          : `${secondaryProfile?.geography?.name} ${dataNotAvailable}`,
+                    }}
+                  />
+                ))}
               </Fragment>
             ))}
           </Fragment>
