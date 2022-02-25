@@ -27,30 +27,21 @@ export default function configureScope(
   const chartType = configuration?.chart_type?.toLowerCase();
   switch (chartType) {
     case "line":
+      scopeOptions = [
+        indicator?.data,
+        indicator?.metadata,
+        configuration,
+        secondaryIndicator?.data ?? null,
+        showParent ? indicator?.parentData : [{}],
+        showParent ? secondaryIndicator?.parentData : [{}],
+        profileNames,
+        isCompare,
+        isMobile,
+      ];
       if (configuration?.stacked_field) {
-        vegaSpec = MultiLineChartScope(
-          indicator?.data,
-          indicator?.metadata,
-          configuration,
-          secondaryIndicator?.data ?? null,
-          showParent ? indicator?.parentData : [{}],
-          showParent ? secondaryIndicator?.parentData : [{}],
-          profileNames,
-          isCompare,
-          isMobile
-        );
+        vegaSpec = MultiLineChartScope(...scopeOptions);
       } else {
-        vegaSpec = LineChartScope(
-          indicator?.data,
-          indicator?.metadata,
-          configuration,
-          secondaryIndicator?.data ?? null,
-          showParent ? indicator?.parentData : [{}],
-          showParent ? secondaryIndicator?.parentData : [{}],
-          profileNames,
-          isCompare,
-          isMobile
-        );
+        vegaSpec = LineChartScope(scopeOptions);
       }
       break;
     case "donut":
