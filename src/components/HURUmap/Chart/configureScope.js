@@ -27,7 +27,7 @@ export default function configureScope(
   const chartType = configuration?.chart_type?.toLowerCase();
   switch (chartType) {
     case "line":
-      if (configuration?.group_field) {
+      if (configuration?.stacked_field) {
         vegaSpec = MultiLineChartScope(
           indicator?.data,
           indicator?.metadata,
