@@ -83,7 +83,7 @@ function ChartFilter({
           <Grid item className={classes.grid}>
             <Select
               helperText={attributeText}
-              options={attributeOptions}
+              options={attributeOptions?.sort((a, b) => a.localeCompare(b))}
               selected={selectedAttribute}
               onChange={onAtrributeChange}
               disabled={index === "default"}
@@ -95,7 +95,7 @@ function ChartFilter({
           <Grid item className={classes.grid}>
             <Select
               helperText={valueText}
-              options={valueOptions}
+              options={valueOptions?.sort((a, b) => a.localeCompare(b))}
               selected={selectedValue}
               label={selectedValue?.length ? "" : "Select a value"}
               onChange={onValueChange}
