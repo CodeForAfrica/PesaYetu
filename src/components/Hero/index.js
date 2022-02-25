@@ -85,7 +85,6 @@ function Hero({
   title,
   subtitle,
   searchLabel,
-  boundary,
   featuredCounties,
   ...props
 }) {
@@ -96,9 +95,6 @@ function Hero({
   const [hoverGeo, setHoverGeo] = useState(null);
 
   const zoom = isUpLg ? 6 : 5.25;
-  const counties = boundary?.features
-    ?.filter(({ properties: { code } }) => featuredCounties.includes(code))
-    ?.map(({ properties }) => properties);
   return (
     <div className={classes.root}>
       <div className={classes.background}>
@@ -116,7 +112,7 @@ function Hero({
             </Header>
             <DropdownSearch
               label={searchLabel}
-              counties={counties}
+              counties={featuredCounties}
               classes={{
                 label: classes.dropdownTitle,
               }}
@@ -136,7 +132,6 @@ function Hero({
                 tileLayer={{
                   url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
                 }}
-                boundary={boundary}
                 setHoverGeo={setHoverGeo}
                 featuredCounties={featuredCounties}
                 {...props}
@@ -159,10 +154,7 @@ Hero.propTypes = {
   subtitle: PropTypes.string,
   searchLabel: PropTypes.string,
   title: PropTypes.string,
-  boundary: PropTypes.shape({
-    features: PropTypes.arrayOf(PropTypes.shape({})),
-  }),
-  featuredCounties: PropTypes.arrayOf(PropTypes.string),
+  featuredCounties: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 Hero.defaultProps = {
@@ -170,7 +162,6 @@ Hero.defaultProps = {
   subtitle: undefined,
   searchLabel: undefined,
   title: undefined,
-  boundary: undefined,
   featuredCounties: undefined,
 };
 

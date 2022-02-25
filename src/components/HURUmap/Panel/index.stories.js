@@ -4,7 +4,7 @@ import Panel from ".";
 
 import { hurumapArgs, panelArgs } from "@/pesayetu/config";
 
-const { locationCodes } = hurumapArgs;
+const { locations } = hurumapArgs;
 
 export default {
   title: "Components/HURUmap/Panel",
@@ -16,6 +16,6 @@ const Template = ({ ...args }) => <Panel {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  locationCodes,
+  locations,
   ...panelArgs,
 };

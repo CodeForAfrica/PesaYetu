@@ -9,7 +9,7 @@ function RichData({ item, ...props }) {
   return (
     <>
       <SubcategoryList items={item.children} />
-      <Profile {...props} categories={[item]} />
+      <Profile {...props} categories={[item]} isMobile />
     </>
   );
 }

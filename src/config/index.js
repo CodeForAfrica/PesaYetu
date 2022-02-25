@@ -37,8 +37,6 @@ import drawerLogo from "@/pesayetu/assets/logos/Group 4188@2x-white.png";
 import mobileLogo from "@/pesayetu/assets/logos/Group 4188@3x.png";
 import Metric1 from "@/pesayetu/assets/Metric1@2x.png";
 import Metric2 from "@/pesayetu/assets/Metric2@2x.png";
-import Facebook from "@/pesayetu/assets/nav-desktop-fb.svg";
-import Twitter from "@/pesayetu/assets/nav-desktop-tw.svg";
 
 export const dataIndicator = {
   title: "Data <span class='highlight'>Indicators</span>",
@@ -174,18 +172,6 @@ export const navigationArgs = {
       },
     ],
   },
-  socialLinks: [
-    {
-      href: "https://twitter.com/",
-      src: Twitter,
-      label: "twitter",
-    },
-    {
-      href: "https://web.facebook.com/?_rdc=1&_rdr",
-      src: Facebook,
-      label: "facebook",
-    },
-  ],
   desktopLogoProps: {
     width: 237,
     height: 55,
@@ -841,37 +827,39 @@ export const hurumapArgs = {
       },
     ],
   },
-  locationCodes: [
-    "47",
-    "4",
-    "6",
-    "34",
-    "25",
-    "43",
-    "8",
-    "11",
-    "KE",
-    "47276",
-    "47284",
-    "47284",
-    "47288",
-    "47280",
-    "47278",
-    "43249",
-    "43245",
-    "8037",
-    "11050",
-    "25134",
-    "25133",
-    "8033",
-    "4019",
-    "4018",
-    "6023",
-    "6026",
-    "6024",
-    "34184",
-    "34187",
-    "34183",
+  locations: [
+    {
+      code: "47",
+      name: "Nairobi",
+    },
+    {
+      code: "4",
+      name: "Tana River",
+    },
+    {
+      code: "6",
+      name: "Taita-Taveta",
+    },
+    {
+      code: "34",
+      name: "Kajiado",
+    },
+    {
+      code: "25",
+      name: "Samburu",
+    },
+    {
+      code: "43",
+      name: "Homa Bay",
+    },
+    {
+      code: "8",
+      name: "Wajir",
+    },
+    {
+      code: "11",
+      name: "Isiolo",
+    },
   ],
   pinAndCompare: {
     helperText: "Pin and compare",

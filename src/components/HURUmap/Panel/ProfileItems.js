@@ -8,7 +8,6 @@ import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
 import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
-import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
@@ -52,14 +51,12 @@ const ProfileItems = memo(
             <CategoryHeader
               description={category?.description}
               icon={category.icon}
-              id={slugify(category.title)}
               title={category.title}
             />
             {category.children.map((child, subcategoryIndex) => (
               <Fragment key={child.title}>
                 <SubcategoryHeader
                   description={child?.description}
-                  id={slugify(child.title)}
                   title={child.title}
                 />
                 {child.children.map(({ index, ...indicator }) => (

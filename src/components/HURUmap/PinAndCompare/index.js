@@ -14,17 +14,25 @@ function PinIcon(props) {
 
 function PinAndCompare({
   helperText,
-  isPinning,
+  isMobile,
+  geographyCode,
+  locations,
   onChange,
   onClose,
   onClickPin,
-  options,
   placeholder,
   ...props
 }) {
   const classes = useStyles(props);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const options = locations
+    ?.filter(({ code }) => code !== geographyCode)
+    ?.map(({ code: value, name: label }) => ({
+      label,
+      value,
+    }))
+    ?.sort((a, b) => a?.label?.localeCompare(b?.label));
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -50,32 +58,34 @@ function PinAndCompare({
 
   const handleClick = (e) => {
     setOpen(true);
-    if (onClickPin) {
+    if (!isMobile && onClickPin) {
       onClickPin(e);
     }
   };
-  const component = open && isPinning ? PinIconSelected : PinIconDefault;
+  const component = open ? PinIconSelected : PinIconDefault;
 
   return (
     <Box display="flex" alignItems="flex-end" className={classes.root}>
-      <IconButton onClick={handleButtonClick} className={classes.pinButton}>
-        <PinIcon
-          color="primary"
-          component={component}
-          style={{ fontSize: 62 }}
-          viewBox="0 0 62 62"
-        />
-      </IconButton>
+      {!isMobile && (
+        <IconButton onClick={handleButtonClick} className={classes.pinButton}>
+          <PinIcon
+            color="primary"
+            component={component}
+            style={{ fontSize: 60 }}
+            viewBox="0 0 62 55"
+          />
+        </IconButton>
+      )}
       <Select
-        helperText={helperText}
+        helperText={isMobile ? placeholder : helperText}
         onChange={handleChange}
-        open={open && isPinning}
+        open={open}
         onOpen={handleClick}
         onClose={handleClose}
         options={options}
         placeholder={placeholder}
         selected={selected}
-        classes={{ select: classes.locationSelect }}
+        classes={{ select: classes.locationSelect, paper: classes.selectPaper }}
       />
     </Box>
   );
@@ -83,28 +93,24 @@ function PinAndCompare({
 
 PinAndCompare.propTypes = {
   helperText: PropTypes.string,
-  icon: PropTypes.string,
-  isPinning: PropTypes.bool,
+  isMobile: PropTypes.bool,
+  geographyCode: PropTypes.string,
+  locations: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.func,
   onClickPin: PropTypes.func,
   onClose: PropTypes.func,
-  onOpen: PropTypes.func,
-  options: PropTypes.arrayOf(PropTypes.shape({})),
   placeholder: PropTypes.string,
-  value: PropTypes.string,
 };
 
 PinAndCompare.defaultProps = {
   helperText: undefined,
-  icon: undefined,
-  isPinning: undefined,
+  isMobile: false,
+  geographyCode: undefined,
+  locations: undefined,
   onChange: undefined,
   onClickPin: undefined,
   onClose: undefined,
-  onOpen: undefined,
-  options: undefined,
   placeholder: undefined,
-  value: undefined,
 };
 
 export default PinAndCompare;

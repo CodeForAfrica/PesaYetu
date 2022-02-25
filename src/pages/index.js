@@ -13,7 +13,7 @@ import StoriesInsights from "@/pesayetu/components/StoriesInsights";
 import SupportingPartners from "@/pesayetu/components/SupportingPartners";
 import formatBlocksForSections from "@/pesayetu/functions/formatBlocksForSections";
 import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
-import fetchJson from "@/pesayetu/utils/fetchJson";
+import { fetchProfile, fetchProfileGeography } from "@/pesayetu/lib/hurumap";
 
 export default function Home({ boundary, blocks, ...props }) {
   return (
@@ -68,17 +68,12 @@ export async function getStaticProps({ preview, previewData }) {
     };
   }
 
-  const res = await fetchJson(
-    `${process.env.HURUMAP_API_URL}all_details/profile/1/geography/KE/?format=json`
-  );
-  const { children } = res;
-
   const blocks = await formatBlocksForSections(props?.post?.blocks);
-
-  const { configuration } = await fetchJson(
-    `${process.env.HURUMAP_API_URL}profile_by_url/?format=json`
-  );
-  const featuredCounties = configuration?.featured_geographies?.county;
+  const {
+    geometries: { children },
+  } = await fetchProfileGeography("ke");
+  const { locations } = await fetchProfile();
+  const featuredCounties = locations.filter(({ level }) => level === "county");
 
   return {
     props: {

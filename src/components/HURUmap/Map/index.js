@@ -23,7 +23,7 @@ function Map({
   className,
   geography,
   geometries,
-  locationCodes,
+  locations,
   preferredChildren,
   styles,
   tileLayers,
@@ -84,6 +84,8 @@ function Map({
     setSelectedBoundary(selectedBound);
   }, [geometries, geography, getSelectedBoundary]);
 
+  const locationCodes = locations?.map(({ code }) => code);
+
   return (
     <MapContainer
       center={center}
@@ -138,7 +140,7 @@ Map.propTypes = {
     children: PropTypes.shape({}),
     boundary: PropTypes.shape({}),
   }),
-  locationCodes: PropTypes.arrayOf(PropTypes.string),
+  locations: PropTypes.arrayOf(PropTypes.shape({ code: PropTypes.string })),
   preferredChildren: PropTypes.shape({}),
   setGeoCode: PropTypes.func,
   setShouldFetch: PropTypes.func,
@@ -153,7 +155,7 @@ Map.defaultProps = {
   className: undefined,
   geography: undefined,
   geometries: undefined,
-  locationCodes: undefined,
+  locations: undefined,
   preferredChildren: undefined,
   setGeoCode: undefined,
   setShouldFetch: undefined,

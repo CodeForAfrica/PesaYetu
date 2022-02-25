@@ -17,9 +17,8 @@ import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 function BasePage({ children, menus, variant, post: { seo }, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
-  const { menuProps } = navigation;
-  const { socialLinks, desktopLogoProps, mobileLogoProps, drawerLogoProps } =
-    navigationArgs;
+  const { menuProps, socialLinks } = navigation;
+  const { desktopLogoProps, mobileLogoProps, drawerLogoProps } = navigationArgs;
   const theme = useTheme();
 
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));

@@ -90,7 +90,7 @@ function DropdownSearch({
   useEffect(() => {
     if (query?.length > 0 && !countyCode) {
       const matchedGeo = counties?.filter(({ name }) =>
-        name.toLowerCase()?.startsWith(query)
+        name.toLowerCase()?.startsWith(query.toLowerCase())
       );
       setSuggestions(matchedGeo);
     } else {
