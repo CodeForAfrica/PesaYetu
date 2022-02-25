@@ -93,7 +93,11 @@ function ChartFilter({
               selected={selectedAttribute}
               onChange={onAtrributeChange}
               disabled={index === "default"}
-              classes={{ select: classes.select, filled: classes.filled }}
+              classes={{
+                select: classes.select,
+                filled: classes.filled,
+                paper: classes.selectPaper,
+              }}
             />
           </Grid>
         )}
@@ -105,7 +109,11 @@ function ChartFilter({
               selected={selectedValue}
               label={selectedValue?.length ? "" : "Select a value"}
               onChange={onValueChange}
-              classes={{ select: classes.select, filled: classes.filled }}
+              classes={{
+                select: classes.select,
+                filled: classes.filled,
+                paper: classes.selectPaper,
+              }}
             />
           </Grid>
         )}

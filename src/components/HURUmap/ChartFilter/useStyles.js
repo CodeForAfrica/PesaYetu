@@ -29,6 +29,9 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
       10
     )} ${typography.pxToRem(15)} !important`,
   },
+  selectPaper: {
+    maxHeight: typography.pxToRem(310),
+  },
 }));
 
 export default useStyles;
