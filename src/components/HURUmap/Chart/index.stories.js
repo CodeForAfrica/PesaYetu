@@ -96,6 +96,7 @@ Default.args = {
     chart_configuration: {
       chart_type: "line",
       stacked_field: "gender",
+      group_field: "gender",
       nest_fields: ["age"],
       types: {
         Value: {
@@ -109,7 +110,7 @@ Default.args = {
       },
       defaultType: "Value",
       disableToggle: false,
-      show_parent: true,
+      show_parent: false,
     },
     parentName: "Kenya",
     parentData: [

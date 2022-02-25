@@ -36,7 +36,7 @@ export default function MultiLineChartScope(
       secondaryData,
       primaryParentData,
       secondaryParentData,
-      "multi-line",
+      "line",
       transform
     ),
     {
