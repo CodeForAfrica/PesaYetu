@@ -18,12 +18,12 @@ export default function MultiLineChartScope(
   const { xTicks, parentLabel } = config;
 
   const { primary_group: primaryGroup } = metadata;
-  const groupField = config.group_field;
+  const stackedField = config.stacked_field;
 
   const transform = [
     {
       type: "stack",
-      groupby: [groupField],
+      groupby: [stackedField],
       field: { signal: "datatype[Units]" },
     },
   ];
@@ -55,8 +55,8 @@ export default function MultiLineChartScope(
           value: isCompare,
         },
         {
-          name: "groupField",
-          value: groupField,
+          name: "stackedField",
+          value: stackedField,
         },
       ],
       scales: [
@@ -120,7 +120,7 @@ export default function MultiLineChartScope(
           range: "category",
           domain: {
             data: "primary_formatted",
-            field: groupField,
+            field: stackedField,
           },
         },
         {
@@ -129,7 +129,7 @@ export default function MultiLineChartScope(
           range: "secondary",
           domain: {
             data: "secondary_formatted",
-            field: groupField,
+            field: stackedField,
           },
         },
         {
@@ -160,7 +160,7 @@ export default function MultiLineChartScope(
             facet: {
               name: "primary_formatted_series",
               data: "primary_formatted",
-              groupby: groupField ?? [],
+              groupby: stackedField ?? [],
             },
           },
           encode: {
@@ -244,7 +244,7 @@ export default function MultiLineChartScope(
                   strokeWidth: { value: 2 },
                 },
                 update: {
-                  stroke: { scale: "color", field: groupField },
+                  stroke: { scale: "color", field: stackedField },
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
                   y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   interpolate: { signal: "interpolate" },
@@ -268,7 +268,7 @@ export default function MultiLineChartScope(
                   size: { value: 5 },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[groupField]}",
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
                   },
                 },
                 hover: {
@@ -285,7 +285,7 @@ export default function MultiLineChartScope(
             facet: {
               name: "primary_parent_formatted_series",
               data: "primary_parent_formatted",
-              groupby: groupField ?? [],
+              groupby: stackedField ?? [],
             },
           },
           encode: {
@@ -362,7 +362,7 @@ export default function MultiLineChartScope(
                   size: { value: 5 },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[groupField]}",
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
                   },
                 },
                 hover: {
@@ -379,7 +379,7 @@ export default function MultiLineChartScope(
             facet: {
               name: "secondary_formatted_series",
               data: "secondary_formatted",
-              groupby: groupField ?? [],
+              groupby: stackedField ?? [],
             },
           },
           encode: {
@@ -471,7 +471,7 @@ export default function MultiLineChartScope(
                   x: { scale: "s_xscale", field: { signal: "mainGroup" } },
                   stroke: {
                     scale: "secondary_color",
-                    field: groupField,
+                    field: stackedField,
                   },
                   y: {
                     scale: "s_yscale",
@@ -502,7 +502,7 @@ export default function MultiLineChartScope(
                   size: { value: 5 },
                   tooltip: {
                     signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[groupField]}",
+                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value), 'category': datum[stackedField]}",
                   },
                 },
                 hover: {
@@ -519,7 +519,7 @@ export default function MultiLineChartScope(
             facet: {
               name: "secondary_parent_formatted_series",
               data: "secondary_parent_formatted",
-              groupby: groupField ?? [],
+              groupby: stackedField ?? [],
             },
           },
           encode: {

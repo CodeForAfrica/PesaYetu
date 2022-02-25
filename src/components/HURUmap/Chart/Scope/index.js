@@ -15,17 +15,14 @@ export default function Scope(
   transform = []
 ) {
   const { primary_group: primaryGroup, groups } = metadata;
-  const groupField = config?.group_field;
   const stackedField = config?.stacked_field;
   const nestedFields = config?.nest_fields;
 
   let groupBy = [primaryGroup];
-  if (chartType === "stacked" && stackedField) {
+  if ((chartType === "stacked" || chartType === "line") && stackedField) {
     groupBy = [primaryGroup, stackedField];
   } else if (chartType === "treemap" && nestedFields) {
     groupBy = nestedFields;
-  } else if (chartType === "line" && groupField) {
-    groupBy = [primaryGroup, groupField];
   }
 
   const { signals: filterSignals, filters } = createFiltersForGroups(groups);
