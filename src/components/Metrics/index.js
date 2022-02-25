@@ -9,7 +9,7 @@ import useStyles from "./useStyles";
 import Card from "@/pesayetu/components/Card";
 import Section from "@/pesayetu/components/Section";
 
-// NOTE(kilemensi) useStyles uses import/definition order to determine how
+// NOTE(nyokabi) useStyles uses import/definition order to determine how
 //                 classes are ordered.
 //                 see: https://material-ui.com/styles/advanced/#makestyles-withstyles-styled
 
