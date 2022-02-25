@@ -42,6 +42,7 @@ export default function BarChartScope(
           domain: {
             data: "primary_formatted",
             field: primaryGroup,
+            sort: { op: "count", field: "count", order: "descending" },
           },
           range: { step: { signal: "y_step" } },
           padding: 0.15,

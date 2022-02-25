@@ -80,11 +80,25 @@ export default function DonutChartScope(
           name: "color",
           type: "ordinal",
           range: "category",
+          domain: {
+            data: "primary_formatted",
+            field: "datatype[Units]",
+            // sort: { op: "max", field: { signal: "datatype[Units]"}, order: "descending"}
+          },
         },
         {
           name: "secondary",
           type: "ordinal",
           range: "secondary",
+          domain: {
+            data: "secondary_formatted",
+            field: primaryGroup,
+            sort: {
+              op: "max",
+              field: { signal: "datatype[Units]" },
+              order: "descending",
+            },
+          },
         },
         {
           name: "legend_primary_scale",
