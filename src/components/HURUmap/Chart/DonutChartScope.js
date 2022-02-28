@@ -170,6 +170,7 @@ export default function DonutChartScope(
             {
               type: "arc",
               from: { data: "primary_formatted" },
+              sort: { field: "datum.percentage", order: "ascending" },
               encode: {
                 enter: {
                   fill: { scale: "color", field: { signal: "mainGroup" } },

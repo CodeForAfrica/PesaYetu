@@ -34,6 +34,28 @@ export default function BarChartScope(
           name: "height",
           update: "bandspace(domain('yscale').length, 0.1, 0.05) * y_step",
         },
+        {
+          name: "xTicks",
+          value: xTicks || 6,
+        },
+        {
+          name: "maxXScaleValue",
+          update: "extent(domain('xscale'))[1]",
+        },
+        {
+          name: "maxXSecondaryScaleValue",
+          update: "extent(domain('s_xscale'))[1]",
+        },
+        // if the maximum value of xaxis is less than xTicks return maximum value as tick Count
+        {
+          name: "primaryTickCount",
+          update: "maxXScaleValue < xTicks ? maxXScaleValue : xTicks",
+        },
+        {
+          name: "secondaryTickCount",
+          update:
+            "maxXSecondaryScaleValue < xTicks ? maxXSecondaryScaleValue : xTicks",
+        },
       ],
       scales: [
         {
@@ -55,7 +77,7 @@ export default function BarChartScope(
               signal: "data('secondary').length > 1 ? width/2 - 30 : width",
             },
           ],
-          nice: xTicks || 6,
+          nice: { signal: "primaryTickCount" },
           zero: true,
           domain: {
             data: "primary_formatted",
@@ -71,7 +93,7 @@ export default function BarChartScope(
               signal: "data('secondary').length > 1 ? width/2 - 30 : 0",
             },
           ],
-          nice: xTicks || 6,
+          nice: { signal: "secondaryTickCount" },
           zero: true,
           domain: {
             data: "secondary_formatted",
@@ -141,7 +163,7 @@ export default function BarChartScope(
               format: { signal: "numberFormat[Units]" },
               grid: true,
               labelPadding: 6,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "primaryTickCount" },
             },
           ],
           marks: [
@@ -268,7 +290,7 @@ export default function BarChartScope(
               format: { signal: "numberFormat[Units]" },
               grid: true,
               labelPadding: 6,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "secondaryTickCount" },
             },
           ],
 
