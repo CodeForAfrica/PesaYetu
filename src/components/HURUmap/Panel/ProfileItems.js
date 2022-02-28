@@ -59,7 +59,7 @@ const ProfileItems = memo(
               <Fragment key={child.title}>
                 <SubcategoryHeader
                   description={child?.description}
-                  id={slugify(child.title)}
+                  id={slugify(`${category.title}-${child.title}`)}
                   title={child.title}
                 />
                 {child?.metrics?.map(
