@@ -7,7 +7,7 @@ import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
 import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/closing-tag.svg";
-import CopyToClipBoard from "@/pesayetu/components/CopyToClipBoard";
+import CopyUrl from "@/pesayetu/components/CopyUrl";
 
 function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
   const classes = useStyles(props);
@@ -85,9 +85,9 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
         <Grid item xs={4} key={social.name}>
           {social.name === "Copy" ? (
             <div className={classes.shareButton}>
-              <CopyToClipBoard text={url} onCopy={handleOnCopy}>
+              <CopyUrl text={url} onCopy={handleOnCopy}>
                 <CopyIcon className={classes.exampleIcon} />
-              </CopyToClipBoard>
+              </CopyUrl>
             </div>
           ) : (
             <ShareButton name={social.name} url={url} {...social.props} />
