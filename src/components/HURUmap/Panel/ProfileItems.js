@@ -7,11 +7,13 @@ import React, { memo, Fragment } from "react";
 import CategoryHeader from "@/pesayetu/components/HURUmap/CategoryHeader";
 import KeyMetric from "@/pesayetu/components/HURUmap/KeyMetric";
 import SubcategoryHeader from "@/pesayetu/components/HURUmap/SubcategoryHeader";
+import Loading from "@/pesayetu/components/Loading";
 import formatNumericalValue from "@/pesayetu/utils/formatNumericalValue";
 import slugify from "@/pesayetu/utils/slugify";
 
 const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
   ssr: false,
+  loading: () => <Loading />,
 });
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
