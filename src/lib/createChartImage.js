@@ -43,7 +43,13 @@ export default async function createChartImage(
   }
   await view.runAsync();
   const svg = await view.toSVG(config.images.scaleFactor);
-  const Body = await sharp(Buffer.from(svg)).png().toBuffer();
+  const Body = await sharp(Buffer.from(svg))
+    .resize(1200, 600, {
+      background,
+      fit: sharp.fit.contain,
+    })
+    .png()
+    .toBuffer();
   const clientConfig = {
     accessKeyId: process.env.S3_UPLOAD_KEY,
     secretAccessKey: process.env.S3_UPLOAD_SECRET,
