@@ -109,7 +109,7 @@ Default.args = {
       },
       defaultType: "Value",
       disableToggle: false,
-      show_parent: true,
+      show_parent: false,
     },
     parentName: "Kenya",
     parentData: [
