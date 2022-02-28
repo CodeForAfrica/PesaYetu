@@ -54,7 +54,7 @@ const TreeView = ({ items, onLabelClick, ...props }) => {
               }}
             >
               {item.children.map((child) => {
-                const childId = slugify(child.title);
+                const childId = slugify(`${itemId}-${child.title}`);
 
                 return (
                   <TreeItem

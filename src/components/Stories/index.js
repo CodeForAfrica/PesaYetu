@@ -1,4 +1,3 @@
-import { CircularProgress } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
@@ -7,6 +6,7 @@ import List from "./List";
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
+import Loading from "@/pesayetu/components/Loading";
 import Pagination from "@/pesayetu/components/Pagination";
 import fetchAPI from "@/pesayetu/utils/fetchApi";
 
@@ -66,7 +66,7 @@ function Stories({
       {page === 1 && (
         <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
       )}
-      {isLoading && <CircularProgress classes={{ root: classes.progress }} />}
+      {isLoading && <Loading />}
       <List
         items={items}
         key={category}

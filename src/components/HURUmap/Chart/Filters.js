@@ -112,7 +112,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
     ]);
   };
 
-  if (!filterGroups?.length) {
+  if (!filterGroups?.length && !defaultFilters?.length) {
     return null;
   }
 
@@ -123,6 +123,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
         // & their attributes cannot be changes, but values can
         defaultFilters?.map((df) => (
           <ChartFilter
+            key={df.name}
             groups={[df, ...filterGroups]}
             selectedAttribute={df?.name}
             selectedValue={df?.value}

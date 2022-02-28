@@ -1,4 +1,3 @@
-import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { forwardRef } from "react";
@@ -8,6 +7,7 @@ import ProfileItems from "./ProfileItems";
 import Print from "@/pesayetu/assets/icons/print.svg";
 import LocationHeader from "@/pesayetu/components/HURUmap/LocationHeader";
 import PinAndCompare from "@/pesayetu/components/HURUmap/PinAndCompare";
+import Loading from "@/pesayetu/components/Loading";
 import { hurumapArgs } from "@/pesayetu/config";
 
 const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
@@ -30,10 +30,6 @@ const useStyles = makeStyles(({ typography, breakpoints, zIndex }) => ({
       paddingRight: typography.pxToRem(17),
       zIndex: zIndex.drawer,
     },
-  },
-  progress: {
-    display: "block",
-    margin: "0 auto",
   },
 }));
 
@@ -111,7 +107,7 @@ const Profile = forwardRef(function Profile(
 
   return (
     <div className={classes.profile} ref={ref}>
-      {isLoading && <CircularProgress classes={{ root: classes.progress }} />}
+      {isLoading && <Loading />}
       <LocationHeader
         variant="primary"
         icon={Print}

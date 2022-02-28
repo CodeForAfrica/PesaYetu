@@ -24,7 +24,7 @@ function PanelButtons({
 
   useEffect(() => {
     if (primaryProfile.items.length || secondaryProfile?.items?.length) {
-      const interval = setTimeout(() => setValue("rich-data"), 1000);
+      const interval = setTimeout(() => setValue("rich-data"), 200);
 
       return () => {
         clearTimeout(interval);

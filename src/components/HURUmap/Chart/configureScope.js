@@ -1,6 +1,7 @@
 import BarChartScope from "./BarChartScope";
 import DonutChartScope from "./DonutChartScope";
 import LineChartScope from "./LineChartScope";
+import MultiLineChartScope from "./MultiLineChartScope";
 import StackedChartScope from "./StackedChartScope";
 import TreemapChartScope from "./TreemapChartScope";
 import VerticalBarChartScope from "./VerticalBarChartScope";
@@ -24,45 +25,30 @@ export default function configureScope(
 
   let vegaSpec;
   const chartType = configuration?.chart_type?.toLowerCase();
+  const scopeOptions = [
+    indicator?.data,
+    indicator?.metadata,
+    configuration,
+    secondaryIndicator?.data ?? null,
+    showParent ? indicator?.parentData : [{}],
+    showParent ? secondaryIndicator?.parentData : [{}],
+    profileNames,
+    isCompare,
+    isMobile,
+  ];
   switch (chartType) {
     case "line":
-      vegaSpec = LineChartScope(
-        indicator?.data,
-        indicator?.metadata,
-        configuration,
-        secondaryIndicator?.data ?? null,
-        showParent ? indicator?.parentData : [{}],
-        showParent ? secondaryIndicator?.parentData : [{}],
-        profileNames,
-        isCompare,
-        isMobile
-      );
+      if (configuration?.stacked_field) {
+        vegaSpec = MultiLineChartScope(...scopeOptions);
+      } else {
+        vegaSpec = LineChartScope(...scopeOptions);
+      }
       break;
     case "donut":
-      vegaSpec = DonutChartScope(
-        indicator?.data,
-        indicator?.metadata,
-        configuration,
-        secondaryIndicator?.data ?? null,
-        showParent ? indicator?.parentData : [{}],
-        showParent ? secondaryIndicator?.parentData : [{}],
-        profileNames,
-        isCompare,
-        isMobile
-      );
+      vegaSpec = DonutChartScope(...scopeOptions);
       break;
     case "treemap":
-      vegaSpec = TreemapChartScope(
-        indicator?.data,
-        indicator?.metadata,
-        configuration,
-        secondaryIndicator?.data ?? null,
-        showParent ? indicator?.parentData : [{}],
-        showParent ? secondaryIndicator?.parentData : [{}],
-        profileNames,
-        isCompare,
-        isMobile
-      );
+      vegaSpec = TreemapChartScope(...scopeOptions);
       break;
     case "stacked":
       if (isMobile) {
