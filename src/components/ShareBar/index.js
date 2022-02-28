@@ -1,6 +1,6 @@
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import {
   TwitterShareButton,
   LinkedinShareButton,
@@ -15,9 +15,16 @@ import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/icons/Group 304
 import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/icons/Group 3048.svg";
 import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/icons/Group 3184.svg";
 import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.svg";
+import CopyToClipBoard from "@/pesayetu/components/CopyToClipBoard";
 
 const ShareBar = ({ socialLinks, title, children, ...props }) => {
   const classes = useStyles(props);
+
+  const [copied, setCopied] = useState(false);
+  const handleOnCopy = () => {
+    setCopied(true);
+  };
+
   if (!socialLinks?.length) {
     return null;
   }
@@ -32,6 +39,8 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
       {socialLinks.map(({ name }) => {
         const social = name.toLowerCase();
         switch (social) {
+          case "copy":
+            return <CopyToClipBoard text={url.href} onCopy={handleOnCopy} />;
           case "facebook":
             return (
               <ShareButton
@@ -80,6 +89,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
             return null;
         }
       })}
+      {copied ? <p className={classes.copied}> Copied! </p> : null}
     </div>
   );
 };

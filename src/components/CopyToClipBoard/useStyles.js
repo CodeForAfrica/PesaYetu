@@ -19,9 +19,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   icon: {
     marginLeft: typography.pxToRem(1),
   },
-  copied: {
-    padding: "0rem 1rem",
-  },
 }));
 
 export default useStyles;

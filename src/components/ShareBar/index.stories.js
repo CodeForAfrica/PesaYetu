@@ -26,10 +26,10 @@ Default.args = {
   children: "Share",
   title: "This is the article title",
   socialLinks: [
+    { name: "copy", alt: "copy" },
     { name: "facebook", alt: "facebook" },
     { name: "twitter", alt: "twitter" },
     { name: "linkedin", alt: "linkedin" },
-    { name: "share", alt: "share" },
     { name: "email", alt: "email" },
   ],
 };
