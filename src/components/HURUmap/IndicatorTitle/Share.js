@@ -74,12 +74,7 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     <Grid container className={classes.root}>
       {shareData.map((social) => (
         <Grid item xs={4} key={social.name}>
-          <ShareButton
-            name={social.name}
-            // title={title}
-            url={url}
-            {...social.props}
-          />
+          <ShareButton name={social.name} url={url} {...social.props} />
         </Grid>
       ))}
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>

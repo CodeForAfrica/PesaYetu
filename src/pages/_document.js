@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           />
           <script
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];

@@ -131,7 +131,7 @@ export async function getStaticProps({
   }
 
   const isCompare = !!secondaryCode;
-  const image = await createChartImage(
+  const imageUrl = await createChartImage(
     originalCode,
     chartId,
     primaryIndicator.indicator,
@@ -147,7 +147,7 @@ export async function getStaticProps({
     title,
     description: primaryIndicator.description || null,
     url,
-    images: [{ url: image }],
+    images: [{ url: imageUrl }],
   };
   const twitter = {
     cartType: "summary_large_image",

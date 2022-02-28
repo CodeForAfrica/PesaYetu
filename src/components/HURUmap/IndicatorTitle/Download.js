@@ -12,10 +12,7 @@ import useStyles from "./useStyles";
 
 import cfalogo from "@/pesayetu/assets/logos/Group4462.svg";
 import projectlogo from "@/pesayetu/assets/logos/Group5002.svg";
-import { hurumapArgs } from "@/pesayetu/config";
-
-// https://vega.github.io/vega/docs/api/view/#view_toImageURL
-const IMAGE_SCALE_FACTOR = 2;
+import config, { hurumapArgs } from "@/pesayetu/config";
 
 function Download({
   title,
@@ -83,7 +80,7 @@ function Download({
     await view?.runAsync();
 
     const imgType = type.toLowerCase();
-    const url = await view.toImageURL(imgType, IMAGE_SCALE_FACTOR);
+    const url = await view.toImageURL(imgType, config.images.scaleFactor);
     const link = document.createElement("a");
     link.download = `${title}.${imgType}`;
     link.href = url;
