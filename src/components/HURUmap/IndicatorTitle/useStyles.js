@@ -72,6 +72,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     },
   },
   icon: {},
+  exampleIcon: {
+    marginLeft: "1rem",
+  },
 }));
 
 export default useStyles;

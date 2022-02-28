@@ -2,15 +2,10 @@ import PropTypes from "prop-types";
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-import useStyles from "./useStyles";
-
-import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 4105.svg";
-
-function CopyToClipBoard({ text, onCopy, ...props }) {
-  const classes = useStyles(props);
+function CopyToClipBoard({ text, onCopy, children }) {
   return (
     <CopyToClipboard text={text} onCopy={onCopy}>
-      <CopyIcon className={classes.icon} />
+      {children}
     </CopyToClipboard>
   );
 }
@@ -18,11 +13,13 @@ function CopyToClipBoard({ text, onCopy, ...props }) {
 CopyToClipBoard.propTypes = {
   text: PropTypes.string,
   onCopy: PropTypes.func,
+  children: PropTypes.node,
 };
 
 CopyToClipBoard.defaultProps = {
   text: undefined,
   onCopy: undefined,
+  children: undefined,
 };
 
 export default CopyToClipBoard;

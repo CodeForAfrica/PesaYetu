@@ -14,6 +14,7 @@ import useStyles from "./useStyles";
 import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/icons/Group 3047.svg";
 import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/icons/Group 3048.svg";
 import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/icons/Group 3184.svg";
+import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 4105.svg";
 import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.svg";
 import CopyToClipBoard from "@/pesayetu/components/CopyToClipBoard";
 
@@ -40,7 +41,11 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
         const social = name.toLowerCase();
         switch (social) {
           case "copy":
-            return <CopyToClipBoard text={url.href} onCopy={handleOnCopy} />;
+            return (
+              <CopyToClipBoard text={url.href} onCopy={handleOnCopy}>
+                <CopyIcon className={classes.icon} />
+              </CopyToClipBoard>
+            );
           case "facebook":
             return (
               <ShareButton

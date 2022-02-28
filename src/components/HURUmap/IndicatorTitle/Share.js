@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
+import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/closing-tag.svg";
 import CopyToClipBoard from "@/pesayetu/components/CopyToClipBoard";
 
 function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
@@ -35,7 +36,7 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     },
     { name: "WhatsApp", props: { quote: title } },
     { name: "Email", props: { subject: title } },
-    { name: "Copy", props: { subject: title } },
+    { name: "Copy" },
   ];
 
   const code = `<div>
@@ -83,7 +84,11 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
       {shareData.map((social) => (
         <Grid item xs={4} key={social.name}>
           {social.name === "Copy" ? (
-            <CopyToClipBoard text={url} onCopy={handleOnCopy} />
+            <div className={classes.shareButton}>
+              <CopyToClipBoard text={url} onCopy={handleOnCopy}>
+                <CopyIcon className={classes.exampleIcon} />
+              </CopyToClipBoard>
+            </div>
           ) : (
             <ShareButton name={social.name} url={url} {...social.props} />
           )}
