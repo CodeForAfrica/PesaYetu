@@ -1,12 +1,20 @@
 import { Grid, TextField, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
+import CopyToClipBoard from "@/pesayetu/components/CopyToClipBoard";
+
 function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
+  const classes = useStyles(props);
+  const [copied, setCopied] = useState(false);
+  const handleOnCopy = () => {
+    setCopied((prev) => !prev);
+  };
+
   // Embed url
   const url = `${
     process.env.NEXT_PUBLIC_APP_URL
@@ -27,8 +35,8 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     },
     { name: "WhatsApp", props: { quote: title } },
     { name: "Email", props: { subject: title } },
+    { name: "Copy", props: { subject: title } },
   ];
-  const classes = useStyles(props);
 
   const code = `<div>
   <style>
@@ -74,14 +82,20 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     <Grid container className={classes.root}>
       {shareData.map((social) => (
         <Grid item xs={4} key={social.name}>
-          <ShareButton
-            name={social.name}
-            // title={title}
-            url={url}
-            {...social.props}
-          />
+          {social.name === "Copy" ? (
+            <CopyToClipBoard text={url} onCopy={handleOnCopy} />
+          ) : (
+            <ShareButton name={social.name} url={url} {...social.props} />
+          )}
         </Grid>
       ))}
+
+      {copied ? (
+        <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
+          <Typography className={classes.text}>Copied!</Typography>
+        </Grid>
+      ) : null}
+
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>
