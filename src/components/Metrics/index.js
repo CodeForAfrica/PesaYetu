@@ -4,10 +4,14 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import useStyles from "./useStyles";
-
 import Card from "@/pesayetu/components/Card";
 import Section from "@/pesayetu/components/Section";
+
+// NOTE(kilemensi) useStyles uses import/definition order to determine how
+//                 classes are ordered.
+//                 see: https://material-ui.com/styles/advanced/#makestyles-withstyles-styled
+// eslint-disable-next-line import/order
+import useStyles from "./useStyles";
 
 function Metrics({ items, title, ...props }) {
   const classes = useStyles(props);
