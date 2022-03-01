@@ -15,45 +15,47 @@ function Stories({
   items: itemsProp,
   category,
   pagination,
-  page,
+  page: pageProp,
   paginate,
   ...props
 }) {
   const classes = useStyles(props);
   const variant = category === "insights" ? "embed" : undefined;
 
+  const [page, setPage] = useState(pageProp ?? 0);
   const [stories, setStories] = useState(itemsProp);
-  const [isLoading, setIsLoading] = useState(false);
+  const [shouldFetch, setShouldFetch] = useState(false);
 
   const handleClickPage = (_, value) => {
-    if (paginate) {
-      paginate(value);
+    if (value) {
+      setPage(value);
+      setShouldFetch(true);
     }
   };
 
-  const { data, error } = useSWR("/api/wp/archive", (url) => {
-    let offset;
-    if (page === 1) {
-      offset = 0;
-    } else if (page === 2) {
-      offset = 6;
-    } else {
-      offset = (page - 2) * 9 + 6;
+  const { data, error } = useSWR(
+    shouldFetch ? "/api/wp/archive" : null,
+    (url) => {
+      let offset;
+      if (page === 1) {
+        offset = 0;
+      } else if (page === 2) {
+        offset = 6;
+      } else {
+        offset = (page - 2) * 9 + 6;
+      }
+      return fetchAPI(`${url}/?taxonomyId=${category}&offset=${offset}`);
     }
-    return fetchAPI(`${url}/?taxonomyId=${category}&offset=${offset}`);
-  });
+  );
 
   useEffect(() => {
-    if (!data && !error) {
-      setIsLoading(true);
-    } else {
-      if (data) {
-        setStories(data);
-      }
-      setIsLoading(false);
+    if (data) {
+      setStories(data);
+      setShouldFetch(false);
     }
   }, [data, error]);
 
+  const isLoading = !data && !error && shouldFetch;
   let items = stories;
   if (page === 1) {
     items = stories
@@ -66,19 +68,24 @@ function Stories({
       {page === 1 && (
         <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
       )}
-      {isLoading && <Loading />}
-      <List
-        items={items}
-        key={category}
-        variant={variant}
-        ctaText={featuredStoryProps.ctaText}
-      />
-      <Pagination
-        count={Math.ceil((pagination?.offsetPagination?.total ?? 0) / 9)}
-        onChangePage={handleClickPage}
-        page={page}
-        pageSize={9}
-      />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <List
+            items={items}
+            key={category}
+            variant={variant}
+            ctaText={featuredStoryProps.ctaText}
+          />
+          <Pagination
+            count={Math.ceil((pagination?.offsetPagination?.total ?? 0) / 9)}
+            onChangePage={handleClickPage}
+            page={page}
+            pageSize={9}
+          />
+        </>
+      )}
     </div>
   );
 }
