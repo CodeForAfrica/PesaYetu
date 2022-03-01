@@ -51,7 +51,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
       {socialLinks.map(({ name }) => {
         const social = name.toLowerCase();
         switch (social) {
-          case "copy":
+          case "copyurl":
             return (
               <ShareButton title={title} url={url} alt={social}>
                 <CopyToClipboard text={url?.href} onCopy={handleOnCopy}>
