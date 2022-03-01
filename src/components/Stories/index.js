@@ -37,10 +37,8 @@ function Stories({
     shouldFetch ? "/api/wp/archive" : null,
     (url) => {
       let offset;
-      if (page === 1) {
+      if (page < 2) {
         offset = 0;
-      } else if (page === 2) {
-        offset = 6;
       } else {
         offset = (page - 2) * 9 + 6;
       }
