@@ -29,6 +29,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     textTransform: "none",
     height: typography.pxToRem(48),
     width: typography.pxToRem(48),
+    minWidth: typography.pxToRem(16),
     "&:hover": {
       background: palette.background.paper,
       borderRadius: 0,
