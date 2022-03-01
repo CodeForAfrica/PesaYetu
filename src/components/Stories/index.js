@@ -51,7 +51,7 @@ function Stories({
       setStories(data);
       setShouldFetch(false);
     }
-  }, [data, error]);
+  }, [data]);
 
   const isLoading = !data && !error && shouldFetch;
   let items = stories;
