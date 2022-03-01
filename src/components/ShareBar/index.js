@@ -42,9 +42,20 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
         switch (social) {
           case "copy":
             return (
-              <CopyToClipboard text={url?.href} onCopy={handleOnCopy}>
-                <CopyIcon className={classes.icon} />
-              </CopyToClipboard>
+              <ShareButton
+                title={title}
+                url={url}
+                alt={social}
+                style={{
+                  textAlign: "center",
+                  background: "red",
+                  padding: "3rem",
+                }}
+              >
+                <CopyToClipboard text={url?.href} onCopy={handleOnCopy}>
+                  <CopyIcon className={classes.icon} />
+                </CopyToClipboard>
+              </ShareButton>
             );
           case "facebook":
             return (

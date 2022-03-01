@@ -22,6 +22,34 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   copied: {
     padding: "0rem 1rem",
   },
+  copyButton: {
+    padding: 0,
+    background: "#f8f8f8",
+    borderRadius: 0,
+    textTransform: "none",
+    height: "48px",
+    width: "48px",
+    "&:hover": {
+      background: "#f8f8f8",
+      borderRadius: 0,
+      border: 0,
+      fontWeight: "bold",
+    },
+    "&::after": {
+      content: '""',
+      display: "none",
+      backgroundImage: "none",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    },
+    "&:hover::after": {
+      content: '""',
+      display: "none",
+      backgroundImage: "none",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    },
+  },
 }));
 
 export default useStyles;
