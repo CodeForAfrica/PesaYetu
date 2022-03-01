@@ -20,34 +20,26 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     marginLeft: typography.pxToRem(1),
   },
   copied: {
-    padding: "0rem 1rem",
+    padding: `0 ${typography.pxToRem(16)}`,
   },
   copyButton: {
     padding: 0,
     background: "#f8f8f8",
     borderRadius: 0,
     textTransform: "none",
-    height: "48px",
-    width: "48px",
+    height: typography.pxToRem(48),
+    width: typography.pxToRem(48),
     "&:hover": {
-      background: "#f8f8f8",
+      background: palette.background.paper,
       borderRadius: 0,
       border: 0,
       fontWeight: "bold",
     },
     "&::after": {
-      content: '""',
       display: "none",
-      backgroundImage: "none",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
     },
     "&:hover::after": {
-      content: '""',
       display: "none",
-      backgroundImage: "none",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
     },
   },
 }));
