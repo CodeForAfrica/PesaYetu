@@ -1,12 +1,32 @@
-import { Grid, TextField, Typography } from "@material-ui/core";
+import { Grid, TextField, Typography, SvgIcon } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
+import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
+
 function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
+  const classes = useStyles(props);
+  const [copied, setCopied] = useState(false);
+
+  const handleOnCopy = () => {
+    setCopied((prev) => !prev);
+  };
+
+  useEffect(() => {
+    let timer;
+    if (copied) {
+      timer = setTimeout(() => {
+        setCopied(false);
+      }, 3000);
+    }
+    return () => timer && clearTimeout(timer);
+  }, [copied]);
+
   // Embed url
   const url = `${
     process.env.NEXT_PUBLIC_APP_URL
@@ -27,8 +47,8 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     },
     { name: "WhatsApp", props: { quote: title } },
     { name: "Email", props: { subject: title } },
+    { name: "CopyUrl" },
   ];
-  const classes = useStyles(props);
 
   const code = `<div>
   <style>
@@ -74,9 +94,28 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     <Grid container className={classes.root}>
       {shareData.map((social) => (
         <Grid item xs={4} key={social.name}>
-          <ShareButton name={social.name} url={url} {...social.props} />
+          {social.name === "CopyUrl" ? (
+            <div className={classes.shareButton}>
+              <CopyToClipboard text={url} onCopy={handleOnCopy}>
+                <SvgIcon
+                  component={CopyIcon}
+                  viewBox="0 0 28 28"
+                  className={classes.copyIcon}
+                />
+              </CopyToClipboard>
+            </div>
+          ) : (
+            <ShareButton name={social.name} url={url} {...social.props} />
+          )}
         </Grid>
       ))}
+
+      {copied ? (
+        <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
+          <Typography className={classes.text}>Copied!</Typography>
+        </Grid>
+      ) : null}
+
       <Grid item xs={12} className={clsx(classes.row, classes.layout)}>
         <Typography className={classes.text}>Embed on your website:</Typography>
       </Grid>

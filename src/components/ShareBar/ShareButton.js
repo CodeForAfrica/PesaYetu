@@ -1,4 +1,4 @@
-import { Tooltip } from "@material-ui/core";
+import { Tooltip, Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -7,9 +7,6 @@ import useStyles from "./useStyles";
 const ShareButton = ({ component, url, alt, title, children, ...props }) => {
   const classes = useStyles(props);
 
-  if (!component) {
-    return null;
-  }
   const Component = component;
 
   return (
@@ -18,9 +15,15 @@ const ShareButton = ({ component, url, alt, title, children, ...props }) => {
       title={alt}
       classes={{ tooltip: classes.tooltip }}
     >
-      <Component title={title} url={url}>
-        {children}
-      </Component>
+      {!component ? (
+        <Button className={classes.copyButton} variant="text">
+          {children}
+        </Button>
+      ) : (
+        <Component title={title} url={url}>
+          {children}
+        </Component>
+      )}
     </Tooltip>
   );
 };

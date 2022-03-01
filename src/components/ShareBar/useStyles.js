@@ -19,6 +19,29 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   icon: {
     marginLeft: typography.pxToRem(1),
   },
+  copied: {
+    padding: `0 ${typography.pxToRem(16)}`,
+  },
+  copyButton: {
+    padding: 0,
+    background: "#f8f8f8",
+    borderRadius: 0,
+    textTransform: "none",
+    height: typography.pxToRem(48),
+    minWidth: typography.pxToRem(48),
+    "&:hover": {
+      background: palette.background.paper,
+      borderRadius: 0,
+      border: 0,
+      fontWeight: "bold",
+    },
+    "&::after": {
+      display: "none",
+    },
+    "&:hover::after": {
+      display: "none",
+    },
+  },
 }));
 
 export default useStyles;

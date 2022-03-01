@@ -1,6 +1,7 @@
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   TwitterShareButton,
   LinkedinShareButton,
@@ -15,9 +16,27 @@ import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/icons/Group 304
 import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/icons/Group 3048.svg";
 import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/icons/Group 3184.svg";
 import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.svg";
+import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
 
 const ShareBar = ({ socialLinks, title, children, ...props }) => {
   const classes = useStyles(props);
+
+  const [copied, setCopied] = useState(false);
+
+  const handleOnCopy = () => {
+    setCopied((prev) => !prev);
+  };
+
+  useEffect(() => {
+    let timer;
+    if (copied) {
+      timer = setTimeout(() => {
+        setCopied(false);
+      }, 3000);
+    }
+    return () => timer && clearTimeout(timer);
+  }, [copied]);
+
   if (!socialLinks?.length) {
     return null;
   }
@@ -32,6 +51,14 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
       {socialLinks.map(({ name }) => {
         const social = name.toLowerCase();
         switch (social) {
+          case "copyurl":
+            return (
+              <ShareButton title={title} url={url} alt={social}>
+                <CopyToClipboard text={url?.href} onCopy={handleOnCopy}>
+                  <CopyIcon className={classes.icon} />
+                </CopyToClipboard>
+              </ShareButton>
+            );
           case "facebook":
             return (
               <ShareButton
@@ -80,6 +107,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
             return null;
         }
       })}
+      {copied ? <p className={classes.copied}> Copied! </p> : null}
     </div>
   );
 };
