@@ -26,6 +26,8 @@ export default function Signals(
   const percentageMaxX = config?.types?.Percentage?.minX ?? undefined;
 
   const defaultType = config?.defaultType ?? "Value";
+  const xTicks = config?.xTicks ?? 6;
+  const yTicks = config?.yTicks ?? 6;
 
   return [
     {
@@ -172,6 +174,50 @@ export default function Signals(
     {
       name: "aspectRatio",
       value: 1.6,
+    },
+    // tickCount signals
+    {
+      name: "xTicks",
+      value: xTicks,
+    },
+    {
+      name: "yTicks",
+      value: yTicks,
+    },
+    {
+      name: "maxXScaleValue",
+      update: "extent(domain('xscale'))[1]",
+    },
+    {
+      name: "maxYScaleValue",
+      update: "extent(domain('yscale'))[1]",
+    },
+    {
+      name: "maxSecondaryXScaleValue",
+      update: "extent(domain('s_xscale'))[1]",
+    },
+    {
+      name: "maxSecondaryYScaleValue",
+      update: "extent(domain('s_yscale'))[1]",
+    },
+    // if the maximum value of xaxis is less than xTicks return maximum value as tick Count
+    {
+      name: "primaryXTickCount",
+      update: "maxXScaleValue < xTicks ? maxXScaleValue : xTicks",
+    },
+    {
+      name: "primaryYTickCount",
+      update: "maxYScaleValue < yTicks ? maxYScaleValue : yTicks",
+    },
+    {
+      name: "secondaryXTickCount",
+      update:
+        "maxSecondaryXScaleValue < xTicks ? maxSecondaryXScaleValue : xTicks",
+    },
+    {
+      name: "secondaryYTickCount",
+      update:
+        "maxSecondaryYScaleValue < yTicks ? maxSecondaryYScaleValue : yTicks",
     },
     // signals for logo and title => image layout downloads
     { name: "chartY", value: 0 },

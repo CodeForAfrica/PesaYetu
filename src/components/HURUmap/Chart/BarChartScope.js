@@ -14,7 +14,7 @@ export default function BarChartScope(
   profileNames,
   isCompare
 ) {
-  const { xTicks, parentLabel } = config;
+  const { parentLabel } = config;
 
   const { primary_group: primaryGroup } = metadata;
 
@@ -55,7 +55,7 @@ export default function BarChartScope(
               signal: "data('secondary').length > 1 ? width/2 - 30 : width",
             },
           ],
-          nice: xTicks || 6,
+          nice: { signal: "primaryXTickCount" },
           zero: true,
           domain: {
             data: "primary_formatted",
@@ -71,7 +71,7 @@ export default function BarChartScope(
               signal: "data('secondary').length > 1 ? width/2 - 30 : 0",
             },
           ],
-          nice: xTicks || 6,
+          nice: { signal: "secondaryXTickCount" },
           zero: true,
           domain: {
             data: "secondary_formatted",
@@ -141,7 +141,7 @@ export default function BarChartScope(
               format: { signal: "numberFormat[Units]" },
               grid: true,
               labelPadding: 6,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "primaryXTickCount" },
             },
           ],
           marks: [
@@ -268,7 +268,7 @@ export default function BarChartScope(
               format: { signal: "numberFormat[Units]" },
               grid: true,
               labelPadding: 6,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "secondaryXTickCount" },
             },
           ],
 

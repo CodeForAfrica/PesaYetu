@@ -15,7 +15,7 @@ export default function MultiLineChartScope(
   isCompare,
   isMobile
 ) {
-  const { xTicks, parentLabel } = config;
+  const { parentLabel } = config;
 
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
@@ -98,7 +98,7 @@ export default function MultiLineChartScope(
             field: { signal: "datatype[Units]" },
           },
           range: [{ signal: "isCompare && isMobile ? height/2: height" }, 0],
-          nice: xTicks || 6,
+          nice: { signal: "primaryYTickCount" },
           zero: false,
           clamp: true,
         },
@@ -110,7 +110,7 @@ export default function MultiLineChartScope(
             field: { signal: "datatype[Units]" },
           },
           range: [{ signal: "isCompare && isMobile ? height/2: height" }, 0],
-          nice: xTicks || 6,
+          nice: { signal: "secondaryYTickCount" },
           zero: false,
           clamp: true,
         },
@@ -217,7 +217,7 @@ export default function MultiLineChartScope(
               domain: false,
               domainOpacity: 0.5,
               tickSize: 0,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "primaryYTickCount" },
               labelPadding: 6,
               zindex: 1,
               format: { signal: "numberFormat[Units]" },
@@ -445,7 +445,7 @@ export default function MultiLineChartScope(
                     domain: false,
                     domainOpacity: 0.5,
                     tickSize: 0,
-                    tickCount: xTicks || 6,
+                    tickCount: { signal: "secondaryYTickCount" },
                     labelPadding: 6,
                     zindex: 1,
                     format: { signal: "numberFormat[Units]" },

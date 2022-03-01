@@ -82,7 +82,7 @@ Tabs.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      children: PropTypes.string,
+      children: PropTypes.node,
     })
   ),
   onChange: PropTypes.func,

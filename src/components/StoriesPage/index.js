@@ -68,7 +68,8 @@ function StoriesPage({
       {page === 1 && <Hero {...hero} />}
       <Section classes={{ root: classes.section }}>
         <Tabs
-          name="stories"
+          key={activeCategory}
+          name={activeCategory}
           activeTab={activeTab}
           items={tabItems}
           onChange={handleTabChange}
