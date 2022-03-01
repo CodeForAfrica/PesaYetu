@@ -1,7 +1,7 @@
-import { Grid, TextField, Typography } from "@material-ui/core";
+import { Grid, TextField, Typography, SvgIcon } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import ShareButton from "./ShareButton";
@@ -15,10 +15,17 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
 
   const handleOnCopy = () => {
     setCopied((prev) => !prev);
-    setTimeout(function () {
-      setCopied(false);
-    }, 3000);
   };
+
+  useEffect(() => {
+    let timer;
+    if (copied) {
+      timer = setTimeout(() => {
+        setCopied(false);
+      }, 3000);
+    }
+    return () => timer && clearTimeout(timer);
+  }, [copied]);
 
   // Embed url
   const url = `${
@@ -90,7 +97,11 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
           {social.name === "Copy" ? (
             <div className={classes.shareButton}>
               <CopyToClipboard text={url} onCopy={handleOnCopy}>
-                <CopyIcon className={classes.exampleIcon} />
+                <SvgIcon
+                  component={CopyIcon}
+                  viewBox="0 0 28 28"
+                  className={classes.copyIcon}
+                />
               </CopyToClipboard>
             </div>
           ) : (

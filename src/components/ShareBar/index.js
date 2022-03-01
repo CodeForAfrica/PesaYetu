@@ -1,6 +1,6 @@
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   TwitterShareButton,
@@ -22,12 +22,20 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
   const classes = useStyles(props);
 
   const [copied, setCopied] = useState(false);
+
   const handleOnCopy = () => {
     setCopied((prev) => !prev);
-    setTimeout(function () {
-      setCopied(false);
-    }, 3000);
   };
+
+  useEffect(() => {
+    let timer;
+    if (copied) {
+      timer = setTimeout(() => {
+        setCopied(false);
+      }, 3000);
+    }
+    return () => timer && clearTimeout(timer);
+  }, [copied]);
 
   if (!socialLinks?.length) {
     return null;
