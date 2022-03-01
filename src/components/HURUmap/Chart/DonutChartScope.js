@@ -52,6 +52,10 @@ export default function DonutChartScope(
           endAngle: { signal: "endAngle" },
           sort: { signal: "sort" },
         },
+        {
+          type: "collect",
+          sort: { field: "count", order: "descending" },
+        },
       ]
     ),
     {

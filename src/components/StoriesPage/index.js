@@ -55,7 +55,12 @@ function StoriesPage({
     <div className={classes.root}>
       <Hero {...hero} />
       <Section classes={{ root: classes.section }} ref={contentRef}>
-        <Tabs name="stories" activeTab={activeTab} items={tabItems} />
+        <Tabs
+          key={activeCategory}
+          name={activeCategory}
+          activeTab={activeTab}
+          items={tabItems}
+        />
       </Section>
     </div>
   );

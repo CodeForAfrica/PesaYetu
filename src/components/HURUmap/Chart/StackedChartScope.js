@@ -14,7 +14,7 @@ export default function StackedChartScope(
   profileNames,
   isCompare
 ) {
-  const { xTicks, parentLabel } = config;
+  const { parentLabel } = config;
 
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
@@ -88,7 +88,7 @@ export default function StackedChartScope(
           ],
           zero: true,
           clamp: true,
-          nice: xTicks || 6,
+          nice: { signal: "primaryXTickCount" },
         },
         {
           name: "s_xscale",
@@ -104,7 +104,7 @@ export default function StackedChartScope(
           ],
           zero: true,
           clamp: true,
-          nice: xTicks || 6,
+          nice: { signal: "secondaryXTickCount" },
         },
         {
           name: "color",
@@ -176,7 +176,7 @@ export default function StackedChartScope(
               format: { signal: "numberFormat[Units]" },
               grid: true,
               labelPadding: 6,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "primaryXTickCount" },
             },
           ],
           legends: [
@@ -311,7 +311,7 @@ export default function StackedChartScope(
               format: { signal: "numberFormat[Units]" },
               grid: true,
               labelPadding: 6,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "secondaryXTickCount" },
             },
           ],
           legends:

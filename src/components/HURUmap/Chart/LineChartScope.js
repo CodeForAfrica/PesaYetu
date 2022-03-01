@@ -15,7 +15,7 @@ export default function LineChartScope(
   isCompare,
   isMobile
 ) {
-  const { xTicks, parentLabel } = config;
+  const { parentLabel } = config;
 
   const { primary_group: primaryGroup } = metadata;
 
@@ -84,7 +84,7 @@ export default function LineChartScope(
             field: { signal: "datatype[Units]" },
           },
           range: [{ signal: "isCompare && isMobile ? height/2: height" }, 0],
-          nice: xTicks || 6,
+          nice: { signal: "primaryYTickCount" },
           zero: false,
           clamp: true,
         },
@@ -96,7 +96,7 @@ export default function LineChartScope(
             field: { signal: "datatype[Units]" },
           },
           range: [{ signal: "isCompare && isMobile ? height/2: height" }, 0],
-          nice: xTicks || 6,
+          nice: { signal: "secondaryYTickCount" },
           zero: false,
           clamp: true,
         },
@@ -174,7 +174,7 @@ export default function LineChartScope(
               domain: false,
               domainOpacity: 0.5,
               tickSize: 0,
-              tickCount: xTicks || 6,
+              tickCount: { signal: "primaryYTickCount" },
               labelPadding: 6,
               zindex: 1,
               format: { signal: "numberFormat[Units]" },
@@ -366,7 +366,7 @@ export default function LineChartScope(
                     domain: false,
                     domainOpacity: 0.5,
                     tickSize: 0,
-                    tickCount: xTicks || 6,
+                    tickCount: { signal: "secondaryYTickCount" },
                     labelPadding: 6,
                     zindex: 1,
                     format: { signal: "numberFormat[Units]" },
