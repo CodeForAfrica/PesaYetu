@@ -22,7 +22,7 @@ function Stories({
   const classes = useStyles(props);
   const variant = category === "insights" ? "embed" : undefined;
 
-  const [page, setPage] = useState(pageProp ?? 0);
+  const [page, setPage] = useState(pageProp ?? 1);
   const [stories, setStories] = useState(itemsProp);
   const [shouldFetch, setShouldFetch] = useState(false);
 
