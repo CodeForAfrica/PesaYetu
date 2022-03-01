@@ -42,7 +42,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
         switch (social) {
           case "copy":
             return (
-              <CopyUrl text={url.href} onCopy={handleOnCopy}>
+              <CopyUrl text={url?.href} onCopy={handleOnCopy}>
                 <CopyIcon className={classes.icon} />
               </CopyUrl>
             );
