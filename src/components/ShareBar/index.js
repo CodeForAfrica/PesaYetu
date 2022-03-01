@@ -24,6 +24,9 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
   const [copied, setCopied] = useState(false);
   const handleOnCopy = () => {
     setCopied((prev) => !prev);
+    setTimeout(function () {
+      setCopied(false);
+    }, 3000);
   };
 
   if (!socialLinks?.length) {

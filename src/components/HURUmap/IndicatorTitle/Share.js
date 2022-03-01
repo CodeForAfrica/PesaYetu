@@ -12,8 +12,12 @@ import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.s
 function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
   const classes = useStyles(props);
   const [copied, setCopied] = useState(false);
+
   const handleOnCopy = () => {
     setCopied((prev) => !prev);
+    setTimeout(function () {
+      setCopied(false);
+    }, 3000);
   };
 
   // Embed url
