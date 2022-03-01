@@ -47,7 +47,7 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     },
     { name: "WhatsApp", props: { quote: title } },
     { name: "Email", props: { subject: title } },
-    { name: "Copy" },
+    { name: "CopyUrl" },
   ];
 
   const code = `<div>
@@ -94,7 +94,7 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
     <Grid container className={classes.root}>
       {shareData.map((social) => (
         <Grid item xs={4} key={social.name}>
-          {social.name === "Copy" ? (
+          {social.name === "CopyUrl" ? (
             <div className={classes.shareButton}>
               <CopyToClipboard text={url} onCopy={handleOnCopy}>
                 <SvgIcon

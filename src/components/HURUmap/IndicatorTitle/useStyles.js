@@ -72,8 +72,8 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     },
   },
   icon: {},
-  exampleIcon: {
-    marginLeft: "1rem",
+  copyIcon: {
+    marginLeft: typography.pxToRem(16),
   },
 }));
 
