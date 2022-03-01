@@ -26,7 +26,7 @@ Default.args = {
   children: "Share",
   title: "This is the article title",
   socialLinks: [
-    { name: "copyurl", alt: "copyurl" },
+    { name: "copyurl", alt: "Copy Url" },
     { name: "facebook", alt: "facebook" },
     { name: "twitter", alt: "twitter" },
     { name: "linkedin", alt: "linkedin" },
