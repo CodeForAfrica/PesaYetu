@@ -2,12 +2,12 @@ import { Grid, TextField, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
-import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/closing-tag.svg";
-import CopyUrl from "@/pesayetu/components/CopyUrl";
+import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
 
 function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
   const classes = useStyles(props);
@@ -85,9 +85,9 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
         <Grid item xs={4} key={social.name}>
           {social.name === "Copy" ? (
             <div className={classes.shareButton}>
-              <CopyUrl text={url} onCopy={handleOnCopy}>
+              <CopyToClipboard text={url} onCopy={handleOnCopy}>
                 <CopyIcon className={classes.exampleIcon} />
-              </CopyUrl>
+              </CopyToClipboard>
             </div>
           ) : (
             <ShareButton name={social.name} url={url} {...social.props} />

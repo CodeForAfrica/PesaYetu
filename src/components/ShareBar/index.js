@@ -1,6 +1,7 @@
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   TwitterShareButton,
   LinkedinShareButton,
@@ -14,9 +15,8 @@ import useStyles from "./useStyles";
 import { ReactComponent as TwitterIcon } from "@/pesayetu/assets/icons/Group 3047.svg";
 import { ReactComponent as FacebookIcon } from "@/pesayetu/assets/icons/Group 3048.svg";
 import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/icons/Group 3184.svg";
-import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 4105.svg";
 import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.svg";
-import CopyUrl from "@/pesayetu/components/CopyToClipBoard";
+import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
 
 const ShareBar = ({ socialLinks, title, children, ...props }) => {
   const classes = useStyles(props);
@@ -42,9 +42,9 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
         switch (social) {
           case "copy":
             return (
-              <CopyUrl text={url?.href} onCopy={handleOnCopy}>
+              <CopyToClipboard text={url?.href} onCopy={handleOnCopy}>
                 <CopyIcon className={classes.icon} />
-              </CopyUrl>
+              </CopyToClipboard>
             );
           case "facebook":
             return (
