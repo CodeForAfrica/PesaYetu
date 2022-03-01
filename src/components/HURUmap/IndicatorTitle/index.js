@@ -57,6 +57,7 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
   const actions = [
     description && {
       id: "act-description",
+      title: "Description",
       header: "Learn More",
       children: (
         <RichTypography className={classes.description}>
@@ -67,6 +68,7 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
     },
     {
       id: "act-download",
+      title: "Download",
       header: disableToggle ? "Download chart as" : "Chart value as:",
       children: (
         <Download title={title} {...props} disableToggle={disableToggle} />
@@ -75,6 +77,7 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
     },
     {
       id: "act-share",
+      title: "Share",
       header: "Share chart via:",
       children: <Share title={title} {...props} />,
       icon: <ShareIcon />,

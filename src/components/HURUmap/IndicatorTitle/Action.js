@@ -6,6 +6,7 @@ import {
   Typography,
   IconButton,
   ClickAwayListener,
+  Tooltip,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
@@ -46,7 +47,7 @@ const useStyles = makeStyles(({ palette, typography, zIndex }) => ({
   },
 }));
 
-function Action({ children, header, icon, id, ...props }) {
+function Action({ children, header, icon, title, id, ...props }) {
   const classes = useStyles(props);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -60,13 +61,15 @@ function Action({ children, header, icon, id, ...props }) {
 
   return (
     <div className={classes.root}>
-      <IconButton
-        onClick={handleClick}
-        aria-describedby={`aria-${id}`}
-        className={classes.button}
-      >
-        {icon}
-      </IconButton>
+      <Tooltip title={title}>
+        <IconButton
+          onClick={handleClick}
+          aria-describedby={`aria-${id}`}
+          className={classes.button}
+        >
+          {icon}
+        </IconButton>
+      </Tooltip>
       <Popper
         open={Boolean(anchorEl)}
         placement="bottom-end"
@@ -95,6 +98,7 @@ function Action({ children, header, icon, id, ...props }) {
 Action.propTypes = {
   icon: PropTypes.node,
   header: PropTypes.string,
+  title: PropTypes.string,
   id: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -104,6 +108,7 @@ Action.propTypes = {
 
 Action.defaultProps = {
   icon: undefined,
+  title: undefined,
   id: undefined,
   header: undefined,
   children: undefined,
