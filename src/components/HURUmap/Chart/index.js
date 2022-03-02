@@ -157,18 +157,26 @@ function Chart({
 
   // apply default filter if defined
   const defaultFilters =
-    filter?.defaults?.map(({ name, value }) => {
-      const filterName = idify(name);
-      view?.signal(`${filterName}Filter`, true);
-      view?.signal(`${filterName}FilterValue`, value);
-      view?.run();
-      return {
-        name,
-        value,
-        subindicators: groups?.find(({ name: gName }) => name === gName)
-          ?.subindicators,
-      };
-    }) ?? undefined;
+    filter?.defaults
+      ?.filter(({ name, value }) => {
+        const filterName = idify(name);
+        try {
+          view?.signal(`${filterName}Filter`, true);
+          view?.signal(`${filterName}FilterValue`, value);
+          view?.run();
+          return true;
+        } catch (e) {
+          return false;
+        }
+      })
+      .map(({ name, value }) => {
+        return {
+          name,
+          value,
+          subindicators: groups?.find(({ name: gName }) => name === gName)
+            ?.subindicators,
+        };
+      }) ?? undefined;
 
   const defaultFiltersNames = defaultFilters?.map(({ name }) => name);
 
