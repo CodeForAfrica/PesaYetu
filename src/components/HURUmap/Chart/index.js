@@ -156,27 +156,26 @@ function Chart({
   ]);
 
   // apply default filter if defined
-  const defaultFilters =
-    filter?.defaults
-      ?.filter(({ name, value }) => {
-        const filterName = idify(name);
-        try {
-          view?.signal(`${filterName}Filter`, true);
-          view?.signal(`${filterName}FilterValue`, value);
-          view?.run();
-          return true;
-        } catch (e) {
-          return false;
-        }
-      })
-      ?.map(({ name, value }) => {
-        return {
-          name,
-          value,
-          subindicators: groups?.find(({ name: gName }) => name === gName)
-            ?.subindicators,
-        };
-      });
+  const defaultFilters = filter?.defaults
+    ?.filter(({ name, value }) => {
+      const filterName = idify(name);
+      try {
+        view?.signal(`${filterName}Filter`, true);
+        view?.signal(`${filterName}FilterValue`, value);
+        view?.run();
+        return true;
+      } catch (e) {
+        return false;
+      }
+    })
+    ?.map(({ name, value }) => {
+      return {
+        name,
+        value,
+        subindicators: groups?.find(({ name: gName }) => name === gName)
+          ?.subindicators,
+      };
+    });
 
   const defaultFiltersNames = defaultFilters?.map(({ name }) => name);
 
