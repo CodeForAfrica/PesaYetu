@@ -110,6 +110,14 @@ Default.args = {
       defaultType: "Value",
       disableToggle: false,
       show_parent: false,
+      filter: {
+        defaults: [
+          {
+            name: "lang",
+            value: "English",
+          },
+        ],
+      },
     },
     parentName: "Kenya",
     parentData: [
