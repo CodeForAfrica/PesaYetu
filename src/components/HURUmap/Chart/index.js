@@ -169,14 +169,14 @@ function Chart({
           return false;
         }
       })
-      .map(({ name, value }) => {
+      ?.map(({ name, value }) => {
         return {
           name,
           value,
           subindicators: groups?.find(({ name: gName }) => name === gName)
             ?.subindicators,
         };
-      }) ?? undefined;
+      });
 
   const defaultFiltersNames = defaultFilters?.map(({ name }) => name);
 
