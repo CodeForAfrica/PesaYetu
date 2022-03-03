@@ -26,12 +26,10 @@ function Stories({
   const [shouldFetch, setShouldFetch] = useState(false);
 
   const handleClickPage = (_, value) => {
-    if (value) {
       if (onPaginate) {
         onPaginate(value);
       }
       setShouldFetch(true);
-    }
   };
 
   const { data, error } = useSWR(
