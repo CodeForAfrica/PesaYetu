@@ -72,6 +72,9 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     },
   },
   icon: {},
+  copyIcon: {
+    marginLeft: typography.pxToRem(16),
+  },
 }));
 
 export default useStyles;
