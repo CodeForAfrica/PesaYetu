@@ -58,7 +58,9 @@ const KeyMetric = ({
           {parentValue}
         </Typography>
       )}
-      <Source name={source} url={url} classes={{ root: classes.source }} />
+      <Source href={url} classes={{ root: classes.source }}>
+        {source}
+      </Source>
     </div>
   );
 };

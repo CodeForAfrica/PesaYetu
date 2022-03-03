@@ -199,7 +199,9 @@ function Chart({
         />
       )}
       <div ref={chartRef} className={classes.chart} />
-      <Source name={source} url={url} classes={{ root: classes.source }} />
+      <Source href={url} classes={{ root: classes.source }}>
+        {source}
+      </Source>
     </div>
   );
 }

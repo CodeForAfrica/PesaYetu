@@ -23,29 +23,29 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-function Source({ name, url, ...props }) {
+function Source({ children, href, ...props }) {
   const classes = useStyles(props);
-  if (!(url && name)) {
+  if (!(href && children)) {
     return null;
   }
   return (
     <div className={classes.root}>
       <Typography className={classes.name}>Source:&nbsp;</Typography>
-      <Link underline="always" href={url} className={classes.link}>
-        {name}
+      <Link underline="always" href={href} className={classes.link}>
+        {children}
       </Link>
     </div>
   );
 }
 
 Source.propTypes = {
-  name: PropTypes.string,
-  url: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  href: PropTypes.string,
 };
 
 Source.defaultProps = {
-  name: undefined,
-  url: undefined,
+  children: undefined,
+  href: undefined,
 };
 
 export default Source;
