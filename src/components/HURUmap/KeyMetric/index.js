@@ -5,6 +5,8 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
+import Source from "@/pesayetu/components/HURUmap/Source";
+
 const KeyMetric = ({
   className,
   formattedValue,
@@ -14,6 +16,7 @@ const KeyMetric = ({
   description,
   parentName,
   parentFormattedValue,
+  metadata: { source, url },
   ...props
 }) => {
   const classes = useStyles(props);
@@ -55,6 +58,9 @@ const KeyMetric = ({
           {parentValue}
         </Typography>
       )}
+      <Source href={url} classes={{ root: classes.source }}>
+        {source}
+      </Source>
     </div>
   );
 };
@@ -64,6 +70,10 @@ KeyMetric.propTypes = {
   color: PropTypes.string,
   description: PropTypes.string,
   formattedValue: PropTypes.string,
+  metadata: PropTypes.shape({
+    source: PropTypes.string,
+    url: PropTypes.string,
+  }),
   title: PropTypes.string,
   value: PropTypes.number,
   parentName: PropTypes.string,
@@ -75,6 +85,7 @@ KeyMetric.defaultProps = {
   color: undefined,
   description: undefined,
   formattedValue: undefined,
+  metadata: undefined,
   title: undefined,
   value: undefined,
   parentName: undefined,
