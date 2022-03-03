@@ -15,20 +15,21 @@ function Stories({
   items: itemsProp,
   category,
   pagination,
-  page: pageProp,
-  paginate,
+  page,
+  onPaginate,
   ...props
 }) {
   const classes = useStyles(props);
   const variant = category === "insights" ? "embed" : undefined;
 
-  const [page, setPage] = useState(pageProp ?? 1);
   const [stories, setStories] = useState(itemsProp);
   const [shouldFetch, setShouldFetch] = useState(false);
 
   const handleClickPage = (_, value) => {
     if (value) {
-      setPage(value);
+      if (onPaginate) {
+        onPaginate(value);
+      }
       setShouldFetch(true);
     }
   };
@@ -96,7 +97,7 @@ Stories.propTypes = {
   }),
   items: PropTypes.arrayOf(PropTypes.shape({})),
   page: PropTypes.number,
-  paginate: PropTypes.func,
+  onPaginate: PropTypes.func,
   pagination: PropTypes.shape({
     offsetPagination: PropTypes.shape({
       total: PropTypes.number,
@@ -108,7 +109,7 @@ Stories.defaultProps = {
   category: undefined,
   featuredStoryProps: undefined,
   items: undefined,
-  paginate: undefined,
+  onPaginate: undefined,
   pagination: undefined,
   page: undefined,
 };

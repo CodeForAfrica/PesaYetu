@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Hero from "@/pesayetu/components/OtherHero";
 import Section from "@/pesayetu/components/Section";
@@ -27,11 +27,21 @@ function StoriesPage({
 }) {
   const classes = useStyles(props);
   const contentRef = useRef();
+  const [page, setPage] = useState(1);
 
-  const handlePaginate = () => {
-    document.documentElement.style.scrollBehavior = "smooth";
-    contentRef.current.scrollIntoView();
+  useEffect(() => {
+    if (page && contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [page]);
+
+  const handlePaginate = (newPage) => {
+    if (newPage) {
+      setPage(newPage);
+    }
   };
+
+  const handleTabChange = () => setPage(1);
 
   const activeTab = items?.map(({ slug }) => slug)?.indexOf(activeCategory);
   const tabItems = items?.map(({ name, slug, href, pagination, posts }) => {
@@ -46,20 +56,22 @@ function StoriesPage({
           pagination={pagination}
           items={formatStoryPosts(posts)}
           onPaginate={handlePaginate}
+          page={page}
         />
       ),
     };
   });
 
   return (
-    <div className={classes.root}>
-      <Hero {...hero} />
-      <Section classes={{ root: classes.section }} ref={contentRef}>
+    <div className={classes.root} ref={contentRef}>
+      {page === 1 && <Hero {...hero} />}
+      <Section classes={{ root: classes.section }}>
         <Tabs
           key={activeCategory}
           name={activeCategory}
           activeTab={activeTab}
           items={tabItems}
+          onChange={handleTabChange}
         />
       </Section>
     </div>
