@@ -1,4 +1,4 @@
-import { Typography, useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useRef, useCallback } from "react";
@@ -11,10 +11,10 @@ import { calculateTooltipPosition, idify } from "./utils";
 
 import ChartTooltip from "@/pesayetu/components/HURUmap/ChartTooltip";
 import IndicatorTitle from "@/pesayetu/components/HURUmap/IndicatorTitle";
-import Link from "@/pesayetu/components/Link";
+import Source from "@/pesayetu/components/HURUmap/Source";
 import theme from "@/pesayetu/theme";
 
-const useStyles = makeStyles(({ typography, palette }) => ({
+const useStyles = makeStyles(({ typography }) => ({
   root: {
     position: "relative",
     width: "100%",
@@ -24,20 +24,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   source: {
     margin: `${typography.pxToRem(20)} 0`,
-  },
-  sourceTitle: {
-    fontSize: typography.pxToRem(13),
-    lineHeight: 20 / 13,
-    color: "#666666",
-    display: "inline-flex",
-    fontWeight: 500,
-  },
-  sourceLink: {
-    color: palette.text.primary,
-    fontSize: typography.pxToRem(13),
-    lineHeight: 20 / 13,
-    fontFamily: typography.body1.fontFamily,
-    fontWeight: 500,
   },
 }));
 
@@ -213,15 +199,7 @@ function Chart({
         />
       )}
       <div ref={chartRef} className={classes.chart} />
-
-      {url && source && (
-        <div className={classes.source}>
-          <Typography className={classes.sourceTitle}>Source:&nbsp;</Typography>
-          <Link underline="always" href={url} className={classes.sourceLink}>
-            {source}
-          </Link>
-        </div>
-      )}
+      <Source name={source} url={url} classes={{ root: classes.source }} />
     </div>
   );
 }
