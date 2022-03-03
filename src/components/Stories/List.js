@@ -1,5 +1,4 @@
 import { Grid } from "@material-ui/core";
-import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -21,13 +20,9 @@ function List({ items, variant, ...props }) {
             key={item.slug}
             {...props}
             {...item}
+            variant={variant}
             imageProps={item.imageProps}
-            classes={{
-              media: clsx({ [classes.shadow]: variant === "embed" }),
-              mediaImage: clsx(classes.mediaImage, {
-                [classes.embedImage]: variant === "embed",
-              }),
-            }}
+            classes={{ mediaImage: classes.mediaImage }}
             className={classes.story}
           />
         </Grid>

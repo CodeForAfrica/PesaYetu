@@ -1,4 +1,3 @@
-import { RichTypography } from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
@@ -63,12 +62,10 @@ function Media({
   const { variant } = props;
   const media = (variant === "embed" ? chart || embed : image) || mediaProp;
 
-  if (!media) {
+  if (!media || variant === "embed") {
     return null;
   }
-  if (variant === "embed") {
-    return <RichTypography className={classes.root}>{media}</RichTypography>;
-  }
+
   return (
     <div className={classes.root}>
       <Image

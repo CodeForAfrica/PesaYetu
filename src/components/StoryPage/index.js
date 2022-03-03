@@ -12,6 +12,7 @@ import Section from "@/pesayetu/components/Section";
 import ShareBar from "@/pesayetu/components/ShareBar";
 
 function StoryPage({
+  category,
   content,
   children,
   image,
@@ -55,6 +56,7 @@ function StoryPage({
       </Section>
       <RelatedStories
         {...relatedPosts}
+        variant={category === "insights" ? "embed" : undefined}
         classes={{ title: classes.relatedTitle }}
       />
     </div>
@@ -64,6 +66,7 @@ function StoryPage({
 StoryPage.propTypes = {
   socialLinks: PropTypes.arrayOf(PropTypes.shape({})),
   relatedPosts: PropTypes.shape({}),
+  category: PropTypes.string,
   content: PropTypes.string,
   children: PropTypes.string,
   image: PropTypes.string,
@@ -73,6 +76,7 @@ StoryPage.propTypes = {
 };
 
 StoryPage.defaultProps = {
+  category: undefined,
   content: undefined,
   children: undefined,
   socialLinks: undefined,
