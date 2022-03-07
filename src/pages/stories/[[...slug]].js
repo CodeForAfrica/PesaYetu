@@ -117,31 +117,32 @@ export async function getStaticProps({ params, preview, previewData }) {
   const [activeCategory] = params?.slug || [];
   const categories = await getCategories();
 
-  let items = [];
+  let items = {};
 
   if (params?.slug?.length === 1) {
-    items = await Promise.all(
-      categories?.map(async ({ slug: categorySlug, name }) => {
-        const {
-          props: { posts: categoryPosts, pagination: categoryPagination },
-        } = await getPostTypeStaticProps({ slug: [categorySlug] }, postType);
+    items = await categories?.reduce(async (acc, cur) => {
+      const accumulator = await acc;
 
-        return {
-          name,
-          slug: categorySlug,
-          href: `/stories/${categorySlug}`,
-          pagination: categoryPagination,
-          posts: await Promise.all(
-            categoryPosts?.map(async (categoryPost) => {
-              const imageProps = await getImagePlaceholder(
-                categoryPost.featuredImage?.node?.sourceUrl
-              );
-              return { ...categoryPost, imageProps };
-            }) ?? []
-          ),
-        };
-      })
-    );
+      const categorySlug = cur.slug;
+      const {
+        props: { posts: categoryPosts, pagination: categoryPagination },
+      } = await getPostTypeStaticProps({ slug: [categorySlug] }, postType);
+
+      accumulator[cur.slug] = {
+        name: cur.name,
+        slug: categorySlug,
+        href: `/stories/${categorySlug}`,
+        pagination: categoryPagination,
+        posts: await Promise.all(
+          categoryPosts?.map(async (categoryPost) => {
+            const imageProps = await getImagePlaceholder(
+              categoryPost.featuredImage?.node?.sourceUrl
+            );
+            return { ...categoryPost, imageProps };
+          }) ?? []
+        ),
+      };
+    }, Promise.resolve({}));
   }
 
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
