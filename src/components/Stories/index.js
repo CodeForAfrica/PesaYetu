@@ -65,24 +65,19 @@ function Stories({
       {page === 1 && (
         <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
       )}
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <List
-            items={items}
-            key={category}
-            variant={variant}
-            ctaText={featuredStoryProps.ctaText}
-          />
-          <Pagination
-            count={Math.ceil((pagination?.offsetPagination?.total ?? 0) / 9)}
-            onChangePage={handleClickPage}
-            page={page}
-            pageSize={9}
-          />
-        </>
-      )}
+      {isLoading && <Loading />}
+      <List
+        items={items}
+        key={category}
+        variant={variant}
+        ctaText={featuredStoryProps.ctaText}
+      />
+      <Pagination
+        count={Math.ceil((pagination?.offsetPagination?.total ?? 0) / 9)}
+        onChangePage={handleClickPage}
+        page={page}
+        pageSize={9}
+      />
     </div>
   );
 }
