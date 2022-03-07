@@ -133,14 +133,7 @@ export async function getStaticProps({ params, preview, previewData }) {
         slug: categorySlug,
         href: `/stories/${categorySlug}`,
         pagination: categoryPagination,
-        posts: await Promise.all(
-          categoryPosts?.map(async (categoryPost) => {
-            const imageProps = await getImagePlaceholder(
-              categoryPost.featuredImage?.node?.sourceUrl
-            );
-            return { ...categoryPost, imageProps };
-          }) ?? []
-        ),
+        posts: categoryPosts,
       };
     }, Promise.resolve({}));
   }
@@ -161,16 +154,8 @@ export async function getStaticProps({ params, preview, previewData }) {
   const postImagePlaceholder = await getImagePlaceholder(
     props?.post?.featuredImage?.node?.sourceUrl
   );
-  const relatedPostsNode = await Promise.all(
-    props?.post?.categories?.edges?.[0]?.node?.posts?.nodes?.map(
-      async (categoryPost) => {
-        const imageProps = await getImagePlaceholder(
-          categoryPost.featuredImage?.node?.sourceUrl
-        );
-        return { ...categoryPost, imageProps };
-      }
-    ) || []
-  );
+  const relatedPostsNode =
+    props?.post?.categories?.edges?.[0]?.node?.posts?.nodes;
   const relatedPosts = formatStoryPosts(relatedPostsNode) || [];
 
   return {

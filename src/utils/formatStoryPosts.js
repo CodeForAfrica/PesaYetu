@@ -1,13 +1,14 @@
+import getImagePlaceholder from "@/pesayetu/functions/getImagePlaceholder";
+
 export default function formatStoryPosts(posts) {
   return posts?.map(
-    ({
+    async ({
       title,
       excerpt,
       uri,
       featuredImage,
       blocks: postBlocks,
       slug,
-      imageProps,
     }) => {
       const chartBlock = postBlocks?.find(
         (b) =>
@@ -16,6 +17,7 @@ export default function formatStoryPosts(posts) {
       );
 
       const image = featuredImage?.node?.sourceUrl ?? null;
+      const imageProps = await getImagePlaceholder(image);
       return {
         title,
         slug,
