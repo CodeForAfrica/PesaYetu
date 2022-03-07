@@ -30,7 +30,7 @@ const InsightsData = ({ title, overline, items, ...props }) => {
         <Grid container className={classes.list}>
           {itemsToShow.map(({ imageProps, ...item }) => (
             <Grid item lg={4} xs={12} md={6} key={item.href}>
-              <Card imageProps={imageProps} {...item} {...props} />
+              <Card imageProps={imageProps} {...item} />
             </Grid>
           ))}
         </Grid>
