@@ -161,7 +161,7 @@ export async function getStaticProps({ params, preview, previewData }) {
     props?.post?.featuredImage?.node?.sourceUrl
   );
 
-  const variant = activeCategory === "insights" ? "embed" : undefined;
+  const variant = activeCategory === "insights" ? "embed" : null;
   const relatedPostsNode = await Promise.all(
     props?.post?.categories?.edges?.[0]?.node?.posts?.nodes?.map(
       async (categoryPost) => {
