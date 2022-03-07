@@ -8,7 +8,6 @@ export default function formatStoryPosts(posts) {
       blocks: postBlocks,
       slug,
       imageProps,
-      variant,
     }) => {
       const chartBlock = postBlocks?.find(
         (b) =>
@@ -25,7 +24,6 @@ export default function formatStoryPosts(posts) {
         image,
         imageProps: imageProps ?? null,
         chart: chartBlock?.attributes?.chart ?? null,
-        variant,
       };
     }
   );

@@ -160,15 +160,13 @@ export async function getStaticProps({ params, preview, previewData }) {
   const postImagePlaceholder = await getImagePlaceholder(
     props?.post?.featuredImage?.node?.sourceUrl
   );
-
-  const variant = activeCategory === "insights" ? "embed" : null;
   const relatedPostsNode = await Promise.all(
     props?.post?.categories?.edges?.[0]?.node?.posts?.nodes?.map(
       async (categoryPost) => {
         const imageProps = await getImagePlaceholder(
           categoryPost.featuredImage?.node?.sourceUrl
         );
-        return { ...categoryPost, variant, imageProps };
+        return { ...categoryPost, imageProps };
       }
     ) || []
   );
