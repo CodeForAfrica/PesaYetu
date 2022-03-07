@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Hero from "@/pesayetu/components/OtherHero";
 import Section from "@/pesayetu/components/Section";
@@ -29,15 +29,12 @@ function StoriesPage({
   const contentRef = useRef();
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    if (page && contentRef.current) {
-      contentRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [page]);
-
   const handlePaginate = (newPage) => {
     if (newPage) {
       setPage(newPage);
+    }
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
