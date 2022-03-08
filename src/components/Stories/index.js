@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import useSWR from "swr";
+import React from "react";
 
 import List from "./List";
 import useStyles from "./useStyles";
@@ -8,7 +7,6 @@ import useStyles from "./useStyles";
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
 import Loading from "@/pesayetu/components/Loading";
 import Pagination from "@/pesayetu/components/Pagination";
-import fetchAPI from "@/pesayetu/utils/fetchApi";
 
 function Stories({
   featuredStoryProps,
@@ -17,45 +15,21 @@ function Stories({
   pagination,
   page,
   onPaginate,
+  isLoading,
   ...props
 }) {
   const classes = useStyles(props);
   const variant = category === "insights" ? "embed" : undefined;
 
-  const [stories, setStories] = useState(itemsProp);
-  const [shouldFetch, setShouldFetch] = useState(false);
-
   const handleClickPage = (_, value) => {
     if (onPaginate) {
       onPaginate(value);
     }
-    setShouldFetch(true);
   };
 
-  const { data, error } = useSWR(
-    shouldFetch ? "/api/wp/archive" : null,
-    (url) => {
-      let offset;
-      if (page < 2) {
-        offset = 0;
-      } else {
-        offset = (page - 2) * 9 + 6;
-      }
-      return fetchAPI(`${url}/?taxonomyId=${category}&offset=${offset}`);
-    }
-  );
-
-  useEffect(() => {
-    if (data) {
-      setStories(data);
-      setShouldFetch(false);
-    }
-  }, [data]);
-
-  const isLoading = !data && !error && shouldFetch;
-  let items = stories;
+  let items = itemsProp;
   if (page === 1) {
-    items = stories
+    items = itemsProp
       ?.filter(({ slug }) => slug !== featuredStoryProps?.slug)
       ?.slice(0, 6);
   }
@@ -88,6 +62,7 @@ Stories.propTypes = {
     slug: PropTypes.string,
     ctaText: PropTypes.string,
   }),
+  isLoading: PropTypes.bool,
   items: PropTypes.arrayOf(PropTypes.shape({})),
   page: PropTypes.number,
   onPaginate: PropTypes.func,
@@ -101,6 +76,7 @@ Stories.propTypes = {
 Stories.defaultProps = {
   category: undefined,
   featuredStoryProps: undefined,
+  isLoading: undefined,
   items: undefined,
   onPaginate: undefined,
   pagination: undefined,

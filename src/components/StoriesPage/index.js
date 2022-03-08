@@ -1,12 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import useSWR from "swr";
 
 import Hero from "@/pesayetu/components/OtherHero";
 import Section from "@/pesayetu/components/Section";
 import Stories from "@/pesayetu/components/Stories";
 import Tabs from "@/pesayetu/components/Tabs";
-import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
+import fetchAPI from "@/pesayetu/utils/fetchApi";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
@@ -20,14 +21,47 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 
 function StoriesPage({
   activeCategory,
-  items,
+  items: itemsProp,
   hero,
   featuredStories,
   ...props
 }) {
   const classes = useStyles(props);
   const contentRef = useRef();
+  const [category, setCategory] = useState(activeCategory);
+  const [items, setItems] = useState(itemsProp);
   const [page, setPage] = useState(1);
+  const [shouldFetch, setShouldFetch] = useState(false);
+
+  const { data, error } = useSWR(
+    shouldFetch ? "/api/wp/archive" : null,
+    (url) => {
+      let offset;
+      if (page < 2) {
+        offset = 0;
+      } else {
+        offset = (page - 2) * 9 + 6;
+      }
+      return fetchAPI(`${url}/?taxonomyId=${category}&offset=${offset}`);
+    }
+  );
+
+  useEffect(() => {
+    if (data) {
+      setItems((prevItems) => {
+        return {
+          ...prevItems,
+          [category]: {
+            ...prevItems[category],
+            posts: data,
+          },
+        };
+      });
+      setShouldFetch(false);
+    }
+  }, [data]);
+
+  const isLoading = !data && !error && shouldFetch;
 
   const handlePaginate = (newPage) => {
     if (newPage) {
@@ -36,37 +70,43 @@ function StoriesPage({
     if (contentRef.current) {
       contentRef.current.scrollIntoView({ behavior: "smooth" });
     }
+    setShouldFetch(true);
   };
 
-  const handleTabChange = () => setPage(1);
+  const handleTabChange = (value) => {
+    setPage(1);
+    setCategory(value);
+  };
 
-  const activeTab = items?.map(({ slug }) => slug)?.indexOf(activeCategory);
-  const tabItems = items?.map(({ name, slug, href, pagination, posts }) => {
-    return {
-      label: name,
-      slug,
-      href,
-      children: (
-        <Stories
-          featuredStoryProps={featuredStories[slug]}
-          category={slug}
-          pagination={pagination}
-          items={formatStoryPosts(posts)}
-          onPaginate={handlePaginate}
-          page={page}
-        />
-      ),
-    };
-  });
+  const tabItems = Object.values(items)?.map(
+    ({ name, slug, href, pagination, posts }) => {
+      return {
+        label: name,
+        slug,
+        href,
+        children: (
+          <Stories
+            featuredStoryProps={featuredStories[slug]}
+            category={slug}
+            pagination={pagination}
+            items={posts}
+            onPaginate={handlePaginate}
+            page={page}
+            isLoading={isLoading}
+          />
+        ),
+      };
+    }
+  );
 
   return (
     <div className={classes.root} ref={contentRef}>
       {page === 1 && <Hero {...hero} />}
       <Section classes={{ root: classes.section }}>
         <Tabs
-          key={activeCategory}
-          name={activeCategory}
-          activeTab={activeTab}
+          key={category}
+          name={category}
+          activeTab={category}
           items={tabItems}
           onChange={handleTabChange}
         />
@@ -77,15 +117,22 @@ function StoriesPage({
 
 StoriesPage.propTypes = {
   activeCategory: PropTypes.string,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
+  items: PropTypes.shape({
+    news: PropTypes.shape({
       name: PropTypes.string,
       href: PropTypes.string,
       slug: PropTypes.string,
       pagination: PropTypes.shape({}),
       posts: PropTypes.arrayOf(PropTypes.shape({})),
-    })
-  ),
+    }),
+    insights: PropTypes.shape({
+      name: PropTypes.string,
+      href: PropTypes.string,
+      slug: PropTypes.string,
+      pagination: PropTypes.shape({}),
+      posts: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+  }),
   featuredStories: PropTypes.shape({
     news: PropTypes.shape({}),
     insights: PropTypes.shape({}),
