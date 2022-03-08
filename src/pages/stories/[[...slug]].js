@@ -128,13 +128,16 @@ export async function getStaticProps({ params, preview, previewData }) {
         props: { posts: categoryPosts, pagination: categoryPagination },
       } = await getPostTypeStaticProps({ slug: [categorySlug] }, postType);
 
+      const catPosts = await formatStoryPosts(categoryPosts);
+
       accumulator[cur.slug] = {
         name: cur.name,
         slug: categorySlug,
         href: `/stories/${categorySlug}`,
         pagination: categoryPagination,
-        posts: categoryPosts,
+        posts: catPosts,
       };
+      return accumulator;
     }, Promise.resolve({}));
   }
 
@@ -156,7 +159,7 @@ export async function getStaticProps({ params, preview, previewData }) {
   );
   const relatedPostsNode =
     props?.post?.categories?.edges?.[0]?.node?.posts?.nodes;
-  const relatedPosts = formatStoryPosts(relatedPostsNode) || [];
+  const relatedPosts = await formatStoryPosts(relatedPostsNode);
 
   return {
     props: {

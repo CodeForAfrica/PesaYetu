@@ -35,7 +35,7 @@ export default async function archive(req, res) {
     // Remove Apollo client from return.
     delete postsData?.apolloClient;
 
-    const result = formatStoryPosts(postsData?.posts);
+    const result = await formatStoryPosts(postsData?.posts);
 
     res.status(200).send(result);
   } catch (error) {
