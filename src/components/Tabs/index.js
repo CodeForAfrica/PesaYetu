@@ -23,7 +23,7 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
   const handleChange = (_event, newValue) => {
     setValue(newValue);
     if (onChange) {
-      onChange(_event);
+      onChange(newValue);
     }
   };
 
@@ -43,10 +43,11 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
           indicator: classes.indicator,
         }}
       >
-        {items.map(({ label, href }, index) => (
+        {items.map(({ label, href, slug }, index) => (
           <Tab
             key={label}
             label={label}
+            value={slug ?? index}
             onClick={
               href
                 ? (e) => {
@@ -67,7 +68,12 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
       <Divider className={classes.divider} />
       <div className={classes.tabPanels}>
         {items.map((item, index) => (
-          <TabPanel key={item.label} name={name} selected={value} value={index}>
+          <TabPanel
+            key={item.label}
+            name={name}
+            selected={value}
+            value={item?.slug ?? index}
+          >
             {item.children}
           </TabPanel>
         ))}
@@ -77,7 +83,7 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
 }
 
 Tabs.propTypes = {
-  activeTab: PropTypes.number,
+  activeTab: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   name: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
