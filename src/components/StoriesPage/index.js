@@ -34,15 +34,15 @@ function StoriesPage({
   const [shouldFetch, setShouldFetch] = useState(false);
 
   const { data, error } = useSWR(
-    shouldFetch ? "/api/wp/archive" : null,
-    (url) => {
+    shouldFetch ? ["/api/wp/archive", page, category] : null,
+    (url, p, cat) => {
       let offset;
-      if (page < 2) {
+      if (p < 2) {
         offset = 0;
       } else {
-        offset = (page - 2) * 9 + 6;
+        offset = (p - 2) * 9 + 6;
       }
-      return fetchAPI(`${url}/?taxonomyId=${category}&offset=${offset}`);
+      return fetchAPI(`${url}/?taxonomyId=${cat}&offset=${offset}`);
     }
   );
 
