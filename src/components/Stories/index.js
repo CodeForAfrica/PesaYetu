@@ -33,6 +33,8 @@ function Stories({
       ?.filter(({ slug }) => slug !== featuredStoryProps?.slug)
       ?.slice(0, 6);
   }
+  const total = pagination?.offsetPagination?.total ?? 0;
+  const count = total ? 1 + Math.ceil(Math.max(total - 6, 0) / 9) : 0;
 
   return (
     <div className={classes.root}>
@@ -47,7 +49,7 @@ function Stories({
         ctaText={featuredStoryProps.ctaText}
       />
       <Pagination
-        count={Math.ceil((pagination?.offsetPagination?.total ?? 0) / 9)}
+        count={count}
         onChangePage={handleClickPage}
         page={page}
         pageSize={9}
