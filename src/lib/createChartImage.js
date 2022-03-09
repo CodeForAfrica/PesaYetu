@@ -28,7 +28,9 @@ export default async function createChartImage(
   secondaryIndicator,
   isCompare,
   profileNames,
-  background = "#ffffff"
+  background = "#ffffff",
+  width = 1200,
+  height = 600
 ) {
   const spec = configureScope(
     indicator,
@@ -44,7 +46,7 @@ export default async function createChartImage(
   await view.runAsync();
   const svg = await view.toSVG(config.images.scaleFactor);
   const Body = await sharp(Buffer.from(svg))
-    .resize(1200, 600, {
+    .resize(width, height, {
       background,
       fit: sharp.fit.contain,
     })
@@ -65,5 +67,6 @@ export default async function createChartImage(
     ContentType,
   };
   const s3 = new AWS.S3(clientConfig);
-  return uploadAsync(s3, params);
+  const url = await uploadAsync(s3, params);
+  return { url, width, height, type: ContentType };
 }

@@ -32,19 +32,30 @@ function BasePage({ children, menus, variant, post: { seo }, ...props }) {
     drawerLogoProps,
   };
 
+  const pageSeo = {};
+  pageSeo.title = seo?.title || undefined;
+  pageSeo.description = seo?.metaDesc || undefined;
+  pageSeo.canonical = seo?.canonical || undefined;
+  if (seo?.opengraphType || seo?.opengraphImage) {
+    pageSeo.openGraph = {};
+    if (seo.opengraphImage) {
+      pageSeo.openGraph.images = [
+        {
+          url: seo.opengraphImage,
+          alt: seo.title || undefined,
+        },
+      ];
+    }
+    if (seo.opengraphType) {
+      pageSeo.openGraph.type = seo.opengraphType;
+    }
+  }
+
   return (
     <>
       <Navigation {...navigationProps} variant={variant} />
       <NextSeo
-        title={seo?.title}
-        description={seo?.metaDesc}
-        openGraph={{
-          title: seo?.title,
-          description: seo?.metaDesc,
-          images: [{ url: seo?.opengraphImage?.sourceUrl }],
-          url: seo?.canonical,
-          type: seo?.opengraphType,
-        }}
+        {...pageSeo}
         nofollow={seo?.metaRobotsNofollow !== "follow"}
         noindex={seo?.metaRobotsNoindex !== "index"}
       />

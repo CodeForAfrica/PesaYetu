@@ -1,26 +1,29 @@
 /* eslint-disable import/no-anonymous-default-export */
+import site from "@/pesayetu/utils/site";
+
 export default {
   titleTemplate: "%s",
   defaultTitle: "PesaYetu",
   description: "County data to hold your government accountable",
   openGraph: {
     type: "website",
-    url: "https://pesayetu.dev.codeforafrica.org",
+    url: site.environmentUrl,
     locale: "en",
     site_name: "PesaYetu",
     images: [
       {
-        /* eslint-disable global-require */
-        url: "",
-        width: 994,
-        height: 511,
-        alt: "pesayetu",
+        url: `${site.environmentUrl}image.jpg`,
+        width: 1600,
+        height: 800,
+        alt: "PesaYetu",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     handle: "@PesaCheck",
     site: "@PesaCheck",
+    cardType: "summary_large_image",
   },
   additionalMetaTags: [
     {

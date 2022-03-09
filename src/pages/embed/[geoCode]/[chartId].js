@@ -12,8 +12,9 @@ const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
 });
 
 export default function Embed({
-  indicator,
   geoCode,
+  indicator,
+  isCompare,
   profileNames,
   secondaryIndicator,
   title,
@@ -24,9 +25,9 @@ export default function Embed({
       <NextSeo title={title} {...props} />
       <div>
         <Chart
-          {...props}
-          indicator={indicator}
           geoCode={geoCode}
+          indicator={indicator}
+          isCompare={isCompare}
           profileNames={profileNames}
           secondaryIndicator={secondaryIndicator}
           title={title}
@@ -41,6 +42,7 @@ Embed.propTypes = {
   geoCode: PropTypes.string,
   image: PropTypes.string,
   indicator: PropTypes.shape({}),
+  isCompare: PropTypes.bool,
   secondaryIndicator: PropTypes.shape({}),
   profileNames: PropTypes.shape({}),
   title: PropTypes.string,
@@ -51,6 +53,7 @@ Embed.defaultProps = {
   geoCode: undefined,
   image: undefined,
   indicator: undefined,
+  isCompare: undefined,
   secondaryIndicator: undefined,
   profileNames: undefined,
   title: undefined,
@@ -129,9 +132,10 @@ export async function getStaticProps({
   if (secondaryIndicator) {
     title = `${title} vs ${secondaryName}`;
   }
+  const description = primaryIndicator.indicator?.description ?? null;
 
   const isCompare = !!secondaryCode;
-  const imageUrl = await createChartImage(
+  const image = await createChartImage(
     originalCode,
     chartId,
     primaryIndicator.indicator,
@@ -144,18 +148,13 @@ export async function getStaticProps({
     site.environmentUrl
   ).toString();
   const openGraph = {
-    title,
-    description: primaryIndicator.description || null,
     url,
-    images: [{ url: imageUrl }],
-  };
-  const twitter = {
-    cartType: "summary_large_image",
+    images: [{ ...image, alt: title }],
   };
 
   return {
     props: {
-      description: primaryIndicator.indicator?.description ?? null,
+      description,
       geoCode: originalCode,
       indicator: primaryIndicator?.indicator ?? null,
       isCompare,
@@ -163,7 +162,6 @@ export async function getStaticProps({
       profileNames,
       secondaryIndicator: secondaryIndicator ?? { indicator: null },
       title,
-      twitter,
     },
     revalidate: 60 * 5,
   };
