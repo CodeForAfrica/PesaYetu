@@ -12,7 +12,7 @@ export default {
     site_name: "PesaYetu",
     images: [
       {
-        url: `${site.environmentUrl}/image.jpg`,
+        url: `${site.environmentUrl}image.jpg`,
         width: 1600,
         height: 800,
         alt: "PesaYetu",
