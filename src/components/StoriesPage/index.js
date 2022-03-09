@@ -57,9 +57,11 @@ function StoriesPage({
           },
         };
       });
+    }
+    if (data || error) {
       setShouldFetch(false);
     }
-  }, [data]);
+  }, [data, error]);
 
   const isLoading = !data && !error && shouldFetch;
 
