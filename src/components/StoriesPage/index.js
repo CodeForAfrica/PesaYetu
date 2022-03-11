@@ -20,6 +20,7 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 
 function StoriesPage({
   activeCategory: category,
+  categories,
   items,
   hero,
   featuredStories,
@@ -28,25 +29,23 @@ function StoriesPage({
 }) {
   const classes = useStyles(props);
 
-  const tabItems = Object.values(items)?.map(
-    ({ name, slug, href, pagination, posts }) => {
-      return {
-        label: name,
-        slug,
-        href,
-        component: Link,
-        children: (
-          <Stories
-            featuredStoryProps={featuredStories[slug]}
-            category={slug}
-            pagination={pagination}
-            items={posts}
-            page={page}
-          />
-        ),
-      };
-    }
-  );
+  const tabItems = categories?.map(({ name, slug }) => {
+    const { posts, pagination } = items;
+    return {
+      label: name,
+      slug,
+      href: `/stories/${slug}`,
+      children: (
+        <Stories
+          featuredStoryProps={featuredStories[slug]}
+          category={slug}
+          pagination={pagination}
+          items={posts}
+          page={page}
+        />
+      ),
+    };
+  });
 
   return (
     <div className={classes.root}>
@@ -57,6 +56,7 @@ function StoriesPage({
           name={category}
           activeTab={category}
           items={tabItems}
+          linkComponent={Link}
         />
       </Section>
     </div>
@@ -66,21 +66,15 @@ function StoriesPage({
 StoriesPage.propTypes = {
   activeCategory: PropTypes.string,
   items: PropTypes.shape({
-    news: PropTypes.shape({
-      name: PropTypes.string,
-      href: PropTypes.string,
-      slug: PropTypes.string,
-      pagination: PropTypes.shape({}),
-      posts: PropTypes.arrayOf(PropTypes.shape({})),
-    }),
-    insights: PropTypes.shape({
-      name: PropTypes.string,
-      href: PropTypes.string,
-      slug: PropTypes.string,
-      pagination: PropTypes.shape({}),
-      posts: PropTypes.arrayOf(PropTypes.shape({})),
-    }),
+    pagination: PropTypes.shape({}),
+    posts: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      slug: PropTypes.string,
+    })
+  ),
   featuredStories: PropTypes.shape({
     news: PropTypes.shape({}),
     insights: PropTypes.shape({}),
@@ -91,6 +85,7 @@ StoriesPage.propTypes = {
 
 StoriesPage.defaultProps = {
   activeCategory: undefined,
+  categories: undefined,
   items: undefined,
   featuredStories: undefined,
   hero: undefined,

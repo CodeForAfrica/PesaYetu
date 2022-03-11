@@ -117,40 +117,17 @@ export async function getStaticProps({ params, preview, previewData }) {
   const [activeCategory, page] = params?.slug || [];
   const categories = await getCategories();
 
-  let items = {};
   const isPageNumber = page && Number.isInteger(Number(page));
-  if (params?.slug?.length === 1 || isPageNumber) {
-    let offset = 0;
-    if (page > 1) {
-      offset = (page - 2) * 9 + 6;
-    }
-
-    items = await categories?.reduce(async (acc, cur) => {
-      const accumulator = await acc;
-
-      const categorySlug = cur.slug;
-      const {
-        props: { posts: categoryPosts, pagination: categoryPagination },
-      } = await getPostTypeStaticProps(
-        { slug: [categorySlug], offset },
-        postType
-      );
-
-      const catPosts = await formatStoryPosts(categoryPosts);
-
-      accumulator[cur.slug] = {
-        name: cur.name,
-        slug: categorySlug,
-        href: `/stories/${categorySlug}`,
-        pagination: categoryPagination,
-        posts: catPosts,
-      };
-      return accumulator;
-    }, Promise.resolve({}));
+  let offset = 0;
+  const pageNumber = parseInt(page, 10) || 1;
+  if (pageNumber > 1) {
+    offset = (pageNumber - 2) * 9 + 6;
   }
 
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
-    isPageNumber ? { slug: [activeCategory] } : params,
+    isPageNumber || params?.slug?.length === 1
+      ? { slug: [activeCategory], offset }
+      : params,
     postType,
     preview,
     previewData
@@ -161,6 +138,15 @@ export async function getStaticProps({ params, preview, previewData }) {
       notFound: true,
     };
   }
+
+  const cateegoryPosts = await formatStoryPosts(props?.posts);
+  const items = {
+    label: categories.find(({ slug }) => slug === activeCategory)?.name,
+    slug: activeCategory,
+    pagination: props?.pagination ?? null,
+    posts: cateegoryPosts,
+  };
+
   const blocks = await formatBlocksForSections(props?.post?.blocks || []);
   const postImagePlaceholder = await getImagePlaceholder(
     props?.post?.featuredImage?.node?.sourceUrl
@@ -174,10 +160,11 @@ export async function getStaticProps({ params, preview, previewData }) {
       ...props,
       blocks,
       activeCategory: activeCategory ?? null,
+      categories,
       items,
       relatedPosts: relatedPosts.slice(0, 3),
       postImagePlaceholder,
-      page: isPageNumber ? parseInt(page, 10) : 1,
+      page: pageNumber,
     },
     revalidate,
   };

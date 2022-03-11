@@ -14,7 +14,14 @@ function a11yProps(name, index) {
   };
 }
 
-function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
+function Tabs({
+  activeTab,
+  items,
+  name: nameProp,
+  onChange,
+  linkComponent,
+  ...props
+}) {
   const router = useRouter();
   const classes = useStyles(props);
   const [value, setValue] = useState(activeTab);
@@ -34,7 +41,7 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
     <div className={classes.root}>
       <MuiTabs
         value={value}
-        onChange={handleChange}
+        onChange={linkComponent ? undefined : handleChange}
         variant="scrollable"
         scrollButtons="off"
         aria-label={`${name} tabs`}
@@ -43,16 +50,16 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
           indicator: classes.indicator,
         }}
       >
-        {items.map(({ label, href, slug, component }, index) => (
+        {items.map(({ label, href, slug }, index) => (
           <Tab
             key={label}
             label={label}
             value={slug ?? index}
-            component={component}
+            component={linkComponent}
             href={href}
             underline="none"
             onClick={
-              href
+              href && !linkComponent
                 ? (e) => {
                     e.preventDefault();
                     router.push(href, href, { shallow: true });
@@ -88,6 +95,7 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
 Tabs.propTypes = {
   activeTab: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   name: PropTypes.string,
+  linkComponent: PropTypes.node,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -100,6 +108,7 @@ Tabs.propTypes = {
 Tabs.defaultProps = {
   activeTab: 0,
   items: undefined,
+  linkComponent: undefined,
   name: undefined,
   onChange: undefined,
 };
