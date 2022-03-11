@@ -114,19 +114,27 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview, previewData }) {
-  const [activeCategory] = params?.slug || [];
+  const [activeCategory, page] = params?.slug || [];
   const categories = await getCategories();
 
   let items = {};
+  const isPageNumber = page && Number.isInteger(Number(page));
+  if (params?.slug?.length === 1 || isPageNumber) {
+    let offset = 0;
+    if (page > 1) {
+      offset = (page - 2) * 9 + 6;
+    }
 
-  if (params?.slug?.length === 1) {
     items = await categories?.reduce(async (acc, cur) => {
       const accumulator = await acc;
 
       const categorySlug = cur.slug;
       const {
         props: { posts: categoryPosts, pagination: categoryPagination },
-      } = await getPostTypeStaticProps({ slug: [categorySlug] }, postType);
+      } = await getPostTypeStaticProps(
+        { slug: [categorySlug], offset },
+        postType
+      );
 
       const catPosts = await formatStoryPosts(categoryPosts);
 
@@ -142,7 +150,7 @@ export async function getStaticProps({ params, preview, previewData }) {
   }
 
   const { props, revalidate, notFound } = await getPostTypeStaticProps(
-    params,
+    isPageNumber ? { slug: [activeCategory] } : params,
     postType,
     preview,
     previewData
@@ -169,6 +177,7 @@ export async function getStaticProps({ params, preview, previewData }) {
       items,
       relatedPosts: relatedPosts.slice(0, 3),
       postImagePlaceholder,
+      page: isPageNumber ? parseInt(page, 10) : 1,
     },
     revalidate,
   };

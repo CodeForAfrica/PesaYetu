@@ -43,11 +43,14 @@ function Tabs({ activeTab, items, name: nameProp, onChange, ...props }) {
           indicator: classes.indicator,
         }}
       >
-        {items.map(({ label, href, slug }, index) => (
+        {items.map(({ label, href, slug, component }, index) => (
           <Tab
             key={label}
             label={label}
             value={slug ?? index}
+            component={component}
+            href={href}
+            underline="none"
             onClick={
               href
                 ? (e) => {

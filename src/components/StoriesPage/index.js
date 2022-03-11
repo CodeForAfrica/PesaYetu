@@ -1,13 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
-import useSWR from "swr";
+import React from "react";
 
+import Link from "@/pesayetu/components/Link";
 import Hero from "@/pesayetu/components/OtherHero";
 import Section from "@/pesayetu/components/Section";
 import Stories from "@/pesayetu/components/Stories";
 import Tabs from "@/pesayetu/components/Tabs";
-import fetchAPI from "@/pesayetu/utils/fetchApi";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
@@ -20,65 +19,14 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 }));
 
 function StoriesPage({
-  activeCategory,
-  items: itemsProp,
+  activeCategory: category,
+  items,
   hero,
   featuredStories,
+  page,
   ...props
 }) {
   const classes = useStyles(props);
-  const contentRef = useRef();
-  const [category, setCategory] = useState(activeCategory);
-  const [items, setItems] = useState(itemsProp);
-  const [page, setPage] = useState(1);
-  const [shouldFetch, setShouldFetch] = useState(false);
-
-  const { data, error } = useSWR(
-    shouldFetch ? ["/api/wp/archive", page, category] : null,
-    (url, p, cat) => {
-      let offset;
-      if (p < 2) {
-        offset = 0;
-      } else {
-        offset = (p - 2) * 9 + 6;
-      }
-      return fetchAPI(`${url}/?taxonomyId=${cat}&offset=${offset}`);
-    }
-  );
-
-  useEffect(() => {
-    if (data) {
-      setItems((prevItems) => {
-        return {
-          ...prevItems,
-          [category]: {
-            ...prevItems[category],
-            posts: data,
-          },
-        };
-      });
-    }
-    if (data || error) {
-      setShouldFetch(false);
-    }
-  }, [data, error]);
-
-  const isLoading = !data && !error && shouldFetch;
-
-  const handlePaginate = (newPage) => {
-    if (newPage) {
-      setPage(newPage);
-    }
-    if (contentRef.current) {
-      contentRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-    setShouldFetch(true);
-  };
-
-  const handleTabChange = (value) => {
-    setPage(1);
-    setCategory(value);
-  };
 
   const tabItems = Object.values(items)?.map(
     ({ name, slug, href, pagination, posts }) => {
@@ -86,15 +34,14 @@ function StoriesPage({
         label: name,
         slug,
         href,
+        component: Link,
         children: (
           <Stories
             featuredStoryProps={featuredStories[slug]}
             category={slug}
             pagination={pagination}
             items={posts}
-            onPaginate={handlePaginate}
             page={page}
-            isLoading={isLoading}
           />
         ),
       };
@@ -102,15 +49,14 @@ function StoriesPage({
   );
 
   return (
-    <div className={classes.root} ref={contentRef}>
+    <div className={classes.root}>
       {page === 1 && <Hero {...hero} />}
       <Section classes={{ root: classes.section }}>
         <Tabs
-          key={category}
+          key={`${category}=${page}`}
           name={category}
           activeTab={category}
           items={tabItems}
-          onChange={handleTabChange}
         />
       </Section>
     </div>
@@ -140,6 +86,7 @@ StoriesPage.propTypes = {
     insights: PropTypes.shape({}),
   }),
   hero: PropTypes.shape({}),
+  page: PropTypes.number,
 };
 
 StoriesPage.defaultProps = {
@@ -147,6 +94,7 @@ StoriesPage.defaultProps = {
   items: undefined,
   featuredStories: undefined,
   hero: undefined,
+  page: undefined,
 };
 
 export default StoriesPage;
