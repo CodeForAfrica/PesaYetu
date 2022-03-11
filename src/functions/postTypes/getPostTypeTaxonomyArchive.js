@@ -22,11 +22,11 @@ import queryPostsByTag from "@/pesayetu/lib/wordpress/tags/queryPostsByTag";
 export default async function getPostTypeTaxonomyArchive(
   taxonomy,
   taxonomyId,
+  offset = 0,
+  size = 9,
   postType = "post",
   orderBy = "DATE",
-  order = "DESC",
-  offset = 0,
-  size = 9
+  order = "DESC"
 ) {
   // Define single post query based on taxonomy.
   const postTypeQuery = {

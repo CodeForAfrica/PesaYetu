@@ -20,11 +20,11 @@ export default async function archive(req, res) {
     const postsData = await getPostTypeTaxonomyArchive(
       taxonomy,
       taxonomyId,
+      offset,
+      size,
       postType,
       orderBy,
-      order,
-      offset,
-      size
+      order
     );
 
     // Check for errors.
