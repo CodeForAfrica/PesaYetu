@@ -5,7 +5,6 @@ import List from "./List";
 import useStyles from "./useStyles";
 
 import FeaturedStoryCard from "@/pesayetu/components/FeaturedStoryCard";
-import Loading from "@/pesayetu/components/Loading";
 import Pagination from "@/pesayetu/components/Pagination";
 
 function Stories({
@@ -14,18 +13,10 @@ function Stories({
   category,
   pagination,
   page,
-  onPaginate,
-  isLoading,
   ...props
 }) {
   const classes = useStyles(props);
   const variant = category === "insights" ? "embed" : undefined;
-
-  const handleClickPage = (_, value) => {
-    if (onPaginate) {
-      onPaginate(value);
-    }
-  };
 
   let items = itemsProp;
   if (page === 1) {
@@ -41,7 +32,6 @@ function Stories({
       {page === 1 && (
         <FeaturedStoryCard {...featuredStoryProps} variant={variant} />
       )}
-      {isLoading && <Loading />}
       <List
         items={items}
         key={category}
@@ -50,7 +40,7 @@ function Stories({
       />
       <Pagination
         count={count}
-        onChangePage={handleClickPage}
+        href={`/stories/${category}/`}
         page={page}
         pageSize={9}
       />
@@ -67,7 +57,6 @@ Stories.propTypes = {
   isLoading: PropTypes.bool,
   items: PropTypes.arrayOf(PropTypes.shape({})),
   page: PropTypes.number,
-  onPaginate: PropTypes.func,
   pagination: PropTypes.shape({
     offsetPagination: PropTypes.shape({
       total: PropTypes.number,
@@ -80,7 +69,6 @@ Stories.defaultProps = {
   featuredStoryProps: undefined,
   isLoading: undefined,
   items: undefined,
-  onPaginate: undefined,
   pagination: undefined,
   page: undefined,
 };
