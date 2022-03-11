@@ -68,8 +68,7 @@ export default async function getPostTypeStaticProps(
   ) {
     const taxonomy = "category";
     const taxonomySlug = params.slug.pop(); // category slug ( insights or news )
-    const { offset } = params;
-    const { size } = params;
+    const { offset, size } = params;
 
     const { apolloClient, ...archiveData } = await getPostTypeTaxonomyArchive(
       taxonomy,
