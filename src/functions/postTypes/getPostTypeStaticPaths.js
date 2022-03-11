@@ -34,6 +34,11 @@ export default async function getPostTypeStaticPaths(postType) {
             ${pathField}
           }
         }
+        pageInfo {
+          offsetPagination {
+            total
+          }
+        }
       }
       categories {
         edges {
@@ -49,39 +54,57 @@ export default async function getPostTypeStaticPaths(postType) {
   const apolloClient = initializeWpApollo();
 
   // Execute query.
-  const posts = await apolloClient.query({ query });
+  const result = await apolloClient.query({ query });
+  const posts = result?.data?.[pluralName];
+  const categories = result?.data?.categories?.edges
+    ?.filter(({ node: { slug } }) => !slug.includes("uncategorized"))
+    ?.map(({ node: { slug } }) => {
+      return {
+        params: {
+          slug: [slug],
+        },
+      };
+    });
+
+  const total = posts?.pageInfo?.offsetPagination?.total ?? 0;
+  const pageCount = total ? 1 + Math.ceil(Math.max(total - 6, 0) / 9) : 0;
+  const pageArray = [...Array(pageCount).keys()];
+
+  const categoryPagePaths = categories?.reduce((acc, cur) => {
+    const currentSlug = cur.params.slug;
+    const x = pageArray.map((p) => {
+      return {
+        params: {
+          slug: [...currentSlug, (p + 1).toString()],
+        },
+      };
+    });
+    return acc.concat(x);
+  }, []);
+
+  const cat = categoryPagePaths.concat(categories);
 
   // Process paths.
-  const paths = !posts?.data?.[pluralName]?.edges
-    ? []
-    : posts.data[pluralName].edges
-        .map((post) => {
-          // Trim leading and trailing slashes then split into array on inner slashes.
-          const slug = post.node[pathField].replace(/^\/|\/$/g, "").split("/");
-
-          return {
-            params: {
-              slug,
-            },
-          };
-        })
-        // include categories path
-        .concat(
-          posts.data.categories.edges.map(({ node: { slug } }) => {
-            return {
-              params: {
-                slug: [slug],
-              },
-            };
-          })
-        )
-        // Filter out certain posts with custom routes (e.g., homepage).
-        // also filter uncategorized category route route
-        .filter(
-          (post) =>
-            !!post.params.slug.join("/").length &&
-            !post.params.slug.includes("uncategorized")
-        );
+  const paths = (
+    posts?.edges?.map((post) => {
+      // Trim leading and trailing slashes then split into array on inner slashes.
+      const slug = post.node[pathField].replace(/^\/|\/$/g, "").split("/");
+      return {
+        params: {
+          slug,
+        },
+      };
+    }) ?? []
+  )
+    // Filter out certain posts with custom routes (e.g., homepage).
+    // also filter uncategorized category route route
+    .filter(
+      (post) =>
+        !!post.params.slug.join("/").length &&
+        !post.params.slug.includes("uncategorized")
+    )
+    // include categories path
+    .concat(cat);
 
   return {
     paths,
