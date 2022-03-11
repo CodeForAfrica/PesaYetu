@@ -3,6 +3,8 @@ import { Pagination as MuiPagination, PaginationItem } from "@material-ui/lab";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Link from "@/pesayetu/components/Link";
+
 const useStyles = makeStyles(({ palette, typography }) => ({
   root: {
     display: "flex",
@@ -42,7 +44,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
   },
 }));
 
-function Pagination({ onChangePage, page, count, ...props }) {
+function Pagination({ onChangePage, page, count, href, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -56,6 +58,8 @@ function Pagination({ onChangePage, page, count, ...props }) {
         renderItem={(item) => (
           <PaginationItem
             {...item}
+            component={href ? Link : undefined}
+            href={`${href}${item.page}`}
             classes={{
               root: classes.paginationButton,
               selected: classes.selected,
@@ -71,12 +75,14 @@ Pagination.propTypes = {
   onChangePage: PropTypes.func,
   page: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   count: PropTypes.number,
+  href: PropTypes.string,
 };
 
 Pagination.defaultProps = {
   onChangePage: undefined,
   page: undefined,
   count: undefined,
+  href: undefined,
 };
 
 export default Pagination;
