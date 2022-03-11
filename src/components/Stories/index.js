@@ -67,7 +67,6 @@ Stories.propTypes = {
 Stories.defaultProps = {
   category: undefined,
   featuredStoryProps: undefined,
-  isLoading: undefined,
   items: undefined,
   pagination: undefined,
   page: undefined,
