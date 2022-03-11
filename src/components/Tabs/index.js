@@ -30,7 +30,7 @@ function Tabs({
   const handleChange = (_event, newValue) => {
     setValue(newValue);
     if (onChange) {
-      onChange(newValue);
+      onChange(_event);
     }
   };
 
