@@ -6,7 +6,7 @@ import useStyles from "./useStyles";
 function TabPanel({ children, value, name, selected, ...props }) {
   const classes = useStyles(props);
 
-  if (selected !== value) {
+  if (selected !== value || !children) {
     return null;
   }
   return (

@@ -1,30 +1,34 @@
-export default function formatStoryPosts(posts) {
-  return posts?.map(
-    ({
-      title,
-      excerpt,
-      uri,
-      featuredImage,
-      blocks: postBlocks,
-      slug,
-      imageProps,
-    }) => {
-      const chartBlock = postBlocks?.find(
-        (b) =>
-          Object.hasOwnProperty.call(b, "name") &&
-          b?.name === "lazyblock/insight-chart"
-      );
+import getImagePlaceholder from "@/pesayetu/functions/getImagePlaceholder";
 
-      const image = featuredImage?.node?.sourceUrl ?? null;
-      return {
+export default async function formatStoryPosts(posts) {
+  return Promise.all(
+    posts?.map(
+      async ({
         title,
+        excerpt,
+        uri,
+        featuredImage,
+        blocks: postBlocks,
         slug,
-        description: excerpt?.replace(/<[^>]+>/g, "") ?? "",
-        href: `/stories${uri}`,
-        image,
-        imageProps: imageProps ?? null,
-        chart: chartBlock?.attributes?.chart ?? null,
-      };
-    }
+      }) => {
+        const chartBlock = postBlocks?.find(
+          (b) =>
+            Object.hasOwnProperty.call(b, "name") &&
+            b?.name === "lazyblock/insight-chart"
+        );
+
+        const image = featuredImage?.node?.sourceUrl ?? null;
+        const imageProps = await getImagePlaceholder(image);
+        return {
+          title,
+          slug,
+          description: excerpt?.replace(/<[^>]+>/g, "") ?? "",
+          href: `/stories${uri}`,
+          image,
+          imageProps: imageProps ?? null,
+          chart: chartBlock?.attributes?.chart ?? null,
+        };
+      }
+    ) ?? []
   );
 }

@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
+import Link from "@/pesayetu/components/Link";
 import Hero from "@/pesayetu/components/OtherHero";
 import Section from "@/pesayetu/components/Section";
 import Stories from "@/pesayetu/components/Stories";
 import Tabs from "@/pesayetu/components/Tabs";
-import formatStoryPosts from "@/pesayetu/utils/formatStoryPosts";
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   root: {},
@@ -19,44 +19,28 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
 }));
 
 function StoriesPage({
-  activeCategory,
+  activeCategory: category,
+  categories,
   items,
   hero,
   featuredStories,
+  page,
   ...props
 }) {
   const classes = useStyles(props);
-  const contentRef = useRef();
-  const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    if (page && contentRef.current) {
-      document.documentElement.style.scrollBehavior = "smooth";
-      contentRef.current.scrollIntoView();
-    }
-  }, [page]);
-
-  const paginate = (newPage) => {
-    if (newPage) {
-      setPage(newPage);
-    }
-  };
-
-  const handleTabChange = () => setPage(1);
-
-  const activeTab = items?.map(({ slug }) => slug)?.indexOf(activeCategory);
-  const tabItems = items?.map(({ name, slug, href, pagination, posts }) => {
+  const tabItems = categories?.map(({ name, slug }) => {
+    const { posts, pagination } = items;
     return {
       label: name,
       slug,
-      href,
+      href: `/stories/${slug}`,
       children: (
         <Stories
           featuredStoryProps={featuredStories[slug]}
           category={slug}
           pagination={pagination}
-          items={formatStoryPosts(posts)}
-          paginate={paginate}
+          items={posts}
           page={page}
         />
       ),
@@ -64,15 +48,15 @@ function StoriesPage({
   });
 
   return (
-    <div className={classes.root} ref={contentRef}>
+    <div className={classes.root}>
       {page === 1 && <Hero {...hero} />}
       <Section classes={{ root: classes.section }}>
         <Tabs
-          key={activeCategory}
-          name={activeCategory}
-          activeTab={activeTab}
+          key={`${category}-${page}`}
+          name={category}
+          activeTab={category}
           items={tabItems}
-          onChange={handleTabChange}
+          linkComponent={Link}
         />
       </Section>
     </div>
@@ -81,13 +65,14 @@ function StoriesPage({
 
 StoriesPage.propTypes = {
   activeCategory: PropTypes.string,
-  items: PropTypes.arrayOf(
+  items: PropTypes.shape({
+    pagination: PropTypes.shape({}),
+    posts: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
+  categories: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      href: PropTypes.string,
       slug: PropTypes.string,
-      pagination: PropTypes.shape({}),
-      posts: PropTypes.arrayOf(PropTypes.shape({})),
     })
   ),
   featuredStories: PropTypes.shape({
@@ -95,13 +80,16 @@ StoriesPage.propTypes = {
     insights: PropTypes.shape({}),
   }),
   hero: PropTypes.shape({}),
+  page: PropTypes.number,
 };
 
 StoriesPage.defaultProps = {
   activeCategory: undefined,
+  categories: undefined,
   items: undefined,
   featuredStories: undefined,
   hero: undefined,
+  page: undefined,
 };
 
 export default StoriesPage;
