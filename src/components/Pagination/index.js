@@ -59,7 +59,7 @@ function Pagination({ onChangePage, page, count, href, ...props }) {
           <PaginationItem
             {...item}
             component={href ? Link : undefined}
-            href={`${href}${item.page}`}
+            href={href ? `${href}${item.page}` : undefined}
             classes={{
               root: classes.paginationButton,
               selected: classes.selected,
