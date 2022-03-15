@@ -46,13 +46,21 @@ function Download({
     setLayout(type);
   };
 
+  const splitString = (str) => {
+    const regex = new RegExp(/\S.{1,40}\S(?= |$)/, "g");
+    const chunks = str.match(regex);
+    return chunks;
+  };
+
   const handleImageDownload = async (e, type) => {
     e.preventDefault();
     e.stopPropagation();
 
+    const chartTitle = splitString(title);
+
     const totalHeight = height + 250; // chartHeight + extra space for legends, logo + title;
     view?.signal("totalHeight", totalHeight);
-    view?.signal("chartTitle", title);
+    view?.signal("chartTitle", chartTitle);
     view?.signal("chartSubtitle", "");
     view?.signal("chartSource", source ? `Source: ${source}` : "");
     view?.signal("projectLogoUrl", projectlogo);
