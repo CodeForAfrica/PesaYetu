@@ -210,7 +210,6 @@ function Chart({
         chartValue={chartValue}
         handleChartValueChange={onChartValueChange}
         spec={cSpec}
-        height={view?.height()}
         currentFilters={currentFilters}
         source={source}
         isCompare={isCompare}

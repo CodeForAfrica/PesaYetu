@@ -23,6 +23,7 @@ function Download({
   spec,
   source,
   height,
+  data,
   currentFilters,
   profileNames,
   isCompare,
@@ -122,8 +123,6 @@ function Download({
     e.stopPropagation();
 
     const fileType = type.toLowerCase();
-
-    const data = view.data("table");
     const fileName = `${title}.${fileType}`;
     let href;
 
@@ -238,6 +237,7 @@ Download.propTypes = {
   title: PropTypes.string,
   spec: PropTypes.shape({}),
   currentFilters: PropTypes.arrayOf(PropTypes.shape({})),
+  data: PropTypes.arrayOf(PropTypes.shape({})),
   disableToggle: PropTypes.bool,
   chartValue: PropTypes.oneOf(["Value", "Percentage"]),
   handleChartValueChange: PropTypes.func,
@@ -254,6 +254,7 @@ Download.defaultProps = {
   title: undefined,
   spec: undefined,
   currentFilters: undefined,
+  data: undefined,
   disableToggle: false,
   chartValue: undefined,
   handleChartValueChange: undefined,
