@@ -74,6 +74,7 @@ function Media({
       <Image
         layout="fill"
         src={media}
+        unoptimized
         {...imageProps}
         className={classes.image}
       />
