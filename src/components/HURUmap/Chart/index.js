@@ -58,7 +58,7 @@ function Chart({
 
   const [chartValue, setChartValue] = useState(defaultType || "Value");
 
-  const handleChartValueChange = (value) => {
+  const onChartValueChange = (value) => {
     setChartValue(value);
     view.signal("Units", value.toLowerCase()).run();
   };
@@ -142,28 +142,58 @@ function Chart({
   ]);
 
   // apply default filter if defined
-  const defaultFilters = filter?.defaults
-    ?.filter(({ name, value }) => {
-      const filterName = idify(name);
-      try {
-        view?.signal(`${filterName}Filter`, true);
-        view?.signal(`${filterName}FilterValue`, value);
-        view?.run();
-        return true;
-      } catch (e) {
-        return false;
-      }
-    })
-    ?.map(({ name, value }) => {
-      return {
-        name,
-        value,
-        subindicators: groups?.find(({ name: gName }) => name === gName)
-          ?.subindicators,
-      };
-    });
+  const defaultFilters =
+    filter?.defaults
+      ?.filter(({ name, value }) => {
+        const filterName = idify(name);
+        try {
+          view?.signal(`${filterName}Filter`, true);
+          view?.signal(`${filterName}FilterValue`, value);
+          view?.run();
+          return true;
+        } catch (e) {
+          return false;
+        }
+      })
+      ?.map(({ name, value }) => {
+        return {
+          name,
+          value,
+          subindicators: groups?.find(({ name: gName }) => name === gName)
+            ?.subindicators,
+        };
+      }) ?? [];
 
   const defaultFiltersNames = defaultFilters?.map(({ name }) => name);
+
+  const filterGroups = groups
+    ?.filter(({ name }) => name !== primaryGroup)
+    ?.filter(({ name }) => name !== (stackedField || ""))
+    ?.filter(({ name }) => !defaultFiltersNames?.includes(name))
+    ?.map((g) => {
+      return { ...g, slug: idify(g?.name) };
+    });
+
+  const [filterSelectProps, setFilterSelectProps] = useState([
+    {
+      groups: filterGroups,
+      index: 0,
+      selectedValue: undefined,
+      selectedAttribute: "All values",
+    },
+  ]);
+
+  const currentFilters = [
+    ...defaultFilters,
+    ...filterSelectProps
+      ?.filter(({ selectedAttribute }) => selectedAttribute !== "All values")
+      ?.map(({ selectedValue: value, selectedAttribute: name }) => {
+        return {
+          value,
+          name,
+        };
+      }),
+  ];
 
   if (!indicator?.data) {
     return null;
@@ -178,22 +208,20 @@ function Chart({
         indicatorId={id}
         disableToggle={disableToggle}
         chartValue={chartValue}
-        handleChartValueChange={handleChartValueChange}
+        handleChartValueChange={onChartValueChange}
         spec={cSpec}
         height={view?.height()}
+        currentFilters={currentFilters}
         source={source}
         isCompare={isCompare}
+        profileNames={profileNames}
       />
       {!isMobile && (
         <Filters
           // remove primary group, remove stacked field & defined defaults filters
-          filterGroups={groups
-            ?.filter(({ name }) => name !== primaryGroup)
-            ?.filter(({ name }) => name !== (stackedField || ""))
-            ?.filter(({ name }) => !defaultFiltersNames?.includes(name))
-            ?.map((g) => {
-              return { ...g, slug: idify(g?.name) };
-            })}
+          filterGroups={filterGroups}
+          filterSelectProps={filterSelectProps}
+          setFilterSelectProps={setFilterSelectProps}
           defaultFilters={defaultFilters ?? undefined}
           view={view}
         />
