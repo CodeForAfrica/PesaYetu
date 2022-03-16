@@ -12,6 +12,7 @@ import useStyles from "./useStyles";
 
 import cfalogo from "@/pesayetu/assets/logos/Group4462.svg";
 import projectlogo from "@/pesayetu/assets/logos/Group5002.svg";
+import { idify } from "@/pesayetu/components/HURUmap/Chart/utils";
 import config, { hurumapArgs } from "@/pesayetu/config";
 
 function Download({
@@ -22,6 +23,10 @@ function Download({
   spec,
   source,
   height,
+  data,
+  currentFilters,
+  profileNames,
+  isCompare,
   ...props
 }) {
   const classes = useStyles(props);
@@ -46,14 +51,35 @@ function Download({
     setLayout(type);
   };
 
+  const splitString = (str) => {
+    const regex = new RegExp(/\S.{1,42}\S(?= |$)/, "g");
+    const chunks = str.match(regex);
+    return chunks;
+  };
+
+  currentFilters?.forEach(({ name, value }) => {
+    const filterName = idify(name);
+    view?.signal(`${filterName}Filter`, true);
+    view?.signal(`${filterName}FilterValue`, value);
+  });
+
+  const chartTitle = splitString(title)?.slice(0, 3);
+  const subtitle = currentFilters?.reduce((acc, cur) => {
+    return `${acc}${cur.name}: ${cur.value},`;
+  }, "");
+  const secondaryName = isCompare
+    ? ` vs ${profileNames?.secondary?.split("-")[0]}`
+    : "";
+  const chartSubtitle = `${subtitle} Location: ${profileNames?.primary}${secondaryName}`;
+
   const handleImageDownload = async (e, type) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const totalHeight = height + 250; // chartHeight + extra space for legends, logo + title;
+    const totalHeight = height + 300; // chartHeight + extra space for legends, logo + title;
     view?.signal("totalHeight", totalHeight);
-    view?.signal("chartTitle", title);
-    view?.signal("chartSubtitle", "");
+    view?.signal("chartTitle", chartTitle);
+    view?.signal("chartSubtitle", chartSubtitle.toUpperCase());
     view?.signal("chartSource", source ? `Source: ${source}` : "");
     view?.signal("projectLogoUrl", projectlogo);
     view?.signal("logoWidth", 60);
@@ -62,7 +88,7 @@ function Download({
 
     if (layout === 0) {
       view?.signal("titleY", 20);
-      view?.signal("titleH", 60);
+      view?.signal("titleH", 60 + (chartTitle.length - 1) * 15);
       view?.signal("chartY", 50);
       view?.signal("titleGroupY", 0);
       view?.signal("sourceGroupY", totalHeight - 80);
@@ -70,9 +96,12 @@ function Download({
       view?.signal("sourceY", 30);
     } else {
       view?.signal("titleY", 25);
-      view?.signal("titleH", 60);
+      view?.signal("titleH", 60 + (chartTitle.length - 1) * 15);
       view?.signal("chartY", 60);
-      view?.signal("titleGroupY", totalHeight - 80);
+      view?.signal(
+        "titleGroupY",
+        totalHeight - 80 + (chartTitle.length - 1) * 15
+      );
       view?.signal("sourceGroupY", 1);
       view?.signal("sourceGroupH", 60);
       view?.signal("sourceY", 30);
@@ -94,8 +123,6 @@ function Download({
     e.stopPropagation();
 
     const fileType = type.toLowerCase();
-
-    const data = view.data("table");
     const fileName = `${title}.${fileType}`;
     let href;
 
@@ -209,21 +236,32 @@ function Download({
 Download.propTypes = {
   title: PropTypes.string,
   spec: PropTypes.shape({}),
+  currentFilters: PropTypes.arrayOf(PropTypes.shape({})),
+  data: PropTypes.arrayOf(PropTypes.shape({})),
   disableToggle: PropTypes.bool,
   chartValue: PropTypes.oneOf(["Value", "Percentage"]),
   handleChartValueChange: PropTypes.func,
   height: PropTypes.number,
   source: PropTypes.string,
+  profileNames: PropTypes.shape({
+    primary: PropTypes.string,
+    secondary: PropTypes.string,
+  }),
+  isCompare: PropTypes.bool,
 };
 
 Download.defaultProps = {
   title: undefined,
   spec: undefined,
+  currentFilters: undefined,
+  data: undefined,
   disableToggle: false,
   chartValue: undefined,
   handleChartValueChange: undefined,
   height: 450,
   source: undefined,
+  profileNames: undefined,
+  isCompare: undefined,
 };
 
 export default Download;

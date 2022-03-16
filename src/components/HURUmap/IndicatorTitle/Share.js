@@ -9,7 +9,7 @@ import useStyles from "./useStyles";
 
 import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
 
-function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
+function Share({ title, geoCode, indicatorId, isCompare, ...props }) {
   const classes = useStyles(props);
   const [copied, setCopied] = useState(false);
 
@@ -131,17 +131,12 @@ function Share({ title, geoCode, indicatorId, view, isCompare, ...props }) {
 
 Share.propTypes = {
   title: PropTypes.string,
-  view: PropTypes.shape({
-    toImageURL: PropTypes.func,
-    data: PropTypes.func,
-  }),
   geoCode: PropTypes.string,
   indicatorId: PropTypes.number,
   isCompare: PropTypes.bool,
 };
 
 Share.defaultProps = {
-  view: undefined,
   title: undefined,
   geoCode: undefined,
   indicatorId: undefined,

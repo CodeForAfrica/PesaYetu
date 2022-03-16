@@ -13,17 +13,22 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-function Filters({ filterGroups, defaultFilters, view, ...props }) {
+function Filters({
+  filterGroups,
+  defaultFilters,
+  filterSelectProps,
+  setFilterSelectProps,
+  view,
+  ...props
+}) {
   const classes = useStyles(props);
   const [availableGroups, setAvailableGroups] = useState([]);
-  const [filterSelectProps, setFilterSelectProps] = useState([
-    {
-      groups: filterGroups,
-      index: 0,
-      selectedValue: undefined,
-      selectedAttribute: "All values",
-    },
-  ]);
+
+  const handleFilterSelectProps = (v) => {
+    if (setFilterSelectProps) {
+      setFilterSelectProps(v);
+    }
+  };
 
   const resetFilters = useCallback(() => {
     filterGroups.forEach(({ slug: filterName }) => {
@@ -73,7 +78,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
         return fp;
       });
 
-      setFilterSelectProps(indexFilterProp);
+      handleFilterSelectProps(indexFilterProp);
     }
   };
 
@@ -88,7 +93,7 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       }
       return fp;
     });
-    setFilterSelectProps(indexFilterProp);
+    handleFilterSelectProps(indexFilterProp);
   };
 
   const deleteFilter = (attribute, filterIndex) => {
@@ -97,11 +102,11 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
       ({ index }) => index !== filterIndex
     );
     setAvailableGroups([attributeGroup, ...availableGroups]);
-    setFilterSelectProps(filterProps);
+    handleFilterSelectProps(filterProps);
   };
 
   const addFilter = () => {
-    setFilterSelectProps([
+    handleFilterSelectProps([
       ...filterSelectProps,
       {
         groups: availableGroups,
@@ -150,7 +155,9 @@ function Filters({ filterGroups, defaultFilters, view, ...props }) {
 
 Filters.propTypes = {
   filterGroups: PropTypes.arrayOf(PropTypes.shape({})),
+  filterSelectProps: PropTypes.arrayOf(PropTypes.shape({})),
   defaultFilters: PropTypes.arrayOf(PropTypes.shape({})),
+  setFilterSelectProps: PropTypes.func,
   view: PropTypes.shape({
     signal: PropTypes.func,
     run: PropTypes.func,
@@ -160,6 +167,8 @@ Filters.propTypes = {
 Filters.defaultProps = {
   defaultFilters: undefined,
   filterGroups: undefined,
+  filterSelectProps: undefined,
+  setFilterSelectProps: undefined,
   view: undefined,
 };
 

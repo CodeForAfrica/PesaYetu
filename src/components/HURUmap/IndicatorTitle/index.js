@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
 }));
 
-function IndicatorTitle({ description, title, disableToggle, ...props }) {
+function IndicatorTitle({ description, title, disableToggle, view, ...props }) {
   const classes = useStyles(props);
 
   const actions = [
@@ -71,7 +71,16 @@ function IndicatorTitle({ description, title, disableToggle, ...props }) {
       title: "Download",
       header: disableToggle ? "Download chart as" : "Chart value as:",
       children: (
-        <Download title={title} {...props} disableToggle={disableToggle} />
+        <Download
+          {...props}
+          title={title}
+          disableToggle={disableToggle}
+          height={view?.height()}
+          data={[
+            ...(view?.data("primary") ?? []),
+            ...(view?.data("secondary") ?? []),
+          ]}
+        />
       ),
       icon: <DownloadIcon />,
     },
@@ -108,12 +117,17 @@ IndicatorTitle.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   disableToggle: PropTypes.bool,
+  view: PropTypes.shape({
+    height: PropTypes.func,
+    data: PropTypes.func,
+  }),
 };
 
 IndicatorTitle.defaultProps = {
   description: undefined,
   title: undefined,
   disableToggle: false,
+  view: undefined,
 };
 
 export default IndicatorTitle;
