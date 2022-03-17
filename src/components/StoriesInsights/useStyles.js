@@ -35,9 +35,7 @@ const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
     },
     [breakpoints.up("lg")]: {
       margin: 0,
-      padding: `${typography.pxToRem(10)} ${typography.pxToRem(
-        33
-      )} ${typography.pxToRem(27)}`,
+      padding: `${typography.pxToRem(8)} ${typography.pxToRem(33)}`,
     },
     "&:after": {
       position: "absolute",
