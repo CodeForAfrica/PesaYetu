@@ -54,6 +54,7 @@ function Chart({
     defaultType,
     filter,
     stacked_field: stackedField,
+    chart_type: chartType,
   } = indicator?.chart_configuration || {};
 
   const [chartValue, setChartValue] = useState(defaultType || "Value");
@@ -214,6 +215,7 @@ function Chart({
         source={source}
         isCompare={isCompare}
         profileNames={profileNames}
+        chartType={chartType?.toLowerCase()}
       />
       {!isMobile && (
         <Filters

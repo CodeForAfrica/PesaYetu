@@ -9,7 +9,14 @@ import useStyles from "./useStyles";
 
 import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
 
-function Share({ title, geoCode, indicatorId, isCompare, ...props }) {
+function Share({
+  title,
+  chartType,
+  geoCode,
+  indicatorId,
+  isCompare,
+  ...props
+}) {
   const classes = useStyles(props);
   const [copied, setCopied] = useState(false);
 
@@ -50,6 +57,8 @@ function Share({ title, geoCode, indicatorId, isCompare, ...props }) {
     { name: "CopyUrl" },
   ];
 
+  const className = `wrapper-${geoCode}-${indicatorId}`;
+
   const code = `<div>
   <style>
     .frame {
@@ -61,30 +70,39 @@ function Share({ title, geoCode, indicatorId, isCompare, ...props }) {
       border: 0;
       z-index: 10;
     }
-    .wrapper {
+    .${className} {
         position: relative;
         overflow: hidden;
-        padding-top: 75%;
+        padding-top: ${chartType === "treemap" ? "75%" : "56.25%"};
     }
-    @media (max-width: 1280px) {
-        .wrapper {
-          padding-top: ${isCompare ? "160%" : "90%"};
+    ${
+      isCompare
+        ? `@media (max-width: 1280px) {
+      .${className} {
+        padding-top: 160%;
+      } 
+      @media (max-width: 620px) {
+        .${className}  {
+          padding-top: 200%;
         }
-    @media (max-width: 768px) {
-      .wrapper {
-        padding-top: ${isCompare ? "160%" : "100%"};
-      }
+      @media (max-width: 500px) {
+        .${className}  {padding-top: 240% }}`
+        : `@media (max-width: 1280px) {
+        .${className}{
+          padding-top: ${chartType === "treemap" ? "100%" : "75%"};
+        }
     @media (max-width: 620px) {
-      .wrapper {
-        padding-top: ${isCompare ? "200%" : "120%"};
+      .${className} {
+        padding-top: ${chartType === "treemap" ? "120%" : "100%"};
       }
       @media (max-width: 500px) {
-        .wrapper {
-          padding-top: ${isCompare ? "300%" : "170%"};
+        .${className} {
+          padding-top: ${chartType === "treemap" ? "170%" : "140%"};
         }
-}
+      }`
+    }
 </style> 
-<div class="wrapper"><iframe class="frame" 
+<div class="${className}"><iframe class="frame" 
   src="${
     process.env.NEXT_PUBLIC_APP_URL
   }/embed/${geoCode.toLowerCase()}/${indicatorId}"></iframe></div></div>
@@ -131,6 +149,7 @@ function Share({ title, geoCode, indicatorId, isCompare, ...props }) {
 
 Share.propTypes = {
   title: PropTypes.string,
+  chartType: PropTypes.string,
   geoCode: PropTypes.string,
   indicatorId: PropTypes.number,
   isCompare: PropTypes.bool,
@@ -141,6 +160,7 @@ Share.defaultProps = {
   geoCode: undefined,
   indicatorId: undefined,
   isCompare: undefined,
+  chartType: undefined,
 };
 
 export default Share;
