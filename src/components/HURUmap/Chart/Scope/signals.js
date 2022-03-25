@@ -1,4 +1,3 @@
-import hoverIcon from "@/pesayetu/assets/icons/Component1375.png";
 import { hurumapArgs } from "@/pesayetu/config";
 import theme from "@/pesayetu/theme";
 
@@ -39,12 +38,6 @@ export default function Signals(
           update: "containerSize()[0] ? containerSize()[0] : 800",
         },
       ],
-    },
-    {
-      name: "cursor",
-      value: `url("${
-        chartType !== "line" ? hoverIcon.src : undefined
-      }"), pointer`,
     },
     {
       name: "x_step",
