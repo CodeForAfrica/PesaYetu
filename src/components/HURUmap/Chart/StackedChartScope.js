@@ -113,6 +113,7 @@ export default function StackedChartScope(
           domain: {
             data: "primary_formatted",
             field: stackedField,
+            sort: true,
           },
         },
         {

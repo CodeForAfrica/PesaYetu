@@ -15,11 +15,10 @@ export default function MultiLineChartScope(
   isCompare,
   isMobile
 ) {
-  const { parentLabel } = config;
+  const { parentLabel, xScaleType } = config;
 
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
-  const { xScaleType } = config;
 
   const transform = [
     {

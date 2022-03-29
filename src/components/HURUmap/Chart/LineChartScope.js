@@ -15,7 +15,7 @@ export default function LineChartScope(
   isCompare,
   isMobile
 ) {
-  const { parentLabel } = config;
+  const { parentLabel, xScaleType } = config;
 
   const { primary_group: primaryGroup } = metadata;
 
@@ -63,7 +63,7 @@ export default function LineChartScope(
         },
         {
           name: "s_xscale",
-          type: "point",
+          type: xScaleType || "point",
           domain: {
             data: "secondary_formatted",
             field: primaryGroup,
