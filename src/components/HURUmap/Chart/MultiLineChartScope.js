@@ -19,6 +19,7 @@ export default function MultiLineChartScope(
 
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
+  const { xScaleType } = config;
 
   const transform = [
     {
@@ -77,7 +78,7 @@ export default function MultiLineChartScope(
         },
         {
           name: "s_xscale",
-          type: "point",
+          type: xScaleType || "point",
           domain: {
             data: "secondary_formatted",
             field: primaryGroup,
@@ -121,6 +122,7 @@ export default function MultiLineChartScope(
           domain: {
             data: "primary_formatted",
             field: stackedField,
+            sort: true,
           },
         },
         {
