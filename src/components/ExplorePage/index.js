@@ -136,6 +136,7 @@ function ExplorePage({ panelProps, profile: profileProp, ...props }) {
         </div>
       </Hidden>
       <Panel
+        id="#rich-data"
         {...props}
         isCompare={state.isCompare}
         isLoading={isLoading}

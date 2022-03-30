@@ -30,6 +30,7 @@ function PanelButtonGroup({ items, value, onChange, pins, ...props }) {
       >
         {items.map(({ icon, ...buttonProps }) => (
           <ToggleButton
+            id={`#${buttonProps.value}`}
             key={buttonProps.value}
             {...buttonProps}
             className={clsx(
@@ -42,7 +43,13 @@ function PanelButtonGroup({ items, value, onChange, pins, ...props }) {
               }
             )}
           >
-            <Image className={classes.icon} src={icon} width={44} height={44} />
+            <Image
+              className={classes.icon}
+              id={`#${buttonProps.value}`}
+              src={icon}
+              width={44}
+              height={44}
+            />
           </ToggleButton>
         ))}
       </ToggleButtonGroup>
