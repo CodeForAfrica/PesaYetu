@@ -15,8 +15,14 @@ export default function LineChartScope(
   isCompare,
   isMobile
 ) {
-  const { parentLabel, xScaleType, xScaleFormat, timeUnit, timeFormat } =
-    config;
+  const {
+    parentLabel,
+    xScaleType,
+    xScaleFormat,
+    xScaleMobileFormat,
+    timeUnit,
+    timeFormat,
+  } = config;
 
   const { primary_group: primaryGroup } = metadata;
 
@@ -210,7 +216,8 @@ export default function LineChartScope(
               grid: true,
               labelPadding: 6,
               formatType: xScaleType,
-              format: xScaleFormat || undefined,
+              format:
+                (isMobile ? xScaleMobileFormat : xScaleFormat) || undefined,
             },
           ],
           marks: [
@@ -404,7 +411,9 @@ export default function LineChartScope(
                     grid: true,
                     labelPadding: 6,
                     formatType: xScaleType,
-                    format: xScaleFormat || undefined,
+                    format:
+                      (isMobile ? xScaleMobileFormat : xScaleFormat) ||
+                      undefined,
                   },
                 ]
               : null,
