@@ -15,18 +15,27 @@ export default function MultiLineChartScope(
   isCompare,
   isMobile
 ) {
-  const { parentLabel, xScaleType } = config;
+  const { parentLabel, xScaleType, xScaleFormat, timeUnit, timeFormat } =
+    config;
 
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
 
-  const transform = [
-    {
-      type: "stack",
-      groupby: [stackedField],
-      field: { signal: "datatype[Units]" },
-    },
-  ];
+  const timeTransform =
+    xScaleType === "time"
+      ? [
+          {
+            type: "formula",
+            as: primaryGroup,
+            expr: "timeParse(datum[mainGroup], timeFormat)",
+          },
+          {
+            type: "timeunit",
+            units: timeUnit,
+            field: primaryGroup,
+          },
+        ]
+      : [];
 
   return merge(
     Scope(
@@ -37,7 +46,14 @@ export default function MultiLineChartScope(
       primaryParentData,
       secondaryParentData,
       "line",
-      transform
+      [
+        {
+          type: "stack",
+          groupby: [stackedField],
+          field: { signal: "datatype[Units]" },
+        },
+        ...timeTransform,
+      ]
     ),
     {
       height: isMobile && isCompare && secondaryData?.length > 1 ? 620 : 310,
@@ -58,11 +74,15 @@ export default function MultiLineChartScope(
           name: "stackedField",
           value: stackedField,
         },
+        {
+          name: "timeFormat",
+          value: timeFormat || "%b",
+        },
       ],
       scales: [
         {
           name: "xscale",
-          type: "point",
+          type: xScaleType || "point",
           domain: {
             data: "primary_formatted",
             field: primaryGroup,
@@ -231,6 +251,8 @@ export default function MultiLineChartScope(
               tickSize: 0,
               grid: true,
               labelPadding: 6,
+              formatType: xScaleType,
+              format: xScaleFormat || undefined,
             },
           ],
           marks: [
@@ -459,6 +481,8 @@ export default function MultiLineChartScope(
                     tickSize: 0,
                     grid: true,
                     labelPadding: 6,
+                    formatType: xScaleType,
+                    format: xScaleFormat || undefined,
                   },
                 ]
               : null,
