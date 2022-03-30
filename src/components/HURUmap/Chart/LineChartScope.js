@@ -15,9 +15,32 @@ export default function LineChartScope(
   isCompare,
   isMobile
 ) {
-  const { parentLabel } = config;
+  const {
+    parentLabel,
+    xScaleType,
+    xScaleFormat,
+    xScaleMobileFormat,
+    timeUnit,
+    timeFormat,
+  } = config;
 
   const { primary_group: primaryGroup } = metadata;
+
+  const timeTransform =
+    xScaleType === "time"
+      ? [
+          {
+            type: "formula",
+            as: primaryGroup,
+            expr: "timeParse(datum[mainGroup], timeFormat)",
+          },
+          {
+            type: "timeunit",
+            units: timeUnit,
+            field: primaryGroup,
+          },
+        ]
+      : undefined;
 
   return merge(
     Scope(
@@ -27,7 +50,8 @@ export default function LineChartScope(
       secondaryData,
       primaryParentData,
       secondaryParentData,
-      "line"
+      "line",
+      timeTransform
     ),
     {
       height: isMobile && isCompare && secondaryData?.length > 1 ? 620 : 310,
@@ -44,11 +68,15 @@ export default function LineChartScope(
           name: "isCompare",
           value: isCompare,
         },
+        {
+          name: "timeFormat",
+          value: timeFormat || "%b",
+        },
       ],
       scales: [
         {
           name: "xscale",
-          type: "point",
+          type: xScaleType || "point",
           domain: {
             data: "primary_formatted",
             field: primaryGroup,
@@ -63,7 +91,7 @@ export default function LineChartScope(
         },
         {
           name: "s_xscale",
-          type: "point",
+          type: xScaleType || "point",
           domain: {
             data: "secondary_formatted",
             field: primaryGroup,
@@ -187,6 +215,9 @@ export default function LineChartScope(
               tickSize: 0,
               grid: true,
               labelPadding: 6,
+              formatType: xScaleType,
+              format:
+                (isMobile ? xScaleMobileFormat : xScaleFormat) || undefined,
             },
           ],
           marks: [
@@ -379,6 +410,10 @@ export default function LineChartScope(
                     tickSize: 0,
                     grid: true,
                     labelPadding: 6,
+                    formatType: xScaleType,
+                    format:
+                      (isMobile ? xScaleMobileFormat : xScaleFormat) ||
+                      undefined,
                   },
                 ]
               : null,

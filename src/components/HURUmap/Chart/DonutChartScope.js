@@ -158,6 +158,10 @@ export default function DonutChartScope(
                   update: {
                     fontSize: { value: 11 },
                     fill: { value: theme.palette.chart.text.primary },
+                    limit: {
+                      signal:
+                        "isMobile || data('secondary').length > 1 ? '150' : '380'",
+                    },
                   },
                 },
                 symbols: {
