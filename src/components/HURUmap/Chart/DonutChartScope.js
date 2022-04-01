@@ -84,11 +84,19 @@ export default function DonutChartScope(
           name: "color",
           type: "ordinal",
           range: "category",
+          domain: {
+            data: "primary_formatted",
+            field: primaryGroup,
+          },
         },
         {
           name: "secondary",
           type: "ordinal",
           range: "secondary",
+          domain: {
+            data: "secondary_formatted",
+            field: primaryGroup,
+          },
         },
         {
           name: "legend_primary_scale",
