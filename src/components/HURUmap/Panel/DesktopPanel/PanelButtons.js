@@ -1,3 +1,4 @@
+import { useTour } from "@reactour/tour";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
@@ -21,6 +22,7 @@ function PanelButtons({
   const [pins, setPins] = useState([]);
   const [panelItems, setPanelItems] = useState([]);
   const classes = useStyles({ ...props });
+  const { isOpen: tutorialOpen } = useTour();
 
   useEffect(() => {
     if (primaryProfile.items.length || secondaryProfile?.items?.length) {
@@ -120,7 +122,7 @@ function PanelButtons({
     setValue(nextValue);
   };
 
-  const open = value === "rich-data";
+  const open = value === "rich-data" && !tutorialOpen;
   /* eslint-disable no-param-reassign */
   if (open) {
     drawerRef.current.style.visibility = "visible";
