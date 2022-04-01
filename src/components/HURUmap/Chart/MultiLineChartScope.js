@@ -15,8 +15,14 @@ export default function MultiLineChartScope(
   isCompare,
   isMobile
 ) {
-  const { parentLabel, xScaleType, xScaleFormat, timeUnit, timeFormat } =
-    config;
+  const {
+    parentLabel,
+    xScaleType,
+    xScaleFormat,
+    xScaleMobileFormat,
+    timeUnit,
+    timeFormat,
+  } = config;
 
   const { primary_group: primaryGroup } = metadata;
   const stackedField = config.stacked_field;
@@ -252,7 +258,8 @@ export default function MultiLineChartScope(
               grid: true,
               labelPadding: 6,
               formatType: xScaleType,
-              format: xScaleFormat || undefined,
+              format:
+                (isMobile ? xScaleMobileFormat : xScaleFormat) || undefined,
             },
           ],
           marks: [
@@ -482,7 +489,9 @@ export default function MultiLineChartScope(
                     grid: true,
                     labelPadding: 6,
                     formatType: xScaleType,
-                    format: xScaleFormat || undefined,
+                    format:
+                      (isMobile ? xScaleMobileFormat : xScaleFormat) ||
+                      undefined,
                   },
                 ]
               : null,
