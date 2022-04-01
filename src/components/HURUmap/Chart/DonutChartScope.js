@@ -84,11 +84,19 @@ export default function DonutChartScope(
           name: "color",
           type: "ordinal",
           range: "category",
+          domain: {
+            data: "primary_formatted",
+            field: primaryGroup,
+          },
         },
         {
           name: "secondary",
           type: "ordinal",
           range: "secondary",
+          domain: {
+            data: "secondary_formatted",
+            field: primaryGroup,
+          },
         },
         {
           name: "legend_primary_scale",
@@ -180,7 +188,6 @@ export default function DonutChartScope(
               from: { data: "primary_formatted" },
               encode: {
                 enter: {
-                  fill: { scale: "color", field: { signal: "mainGroup" } },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
@@ -188,6 +195,7 @@ export default function DonutChartScope(
                   },
                 },
                 update: {
+                  fill: { scale: "color", field: { signal: "mainGroup" } },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
@@ -271,7 +279,6 @@ export default function DonutChartScope(
               from: { data: "secondary_formatted" },
               encode: {
                 enter: {
-                  fill: { scale: "secondary", field: primaryGroup },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
@@ -279,6 +286,7 @@ export default function DonutChartScope(
                   },
                 },
                 update: {
+                  fill: { scale: "secondary", field: primaryGroup },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
