@@ -45,7 +45,7 @@ function PanelButtonGroup({ items, value, onChange, pins, ...props }) {
           >
             <Image
               className={classes.icon}
-              id={`#${buttonProps.value}`}
+              id={buttonProps.value}
               src={icon}
               width={44}
               height={44}
