@@ -188,7 +188,6 @@ export default function DonutChartScope(
               from: { data: "primary_formatted" },
               encode: {
                 enter: {
-                  fill: { scale: "color", field: { signal: "mainGroup" } },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
@@ -196,6 +195,7 @@ export default function DonutChartScope(
                   },
                 },
                 update: {
+                  fill: { scale: "color", field: { signal: "mainGroup" } },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
@@ -279,7 +279,6 @@ export default function DonutChartScope(
               from: { data: "secondary_formatted" },
               encode: {
                 enter: {
-                  fill: { scale: "secondary", field: primaryGroup },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
@@ -287,6 +286,7 @@ export default function DonutChartScope(
                   },
                 },
                 update: {
+                  fill: { scale: "secondary", field: primaryGroup },
                   x: { signal: "donutSize/4" },
                   y: {
                     signal:
