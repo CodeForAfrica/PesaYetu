@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { TourProvider } from "@reactour/tour";
+import { TourProvider, useTour } from "@reactour/tour";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -29,7 +29,10 @@ const useStyles = makeStyles(({ typography, palette }) => ({
 
 function Tutorial({ children, defaultOpen, items, ...props }) {
   const classes = useStyles(props);
-  const [isOpened, setIsOpened] = useState(defaultOpen);
+  const { setIsOpen } = useTour();
+  setIsOpen(defaultOpen);
+
+  const [isOpened, setIsOpened] = useState(false);
 
   const setTourOpened = () => {
     setIsOpened(true);
