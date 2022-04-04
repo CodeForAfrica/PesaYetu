@@ -12,9 +12,11 @@ const Connector = () => {
     const firstElement = document
       .querySelector(`#tutorial-title-${currentStep}`)
       ?.getBoundingClientRect();
+
     const secondElement = document
-      .querySelector(steps[currentStep].selector)
+      .querySelector(steps[currentStep]?.selector)
       ?.getBoundingClientRect();
+
     if (firstElement && secondElement) {
       const y1 = firstElement?.top + firstElement?.height / 2;
       const y2 = secondElement?.top + secondElement?.height / 2;
@@ -31,6 +33,9 @@ const Connector = () => {
           y2,
         });
       }
+    } else {
+      setStart(undefined);
+      setEnd(undefined);
     }
   }, [currentStep, steps]);
 

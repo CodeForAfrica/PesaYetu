@@ -30,6 +30,7 @@ function PanelButtonGroup({ items, value, onChange, pins, ...props }) {
       >
         {items.map(({ icon, ...buttonProps }) => (
           <ToggleButton
+            id={buttonProps.value}
             key={buttonProps.value}
             {...buttonProps}
             className={clsx(
