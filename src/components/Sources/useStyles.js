@@ -9,12 +9,14 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   source: {
     border: `1px solid ${palette.grey.main}`,
     borderTop: "none",
-    padding: `${typography.pxToRem(29)} ${typography.pxToRem(21)}`,
     "&:first-of-type": {
       borderTop: `1px solid ${palette.grey.main}`,
     },
+    padding: typography.pxToRem(20),
     [breakpoints.up("lg")]: {
-      padding: `${typography.pxToRem(40)} 0`,
+      padding: 0,
+      display: "flex",
+      height: typography.pxToRem(121),
     },
   },
   text: {
@@ -24,12 +26,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
       lineHeight: 30 / 16,
     },
   },
-  title: {
-    marginTop: typography.pxToRem(20),
-    [breakpoints.up("lg")]: {
-      marginTop: 0,
-    },
-  },
+  title: {},
   date: {},
   resourceType: {},
   cta: {
