@@ -19,10 +19,7 @@ async function extractDatasets(origin, results) {
       notes: description,
       title,
     } = result;
-    const types = result.resources?.map(({ format, url }) => ({
-      href: url,
-      name: format,
-    }));
+    const types = [...new Set(result.resources?.map(({ format }) => format))];
     return {
       date: formatDate(updatedAt),
       description,

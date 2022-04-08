@@ -28,11 +28,11 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     fontWeight: 600,
     letterSpacing: typography.pxToRem(0.8),
     lineHeight: 16 / 10,
-    margin: `${typography.pxToRem(12)} ${typography.pxToRem(12)} 0 0`,
+    margin: `${typography.pxToRem(12)} ${typography.pxToRem(20)} 0 0`,
     padding: typography.pxToRem(12),
     textTransform: "uppercase",
     [breakpoints.up("lg")]: {
-      margin: typography.pxToRem(12),
+      margin: `0 0 0 ${typography.pxToRem(20)}`,
     },
   },
   cta: {},
@@ -70,6 +70,7 @@ function Dataset({
   return (
     <div className={classes.source}>
       <Grid container justifyContent="center" alignItems="center">
+        <Grid item xs={undefined} lg={1} />
         <Grid item xs={12} lg={6}>
           <Grid container flexDirection="column">
             <Grid item xs={12}>
@@ -83,21 +84,15 @@ function Dataset({
           </Grid>
         </Grid>
         <Grid item xs={12} lg={3} container>
-          {types?.map(({ href: typeHref, name }) => (
-            <Grid item key={href}>
-              <Typography
-                align="center"
-                component={typeHref ? Link : undefined}
-                href={typeHref || undefined}
-                underline={typeHref ? "none" : undefined}
-                className={classes.resourceType}
-              >
+          {types?.map((name) => (
+            <Grid item key={name}>
+              <Typography align="center" className={classes.resourceType}>
                 {name}
               </Typography>
             </Grid>
           )) ?? null}
         </Grid>
-        <Grid item xs={12} lg={1}>
+        <Grid item xs={12} lg={2}>
           <Typography variant="body2" className={classes.cta}>
             <Link href={href} underline="always">
               {ctaText}
@@ -123,10 +118,7 @@ Dataset.propTypes = {
   description: PropTypes.string,
   href: PropTypes.string,
   title: PropTypes.string,
-  types: PropTypes.arrayOf({
-    href: PropTypes.string,
-    name: PropTypes.string,
-  }),
+  types: PropTypes.arrayOf(PropTypes.string),
 };
 
 Dataset.defaultProps = {

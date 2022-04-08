@@ -103,7 +103,6 @@ Sources.propTypes = {
       title: PropTypes.string,
       description: PropTypes.string,
       href: PropTypes.string,
-      types: PropTypes.arrayOf({}),
     })
   ),
   type: PropTypes.oneOf(["datasets", "documents"]),
