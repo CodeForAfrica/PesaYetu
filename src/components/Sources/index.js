@@ -1,7 +1,7 @@
 import { Hidden, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import List from "./List";
 import useStyles from "./useStyles";
@@ -9,9 +9,8 @@ import useStyles from "./useStyles";
 import Pagination from "@/pesayetu/components/Pagination";
 import SourcesFilter from "@/pesayetu/components/SourcesFilter";
 
-function Sources({ ctaText, filterProps, items, type, ...props }) {
+function Sources({ ctaText, contentRef, filterProps, items, type, ...props }) {
   const classes = useStyles({ ...props, type });
-  const contentRef = useRef();
   const { paginationOptions } = filterProps;
   const [sortOrder, setSortOrder] = useState();
   const [sortedItems, setSortedItems] = useState(items);
@@ -25,6 +24,12 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
   const itemsToShow = isTablet ? pageSize : 5;
   const handleSort = (e) => {
     setSortOrder(e.target.value);
+    setPage(1);
+    setIsPaginating(true);
+  };
+
+  const handleClickPageSize = (p) => {
+    setPageSize(p);
     setPage(1);
     setIsPaginating(true);
   };
@@ -56,7 +61,7 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
         behavior: "smooth",
       });
     }
-  }, [page, isPaginating]);
+  }, [page, contentRef, isPaginating]);
 
   if (!sortedItems?.length) {
     return null;
@@ -66,12 +71,12 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
   const count = Math.ceil(total / itemsToShow) ?? 0;
 
   return (
-    <div classesName={classes.root} ref={contentRef}>
+    <div classesName={classes.root}>
       <Hidden smDown implementation="css">
         <SourcesFilter
           {...filterProps}
           count={items.length}
-          onPageSize={setPageSize}
+          onPageSize={handleClickPageSize}
           onSort={handleSort}
           pageSize={pageSize}
           sortOrder={sortOrder}
@@ -105,6 +110,11 @@ function Sources({ ctaText, filterProps, items, type, ...props }) {
 
 Sources.propTypes = {
   ctaText: PropTypes.string,
+  contentRef: PropTypes.shape({
+    current: PropTypes.shape({
+      scrollIntoView: PropTypes.func,
+    }),
+  }),
   filterProps: PropTypes.shape({
     paginationOptions: PropTypes.arrayOf(PropTypes.number),
   }),
@@ -123,6 +133,7 @@ Sources.defaultProps = {
   filterProps: undefined,
   items: undefined,
   type: undefined,
+  contentRef: undefined,
 };
 
 export default Sources;

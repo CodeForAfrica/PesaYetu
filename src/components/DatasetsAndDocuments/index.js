@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useRef } from "react";
 
 import Section from "@/pesayetu/components/Section";
 import Sources from "@/pesayetu/components/Sources";
@@ -13,6 +13,7 @@ import useStyles from "./useStyles";
 
 function DatasetsAndDocuments({ items: sources, activeType, ...props }) {
   const classes = useStyles(props);
+  const contentRef = useRef();
 
   if (!sources?.length) {
     return null;
@@ -22,11 +23,11 @@ function DatasetsAndDocuments({ items: sources, activeType, ...props }) {
     return {
       label,
       href: `/data/${type}`,
-      children: <Sources {...rest} type={type} />,
+      children: <Sources {...rest} type={type} contentRef={contentRef} />,
     };
   });
   return (
-    <div className={classes.root}>
+    <div className={classes.root} ref={contentRef}>
       <Section classes={{ root: classes.section }}>
         {/* key is needed to re-render the component when prop changes e.g.
             via storybook controls */}
