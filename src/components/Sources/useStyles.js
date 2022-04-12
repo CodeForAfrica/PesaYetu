@@ -2,9 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {},
-  carouselItem: {},
-  carouselDotList: {
-    margin: `${typography.pxToRem(16)} ${typography.pxToRem(30)}`,
+  list: {
+    marginBottom: typography.pxToRem(45),
   },
   source: {
     border: `1px solid ${palette.grey.main}`,

@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function CarouselItem({ ctaText, items, type, ...props }) {
+function List({ ctaText, items, type, ...props }) {
   const classes = useStyles(props);
   const Component = type === "datasets" ? Dataset : Document;
 
@@ -24,7 +24,7 @@ function CarouselItem({ ctaText, items, type, ...props }) {
   );
 }
 
-CarouselItem.propTypes = {
+List.propTypes = {
   ctaText: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -34,10 +34,10 @@ CarouselItem.propTypes = {
   type: PropTypes.oneOf(["datasets", "documents"]),
 };
 
-CarouselItem.defaultProps = {
+List.defaultProps = {
   ctaText: "Read More",
   items: undefined,
   type: undefined,
 };
 
-export default CarouselItem;
+export default List;
