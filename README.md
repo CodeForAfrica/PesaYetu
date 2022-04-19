@@ -2,7 +2,7 @@
 
 ## Description
 
-PesaYetu, an easy-to-use visualization tool that helps journalists quickly find, analyse and compare government budget data to help fact-check claims about resource allocations, public procurement and development plans or services. Accessible at [https://pesayetu.dev.codeforafrica.org](https://pesayetu.dev.codeforafrica.org)
+PesaYetu, an easy-to-use visualization tool that helps journalists quickly find, analyse and compare government budget data to help fact-check claims about resource allocations, public procurement and development plans or services. Accessible at [https://pesayetu.pesacheck.org](https://pesayetu.pesacheck.org)
 
 Built with love ❤️ using [Nextjs](https://github.com/vercel/next.js/), Javascript and a couple other helper libraries (see [package.json](./package.json)).
 
