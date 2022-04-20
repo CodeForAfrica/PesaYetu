@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
@@ -18,21 +19,25 @@ const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   metricRow: {
-    marginBottom: typography.pxToRem(8),
     [breakpoints.up("md")]: {
-      display: "flex",
+      marginLeft: typography.pxToRem(18),
+      maxWidth: typography.pxToRem(224),
+      "&:first-of-type": {
+        marginLeft: 0,
+      },
     },
     [breakpoints.up("lg")]: {
       marginBottom: typography.pxToRem(14),
     },
-    "&:first-child": {},
   },
-  metric: {
-    width: "100%",
+  secondaryMetricRow: {
     [breakpoints.up("md")]: {
-      marginRight: typography.pxToRem(18),
-      maxWidth: "50%",
+      maxWidth: "100%",
+      marginLeft: 0,
     },
+  },
+  secondaryMetric: {
+    maxWidth: typography.pxToRem(350),
   },
 }));
 
@@ -64,53 +69,67 @@ const ProfileItems = memo(
                   id={slugify(`${category.title}-${child.title}`)}
                   title={child.title}
                 />
-                {child?.metrics?.map(
-                  ({ label, parentMetric, ...other }, metricIndex) => {
-                    const secondaryMetric = getSecondaryMetric(
-                      categoryIndex,
-                      subcategoryIndex,
-                      metricIndex
-                    );
-                    return (
-                      <div key={label} className={classes.metricRow}>
-                        <KeyMetric
-                          title={label}
-                          formattedValue={formatNumericalValue(other)}
-                          parentFormattedValue={
-                            parentMetric
-                              ? formatNumericalValue(parentMetric)
-                              : undefined
-                          }
-                          {...other}
-                          color="primary"
-                          className={clsx({
-                            [classes.metric]: secondaryProfile,
+                <Grid container>
+                  {child?.metrics?.map(
+                    ({ label, parentMetric, ...other }, metricIndex) => {
+                      const secondaryMetric = getSecondaryMetric(
+                        categoryIndex,
+                        subcategoryIndex,
+                        metricIndex
+                      );
+                      return (
+                        <Grid
+                          item
+                          container
+                          md={secondaryProfile ? 12 : 4}
+                          key={label}
+                          className={clsx(classes.metricRow, {
+                            [classes.secondaryMetricRow]: secondaryProfile,
                           })}
-                        />
-                        {secondaryMetric && (
-                          <KeyMetric
-                            title={secondaryMetric?.label ?? undefined}
-                            formattedValue={formatNumericalValue({
-                              value: secondaryMetric?.value,
+                        >
+                          <Grid item xs={12} md={secondaryProfile ? 6 : 12}>
+                            <KeyMetric
+                              title={label}
+                              formattedValue={formatNumericalValue(other)}
+                              parentFormattedValue={
+                                parentMetric
+                                  ? formatNumericalValue(parentMetric)
+                                  : undefined
+                              }
+                              {...other}
+                              color="primary"
+                              classes={{
+                                root: clsx({
+                                  [classes.secondaryMetric]: secondaryProfile,
+                                }),
+                              }}
+                            />
+                          </Grid>
+                          {secondaryMetric && (
+                            <Grid item md={6}>
+                              <KeyMetric
+                                title={secondaryMetric?.label ?? undefined}
+                                formattedValue={formatNumericalValue({
+                                  value: secondaryMetric?.value,
 
-                              method: secondaryMetric?.method,
-                            })}
-                            parentFormattedValue={
-                              parentMetric
-                                ? formatNumericalValue(parentMetric)
-                                : undefined
-                            }
-                            color="secondary"
-                            {...secondaryMetric}
-                            className={clsx({
-                              [classes.metric]: secondaryProfile,
-                            })}
-                          />
-                        )}
-                      </div>
-                    );
-                  }
-                )}
+                                  method: secondaryMetric?.method,
+                                })}
+                                parentFormattedValue={
+                                  parentMetric
+                                    ? formatNumericalValue(parentMetric)
+                                    : undefined
+                                }
+                                color="secondary"
+                                {...secondaryMetric}
+                                className={classes.secondaryMetric}
+                              />
+                            </Grid>
+                          )}
+                        </Grid>
+                      );
+                    }
+                  )}
+                </Grid>
                 {child.children.map(({ index, ...indicator }) => (
                   <Chart
                     key={index}
