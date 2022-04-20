@@ -19,25 +19,25 @@ const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
   metricRow: {
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
+      marginBottom: typography.pxToRem(14),
       marginLeft: typography.pxToRem(18),
       maxWidth: typography.pxToRem(224),
       "&:first-of-type": {
         marginLeft: 0,
       },
     },
-    [breakpoints.up("lg")]: {
-      marginBottom: typography.pxToRem(14),
-    },
   },
   secondaryMetricRow: {
-    [breakpoints.up("md")]: {
+    [breakpoints.up("lg")]: {
       maxWidth: "100%",
       marginLeft: 0,
     },
   },
   secondaryMetric: {
-    maxWidth: typography.pxToRem(350),
+    [breakpoints.up("lg")]: {
+      maxWidth: typography.pxToRem(350),
+    },
   },
 }));
 
@@ -81,13 +81,13 @@ const ProfileItems = memo(
                         <Grid
                           item
                           container
-                          md={secondaryProfile ? 12 : 4}
+                          lg={secondaryProfile ? 12 : 4}
                           key={label}
                           className={clsx(classes.metricRow, {
                             [classes.secondaryMetricRow]: secondaryProfile,
                           })}
                         >
-                          <Grid item xs={12} md={secondaryProfile ? 6 : 12}>
+                          <Grid item xs={12} lg={secondaryProfile ? 6 : 12}>
                             <KeyMetric
                               title={label}
                               formattedValue={formatNumericalValue(other)}
@@ -106,7 +106,7 @@ const ProfileItems = memo(
                             />
                           </Grid>
                           {secondaryMetric && (
-                            <Grid item md={6}>
+                            <Grid item xs={12} lg={6}>
                               <KeyMetric
                                 title={secondaryMetric?.label ?? undefined}
                                 formattedValue={formatNumericalValue({
