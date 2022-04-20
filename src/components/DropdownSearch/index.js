@@ -85,6 +85,9 @@ function DropdownSearch({
   const handleSelect = (code, name) => {
     setQuery(name.toLowerCase());
     setCountyCode(code);
+    if (code && hrefProp?.length) {
+      router.push(`${hrefProp}/${code}`);
+    }
   };
 
   useEffect(() => {
@@ -101,6 +104,8 @@ function DropdownSearch({
   const handleClickSearch = () => {
     if (onClick) {
       onClick(countyCode);
+    } else if (!countyCode) {
+      router.push("/404");
     } else if (hrefProp?.length && countyCode) {
       const href = `${hrefProp}/${countyCode}`;
       router.push(href);
