@@ -104,11 +104,11 @@ function DropdownSearch({
   const handleClickSearch = () => {
     if (onClick) {
       onClick(countyCode);
-    } else if (!countyCode) {
-      router.push("/404");
     } else if (hrefProp?.length && countyCode) {
       const href = `${hrefProp}/${countyCode}`;
       router.push(href);
+    } else if (query?.length) {
+      router.push("/404");
     }
   };
 
