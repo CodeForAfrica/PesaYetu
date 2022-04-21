@@ -1,4 +1,4 @@
-import { Typography, LinearProgress } from "@material-ui/core";
+import { Tooltip, Typography, LinearProgress } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -34,12 +34,14 @@ const KeyMetric = ({
     <div className={clsx(classes.root, className)}>
       <div className={classes.metric}>
         <Typography variant="h3">{value}</Typography>
-        <Typography
-          variant="caption"
-          className={clsx(classes.text, classes.title)}
-        >
-          {title}
-        </Typography>
+        <Tooltip title={title}>
+          <Typography
+            variant="caption"
+            className={clsx(classes.text, classes.title)}
+          >
+            {title}
+          </Typography>
+        </Tooltip>
         <LinearProgress
           classes={{
             root: classes.progressBar,
