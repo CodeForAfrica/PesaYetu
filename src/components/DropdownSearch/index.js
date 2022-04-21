@@ -107,7 +107,7 @@ function DropdownSearch({
     } else if (hrefProp?.length && countyCode) {
       const href = `${hrefProp}/${countyCode}`;
       router.push(href);
-    } else if (query?.length) {
+    } else if (query) {
       router.push("/404");
     }
   };
