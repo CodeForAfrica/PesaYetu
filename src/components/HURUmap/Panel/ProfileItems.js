@@ -18,6 +18,9 @@ const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
 });
 
 const useStyles = makeStyles(({ typography, breakpoints }) => ({
+  metrics: {
+    marginTop: typography.pxToRem(24),
+  },
   metricRow: {
     [breakpoints.up("lg")]: {
       marginBottom: typography.pxToRem(14),
@@ -69,7 +72,7 @@ const ProfileItems = memo(
                   id={slugify(`${category.title}-${child.title}`)}
                   title={child.title}
                 />
-                <Grid container>
+                <Grid container className={classes.metrics}>
                   {child?.metrics?.map(
                     ({ label, parentMetric, ...other }, metricIndex) => {
                       const secondaryMetric = getSecondaryMetric(
