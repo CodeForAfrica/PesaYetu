@@ -27,7 +27,7 @@ Default.args = {
     metadata: {
       source: "StatsSA Census 2011",
       description: "",
-      url: "https://pesayetu.dev.codeforafrica.org",
+      url: "https://pesayetu.pesacheck.org",
       licence: {
         name: null,
         url: null,

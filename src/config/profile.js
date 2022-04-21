@@ -19,7 +19,7 @@ export default {
                 metadata: {
                   source: "StatSA",
                   description: "",
-                  url: "https://pesayetu.dev.codeforafrica.org",
+                  url: "https://pesayetu.pesacheck.org",
                   licence: {
                     name: "creative commons",
                     url: null,
@@ -3894,7 +3894,7 @@ export default {
                 metadata: {
                   source: "StasSA",
                   description: "",
-                  url: "https://pesayetu.dev.codeforafrica.org",
+                  url: "https://pesayetu.pesacheck.org",
                   licence: {
                     name: "creative commons",
                     url: null,
@@ -9920,7 +9920,7 @@ export default {
                 metadata: {
                   source: "StatSA",
                   description: "",
-                  url: "https://pesayetu.dev.codeforafrica.org",
+                  url: "https://pesayetu.pesacheck.org",
                   licence: {
                     name: "creative commons",
                     url: null,
@@ -13795,7 +13795,7 @@ export default {
                 metadata: {
                   source: "StatSA",
                   description: "",
-                  url: "https://pesayetu.dev.codeforafrica.org",
+                  url: "https://pesayetu.pesacheck.org",
                   licence: {
                     name: "creative commons",
                     url: null,
@@ -18162,7 +18162,7 @@ export default {
               metadata: {
                 source: "StatSA",
                 description: "",
-                url: "https://pesayetu.dev.codeforafrica.org",
+                url: "https://pesayetu.pesacheck.org",
                 licence: {
                   name: "creative commons",
                   url: null,
@@ -22037,7 +22037,7 @@ export default {
               metadata: {
                 source: "StasSA",
                 description: "",
-                url: "https://pesayetu.dev.codeforafrica.org",
+                url: "https://pesayetu.pesacheck.org",
                 licence: {
                   name: "creative commons",
                   url: null,
@@ -28063,7 +28063,7 @@ export default {
               metadata: {
                 source: "StatSA",
                 description: "",
-                url: "https://pesayetu.dev.codeforafrica.org",
+                url: "https://pesayetu.pesacheck.org",
                 licence: {
                   name: "creative commons",
                   url: null,
@@ -31938,7 +31938,7 @@ export default {
               metadata: {
                 source: "StatSA",
                 description: "",
-                url: "https://pesayetu.dev.codeforafrica.org",
+                url: "https://pesayetu.pesacheck.org",
                 licence: {
                   name: "creative commons",
                   url: null,
