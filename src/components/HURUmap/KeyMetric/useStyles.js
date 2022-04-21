@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   root: {
     width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
     marginBottom: typography.pxToRem(20),
-    [breakpoints.up("md")]: {
-      width: typography.pxToRem(240),
-    },
   },
   metric: {
     backgroundColor: palette.background.paper,
@@ -26,7 +26,11 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
     fontSize: typography.pxToRem(11),
   },
   title: {
-    display: "block",
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 1,
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
     marginBottom: typography.pxToRem(8),
   },
   description: {

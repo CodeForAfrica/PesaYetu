@@ -157,15 +157,11 @@ export default function VerticalBarChartScope(
               from: { data: "primary_formatted" },
               type: "rect",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
                   width: { scale: "xscale", band: 1 },
                   y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   y2: { scale: "yscale", value: 0 },
-                },
-                update: {
-                  x: { scale: "xscale", field: { signal: "mainGroup" } },
-                  y: { scale: "yscale", field: { signal: "datatype[Units]" } },
                   fill: { value: theme.palette.primary.main },
                   tooltip: {
                     signal:
@@ -293,7 +289,7 @@ export default function VerticalBarChartScope(
               from: { data: "secondary_formatted" },
               type: "rect",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "s_xscale", field: { signal: "mainGroup" } },
                   width: { scale: "s_xscale", band: 1 },
                   y: {
@@ -301,13 +297,6 @@ export default function VerticalBarChartScope(
                     field: { signal: "datatype[Units]" },
                   },
                   y2: { scale: "s_yscale", value: 0 },
-                },
-                update: {
-                  x: { scale: "s_xscale", field: { signal: "mainGroup" } },
-                  y: {
-                    scale: "s_yscale",
-                    field: { signal: "datatype[Units]" },
-                  },
                   fill: { value: theme.palette.secondary.main },
                   tooltip: {
                     signal:

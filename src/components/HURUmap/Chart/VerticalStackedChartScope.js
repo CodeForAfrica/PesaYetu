@@ -186,16 +186,12 @@ export default function VerticalStackedChartScope(
               from: { data: "primary_formatted" },
               type: "rect",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "xscale", field: { signal: "mainGroup" } },
                   width: { scale: "xscale", band: 1 },
                   y: { scale: "yscale", field: "y0" },
                   y2: { scale: "yscale", field: "y1" },
                   fill: { scale: "color", field: stackedField },
-                },
-                update: {
-                  x: { scale: "xscale", field: { signal: "mainGroup" } },
-                  y: { scale: "yscale", field: "y0" },
                   fillOpacity: { value: 1 },
                   tooltip: {
                     signal:
@@ -340,14 +336,12 @@ export default function VerticalStackedChartScope(
               from: { data: "secondary_formatted" },
               type: "rect",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "s_xscale", field: { signal: "mainGroup" } },
                   width: { scale: "s_xscale", band: 1 },
                   y: { scale: "s_yscale", field: "y0" },
                   y2: { scale: "s_yscale", field: "y1" },
                   fill: { scale: "secondary_color", field: stackedField },
-                },
-                update: {
                   fillOpacity: { value: 1 },
                   tooltip: {
                     signal:
@@ -402,7 +396,7 @@ export default function VerticalStackedChartScope(
               from: { data: "secondary_parent_formatted" },
               type: "rule",
               encode: {
-                enter: {
+                update: {
                   x: { scale: "s_xscale", field: { signal: "mainGroup" } },
                   x2: {
                     scale: "s_xscale",
