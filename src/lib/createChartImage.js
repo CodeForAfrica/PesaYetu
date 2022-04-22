@@ -48,8 +48,7 @@ export default async function createChartImage(
   const Body = await sharp(Buffer.from(svg))
     .resize(width, height, {
       background,
-      position: "centre",
-      gravity: "centre",
+      fit: sharp.fit.contain,
     })
     .extend({
       left: 10,
