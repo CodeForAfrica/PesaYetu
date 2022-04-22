@@ -59,9 +59,18 @@ export default function DonutChartScope(
       ]
     ),
     {
+      width: isCompare && secondaryData?.length > 1 && !isMobile ? 800 : 400,
       height: isMobile && isCompare && secondaryData?.length > 1 ? 380 : 180,
-      width: 700,
       signals: [
+        {
+          name: "pieWidth",
+          value: 400,
+        },
+        {
+          name: "width",
+          value:
+            isCompare && secondaryData?.length > 1 && !isMobile ? 800 : 400,
+        },
         {
           name: "height",
           value: isMobile && isCompare && secondaryData?.length > 1 ? 380 : 180,
@@ -76,7 +85,7 @@ export default function DonutChartScope(
         },
         {
           name: "donutSize",
-          value: 360,
+          value: 500,
         },
       ],
       scales: [
@@ -135,10 +144,7 @@ export default function DonutChartScope(
                 signal:
                   "isMobile && isCompare && data('secondary').length > 1 ? height/2: height",
               },
-              width: {
-                signal:
-                  "isMobile && data('secondary').length > 1 ? width : width/2",
-              },
+              width: { signal: "pieWidth" },
             },
           },
           legends: [
@@ -233,10 +239,7 @@ export default function DonutChartScope(
                 signal:
                   "isMobile && data('secondary').length > 1 ? height/2: 0",
               },
-              width: {
-                signal:
-                  "!isMobile && data('secondary').length > 1 ? (width / 2 ) : data('secondary').length > 1 ? width : 0",
-              },
+              width: { signal: "data('secondary').length > 1 ? pieWidth : 0" },
             },
           },
           legends:
