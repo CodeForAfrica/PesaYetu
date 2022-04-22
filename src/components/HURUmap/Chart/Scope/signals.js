@@ -149,7 +149,7 @@ export default function Signals(
     },
     {
       name: "innerRadius",
-      value: 85,
+      value: 55,
     },
     {
       name: "cornerRadius",

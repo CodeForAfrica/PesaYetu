@@ -85,7 +85,7 @@ export default function DonutChartScope(
         },
         {
           name: "donutSize",
-          value: 500,
+          value: 360,
         },
       ],
       scales: [
