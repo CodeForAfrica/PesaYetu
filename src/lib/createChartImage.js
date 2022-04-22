@@ -51,6 +51,10 @@ export default async function createChartImage(
       position: "centre",
       gravity: "centre",
     })
+    .extend({
+      left: 10,
+      right: 10,
+    })
     .png()
     .toBuffer();
   const clientConfig = {
