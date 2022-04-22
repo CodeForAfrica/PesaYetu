@@ -215,6 +215,8 @@ export default function LineChartScope(
               tickSize: 0,
               grid: true,
               labelPadding: 6,
+              labelFlush: true,
+              labelOverlap: true,
               formatType: xScaleType,
               format:
                 (isMobile ? xScaleMobileFormat : xScaleFormat) || undefined,
@@ -410,6 +412,8 @@ export default function LineChartScope(
                     tickSize: 0,
                     grid: true,
                     labelPadding: 6,
+                    labelFlush: true,
+                    labelOverlap: true,
                     formatType: xScaleType,
                     format:
                       (isMobile ? xScaleMobileFormat : xScaleFormat) ||
