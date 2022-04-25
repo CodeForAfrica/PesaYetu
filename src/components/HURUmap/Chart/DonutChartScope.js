@@ -59,17 +59,12 @@ export default function DonutChartScope(
       ]
     ),
     {
-      width: isCompare && secondaryData?.length > 1 && !isMobile ? 800 : 400,
       height: isMobile && isCompare && secondaryData?.length > 1 ? 380 : 180,
+      width: 700,
       signals: [
         {
           name: "pieWidth",
           value: 400,
-        },
-        {
-          name: "width",
-          value:
-            isCompare && secondaryData?.length > 1 && !isMobile ? 800 : 400,
         },
         {
           name: "height",
