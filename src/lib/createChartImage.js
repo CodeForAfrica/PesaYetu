@@ -51,8 +51,8 @@ export default async function createChartImage(
       fit: sharp.fit.contain,
     })
     .extend({
-      left: 20,
-      right: 20,
+      left: 40,
+      right: 40,
     })
     .png()
     .toBuffer();
