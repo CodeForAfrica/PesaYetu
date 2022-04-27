@@ -49,7 +49,7 @@ export default async function createChartImage(
     .extend({
       left: 100,
       right: 100,
-      background: "white",
+      background,
     })
     .resize(width, height, {
       background,
