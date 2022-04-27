@@ -46,6 +46,11 @@ export default async function createChartImage(
   await view.runAsync();
   const svg = await view.toSVG(config.images.scaleFactor);
   const Body = await sharp(Buffer.from(svg))
+    .extend({
+      left: 100,
+      right: 100,
+      background,
+    })
     .resize(width, height, {
       background,
       fit: sharp.fit.contain,
