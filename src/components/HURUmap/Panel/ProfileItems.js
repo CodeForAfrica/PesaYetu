@@ -74,12 +74,38 @@ const ProfileItems = memo(
                 />
                 <Grid container className={classes.metrics}>
                   {child?.metrics?.map(
-                    ({ label, parentMetric, ...other }, metricIndex) => {
+                    (
+                      {
+                        label,
+                        parentMetric,
+                        value,
+                        value_display_format: valueDisplayFormat,
+                        method,
+                        metadata,
+                      },
+                      metricIndex
+                    ) => {
+                      const displayFormat = valueDisplayFormat ?? method;
+                      const parentValue = parentMetric?.value;
+                      const parentDisplayFormat =
+                        parentMetric?.value_display_format ??
+                        parentMetric?.method;
+                      const parentFormattedValue = parentValue
+                        ? formatNumericalValue({
+                            value: parentValue,
+                            method: parentDisplayFormat,
+                          })
+                        : undefined;
                       const secondaryMetric = getSecondaryMetric(
                         categoryIndex,
                         subcategoryIndex,
                         metricIndex
                       );
+                      const secondaryValue = secondaryMetric?.value;
+                      const secondaryDisplayFormat =
+                        secondaryMetric?.value_display_format ??
+                        secondaryMetric?.method;
+
                       return (
                         <Grid
                           item
@@ -93,14 +119,15 @@ const ProfileItems = memo(
                           <Grid item xs={12} lg={secondaryProfile ? 6 : 12}>
                             <KeyMetric
                               title={label}
-                              formattedValue={formatNumericalValue(other)}
-                              parentFormattedValue={
-                                parentMetric
-                                  ? formatNumericalValue(parentMetric)
-                                  : undefined
-                              }
-                              {...other}
+                              formattedValue={formatNumericalValue({
+                                value,
+                                method: displayFormat,
+                              })}
+                              parentFormattedValue={parentFormattedValue}
                               color="primary"
+                              value={value}
+                              displayFormat={displayFormat}
+                              metadata={metadata}
                               classes={{
                                 root: clsx({
                                   [classes.secondaryMetric]: secondaryProfile,
@@ -111,19 +138,16 @@ const ProfileItems = memo(
                           {secondaryMetric && (
                             <Grid item xs={12} lg={6}>
                               <KeyMetric
-                                title={secondaryMetric?.label ?? undefined}
+                                title={secondaryMetric.label ?? undefined}
                                 formattedValue={formatNumericalValue({
-                                  value: secondaryMetric?.value,
-
-                                  method: secondaryMetric?.method,
+                                  value: secondaryValue,
+                                  method: secondaryDisplayFormat,
                                 })}
-                                parentFormattedValue={
-                                  parentMetric
-                                    ? formatNumericalValue(parentMetric)
-                                    : undefined
-                                }
+                                parentFormattedValue={parentFormattedValue}
                                 color="secondary"
-                                {...secondaryMetric}
+                                value={secondaryValue}
+                                displayFormat={secondaryDisplayFormat}
+                                metadata={secondaryMetric.metric}
                                 className={classes.secondaryMetric}
                               />
                             </Grid>
