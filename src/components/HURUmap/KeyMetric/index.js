@@ -9,11 +9,12 @@ import Source from "@/pesayetu/components/HURUmap/Source";
 
 const KeyMetric = ({
   className,
-  formattedValue,
+  formattedValue: formattedValueProp,
   value: valueProp,
   title,
   color,
   description,
+  displayFormat,
   parentName,
   parentFormattedValue,
   metadata: { source, url },
@@ -21,20 +22,20 @@ const KeyMetric = ({
 }) => {
   const classes = useStyles(props);
 
-  if (!((valueProp || formattedValue) && title)) {
+  if (!((valueProp || formattedValueProp) && title)) {
     return null;
   }
-  const value = formattedValue || valueProp;
+  const formattedValue = formattedValueProp ?? valueProp;
   const parentValue =
     description || parentFormattedValue
       ? `${parentFormattedValue} ${parentName}`
       : undefined;
-
+  const value = valueProp ?? formattedValueProp;
   return (
     <div className={clsx(classes.root, className)}>
       <div className={classes.metric}>
-        <Typography variant="h3">{value}</Typography>
-        <Tooltip title={title}>
+        <Typography variant="h3">{formattedValue}</Typography>
+        <Tooltip title={value}>
           <Typography
             variant="caption"
             className={clsx(classes.text, classes.title)}
@@ -42,15 +43,19 @@ const KeyMetric = ({
             {title}
           </Typography>
         </Tooltip>
-        <LinearProgress
-          classes={{
-            root: classes.progressBar,
-            determinate: classes.progressBarDeterminate,
-          }}
-          value={parseFloat(value.replace(",", ""))}
-          color={color}
-          variant="determinate"
-        />
+        {displayFormat?.localeCompare("percentage", undefined, {
+          sensitivity: "accent",
+        }) === 0 ? (
+          <LinearProgress
+            classes={{
+              root: classes.progressBar,
+              determinate: classes.progressBarDeterminate,
+            }}
+            value={parseFloat(`${value}`.replace(",", ""))}
+            color={color}
+            variant="determinate"
+          />
+        ) : null}
       </div>
       {parentValue && (
         <Typography
@@ -71,6 +76,7 @@ KeyMetric.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   description: PropTypes.string,
+  displayFormat: PropTypes.string,
   formattedValue: PropTypes.string,
   metadata: PropTypes.shape({
     source: PropTypes.string,
@@ -86,6 +92,7 @@ KeyMetric.defaultProps = {
   className: undefined,
   color: undefined,
   description: undefined,
+  displayFormat: undefined,
   formattedValue: undefined,
   metadata: undefined,
   title: undefined,
