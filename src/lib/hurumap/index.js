@@ -96,11 +96,25 @@ export async function fetchProfileGeography(geoCode) {
     overview,
     geography,
   } = json.profile;
-  const highlights = originalHighlights.map(({ label, ...other }) => ({
-    ...other,
-    formattedValue: formatNumericalValue(other),
-    title: label,
-  }));
+  const highlights = originalHighlights.map(
+    ({
+      label,
+      method,
+      value,
+      value_display_format: valueDisplayFormat,
+      ...other
+    }) => ({
+      ...other,
+      formattedValue: formatNumericalValue({
+        value,
+        method: valueDisplayFormat ?? method,
+      }),
+      displayFormat: valueDisplayFormat,
+      method,
+      value,
+      title: label,
+    })
+  );
   const tags = geography.parents
     .concat(geography)
     .map(({ code, level, name }) => ({
