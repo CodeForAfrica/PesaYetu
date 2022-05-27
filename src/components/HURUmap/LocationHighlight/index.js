@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 
 function LocationHighlight({
   className,
-  formattedValue,
+  formattedValue: formattedValueProp,
   isLoading,
   value: valueProp,
   title: titleProp,
@@ -15,11 +15,12 @@ function LocationHighlight({
 }) {
   const classes = useStyles(props);
 
-  if (!(isLoading || ((valueProp || formattedValue) && titleProp))) {
+  if (!(isLoading || ((valueProp || formattedValueProp) && titleProp))) {
     return null;
   }
+
   const title = titleProp || (isLoading && "…");
-  const value = isLoading ? "…" : formattedValue || valueProp;
+  const formattedValue = isLoading ? "…" : formattedValueProp || valueProp;
   return (
     <Box
       alignItems="center"
@@ -32,7 +33,7 @@ function LocationHighlight({
         {title}
       </Typography>
       <Typography variant="body2" className={classes.value}>
-        {value}
+        {formattedValue}
       </Typography>
     </Box>
   );

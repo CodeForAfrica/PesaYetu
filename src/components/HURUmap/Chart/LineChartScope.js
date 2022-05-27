@@ -518,54 +518,63 @@ export default function LineChartScope(
                   },
                 ]
               : null,
-          marks: [
-            {
-              name: "line",
-              from: { data: "secondary_parent_formatted" },
-              type: "line",
-              encode: {
-                enter: {
-                  x: { scale: "s_xscale", field: { signal: "mainGroup" } },
-                  stroke: { value: theme.palette.chart.text.primary },
-                  y: {
-                    scale: "s_yscale",
-                    field: { signal: "datatype[Units]" },
+          marks:
+            secondaryParentData?.length > 1
+              ? [
+                  {
+                    name: "line",
+                    from: { data: "secondary_parent_formatted" },
+                    type: "line",
+                    encode: {
+                      enter: {
+                        x: {
+                          scale: "s_xscale",
+                          field: { signal: "mainGroup" },
+                        },
+                        stroke: { value: theme.palette.chart.text.primary },
+                        y: {
+                          scale: "s_yscale",
+                          field: { signal: "datatype[Units]" },
+                        },
+                        strokeWidth: { value: 2 },
+                        strokeDash: { value: [2, 2] },
+                      },
+                      update: {
+                        interpolate: { signal: "interpolate" },
+                        strokeOpacity: { value: 1 },
+                      },
+                    },
                   },
-                  strokeWidth: { value: 2 },
-                  strokeDash: { value: [2, 2] },
-                },
-                update: {
-                  interpolate: { signal: "interpolate" },
-                  strokeOpacity: { value: 1 },
-                },
-              },
-            },
-            {
-              name: "line symbol",
-              from: { data: "secondary_parent_formatted" },
-              type: "symbol",
-              encode: {
-                enter: {
-                  x: { scale: "s_xscale", field: { signal: "mainGroup" } },
-                  y: {
-                    scale: "s_yscale",
-                    field: { signal: "datatype[Units]" },
+                  {
+                    name: "line symbol",
+                    from: { data: "secondary_parent_formatted" },
+                    type: "symbol",
+                    encode: {
+                      enter: {
+                        x: {
+                          scale: "s_xscale",
+                          field: { signal: "mainGroup" },
+                        },
+                        y: {
+                          scale: "s_yscale",
+                          field: { signal: "datatype[Units]" },
+                        },
+                        fill: { value: theme.palette.chart.text.primary },
+                      },
+                      update: {
+                        size: { value: 5 },
+                        tooltip: {
+                          signal:
+                            "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
+                        },
+                      },
+                      hover: {
+                        size: { value: 70 },
+                      },
+                    },
                   },
-                  fill: { value: theme.palette.chart.text.primary },
-                },
-                update: {
-                  size: { value: 5 },
-                  tooltip: {
-                    signal:
-                      "{'group': datum[mainGroup], 'count': format(datum.count, numberFormat.value)}",
-                  },
-                },
-                hover: {
-                  size: { value: 70 },
-                },
-              },
-            },
-          ],
+                ]
+              : null,
         },
       ],
     }
