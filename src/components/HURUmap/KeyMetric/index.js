@@ -17,7 +17,7 @@ const KeyMetric = ({
   displayFormat,
   parentName,
   parentFormattedValue,
-  metadata: { source, url },
+  metadata: { source, url } = {},
   ...props
 }) => {
   const classes = useStyles(props);
