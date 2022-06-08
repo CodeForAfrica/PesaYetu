@@ -9,6 +9,7 @@ env:
   IMAGE_NAME: "codeforafrica/pesayetu"
   NEXT_PUBLIC_IMAGE_DOMAINS: "pesayetu.cms.dev.codeforafrica.org, cms.dev.codeforafrica.org, hurumap-v2.s3.amazonaws.com"
   WORDPRESS_URL: "https://cms.dev.codeforafrica.org/pesayetu/"
+  WORDPRESS_MULTISITE_PREFIX: "/pesayetu"
   GIT_PUSH_FLAGS: "--force"
 
 jobs:
@@ -63,8 +64,10 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           build-args: |
+            WORDPRESS_URL=${{ env.WORDPRESS_URL }}
             WORDPRESS_APPLICATION_USERNAME=${{ secrets.WORDPRESS_APPLICATION_USERNAME }}
             WORDPRESS_APPLICATION_PASSWORD=${{ secrets.WORDPRESS_APPLICATION_PASSWORD }}
+            WORDPRESS_MULTISITE_PREFIX=${{ env.WORDPRESS_MULTISITE_PREFIX }}
             NEXT_PUBLIC_IMAGE_DOMAINS=${{ env.NEXT_PUBLIC_IMAGE_DOMAINS }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
