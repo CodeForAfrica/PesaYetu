@@ -5,7 +5,7 @@ on:
 
 env:
   DOKKU_REMOTE_BRANCH: "master"
-  DOKKU_REMOTE_URL: "ssh://dokku@dokku-1.dev.codeforafrica.org/pesayetu"
+  DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/pesayetu-ui"
   IMAGE_NAME: "codeforafrica/pesayetu"
   NEXT_PUBLIC_IMAGE_DOMAINS: "pesayetu.cms.dev.codeforafrica.org, cms.dev.codeforafrica.org, hurumap-v2.s3.amazonaws.com"
   WORDPRESS_URL: "https://cms.dev.codeforafrica.org/pesayetu/"
