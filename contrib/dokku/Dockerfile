@@ -1,1 +1,1 @@
-FROM codeforafrica/pesayetu:0.2.2-alpha
+FROM codeforafrica/pesayetu:0.2.3-alpha
