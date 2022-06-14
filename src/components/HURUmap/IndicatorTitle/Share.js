@@ -8,6 +8,7 @@ import ShareButton from "./ShareButton";
 import useStyles from "./useStyles";
 
 import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
+import site from "@/pesayetu/utils/site";
 
 function Share({
   title,
@@ -35,9 +36,10 @@ function Share({
   }, [copied]);
 
   // Embed url
-  const url = `${
-    process.env.NEXT_PUBLIC_APP_URL
-  }/embed/${geoCode.toLowerCase()}/${indicatorId}`;
+  const url = new URL(
+    `/embed/${geoCode.toLowerCase()}/${indicatorId}`,
+    site.environmentUrl
+  ).toString();
 
   const shareData = [
     { name: "Facebook", props: { quote: title, hashtag: "#PesaYetu" } },

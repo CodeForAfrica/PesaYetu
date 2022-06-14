@@ -7,6 +7,7 @@ env:
   DOKKU_REMOTE_BRANCH: "master"
   DOKKU_REMOTE_URL: "ssh://dokku@ui-1.prod.codeforafrica.org/pesayetu-ui"
   IMAGE_NAME: "codeforafrica/pesayetu"
+  NEXT_PUBLIC_APP_URL: "https://pesayetu.pesacheck.org"
   NEXT_PUBLIC_IMAGE_DOMAINS: "pesayetu.cms.dev.codeforafrica.org, cms.dev.codeforafrica.org, hurumap-v2.s3.amazonaws.com"
   NEXT_PUBLIC_OPENAFRICA_DOMAINS: "open.africa,openafrica.net,africaopendata.org"
   NEXT_PUBLIC_SOURCEAFRICA_DOMAINS: "dc.sourceafrica.net"
@@ -70,6 +71,7 @@ jobs:
             WORDPRESS_APPLICATION_USERNAME=${{ secrets.WORDPRESS_APPLICATION_USERNAME }}
             WORDPRESS_APPLICATION_PASSWORD=${{ secrets.WORDPRESS_APPLICATION_PASSWORD }}
             WORDPRESS_MULTISITE_PREFIX=${{ env.WORDPRESS_MULTISITE_PREFIX }}
+            NEXT_PUBLIC_APP_URL=${{ env.NEXT_PUBLIC_APP_URL }}
             NEXT_PUBLIC_IMAGE_DOMAINS=${{ env.NEXT_PUBLIC_IMAGE_DOMAINS }}
             NEXT_PUBLIC_OPENAFRICA_DOMAINS=${{ env.NEXT_PUBLIC_OPENAFRICA_DOMAINS }}
             NEXT_PUBLIC_SOURCEAFRICA_DOMAINS=${{ env.NEXT_PUBLIC_SOURCEAFRICA_DOMAINS }}
