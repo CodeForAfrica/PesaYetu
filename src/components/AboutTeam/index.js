@@ -1,4 +1,6 @@
-import { Typography } from "@material-ui/core";
+import { Grid, Typography, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import { chunk, uniqueId } from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -14,13 +16,23 @@ import useStyles from "./useStyles";
 
 const responsive = {
   desktop: {
-    items: 4,
+    items: 1,
+  },
+  tablet: {
+    items: 1,
   },
 };
 
-function AboutTeam({ title, items, ...props }) {
+function AboutTeam({ title, items: itemsProp, ...props }) {
   const classes = useStyles(props);
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
+  if (!itemsProp?.length) {
+    return null;
+  }
+  const chunkSize = isMdUp ? 4 : 2;
+  const items = chunk(itemsProp, chunkSize);
   return (
     <div className={classes.root}>
       <Section>
@@ -33,8 +45,18 @@ function AboutTeam({ title, items, ...props }) {
           responsive={responsive}
           classes={{ dotList: classes.dotList }}
         >
-          {items?.map((item) => (
-            <Card {...item} key={item.image} mediaProps={{ square: true }} />
+          {items?.map((itemChunks) => (
+            <Grid
+              container
+              justifyContent="space-between"
+              key={uniqueId("team-chunk-")}
+            >
+              {itemChunks?.map((itemChunk) => (
+                <Grid item key={itemChunk.image}>
+                  <Card {...itemChunk} mediaProps={{ square: true }} />
+                </Grid>
+              ))}
+            </Grid>
           ))}
         </Carousel>
       </Section>
