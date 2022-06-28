@@ -5,25 +5,21 @@ import videojs from "video.js";
 import "videojs-youtube";
 import "video.js/dist/video-js.css";
 
-import poster from "@/pesayetu/assets/images/Group 4702.svg";
-
 function Player({ videoSrc, videoType }) {
   const videoRef = React.useRef(null);
   const playerRef = React.useRef(null);
 
   useEffect(() => {
-    if (!playerRef.current) {
-      const videoElement = videoRef.current;
-      if (!videoElement) return;
-
+    if (videoRef.current && !playerRef.current) {
       const options = {
         autoplay: false,
         controls: true,
-        poster,
         preload: "auto",
         sources: [{ src: videoSrc, type: videoType }],
+        techOrder: ["youtube"],
+        youtube: { ytControls: 2 },
       };
-      playerRef.current = videojs(videoElement, options);
+      playerRef.current = videojs(videoRef.current, options);
     }
   }, [videoSrc, videoType]);
 
