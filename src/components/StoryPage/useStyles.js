@@ -25,6 +25,15 @@ const useStyles = makeStyles(({ typography, breakpoints }) => ({
   },
   content: {
     marginTop: typography.pxToRem(20),
+    "& .wp-block-image > img": {
+      height: "auto",
+      objectFit: "contain",
+      objectPosition: "top",
+      width: "100%",
+      [breakpoints.up("lg")]: {
+        width: typography.pxToRem(768),
+      },
+    },
   },
   relatedTitle: {
     textAlign: "center",
