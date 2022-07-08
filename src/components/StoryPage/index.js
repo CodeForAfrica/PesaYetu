@@ -37,6 +37,8 @@ function StoryPage({
                   alt="article"
                   src={image}
                   layout="fill"
+                  height={undefined}
+                  width={undefined}
                   objectFit="cover"
                 />
               </figure>
