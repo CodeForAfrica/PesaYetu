@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { Typography, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
@@ -51,7 +51,14 @@ const useStyles = makeStyles(({ breakpoints, typography, palette }) => ({
   },
 }));
 
-function IndicatorTitle({ description, title, disableToggle, view, ...props }) {
+function IndicatorTitle({
+  children,
+  description,
+  disableToggle,
+  title,
+  view,
+  ...props
+}) {
   const classes = useStyles(props);
 
   const actions = [
@@ -97,7 +104,7 @@ function IndicatorTitle({ description, title, disableToggle, view, ...props }) {
     <div className={classes.root}>
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item xs={12} md={8}>
-          <Typography variant="h6">{title}</Typography>
+          <RichTypography variant="h6">{children || title}</RichTypography>
         </Grid>
         <Grid item xs={12} md={4} container className={classes.buttons}>
           {actions
@@ -114,9 +121,10 @@ function IndicatorTitle({ description, title, disableToggle, view, ...props }) {
 }
 
 IndicatorTitle.propTypes = {
+  children: PropTypes.node,
   description: PropTypes.string,
-  title: PropTypes.string,
   disableToggle: PropTypes.bool,
+  title: PropTypes.string,
   view: PropTypes.shape({
     height: PropTypes.func,
     data: PropTypes.func,
@@ -124,9 +132,10 @@ IndicatorTitle.propTypes = {
 };
 
 IndicatorTitle.defaultProps = {
+  children: undefined,
   description: undefined,
-  title: undefined,
   disableToggle: false,
+  title: undefined,
   view: undefined,
 };
 
