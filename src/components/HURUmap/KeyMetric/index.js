@@ -31,11 +31,13 @@ const KeyMetric = ({
       ? `${parentFormattedValue} ${parentName}`
       : undefined;
   const value = valueProp ?? formattedValueProp;
+  const tooltipTitle = `${title}: ${formattedValue}`;
+
   return (
     <div className={clsx(classes.root, className)}>
       <div className={classes.metric}>
         <Typography variant="h3">{formattedValue}</Typography>
-        <Tooltip title={value}>
+        <Tooltip title={tooltipTitle}>
           <Typography
             variant="caption"
             className={clsx(classes.text, classes.title)}
