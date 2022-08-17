@@ -14,7 +14,7 @@ import getNavigationMenu from "@/pesayetu/functions/menus/getNavigationMenu";
 /**
  * Base page that can be used to build all other pages.
  */
-function BasePage({ children, menus, variant, post: { seo }, ...props }) {
+function BasePage({ children, menus, variant, post: { seo } = {}, ...props }) {
   const footerProps = getFooterMenu(menus?.footerMenu || []);
   const navigation = getNavigationMenu(menus?.primaryMenu || []);
   const { menuProps, socialLinks } = navigation;
