@@ -55,6 +55,7 @@ const ProfileItems = memo(
     geoCode,
   }) {
     const classes = useStyles();
+
     return (
       <>
         {categories.map((category, categoryIndex) => (

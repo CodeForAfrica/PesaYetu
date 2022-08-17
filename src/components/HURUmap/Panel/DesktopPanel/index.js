@@ -6,7 +6,7 @@ import PanelButtons from "./PanelButtons";
 import PanelItem from "./PanelItem";
 import useStyles from "./useStyles";
 
-function DesktopPanel({ ...props }) {
+function DesktopPanel(props) {
   const classes = useStyles(props);
   const paperRef = useRef();
 

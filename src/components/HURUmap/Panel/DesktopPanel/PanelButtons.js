@@ -26,10 +26,10 @@ function PanelButtons({
 
   useEffect(() => {
     if (primaryProfile.items.length || secondaryProfile?.items?.length) {
-      const interval = setTimeout(() => setValue("rich-data"), 200);
+      const timeoutId = setTimeout(() => setValue("rich-data"), 200);
 
       return () => {
-        clearTimeout(interval);
+        clearTimeout(timeoutId);
       };
     }
     return null;
