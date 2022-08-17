@@ -28,6 +28,8 @@ export default function Embed({
   // Standalone = false implies in an iframe (default)
   const [standalone, setStandalone] = useState(false);
   useEffect(() => {
+    const { self, top } = window;
+    console.log("BOOM", { self, top });
     if (window.self === window.top) {
       setStandalone(true);
     }
