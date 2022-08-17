@@ -29,6 +29,7 @@ const useStyles = makeStyles(({ typography }) => ({
 
 function Chart({
   indicator,
+  indicatorTitle,
   secondaryIndicator: { indicator: secondaryIndicator },
   title,
   geoCode,
@@ -216,7 +217,9 @@ function Chart({
         isCompare={isCompare}
         profileNames={profileNames}
         chartType={chartType?.toLowerCase()}
-      />
+      >
+        {indicatorTitle}
+      </IndicatorTitle>
       {!isMobile && (
         <Filters
           // remove primary group, remove stacked field & defined defaults filters
@@ -255,6 +258,7 @@ Chart.propTypes = {
     }),
     data: PropTypes.arrayOf(PropTypes.shape({})),
   }),
+  indicatorTitle: PropTypes.string,
   secondaryIndicator: PropTypes.shape({
     indicator: PropTypes.shape({
       id: PropTypes.number,
@@ -284,6 +288,7 @@ Chart.propTypes = {
 
 Chart.defaultProps = {
   indicator: undefined,
+  indicatorTitle: undefined,
   secondaryIndicator: {},
   title: undefined,
   geoCode: undefined,
