@@ -1,8 +1,11 @@
-import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import Link from "@/pesayetu/components/Link";
+import Page from "@/pesayetu/components/Page";
+import Section from "@/pesayetu/components/Section";
+import getPostTypeStaticProps from "@/pesayetu/functions/postTypes/getPostTypeStaticProps";
 import createChartImage from "@/pesayetu/lib/createChartImage";
 import { fetchProfile, fetchProfileGeography } from "@/pesayetu/lib/hurumap";
 import site from "@/pesayetu/utils/site";
@@ -12,7 +15,9 @@ const Chart = dynamic(() => import("@/pesayetu/components/HURUmap/Chart"), {
 });
 
 export default function Embed({
+  chartId,
   geoCode,
+  geoTitle,
   indicator,
   isCompare,
   profileNames,
@@ -20,26 +25,46 @@ export default function Embed({
   title,
   ...props
 }) {
-  return (
+  // Standalone = false implies in an iframe (default)
+  const [standalone, setStandalone] = useState(false);
+  useEffect(() => {
+    if (window.self === window.top) {
+      setStandalone(true);
+    }
+  }, []);
+
+  const PageWrapper = standalone ? Page : React.Fragment;
+  const ChartWrapper = standalone ? Section : React.Fragment;
+  const indicatorTitle = standalone ? (
     <>
-      <NextSeo title={title} {...props} />
-      <div>
+      {`${title} | `}
+      <Link underline="always" href={`/explore/${geoCode}`}>
+        {geoTitle}
+      </Link>
+    </>
+  ) : null;
+  return (
+    <PageWrapper {...(standalone && props)}>
+      <ChartWrapper>
         <Chart
           geoCode={geoCode}
           indicator={indicator}
+          indicatorTitle={indicatorTitle}
           isCompare={isCompare}
           profileNames={profileNames}
           secondaryIndicator={secondaryIndicator}
-          title={title}
+          title={`${title} | ${geoTitle}`}
         />
-      </div>
-    </>
+      </ChartWrapper>
+    </PageWrapper>
   );
 }
 
 Embed.propTypes = {
+  chartId: PropTypes.string,
   description: PropTypes.string,
   geoCode: PropTypes.string,
+  geoTitle: PropTypes.string,
   image: PropTypes.string,
   indicator: PropTypes.shape({}),
   isCompare: PropTypes.bool,
@@ -49,8 +74,10 @@ Embed.propTypes = {
 };
 
 Embed.defaultProps = {
+  chartId: undefined,
   description: undefined,
   geoCode: undefined,
+  geoTitle: undefined,
   image: undefined,
   indicator: undefined,
   isCompare: undefined,
@@ -75,6 +102,17 @@ export function getIndicators(categories) {
 export async function getStaticProps({
   params: { geoCode: originalCode, chartId },
 }) {
+  const { props, revalidate, notFound } = await getPostTypeStaticProps(
+    {
+      slug: "explore",
+    },
+    "page"
+  );
+  if (notFound) {
+    return {
+      notFound,
+    };
+  }
   const geoCodes = originalCode
     .split("-vs-")
     .map((c) => c.trim().toLowerCase())
@@ -128,9 +166,10 @@ export async function getStaticProps({
     profileNames.secondary = primaryName;
     secondaryIndicator = null;
   }
-  let title = `${primaryIndicator.title || ""} | ${profileNames.primary}`;
+  const title = primaryIndicator.title || "";
+  let geoTitle = profileNames.primary || "";
   if (secondaryIndicator) {
-    title = `${title} vs ${secondaryName}`;
+    geoTitle = `${geoTitle} vs ${secondaryName}`;
   }
   const description = primaryIndicator.indicator?.description ?? null;
 
@@ -154,15 +193,19 @@ export async function getStaticProps({
 
   return {
     props: {
+      ...props,
+      chartId,
       description,
       geoCode: originalCode,
+      geoTitle,
       indicator: primaryIndicator?.indicator ?? null,
       isCompare,
       openGraph,
       profileNames,
       secondaryIndicator: secondaryIndicator ?? { indicator: null },
       title,
+      variant: "explore",
     },
-    revalidate: 60 * 5,
+    revalidate,
   };
 }
