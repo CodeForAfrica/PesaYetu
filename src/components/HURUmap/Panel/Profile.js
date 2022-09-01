@@ -126,7 +126,7 @@ const Profile = forwardRef(function Profile(
         <PinAndCompare
           {...props}
           {...pinAndCompare}
-          geography={primaryProfile?.geography?.code}
+          geographyCode={primaryProfile?.geography?.code}
           isPinning={isPinning}
           onClose={handleClose}
           onClickPin={handleClickPin}
