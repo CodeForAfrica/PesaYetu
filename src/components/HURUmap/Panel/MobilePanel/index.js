@@ -60,7 +60,7 @@ function MobilePanel({ scrollToTopLabel, activeType, ...props }) {
             {...pinAndCompare}
             isMobile
             onClose={handleClose}
-            geographyCode={geography.code}
+            currentGeographyCode={geography.code}
           />
           <Typography
             className={classes.dataNotAvailable}

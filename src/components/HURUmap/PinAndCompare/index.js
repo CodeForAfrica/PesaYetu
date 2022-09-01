@@ -15,7 +15,7 @@ function PinIcon(props) {
 function PinAndCompare({
   helperText,
   isMobile,
-  geographyCode,
+  currentGeographyCode,
   locations,
   onChange,
   onClose,
@@ -27,7 +27,7 @@ function PinAndCompare({
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const options = locations
-    ?.filter(({ code }) => code !== geographyCode)
+    ?.filter(({ code }) => code !== currentGeographyCode)
     ?.map(({ code: value, name: label }) => ({
       label,
       value,
@@ -94,7 +94,7 @@ function PinAndCompare({
 PinAndCompare.propTypes = {
   helperText: PropTypes.string,
   isMobile: PropTypes.bool,
-  geographyCode: PropTypes.string,
+  currentGeographyCode: PropTypes.string,
   locations: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.func,
   onClickPin: PropTypes.func,
@@ -105,7 +105,7 @@ PinAndCompare.propTypes = {
 PinAndCompare.defaultProps = {
   helperText: undefined,
   isMobile: false,
-  geographyCode: undefined,
+  currentGeographyCode: undefined,
   locations: undefined,
   onChange: undefined,
   onClickPin: undefined,
