@@ -1,6 +1,6 @@
-import { Typography } from "@material-ui/core";
-import TreeItem from "@material-ui/lab/TreeItem";
-import MuiTreeView from "@material-ui/lab/TreeView";
+import TreeItem from "@mui/lab/TreeItem";
+import MuiTreeView from "@mui/lab/TreeView";
+import { Typography } from "@mui/material";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";

@@ -1,4 +1,4 @@
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import { Grid, Hidden, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -38,7 +38,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
             ))}
           </Carousel>
         </Hidden>
-        <Hidden mdDown implementation="css">
+        <Hidden lgDown implementation="css">
           <Grid container className={classes.list}>
             {items.slice(0, 4).map(({ imageProps, ...item }) => (
               <Grid item lg={3} key={item.href}>

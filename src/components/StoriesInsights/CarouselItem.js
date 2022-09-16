@@ -1,5 +1,5 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Hidden } from "@material-ui/core";
+import { Grid, Hidden } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -14,7 +14,7 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
 
   return (
     <>
-      <Hidden mdDown implementation="css">
+      <Hidden lgDown implementation="css">
         <Section className={classes.section}>
           <Grid key={story.slug} container justifyContent="space-between">
             <Grid item xs={12} lg={8} container direction="row" wrap="nowrap">

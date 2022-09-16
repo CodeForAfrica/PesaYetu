@@ -1,6 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Hidden, useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Grid, Hidden, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -24,7 +24,7 @@ function DataVisualisationGuide({ title, items, ...props }) {
         <RichTypography component="h4" variant="h4" className={classes.title}>
           {title}
         </RichTypography>
-        <Hidden smDown implementation="css">
+        <Hidden mdDown implementation="css">
           <Carousel showDots={!isDesktop}>
             {items.map(({ imageProps, ...item }) => (
               <Card

@@ -1,6 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
 

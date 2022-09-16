@@ -1,5 +1,6 @@
-import { createTheme } from "@material-ui/core/styles";
-import { deepmerge } from "@material-ui/utils";
+import { grey } from "@mui/material/colors";
+import { createTheme } from "@mui/material/styles";
+import { deepmerge } from "@mui/utils";
 
 import chevronrightDark from "@/pesayetu/assets/icons/Group 997-dark.svg";
 import chevronright from "@/pesayetu/assets/icons/Group 997.svg";
@@ -67,6 +68,12 @@ const theme = createTheme({
       text: { primary: "#707070" },
       primary: CHART_PRIMARY_COLOR_SCHEME,
       secondary: CHART_SECONDARY_COLOR_SCHEME,
+    },
+    // To avoid issues with components that have default color
+    // see https://stackoverflow.com/a/72571943
+    default: {
+      main: grey[300],
+      dark: grey[400],
     },
     divider: "#F0F0F0",
   },

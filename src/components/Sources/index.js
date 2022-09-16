@@ -1,5 +1,5 @@
-import { Hidden, useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Hidden, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
@@ -72,7 +72,7 @@ function Sources({ ctaText, contentRef, filterProps, items, type, ...props }) {
 
   return (
     <div classesName={classes.root}>
-      <Hidden smDown implementation="css">
+      <Hidden mdDown implementation="css">
         <SourcesFilter
           {...filterProps}
           count={items.length}

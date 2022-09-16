@@ -1,4 +1,4 @@
-import { Hidden } from "@material-ui/core";
+import { Hidden } from "@mui/material";
 import React from "react";
 
 import DesktopPanel from "./DesktopPanel";
@@ -10,7 +10,7 @@ function Panel(props) {
       <Hidden lgUp implementation="css">
         <MobilePanel {...props} />
       </Hidden>
-      <Hidden mdDown implementation="css">
+      <Hidden lgDown implementation="css">
         <DesktopPanel {...props} />
       </Hidden>
     </>

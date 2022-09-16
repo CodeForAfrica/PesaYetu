@@ -1,5 +1,6 @@
-import { useMediaQuery } from "@material-ui/core";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { useMediaQuery } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import ReactDOMServer from "react-dom/server";
@@ -42,7 +43,7 @@ function Chart({
   const [view, setView] = useState(null);
   const [cSpec, setCSpec] = useState(null);
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const {
     id,
@@ -83,19 +84,21 @@ function Chart({
         return;
       }
       el.innerHTML = ReactDOMServer.renderToString(
-        <ThemeProvider theme={theme}>
-          <ChartTooltip
-            title={value.group}
-            value={value.count}
-            formattedValue={
-              defaultType?.toLowerCase() === "percentage" || !disableToggle
-                ? value.percentage
-                : undefined
-            }
-            item={value?.category}
-            itemColor={item?.fill}
-          />
-        </ThemeProvider>
+        <StyledEngineProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <ChartTooltip
+              title={value.group}
+              value={value.count}
+              formattedValue={
+                defaultType?.toLowerCase() === "percentage" || !disableToggle
+                  ? value.percentage
+                  : undefined
+              }
+              item={value?.category}
+              itemColor={item?.fill}
+            />
+          </ThemeProvider>
+        </StyledEngineProvider>
       );
 
       el.classList.add("visible");

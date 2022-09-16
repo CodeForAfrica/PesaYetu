@@ -1,11 +1,5 @@
-import {
-  Button,
-  Grid,
-  Hidden,
-  Typography,
-  useMediaQuery,
-} from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Button, Grid, Hidden, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -20,14 +14,14 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
   const classes = useStyles(props);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <div className={classes.root}>
       <div className={classes.background}>
         <Image objectFit="cover" src={howItWorksBg} layout="fill" unoptimized />
       </div>
-      <Hidden lgUp smDown implementation="css">
+      <Hidden lgUp mdDown implementation="css">
         <div className={classes.tabletWhite} />
       </Hidden>
       <Section classes={{ root: classes.section }}>
