@@ -114,8 +114,6 @@
   ],
   "lint-staged": {
     "*.js": [
-      "yarn codemod-staged-optimal-imports",
-      "yarn codemod-staged-top-level-imports",
       "yarn lint-staged"
     ],
     "*.{json,md}": [
