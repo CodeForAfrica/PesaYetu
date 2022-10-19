@@ -1,4 +1,9 @@
-module.exports = {
+const withTM = require("next-transpile-modules")(["@commons-ui/core"], {
+  debug: /(^|\s)+--inspect(\s|$)+/.test(process.env.NODE_OPTIONS),
+  resolveSymlinks: false,
+});
+
+module.exports = withTM({
   experimental: {
     outputStandalone: true,
   },
@@ -40,4 +45,4 @@ module.exports = {
       },
     ];
   },
-};
+});
