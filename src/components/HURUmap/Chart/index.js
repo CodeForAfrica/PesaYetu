@@ -41,8 +41,8 @@ function Chart({
   const chartRef = useRef();
   const [view, setView] = useState(null);
   const [cSpec, setCSpec] = useState(null);
-
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  // For charts, cnsider anything less than 600px as mobile
+  const isMobile = !useMediaQuery("(min-width:600px)");
 
   const {
     id,
