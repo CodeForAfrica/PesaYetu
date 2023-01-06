@@ -5,7 +5,6 @@
   "author": "Code for Africa <hello@codeforafrica.org> (https://codeforafrica.org)",
   "license": "GPL-3.0-or-later",
   "homepage": "https://dev.pesayetu.pesacheck.org",
-  "private": false,
   "scripts": {
     "dev": "next dev",
     "format": "yarn prettier --write --ignore-path './.gitignore' '**/*.+(json|md|yml)' '.'",
@@ -24,7 +23,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
-    "@commons-ui/core": "file:/Users/kelvinkipruto/CFA/COMMONS-UI/packages/core",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/lab": "^5.0.0-alpha.99",
@@ -126,5 +124,6 @@
   },
   "engines": {
     "node": ">=16.0.0 <17.0.0"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
