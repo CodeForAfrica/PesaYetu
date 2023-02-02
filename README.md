@@ -1,4 +1,4 @@
-# Pesayetu
+# PesaYetu
 
 ## Description
 
