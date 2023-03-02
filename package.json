@@ -52,7 +52,7 @@
     "sharp": "^0.30.5",
     "simplebar-react": "^2.1.0",
     "swr": "^1.0.0",
-    "vega": "^5.20.2",
+    "vega": "^5.23.0",
     "vega-embed": "^6.18.2",
     "vega-lite": "^5.1.1",
     "vega-tooltip": "^0.27.0",
