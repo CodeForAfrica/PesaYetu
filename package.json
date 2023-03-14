@@ -58,7 +58,7 @@
     "vega-tooltip": "^0.27.0",
     "video.js": "^7.14.3",
     "videojs-youtube": "^2.6.1",
-    "webpack": "^5.0.0",
+    "webpack": "^5.76.0",
     "xlsx": "^0.17.1"
   },
   "devDependencies": {
