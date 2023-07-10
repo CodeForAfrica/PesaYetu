@@ -71,7 +71,7 @@ function Sources({ ctaText, contentRef, filterProps, items, type, ...props }) {
   const count = Math.ceil(total / itemsToShow) ?? 0;
 
   return (
-    <div classesName={classes.root}>
+    <div className={classes.root}>
       <Hidden mdDown implementation="css">
         <SourcesFilter
           {...filterProps}
