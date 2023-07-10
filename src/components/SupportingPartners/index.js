@@ -19,9 +19,10 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
     textTransform: "uppercase",
   },
   gridContainer: {
-    [breakpoints.down("sm")]: {
-      width: "100%",
-      textAlign: "center",
+    width: "100%",
+    textAlign: "center",
+    [breakpoints.up("md")]: {
+      width: "auto",
     },
   },
   logoContainer: {

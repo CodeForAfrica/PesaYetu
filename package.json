@@ -1,6 +1,6 @@
 {
   "name": "pesayetu",
-  "version": "0.2.9-alpha",
+  "version": "0.2.15",
   "repository": "https://github.com/CodeForAfrica/PesaYetu.git",
   "author": "Code for Africa <hello@codeforafrica.org> (https://codeforafrica.org)",
   "license": "GPL-3.0-or-later",
@@ -55,13 +55,13 @@
     "sharp": "^0.30.5",
     "simplebar-react": "^2.1.0",
     "swr": "^1.0.0",
-    "vega": "^5.20.2",
+    "vega": "^5.23.0",
     "vega-embed": "^6.18.2",
     "vega-lite": "^5.1.1",
     "vega-tooltip": "^0.27.0",
     "video.js": "^7.14.3",
     "videojs-youtube": "^2.6.1",
-    "webpack": "^5.0.0",
+    "webpack": "^5.76.0",
     "xlsx": "^0.17.1"
   },
   "devDependencies": {
