@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
+    "@commons-ui/core": "^0.1.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/lab": "^5.0.0-alpha.99",

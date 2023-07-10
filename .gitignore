@@ -227,3 +227,4 @@ tags
 
 # include wordpress tags function
 !src/lib/wordpress/tags
+.yarn/*
