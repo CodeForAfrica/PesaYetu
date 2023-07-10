@@ -1,7 +1,7 @@
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
-import { useRouter } from "next/router";
 import { DefaultSeo } from "next-seo";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
 

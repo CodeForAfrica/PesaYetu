@@ -1,5 +1,4 @@
-import { PaginationItem } from "@mui/lab";
-import { Pagination as MuiPagination } from "@mui/material";
+import { Pagination as MuiPagination, PaginationItem } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
