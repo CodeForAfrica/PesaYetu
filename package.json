@@ -30,7 +30,7 @@
     "@mui/material": "^5.10.5",
     "@mui/styles": "^5.10.3",
     "@mui/utils": "^5.10.3",
-    "@reactour/tour": "^2.0.0",
+    "@reactour/tour": "^3.4.0",
     "@svgr/webpack": "^5.5.0",
     "aws-sdk": "^2.1005.0",
     "clsx": "^1.1.1",
