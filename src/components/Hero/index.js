@@ -103,7 +103,7 @@ function Hero({
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Hidden lgDown>
+          <Hidden mdDown>
             <Grid item lg={1} />
           </Hidden>
           <Grid item xs={12} md={7} lg={6}>
@@ -128,7 +128,7 @@ function Hero({
             )}
           </Grid>
           {/* Since map is dynamic-ally loaded, no need for implementation="css" */}
-          <Hidden mdDown>
+          <Hidden smDown>
             <Grid item md={5}>
               <Map
                 center={[0.3051933453207569, 37.908818734483155]}

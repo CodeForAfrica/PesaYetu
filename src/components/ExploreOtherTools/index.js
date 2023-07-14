@@ -38,7 +38,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
             ))}
           </Carousel>
         </Hidden>
-        <Hidden lgDown implementation="css">
+        <Hidden mdDown implementation="css">
           <Grid container className={classes.list}>
             {items.slice(0, 4).map(({ imageProps, ...item }) => (
               <Grid item lg={3} key={item.href}>

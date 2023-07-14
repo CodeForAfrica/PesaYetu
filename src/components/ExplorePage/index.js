@@ -112,7 +112,7 @@ function ExplorePage({ panelProps, profile: profileProp, ...props }) {
   }
   return (
     <>
-      <Hidden lgDown implementation="css">
+      <Hidden mdDown implementation="css">
         <div className={classes.root}>
           <Map
             center={[0.3051933453207569, 37.908818734483155]}

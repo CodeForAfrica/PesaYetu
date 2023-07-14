@@ -72,7 +72,7 @@ function Sources({ ctaText, contentRef, filterProps, items, type, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Hidden mdDown implementation="css">
+      <Hidden smDown implementation="css">
         <SourcesFilter
           {...filterProps}
           count={items.length}

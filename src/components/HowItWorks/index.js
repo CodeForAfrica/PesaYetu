@@ -14,14 +14,14 @@ function HowItWorks({ title, ctaText, description, href, ...props }) {
   const classes = useStyles(props);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <div className={classes.root}>
       <div className={classes.background}>
         <Image objectFit="cover" src={howItWorksBg} layout="fill" unoptimized />
       </div>
-      <Hidden lgUp mdDown implementation="css">
+      <Hidden lgUp smDown implementation="css">
         <div className={classes.tabletWhite} />
       </Hidden>
       <Section classes={{ root: classes.section }}>

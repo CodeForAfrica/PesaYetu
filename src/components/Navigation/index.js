@@ -34,7 +34,7 @@ function Navigation({ variant, ...props }) {
   return (
     <AppBar color="primary" position="sticky" className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
-        <Hidden lgDown implementation="css" className={classes.navigation}>
+        <Hidden mdDown implementation="css" className={classes.navigation}>
           {variant?.toLowerCase() === "explore" ? (
             <ExploreNavigation
               variant="explore"
