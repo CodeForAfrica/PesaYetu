@@ -36,11 +36,7 @@ const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
             </Grid>
             {onClick ? (
               <Grid item>
-                <IconButton
-                  onClick={onClick}
-                  className={classes.closeButton}
-                  size="large"
-                >
+                <IconButton onClick={onClick} className={classes.closeButton}>
                   <SvgIcon
                     component={CloseIcon}
                     style={{ fontSize: 44 }}

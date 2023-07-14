@@ -111,7 +111,7 @@ function LocationTag({
       className={clsx(classes.root, className)}
     >
       {variant === "marker" ? (
-        <IconButton className={classes.cancelBtn} size="large">
+        <IconButton className={classes.cancelBtn}>
           <CancelIcon />
         </IconButton>
       ) : null}
