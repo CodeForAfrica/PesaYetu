@@ -39,6 +39,7 @@ function TutorialStep({ description, title, image, selector, ...props }) {
               aria-label="close"
               className={classes.closeButton}
               onClick={handleClose}
+              size="large"
             >
               <CloseIcon />
             </IconButton>

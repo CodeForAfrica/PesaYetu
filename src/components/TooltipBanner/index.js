@@ -25,7 +25,7 @@ function TooltipBanner({ tagline, ctaText, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <Hidden mdDown implementation="css">
+    <Hidden lgDown implementation="css">
       <div className={classes.root}>
         <Section className={classes.section}>
           <Divider className={classes.divider} />

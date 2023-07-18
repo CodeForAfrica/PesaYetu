@@ -119,7 +119,11 @@ function ChartFilter({
         )}
         {index !== "default" && index !== 0 && (
           <Grid item>
-            <IconButton className={classes.icon} onClick={removeFilter}>
+            <IconButton
+              className={classes.icon}
+              onClick={removeFilter}
+              size="large"
+            >
               <CloseIcon />
             </IconButton>
           </Grid>

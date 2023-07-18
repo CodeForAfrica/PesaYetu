@@ -67,7 +67,11 @@ function PinAndCompare({
   return (
     <Box display="flex" alignItems="flex-end" className={classes.root}>
       {!isMobile && (
-        <IconButton onClick={handleButtonClick} className={classes.pinButton}>
+        <IconButton
+          onClick={handleButtonClick}
+          className={classes.pinButton}
+          size="large"
+        >
           <PinIcon
             color="primary"
             component={component}

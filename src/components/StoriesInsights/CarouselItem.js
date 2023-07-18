@@ -14,7 +14,7 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
 
   return (
     <>
-      <Hidden mdDown implementation="css">
+      <Hidden lgDown implementation="css">
         <Section className={classes.section}>
           <Grid key={story.slug} container justifyContent="space-between">
             <Grid item xs={12} lg={8} container direction="row" wrap="nowrap">

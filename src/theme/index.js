@@ -1,5 +1,5 @@
 import { grey } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
+import { createTheme, adaptV4Theme } from "@mui/material/styles";
 import { deepmerge } from "@mui/utils";
 
 import chevronrightDark from "@/pesayetu/assets/icons/Group 997-dark.svg";
@@ -32,109 +32,111 @@ export const CHART_SECONDARY_COLOR_SCHEME = [
   "#666666",
 ];
 
-const theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 390, // mobile
-      md: 768, // tablet
-      lg: 1280, // desktop
+const theme = createTheme(
+  adaptV4Theme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 390, // mobile
+        md: 768, // tablet
+        lg: 1280, // desktop
+      },
     },
-  },
-  palette: {
-    primary: {
-      main: "#0B2AEA", // main blue
-      light: "#7986D1", // hightlight blue
+    palette: {
+      primary: {
+        main: "#0B2AEA", // main blue
+        light: "#7986D1", // hightlight blue
+      },
+      secondary: {
+        main: "#FC0D1B", // main red
+        light: "#F8A199", // highlight red
+      },
+      background: {
+        default: "#FFF", // some white
+        paper: "#F8F8F8", // light white
+      },
+      grey: {
+        dark: "#2A2A2C ", // dark
+        main: "#DFDFDF", // grey
+        light: "#F0F0F0", // lightgrey
+      },
+      text: {
+        primary: "#333333",
+        secondary: "#FFFFFF",
+        hint: "#1C2031",
+      },
+      chart: {
+        text: { primary: "#707070" },
+        primary: CHART_PRIMARY_COLOR_SCHEME,
+        secondary: CHART_SECONDARY_COLOR_SCHEME,
+      },
+      // To avoid issues with components that have default color
+      // see https://stackoverflow.com/a/72571943
+      default: {
+        main: grey[300],
+        dark: grey[400],
+      },
+      divider: "#F0F0F0",
     },
-    secondary: {
-      main: "#FC0D1B", // main red
-      light: "#F8A199", // highlight red
+    props: {
+      MuiButtonBase: {
+        // Disable ripple effect globally
+        disableRipple: true,
+        disableTouchRipple: true,
+      },
     },
-    background: {
-      default: "#FFF", // some white
-      paper: "#F8F8F8", // light white
-    },
-    grey: {
-      dark: "#2A2A2C ", // dark
-      main: "#DFDFDF", // grey
-      light: "#F0F0F0", // lightgrey
-    },
-    text: {
-      primary: "#333333",
-      secondary: "#FFFFFF",
-      hint: "#1C2031",
-    },
-    chart: {
-      text: { primary: "#707070" },
-      primary: CHART_PRIMARY_COLOR_SCHEME,
-      secondary: CHART_SECONDARY_COLOR_SCHEME,
-    },
-    // To avoid issues with components that have default color
-    // see https://stackoverflow.com/a/72571943
-    default: {
-      main: grey[300],
-      dark: grey[400],
-    },
-    divider: "#F0F0F0",
-  },
-  props: {
-    MuiButtonBase: {
-      // Disable ripple effect globally
-      disableRipple: true,
-      disableTouchRipple: true,
-    },
-  },
-  // Font weights:
-  // see: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
-  // 300 	Light
-  // 400 	Normal
-  // 500 	Medium
-  // 600 	Semi Bold
-  // 700 	Bold
-  // 900 	Black
-  typography: {
-    fontFamily: FONT_FAMILY,
-    // e.g. Homepage, Hero
-    h1: buildVariant(900),
-    // e.g. Stories page, Featured Insight
-    h2: buildVariant(300),
-    // e.g. How it works, Our metrics
-    h3: buildVariant(600),
-    // e.g. Homepage, our Partners
-    h4: buildVariant(900, 0.4, "uppercase"),
-    // e.g. Homepage, Insights, Isiolo v Samburu Voter registration discrepancy
-    h5: buildVariant(500),
-    h6: {
+    // Font weights:
+    // see: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+    // 300 	Light
+    // 400 	Normal
+    // 500 	Medium
+    // 600 	Semi Bold
+    // 700 	Bold
+    // 900 	Black
+    typography: {
       fontFamily: FONT_FAMILY,
+      // e.g. Homepage, Hero
+      h1: buildVariant(900),
+      // e.g. Stories page, Featured Insight
+      h2: buildVariant(300),
+      // e.g. How it works, Our metrics
+      h3: buildVariant(600),
+      // e.g. Homepage, our Partners
+      h4: buildVariant(900, 0.4, "uppercase"),
+      // e.g. Homepage, Insights, Isiolo v Samburu Voter registration discrepancy
+      h5: buildVariant(500),
+      h6: {
+        fontFamily: FONT_FAMILY,
+      },
+      subtitle1: {
+        fontFamily: FONT_FAMILY,
+        fontWeight: 500,
+      },
+      subtitle2: {
+        fontFamily: FONT_FAMILY,
+      },
+      body1: {
+        fontFamily: FONT_FAMILY,
+      },
+      body2: buildVariant(500),
+      button: buildVariant(600),
+      caption: {
+        fontFamily: FONT_FAMILY,
+      },
+      overline: {
+        fontFamily: FONT_FAMILY,
+        fontWeight: 700,
+        textTransform: "uppercase",
+      },
     },
-    subtitle1: {
-      fontFamily: FONT_FAMILY,
-      fontWeight: 500,
+    widths: {
+      values: {
+        md: 608, // 0, 80, 0, 80 margin
+        lg: 1160, // 0, 140, 0, 140 margin
+      },
     },
-    subtitle2: {
-      fontFamily: FONT_FAMILY,
-    },
-    body1: {
-      fontFamily: FONT_FAMILY,
-    },
-    body2: buildVariant(500),
-    button: buildVariant(600),
-    caption: {
-      fontFamily: FONT_FAMILY,
-    },
-    overline: {
-      fontFamily: FONT_FAMILY,
-      fontWeight: 700,
-      textTransform: "uppercase",
-    },
-  },
-  widths: {
-    values: {
-      md: 608, // 0, 80, 0, 80 margin
-      lg: 1160, // 0, 140, 0, 140 margin
-    },
-  },
-});
+  })
+);
 
 const { palette, typography, breakpoints, overrides } = theme;
 const { pxToRem } = typography;

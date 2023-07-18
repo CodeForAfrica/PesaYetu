@@ -62,7 +62,11 @@ function Action({ children, header, icon, title, id, ...props }) {
   return (
     <div className={classes.root}>
       <Tooltip title={title}>
-        <IconButton onClick={handleClick} className={classes.button}>
+        <IconButton
+          onClick={handleClick}
+          className={classes.button}
+          size="large"
+        >
           {icon}
         </IconButton>
       </Tooltip>

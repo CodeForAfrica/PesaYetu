@@ -10,7 +10,7 @@ function Panel(props) {
       <Hidden lgUp implementation="css">
         <MobilePanel {...props} />
       </Hidden>
-      <Hidden mdDown implementation="css">
+      <Hidden lgDown implementation="css">
         <DesktopPanel {...props} />
       </Hidden>
     </>

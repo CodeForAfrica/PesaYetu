@@ -24,7 +24,7 @@ function DataVisualisationGuide({ title, items, ...props }) {
         <RichTypography component="h4" variant="h4" className={classes.title}>
           {title}
         </RichTypography>
-        <Hidden smDown implementation="css">
+        <Hidden mdDown implementation="css">
           <Carousel showDots={!isDesktop}>
             {items.map(({ imageProps, ...item }) => (
               <Card
