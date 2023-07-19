@@ -1,4 +1,3 @@
-import { grey } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 import { deepmerge } from "@mui/utils";
 
@@ -72,8 +71,7 @@ const theme = createTheme({
     // To avoid issues with components that have default color
     // see https://stackoverflow.com/a/72571943
     default: {
-      main: grey[300],
-      dark: grey[400],
+      main: "#0B2AEA",
     },
     divider: "#F0F0F0",
   },
