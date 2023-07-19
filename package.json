@@ -41,7 +41,6 @@
     "next": "^12.1.0",
     "next-images": "^1.8.1",
     "next-seo": "^4.26.0",
-    "next-transpile-modules": "^9.1.0",
     "papaparse": "^5.3.1",
     "plaiceholder": "^2.0.1",
     "prop-types": "^15.7.2",
