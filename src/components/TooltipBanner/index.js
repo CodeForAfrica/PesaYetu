@@ -1,4 +1,4 @@
-import { Button, Divider, Hidden, Typography } from "@mui/material";
+import { Box, Button, Divider, Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
@@ -25,7 +25,14 @@ function TooltipBanner({ tagline, ctaText, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <Hidden mdDown implementation="css">
+    <Box
+      sx={{
+        display: {
+          xs: "none",
+          lg: "block",
+        },
+      }}
+    >
       <div className={classes.root}>
         <Section className={classes.section}>
           <Divider className={classes.divider} />
@@ -46,7 +53,7 @@ function TooltipBanner({ tagline, ctaText, ...props }) {
           )}
         </Section>
       </div>
-    </Hidden>
+    </Box>
   );
 }
 
