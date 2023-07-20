@@ -33,7 +33,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <HowItWorks {...args} />;
+function Template({ ...args }) {
+  return <HowItWorks {...args} />;
+}
 
 export const Default = Template.bind({});
 

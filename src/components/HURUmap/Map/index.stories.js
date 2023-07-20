@@ -43,7 +43,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <Map {...args} />;
+function Template({ ...args }) {
+  return <Map {...args} />;
+}
 
 export const Default = Template.bind({});
 

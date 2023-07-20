@@ -30,7 +30,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
 }));
 
-const SubcategoryHeader = ({ title, description, ...props }) => {
+function SubcategoryHeader({ title, description, ...props }) {
   const classes = useStyles(props);
 
   if (!title) {
@@ -46,7 +46,7 @@ const SubcategoryHeader = ({ title, description, ...props }) => {
       </RichTypography>
     </div>
   );
-};
+}
 
 SubcategoryHeader.propTypes = {
   title: PropTypes.string,

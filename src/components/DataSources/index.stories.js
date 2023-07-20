@@ -6,7 +6,9 @@ export default {
   title: "Sections/DataSources",
 };
 
-const Template = (args) => <DataSources {...args} />;
+function Template(args) {
+  return <DataSources {...args} />;
+}
 
 export const Default = Template.bind({});
 

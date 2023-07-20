@@ -36,7 +36,9 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => <Button {...args}>{label}</Button>;
+function Template({ label, ...args }) {
+  return <Button {...args}>{label}</Button>;
+}
 
 export const Default = Template.bind({});
 

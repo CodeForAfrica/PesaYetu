@@ -10,7 +10,7 @@ import useStyles from "./useStyles";
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
 import slugify from "@/pesayetu/utils/slugify";
 
-const TreeView = ({ items, onLabelClick, ...props }) => {
+function TreeView({ items, onLabelClick, ...props }) {
   const classes = useStyles(props);
   const [expanded, setExpanded] = useState();
 
@@ -78,7 +78,7 @@ const TreeView = ({ items, onLabelClick, ...props }) => {
       </MuiTreeView>
     </div>
   );
-};
+}
 
 TreeView.propTypes = {
   items: PropTypes.arrayOf(

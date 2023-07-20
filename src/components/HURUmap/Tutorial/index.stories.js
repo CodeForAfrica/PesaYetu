@@ -11,14 +11,16 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ sampleElements, ...args }) => (
-  <>
-    <Tutorial {...args} />
-    {sampleElements.map((sample) => (
-      <RichTypography>{sample}</RichTypography>
-    ))}
-  </>
-);
+function Template({ sampleElements, ...args }) {
+  return (
+    <>
+      <Tutorial {...args} />
+      {sampleElements.map((sample) => (
+        <RichTypography>{sample}</RichTypography>
+      ))}
+    </>
+  );
+}
 
 export const Default = Template.bind({});
 

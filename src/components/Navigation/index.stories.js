@@ -9,7 +9,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <Navigation {...args} />;
+function Template({ ...args }) {
+  return <Navigation {...args} />;
+}
 export const Default = Template.bind({});
 
 Default.args = {

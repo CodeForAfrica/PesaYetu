@@ -9,7 +9,7 @@ import Card from "@/pesayetu/components/Card";
 import Carousel from "@/pesayetu/components/Carousel";
 import Section from "@/pesayetu/components/Section";
 
-const OurCourses = ({ title, items, ...props }) => {
+function OurCourses({ title, items, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
@@ -33,7 +33,7 @@ const OurCourses = ({ title, items, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 OurCourses.propTypes = {
   title: PropTypes.string,

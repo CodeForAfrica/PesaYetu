@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-const StartLearning = ({ ctaText, href, title, subtitle, ...props }) => {
+function StartLearning({ ctaText, href, title, subtitle, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -52,7 +52,7 @@ const StartLearning = ({ ctaText, href, title, subtitle, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 StartLearning.propTypes = {
   ctaText: PropTypes.string,

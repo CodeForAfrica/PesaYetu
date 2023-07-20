@@ -25,7 +25,7 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-const Content = ({
+function Content({
   className,
   description,
   descriptionProps,
@@ -35,7 +35,7 @@ const Content = ({
   ctaText,
   linkProps,
   ...props
-}) => {
+}) {
   const classes = useStyles(props);
   if (!(title || description || href)) {
     return null;
@@ -66,7 +66,7 @@ const Content = ({
       )}
     </CardContent>
   );
-};
+}
 
 Content.propTypes = {
   className: PropTypes.string,

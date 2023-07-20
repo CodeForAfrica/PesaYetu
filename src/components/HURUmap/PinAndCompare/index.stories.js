@@ -10,7 +10,9 @@ export default {
   title: "Components/HURUmap/PinAndCompare",
 };
 
-const Template = ({ ...args }) => <PinAndCompare {...args} />;
+function Template({ ...args }) {
+  return <PinAndCompare {...args} />;
+}
 
 export const Default = Template.bind({});
 

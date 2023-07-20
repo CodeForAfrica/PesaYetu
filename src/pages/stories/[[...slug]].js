@@ -35,14 +35,12 @@ export default function Index({
   return (
     <Page {...props} post={post}>
       {archive ? (
-        <>
-          <StoriesPage
-            hero={{ ...blocks?.otherHero }}
-            activeCategory={activeCategory}
-            featuredStories={blocks?.featuredStories}
-            {...props}
-          />
-        </>
+        <StoriesPage
+          hero={{ ...blocks?.otherHero }}
+          activeCategory={activeCategory}
+          featuredStories={blocks?.featuredStories}
+          {...props}
+        />
       ) : (
         <StoryPage
           {...post}

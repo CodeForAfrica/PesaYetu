@@ -18,7 +18,7 @@ function SvgIcon(props) {
   return <MuiSvgIcon {...props} />;
 }
 
-const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
+function LocationHeader({ icon, level, onClick, parent, title, ...props }) {
   const classes = useStyles(props);
 
   if (!title) {
@@ -69,7 +69,7 @@ const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
       )}
     </div>
   );
-};
+}
 
 LocationHeader.propTypes = {
   icon: PropTypes.string,

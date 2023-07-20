@@ -8,7 +8,7 @@ import Card from "@/pesayetu/components/Card";
 import Carousel from "@/pesayetu/components/Carousel";
 import Section from "@/pesayetu/components/Section";
 
-const ExploreOtherTools = ({ title, items, ...props }) => {
+function ExploreOtherTools({ title, items, ...props }) {
   const classes = useStyles(props);
 
   if (!items?.length) {
@@ -75,7 +75,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 ExploreOtherTools.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),

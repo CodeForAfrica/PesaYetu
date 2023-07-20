@@ -28,7 +28,9 @@ export default {
   },
 };
 
-const Template = (args) => <StartLearning {...args} />;
+function Template(args) {
+  return <StartLearning {...args} />;
+}
 
 export const Default = Template.bind({});
 

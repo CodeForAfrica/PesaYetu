@@ -5,7 +5,7 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-const Icon = ({ item, handleIconClick, currentItemIndex, index, ...props }) => {
+function Icon({ item, handleIconClick, currentItemIndex, index, ...props }) {
   const classes = useStyles(props);
   const { title, image, hover } = item;
 
@@ -17,7 +17,7 @@ const Icon = ({ item, handleIconClick, currentItemIndex, index, ...props }) => {
       <Typography className={classes.text}>{title}</Typography>
     </ButtonBase>
   );
-};
+}
 
 Icon.propTypes = {
   handleIconClick: PropTypes.func,

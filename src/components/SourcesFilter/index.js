@@ -37,7 +37,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-const SourcesFilter = ({
+function SourcesFilter({
   countLabel,
   count,
   onPageSize,
@@ -49,7 +49,7 @@ const SourcesFilter = ({
   paginationOptions,
   sortOrder,
   ...props
-}) => {
+}) {
   const classes = useStyles(props);
   const handleClick = (option) => {
     if (onPageSize) {
@@ -121,7 +121,7 @@ const SourcesFilter = ({
       </Grid>
     </Grid>
   );
-};
+}
 
 SourcesFilter.propTypes = {
   countLabel: PropTypes.string,

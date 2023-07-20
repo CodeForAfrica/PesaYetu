@@ -9,7 +9,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <PanelButtonGroup {...args} />;
+function Template({ ...args }) {
+  return <PanelButtonGroup {...args} />;
+}
 
 export const Default = Template.bind({});
 

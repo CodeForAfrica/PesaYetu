@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 
 import Source from "@/pesayetu/components/HURUmap/Source";
 
-const KeyMetric = ({
+function KeyMetric({
   className,
   formattedValue: formattedValueProp,
   value: valueProp,
@@ -19,7 +19,7 @@ const KeyMetric = ({
   parentFormattedValue,
   metadata: { source, url } = {},
   ...props
-}) => {
+}) {
   const classes = useStyles(props);
 
   if (!((valueProp || formattedValueProp) && title)) {
@@ -72,7 +72,7 @@ const KeyMetric = ({
       </Source>
     </div>
   );
-};
+}
 
 KeyMetric.propTypes = {
   className: PropTypes.string,

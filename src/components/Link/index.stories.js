@@ -24,11 +24,13 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => (
-  <Link variant="button" {...args}>
-    {label}
-  </Link>
-);
+function Template({ label, ...args }) {
+  return (
+    <Link variant="button" {...args}>
+      {label}
+    </Link>
+  );
+}
 
 export const Default = Template.bind({});
 

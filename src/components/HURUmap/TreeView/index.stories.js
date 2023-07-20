@@ -8,7 +8,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <TreeView {...args} />;
+function Template({ ...args }) {
+  return <TreeView {...args} />;
+}
 
 export const Default = Template.bind({});
 

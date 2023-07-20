@@ -7,7 +7,9 @@ export default {
   title: "Components/SourcesFilter",
 };
 
-const Template = ({ ...args }) => <SourcesFilter {...args} />;
+function Template({ ...args }) {
+  return <SourcesFilter {...args} />;
+}
 
 export const Default = Template.bind({});
 

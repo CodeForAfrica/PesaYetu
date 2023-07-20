@@ -7,7 +7,9 @@ export default {
   title: "Components/Header",
 };
 
-const Template = ({ title, ...args }) => <Header {...args}>{title}</Header>;
+function Template({ title, ...args }) {
+  return <Header {...args}>{title}</Header>;
+}
 
 export const Default = Template.bind({});
 

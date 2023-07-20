@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 
 import Section from "@/pesayetu/components/Section";
 
-const Summary = ({ content, title, subtitle, ...props }) => {
+function Summary({ content, title, subtitle, ...props }) {
   const classes = useStyles(props);
 
   if (!content) {
@@ -32,7 +32,7 @@ const Summary = ({ content, title, subtitle, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 Summary.propTypes = {
   content: PropTypes.string,

@@ -11,7 +11,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <Panel {...args} />;
+function Template({ ...args }) {
+  return <Panel {...args} />;
+}
 
 export const Default = Template.bind({});
 

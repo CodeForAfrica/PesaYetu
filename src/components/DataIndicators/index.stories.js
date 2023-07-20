@@ -9,7 +9,9 @@ export default {
   title: "Sections/DataIndicators",
 };
 
-const Template = ({ ...args }) => <DataIndicators {...args} />;
+function Template({ ...args }) {
+  return <DataIndicators {...args} />;
+}
 
 export const Default = Template.bind({});
 

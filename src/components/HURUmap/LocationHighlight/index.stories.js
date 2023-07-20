@@ -13,7 +13,9 @@ export default {
   title: "Components/HURUmap/LocationHighlight",
 };
 
-const Template = (args) => <LocationHighlight {...args} />;
+function Template(args) {
+  return <LocationHighlight {...args} />;
+}
 
 export const Default = Template.bind({});
 

@@ -9,7 +9,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <StoryPage {...args} />;
+function Template({ ...args }) {
+  return <StoryPage {...args} />;
+}
 
 export const Default = Template.bind({});
 
