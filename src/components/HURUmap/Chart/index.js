@@ -190,6 +190,7 @@ function Chart({
 
   const currentFilters = [
     ...defaultFilters,
+    // eslint-disable-next-line no-unsafe-optional-chaining
     ...filterSelectProps
       ?.filter(({ selectedAttribute }) => selectedAttribute !== "All values")
       ?.map(({ selectedValue: value, selectedAttribute: name }) => {

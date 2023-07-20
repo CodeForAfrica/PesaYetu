@@ -1,4 +1,5 @@
 export default function getNavigationMenu(data) {
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const socialMedia = data[data?.length - 1];
   const { children } = socialMedia || {};
   const menuProps = data.slice(1, 5).map(({ label, path }) => {

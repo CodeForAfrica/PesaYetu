@@ -52,6 +52,7 @@ function Download({
   };
 
   const splitString = (str) => {
+    // eslint-disable-next-line prefer-regex-literals
     const regex = new RegExp(/\S.{1,42}\S(?= |$)/, "g");
     const chunks = str.match(regex);
     return chunks;

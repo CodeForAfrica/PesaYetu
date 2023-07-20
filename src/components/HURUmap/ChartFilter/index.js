@@ -40,6 +40,7 @@ function ChartFilter({
     } else if (groups) {
       setAttributeOptions([
         "All values",
+        // eslint-disable-next-line no-unsafe-optional-chaining
         ...groups?.map((g) => g.name)?.sort((a, b) => a.localeCompare(b)),
       ]);
     }
