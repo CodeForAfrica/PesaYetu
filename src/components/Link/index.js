@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import { A } from "@commons-ui/core";
-import { Link as MuiLink } from "@material-ui/core";
+import { Link as MuiLink } from "@mui/material";
 import clsx from "clsx";
 import NextLink from "next/link";
 import { useRouter } from "next/router";

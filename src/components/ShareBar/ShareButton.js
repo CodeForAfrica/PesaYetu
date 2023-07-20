@@ -1,4 +1,4 @@
-import { Tooltip, Button } from "@material-ui/core";
+import { Tooltip, Button } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 

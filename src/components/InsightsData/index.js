@@ -1,5 +1,5 @@
-import { useMediaQuery, Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { useMediaQuery, Grid } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import React from "react";
 

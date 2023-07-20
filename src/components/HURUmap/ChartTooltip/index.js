@@ -1,5 +1,5 @@
-import { Typography, Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Typography, Grid } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

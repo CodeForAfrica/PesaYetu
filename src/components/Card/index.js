@@ -1,4 +1,4 @@
-import { Card as MuiCard } from "@material-ui/core";
+import { Card as MuiCard } from "@mui/material";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

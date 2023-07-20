@@ -1,4 +1,4 @@
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import { Box, Grid, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -20,7 +20,14 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
         <Typography variant="h4" className={classes.title}>
           {title}
         </Typography>
-        <Hidden lgUp implementation="css">
+        <Box
+          sx={{
+            display: {
+              xs: "block",
+              lg: "none",
+            },
+          }}
+        >
           <Carousel>
             {items.map(({ imageProps, ...item }) => (
               <Card
@@ -37,8 +44,15 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
               />
             ))}
           </Carousel>
-        </Hidden>
-        <Hidden mdDown implementation="css">
+        </Box>
+        <Box
+          sx={{
+            display: {
+              xs: "none",
+              lg: "block",
+            },
+          }}
+        >
           <Grid container className={classes.list}>
             {items.slice(0, 4).map(({ imageProps, ...item }) => (
               <Grid item lg={3} key={item.href}>
@@ -57,7 +71,7 @@ const ExploreOtherTools = ({ title, items, ...props }) => {
               </Grid>
             ))}
           </Grid>
-        </Hidden>
+        </Box>
       </Section>
     </div>
   );
