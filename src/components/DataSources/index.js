@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -9,7 +9,7 @@ import Header from "@/pesayetu/components/Header";
 import Link from "@/pesayetu/components/Link";
 import Section from "@/pesayetu/components/Section";
 
-const DataSources = ({ items, title, subtitle, image, ...props }) => {
+function DataSources({ items, title, subtitle, image, ...props }) {
   const classes = useStyles(props);
 
   if (!items || !items.length) {
@@ -45,7 +45,7 @@ const DataSources = ({ items, title, subtitle, image, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 DataSources.propTypes = {
   items: PropTypes.arrayOf(

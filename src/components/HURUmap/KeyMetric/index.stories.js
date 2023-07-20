@@ -6,7 +6,9 @@ export default {
   title: "Components/HURUmap/KeyMetric",
 };
 
-const Template = ({ ...args }) => <KeyMetric {...args} />;
+function Template({ ...args }) {
+  return <KeyMetric {...args} />;
+}
 
 export const Default = Template.bind({});
 

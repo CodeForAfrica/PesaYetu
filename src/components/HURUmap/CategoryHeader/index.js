@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 
 import Image from "@/pesayetu/components/Image";
 
-const CategoryHeader = ({ title, description, icon, ...props }) => {
+function CategoryHeader({ title, description, icon, ...props }) {
   const classes = useStyles();
 
   if (!title) {
@@ -28,7 +28,7 @@ const CategoryHeader = ({ title, description, icon, ...props }) => {
       </RichTypography>
     </div>
   );
-};
+}
 
 CategoryHeader.propTypes = {
   title: PropTypes.string,

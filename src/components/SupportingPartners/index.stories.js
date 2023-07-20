@@ -18,7 +18,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <SupportingPartners {...args} />;
+function Template({ ...args }) {
+  return <SupportingPartners {...args} />;
+}
 export const Default = Template.bind({});
 
 Default.args = {

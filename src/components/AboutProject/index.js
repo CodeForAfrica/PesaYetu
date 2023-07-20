@@ -1,4 +1,4 @@
-import { Grid, Typography, Button } from "@material-ui/core";
+import { Grid, Typography, Button } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 

@@ -6,7 +6,9 @@ export default {
   title: "Components/Select",
 };
 
-const Template = () => <Select />;
+function Template() {
+  return <Select />;
+}
 
 export const Default = Template.bind({});
 

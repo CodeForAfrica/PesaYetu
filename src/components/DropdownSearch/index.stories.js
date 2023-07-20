@@ -20,7 +20,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <DropdownSearch {...args} />;
+function Template({ ...args }) {
+  return <DropdownSearch {...args} />;
+}
 
 export const Default = Template.bind({});
 

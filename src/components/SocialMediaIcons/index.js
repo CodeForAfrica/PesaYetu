@@ -1,5 +1,5 @@
-import { Grid, IconButton } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, IconButton } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";
@@ -62,7 +62,13 @@ function SocialMediaIcons({ socialLinks, ...props }) {
           viewBox={viewBoxValue}
           className={classes.button}
         >
-          <Image src={src} width={48} height={48} className={classes.image} />
+          <Image
+            src={src}
+            width={24}
+            height={24}
+            className={classes.image}
+            alt={label}
+          />
         </IconButton>
       ))}
     </Grid>

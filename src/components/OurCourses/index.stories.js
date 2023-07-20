@@ -8,7 +8,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <OurCourses {...args} />;
+function Template({ ...args }) {
+  return <OurCourses {...args} />;
+}
 
 export const Default = Template.bind({});
 

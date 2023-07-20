@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -18,7 +18,7 @@ import { ReactComponent as LinkedInIcon } from "@/pesayetu/assets/icons/Group 31
 import { ReactComponent as EmailIcon } from "@/pesayetu/assets/icons/Group 4106.svg";
 import { ReactComponent as CopyIcon } from "@/pesayetu/assets/icons/Group 5062.svg";
 
-const ShareBar = ({ socialLinks, title, children, ...props }) => {
+function ShareBar({ socialLinks, title, children, ...props }) {
   const classes = useStyles(props);
 
   const [copied, setCopied] = useState(false);
@@ -110,7 +110,7 @@ const ShareBar = ({ socialLinks, title, children, ...props }) => {
       {copied ? <p className={classes.copied}> Copied! </p> : null}
     </div>
   );
-};
+}
 
 ShareBar.propTypes = {
   socialLinks: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })),

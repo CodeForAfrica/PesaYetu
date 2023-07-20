@@ -4,8 +4,8 @@ import {
   Typography,
   List,
   ListItem,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";

@@ -9,7 +9,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <InsightsData {...args} />;
+function Template({ ...args }) {
+  return <InsightsData {...args} />;
+}
 
 export const Default = Template.bind({});
 

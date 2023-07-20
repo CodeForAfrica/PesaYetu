@@ -23,7 +23,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <Newsletter {...args} />;
+function Template({ ...args }) {
+  return <Newsletter {...args} />;
+}
 export const Default = Template.bind({});
 
 Default.args = {

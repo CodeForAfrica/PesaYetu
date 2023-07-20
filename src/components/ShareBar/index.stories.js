@@ -18,7 +18,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <ShareBar {...args} />;
+function Template({ ...args }) {
+  return <ShareBar {...args} />;
+}
 
 export const Default = Template.bind({});
 

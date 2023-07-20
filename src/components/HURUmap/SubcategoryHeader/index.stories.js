@@ -7,7 +7,9 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => <SubcategoryHeader {...args} />;
+function Template(args) {
+  return <SubcategoryHeader {...args} />;
+}
 
 export const Default = Template.bind({});
 

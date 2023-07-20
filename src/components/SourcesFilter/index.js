@@ -1,5 +1,5 @@
-import { Grid, Typography, ButtonGroup, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Typography, ButtonGroup, Button } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -37,7 +37,7 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
 }));
 
-const SourcesFilter = ({
+function SourcesFilter({
   countLabel,
   count,
   onPageSize,
@@ -49,7 +49,7 @@ const SourcesFilter = ({
   paginationOptions,
   sortOrder,
   ...props
-}) => {
+}) {
   const classes = useStyles(props);
   const handleClick = (option) => {
     if (onPageSize) {
@@ -62,7 +62,7 @@ const SourcesFilter = ({
       className={classes.root}
       container
       alignItems="center"
-      justify="space-betweeen"
+      justifyContent="space-betweeen"
     >
       <Grid item md={2} className={classes.sourcesFilter}>
         <Typography variant="body1">
@@ -121,7 +121,7 @@ const SourcesFilter = ({
       </Grid>
     </Grid>
   );
-};
+}
 
 SourcesFilter.propTypes = {
   countLabel: PropTypes.string,

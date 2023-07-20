@@ -1,6 +1,6 @@
 import { LogoButton, RichTypography } from "@commons-ui/core";
-import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Box } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -62,7 +62,7 @@ function ProjectOwner({
     >
       <div className={classes.content}>
         <LogoButton component={Link} href={link} className={classes.logo}>
-          <Image src={logo.url} {...logoProps} layout="fill" alt={name} />
+          <Image src={logo.url} {...logoProps} alt={name} />
         </LogoButton>
         <RichTypography variant="body2" className={classes.description}>
           {description}

@@ -21,7 +21,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <Stories {...args} />;
+function Template({ ...args }) {
+  return <Stories {...args} />;
+}
 
 export const Default = Template.bind({});
 

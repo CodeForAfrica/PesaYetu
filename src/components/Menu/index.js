@@ -1,5 +1,5 @@
-import { Grid, Button, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Button, Typography } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -118,12 +118,16 @@ function Menu({ links, children, socialLinks, ...props }) {
           <Button
             component={Link}
             color={index !== 0 ? "default" : "primary"}
-            variant={index !== 0 ? "text" : "contained"}
+            variant={index !== 0 ? "text" : "outlined"}
             size="large"
             href={item.href}
             classes={{
               root: index !== 0 ? classes.menuLinks : classes.links,
               text: classes.text,
+            }}
+            sx={{
+              borderRadius: 20,
+              border: index !== 0 ? 0 : "3px solid",
             }}
           >
             <Typography variant="body1" className={classes.label}>

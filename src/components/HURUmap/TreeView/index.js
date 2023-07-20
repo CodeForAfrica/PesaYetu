@@ -1,6 +1,6 @@
-import { Typography } from "@material-ui/core";
-import TreeItem from "@material-ui/lab/TreeItem";
-import MuiTreeView from "@material-ui/lab/TreeView";
+import TreeItem from "@mui/lab/TreeItem";
+import MuiTreeView from "@mui/lab/TreeView";
+import { Typography } from "@mui/material";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -10,7 +10,7 @@ import useStyles from "./useStyles";
 import { ReactComponent as CheckIcon } from "@/pesayetu/assets/icons/checked.svg";
 import slugify from "@/pesayetu/utils/slugify";
 
-const TreeView = ({ items, onLabelClick, ...props }) => {
+function TreeView({ items, onLabelClick, ...props }) {
   const classes = useStyles(props);
   const [expanded, setExpanded] = useState();
 
@@ -78,7 +78,7 @@ const TreeView = ({ items, onLabelClick, ...props }) => {
       </MuiTreeView>
     </div>
   );
-};
+}
 
 TreeView.propTypes = {
   items: PropTypes.arrayOf(

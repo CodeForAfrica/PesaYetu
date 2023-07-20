@@ -1,5 +1,5 @@
-import { Typography, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Typography, Button } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-const StartLearning = ({ ctaText, href, title, subtitle, ...props }) => {
+function StartLearning({ ctaText, href, title, subtitle, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -52,7 +52,7 @@ const StartLearning = ({ ctaText, href, title, subtitle, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 StartLearning.propTypes = {
   ctaText: PropTypes.string,

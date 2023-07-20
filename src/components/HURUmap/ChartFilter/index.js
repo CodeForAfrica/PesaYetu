@@ -1,4 +1,4 @@
-import { Grid, IconButton } from "@material-ui/core";
+import { Grid, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
@@ -40,6 +40,7 @@ function ChartFilter({
     } else if (groups) {
       setAttributeOptions([
         "All values",
+        // eslint-disable-next-line no-unsafe-optional-chaining
         ...groups?.map((g) => g.name)?.sort((a, b) => a.localeCompare(b)),
       ]);
     }
@@ -119,7 +120,11 @@ function ChartFilter({
         )}
         {index !== "default" && index !== 0 && (
           <Grid item>
-            <IconButton className={classes.icon} onClick={removeFilter}>
+            <IconButton
+              className={classes.icon}
+              onClick={removeFilter}
+              size="large"
+            >
               <CloseIcon />
             </IconButton>
           </Grid>

@@ -9,7 +9,9 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ ...args }) => <Metrics {...args} />;
+function Template({ ...args }) {
+  return <Metrics {...args} />;
+}
 
 export const Default = Template.bind({});
 

@@ -1,4 +1,5 @@
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import L from "leaflet";
 import PropTypes from "prop-types";
 import React, { useCallback, useEffect, useRef } from "react";
@@ -107,16 +108,18 @@ function Layers({
 
   const pinIcon = L.divIcon({
     html: ReactDOMServer.renderToStaticMarkup(
-      <ThemeProvider theme={theme}>
-        <LocationTag
-          level={geography?.level}
-          name={geography?.name?.toLowerCase()}
-          code={geography?.code}
-          classes={{ root: classes.locationtag }}
-          color="primary"
-          variant="marker"
-        />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <LocationTag
+            level={geography?.level}
+            name={geography?.name?.toLowerCase()}
+            code={geography?.code}
+            classes={{ root: classes.locationtag }}
+            color="primary"
+            variant="marker"
+          />
+        </ThemeProvider>
+      </StyledEngineProvider>
     ),
   });
 
@@ -131,14 +134,16 @@ function Layers({
       } else {
         const popUpContent = (level, name) =>
           ReactDOMServer.renderToStaticMarkup(
-            <ThemeProvider theme={theme}>
-              <LocationTag
-                level={level}
-                name={name.toLowerCase()}
-                classes={{ root: classes.locationtag }}
-                color={isPinOrCompare ? "secondary" : "primary"}
-              />
-            </ThemeProvider>
+            <StyledEngineProvider injectFirst>
+              <ThemeProvider theme={theme}>
+                <LocationTag
+                  level={level}
+                  name={name.toLowerCase()}
+                  classes={{ root: classes.locationtag }}
+                  color={isPinOrCompare ? "secondary" : "primary"}
+                />
+              </ThemeProvider>
+            </StyledEngineProvider>
           );
 
         if (!(isPinOrCompare && feature.properties.code === geography?.code)) {

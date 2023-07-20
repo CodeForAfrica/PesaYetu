@@ -11,7 +11,9 @@ export default {
   title: "Components/Tabs",
 };
 
-const Template = ({ ...args }) => <Tabs {...args} />;
+function Template({ ...args }) {
+  return <Tabs {...args} />;
+}
 
 export const Default = Template.bind({});
 

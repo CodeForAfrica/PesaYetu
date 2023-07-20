@@ -7,8 +7,8 @@ import {
   IconButton,
   ClickAwayListener,
   Tooltip,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -62,7 +62,11 @@ function Action({ children, header, icon, title, id, ...props }) {
   return (
     <div className={classes.root}>
       <Tooltip title={title}>
-        <IconButton onClick={handleClick} className={classes.button}>
+        <IconButton
+          onClick={handleClick}
+          className={classes.button}
+          size="large"
+        >
           {icon}
         </IconButton>
       </Tooltip>

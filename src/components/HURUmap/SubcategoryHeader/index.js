@@ -1,6 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Typography } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -30,7 +30,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
 }));
 
-const SubcategoryHeader = ({ title, description, ...props }) => {
+function SubcategoryHeader({ title, description, ...props }) {
   const classes = useStyles(props);
 
   if (!title) {
@@ -46,7 +46,7 @@ const SubcategoryHeader = ({ title, description, ...props }) => {
       </RichTypography>
     </div>
   );
-};
+}
 
 SubcategoryHeader.propTypes = {
   title: PropTypes.string,
