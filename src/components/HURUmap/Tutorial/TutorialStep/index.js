@@ -1,5 +1,5 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Grid, Typography, IconButton, Avatar } from "@mui/material";
+import { Grid, Typography, IconButton, Avatar } from "@material-ui/core";
 import { useTour } from "@reactour/tour";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -39,7 +39,6 @@ function TutorialStep({ description, title, image, selector, ...props }) {
               aria-label="close"
               className={classes.closeButton}
               onClick={handleClose}
-              size="large"
             >
               <CloseIcon />
             </IconButton>

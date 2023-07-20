@@ -1,4 +1,4 @@
-import { Tab, Divider, Tabs as MuiTabs } from "@mui/material";
+import { Tab, Divider, Tabs as MuiTabs } from "@material-ui/core";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React, { useState } from "react";

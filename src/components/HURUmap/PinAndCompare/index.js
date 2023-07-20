@@ -1,4 +1,4 @@
-import { Box, IconButton, SvgIcon } from "@mui/material";
+import { Box, IconButton, SvgIcon } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -67,11 +67,7 @@ function PinAndCompare({
   return (
     <Box display="flex" alignItems="flex-end" className={classes.root}>
       {!isMobile && (
-        <IconButton
-          onClick={handleButtonClick}
-          className={classes.pinButton}
-          size="large"
-        >
+        <IconButton onClick={handleButtonClick} className={classes.pinButton}>
           <PinIcon
             color="primary"
             component={component}

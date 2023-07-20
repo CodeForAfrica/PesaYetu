@@ -1,4 +1,4 @@
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useCallback, useEffect, useState } from "react";

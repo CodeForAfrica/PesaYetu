@@ -1,4 +1,4 @@
-import { deepmerge } from "@mui/utils";
+import { deepmerge } from "@material-ui/utils";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

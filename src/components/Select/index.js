@@ -6,7 +6,7 @@ import {
   SvgIcon,
   InputLabel,
   Typography,
-} from "@mui/material";
+} from "@material-ui/core";
 import clsx from "clsx";
 import { uniqueId } from "lodash";
 import PropTypes from "prop-types";

@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";

@@ -1,5 +1,5 @@
-import { AppBar, Box, Toolbar } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { AppBar, Hidden, Toolbar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -34,15 +34,7 @@ function Navigation({ variant, ...props }) {
   return (
     <AppBar color="primary" position="sticky" className={classes.root}>
       <Toolbar disableGutters className={classes.toolbar}>
-        <Box
-          sx={{
-            display: {
-              xs: "none",
-              lg: "block",
-            },
-            width: "100%",
-          }}
-        >
+        <Hidden mdDown implementation="css" className={classes.navigation}>
           {variant?.toLowerCase() === "explore" ? (
             <ExploreNavigation
               variant="explore"
@@ -55,18 +47,10 @@ function Navigation({ variant, ...props }) {
               classes={{ section: classes.section }}
             />
           )}
-        </Box>
-        <Box
-          sx={{
-            display: {
-              xs: "block",
-              lg: "none",
-            },
-            width: "100%",
-          }}
-        >
+        </Hidden>
+        <Hidden lgUp implementation="css" className={classes.navigation}>
           <MobileNavigation {...props} />
-        </Box>
+        </Hidden>
       </Toolbar>
     </AppBar>
   );

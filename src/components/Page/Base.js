@@ -1,5 +1,5 @@
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import { NextSeo } from "next-seo";
 import PropTypes from "prop-types";
 import React from "react";

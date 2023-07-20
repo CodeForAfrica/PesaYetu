@@ -5,6 +5,7 @@
   "author": "Code for Africa <hello@codeforafrica.org> (https://codeforafrica.org)",
   "license": "GPL-3.0-or-later",
   "homepage": "https://dev.pesayetu.pesacheck.org",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "format": "yarn prettier --write --ignore-path './.gitignore' '**/*.+(json|md|yml)' '.'",
@@ -23,14 +24,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.21",
-    "@commons-ui/core": "^0.1.0",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "@mui/lab": "^5.0.0-alpha.99",
-    "@mui/material": "^5.10.5",
-    "@mui/styles": "^5.10.3",
-    "@mui/utils": "^5.10.3",
-    "@reactour/tour": "^3.4.0",
+    "@commons-ui/core": "^0.1.0-alpha.6",
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@material-ui/utils": "^4.11.2",
+    "@reactour/tour": "^2.0.0",
     "@svgr/webpack": "^5.5.0",
     "aws-sdk": "^2.1005.0",
     "clsx": "^1.1.1",
@@ -112,6 +110,8 @@
   ],
   "lint-staged": {
     "*.js": [
+      "yarn codemod-staged-optimal-imports",
+      "yarn codemod-staged-top-level-imports",
       "yarn lint-staged"
     ],
     "*.{json,md}": [
@@ -123,7 +123,6 @@
     ]
   },
   "engines": {
-    "node": ">=18.0.0"
-  },
-  "packageManager": "yarn@1.22.19"
+    "node": ">=16.0.0 <17.0.0"
+  }
 }

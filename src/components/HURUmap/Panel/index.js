@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Hidden } from "@material-ui/core";
 import React from "react";
 
 import DesktopPanel from "./DesktopPanel";
@@ -7,26 +7,12 @@ import MobilePanel from "./MobilePanel";
 function Panel(props) {
   return (
     <>
-      <Box
-        sx={{
-          display: {
-            xs: "block",
-            lg: "none",
-          },
-        }}
-      >
+      <Hidden lgUp implementation="css">
         <MobilePanel {...props} />
-      </Box>
-      <Box
-        sx={{
-          display: {
-            xs: "none",
-            lg: "block",
-          },
-        }}
-      >
+      </Hidden>
+      <Hidden mdDown implementation="css">
         <DesktopPanel {...props} />
-      </Box>
+      </Hidden>
     </>
   );
 }

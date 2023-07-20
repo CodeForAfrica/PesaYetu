@@ -1,5 +1,5 @@
-import { alpha } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 
 const useStyles = makeStyles(({ palette, typography, breakpoints }) => ({
   root: {

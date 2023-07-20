@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 

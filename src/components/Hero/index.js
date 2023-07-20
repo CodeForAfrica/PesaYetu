@@ -1,6 +1,5 @@
-import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { Grid, Hidden, Typography, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -103,16 +102,9 @@ function Hero({
       </div>
       <Section classes={{ root: classes.section }}>
         <Grid container>
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                md: "block",
-              },
-            }}
-          >
+          <Hidden mdDown>
             <Grid item lg={1} />
-          </Box>
+          </Hidden>
           <Grid item xs={12} md={7} lg={6}>
             <Header
               subtitle={subtitle}
@@ -135,14 +127,7 @@ function Hero({
             )}
           </Grid>
           {/* Since map is dynamic-ally loaded, no need for implementation="css" */}
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                md: "block",
-              },
-            }}
-          >
+          <Hidden smDown>
             <Grid item md={5}>
               <Map
                 center={[0.3051933453207569, 37.908818734483155]}
@@ -160,7 +145,7 @@ function Hero({
                 </Typography>
               )}
             </Grid>
-          </Box>
+          </Hidden>
         </Grid>
       </Section>
     </div>

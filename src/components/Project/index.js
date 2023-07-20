@@ -1,6 +1,6 @@
-import { Grid } from "@mui/material";
-import { alpha } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -53,7 +53,7 @@ function Project({ mainPartner, newsletter, ...props }) {
   return (
     <div className={classes.root}>
       <Section className={classes.section}>
-        <Grid container justifyContent="space-between">
+        <Grid container justify="space-between">
           <Grid item xs={12} lg={7}>
             <ProjectPartners {...props} />
           </Grid>

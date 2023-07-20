@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box } from "@material-ui/core";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

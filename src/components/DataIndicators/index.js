@@ -4,8 +4,8 @@ import {
   Dialog,
   Slide,
   useMediaQuery,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+} from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
