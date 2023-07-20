@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Hidden } from "@material-ui/core";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
@@ -112,14 +112,7 @@ function ExplorePage({ panelProps, profile: profileProp, ...props }) {
   }
   return (
     <>
-      <Box
-        sx={{
-          display: {
-            xs: "none",
-            lg: "block",
-          },
-        }}
-      >
+      <Hidden mdDown implementation="css">
         <div className={classes.root}>
           <Map
             center={[0.3051933453207569, 37.908818734483155]}
@@ -141,7 +134,7 @@ function ExplorePage({ panelProps, profile: profileProp, ...props }) {
             className={classes.location}
           />
         </div>
-      </Box>
+      </Hidden>
       <Panel
         {...props}
         isCompare={state.isCompare}

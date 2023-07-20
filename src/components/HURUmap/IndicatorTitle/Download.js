@@ -1,5 +1,5 @@
-import { ButtonBase, IconButton, Grid, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { ButtonBase, IconButton, Grid, Typography } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Image from "next/image";
 import Papa from "papaparse";
@@ -208,7 +208,6 @@ function Download({
               onClick={(e) => {
                 setImageLayout(e, index);
               }}
-              size="large"
             >
               <Image src={p} width={24} height={24} alt="layout" />
             </IconButton>

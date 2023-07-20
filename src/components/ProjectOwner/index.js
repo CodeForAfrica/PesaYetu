@@ -1,6 +1,6 @@
 import { LogoButton, RichTypography } from "@commons-ui/core";
-import { Box } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Image from "next/image";
 import PropTypes from "prop-types";

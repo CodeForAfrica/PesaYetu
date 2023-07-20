@@ -1,5 +1,5 @@
 import RichTypography from "@commons-ui/core/RichTypography";
-import { Box, Grid } from "@mui/material";
+import { Grid, Hidden } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -14,14 +14,7 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
 
   return (
     <>
-      <Box
-        sx={{
-          display: {
-            xs: "none",
-            lg: "block",
-          },
-        }}
-      >
+      <Hidden mdDown implementation="css">
         <Section className={classes.section}>
           <Grid key={story.slug} container justifyContent="space-between">
             <Grid item xs={12} lg={8} container direction="row" wrap="nowrap">
@@ -48,15 +41,8 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
             </Grid>
           </Grid>
         </Section>
-      </Box>
-      <Box
-        sx={{
-          display: {
-            xs: "block",
-            lg: "none",
-          },
-        }}
-      >
+      </Hidden>
+      <Hidden lgUp implementation="css">
         <div className={classes.mediaContainer}>
           <Section className={classes.section}>
             <RichTypography className={classes.media}>
@@ -79,7 +65,7 @@ function CarouselItem({ activeStep, onClick, steps, story, ...props }) {
             className={classes.content}
           />
         </Section>
-      </Box>
+      </Hidden>
     </>
   );
 }

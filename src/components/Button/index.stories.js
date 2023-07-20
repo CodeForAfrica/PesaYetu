@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Button } from "@mui/material";
+import { Button } from "@material-ui/core";
 import React from "react";
 
 export default {

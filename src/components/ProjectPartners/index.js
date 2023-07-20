@@ -1,7 +1,7 @@
 import { LogoButton } from "@commons-ui/core";
-import { Grid, Typography } from "@mui/material";
-import { alpha } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";

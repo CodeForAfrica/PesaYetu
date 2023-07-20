@@ -1,7 +1,6 @@
 import LogoButton from "@commons-ui/core/LogoButton";
-import { Grid, Typography, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { Grid, Typography, useMediaQuery } from "@material-ui/core";
+import { useTheme, makeStyles } from "@material-ui/core/styles";
 import { useTour } from "@reactour/tour";
 import PropTypes from "prop-types";
 import React from "react";

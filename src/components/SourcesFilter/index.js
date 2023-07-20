@@ -1,5 +1,5 @@
-import { Grid, Typography, ButtonGroup, Button } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { Grid, Typography, ButtonGroup, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -62,7 +62,7 @@ const SourcesFilter = ({
       className={classes.root}
       container
       alignItems="center"
-      justifyContent="space-betweeen"
+      justify="space-betweeen"
     >
       <Grid item md={2} className={classes.sourcesFilter}>
         <Typography variant="body1">

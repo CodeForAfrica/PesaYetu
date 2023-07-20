@@ -1,5 +1,5 @@
-import { Box, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Hidden, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
@@ -71,15 +71,8 @@ function Sources({ ctaText, contentRef, filterProps, items, type, ...props }) {
   const count = Math.ceil(total / itemsToShow) ?? 0;
 
   return (
-    <div className={classes.root}>
-      <Box
-        sx={{
-          display: {
-            xs: "none",
-            md: "block",
-          },
-        }}
-      >
+    <div classesName={classes.root}>
+      <Hidden smDown implementation="css">
         <SourcesFilter
           {...filterProps}
           count={items.length}
@@ -88,7 +81,7 @@ function Sources({ ctaText, contentRef, filterProps, items, type, ...props }) {
           pageSize={pageSize}
           sortOrder={sortOrder}
         />
-      </Box>
+      </Hidden>
       <List
         ctaText={ctaText}
         items={sortedItems?.slice((page - 1) * itemsToShow, page * itemsToShow)}

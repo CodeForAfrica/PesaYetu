@@ -1,6 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { CardContent } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { CardContent } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

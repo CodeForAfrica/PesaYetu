@@ -1,4 +1,4 @@
-import { Drawer } from "@mui/material";
+import { Drawer } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useRef } from "react";
 

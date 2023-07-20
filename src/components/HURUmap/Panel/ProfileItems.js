@@ -1,5 +1,5 @@
-import { Grid } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";

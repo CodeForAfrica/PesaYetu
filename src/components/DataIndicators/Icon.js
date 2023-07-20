@@ -1,4 +1,4 @@
-import { ButtonBase, Typography } from "@mui/material";
+import { ButtonBase, Typography } from "@material-ui/core";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import React from "react";

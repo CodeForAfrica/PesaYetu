@@ -1,4 +1,4 @@
-import { Grid, IconButton } from "@mui/material";
+import { Grid, IconButton } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
@@ -119,11 +119,7 @@ function ChartFilter({
         )}
         {index !== "default" && index !== 0 && (
           <Grid item>
-            <IconButton
-              className={classes.icon}
-              onClick={removeFilter}
-              size="large"
-            >
+            <IconButton className={classes.icon} onClick={removeFilter}>
               <CloseIcon />
             </IconButton>
           </Grid>
