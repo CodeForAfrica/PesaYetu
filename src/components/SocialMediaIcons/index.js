@@ -62,7 +62,13 @@ function SocialMediaIcons({ socialLinks, ...props }) {
           viewBox={viewBoxValue}
           className={classes.button}
         >
-          <Image src={src} width={48} height={48} className={classes.image} />
+          <Image
+            src={src}
+            width={24}
+            height={24}
+            className={classes.image}
+            alt={label}
+          />
         </IconButton>
       ))}
     </Grid>

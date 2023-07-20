@@ -33,6 +33,7 @@ const NextComposed = forwardRef(function NextComposed(props, ref) {
       scroll={scroll}
       shallow={shallow}
       locale={locale}
+      legacyBehavior
     >
       <Component ref={ref} {...other} />
     </NextLink>

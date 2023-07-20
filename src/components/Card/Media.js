@@ -71,13 +71,7 @@ function Media({
   }
   return (
     <div className={classes.root}>
-      <Image
-        layout="fill"
-        src={media}
-        unoptimized
-        {...imageProps}
-        className={classes.image}
-      />
+      <Image layout="fill" src={media} unoptimized className={classes.image} />
     </div>
   );
 }

@@ -1,5 +1,4 @@
-import { LogoButton } from "@commons-ui/core";
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import makeStyles from "@mui/styles/makeStyles";
 import Image from "next/image";
@@ -59,21 +58,28 @@ function ProjectPartners({ title, partners, ...props }) {
             {title}
           </Typography>
         </Grid>
-        {partners?.map(({ link, logo, logoProps, name }) => (
+        {partners?.map(({ link, logo, name }) => (
           <Grid key={link} item md={6}>
-            <LogoButton
+            <Button
               component={Link}
               href={link}
               className={classes.partner}
+              height="300px"
+              width="300px"
+              sx={{
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
+              }}
             >
               <Image
                 objectFit="contain"
                 src={logo.url}
-                {...logoProps}
+                fill
                 alt={name}
                 className={classes.logo}
               />
-            </LogoButton>
+            </Button>
           </Grid>
         ))}
       </Grid>

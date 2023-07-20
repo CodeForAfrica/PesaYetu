@@ -154,7 +154,6 @@ function OtherHero({
               <Image
                 layout="fill"
                 src={accentImage}
-                {...accentImageProps}
                 objectFit="contain"
                 alt="accent"
               />

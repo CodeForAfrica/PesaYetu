@@ -62,7 +62,7 @@ function ProjectOwner({
     >
       <div className={classes.content}>
         <LogoButton component={Link} href={link} className={classes.logo}>
-          <Image src={logo.url} {...logoProps} layout="fill" alt={name} />
+          <Image src={logo.url} {...logoProps} alt={name} />
         </LogoButton>
         <RichTypography variant="body2" className={classes.description}>
           {description}
