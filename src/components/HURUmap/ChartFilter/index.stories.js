@@ -7,7 +7,9 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => <ChartFilter {...args} />;
+function Template(args) {
+  return <ChartFilter {...args} />;
+}
 
 export const Default = Template.bind({});
 

@@ -1,10 +1,10 @@
-import { Tooltip, Button } from "@material-ui/core";
+import { Tooltip, Button } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
 import useStyles from "./useStyles";
 
-const ShareButton = ({ component, url, alt, title, children, ...props }) => {
+function ShareButton({ component, url, alt, title, children, ...props }) {
   const classes = useStyles(props);
 
   const Component = component;
@@ -26,7 +26,7 @@ const ShareButton = ({ component, url, alt, title, children, ...props }) => {
       )}
     </Tooltip>
   );
-};
+}
 
 ShareButton.propTypes = {
   component: PropTypes.node,

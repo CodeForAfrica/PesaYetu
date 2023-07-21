@@ -24,7 +24,7 @@ const componentMap = {
   Email: { icon: EmailIcon, button: EmailShareButton },
 };
 
-const ShareButton = ({ name, url, ...props }) => {
+function ShareButton({ name, url, ...props }) {
   const classes = useStyles(props);
   const SocialButtonComponent = componentMap[name].button;
   const SocialIcon = componentMap[name].icon;
@@ -34,7 +34,7 @@ const ShareButton = ({ name, url, ...props }) => {
       <SocialIcon className={classes.icon} />
     </SocialButtonComponent>
   );
-};
+}
 
 ShareButton.propTypes = {
   name: PropTypes.string,

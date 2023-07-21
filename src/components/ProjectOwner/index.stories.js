@@ -6,7 +6,9 @@ export default {
   title: "Components/ProjectOwner",
 };
 
-const Template = ({ ...args }) => <ProjectOwner {...args} />;
+function Template({ ...args }) {
+  return <ProjectOwner {...args} />;
+}
 export const Default = Template.bind({});
 
 Default.args = {

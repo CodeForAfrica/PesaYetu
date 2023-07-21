@@ -41,7 +41,9 @@ export default {
   },
 };
 
-const Template = (args) => <FeaturedStoryCard {...args} />;
+function Template(args) {
+  return <FeaturedStoryCard {...args} />;
+}
 
 export const Default = Template.bind({});
 

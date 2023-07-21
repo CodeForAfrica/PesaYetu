@@ -6,7 +6,9 @@ export default {
   title: "Sections/AboutHero",
 };
 
-const Template = ({ ...args }) => <AboutHero {...args} />;
+function Template({ ...args }) {
+  return <AboutHero {...args} />;
+}
 
 export const Default = Template.bind({});
 

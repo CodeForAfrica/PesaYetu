@@ -15,7 +15,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <SocialMediaIcons {...args} />;
+function Template({ ...args }) {
+  return <SocialMediaIcons {...args} />;
+}
 
 export const Default = Template.bind({});
 

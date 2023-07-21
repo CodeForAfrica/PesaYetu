@@ -8,7 +8,9 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => <LocationHeader {...args} />;
+function Template(args) {
+  return <LocationHeader {...args} />;
+}
 
 export const Default = Template.bind({});
 

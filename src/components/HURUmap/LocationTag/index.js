@@ -1,7 +1,7 @@
-import { Box, LinearProgress, Typography, IconButton } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { alpha } from "@material-ui/core/styles/colorManipulator";
-import { capitalize } from "@material-ui/core/utils";
+import { Box, LinearProgress, Typography, IconButton } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import { capitalize } from "@mui/material/utils";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -111,7 +111,7 @@ function LocationTag({
       className={clsx(classes.root, className)}
     >
       {variant === "marker" ? (
-        <IconButton className={classes.cancelBtn}>
+        <IconButton className={classes.cancelBtn} size="large">
           <CancelIcon />
         </IconButton>
       ) : null}

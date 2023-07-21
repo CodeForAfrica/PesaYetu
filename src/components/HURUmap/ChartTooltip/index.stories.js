@@ -33,7 +33,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <ChartTooltip {...args} />;
+function Template({ ...args }) {
+  return <ChartTooltip {...args} />;
+}
 
 export const Default = Template.bind({});
 

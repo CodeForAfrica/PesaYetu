@@ -1,5 +1,5 @@
-import { useMediaQuery, Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { useMediaQuery, Grid } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -9,7 +9,7 @@ import Card from "@/pesayetu/components/Card";
 import Header from "@/pesayetu/components/Header";
 import Section from "@/pesayetu/components/Section";
 
-const InsightsData = ({ title, overline, items, ...props }) => {
+function InsightsData({ title, overline, items, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.only("md"));
@@ -37,7 +37,7 @@ const InsightsData = ({ title, overline, items, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 InsightsData.propTypes = {
   items: PropTypes.arrayOf(

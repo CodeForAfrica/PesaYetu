@@ -6,7 +6,9 @@ export default {
   title: "Sections/Project",
 };
 
-const Template = ({ ...args }) => <Project {...args} />;
+function Template({ ...args }) {
+  return <Project {...args} />;
+}
 export const Default = Template.bind({});
 
 Default.args = {

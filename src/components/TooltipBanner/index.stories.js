@@ -18,7 +18,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <TooltipBanner {...args} />;
+function Template({ ...args }) {
+  return <TooltipBanner {...args} />;
+}
 
 export const Default = Template.bind({});
 

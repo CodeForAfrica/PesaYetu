@@ -1,6 +1,6 @@
 import { RichTypography } from "@commons-ui/core";
-import { CardContent } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { CardContent } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -25,7 +25,7 @@ const useStyles = makeStyles(({ typography }) => ({
   },
 }));
 
-const Content = ({
+function Content({
   className,
   description,
   descriptionProps,
@@ -35,7 +35,7 @@ const Content = ({
   ctaText,
   linkProps,
   ...props
-}) => {
+}) {
   const classes = useStyles(props);
   if (!(title || description || href)) {
     return null;
@@ -66,7 +66,7 @@ const Content = ({
       )}
     </CardContent>
   );
-};
+}
 
 Content.propTypes = {
   className: PropTypes.string,

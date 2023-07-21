@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import React from "react";
 
 export default {
@@ -36,7 +36,9 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => <Button {...args}>{label}</Button>;
+function Template({ label, ...args }) {
+  return <Button {...args}>{label}</Button>;
+}
 
 export const Default = Template.bind({});
 

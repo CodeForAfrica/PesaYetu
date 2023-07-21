@@ -7,7 +7,9 @@ export default {
   title: "Components/HURUmap/Chart",
 };
 
-const Template = ({ ...args }) => <Chart {...args} />;
+function Template({ ...args }) {
+  return <Chart {...args} />;
+}
 
 export const Default = Template.bind({});
 

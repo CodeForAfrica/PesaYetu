@@ -16,7 +16,9 @@ export default {
   },
 };
 
-const Template = (args) => <DatasetsAndDocuments {...args} />;
+function Template(args) {
+  return <DatasetsAndDocuments {...args} />;
+}
 
 export const Default = Template.bind({});
 

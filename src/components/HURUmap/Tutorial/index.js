@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import { TourProvider, useTour } from "@reactour/tour";
 import PropTypes from "prop-types";
 import React, { useState } from "react";

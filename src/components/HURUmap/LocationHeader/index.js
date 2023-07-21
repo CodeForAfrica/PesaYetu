@@ -4,7 +4,7 @@ import {
   IconButton,
   SvgIcon as MuiSvgIcon,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -18,7 +18,7 @@ function SvgIcon(props) {
   return <MuiSvgIcon {...props} />;
 }
 
-const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
+function LocationHeader({ icon, level, onClick, parent, title, ...props }) {
   const classes = useStyles(props);
 
   if (!title) {
@@ -36,7 +36,11 @@ const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
             </Grid>
             {onClick ? (
               <Grid item>
-                <IconButton onClick={onClick} className={classes.closeButton}>
+                <IconButton
+                  onClick={onClick}
+                  className={classes.closeButton}
+                  size="large"
+                >
                   <SvgIcon
                     component={CloseIcon}
                     style={{ fontSize: 44 }}
@@ -65,7 +69,7 @@ const LocationHeader = ({ icon, level, onClick, parent, title, ...props }) => {
       )}
     </div>
   );
-};
+}
 
 LocationHeader.propTypes = {
   icon: PropTypes.string,

@@ -1,5 +1,5 @@
-import { Typography, useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -9,7 +9,7 @@ import Card from "@/pesayetu/components/Card";
 import Carousel from "@/pesayetu/components/Carousel";
 import Section from "@/pesayetu/components/Section";
 
-const OurCourses = ({ title, items, ...props }) => {
+function OurCourses({ title, items, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
@@ -33,7 +33,7 @@ const OurCourses = ({ title, items, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 OurCourses.propTypes = {
   title: PropTypes.string,

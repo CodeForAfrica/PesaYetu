@@ -1,5 +1,5 @@
 import { RichTypography } from "@commons-ui/core";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -7,7 +7,7 @@ import useStyles from "./useStyles";
 
 import Section from "@/pesayetu/components/Section";
 
-const Summary = ({ content, title, subtitle, ...props }) => {
+function Summary({ content, title, subtitle, ...props }) {
   const classes = useStyles(props);
 
   if (!content) {
@@ -32,7 +32,7 @@ const Summary = ({ content, title, subtitle, ...props }) => {
       </Section>
     </div>
   );
-};
+}
 
 Summary.propTypes = {
   content: PropTypes.string,

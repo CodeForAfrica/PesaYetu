@@ -19,7 +19,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <LocationTag {...args} />;
+function Template({ ...args }) {
+  return <LocationTag {...args} />;
+}
 
 export const Default = Template.bind({});
 

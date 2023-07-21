@@ -1,4 +1,4 @@
-import { Card as MuiCard } from "@material-ui/core";
+import { Card as MuiCard } from "@mui/material";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -8,7 +8,7 @@ import CardContent from "./Content";
 import CardMedia from "./Media";
 import useStyles from "./useStyles";
 
-const Card = ({
+function Card({
   chart,
   children,
   className,
@@ -27,7 +27,7 @@ const Card = ({
   titleProps,
   variant,
   ...props
-}) => {
+}) {
   const squareMedia = mediaProps?.square;
   const classes = useStyles({ ...props, squareMedia });
   const actionAreaProps = { href, onClick };
@@ -73,7 +73,7 @@ const Card = ({
       </CardActionArea>
     </MuiCard>
   );
-};
+}
 
 Card.propTypes = {
   chart: PropTypes.string,

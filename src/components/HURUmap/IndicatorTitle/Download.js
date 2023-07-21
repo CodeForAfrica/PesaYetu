@@ -1,5 +1,5 @@
-import { ButtonBase, IconButton, Grid, Typography } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { ButtonBase, IconButton, Grid, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import clsx from "clsx";
 import Image from "next/image";
 import Papa from "papaparse";
@@ -52,6 +52,7 @@ function Download({
   };
 
   const splitString = (str) => {
+    // eslint-disable-next-line prefer-regex-literals
     const regex = new RegExp(/\S.{1,42}\S(?= |$)/, "g");
     const chunks = str.match(regex);
     return chunks;
@@ -208,6 +209,7 @@ function Download({
               onClick={(e) => {
                 setImageLayout(e, index);
               }}
+              size="large"
             >
               <Image src={p} width={24} height={24} alt="layout" />
             </IconButton>

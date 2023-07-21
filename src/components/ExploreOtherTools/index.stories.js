@@ -9,7 +9,9 @@ export default {
   title: "Sections/ExploreOtherTools",
 };
 
-const Template = ({ ...args }) => <ExploreOtherTools {...args} />;
+function Template({ ...args }) {
+  return <ExploreOtherTools {...args} />;
+}
 
 export const Default = Template.bind({});
 

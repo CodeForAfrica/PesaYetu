@@ -9,7 +9,9 @@ export default {
   title: "Sections/DataVisualisationGuide",
 };
 
-const Template = ({ ...args }) => <DataVisuals {...args} />;
+function Template({ ...args }) {
+  return <DataVisuals {...args} />;
+}
 
 export const Default = Template.bind({});
 

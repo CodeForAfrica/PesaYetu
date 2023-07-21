@@ -15,7 +15,9 @@ export default {
   },
 };
 
-const Template = ({ ...args }) => <Sources {...args} />;
+function Template({ ...args }) {
+  return <Sources {...args} />;
+}
 
 export const Default = Template.bind({});
 
