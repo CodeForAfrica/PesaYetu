@@ -49,7 +49,7 @@
     "react-multi-carousel": "^2.6.3",
     "react-share": "^4.4.0",
     "react-vega": "^7.4.4",
-    "sharp": "^0.30.5",
+    "sharp": "^0.32.6",
     "simplebar-react": "^2.1.0",
     "swr": "^1.0.0",
     "vega": "^5.23.0",
